@@ -1,10 +1,10 @@
 ---
 layout: splash
-title: "Oh Jaehong | Cognitive Robotics Researcher"
+title: "Cognitive Robotics Researcher"
 permalink: /
 header:
   overlay_color: "#000"
-  overlay_filter: "0.5"
+  overlay_filter: "0.6"
   overlay_image: /assets/images/csa_hero.png
   actions:
     - label: "View Research"
@@ -16,372 +16,1124 @@ header:
   caption: "*Building the future of human-robot collaboration*"
 
 excerpt: >
-  **Pioneering Cognitive Synergy Architecture (CSA) & Ontology Neural Network (ONN)**  
-  <br/>Where semantic perception meets explainable intelligence — creating robots that don't just compute, but **comprehend, collaborate, and co-evolve** with humans.
+  <div class="hero-content">
+    <h2 class="hero-name">Oh Jaehong</h2>
+    <div class="hero-main-description">
+      <p class="hero-pioneering">
+        Pioneering <strong>Cognitive Synergy Architecture (CSA)</strong> & <strong>Ontology Neural Network (ONN)</strong>
+      </p>
+      <p class="hero-tagline">
+        <em>Where semantic perception meets explainable intelligence — creating robots that don't just compute, but <strong>comprehend, collaborate, and co-evolve</strong> with humans.</em>
+      </p>
+    </div>
+  </div>
 
 intro:
   - excerpt: >
-      **Oh Jaehong** is a cognitive robotics researcher at the forefront of human-centric AI,  
-      developing frameworks where machines transcend mere automation to become **thinking partners**.
+      <div class="researcher-intro">
+        <div class="intro-content">
+          <h2>Redefining Human-Robot Interaction</h2>
+          <p><strong>Oh Jaehong</strong> is a cognitive robotics researcher at the forefront of human-centric AI, developing frameworks where machines transcend mere automation to become <strong>thinking partners</strong>.</p>
+          <div class="intro-stats">
+            <div class="stat-item">
+              <span class="stat-number">15Hz</span>
+              <span class="stat-label">Real-time Processing</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">94%</span>
+              <span class="stat-label">Object Identity Persistence</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">arXiv Publications</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-feature_row:
+core_research:
   - image_path: /assets/images/csa_thumb.png
     alt: "Cognitive Synergy Architecture"
     title: "Cognitive Synergy Architecture"
+    excerpt: >
+      **Semantic-Enhanced Goal-Oriented (SEGO) Framework**  
+      Real-time semantic scene understanding with explainable decision making for collaborative robotics.
     url: "/csa/"
     btn_label: "Explore CSA"
-    btn_class: "btn--primary btn--large"
+    btn_class: "btn--primary"
     
   - image_path: /assets/images/onn_thumb.png
     alt: "Ontology Neural Network"
     title: "Ontology Neural Network"
+    excerpt: >
+      **Topological Reasoning & Delay-Robust Control**  
+      OWL 2 DL reasoning integration with neural architectures for robust cognitive control systems.
     url: "/onn/"
     btn_label: "Discover ONN"
-    btn_class: "btn--primary btn--large"
+    btn_class: "btn--primary"
     
   - image_path: /assets/images/philosophy_thumb.png
     alt: "Research Philosophy"
     title: "Research Philosophy"
+    excerpt: >
+      **Human-Centric AI Development**  
+      Creating cognitive transparency through explainable intelligence that amplifies human capabilities.
     url: "/about/"
     btn_label: "Read Manifesto"
-    btn_class: "btn--info btn--large"
+    btn_class: "btn--info"
 
-research_highlights:
+research_focus:
   - title: "🎯 Current Research Focus"
     excerpt: >
-      **Advanced Cognitive Control Systems**  
-      <br/><br/>
-      • **IMAGO α Development**: PPO-based adaptive control with natural language intent parsing  
-      • **LOGOS Integration**: Real-time ontological validation with OWL 2 DL reasoning  
-      • **Multi-Robot Synchronization**: Shared semantic memory across robotic teams  
-      • **Real-World Deployment**: CSA implementation on Franka Emika Panda systems
+      <div class="focus-grid">
+        <div class="focus-item">
+          <h4>IMAGO α Development</h4>
+          <p>PPO-based adaptive control with natural language intent parsing for seamless human-robot communication.</p>
+        </div>
+        <div class="focus-item">
+          <h4>LOGOS Integration</h4>
+          <p>Real-time ontological validation with OWL 2 DL reasoning for explainable AI decision-making.</p>
+        </div>
+        <div class="focus-item">
+          <h4>Multi-Robot Synchronization</h4>
+          <p>Shared semantic memory across robotic teams enabling coordinated collaborative behaviors.</p>
+        </div>
+        <div class="focus-item">
+          <h4>Real-World Deployment</h4>
+          <p>CSA implementation on Franka Emika Panda systems with demonstrated industrial applications.</p>
+        </div>
+      </div>
 
-  - title: "📊 Technical Achievements"
+publications:
+  - title: "📚 Featured Publications"
     excerpt: >
-      **Demonstrated Performance Metrics**  
-      <br/><br/>
-      • **15Hz Real-time** semantic scene graph construction  
-      • **94% Object Identity** persistence across temporal sequences  
-      • **<5cm Localization** accuracy with ORB-SLAM2 integration  
-      • **89% Goal Completion** rate with explainable decision traces
+      <div class="publications-showcase">
+        <div class="publication-item featured">
+          <div class="pub-badge">Latest</div>
+          <h4><a href="https://arxiv.org/abs/2506.19277">"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"</a></h4>
+          <p class="pub-venue">arXiv:2506.19277</p>
+          <p class="pub-description">Breakthrough framework combining topological reasoning with neural architectures for robust cognitive control in dynamic environments.</p>
+        </div>
+        
+        <div class="publication-item">
+          <h4><a href="https://arxiv.org/abs/2506.13149">"Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"</a></h4>
+          <p class="pub-venue">arXiv:2506.13149</p>
+          <p class="pub-description">Comprehensive semantic mapping and scene graph construction for explainable robot behavior.</p>
+        </div>
+        
+        <div class="publication-item">
+          <h4><a href="https://arxiv.org/abs/2505.03815">"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control"</a></h4>
+          <p class="pub-venue">arXiv:2505.03815</p>
+          <p class="pub-description">Foundational framework establishing semantic-level human-robot collaboration principles.</p>
+        </div>
+      </div>
 
-  - title: "🏆 Recognition & Impact"
+philosophy:
+  - title: "🌟 Research Vision & Impact"
     excerpt: >
-      **Publications & Training**  
-      <br/><br/>
-      • **3 arXiv Publications** on cognitive robotics architectures  
-      • **Doosan Robotics** Advanced AI Training Program (2025)  
-      • **International Experience** — 6 months research in Germany  
-      • **Open Source Contributions** — Active GitHub developer
-
-publication_row:
-  - title: "📚 Key Publications"
-    excerpt: >
-      **Foundational Research Papers**  
-      <br/><br/>
-      
-      🔬 [**"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"**](https://arxiv.org/abs/2505.03815)  
-      *arXiv:2505.03815* — Comprehensive framework for human-robot collaboration  
-      <br/><br/>
-      
-      🧠 [**"Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"**](https://arxiv.org/abs/2506.13149)  
-      *arXiv:2506.13149* — Semantic mapping and scene graph construction  
-      <br/><br/>
-      
-      🌐 [**"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"**](https://arxiv.org/abs/2506.19277)  
-      *arXiv:2506.19277* — Topological reasoning for robust cognitive control
+      <div class="philosophy-content">
+        <blockquote>
+          "True intelligence emerges not from computational power alone, but from the capacity to understand, explain, and harmoniously collaborate with human cognition."
+        </blockquote>
+        <p>My research philosophy centers on creating <strong>cognitive transparency</strong> — developing AI systems that don't just perform tasks, but reveal their reasoning processes, making them trustworthy partners in complex human endeavors.</p>
+        <div class="philosophy-pillars">
+          <div class="pillar">
+            <h5>🧠 Semantic Understanding</h5>
+            <p>Moving beyond pattern recognition to genuine comprehension of context and meaning.</p>
+          </div>
+          <div class="pillar">
+            <h5>🔍 Explainable Intelligence</h5>
+            <p>Every decision must be traceable, interpretable, and justifiable to human collaborators.</p>
+          </div>
+          <div class="pillar">
+            <h5>🤝 Human-Centric Design</h5>
+            <p>Technology should amplify human capabilities, not replace human judgment.</p>
+          </div>
+        </div>
+      </div>
 
 contact_cta:
-  - title: "🤝 Collaboration & Contact"
+  - title: "🤝 Collaboration & Recognition"
     excerpt: >
-      **Open to Research Collaboration**  
-      <br/><br/>
-      Interested in cognitive robotics, explainable AI, or human-robot interaction?  
-      Let's discuss how CSA and ONN can advance your research or industrial applications.  
-      <br/><br/>
-      📧 **Email**: [jaehongoh1554@gmail.com](mailto:jaehongoh1554@gmail.com)  
-      🐱 **GitHub**: [jack0682](https://github.com/jack0682)  
-      🎓 **Institution**: Soongsil University, Mechanical Engineering  
-      🏢 **Training**: Doosan Robotics AI Program
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h4>Let's Advance Cognitive Robotics Together</h4>
+          <p>Interested in semantic AI, explainable robotics, or human-robot interaction? Let's explore how CSA and ONN can accelerate your research or industrial applications.</p>
+          <div class="contact-links">
+            <a href="mailto:jaehongoh1554@gmail.com" class="contact-link">
+              <span class="contact-icon">📧</span>
+              <span>jaehongoh1554@gmail.com</span>
+            </a>
+            <a href="https://github.com/jack0682" class="contact-link">
+              <span class="contact-icon">🐱</span>
+              <span>GitHub: jack0682</span>
+            </a>
+          </div>
+        </div>
+        <div class="credentials">
+          <h4>Training & Affiliations</h4>
+          <div class="credential-item">
+            <strong>🏢 Doosan Robotics</strong>
+            <span>Advanced AI Training Program (2025)</span>
+          </div>
+          <div class="credential-item">
+            <strong>🎓 Soongsil University</strong>
+            <span>Mechanical Engineering</span>
+          </div>
+          <div class="credential-item">
+            <strong>🌍 International Experience</strong>
+            <span>6 months research collaboration in Germany</span>
+          </div>
+        </div>
+      </div>
 
 ---
 
-{% include feature_row id="intro" type="left" %}
+<section class="core-research-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Core Research Contributions</h2>
+      <p>Pioneering frameworks that bridge semantic understanding with practical robotics implementation</p>
+    </div>
+    {% include feature_row id="core_research" %}
+  </div>
+</section>
 
-<div class="main-features-section">
-  {% include feature_row %}
-</div>
+{% include feature_row id="intro" type="center" %}
 
-<div class="research-section">
-  {% include feature_row id="research_highlights" %}
-</div>
+<section class="research-focus-section">
+  {% include feature_row id="research_focus" type="center" %}
+</section>
 
-<div class="publications-section">
-  {% include feature_row id="publication_row" type="left" %}
-</div>
+<section class="publications-section">
+  {% include feature_row id="publications" type="center" %}
+</section>
 
-<div class="contact-section">
-  {% include feature_row id="contact_cta" type="left" %}
-</div>
+<section class="philosophy-section">
+  {% include feature_row id="philosophy" type="center" %}
+</section>
+
+<section class="contact-section">
+  {% include feature_row id="contact_cta" type="center" %}
+</section>
 
 <style>
-/* Header title styling - make it bold and visible */
+/* Global Typography & Spacing */
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --secondary-color: #9b59b6;
+  --text-color: #5a6c7d;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+  --shadow-light: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* Global Layout - Center Alignment */
+.page__content .wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+  text-align: center;
+}
+
+.feature__wrapper {
+  max-width: 1400px;
+  margin: 0 auto !important;
+  padding: 0 2em !important;
+  text-align: center !important;
+}
+
+.feature__wrapper--left {
+  max-width: 1400px;
+  margin: 0 auto !important;
+  padding: 0 2em !important;
+  text-align: center !important;
+}
+
+/* Section containers - center alignment */
+section {
+  padding: 5em 0;
+  position: relative;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Force all feature items to be center aligned */
+.feature__item {
+  margin-bottom: 2em;
+  width: 100% !important;
+  max-width: none !important;
+  text-align: center !important;
+}
+
+/* Override left alignment classes to center */
+.feature__item--left {
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 1400px !important;
+  width: 100% !important;
+}
+
+.feature__item--left .archive__item {
+  text-align: center !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.feature__item--left .archive__item-body {
+  text-align: center !important;
+  padding: 3em 2em;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+}
+
+.feature__item--left .archive__item-title {
+  font-size: 2em;
+  margin-bottom: 1em;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: center !important;
+}
+
+.feature__item--left .archive__item-excerpt {
+  font-size: 1em;
+  line-height: 1.7;
+  color: var(--text-color);
+  text-align: center !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.feature__item--center {
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 1400px !important;
+}
+
+.feature__item--center .archive__item-body {
+  text-align: center !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Enhanced Header Typography - Title & Name Styling */
 .page__hero--overlay .page__title {
   font-size: 2.4em;
-  font-weight: 600 !important;
-  margin-bottom: 0.3em;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
 }
 
-.page__hero--overlay .page__lead {
-  font-size: 1.1em;
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-name {
+  font-size: 1.2em;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 1.5em 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.hero-main-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-pioneering {
+  font-size: 1.2em;
   line-height: 1.5;
-  max-width: none;
-  margin: 0 auto 2.5em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  margin: 0 0 1em 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  font-weight: 400;
+  text-align: center;
 }
 
-/* Layout improvements - add more spacing */
-.main-features-section {
-  padding: 60px 0;
-  background-color: #ffffff;
+.hero-tagline {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  opacity: 0.9;
+  text-align: center;
 }
 
-.research-section {
-  padding: 60px 0;
-  background-color: #f8f9fa;
+/* Researcher Introduction Section */
+.researcher-intro {
+  background: linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
+  border-radius: var(--border-radius);
+  padding: 4em 3em;
+  margin: 2em 0;
+  box-shadow: var(--shadow-light);
+  border: 1px solid #e9ecef;
+}
+
+.intro-content h2 {
+  font-size: 2.2em;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.intro-content p {
+  font-size: 1.1em;
+  text-align: center;
+  margin-bottom: 2.5em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.5em;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-top: 0.5em;
+  font-weight: 500;
+}
+
+/* Section Styling */
+section {
+  padding: 5em 0;
+  position: relative;
+}
+
+.core-research-section {
+  background: var(--white);
+}
+
+.research-focus-section {
+  background: var(--light-bg);
 }
 
 .publications-section {
-  padding: 60px 0;
-  background-color: #ffffff;
+  background: var(--white);
+}
+
+.philosophy-section {
+  background: var(--light-bg);
 }
 
 .contact-section {
-  padding: 60px 0;
-  background-color: #f8f9fa;
+  background: var(--white);
 }
 
-/* Feature row styling - cleaner card design */
-.feature__wrapper {
-  max-width: 1400px;
+.section-container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2em;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+.section-header h2 {
+  font-size: 2.4em;
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+.section-header p {
+  font-size: 1.1em;
+  color: var(--text-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Core Research Cards - Center aligned 3-column grid */
+.feature__wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2em !important;
+  max-width: 1400px;
+  margin: 0 auto !important;
+  padding: 0 2em !important;
+  text-align: center !important;
+}
+
 .feature__item {
-  margin-bottom: 2em;
-  padding: 0 0.8em;
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  text-align: center !important;
 }
 
 .feature__item .archive__item {
-  background: #fff;
-  border-radius: 8px;
+  background: var(--white);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
   border: 1px solid #e9ecef;
+  height: 100%;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .feature__item .archive__item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
 }
 
-/* Image styling - uniform size */
 .feature__item .archive__item-teaser {
-  height: 200px;
+  height: 220px;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 
 .feature__item .archive__item-teaser img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .feature__item .archive__item-teaser:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* Title and button only in cards */
 .feature__item .archive__item-body {
-  padding: 1.5em 1.5em;
+  padding: 2em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 .feature__item .archive__item-title {
-  font-size: 1.2em;
+  font-size: 1.4em;
   margin-bottom: 1em;
-  color: #2c3e50;
+  color: var(--primary-color);
   font-weight: 600;
   line-height: 1.3;
+  text-align: center;
 }
 
 .feature__item .archive__item-excerpt {
-  display: none; /* Hide content excerpts for cleaner look */
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5em;
+  flex-grow: 1;
+  text-align: center;
 }
 
-/* Button styling */
-.btn--large {
-  padding: 8px 20px;
+/* Ensure buttons are at bottom */
+.feature__item .archive__item-body .btn {
+  margin-top: auto;
+}
+
+/* Focus Grid - Horizontal 4-column layout */
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 1em;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.focus-item {
+  background: var(--white);
+  padding: 1.8em 1.5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.focus-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.focus-item h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.8em;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.focus-item p {
+  margin: 0;
+  line-height: 1.5;
   font-size: 0.9em;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Publications Showcase - Horizontal 3-column layout */
+.publications-showcase {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2em;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.publication-item {
+  background: var(--white);
+  padding: 2em 1.8em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  position: relative;
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.publication-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.publication-item.featured {
+  border-left: 4px solid var(--accent-color);
+}
+
+.pub-badge {
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--accent-color), #2980b9);
+  color: white;
+  padding: 0.3em 1em;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.publication-item h4 {
+  margin-bottom: 0.8em;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.publication-item h4 a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.publication-item h4 a:hover {
+  color: var(--accent-color);
+}
+
+.pub-venue {
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.pub-description {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9em;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Philosophy Pillars - Horizontal 3-column layout */
+.philosophy-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2em;
+  margin-top: 2em;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pillar {
+  background: var(--white);
+  padding: 2em 1.8em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pillar h5 {
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pillar p {
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Philosophy Content */
+.philosophy-content {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.philosophy-content blockquote {
+  font-size: 1.3em;
+  font-style: italic;
+  color: var(--primary-color);
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 2em;
+  margin: 0 auto 2em auto;
   font-weight: 500;
+  text-align: center;
+  max-width: 900px;
+}
+
+.philosophy-content p {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 2em auto;
+}
+
+/* Force center alignment for all content */
+.feature__item--left .focus-grid,
+.feature__item--left .publications-showcase,
+.feature__item--left .philosophy-content,
+.feature__item--left .contact-grid {
+  text-align: center !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.feature__item--left .focus-item,
+.feature__item--left .publication-item,
+.feature__item--left .pillar,
+.feature__item--left .contact-info,
+.feature__item--left .credentials {
+  text-align: center !important;
+}
+
+.feature__item--left blockquote {
+  text-align: center !important;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  margin-top: 1em;
+}
+
+.contact-info h4,
+.credentials h4 {
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.contact-links {
+  margin-top: 2em;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent-color);
+}
+
+.contact-icon {
+  margin-right: 1em;
+  font-size: 1.2em;
+}
+
+.credential-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.2em;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.credential-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.credential-item strong {
+  color: var(--primary-color);
+  margin-right: 1em;
+  flex-shrink: 0;
+}
+
+.credential-item span {
+  text-align: right;
+}
+
+/* Enhanced Buttons */
+.btn--large {
+  padding: 12px 28px;
+  font-size: 1em;
+  font-weight: 600;
   text-transform: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: var(--transition);
   border: none;
   text-decoration: none;
+  display: inline-block;
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #2980b9 100%);
   color: white;
 }
 
 .btn--primary:hover {
   background: linear-gradient(135deg, #2980b9 0%, #1f639a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
   color: white;
 }
 
 .btn--info {
-  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #8e44ad 100%);
   color: white;
 }
 
 .btn--info:hover {
   background: linear-gradient(135deg, #8e44ad 0%, #7d3c98 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(155, 89, 182, 0.3);
+  box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3);
   color: white;
 }
 
-/* Left-aligned content sections */
+/* Left-aligned content sections - Fix alignment */
 .feature__item--left .archive__item-body {
   text-align: left;
-  padding: 2em 1.5em;
+  padding: 3em 2em;
 }
 
 .feature__item--left .archive__item-title {
-  font-size: 1.6em;
-  margin-bottom: 0.8em;
-  color: #2c3e50;
+  font-size: 2em;
+  margin-bottom: 1em;
+  color: var(--primary-color);
   font-weight: 600;
+  text-align: left;
 }
 
 .feature__item--left .archive__item-excerpt {
-  display: block;
-  font-size: 0.95em;
-  line-height: 1.6;
-  color: #5a6c7d;
-  max-width: none;
+  font-size: 1em;
+  line-height: 1.7;
+  color: var(--text-color);
+  text-align: left;
 }
 
-/* Content wrapper for better spacing */
-.feature__wrapper--left {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3em;
+/* Ensure all content within left sections is left-aligned */
+.feature__item--left .archive__item-excerpt * {
+  text-align: left;
 }
 
-/* Responsive design */
+.feature__item--left .focus-grid,
+.feature__item--left .publications-showcase,
+.feature__item--left .philosophy-content,
+.feature__item--left .contact-grid {
+  text-align: left;
+}
+
+.feature__item--left .focus-item,
+.feature__item--left .publication-item,
+.feature__item--left .pillar,
+.feature__item--left .contact-info,
+.feature__item--left .credentials {
+  text-align: left;
+}
+
+.feature__item--left blockquote {
+  text-align: left;
+}
+
+/* Responsive Design - Maintain horizontal layouts */
 @media (max-width: 1024px) {
   .page__hero--overlay .page__title {
     font-size: 2.2em;
   }
   
-  .feature__wrapper,
-  .feature__wrapper--left {
-    padding: 0 1.5em;
+  .researcher-intro {
+    padding: 3em 2em;
   }
   
-  .main-features-section,
-  .research-section,
-  .publications-section,
-  .contact-section {
-    padding: 50px 0;
+  .intro-stats {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5em;
+  }
+  
+  section {
+    padding: 4em 0;
+  }
+  
+  /* Adjust grid columns for medium screens */
+  .focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+  }
+  
+  .publications-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+  }
+  
+  .philosophy-pillars {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+  }
+  
+  .feature__wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+  
+  .credential-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .credential-item span {
+    text-align: center;
+    margin-top: 0.5em;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .page__hero--overlay .page__title {
-    font-size: 1.9em;
+    font-size: 2em;
   }
   
   .page__hero--overlay .page__lead {
-    font-size: 1em;
-  }
-  
-  .feature__item .archive__item-teaser {
-    height: 180px;
-  }
-  
-  .feature__item .archive__item-body {
-    padding: 1.2em 1.2em;
-  }
-  
-  .feature__item .archive__item-title {
     font-size: 1.1em;
   }
   
+  .researcher-intro {
+    padding: 2.5em 1.5em;
+  }
+  
+  .intro-content h2 {
+    font-size: 1.8em;
+  }
+  
+  .intro-stats {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  
+  /* Single column for mobile */
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  
+  .publications-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  
+  .philosophy-pillars {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  
+  .feature__wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .feature__item .archive__item-body {
+    padding: 1.5em;
+  }
+  
+  .feature__item--left .archive__item-body {
+    padding: 2em 1.5em;
+  }
+  
   .feature__item--left .archive__item-title {
-    font-size: 1.4em;
+    font-size: 1.6em;
   }
   
-  .btn--large {
-    padding: 8px 16px;
-    font-size: 0.85em;
+  section {
+    padding: 3em 0;
   }
   
-  .main-features-section,
-  .research-section,
-  .publications-section,
-  .contact-section {
-    padding: 40px 0;
-  }
-  
-  .feature__wrapper,
-  .feature__wrapper--left {
+  .section-container,
+  .feature__wrapper {
     padding: 0 1em;
+  }
+  
+  .focus-item, .publication-item, .pillar {
+    padding: 1.5em;
+    min-height: auto;
+  }
+  
+  .philosophy-content blockquote {
+    font-size: 1.1em;
+    padding-left: 1.5em;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
   .page__hero--overlay .page__title {
     font-size: 1.8em;
   }
   
-  .feature__item .archive__item-body {
-    padding: 1.5em 1em;
-  }
-  
-  .feature__item--left .archive__item-body {
+  .researcher-intro {
     padding: 2em 1em;
   }
+  
+  .intro-content h2 {
+    font-size: 1.6em;
+  }
+  
+  .section-header h2 {
+    font-size: 1.8em;
+  }
+  
+  .btn--large {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+  
+  .focus-item,
+  .publication-item,
+  .pillar {
+    padding: 1.2em;
+  }
+  
+  .philosophy-content blockquote {
+    font-size: 1em;
+    padding-left: 1.2em;
+  }
 }
 
-/* Remove center alignment for better flow */
-.feature__item--center {
-  text-align: left;
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
-.feature__item--center .archive__item-body {
-  text-align: left;
-  max-width: none;
+/* Print Styles */
+@media print {
+  .page__hero,
+  .btn,
+  .contact-links {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  section {
+    padding: 1em 0;
+    page-break-inside: avoid;
+  }
 }
-
-/* Ensure proper spacing between sections */
-body {
-  line-height: 1.7;
-}
-
-.wrapper {
-  max-width: 1400px;
-  padding: 0 2em;
-}
-</style>
