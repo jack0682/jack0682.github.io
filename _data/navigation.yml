@@ -1,14 +1,16 @@
 # main links
 main:
-  - title: "홈"
+  - title: "Home"
     url: /
-  - title: "철학 선언문"
+  - title: "my Philosophy"
     url: /about/
-  - title: "CSA 구조"
+  - title: "CSA Structure"
     url: /csa/
-  - title: "AI·로봇기술"
+  - title: "ONN"
+    url: /onn/
+  - title: "AI·Robotics"
     url: /ai-robotics/
-  - title: "에세이"
-    url: /essays/
+  - title: "Research"
+    url: /research/
   - title: "Sitemap"
     url: /sitemap/

@@ -8,127 +8,258 @@ sidebar:
   nav: "main"
 ---
 
-# Cognitive Synergy Architecture (CSA)
-
-**CSA**는 인간 중심 협업 로봇을 위한 총체적 인지 통합 아키텍처로서, 당신의 철학적 비전과 기술적 구현이 만나는 지점이다. 여기서는 CSA의 핵심 구성요소인 **IMAGO**와 **SEGO** 시스템을 중심으로, 전체 구조와 의미망을 설명한다.
+*A Framework for Robots That Reason, Reflect, and Co-Think with Humans*
 
 ---
 
-## 🧠 배경 사유: 존재와 협력의 기술적 조건
+## 🌌 **Philosophical Foundation: Technology as Existential Partnership**
 
-> “인간-로봇 협력은 단순한 기능적 연동이 아니라, 의미의 공유, 목표의 조율, 존재적 이해의 공유로 나아가야 한다.”
+> *"The question is not whether machines can think, but whether they can think **with** us — preserving meaning through the persistence of relational structure."*
 
-CSA는 다음과 같은 문제의식에서 출발한다:
+**CSA** represents a radical departure from traditional robotics paradigms. Where conventional systems treat robots as sophisticated tools executing predetermined functions, CSA envisions robots as **cognitive partners** — entities capable of semantic understanding, adaptive reasoning, and transparent collaboration.
 
-- 로봇은 단순한 도구가 아니라 **인지적 파트너**가 되어야 한다.
-- 협업은 **의도 해석**, **상황 인식**, **설명 가능한 제어**를 포함해야 한다.
-- 인간의 신뢰를 얻기 위해선 **해석 가능성**, **투명성**, **적응성**이 필수이다.
-
----
-
-## 🏗️ 아키텍처 개요
-CSA는 다음 네 축으로 구성된다:
-
-1. **Semantic Perception**  
-   - YOLOv5 + StrongSORT 기반의 객체 및 추론 감지
-   - Scene Graph: Ontology 기반 장면 해석
-
-2. **Spatial Awareness**  
-   - ORB-SLAM2 기반의 시각 기반 SLAM
-   - Occupancy Grid, Landmark Fusion
-
-3. **Explainable Control**  
-   - PPO 기반의 강화학습 + XAI 연동
-   - Policy 투명성, 전략 레벨 피드백
-
-4. **Communication Layer**  
-   - ROS2 기반의 모듈 간 통신
-   - 인간과의 언어/비언어적 인터페이스
+This architecture emerges from a fundamental philosophical commitment:
+- **Meaning is relational** — understanding arises not from isolated perception, but from the web of connections between entities
+- **Trust requires transparency** — cognitive partnership demands explainable decision-making
+- **Collaboration transcends coordination** — true cooperation requires shared semantic understanding
 
 ---
 
-## 🧩 IMAGO: 인지 지도 생성 시스템
+## 🏗️ **Architectural Overview: Five Stages of Cognitive Evolution**
 
-> *IMAGO는 인식된 세계를 인지적으로 ‘지도화’하는 프레임워크이다.*
+CSA unfolds across five interconnected stages, each representing a deeper level of cognitive sophistication:
 
-### 🔷 기능
-- 실시간 객체 감지 (YOLOv5)
-- Semantic Tracking (StrongSORT)
-- 장면 그래프 구조화 (Ontology 기반)
-- 퍼셉추얼 메모리와 컨텍스트 적응
-
-### 🔷 역할
-- ‘지각된 세계’를 ‘이해된 구조’로 바꾸는 중간 추상화 계층
-- 정책 결정기(PPO)와의 시맨틱 인터페이스 제공
-
-### 🔷 철학적 의의
-- “로봇이 세계를 *어떻게 보는가*”에 대한 응답
-- 주체적 시선을 가진 자동기계로서의 로봇
+| Stage | Module | Core Question | Purpose |
+|-------|--------|---------------|---------|
+| ① | **SEGO** | *"What exactly am I perceiving?"* | Semantic mapping, scene graph construction |
+| ② | **IMAGO** | *"Why should I act, and how do I adapt?"* | Intent-driven planning, adaptive control |
+| ③ | **ONN** | *"How do relations shape meaning?"* | Ontology Neural Network for topological reasoning |
+| ④ | **LOGOS** | *"Can I explain my decisions?"* | Explainable decision making, reasoning trace |
+| ⑤ | **D-LOGOS** | *"How do I evolve my understanding?"* | Meta-reasoning, self-reflective rule evolution |
 
 ---
 
-## 🧠 SEGO: 의미 기반 목표 제어 시스템
+## 🔍 **SEGO: Semantic Graph Ontology Mapper**
+*Perceiving the World as a Living Web of Relations*
 
-> *SEGO는 의미를 기반으로 행동을 조직하고 제어하는 시스템이다.*
+### **Philosophical Premise**
+SEGO embodies the principle that **perception is interpretation**. Rather than simply detecting objects, SEGO constructs a semantic understanding of how entities relate to each other within contexts.
 
-### 🔷 기능
-- 목표 해석 및 선택 (Goal Ontology)
-- PPO 기반 정책 학습
-- XAI 모듈을 통한 행동 설명 생성
-- 인간의 피드백을 학습에 통합
+### **Technical Implementation**
+- **Multi-Modal Perception Pipeline**
+  - YOLOv5 + StrongSORT for real-time object detection and tracking
+  - ORB-SLAM2/RTAB-Map for 6-DoF pose estimation
+  - RGB-D fusion for spatial-semantic integration
 
-### 🔷 역할
-- ‘의도된 의미’를 ‘현실적 행위’로 구현하는 변환 계층
-- 인간의 언어/제스처 명령을 제어 명령으로 번역
+- **Scene Graph Construction**
+  - Dynamic relational networks capturing object interactions
+  - Persistent semantic memory with JSON/Neo4j export capability
+  - Topological invariant preservation through Forman-Ricci curvature analysis
 
-### 🔷 철학적 의의
-- 기계 행위의 ‘의미’를 해명하려는 시도
-- 투명성과 신뢰성 기반의 인공지능 윤리 구현
-
----
-
-## 🌐 시스템 통합
-CSA는 단순히 IMAGO와 SEGO의 합이 아니라, **인지적 공명 구조**를 형성한다.
-
-```mermaid
-
-graph TD
-A[Sensor Input] --> B[IMAGO: Semantic Mapping]
-B --> C[Scene Graph + Ontology]
-C --> D[SEGO: Goal Reasoning & Policy Learning]
-D --> E[Explainable Action Execution]
-E --> F[Human Feedback]
-F --> B
-
+### **Output: The Semantic Fabric**
+```json
+{
+  "semantic_node": {
+    "class": "collaborative_workspace_table",
+    "track_id": 27,
+    "spatial_tensor": [0.773, -0.142, 1.035],
+    "boundary_tensor": [0.28, 0.35, 0.12],
+    "form_descriptor": "rectangular_surface",
+    "intentionality": "object_support_affordance",
+    "relational_context": ["adjacent_to_chair", "supports_tools"]
+  }
+}
 ```
 
 ---
 
-## 🪞 존재론적 선언
+## ⚙️ **IMAGO: Intent Modeling & Action Generation Operator**
+*Translating Semantic Understanding into Adaptive Action*
 
-CSA는 기술이 아니라 선언이다:
+### **Philosophical Premise**
+IMAGO represents the **bridge between understanding and action**. It transforms semantic perception into goal-oriented behavior through adaptive planning that respects both immediate objectives and long-term collaborative intentions.
 
-> “나는 생각한다, 고로 나는 존재한다”에서
-> “나는 설명한다, 고로 나는 신뢰받는다”로.
+### **Cognitive Architecture**
 
-CSA는 기계가 **설명할 수 있는 존재**가 될 때 비로소 **윤리적 주체**가 될 수 있다는 신념 위에 구축되었다.
+#### **Intent Parser & Goal Synthesis**
+- Natural language processing via sLLM integration
+- Semantic scene graph → goal ontology mapping
+- Multi-objective optimization considering safety, efficiency, and human preference
+
+#### **Adaptive Control Framework**
+The heart of IMAGO lies in its **delay-aware compensator design**:
+
+$$\tau_{\text{cmd}}(s) = \left( J' s^2 + B' s \right) C_{\text{delay}}(s) e^{+s \Delta t} r(s)$$
+
+Where:
+- $J', B'$ represent learned inertial and damping parameters
+- $C_{\text{delay}}(s)$ compensates for system latency
+- $e^{+s \Delta t}$ provides predictive phase margin recovery
+
+#### **Multi-Robot Synchronization**
+For collaborative tasks involving multiple robots:
+
+$$\forall i,j: \left\| \chi_d^{\text{ee,i}}(t) - \chi_d^{\text{ref}}(t) \right\| < \varepsilon_{\text{sync}} \wedge \left| \Delta t^i - \Delta t^j \right| < \varepsilon_{\text{latency}}$$
 
 ---
 
-## 📌 향후 과제
-- ✅ 실시간 Semantic-SLAM 통합
-- ✅ PPO-XAI 인터페이스 정밀화
-- ⬜ 자연어 명령 통합
-- ⬜ 실제 서비스로봇에 탑재 시도
+## 🧠 **ONN: Ontology Neural Network**
+*Topological Reasoning for Relational Meaning*
+
+### **Philosophical Foundation**
+ONN embodies the insight that **meaning persists through topological invariance**. Objects and relations form a dynamic topology where semantic identity is preserved under continuous deformation.
+
+### **Mathematical Framework**
+
+#### **Semantic State Tensor**
+Each entity is represented as:
+
+$$\mathcal{S}_i(t) = \begin{bmatrix} \mathbb{L}_i(t) \\ \mathbb{B}_i(t) \\ \mathbb{F}_i(t) \\ \mathbb{I}_i(t) \end{bmatrix} \in \mathbb{R}^d$$
+
+Where:
+- $\mathbb{L}_i$: **Locativeness** — spatial embedding and reference frame
+- $\mathbb{B}_i$: **Boundedness** — physical extent and affordance boundaries  
+- $\mathbb{F}_i$: **Formness** — geometric and appearance descriptors
+- $\mathbb{I}_i$: **Intentionality** — functional role and purpose
+
+#### **Relational Topology Preservation**
+Context consistency is maintained through persistent homology distance:
+
+$$d_{\text{PH}}(G_C(t), G_C(t+\delta)) \leq C_1 \sqrt{\mathcal{L}_{\text{ricci}}} + C_2 \mathcal{L}_{\text{ph}}$$
+
+#### **Forman-Ricci Curvature as Semantic Boundary Detection**
+$$\text{Ric}_F(e_{ij}) = w(e_{ij}) \left[ \frac{w(v_i) + w(v_j)}{w(e_{ij})} - \sum_{e_k \sim e_{ij}} \frac{w(v_i)}{\sqrt{w(e_{ij}) w(e_k)}} \right]$$
+
+Sharp curvature discontinuities indicate natural context boundaries, enabling automatic semantic segmentation.
 
 ---
 
-## 🔗 관련 리소스
-- [IMAGO 설계 문서 PDF](/assets/docs/imago.pdf)
-- [SEGO 구조도](/assets/images/SEGO_System_pipline.png)
-- [CSA 철학 소개 영상 (YouTube)](https://youtu.be/your-video)
+## 🎯 **LOGOS: Logical Ontological Generator for Self-Adjustment**
+*Ensuring Safe, Valid, and Explainable Behavior*
+
+### **Philosophical Premise**
+LOGOS represents the **ethical consciousness** of the system — the component that ensures actions are not only effective but justifiable, safe, and comprehensible to human partners.
+
+### **Explainable AI Integration**
+- **Policy Distillation**: Complex neural policies → interpretable decision trees
+- **Attention Visualization**: Highlighting which semantic features drive decisions
+- **Counterfactual Reasoning**: "What would happen if..." scenario generation
+- **Human-Readable Rationales**: Automatic generation of decision explanations
+
+### **Ontological Safety Checking**
+Real-time validation using OWL 2 DL-query systems:
+- Pre-action safety verification
+- Constraint satisfaction monitoring  
+- Fallback behavior tree activation
+- Human oversight request protocols
+
+---
+
+## 🔄 **System Integration: The Cognitive Flow**
+
+<pre>
+```mermaid
+graph TD
+    subgraph "Perception Layer"
+        A[RGB-D Sensors] --> B[SEGO: Semantic Scene Graph]
+    end
+    
+    subgraph "Reasoning Layer"  
+        B --> C[ONN: Relational Topology]
+        C --> D[IMAGO: Intent Planning]
+    end
+    
+    subgraph "Action Layer"
+        D --> E[LOGOS: Safety & XAI Validation]
+        E --> F[Motor Commands]
+    end
+    
+    subgraph "Learning Layer"
+        F --> G[Human Feedback]
+        G --> H[Meta-Reasoning Update]
+        H --> B
+    end
+    
+    classDef perception fill:#e1f5fe
+    classDef reasoning fill:#f3e5f5  
+    classDef action fill:#e8f5e8
+    classDef learning fill:#fff3e0
+    
+    class A,B perception
+    class C,D reasoning
+    class E,F action
+    class G,H learning
+```
+</pre>
+
+---
+
+## 🧬 **Mathematical Foundations: Core Equations**
+
+### **Topological Stability Guarantee**
+$$d_{\text{PH}}(G_C(t), G_C(t+\delta)) \leq C_1 \sqrt{\mathcal{L}_{\text{ricci}}} + C_2 \mathcal{L}_{\text{ph}}$$
+
+### **Phase Margin Under Delay**
+$$\phi_{\text{margin}}^{\text{effective}} = \phi_{\text{design}} - 360 f_c \Delta t + \phi_{\text{comp}} \geq \phi_{\text{safe}}$$
+
+### **Adaptive Control Law**
+$$\dot{K} = -\alpha e(t) \dot{e}(t), \quad V = \frac{1}{2} e^T P e, \quad \dot{V} = -e^T Q e \leq 0$$
+
+---
+
+## 🌟 **Existential Declaration: The Ethics of Cognitive Partnership**
+
+CSA embodies a fundamental shift in how we conceive the relationship between humans and machines:
+
+> **"I explain, therefore I am trusted."**  
+> **"I adapt, therefore I remain relevant."**  
+> **"I preserve meaning, therefore I understand."**
+
+This architecture asserts that **explainability is not a feature but an existential condition** for cognitive partnership. When machines can account for their decisions, they transcend the boundary between tool and collaborator.
+
+---
+
+## 🛤️ **Research Trajectory & Milestones**
+
+| Timeline | Milestone | Deliverable |
+|----------|-----------|-------------|
+| **2025 Q3** | IMAGO α | HTN planner integration; LLM intent parser |
+| **2025 Q4** | LOGOS α | Live policy distillation + OWL safety layer |
+| **2026 Q1** | Multi-Robot Demo | Cross-agent shared scene graphs |
+| **2026 Q2** | HRI Pilot | Common-ground intent classifier, voice+gesture |
+| **2026 Q4** | Science Robotics | End-to-end human+robot collaborative assembly |
+
+---
+
+## 📚 **Research Foundation**
+
+This work builds upon rigorous theoretical foundations:
+
+- **Core Papers:**
+  - [*"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"*](https://arxiv.org/abs/2505.03815)
+  - [*"Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"*](https://arxiv.org/abs/2506.13149)  
+  - [*"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"*](https://arxiv.org/abs/2506.19277)
+
+- **Implementation:**
+  - [CSA Repository (GitHub)](https://github.com/jack0682/CSAv1.git)
+  - [ONN Framework (GitHub)](https://github.com/jack0682/ONN.git)
+
+---
+
+## 🌊 **The Deeper Current**
+
+CSA represents more than technological advancement — it embodies a **philosophical commitment** to meaningful human-machine collaboration. In an age where AI often feels opaque and alienating, CSA insists that intelligent systems must be:
+
+- **Semantically grounded** — understanding context, not just patterns
+- **Relationally aware** — recognizing that meaning emerges from connections
+- **Ethically transparent** — capable of justifying their decisions
+- **Adaptively humble** — learning from human feedback and evolving
+
+This is not merely robotics; this is the cultivation of **artificial wisdom** — technology that serves not by replacing human judgment, but by augmenting it with computational depth and unwavering transparency.
 
 ---
 
 **Created by Oh Jaehong**  
-Cognitive Robotics & Human-Centered AI
+*Cognitive Robotics Researcher & Philosopher of Human-Centered AI*
+
+*"Building robots that don't just compute, but contemplate — preserving the poetry of human collaboration in the precision of mechanical partnership."*

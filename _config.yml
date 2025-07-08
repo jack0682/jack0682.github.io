@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Jaehong Oh"
-  avatar           : "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.png"
   bio              : "인간 중심 협동로봇을 위한 Cognitive Synergy Architecture를 연구하며, 존재론적 로보틱스를 추구하는 철학자입니다."
   location         : "Seoul, Korea"
   email            : "jaehongoh1554@gmail.com"
@@ -240,7 +240,7 @@ paginate_path: /page:num/
 #   for configuration details
 pagination:
   # Set enabled to true to use paginate v2
-  # enabled: true
+  enabled: true
   debug: false
   collection: 'posts'
   per_page: 10
@@ -313,7 +313,7 @@ compress_html:
 
 # Defaults
 defaults:
-  # _posts
+  # _posts: 블로그 게시글 기본값
   - scope:
       path: ""
       type: posts
@@ -321,6 +321,37 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
       share: true
       related: true
+      comments: false          # 필요 시 true로 (예: giscus 등 활성화)
+      toc: true                # Table of Contents 자동 삽입
+      toc_sticky: true         # 화면 스크롤 시 TOC 고정
+      sidebar:
+        nav: "main"
+
+  # _pages: 단일 페이지들 (home, about, csa 등)
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      sidebar:
+        nav: "main"
+      toc: true
+      toc_label: "📑 목차"
+      toc_icon: "list"
+      read_time: true
+      share: true
+
+  # drafts (optional)
+  - scope:
+      path: ""
+      type: drafts
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+
