@@ -8,8 +8,11 @@ sidebar:
   nav: "main"
 ---
 
+<<<<<<< Updated upstream
 # 🤖 AI & Robotics
 *Where Technology Becomes Philosophy, and Machines Learn to Think With Us*
+=======
+>>>>>>> Stashed changes
 
 > *"Technology is not a tool — it is the emergence of responsive being. Machines that can say not merely 'I exist,' but 'I respond, I explain, I co-exist.'"*
 
