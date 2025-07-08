@@ -53,12 +53,38 @@ $$\mathcal{S}_i(t) = \begin{bmatrix}
 \mathbb{I}_i(t)
 \end{bmatrix} \in \mathbb{R}^d$$
 
-| Tensor Component | Semantic Dimension | Physical Manifestation |
-|------------------|-------------------|-------------------------|
-| $\mathbb{L}_i(t)$ | **Locativeness** | Spatial position, reference frame embedding |
-| $\mathbb{B}_i(t)$ | **Boundedness** | Physical extent, affordance boundaries |
-| $\mathbb{F}_i(t)$ | **Formness** | Geometric shape, visual appearance |
-| $\mathbb{I}_i(t)$ | **Intentionality** | Functional role, purpose, agency |
+<table>
+  <thead>
+    <tr>
+      <th>Tensor Component</th>
+      <th>Semantic Dimension</th>
+      <th>Physical Manifestation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span>\( \mathbb{L}_i(t) \)</span></td>
+      <td><strong>Locativeness</strong></td>
+      <td>Spatial position, reference frame embedding</td>
+    </tr>
+    <tr>
+      <td><span>\( \mathbb{B}_i(t) \)</span></td>
+      <td><strong>Boundedness</strong></td>
+      <td>Physical extent, affordance boundaries</td>
+    </tr>
+    <tr>
+      <td><span>\( \mathbb{F}_i(t) \)</span></td>
+      <td><strong>Formness</strong></td>
+      <td>Geometric shape, visual appearance</td>
+    </tr>
+    <tr>
+      <td><span>\( \mathbb{I}_i(t) \)</span></td>
+      <td><strong>Intentionality</strong></td>
+      <td>Functional role, purpose, agency</td>
+    </tr>
+  </tbody>
+</table>
+
 
 #### **Tensor Evolution and Temporal Dynamics**
 $$\dot{\mathcal{S}}_i(t) = \frac{d}{dt} \mathcal{S}_i(t)$$
@@ -138,9 +164,12 @@ Each scene $\mathcal{C}(t)$ is represented as a dynamic graph:
 $$G_{\mathcal{C}}(t) = (V(t), E(t), W(t))$$
 
 where:
-- $V(t)$: nodes (semantic entities)
-- $E(t)$: edges (relational interactions) 
-- $W(t)$: edge weights (interaction strengths)
+<ul>
+  <li><span>\( V(t) \)</span>: nodes (semantic entities)</li>
+  <li><span>\( E(t) \)</span>: edges (relational interactions)</li>
+  <li><span>\( W(t) \)</span>: edge weights (interaction strengths)</li>
+</ul>
+
 
 #### **Forman-Ricci Curvature: The Geometric Essence of Meaning**
 

@@ -201,9 +201,12 @@ The **Ontological Real-Time Semantic Fabric (ORTSF)** provides the critical link
 $$\Lambda_{\text{cmd}}(s) = \mathcal{C}(s) \cdot \mathcal{C}_{\text{delay}}(s) \circ \mathcal{P}(\mathcal{S}, I, G)$$
 
 Where:
-- $\mathcal{C}(s)$: Control law ensuring dynamic compliance
-- $\mathcal{C}_{\text{delay}}(s)$: Delay compensation for real-time performance
-- $\mathcal{P}$: Predictive operator for semantic state evolution
+<ul>
+  <li><span>\( \mathcal{C}(s) \)</span>: Control law ensuring dynamic compliance</li>
+  <li><span>\( \mathcal{C}_{\text{delay}}(s) \)</span>: Delay compensation for real-time performance</li>
+  <li><span>\( \mathcal{P} \)</span>: Predictive operator for semantic state evolution</li>
+</ul>
+
 
 ### **Philosophical Significance**
 

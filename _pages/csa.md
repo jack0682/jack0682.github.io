@@ -88,9 +88,15 @@ The heart of IMAGO lies in its **delay-aware compensator design**:
 $$\tau_{\text{cmd}}(s) = \left( J' s^2 + B' s \right) C_{\text{delay}}(s) e^{+s \Delta t} r(s)$$
 
 Where:
-- $J', B'$: learned inertia and damping terms  
-- $C_{\mathrm{delay}}(s)$: latency compensator  
-- $e^{+s \Delta t}$: predictive phase margin recovery term
+
+<ul>
+  <li><span>\( J', B' \)</span>: learned inertia and damping terms</li>
+  <li><span>\( C_{\mathrm{delay}}(s) \)</span>: latency compensator</li>
+  <li><span>\( e^{+s \Delta t} \)</span>: predictive phase margin recovery term</li>
+</ul>
+
+
+
 
 #### **Multi-Robot Synchronization**
 For collaborative tasks involving multiple robots:
@@ -113,10 +119,13 @@ Each entity is represented as:
 $$\mathcal{S}_i(t) = \begin{bmatrix} \mathbb{L}_i(t) \\ \mathbb{B}_i(t) \\ \mathbb{F}_i(t) \\ \mathbb{I}_i(t) \end{bmatrix} \in \mathbb{R}^d$$
 
 Where:
-- $\mathbb{L}_i$: **Locativeness** — spatial embedding and reference frame
-- $\mathbb{B}_i$: **Boundedness** — physical extent and affordance boundaries  
-- $\mathbb{F}_i$: **Formness** — geometric and appearance descriptors
-- $\mathbb{I}_i$: **Intentionality** — functional role and purpose
+<ul>
+  <li><span>\( \mathbb{L}_i \)</span>: <strong>Locativeness</strong> — spatial embedding and reference frame</li>
+  <li><span>\( \mathbb{B}_i \)</span>: <strong>Boundedness</strong> — physical extent and affordance boundaries</li>
+  <li><span>\( \mathbb{F}_i \)</span>: <strong>Formness</strong> — geometric and appearance descriptors</li>
+  <li><span>\( \mathbb{I}_i \)</span>: <strong>Intentionality</strong> — functional role and purpose</li>
+</ul>
+
 
 #### **Relational Topology Preservation**
 Context consistency is maintained through persistent homology distance:
