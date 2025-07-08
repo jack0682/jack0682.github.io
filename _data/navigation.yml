@@ -2,8 +2,8 @@
 main:
   - title: "Home"
     url: /
-  - title: "my Philosophy"
-    url: /about/
+  - title: "My Philosophy"
+    url: /philosophy/
   - title: "CSA Structure"
     url: /csa/
   - title: "ONN"

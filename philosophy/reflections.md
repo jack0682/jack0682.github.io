@@ -1,10 +1,9 @@
 ---
 layout: single
-title: "Existential Manifesto"
-permalink: /about/
+title: "Reflections on Being and Freedom"
+permalink: /philosophy/reflections/
+parent: "My Philosophy"
 author_profile: true
-toc: true
-toc_sticky: true
 ---
 
 # ⚡ **MAGNA CARTA OF HUMAN EXISTENCE**
