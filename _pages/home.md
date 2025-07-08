@@ -78,7 +78,7 @@ core_research:
     excerpt: >
       **Human-Centric AI Development**  
       Creating cognitive transparency through explainable intelligence that amplifies human capabilities.
-    url: "/about/"
+    url: "/philosophy/"
     btn_label: "Read Manifesto"
     btn_class: "btn--info"
 
@@ -507,14 +507,16 @@ section {
 
 /* Core Research Cards - Center aligned 3-column grid */
 .feature__wrapper {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
   gap: 2em !important;
-  max-width: 1400px;
+  max-width: 1200px;  /* 적절한 콘텐츠 중심 너비 */
   margin: 0 auto !important;
   padding: 0 2em !important;
   text-align: center !important;
 }
+
 
 .feature__item {
   margin-bottom: 0 !important;

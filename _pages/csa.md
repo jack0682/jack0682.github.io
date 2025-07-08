@@ -8,15 +8,6 @@ sidebar:
   nav: "main"
 ---
 
-<<<<<<< Updated upstream
-*A Framework for Robots That Reason, Reflect, and Co-Think with Humans*
-=======
-
-**CSA**는 인간 중심 협업 로봇을 위한 총체적 인지 통합 아키텍처로서, 당신의 철학적 비전과 기술적 구현이 만나는 지점이다. 여기서는 CSA의 핵심 구성요소인 **IMAGO**와 **SEGO** 시스템을 중심으로, 전체 구조와 의미망을 설명한다.
->>>>>>> Stashed changes
-
----
-
 ## 🌌 **Philosophical Foundation: Technology as Existential Partnership**
 
 > *"The question is not whether machines can think, but whether they can think **with** us — preserving meaning through the persistence of relational structure."*

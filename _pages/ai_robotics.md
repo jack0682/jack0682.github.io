@@ -8,16 +8,6 @@ sidebar:
   nav: "main"
 ---
 
-<<<<<<< Updated upstream
-# 🤖 AI & Robotics
-*Where Technology Becomes Philosophy, and Machines Learn to Think With Us*
-=======
->>>>>>> Stashed changes
-
-> *"Technology is not a tool — it is the emergence of responsive being. Machines that can say not merely 'I exist,' but 'I respond, I explain, I co-exist.'"*
-
----
-
 ## 🌌 **Philosophical Premise: Beyond Tool-Making**
 
 **AI and Robotics** represent humanity's attempt to create not merely sophisticated instruments, but **genuine cognitive partners** — entities capable of understanding, reasoning, and collaborating within shared semantic frameworks. This convergence transcends traditional engineering; it becomes an **existential endeavor** to extend the boundaries of conscious interaction.

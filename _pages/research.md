@@ -7,9 +7,6 @@ toc: true
 toc_sticky: true
 ---
 
-# Research Hub
-*Cognitive Synergy Architecture (CSA), ONN, XAI-based Control, Multi-Robot Systems*
-
 Welcome to the central repository of my research journey into **Cognitive Synergy Architecture (CSA)**, **Ontology Neural Networks (ONN)**, and the future of human-machine collaboration. Each section below represents a different facet of the same fundamental quest: building technology that serves human flourishing.
 
 ---
