@@ -115,7 +115,7 @@ analytics:
 author:
   name             : "Jaehong Oh"
   avatar           : "/assets/images/bio-photo.png"
-  bio              : "인간 중심 협동로봇을 위한 Cognitive Synergy Architecture를 연구하며, 존재론적 로보틱스를 추구하는 철학자입니다."
+  bio              : "I research the Cognitive Synergy Architecture for human-centric collaborative robots, designing systems that enable robots to understand situational context and collaborate based on semantic meaning. My interests lie in technically realizing ontological concepts by integrating artificial intelligence, control theory, and ontology-based knowledge representation to build explainable and trustworthy robotic intelligence."
   location         : "Seoul, Korea"
   email            : "jaehongoh1554@gmail.com"
   links:
@@ -339,7 +339,7 @@ defaults:
       sidebar:
         nav: "main"
       toc: true
-      toc_label: "📑 목차"
+      toc_label: "📑 contexts"
       toc_icon: "list"
       read_time: true
       share: true
