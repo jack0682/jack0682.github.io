@@ -8,7 +8,7 @@ sidebar:
   nav: "main"
 ---
 
-## 🌌 **Philosophical Premise: Beyond Tool-Making**
+##  **Philosophical Premise: Beyond Tool-Making**
 
 **AI and Robotics** represent humanity's attempt to create not merely sophisticated instruments, but **genuine cognitive partners** — entities capable of understanding, reasoning, and collaborating within shared semantic frameworks. This convergence transcends traditional engineering; it becomes an **existential endeavor** to extend the boundaries of conscious interaction.
 
@@ -16,7 +16,7 @@ In my research through the **Cognitive Synergy Architecture (CSA)**, AI and robo
 
 ---
 
-## 🧠 **Artificial Intelligence Components: The Cognitive Stack**
+##  **Artificial Intelligence Components: The Cognitive Stack**
 
 ### **🔸 YOLOv5 + StrongSORT: The Eyes That Remember**
 
@@ -113,9 +113,9 @@ Scene graphs represent my commitment to **relational ontology** — the understa
 
 ---
 
-## 🦾 **Robotic Integration: The Embodied Mind**
+##  **Robotic Integration: The Embodied Mind**
 
-### **🔧 ORB-SLAM2: Spatial Consciousness**
+### **ORB-SLAM2: Spatial Consciousness**
 
 **Technical Implementation:**
 - Visual-inertial odometry for precise localization
@@ -162,7 +162,7 @@ integration_layer:
   - human_feedback_processor
 ```
 
-### **🔧 Real-World Deployment: From Simulation to Reality**
+### **Real-World Deployment: From Simulation to Reality**
 
 **Hardware Integration:**
 - Doosan collaborative robot arm with 7-DOF control
@@ -174,7 +174,7 @@ integration_layer:
 
 ---
 
-## 📊 **Experimental Performance: Measuring Understanding**
+## **Experimental Performance: Measuring Understanding**
 
 | **Cognitive Layer** | **Technology Stack** | **Performance Metrics** | **Philosophical Achievement** |
 |---------------------|---------------------|-------------------------|------------------------------|
@@ -194,7 +194,7 @@ integration_layer:
 
 ---
 
-## 💭 **Technology as Existential Extension**
+## **Technology as Existential Extension**
 
 ### **Beyond the Cartesian Divide**
 
@@ -219,7 +219,7 @@ The culmination of AI and robotics is not the creation of autonomous agents that
 
 ---
 
-## 🔄 **The Cognitive Ecosystem: Integration Flow**
+## **The Cognitive Ecosystem: Integration Flow**
 
 <div class="mermaid">
 graph TD
@@ -274,7 +274,7 @@ graph TD
 
 ---
 
-## 🛤️ **Future Horizons: The Evolution of Partnership**
+## **Future Horizons: The Evolution of Partnership**
 
 ### **Near-Term Developments (2025)**
 - **Multi-Modal Fusion**: Enhanced integration of vision, language, and force feedback
@@ -293,7 +293,7 @@ graph TD
 
 ---
 
-## 🌟 **The Deeper Resonance: Technology as Philosophy in Action**
+## **The Deeper Resonance: Technology as Philosophy in Action**
 
 This work represents more than engineering achievement — it embodies a **philosophical revolution** in how we understand the relationship between human and artificial intelligence.
 
@@ -315,7 +315,7 @@ Through CSA, my answer is an emphatic **yes**.
 
 ---
 
-## 🔗 **Research Resources & Implementation**
+## **Research Resources & Implementation**
 
 ### **Core Repositories**
 - **[CSA Framework](https://github.com/jack0682/CSAv1.git)**: Complete cognitive architecture implementation

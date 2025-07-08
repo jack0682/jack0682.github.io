@@ -8,7 +8,7 @@ toc: true
 toc_sticky: true
 ---
 
-# 📄 System Papers
+# System Papers
 *Foundational Research Publications for Cognitive Robotics*
 
 > *"Each paper represents not just technical contribution, but a philosophical commitment to building machines that think with, rather than for, humans."*
@@ -17,7 +17,7 @@ This collection documents the theoretical foundations and practical implementati
 
 ---
 
-## 🧠 **Paper I: Foundations of Cognitive Collaboration**
+## **Paper I: Foundations of Cognitive Collaboration**
 
 ### **"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"**
 
@@ -28,9 +28,9 @@ This collection documents the theoretical foundations and practical implementati
 - **Status**: Under Review - ICRA 2026
 
 **Repository & Code:**
-- 💾 **Implementation**: [CSAv1 GitHub Repository](https://github.com/jack0682/CSAv1)
-- 📊 **Datasets**: Semantic scene graphs, human-robot interaction logs
-- 🎥 **Demo Videos**: Real-time collaborative assembly tasks
+-  **Implementation**: [CSAv1 GitHub Repository](https://github.com/jack0682/CSAv1)
+-  **Datasets**: Semantic scene graphs, human-robot interaction logs
+-  **Demo Videos**: Real-time collaborative assembly tasks
 
 ### **Abstract & Contribution**
 
@@ -94,9 +94,9 @@ graph TD
 - **Status**: Major Revision Submitted
 
 **Technical Documentation:**
-- 📂 **Design Document**: [SEGO Architecture Specification]((/assets/docs/SEGO_설계문서.pdf))
-- 🏗️ **System Diagrams**: Detailed pipeline visualizations
-- 📈 **Benchmark Results**: Comparative analysis with state-of-the-art systems
+-  **Design Document**: [SEGO Architecture Specification]((/assets/docs/SEGO_설계문서.pdf))
+-  **System Diagrams**: Detailed pipeline visualizations
+-  **Benchmark Results**: Comparative analysis with state-of-the-art systems
 
 ### **Technical Deep Dive**
 
@@ -159,7 +159,7 @@ class SEGOPerceptionPipeline:
 
 ---
 
-## 🔮 **Paper III: Topological Semantic Reasoning**
+## **Paper III: Topological Semantic Reasoning**
 
 ### **"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"**
 
@@ -170,9 +170,9 @@ class SEGOPerceptionPipeline:
 - **Status**: Under Review
 
 **Research Repository:**
-- 💾 **Implementation**: [ONN Framework](https://github.com/jack0682/ONN)
-- 🧮 **Mathematical Proofs**: Topological stability guarantees
-- 📊 **Experimental Data**: Curvature analysis and homology persistence
+-  **Implementation**: [ONN Framework](https://github.com/jack0682/ONN)
+-  **Mathematical Proofs**: Topological stability guarantees
+-  **Experimental Data**: Curvature analysis and homology persistence
 
 ### **Revolutionary Approach**
 
@@ -232,14 +232,14 @@ Where:
 
 ---
 
-## 📚 **Pipeline: Future Publications**
+## **Pipeline: Future Publications**
 
 ### **Upcoming Research Papers**
 
 #### **Paper IV: "IMAGO — Intent-Driven Adaptive Control Architecture"**
 **Target Venue**: ICRA 2026  
 **Focus**: Natural language intent parsing, goal synthesis, and adaptive PPO control  
-**Status**: 🔄 Manuscript in Preparation
+**Status**:  Manuscript in Preparation
 
 **Key Contributions:**
 - sLLM integration for natural language command understanding
@@ -250,7 +250,7 @@ Where:
 #### **Paper V: "LOGOS — Explainable Decision Making in Human-Robot Teams"**
 **Target Venue**: IROS 2026  
 **Focus**: XAI architectures, trust calibration, and ethical reasoning  
-**Status**: 📋 Research Design Phase
+**Status**:  Research Design Phase
 
 **Key Contributions:**
 - Policy distillation for interpretable decision trees
@@ -261,7 +261,7 @@ Where:
 #### **Paper VI: "Multi-Robot CSA — Distributed Cognitive Architectures"**
 **Target Venue**: Robotics: Science and Systems 2027  
 **Focus**: Scalable multi-agent semantic understanding and coordination  
-**Status**: 💭 Conceptual Development
+**Status**:  Conceptual Development
 
 **Key Contributions:**
 - Distributed scene graph construction and maintenance
@@ -272,7 +272,7 @@ Where:
 #### **Paper VII: "Human-Robot Trust in Cognitive Partnerships"**
 **Target Venue**: Science Robotics  
 **Focus**: Longitudinal study of trust development in cognitive collaboration  
-**Status**: 🔬 Experimental Design
+**Status**:  Experimental Design
 
 **Key Contributions:**
 - Empirical models of trust formation and degradation
@@ -282,7 +282,7 @@ Where:
 
 ---
 
-## 📊 **Research Impact & Metrics**
+## **Research Impact & Metrics**
 
 ### **Citation and Influence Tracking**
 
@@ -308,7 +308,7 @@ Where:
 
 ---
 
-## 🌟 **Research Philosophy & Methodology**
+## **Research Philosophy & Methodology**
 
 ### **Interdisciplinary Integration**
 
@@ -333,29 +333,29 @@ Our research methodology deliberately bridges multiple domains:
 
 ---
 
-## 🔗 **Related Resources & Extended Documentation**
+## **Related Resources & Extended Documentation**
 
 ### **Technical Documentation**
-- 📚 **API Documentation**: Complete reference for CSA and ONN frameworks
-- 🎥 **Video Tutorials**: Step-by-step implementation guides
-- 📋 **Best Practices**: Guidelines for ethical AI development
-- 🔧 **Tool Integration**: Compatibility guides for ROS2, PyTorch, and OpenCV
+-  **API Documentation**: Complete reference for CSA and ONN frameworks
+-  **Video Tutorials**: Step-by-step implementation guides
+-  **Best Practices**: Guidelines for ethical AI development
+-  **Tool Integration**: Compatibility guides for ROS2, PyTorch, and OpenCV
 
 ### **Philosophical Commentaries**
-- 💭 **Design Rationale**: Why specific technical choices were made
-- 🤔 **Ethical Considerations**: Implications of each technical contribution
-- 🌍 **Social Impact**: How research contributes to human flourishing
-- 🔮 **Future Implications**: Long-term consequences of cognitive robotics
+-  **Design Rationale**: Why specific technical choices were made
+-  **Ethical Considerations**: Implications of each technical contribution
+-  **Social Impact**: How research contributes to human flourishing
+-  **Future Implications**: Long-term consequences of cognitive robotics
 
 ### **Community Engagement**
-- 🗣️ **Discussion Forums**: Active research community and Q&A
-- 📧 **Mailing List**: Updates on new publications and developments
-- 🎓 **Student Projects**: Opportunities for research collaboration
-- 🏢 **Industry Partnerships**: Technology transfer and commercialization
+-  **Discussion Forums**: Active research community and Q&A
+-  **Mailing List**: Updates on new publications and developments
+-  **Student Projects**: Opportunities for research collaboration
+-  **Industry Partnerships**: Technology transfer and commercialization
 
 ---
 
-## 📬 **Contact & Collaboration**
+## **Contact & Collaboration**
 
 ### **Research Inquiries**
 For detailed technical discussions, collaboration opportunities, or access to unpublished results:

@@ -8,7 +8,7 @@ toc: true
 toc_sticky: true
 ---
 
-# ⚙️ Experiments
+# Experiments
 *Empirical Validation of Cognitive Synergy Architecture*
 
 > *"In the laboratory, philosophy meets reality — where theoretical frameworks prove themselves through interaction with the physical world."*
@@ -17,7 +17,7 @@ This comprehensive experimental documentation chronicles the empirical validatio
 
 ---
 
-## 🔬 **SEGO Experimental Series: Semantic Scene Understanding**
+## **SEGO Experimental Series: Semantic Scene Understanding**
 
 ### **Experiment I: Semantic Mapping & 3D Scene Graph Construction**
 
@@ -100,13 +100,13 @@ sego_pipeline:
 ```
 
 #### **Technical Documentation**
-- 📂 **Detailed Report**: [SEGO Experimental Analysis](/assets/docs/CSA_실험기록서_202504~202505_1주차.pdf)
-- 📊 **Raw Data**: Available in `/data_logs/sego_experiments/`
-- 🎥 **Demo Videos**: Real-time scene graph visualization and 3D mapping
+- **Detailed Report**: [SEGO Experimental Analysis](/assets/docs/CSA_실험기록서_202504~202505_1주차.pdf)
+- **Raw Data**: Available in `/data_logs/sego_experiments/`
+- **Demo Videos**: Real-time scene graph visualization and 3D mapping
 
 ---
 
-## 🧠 **IMAGO Experimental Series: Intent-Driven Adaptive Control**
+## **IMAGO Experimental Series: Intent-Driven Adaptive Control**
 
 ### **Experiment II: Natural Language to Robotic Action Translation**
 
@@ -231,13 +231,13 @@ Alternative Actions Considered:
 ```
 
 #### **Technical Documentation**
-- 📂 **Design Specification**: [IMAGO Architecture Documentation](/assets/docs/imago.pdf)
-- 📈 **Performance Analysis**: Control system stability and adaptation metrics
-- 🎬 **Demonstration Videos**: Real-time intent parsing and execution
+- **Design Specification**: [IMAGO Architecture Documentation](/assets/docs/imago.pdf)
+- **Performance Analysis**: Control system stability and adaptation metrics
+- **Demonstration Videos**: Real-time intent parsing and execution
 
 ---
 
-## 📊 **Integrated System Experiments: CSA Holistic Validation**
+## **Integrated System Experiments: CSA Holistic Validation**
 
 ### **Experiment III: End-to-End Human-Robot Collaboration**
 
@@ -285,7 +285,7 @@ $$\forall i,j: \left\| \chi_d^{\text{ee,i}}(t) - \chi_d^{\text{ref}}(t) \right\|
 
 ---
 
-## 📈 **Longitudinal Performance Analysis**
+## **Longitudinal Performance Analysis**
 
 ### **System Evolution Metrics**
 
@@ -327,7 +327,7 @@ performance_metrics = {
 
 ---
 
-## 📊 **Experimental Data Repository**
+## **Experimental Data Repository**
 
 ### **Comprehensive Data Logging**
 
@@ -372,15 +372,15 @@ class ExperimentAnalyzer:
 
 ---
 
-## 🔮 **Future Experimental Roadmap**
+## **Future Experimental Roadmap**
 
 ### **Planned Experimental Series**
 
 #### **Phase IV: Advanced Cognitive Capabilities (2025 Q4)**
-- ✅ **SEGO + SLAM + Ontology**: Real-time scene graph evolution visualization
-- 🔄 **IMAGO Delay Compensation**: Comparative analysis (Smith Predictor vs. Lead Compensator)
-- 📋 **Multi-Robot CSA**: Collaborative manipulation with heterogeneous robot teams
-- 💭 **Human Feedback Learning**: Policy adaptation based on real-time human corrections
+-  **SEGO + SLAM + Ontology**: Real-time scene graph evolution visualization
+-  **IMAGO Delay Compensation**: Comparative analysis (Smith Predictor vs. Lead Compensator)
+-  **Multi-Robot CSA**: Collaborative manipulation with heterogeneous robot teams
+-  **Human Feedback Learning**: Policy adaptation based on real-time human corrections
 
 #### **Phase V: Meta-Cognitive Validation (2026 Q1-Q2)**
 - **D-LOGOS Implementation**: Self-reflective learning and meta-reasoning validation
@@ -410,7 +410,7 @@ class ExperimentAnalyzer:
 
 ---
 
-## 📚 **Experimental Methodology & Best Practices**
+## **Experimental Methodology & Best Practices**
 
 ### **Scientific Rigor Standards**
 
@@ -437,7 +437,7 @@ class ExperimentAnalyzer:
 
 ---
 
-## 🏆 **Research Impact & Recognition**
+## **Research Impact & Recognition**
 
 ### **Academic Contributions**
 
@@ -461,7 +461,7 @@ class ExperimentAnalyzer:
 
 ---
 
-## 📞 **Collaboration & Access**
+## **Collaboration & Access**
 
 ### **Research Collaboration Opportunities**
 

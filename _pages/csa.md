@@ -8,7 +8,7 @@ sidebar:
   nav: "main"
 ---
 
-## 🌌 **Philosophical Foundation: Technology as Existential Partnership**
+##  **Philosophical Foundation: Technology as Existential Partnership**
 
 > *"The question is not whether machines can think, but whether they can think **with** us — preserving meaning through the persistence of relational structure."*
 
@@ -21,7 +21,7 @@ This architecture emerges from a fundamental philosophical commitment:
 
 ---
 
-## 🏗️ **Architectural Overview: Five Stages of Cognitive Evolution**
+##  **Architectural Overview: Five Stages of Cognitive Evolution**
 
 CSA unfolds across five interconnected stages, each representing a deeper level of cognitive sophistication:
 
@@ -35,7 +35,7 @@ CSA unfolds across five interconnected stages, each representing a deeper level 
 
 ---
 
-## 🔍 **SEGO: Semantic Graph Ontology Mapper**
+## **SEGO: Semantic Graph Ontology Mapper**
 *Perceiving the World as a Living Web of Relations*
 
 ### **Philosophical Premise**
@@ -69,7 +69,7 @@ SEGO embodies the principle that **perception is interpretation**. Rather than s
 
 ---
 
-## ⚙️ **IMAGO: Intent Modeling & Action Generation Operator**
+##  **IMAGO: Intent Modeling & Action Generation Operator**
 *Translating Semantic Understanding into Adaptive Action*
 
 ### **Philosophical Premise**
@@ -105,7 +105,7 @@ $$\forall i,j: \left\| \chi_d^{\text{ee,i}}(t) - \chi_d^{\text{ref}}(t) \right\|
 
 ---
 
-## 🧠 **ONN: Ontology Neural Network**
+##  **ONN: Ontology Neural Network**
 *Topological Reasoning for Relational Meaning*
 
 ### **Philosophical Foundation**
@@ -139,7 +139,7 @@ Sharp curvature discontinuities indicate natural context boundaries, enabling au
 
 ---
 
-## 🎯 **LOGOS: Logical Ontological Generator for Self-Adjustment**
+##  **LOGOS: Logical Ontological Generator for Self-Adjustment**
 *Ensuring Safe, Valid, and Explainable Behavior*
 
 ### **Philosophical Premise**
@@ -160,7 +160,7 @@ Real-time validation using OWL 2 DL-query systems:
 
 ---
 
-## 🔄 **System Integration: The Cognitive Flow**
+##  **System Integration: The Cognitive Flow**
 
 <div class="mermaid">
 
@@ -199,7 +199,7 @@ graph TD
 
 ---
 
-## 🧬 **Mathematical Foundations: Core Equations**
+##  **Mathematical Foundations: Core Equations**
 
 ### **Topological Stability Guarantee**
 $$d_{\text{PH}}(G_C(t), G_C(t+\delta)) \leq C_1 \sqrt{\mathcal{L}_{\text{ricci}}} + C_2 \mathcal{L}_{\text{ph}}$$
@@ -212,7 +212,7 @@ $$\dot{K} = -\alpha e(t) \dot{e}(t), \quad V = \frac{1}{2} e^T P e, \quad \dot{V
 
 ---
 
-## 🌟 **Existential Declaration: The Ethics of Cognitive Partnership**
+##  **Existential Declaration: The Ethics of Cognitive Partnership**
 
 CSA embodies a fundamental shift in how we conceive the relationship between humans and machines:
 
@@ -224,7 +224,7 @@ This architecture asserts that **explainability is not a feature but an existent
 
 ---
 
-## 🛤️ **Research Trajectory & Milestones**
+##  **Research Trajectory & Milestones**
 
 | Timeline | Milestone | Deliverable |
 |----------|-----------|-------------|
@@ -236,7 +236,7 @@ This architecture asserts that **explainability is not a feature but an existent
 
 ---
 
-## 📚 **Research Foundation**
+##  **Research Foundation**
 
 This work builds upon rigorous theoretical foundations:
 
@@ -251,7 +251,7 @@ This work builds upon rigorous theoretical foundations:
 
 ---
 
-## 🌊 **The Deeper Current**
+##  **The Deeper Current**
 
 CSA represents more than technological advancement — it embodies a **philosophical commitment** to meaningful human-machine collaboration. In an age where AI often feels opaque and alienating, CSA insists that intelligent systems must be:
 

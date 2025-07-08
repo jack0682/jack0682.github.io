@@ -8,14 +8,14 @@ toc: true
 toc_sticky: true
 ---
 
-# 🌟 Vision & Roadmap
+#  Vision & Roadmap
 *Charting the Future of Human-Centric Cognitive Robotics*
 
 > *"The future belongs not to those who surrender their humanity to machines, but to those who use machines to become more deeply human."*
 
 ---
 
-## 🎯 **Long-Term Vision: Cognitive Partnership Revolution**
+##  **Long-Term Vision: Cognitive Partnership Revolution**
 
 ### **The Ultimate Goal**
 
@@ -34,12 +34,12 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 🏗️ **Five-Stage Architecture Integration**
+## **Five-Stage Architecture Integration**
 
 ### **Stage I: SEGO (Semantic Graph Ontology)**
 *Foundation: "What exactly am I perceiving?"*
 
-**Current Status**: ✅ **Stage-1 Complete**
+**Current Status**: **Stage-1 Complete**
 - Real-time semantic scene graph construction
 - YOLOv5 + StrongSORT object tracking pipeline
 - ORB-SLAM2 spatial localization integration
@@ -54,7 +54,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 ### **Stage II: IMAGO (Intent Modeling & Action Generation)**
 *Evolution: "Why should I act and how do I adapt?"*
 
-**Current Status**: 🔄 **Alpha Development**
+**Current Status**: **Alpha Development**
 - PPO-based adaptive control framework
 - Natural language intent parsing (sLLM integration)
 - Delay-aware compensator design
@@ -69,7 +69,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 ### **Stage III: ONN (Ontology Neural Network)**
 *Advancement: "How do relations shape meaning?"*
 
-**Current Status**: 🔬 **Research Phase**
+**Current Status**: **Research Phase**
 - Semantic state tensor formulation
 - Forman-Ricci curvature analysis
 - Persistent homology preservation
@@ -84,7 +84,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 ### **Stage IV: LOGOS (Logical Ontological Generator)**
 *Implementation: "Can I explain my decisions?"*
 
-**Current Status**: 📋 **Design Phase**
+**Current Status**: **Design Phase**
 - Policy distillation architecture
 - XAI rationale generation
 - Real-time safety monitoring
@@ -99,7 +99,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 ### **Stage V: D-LOGOS (Dynamic Logical Ontological Generator)**
 *Culmination: "How do I evolve my understanding?"*
 
-**Current Status**: 💭 **Conceptual Phase**
+**Current Status**: **Conceptual Phase**
 - Meta-reasoning architecture design
 - Self-reflective learning protocols
 - Adaptive rule evolution
@@ -113,7 +113,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 📅 **Development Roadmap (2025-2028)**
+## **Development Roadmap (2025-2028)**
 
 ### **2025: Foundation Consolidation**
 
@@ -251,7 +251,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 📊 **Success Metrics & Evaluation**
+## **Success Metrics & Evaluation**
 
 ### **Technical Performance Indicators**
 
@@ -271,7 +271,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 🌍 **Impact & Applications**
+## **Impact & Applications**
 
 ### **Near-Term Applications (2025-2026)**
 
@@ -315,7 +315,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 🔬 **Research Methodology**
+## **Research Methodology**
 
 ### **Iterative Development Approach**
 
@@ -334,7 +334,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 🤝 **Collaboration & Partnerships**
+## **Collaboration & Partnerships**
 
 ### **Academic Alliances**
 - **Soongsil University**: Primary research affiliation and laboratory access
@@ -353,7 +353,7 @@ This technical roadmap is grounded in a fundamental philosophical commitment:
 
 ---
 
-## 🌅 **The Horizon: 2030 and Beyond**
+## **The Horizon: 2030 and Beyond**
 
 ### **The Ultimate Question**
 
@@ -367,7 +367,7 @@ This research program aspires to be remembered not for creating better tools, bu
 
 ---
 
-## 📚 **Supporting Resources**
+## **Supporting Resources**
 
 ### **Core Publications Roadmap**
 - **2025**: "IMAGO: Intent-Driven Adaptive Control for Cognitive Robots" (ICRA)

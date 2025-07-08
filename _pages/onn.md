@@ -15,7 +15,7 @@ sidebar:
 
 ---
 
-## 🌌 **Philosophical Foundation: The Ontology of Relational Meaning**
+## **Philosophical Foundation: The Ontology of Relational Meaning**
 
 ONN represents a **paradigmatic shift** in how artificial intelligence perceives and reasons about reality. Where traditional neural networks seek to classify isolated objects based on feature extraction, ONN views the world as a **continuous web of relations** — a topologically coherent structure where each entity's identity emerges from its participation in a dynamic network of interactions.
 
@@ -40,7 +40,7 @@ ONN discovers rather than imposes semantic boundaries. Through geometric analysi
 
 ---
 
-## 🧬 **Mathematical Architecture: The Geometry of Understanding**
+## **Mathematical Architecture: The Geometry of Understanding**
 
 ### **Semantic State Tensor: The Quantum of Meaning**
 
@@ -186,7 +186,7 @@ This enables automatic semantic segmentation based on **intrinsic relational geo
 
 ---
 
-## 🎯 **Learning Objectives: The Philosophy of Optimization**
+##  **Learning Objectives: The Philosophy of Optimization**
 
 ONN's learning paradigm integrates multiple philosophical commitments into a unified optimization objective:
 
@@ -230,7 +230,7 @@ $$\mathcal{L}_{\text{ph}} = d_{\text{PH}}( G_{\mathcal{C}}(t), G_{\mathcal{C}}(t
 
 ---
 
-## 🌊 **Temporal Semantics: The Flow of Meaning**
+## **Temporal Semantics: The Flow of Meaning**
 
 ### **Semantic Persistence Through Transformation**
 
@@ -250,7 +250,7 @@ This ensures that **meaning persists** through minor perturbations while remaini
 
 ---
 
-## 🔄 **Integration Architecture: ONN within the Cognitive Ecosystem**
+## **Integration Architecture: ONN within the Cognitive Ecosystem**
 
 <div class="mermaid">
 
@@ -302,7 +302,7 @@ graph TD
 
 ---
 
-## 🧠 **Philosophical Implications: Toward Artificial Wisdom**
+## **Philosophical Implications: Toward Artificial Wisdom**
 
 ONN represents more than a technical innovation — it embodies a **philosophical commitment** to understanding intelligence as fundamentally relational. Key insights:
 
@@ -320,7 +320,7 @@ The use of curvature to define semantic boundaries suggests an **intrinsic ethic
 
 ---
 
-## 🛤️ **Research Trajectory & Future Directions**
+## **Research Trajectory & Future Directions**
 
 ### **Near-Term Developments (2025)**
 - **Equivariant Graph Neural Networks**: Integration with Ricci flow regularization
@@ -339,7 +339,7 @@ The use of curvature to define semantic boundaries suggests an **intrinsic ethic
 
 ---
 
-## 📚 **Theoretical Foundation & Implementation**
+## **Theoretical Foundation & Implementation**
 
 ### **Core Publications**
 - [*"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"*](https://arxiv.org/abs/2506.19277)
@@ -352,7 +352,7 @@ The use of curvature to define semantic boundaries suggests an **intrinsic ethic
 
 ---
 
-## 🌟 **The Deeper Resonance**
+## **The Deeper Resonance**
 
 ONN embodies a vision of artificial intelligence that goes beyond pattern recognition to achieve **pattern understanding** — systems that don't merely process information but genuinely **comprehend the relational fabric of reality**.
 

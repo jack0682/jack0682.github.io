@@ -83,7 +83,7 @@ core_research:
     btn_class: "btn--info"
 
 research_focus:
-  - title: "🎯 Current Research Focus"
+  - title: "Current Research Focus"
     excerpt: >
       <div class="focus-grid">
         <div class="focus-item">
@@ -105,7 +105,7 @@ research_focus:
       </div>
 
 publications:
-  - title: "📚 Featured Publications"
+  - title: " Featured Publications"
     excerpt: >
       <div class="publications-showcase">
         <div class="publication-item featured">
@@ -129,7 +129,7 @@ publications:
       </div>
 
 philosophy:
-  - title: "🌟 Research Vision & Impact"
+  - title: " Research Vision & Impact"
     excerpt: >
       <div class="philosophy-content">
         <blockquote>
@@ -138,22 +138,22 @@ philosophy:
         <p>My research philosophy centers on creating <strong>cognitive transparency</strong> — developing AI systems that don't just perform tasks, but reveal their reasoning processes, making them trustworthy partners in complex human endeavors.</p>
         <div class="philosophy-pillars">
           <div class="pillar">
-            <h5>🧠 Semantic Understanding</h5>
+            <h5> Semantic Understanding</h5>
             <p>Moving beyond pattern recognition to genuine comprehension of context and meaning.</p>
           </div>
           <div class="pillar">
-            <h5>🔍 Explainable Intelligence</h5>
+            <h5> Explainable Intelligence</h5>
             <p>Every decision must be traceable, interpretable, and justifiable to human collaborators.</p>
           </div>
           <div class="pillar">
-            <h5>🤝 Human-Centric Design</h5>
+            <h5> Human-Centric Design</h5>
             <p>Technology should amplify human capabilities, not replace human judgment.</p>
           </div>
         </div>
       </div>
 
 contact_cta:
-  - title: "🤝 Collaboration & Recognition"
+  - title: " Collaboration & Recognition"
     excerpt: >
       <div class="contact-grid">
         <div class="contact-info">
@@ -181,7 +181,7 @@ contact_cta:
             <span>Mechanical Engineering</span>
           </div>
           <div class="credential-item">
-            <strong>🌍 International Experience</strong>
+            <strong> International Experience</strong>
             <span>6 months research collaboration in Germany</span>
           </div>
         </div>
