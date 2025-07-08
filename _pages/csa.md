@@ -88,9 +88,9 @@ The heart of IMAGO lies in its **delay-aware compensator design**:
 $$\tau_{\text{cmd}}(s) = \left( J' s^2 + B' s \right) C_{\text{delay}}(s) e^{+s \Delta t} r(s)$$
 
 Where:
-- $J', B'$ represent learned inertial and damping parameters
-- $C_{\text{delay}}(s)$ compensates for system latency
-- $e^{+s \Delta t}$ provides predictive phase margin recovery
+- $J', B'$: learned inertia and damping terms  
+- $C_{\mathrm{delay}}(s)$: latency compensator  
+- $e^{+s \Delta t}$: predictive phase margin recovery term
 
 #### **Multi-Robot Synchronization**
 For collaborative tasks involving multiple robots:
