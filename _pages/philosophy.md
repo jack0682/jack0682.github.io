@@ -7,7 +7,6 @@ toc: true
 toc_sticky: true
 ---
 
-# **My Philosophy**
 *Declaration and Reflection on Human Existence*
 
 > *"Philosophy is not an academic discipline but a way of living — the courage to ask ultimate questions and the wisdom to live within their mystery."*
