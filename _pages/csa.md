@@ -157,8 +157,8 @@ Real-time validation using OWL 2 DL-query systems:
 
 ## 🔄 **System Integration: The Cognitive Flow**
 
-<pre>
-```mermaid
+<div class="mermaid">
+
 graph TD
     subgraph "Perception Layer"
         A[RGB-D Sensors] --> B[SEGO: Semantic Scene Graph]
@@ -189,8 +189,8 @@ graph TD
     class C,D reasoning
     class E,F action
     class G,H learning
-```
-</pre>
+    
+</div>
 
 ---
 

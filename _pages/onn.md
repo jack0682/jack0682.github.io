@@ -223,8 +223,8 @@ This ensures that **meaning persists** through minor perturbations while remaini
 
 ## 🔄 **Integration Architecture: ONN within the Cognitive Ecosystem**
 
-<pre>
-```mermaid
+<div class="mermaid">
+
 graph TD
     subgraph "Perception Layer"
         A[RGB-D Sensors] --> B[Multi-Modal Feature Extraction]
@@ -259,8 +259,8 @@ graph TD
     class D,E,F,G onn
     class H,I,J cognitive
     class K,L learning
-```
-</pre>
+
+</div>
 
 ### **ONN's Role in the Cognitive Synergy Architecture**
 

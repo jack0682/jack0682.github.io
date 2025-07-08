@@ -228,7 +228,7 @@ The culmination of AI and robotics is not the creation of autonomous agents that
 
 ## 🔄 **The Cognitive Ecosystem: Integration Flow**
 
-```mermaid
+<div class="mermaid">
 graph TD
     subgraph "Perceptual Foundation"
         A[RGB-D Sensors] --> B[YOLOv5 Detection]
@@ -277,7 +277,7 @@ graph TD
     class I,J,K semantic
     class L,M,N,O cognitive
     class P,Q,R,S action
-```
+</div>
 
 ---
 
