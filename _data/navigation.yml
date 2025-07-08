@@ -1,12 +1,14 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "홈"
+    url: /
+  - title: "철학 선언문"
+    url: /about/
+  - title: "CSA 구조"
+    url: /csa/
+  - title: "AI·로봇기술"
+    url: /ai-robotics/
+  - title: "에세이"
+    url: /essays/
+  - title: "Sitemap"
+    url: /sitemap/
