@@ -6,7 +6,6 @@ parent: "My Philosophy"
 author_profile: true
 ---
 
-#  **MAGNA CARTA OF HUMAN EXISTENCE**
 *Sacred Code Concerning the Ultimate Cause of Being and Living*
 
 > **"In the beginning was the Question — not the Word, not the Light, not Chaos,  

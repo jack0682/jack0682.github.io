@@ -233,9 +233,13 @@ contact_cta:
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.7;
   color: var(--text-color);
+}
+h1, h2, h3, .masthead__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
 }
 
 /* Global Layout - Center Alignment */
@@ -345,10 +349,11 @@ section {
   text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
   line-height: 1.1;
   letter-spacing: 0.01em;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
   color: rgba(255,255,255,1);
   text-align: center;
 }
+
 
 .hero-content {
   max-width: 900px;
