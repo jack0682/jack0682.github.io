@@ -244,24 +244,10 @@ h1, h2, h3, .masthead__title {
 
 /* Global Layout - Center Alignment */
 .page__content .wrapper {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2em;
   text-align: center;
-}
-
-.feature__wrapper {
-  max-width: 1400px;
-  margin: 0 auto !important;
-  padding: 0 2em !important;
-  text-align: center !important;
-}
-
-.feature__wrapper--left {
-  max-width: 1400px;
-  margin: 0 auto !important;
-  padding: 0 2em !important;
-  text-align: center !important;
 }
 
 /* Section containers - center alignment */
@@ -274,26 +260,135 @@ section {
 }
 
 .section-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2em;
   text-align: center !important;
   width: 100% !important;
 }
 
-/* Force all feature items to be center aligned */
+/* Feature Wrapper - 통합된 스타일 */
+.feature__wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 2em !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 2em !important;
+  text-align: center !important;
+}
+
+.feature__wrapper--left {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 0 2em !important;
+  text-align: center !important;
+}
+
+/* 최우선 순위로 Core Research만 가로 배치 */
+section.core-research-section .feature__wrapper,
+.core-research-section .feature__wrapper,
+.page__content .core-research-section .feature__wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  flex-wrap: wrap !important;
+  gap: 2em !important;
+}
+
+/* Core Research의 각 아이템들도 강제로 */
+.core-research-section .feature__item {
+  flex: 1 1 300px !important;
+  max-width: 350px !important;
+  min-width: 280px !important;
+  margin: 0 !important;
+}
+
+/* Feature Items */
 .feature__item {
-  margin-bottom: 2em;
+  margin-bottom: 0 !important;
   width: 100% !important;
   max-width: none !important;
   text-align: center !important;
+}
+
+.feature__item .archive__item {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  border: 1px solid #e9ecef;
+  height: 100%;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.feature__item .archive__item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.feature__item .archive__item-teaser {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.feature__item .archive__item-teaser img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.feature__item .archive__item-teaser:hover img {
+  transform: scale(1.08);
+}
+
+.feature__item .archive__item-body {
+  padding: 2em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.feature__item .archive__item-title {
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  color: var(--primary-color);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.feature__item .archive__item-excerpt {
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5em;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* Ensure buttons are at bottom */
+.feature__item .archive__item-body .btn {
+  margin-top: auto;
 }
 
 /* Override left alignment classes to center */
 .feature__item--left {
   text-align: center !important;
   margin: 0 auto !important;
-  max-width: 1400px !important;
+  max-width: 1200px !important;
   width: 100% !important;
 }
 
@@ -332,7 +427,7 @@ section {
 .feature__item--center {
   text-align: center !important;
   margin: 0 auto !important;
-  max-width: 1400px !important;
+  max-width: 1200px !important;
 }
 
 .feature__item--center .archive__item-body {
@@ -353,7 +448,6 @@ section {
   color: rgba(255,255,255,1);
   text-align: center;
 }
-
 
 .hero-content {
   max-width: 900px;
@@ -460,11 +554,6 @@ section {
 }
 
 /* Section Styling */
-section {
-  padding: 5em 0;
-  position: relative;
-}
-
 .core-research-section {
   background: var(--white);
 }
@@ -485,12 +574,6 @@ section {
   background: var(--white);
 }
 
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2em;
-}
-
 .section-header {
   text-align: center;
   margin-bottom: 4em;
@@ -508,96 +591,6 @@ section {
   color: var(--text-color);
   max-width: 600px;
   margin: 0 auto;
-}
-
-/* Core Research Cards - Center aligned 3-column grid */
-.feature__wrapper {
-  display: flex !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  gap: 2em !important;
-  max-width: 1200px;  /* 적절한 콘텐츠 중심 너비 */
-  margin: 0 auto !important;
-  padding: 0 2em !important;
-  text-align: center !important;
-}
-
-
-.feature__item {
-  margin-bottom: 0 !important;
-  width: 100% !important;
-  max-width: none !important;
-  text-align: center !important;
-}
-
-.feature__item .archive__item {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-  border: 1px solid #e9ecef;
-  height: 100%;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.feature__item .archive__item:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-medium);
-}
-
-.feature__item .archive__item-teaser {
-  height: 220px;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.feature__item .archive__item-teaser img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.feature__item .archive__item-teaser:hover img {
-  transform: scale(1.08);
-}
-
-.feature__item .archive__item-body {
-  padding: 2em;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.feature__item .archive__item-title {
-  font-size: 1.4em;
-  margin-bottom: 1em;
-  color: var(--primary-color);
-  font-weight: 600;
-  line-height: 1.3;
-  text-align: center;
-}
-
-.feature__item .archive__item-excerpt {
-  font-size: 1em;
-  line-height: 1.6;
-  color: var(--text-color);
-  margin-bottom: 1.5em;
-  flex-grow: 1;
-  text-align: center;
-}
-
-/* Ensure buttons are at bottom */
-.feature__item .archive__item-body .btn {
-  margin-top: auto;
 }
 
 /* Focus Grid - Horizontal 4-column layout */
@@ -909,52 +902,7 @@ section {
   color: white;
 }
 
-/* Left-aligned content sections - Fix alignment */
-.feature__item--left .archive__item-body {
-  text-align: left;
-  padding: 3em 2em;
-}
-
-.feature__item--left .archive__item-title {
-  font-size: 2em;
-  margin-bottom: 1em;
-  color: var(--primary-color);
-  font-weight: 600;
-  text-align: left;
-}
-
-.feature__item--left .archive__item-excerpt {
-  font-size: 1em;
-  line-height: 1.7;
-  color: var(--text-color);
-  text-align: left;
-}
-
-/* Ensure all content within left sections is left-aligned */
-.feature__item--left .archive__item-excerpt * {
-  text-align: left;
-}
-
-.feature__item--left .focus-grid,
-.feature__item--left .publications-showcase,
-.feature__item--left .philosophy-content,
-.feature__item--left .contact-grid {
-  text-align: left;
-}
-
-.feature__item--left .focus-item,
-.feature__item--left .publication-item,
-.feature__item--left .pillar,
-.feature__item--left .contact-info,
-.feature__item--left .credentials {
-  text-align: left;
-}
-
-.feature__item--left blockquote {
-  text-align: left;
-}
-
-/* Responsive Design - Maintain horizontal layouts */
+/* 통합된 미디어 쿼리 */
 @media (max-width: 1024px) {
   .page__hero--overlay .page__title {
     font-size: 2.2em;
@@ -1010,7 +958,7 @@ section {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .page__hero--overlay .page__title {
     font-size: 2em;
   }
@@ -1084,7 +1032,7 @@ section {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
   .page__hero--overlay .page__title {
     font-size: 1.8em;
   }
@@ -1144,3 +1092,4 @@ section {
     page-break-inside: avoid;
   }
 }
+</style>
