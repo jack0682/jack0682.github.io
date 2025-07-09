@@ -189,6 +189,15 @@ contact_cta:
 
 ---
 
+<!-- Logo Banner Section -->
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 2em; margin-bottom: 2em;">
+  <img src="/assets/images/logo1.jpg" alt="Logo 1" style="height: 100px;">
+  <img src="/assets/images/logo2.jpg" alt="Logo 2" style="height: 40px;">
+  <img src="/assets/images/logo3.png" alt="Logo 3" style="height: 40px;">
+  <img src="/assets/images/logo4.jpg" alt="Logo 4" style="height: 60px;">
+  <!-- 필요에 따라 더 추가 가능 -->
+</div>
+
 <section class="core-research-section">
   <div class="section-container">
     <div class="section-header">
