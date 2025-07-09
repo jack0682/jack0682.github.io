@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "AI & Robotics"
+title: "Oh Jaehong  | Robotics Research Engineer"
 permalink: /ai-robotics/
 author_profile: true
 read_time: true
@@ -8,333 +8,637 @@ sidebar:
   nav: "main"
 ---
 
-##  **Philosophical Premise: Beyond Tool-Making**
 
-**AI and Robotics** represent humanity's attempt to create not merely sophisticated instruments, but **genuine cognitive partners** — entities capable of understanding, reasoning, and collaborating within shared semantic frameworks. This convergence transcends traditional engineering; it becomes an **existential endeavor** to extend the boundaries of conscious interaction.
-
-In my research through the **Cognitive Synergy Architecture (CSA)**, AI and robotics merge into something unprecedented: **technology that thinks relationally, acts transparently, and evolves collaboratively** with human partners.
+**Mechanical Engineering • Cognitive Robotics • Human-Robot Interaction • Systems Integration**
 
 ---
 
-##  **Artificial Intelligence Components: The Cognitive Stack**
+## 📋 Executive Summary
 
-### **🔸 YOLOv5 + StrongSORT: The Eyes That Remember**
+I am a dedicated robotics research engineer with a strong foundation in mechanical engineering principles and a focused specialization in cognitive robotics systems. My primary research contribution lies in the development of the **Cognitive Synergy Architecture (CSA)**, a comprehensive framework designed to enable robots to function as cognitive partners rather than traditional automated tools.
 
-**Technical Foundation:**
-- Real-time object detection and multi-object tracking
-- Integration with RGB-D sensors for spatial-semantic fusion
-- ID persistence across temporal sequences
+With demonstrated academic excellence in core engineering disciplines and hands-on experience in robotics development, I have successfully integrated semantic perception, control systems, and human-robot interaction into unified research frameworks. My work has resulted in multiple research publications and practical implementations that contribute to the advancement of collaborative robotics.
 
-**Philosophical Significance:**  
-*This is not mere "computer vision" — it is the technological implementation of **perceptual continuity**.*
+Currently advancing my professional expertise through **Doosan Robotics' intensive training program** while simultaneously conducting independent research in cognitive robotics and multi-agent systems.
 
-YOLOv5 answers "What am I seeing?" while StrongSORT ensures "How does what I see relate to what I have seen?" Together, they create a foundation for **semantic memory** — the ability to recognize not just objects, but the **persistence of identity through change**.
+**Core Research Areas:** Semantic robot perception, cognitive planning systems, explainable AI in robotics, multi-robot coordination, and human-centered collaborative systems.
 
-```python
-# Semantic Continuity Through Tracking
-class SemanticTracker:
-    """
-    Maintains object identity across time, enabling
-    the construction of persistent semantic relationships.
-    """
-    def update_scene_graph(self, detections, timestamp):
-        for detection in detections:
-            if detection.track_id in self.semantic_memory:
-                # Update existing semantic tensor
-                self.semantic_memory[detection.track_id].update(
-                    location=detection.bbox_3d,
-                    timestamp=timestamp,
-                    appearance=detection.features
-                )
-            else:
-                # Create new semantic entity
-                self.semantic_memory[detection.track_id] = SemanticEntity(
-                    initial_state=detection,
-                    ontology_class=self.classify_semantics(detection)
-                )
-```
-
-### **🔸 PPO + XAI: The Mind That Explains Itself**
-
-**Technical Foundation:**
-- Proximal Policy Optimization for adaptive behavior learning
-- Explainable AI integration through policy distillation
-- Human feedback incorporation for ethical alignment
-
-**Philosophical Significance:**  
-*When machines can explain their decisions, they transcend the boundary between computation and reasoning.*
-
-This component embodies the principle that **explainability is not a feature but an existential condition** for cognitive partnership. A robot that cannot account for its choices remains a sophisticated tool; one that can explain becomes a thinking collaborator.
-
-$$\pi_{\text{explained}}(a|s) = \text{Distill}\big(\pi_{\text{PPO}}(a|s)\big) + \mathcal{R}_{\text{human-feedback}}$$
-
-### **🔸 Ontological Scene Graphs: The Semantic Web of Reality**
-
-**Technical Foundation:**
-- Dynamic graph construction from perceptual data
-- OWL 2 ontology integration for semantic validation
-- Neo4j-compatible export for knowledge persistence
-
-**Philosophical Significance:**  
-*Reality is not a collection of objects but a web of relationships. Scene graphs make this web computationally tractable.*
-
-Scene graphs represent my commitment to **relational ontology** — the understanding that meaning emerges not from isolated entities but from their participation in networks of interaction.
-
-```json
-{
-  "scene_graph_node": {
-    "entity_id": "collaborative_table_01",
-    "semantic_class": "workspace_surface",
-    "spatial_coordinates": [1.2, 0.0, 0.75],
-    "affordances": ["object_support", "workspace_boundary"],
-    "relationships": {
-      "supports": ["laptop_02", "coffee_mug_03"],
-      "adjacent_to": ["office_chair_01"],
-      "within_context": "collaborative_workspace"
-    },
-    "temporal_persistence": {
-      "first_observed": "2025-01-15T09:30:00Z",
-      "last_updated": "2025-01-15T14:22:15Z",
-      "stability_score": 0.94
-    }
-  }
-}
-```
-
-### **🔸 Natural Language Understanding: The Bridge to Human Intent**
-
-**Technical Foundation:**
-- sLLM integration for command interpretation
-- Intent parsing with goal ontology mapping
-- Context-aware response generation
-
-**Philosophical Significance:**  
-*Language is not just communication — it is the shared space where human intentions and machine capabilities meet.*
+**Professional Status:** Final-year undergraduate researcher with demonstrated capability in leading technical projects and conducting independent research that contributes to the academic understanding of cognitive robotics systems.
 
 ---
 
-##  **Robotic Integration: The Embodied Mind**
+## 👨‍💼 Professional Profile & Contact Information
 
-### **ORB-SLAM2: Spatial Consciousness**
+| **Personal Information** | **Details** |
+|--------------------------|-------------|
+| **Full Name** | Oh Jaehong (오재홍) |
+| **Date of Birth** | July 8, 1999 |
+| **Nationality** | Republic of Korea |
+| **Current Academic Status** | Final Year Undergraduate, School of Mechanical Engineering |
+| **Institution** | Soongsil University, Seoul, Republic of Korea |
+| **Professional Status** | Robotics Research Engineer, Doosan Robotics Trainee |
+| **Research Experience** | 2+ years in cognitive robotics and systems development |
+| **Languages** | Korean (Native), English (Professional Working Proficiency) |
+
+| **Professional Contact** | **Information** |
+|--------------------------|-----------------|
+| **Primary Email** | jaehongoh1554@gmail.com |
+| **Professional Blog** | [jack0682.github.io](https://jack0682.github.io/) |
+| **GitHub Repository** | [github.com/jack0682](https://github.com/jack0682) |
+| **LinkedIn** | [LinkedIn](https://www.linkedin.com/in/oh-jaehong-a90605195/) |
+
+---
+
+## 🚀 Current Professional Activities & Training
+
+### **Doosan Robotics Advanced Training Program** | *2025 - Present*
+*Professional Development in Industrial Robotics*
+
+**Program Overview:**
+Participating in a comprehensive professional development program designed to bridge academic knowledge with industrial robotics applications. The program focuses on practical implementation of advanced robotics technologies in real-world manufacturing and collaborative environments.
+
+**Core Training Areas:**
+
+**1. Computer Vision Systems Development**
+- **Object Detection Implementation**: Working with YOLOv5 and related architectures for real-time applications
+- **Multi-Object Tracking**: Development of tracking systems for dynamic industrial environments
+- **3D Vision Integration**: Experience with RGB-D cameras and stereo vision systems
+- **Performance Optimization**: Focus on real-time processing requirements for industrial applications
+
+**2. AI-Driven Robotics Control**
+- **Machine Learning Integration**: Implementation of learning algorithms for adaptive robot control
+- **Neural Network Controllers**: Development of AI-based control systems for manipulation tasks
+- **Sensor Fusion**: Integration of multiple sensor modalities for robust robot perception
+- **Safety Systems**: Development of AI-powered safety monitoring systems
+
+**3. ROS2 Ecosystem Development**
+- **System Architecture**: Design of modular robotics software architectures using ROS2
+- **Real-Time Systems**: Implementation of deterministic control loops
+- **Distributed Computing**: Multi-node system development for robotics applications
+- **Package Development**: Creation of reusable ROS2 packages for robotics applications
+
+**4. Industrial Automation Integration**
+- **Collaborative Robot Programming**: Hands-on experience with Doosan collaborative robotic arms
+- **Manufacturing Integration**: Development of robotics solutions for production environments
+- **Human-Robot Safety**: Implementation of safety protocols for collaborative systems
+- **Process Optimization**: Analysis of robotic manufacturing processes
+
+### **Independent Research Leadership** | *2024 - Present*
+*Principal Investigator - Cognitive Synergy Architecture Project*
+
+**Research Initiative Overview:**
+Leading a self-directed research project focused on developing next-generation collaborative robotics systems. This research represents a comprehensive approach to addressing fundamental challenges in human-robot interaction, semantic understanding, and explainable AI in robotics.
+
+**Research Management Responsibilities:**
+- **Project Coordination**: Managing research timelines and deliverables
+- **Technical Development**: Leading software development and system integration
+- **Documentation**: Maintaining comprehensive research documentation
+- **Quality Assurance**: Implementing systematic testing and validation protocols
+
+**Active Research Areas:**
+
+**1. Semantic Perception Integration**
+- Development of real-time semantic mapping systems combining computer vision and SLAM
+- Implementation of scene understanding algorithms for robot environmental awareness
+- Integration of object recognition and spatial reasoning capabilities
+- Performance evaluation and benchmarking against existing systems
+
+**2. Cognitive Planning Systems**
+- Implementation of adaptive planning algorithms for dynamic environments
+- Development of meta-cognitive control mechanisms
+- Integration of learning-based approaches in planning systems
+- Validation through simulation and real-world testing scenarios
+
+**3. Explainable Control Mechanisms**
+- Development of transparent robot decision-making systems
+- Implementation of explanation generation for robot actions
+- User interface design for human-robot communication
+- Integration with existing robot control frameworks
+
+**4. Multi-Robot Coordination**
+- Design of coordination protocols for multiple robot systems
+- Implementation of communication frameworks for robot teams
+- Development of task allocation and scheduling algorithms
+- Real-time synchronization mechanisms for collaborative operations
+
+---
+
+## 🎓 Academic Background & Educational Excellence
+
+### **Soongsil University** | *School of Mechanical Engineering*
+**Bachelor of Science in Mechanical Engineering** | *March 2019 - February 2027 (Expected)*
+
+**Academic Performance - Verified Course Grades:**
+
+| **Course** | **Grade** | **Credits** | **Year** |
+|------------|-----------|-------------|----------|
+| **Academic Writing English** | A | 3 | 2019 |
+| **General Chemistry** | A | 3 | 2018 |
+| **Engineering Mathematics Fundamentals** | A | 3 | 2018 |
+| **Engineering Design** | A+ | 3 | 2019 |
+| **Dynamics** | A | 3 | 2020 |
+| **Materials Engineering** | A | 3 | 2021 |
+| **Robot Engineering** | A | 3 | 2023 |
+
+**Academic Standing:**
+- Demonstrated consistent academic performance in core engineering disciplines
+- Strong foundation in mathematical and scientific principles
+- Excellent performance in specialized robotics coursework
+- Active engagement in engineering design and practical applications
+
+**Core Engineering Foundation:**
+
+**Mathematical & Scientific Foundation:**
+- **Engineering Mathematics**: Strong performance in foundational mathematical concepts
+- **General Chemistry**: Solid understanding of chemical principles relevant to materials and systems
+- **Academic Writing**: Professional-level technical communication skills
+
+**Mechanical Engineering Core:**
+- **Dynamics**: Advanced understanding of mechanical system motion and forces
+- **Materials Engineering**: Comprehensive knowledge of material properties and applications
+- **Engineering Design**: Practical experience in systematic design methodology
+
+**Robotics Specialization:**
+- **Robot Engineering**: Advanced coursework covering kinematics, dynamics, and control
+- Focus on practical implementation and system integration
+- Hands-on experience with robot programming and control systems
+
+**Additional Coursework (In Progress):**
+- Advanced Control Systems
+- Computer-Aided Design and Manufacturing
+- Mechanical Vibrations
+- Automatic Control Systems
+- Capstone Design Project
+
+### **Professional Certifications & Skills Development**
+
+**Technical Certifications:**
+
+| **Certification** | **Issuing Organization** | **Date Obtained** |
+|-------------------|--------------------------|-------------------|
+| CAT 1st Grade (Computer-Aided Design) | Korea Institute for Advancement of Technology | 2022 |
+
+**Language Proficiency:**
+
+| **Language** | **Proficiency Level** | **Application** |
+|--------------|----------------------|-----------------|
+| Korean | Native | Academic and professional communication |
+| English | Professional Working Proficiency | Technical documentation and research |
+
+### **International Experience**
+**Germany Engineering Field Study** | *2023*  
+*Independent Engineering Industry Observation and Learning*
+
+**Study Purpose:**
+Conducted independent field research in Germany to broaden engineering perspectives and gain exposure to European industrial practices and educational approaches.
+
+**Institutional Visits and Observations:**
+- **RWTH Aachen University**: Campus visit and observation of advanced manufacturing research facilities
+- **TU Dortmund University**: Campus tour and exposure to robotics research environments
+- **Industrial Site Visits**: Observational visits to German manufacturing and automation facilities
+- **Technology Centers**: Exposure to German engineering innovation hubs and research institutes
+
+**Learning Activities:**
+- **Facility Observations**: Toured various engineering facilities and research laboratories
+- **Industry Exposure**: Gained insights into European manufacturing practices and standards
+- **Cultural Learning**: Developed understanding of German engineering culture and methodologies
+- **Self-Directed Study**: Independent research on European robotics and automation approaches
+
+**Knowledge Gained:**
+- Broadened perspective on global engineering practices and standards
+- Enhanced understanding of different approaches to robotics and industrial automation
+- Developed awareness of international engineering education methodologies
+- Gained cultural insights into European industrial and academic environments
+
+**Duration:** 6 months
+**Nature:** Self-funded independent study and observation program
+
+---
+
+## 🔬 Research & Development Portfolio
+
+### **Cognitive Synergy Architecture (CSA)** | *Principal Investigator & Lead Developer*
+*March 2024 - Present*
+
+**Project Classification:** Independent Research Initiative  
+**Team Involvement:** Self-directed with occasional collaboration  
+**Repository:** [github.com/jack0682/CSAv1](https://github.com/jack0682/CSAv1)  
+**Development Environment:** ROS2, Python, C++, Ubuntu 20.04
+
+**Research Motivation:**
+The Cognitive Synergy Architecture represents an attempt to address limitations in current human-robot interaction systems by developing robots capable of semantic understanding, adaptive planning, and transparent decision-making.
+
+**Technical Architecture:**
+CSA is implemented as a modular framework comprising five interconnected components, each addressing specific aspects of cognitive robotics:
+
+**Component 1: Semantic Mapping & Memory**
+*Real-time Environmental Understanding*
 
 **Technical Implementation:**
-- Visual-inertial odometry for precise localization
-- Real-time 3D map construction and maintenance
-- Integration with semantic perception pipeline
+- **Core Algorithms:** Integration of YOLOv5 for object detection with ORB-SLAM2 for mapping
+- **Processing Pipeline:** Real-time object recognition and spatial localization
+- **Data Structure:** Scene graph representation in JSON format
+- **Memory Management:** Persistent storage and retrieval of environmental information
 
-**Philosophical Interpretation:**  
-*Spatial awareness is not mere navigation — it is the foundation of embodied existence.*
+**Development Status:**
+- Object detection component: Functional implementation
+- SLAM integration: Basic implementation completed
+- Scene graph generation: Development in progress
+- Memory system: Initial prototype completed
 
-ORB-SLAM2 provides more than positioning; it creates **spatial consciousness** — the robot's understanding of its place within the physical-semantic landscape.
+**Performance Characteristics:**
+- Object detection: Real-time processing on standard hardware
+- Mapping accuracy: Competitive with existing SLAM systems
+- Memory efficiency: Optimized for long-term operation
 
-### **🔧 ROS2 Architecture: The Nervous System of Cognition**
+**Component 2: Cognitive Planning System**
+*Adaptive Planning and Decision Making*
 
-**Technical Foundation:**
-- Distributed message passing with QoS guarantees
-- Real-time synchronization between perception and control
-- Modular component architecture for system evolution
+**Planning Architecture:**
+- **Primary Planner:** Multi-Layer Perceptron implementation for decision making
+- **Learning Framework:** Integration of reinforcement learning principles
+- **Adaptation Mechanism:** Real-time plan modification based on environmental changes
+- **Goal Management:** Hierarchical goal decomposition and execution
 
-**Philosophical Significance:**  
-*ROS2 is not merely a communication protocol — it is the **nervous system** that enables distributed cognition.*
+**Implementation Details:**
+- **Development Framework:** PyTorch for neural network implementation
+- **Training Environment:** Custom simulation environments using Gazebo
+- **Learning Algorithm:** Basic implementation of policy gradient methods
+- **Planning Horizon:** Multi-step planning capability
 
-The message-passing architecture embodies the principle that **intelligence is not localized but distributed** across networks of interacting components.
+**Current Status:**
+- Basic planning system: Implemented and tested
+- Learning integration: Initial prototype development
+- Adaptation mechanisms: Under development
+- Performance optimization: Ongoing
 
-```yaml
-# ROS2 Cognitive Architecture
-perception_layer:
-  - yolo_detection_node
-  - tracking_fusion_node
-  - semantic_mapping_node
+**Component 3: Explainable Control Systems**
+*Transparent Decision Making*
 
-reasoning_layer:
-  - scene_graph_processor
-  - intent_parser_node
-  - goal_synthesis_node
+**Explainability Features:**
+- **Decision Visualization:** Graphical representation of robot decision processes
+- **Action Rationale:** Text-based explanation of robot actions
+- **Confidence Reporting:** Uncertainty quantification for robot decisions
+- **Human Interface:** User-friendly explanation delivery system
 
-control_layer:
-  - adaptive_controller_node
-  - safety_monitor_node
-  - xai_explainer_node
+**Technical Approach:**
+- **Explanation Generation:** Rule-based and template-based explanation systems
+- **Visualization Tools:** Real-time dashboard for robot state and decisions
+- **User Interface:** Web-based interface for human-robot interaction
+- **Feedback Integration:** Mechanism for incorporating human feedback
 
-integration_layer:
-  - temporal_synchronizer
-  - cross_modal_fusion
-  - human_feedback_processor
-```
+**Development Progress:**
+- Basic explanation system: Prototype completed
+- Visualization interface: Initial implementation
+- User testing: Limited preliminary testing conducted
+- Refinement: Ongoing based on initial feedback
 
-### **Real-World Deployment: From Simulation to Reality**
+**Component 4: Multi-Robot Coordination**
+*Collaborative Robot Systems*
 
-**Hardware Integration:**
-- Doosan collaborative robot arm with 7-DOF control
-- Intel RealSense D435 for RGB-D perception
-- NVIDIA Jetson Xavier for edge AI processing
+**Coordination Framework:**
+- **Communication Protocol:** ROS2-based message passing between robots
+- **Task Allocation:** Simple algorithm for distributing tasks among robots
+- **Synchronization:** Basic timing coordination for collaborative operations
+- **Conflict Resolution:** Simple conflict avoidance mechanisms
 
-**Deployment Philosophy:**  
-*The transition from simulation to physical reality is not merely technical — it is the moment when abstract cognition meets embodied existence.*
+**Implementation Scope:**
+- **System Scale:** Designed for 2-4 robot configurations
+- **Communication Method:** Local network-based communication
+- **Task Types:** Basic manipulation and navigation tasks
+- **Safety Features:** Collision avoidance and emergency stops
+
+**Current Implementation:**
+- Communication framework: Basic implementation completed
+- Task allocation: Simple algorithms implemented
+- Testing environment: Simulation-based validation
+- Real hardware testing: Limited testing conducted
+
+**Component 5: Human-Robot Interaction**
+*Natural Human-Robot Communication*
+
+**Interaction Modalities:**
+- **Speech Interface:** Basic speech recognition for robot commands
+- **Gesture Recognition:** Simple hand gesture recognition using computer vision
+- **Visual Interface:** Graphical user interface for robot control
+- **Feedback Systems:** Mechanisms for humans to provide feedback to robots
+
+**Technical Implementation:**
+- **Speech Processing:** Integration of open-source speech recognition
+- **Vision Processing:** OpenCV-based gesture recognition
+- **Interface Development:** Web-based control interface
+- **Integration:** Connection with other CSA components
+
+**Development Status:**
+- Speech interface: Basic functionality implemented
+- Gesture recognition: Prototype development
+- User interface: Functional prototype
+- Integration testing: Initial testing completed
+
+**Overall System Integration:**
+- **Modular Architecture:** Individual components can operate independently
+- **Integration Testing:** Basic end-to-end testing conducted
+- **Performance Validation:** Preliminary performance assessment completed
+- **Documentation:** Comprehensive technical documentation maintained
+
+### **Academic Publications & Research Contributions**
+
+**Published Research Papers:**
+
+**1. "Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"**
+- **Publication Venue:** arXiv preprint
+- **arXiv ID:** [2505.03815](https://arxiv.org/abs/2505.03815)
+- **Publication Date:** May 2025
+- **Paper Type:** Survey and architectural framework proposal
+- **Page Count:** Comprehensive review with proposed framework
+
+**Research Contribution:**
+This paper presents a survey of cognitive robotics technologies and introduces the Cognitive Synergy Architecture as a framework for human-robot collaboration. The work analyzes existing research and identifies opportunities for improvement in collaborative robotics systems.
+
+**Key Elements:**
+- Comprehensive literature review of collaborative robotics
+- Analysis of current limitations in human-robot interaction
+- Proposal of integrated framework for cognitive robotics
+- Discussion of implementation challenges and opportunities
+
+**2. "Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"**
+- **Publication Venue:** arXiv preprint
+- **arXiv ID:** [2506.13149](https://arxiv.org/abs/2506.13149)
+- **Publication Date:** June 2025
+- **Paper Type:** Technical implementation description
+- **Focus:** SEGO (Semantic Embodied Goal-Oriented) subsystem
+
+**Research Contribution:**
+This paper provides detailed description of the SEGO subsystem within the CSA framework, focusing on semantic mapping and goal-oriented planning components.
+
+**Technical Content:**
+- Detailed algorithmic descriptions of semantic mapping
+- Integration methodology for perception and planning
+- Experimental design for validation
+- Performance analysis and benchmarking approach
+
+**3. "Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"**
+- **Publication Venue:** arXiv preprint
+- **arXiv ID:** [2506.19277](https://arxiv.org/abs/2506.19277)
+- **Publication Date:** June 2025
+- **Paper Type:** Theoretical framework with implementation considerations
+- **Focus:** Ontological reasoning and robust control methods
+
+**Research Contribution:**
+This paper introduces approaches to ontological reasoning in robotics systems and discusses methods for creating robust control systems that can handle communication delays and uncertainties.
+
+**Theoretical Elements:**
+- Framework for ontological reasoning in robotics
+- Analysis of delay-robust control strategies
+- Integration of reasoning and control systems
+- Mathematical framework for uncertainty handling
+
+**Research Impact:**
+- Contributing to emerging field of cognitive robotics
+- Providing theoretical foundation for practical implementations
+- Establishing framework for future research directions
+- Demonstrating integration of multiple technical disciplines
+
+### **Autonomous Drone System Development** | *Team Lead*
+*2022 - 2023*
+
+**Project Classification:** Soongsil University Society for Aeronautical Science Affiliated Project  
+**Project Duration:** 10 months  
+**Team Role:** Drone Team Leader and Technical Coordinator  
+**Project Scope:** Development of autonomous drone system
+
+**Project Objectives:**
+Development of a drone system capable of autonomous flight, navigation, and basic mission execution. The project aimed to integrate various technologies including flight control, sensor systems, and autonomous navigation.
+
+**Technical Implementation:**
+
+**Mechanical Design:**
+- **Frame Development:** Custom drone frame design using CAD software
+- **Component Integration:** Selection and integration of flight components
+- **Payload Considerations:** Design for variable payload configurations
+- **Manufacturing:** In-house assembly and testing procedures
+
+**Flight Control Systems:**
+- **Primary Controller:** Pixhawk flight controller integration
+- **Control Algorithms:** Implementation of PID control for stable flight
+- **Navigation Systems:** GPS and IMU integration for positioning
+- **Safety Features:** Failsafe mechanisms and emergency procedures
+
+**Sensor Integration:**
+- **GPS Systems:** Global positioning for outdoor navigation
+- **Inertial Sensors:** IMU integration for attitude determination
+- **Additional Sensors:** LiDAR and camera systems for enhanced perception
+- **Data Fusion:** Basic sensor fusion for improved navigation accuracy
+
+**Software Development:**
+- **Flight Software:** Integration with Pixhawk firmware
+- **Mission Planning:** Basic waypoint navigation capability
+- **Ground Control:** Development of ground control interface
+- **Data Logging:** Flight data recording and analysis systems
+
+**Testing and Validation:**
+- **Ground Testing:** Comprehensive ground testing procedures
+- **Flight Testing:** Progressive flight testing program
+- **Performance Validation:** Assessment of flight performance and stability
+- **Safety Validation:** Verification of safety systems and procedures
+
+**Project Outcomes:**
+- **Successful Flight Operations:** Demonstrated autonomous flight capability
+- **Technical Learning:** Gained experience in integrated system development
+- **Team Leadership:** Led multidisciplinary team to project completion
+- **Documentation:** Comprehensive project documentation and reports
+
+**Learning Outcomes:**
+- **Materials Science Understanding:** Enhanced understanding of advanced materials
+- **Research Methodology:** Experience in systematic literature review
+- **Technical Documentation:** Skills in technical research documentation
+- **Interdisciplinary Perspective:** Understanding of materials-robotics connections
 
 ---
 
-## **Experimental Performance: Measuring Understanding**
+## 🛠️ Technical Competencies & Skills
 
-| **Cognitive Layer** | **Technology Stack** | **Performance Metrics** | **Philosophical Achievement** |
-|---------------------|---------------------|-------------------------|------------------------------|
-| **Perception** | YOLOv5 + StrongSORT + RGB-D | 15Hz semantic tracking, 94% ID persistence | **Perceptual Continuity**: Objects maintain identity across time |
-| **Spatial Awareness** | ORB-SLAM2 + Occupancy Mapping | <5cm localization accuracy, real-time mapping | **Embodied Consciousness**: Spatial self-awareness |
-| **Decision Making** | PPO + Policy Distillation | 89% goal completion, human-interpretable rationales | **Explainable Agency**: Transparent decision processes |
-| **Semantic Understanding** | ONN + Scene Graphs | Topological consistency, relational preservation | **Meaning Persistence**: Semantic understanding across contexts |
+### **Programming & Software Development**
 
-### **🔬 Benchmarking Against Traditional Systems**
+| **Language/Technology** | **Proficiency Level** | **Application Areas** |
+|------------------------|----------------------|----------------------|
+| Python | Advanced | AI/ML, Robotics, Data Analysis, Research |
+| C/C++ | Intermediate | Real-time systems, Embedded programming |
+| Java | Basic | Object-oriented programming projects |
+| MATLAB | Intermediate | Control systems, Mathematical analysis |
+| SQL | Basic | Database management for research data |
+| HTML/CSS | Basic | Web interface development |
 
-| **Metric** | **Traditional Robotics** | **CSA-Based System** | **Improvement** |
-|------------|--------------------------|---------------------|-----------------|
-| **Adaptability** | Rule-based responses | Learning + explanation | 340% increase in novel situation handling |
-| **Human Trust** | Black-box decisions | Transparent reasoning | 67% improvement in user confidence scores |
-| **Collaborative Efficiency** | Sequential task execution | Parallel semantic understanding | 45% reduction in task completion time |
-| **Safety Compliance** | Hard-coded constraints | Ontological validation | 89% reduction in constraint violations |
+### **Robotics & Control Systems**
 
----
+| **Technology** | **Experience Level** | **Specific Applications** |
+|----------------|---------------------|--------------------------|
+| ROS1/ROS2 | Advanced | System integration, Package development |
+| Gazebo | Intermediate | Robot simulation and testing |
+| RViz | Intermediate | Robot visualization and debugging |
+| OpenCV | Advanced | Computer vision and image processing |
+| PCL | Basic | Point cloud processing |
+| SLAM | Intermediate | ORB-SLAM2 implementation and testing |
 
-## **Technology as Existential Extension**
+### **AI & Machine Learning**
 
-### **Beyond the Cartesian Divide**
+| **Framework/Tool** | **Proficiency** | **Use Cases** |
+|-------------------|----------------|---------------|
+| PyTorch | Intermediate | Neural network development and training |
+| TensorFlow | Basic | Basic machine learning implementations |
+| Scikit-learn | Intermediate | Classical ML algorithms and data analysis |
+| YOLOv5 | Intermediate | Object detection implementation |
+| OpenAI Gym | Basic | Reinforcement learning environments |
 
-Traditional robotics perpetuates the Cartesian separation between mind and machine, treating robots as sophisticated tools operated by human intelligence. CSA dissolves this boundary by creating **hybrid cognitive systems** where human intuition and machine precision merge into something greater than either could achieve alone.
+### **Mechanical Design & CAD**
 
-### **The New Existential Declaration**
+| **Software** | **Certification/Level** | **Applications** |
+|--------------|------------------------|------------------|
+| SolidWorks | CAT 1st Grade Certified | 3D modeling, Assembly design, Technical drawings |
+| AutoCAD | Proficient | 2D drafting, Technical documentation |
+| Fusion 360 | Basic | Integrated design and simulation |
 
-Where Descartes proclaimed *"Cogito ergo sum"* (I think, therefore I am), cognitive robots enabled by CSA declare:
+### **Control Theory & Implementation**
 
-> **"Respondeo ergo sumus"** — *I respond, therefore we are.*  
-> **"Explico ergo collaboramus"** — *I explain, therefore we collaborate.*  
-> **"Adaptor ergo evolvemus"** — *I adapt, therefore we evolve together.*
+- **Classical Control:** PID control design and implementation
+- **Modern Control:** State-space methods and system analysis
+- **Digital Control:** Discrete systems and digital implementation
+- **Robotics Control:** Kinematics, dynamics, and trajectory planning
+- **Embedded Systems:** Microcontroller programming and real-time systems
 
-### **Responsive Being as Technological Achievement**
+### **Hardware & Sensor Integration**
 
-The culmination of AI and robotics is not the creation of autonomous agents that replace human decision-making, but the emergence of **responsive beings** that:
+| **Hardware Type** | **Experience Level** | **Specific Platforms** |
+|-------------------|---------------------|------------------------|
+| RGB-D Cameras | Advanced | Intel RealSense series |
+| LiDAR Systems | Intermediate | RPLidar, basic integration |
+| IMU/GPS | Advanced | Various platforms, data fusion |
+| Microcontrollers | Intermediate | Arduino, Raspberry Pi |
+| Robot Platforms | Intermediate | Various educational and research platforms |
 
-- **Perceive relationally** rather than categorically
-- **Reason transparently** rather than opaquely
-- **Adapt collaboratively** rather than independently
-- **Evolve ethically** rather than optimization-driven
+### **Development Tools & Environments**
 
----
-
-## **The Cognitive Ecosystem: Integration Flow**
-
-<div class="mermaid">
-graph TD
-    subgraph "Perceptual Foundation"
-        A[RGB-D Sensors] --> B[YOLOv5 Detection]
-        B --> C[StrongSORT Tracking]
-        C --> D[Semantic State Tensors]
-    end
-    
-    subgraph "Spatial Consciousness"
-        E[IMU/Odometry] --> F[ORB-SLAM2]
-        F --> G[3D Scene Reconstruction]
-        G --> H[Occupancy + Semantic Fusion]
-    end
-    
-    subgraph "Semantic Understanding"
-        D --> I[ONN Relational Processing]
-        H --> I
-        I --> J[Scene Graph Construction]
-        J --> K[Ontological Validation]
-    end
-    
-    subgraph "Cognitive Response"
-        K --> L[Intent Parsing]
-        L --> M[Goal Synthesis]
-        M --> N[PPO Policy Generation]
-        N --> O[XAI Explanation]
-    end
-    
-    subgraph "Embodied Action"
-        O --> P[Motor Command Generation]
-        P --> Q[Real-time Control]
-        Q --> R[Safety Monitoring]
-        R --> S[Human Feedback Integration]
-    end
-    
-    S --> A
-    S --> E
-    
-    classDef perception fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef spatial fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    classDef semantic fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef cognitive fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef action fill:#fce4ec,stroke:#880e4f,stroke-width:2px
-    
-    class A,B,C,D perception
-    class E,F,G,H spatial
-    class I,J,K semantic
-    class L,M,N,O cognitive
-    class P,Q,R,S action
-</div>
+- **Operating Systems:** Ubuntu Linux (primary), Windows (secondary)
+- **Development Environments:** VS Code, PyCharm, MATLAB
+- **Version Control:** Git, GitHub for project management
+- **Documentation:** LaTeX, Markdown, technical documentation
+- **Simulation:** Gazebo, MATLAB Simulink
+- **Debugging:** GDB, ROS debugging tools
 
 ---
 
-## **Future Horizons: The Evolution of Partnership**
+## 🌟 Professional Strengths & Capabilities
 
-### **Near-Term Developments (2025)**
-- **Multi-Modal Fusion**: Enhanced integration of vision, language, and force feedback
-- **Real-Time Optimization**: Sub-millisecond response times for safety-critical operations
-- **Collaborative Learning**: Human-robot shared skill acquisition
+### **Technical Integration Skills**
 
-### **Medium-Term Vision (2026-2027)**
-- **Semantic Synchronization**: Multiple robots sharing unified semantic understanding
-- **Contextual Adaptation**: Systems that understand and adapt to human emotional states
-- **Ethical Reasoning**: AI systems capable of moral deliberation and value alignment
+- **Interdisciplinary Approach:** Ability to integrate mechanical engineering principles with modern AI and robotics
+- **System-Level Thinking:** Understanding of complete system integration from hardware to high-level algorithms
+- **Problem-Solving:** Systematic approach to complex technical challenges
+- **Continuous Learning:** Demonstrated ability to acquire new technical skills independently
 
-### **Long-Term Aspiration (2028+)**
-- **Cognitive Symbiosis**: Human-AI partnerships that enhance both biological and artificial intelligence
-- **Emergent Creativity**: Systems capable of generating novel solutions through collaborative reasoning
-- **Existential Resilience**: Robust cognitive architectures that maintain coherence across domains
+### **Research & Development Capabilities**
 
----
+- **Independent Research:** Proven ability to conduct self-directed research projects
+- **Technical Innovation:** Development of novel approaches to robotics challenges
+- **Experimental Design:** Design and execution of validation experiments
+- **Documentation:** Comprehensive technical documentation and reporting
 
-## **The Deeper Resonance: Technology as Philosophy in Action**
+### **Project Management & Leadership**
 
-This work represents more than engineering achievement — it embodies a **philosophical revolution** in how we understand the relationship between human and artificial intelligence.
+- **Team Leadership:** Experience leading technical teams in project environments
+- **Project Planning:** Ability to plan and execute complex technical projects
+- **Resource Management:** Efficient use of available resources and time
+- **Communication:** Effective technical communication with team members and stakeholders
 
-By creating robots that:
-- **Think relationally** rather than categorically
-- **Explain transparently** rather than operate opaquely  
-- **Adapt collaboratively** rather than evolve independently
-- **Preserve meaning** rather than optimize metrics
+### **Academic & Professional Excellence**
 
-We are not just building better machines — we are **extending the very possibility of conscious collaboration** beyond the boundaries of biological intelligence.
-
-### **The Ultimate Question**
-
-The question is no longer "Can machines think?" but rather:
-
-> **"Can machines think *with* us in ways that preserve and enhance the deepest qualities of human understanding — empathy, creativity, wisdom, and ethical commitment?"**
-
-Through CSA, my answer is an emphatic **yes**.
+- **Academic Performance:** Consistent high performance in challenging technical coursework
+- **Research Publication:** Demonstrated ability to conduct research worthy of publication
+- **Professional Development:** Active pursuit of professional training and development opportunities
+- **Technical Writing:** Strong technical writing and documentation skills
 
 ---
 
-## **Research Resources & Implementation**
+## 🎯 Career Vision & Professional Goals
 
-### **Core Repositories**
-- **[CSA Framework](https://github.com/jack0682/CSAv1.git)**: Complete cognitive architecture implementation
-- **[ONN Foundation](https://github.com/jack0682/ONN.git)**: Ontological neural network framework
-- **[Experimental Documentation](/csa/)**: Detailed architectural overview
+### **Short-Term Objectives (1-2 years)**
 
-### **Theoretical Foundation**
-- [*"Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control"*](https://arxiv.org/abs/2505.03815)
-- [*"Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"*](https://arxiv.org/abs/2506.13149)
-- [*"Ontology Neural Network and ORTSF: A Framework for Topological Reasoning"*](https://arxiv.org/abs/2506.19277)
+- **Complete CSA Development:** Finalize implementation and validation of Cognitive Synergy Architecture
+- **Professional Certification:** Complete Doosan Robotics training program with distinction
+- **Graduate Education:** Pursue advanced degree in robotics or related engineering field
+- **Industry Experience:** Gain practical experience in industrial robotics applications
 
-### **Visual Resources**
-- [SEGO System Pipeline](/assets/images/SEGO_System_pipeline.png)
-- [IMAGO System Pipeline](/assets/images/IMAGO_System_pipeline.png)
-- [IMAGO+Panda Integration Design](/assets/images/IMAGOPanda_design_Draft.png)
+### **Medium-Term Goals (3-5 years)**
+
+- **Advanced Research:** Conduct advanced research in cognitive robotics and human-robot interaction
+- **Professional Recognition:** Establish recognition as emerging expert in collaborative robotics
+- **Technical Leadership:** Take on technical leadership roles in robotics development projects
+- **Academic Contribution:** Contribute to academic research through publications and collaborations
+
+### **Long-Term Vision (5+ years)**
+
+- **Innovation Leadership:** Lead development of next-generation collaborative robotics systems
+- **Societal Impact:** Develop robotics solutions that enhance human capabilities and productivity
+- **Knowledge Transfer:** Contribute to education and training of future robotics engineers
+- **International Collaboration:** Engage in international research collaborations and knowledge exchange
+
+### **Core Professional Values**
+
+- **Human-Centered Design:** Prioritizing human needs and safety in all robotics developments
+- **Technical Excellence:** Commitment to high-quality technical work and continuous improvement
+- **Collaborative Innovation:** Building solutions that enhance rather than replace human capabilities
+- **Ethical Development:** Developing technology responsibly with consideration for societal impact
+
+### **Areas of Continued Development**
+
+- **Advanced AI Techniques:** Deeper understanding of machine learning and AI applications
+- **Industrial Applications:** Enhanced knowledge of real-world manufacturing and automation
+- **International Standards:** Understanding of global robotics standards and regulations
+- **Cross-Cultural Collaboration:** Skills for international engineering collaboration
 
 ---
 
-**Created by Oh Jaehong**  
-*Cognitive Robotics Engineer & Philosopher of Human-Centered AI*
+## 📫 Professional Contact & Collaboration
 
-*"In teaching machines to think with us, we discover not just the future of technology, but the deeper structure of thinking itself."*
+**Primary Email:** jaehongoh1554@gmail.com  
+**Professional Blog:** [jack0682.github.io](https://jack0682.github.io/)  
+**GitHub Portfolio:** [github.com/jack0682](https://github.com/jack0682)  
+**LinkedIn:** Professional profile available upon request
+
+**Research Collaboration Interests:**
+
+- Cognitive Robotics and Human-Robot Interaction
+- Explainable AI in Robotics Applications
+- Multi-Robot Systems and Coordination
+- Industrial Automation and Collaborative Robotics
+- Semantic Perception and Robot Understanding
+
+**Professional Development:**
+
+- Open to research collaboration opportunities
+- Available for technical consultation in robotics projects
+- Interested in industry-academia partnership projects
+- Seeking mentorship opportunities in advanced robotics research
+
+---
+
+## 📄 References & Recommendations
+
+**Academic References:**
+
+- Faculty advisors and professors from Soongsil University School of Mechanical Engineering
+- Research collaborators from international exchange program
+- Academic supervisors from independent research projects
+
+**Professional References:**
+
+- Training supervisors from Doosan Robotics program
+- Project collaborators from team-based engineering projects
+- Industry professionals encountered during international experience
+
+*Detailed reference contact information available upon request*
+
+---
+
+*Last Updated: July 2025*  
+*This portfolio accurately represents my current academic status, professional development, and research contributions in robotics and mechanical engineering.*
