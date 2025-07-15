@@ -45,7 +45,7 @@ Currently advancing my professional expertise through **Doosan Robotics' intensi
 | **Primary Email** | jaehongoh1554@gmail.com |
 | **Professional Blog** | [jack0682.github.io](https://jack0682.github.io/) |
 | **GitHub Repository** | [github.com/jack0682](https://github.com/jack0682) |
-| **LinkedIn** | [LinkedIn](https://www.linkedin.com/in/oh-jaehong-a90605195/) |
+| **LinkedIn** | [LinkedIn](www.linkedin.com/in/jaehong-oh-a90605195) |
 | **Google Scholar** | [Google Scholar](https://scholar.google.com/citations?user=0Wqmy1QAAAAJ&hl) |
 
 ---
