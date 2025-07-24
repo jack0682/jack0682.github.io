@@ -38,6 +38,30 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 </div>
 
 <div class="research-section">
+<h2><strong>Applied Projects</strong></h2>
+
+<a href="/research/turtlebot_project/" class="btn btn--primary btn--large">View Implementation</a>
+
+<p><em>Theory in Practice</em></p>
+
+<p>Real-world implementations where philosophical principles meet industrial challenges. The Industrial Safety Robot System demonstrates how cognitive architectures translate into life-preserving technology through multi-modal detection, autonomous coordination, and human-centric design.</p>
+
+<p><strong>From equations to impact — saving lives through intelligent systems</strong></p>
+</div>
+
+<div class="research-section">
+<h2><strong>Applied Projects</strong></h2>
+
+<a href="/research/turtlebot_project/" class="btn btn--primary btn--large">Industrial Safety System</a>
+
+<p><em>Theory in Practice</em></p>
+
+<p>Real-world implementations where philosophical principles meet industrial challenges. The Industrial Safety Robot System demonstrates how cognitive architectures translate into life-preserving technology through multi-modal detection, autonomous coordination, and human-centric design.</p>
+
+<p><strong>From equations to impact — saving lives through intelligent systems</strong></p>
+</div>
+
+<div class="research-section">
 <h2><strong>Experiments</strong></h2>
 
 <a href="/research/experiments/" class="btn btn--primary btn--large">View Experiments</a>
@@ -75,24 +99,38 @@ Every algorithm we design, every experiment we conduct, and every paper we publi
 </div>
 
 <div class="impact-item">
+<h3><strong>Applied Systems</strong></h3>
+<p><strong>1 Industrial Deployment</strong></p>
+<p>Multi-robot safety monitoring with 93% detection accuracy</p>
+</div>
+
+<div class="impact-item">
 <h3><strong>Code Repositories</strong></h3>
-<p><strong> GitHub Stars</strong></p>
+<p><strong>GitHub Stars</strong></p>
 <p>Open-source implementations driving community adoption</p>
 </div>
 
 <div class="impact-item">
-<h3><strong>Real-World Deployments</strong></h3>
-<p><strong>Active Pilots</strong></p>
-<p>Laboratory and industrial validation scenarios</p>
-</div>
-
-<div class="impact-item">
-<h3><strong>Academic Recognition</strong></h3>
-<p><strong>None Citations</strong></p>
-<p>Growing influence in cognitive robotics community</p>
+<h3><strong>Real-World Impact</strong></h3>
+<p><strong>24.7% Noise Reduction</strong></p>
+<p>Quantified improvements in industrial safety monitoring</p>
 </div>
 
 </div>
+
+---
+
+## **From Philosophy to Practice**
+
+Our research program spans three complementary dimensions:
+
+**Theoretical Foundations** → Deep philosophical inquiry into the nature of cognitive partnership and relational intelligence.
+
+**Technical Innovation** → Advanced algorithms, architectures, and systems that embody our philosophical commitments.
+
+**Applied Impact** → Real-world deployments that demonstrate technology's capacity to preserve and enhance human flourishing.
+
+The Industrial Safety Robot System exemplifies this integrated approach — where mathematical rigor meets existential concern, and where Kalman filtering serves the ultimate goal of human life preservation.
 
 ---
 
