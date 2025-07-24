@@ -40,18 +40,6 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <div class="research-section">
 <h2><strong>Applied Projects</strong></h2>
 
-<a href="/research/turtlebot_project/" class="btn btn--primary btn--large">View Implementation</a>
-
-<p><em>Theory in Practice</em></p>
-
-<p>Real-world implementations where philosophical principles meet industrial challenges. The Industrial Safety Robot System demonstrates how cognitive architectures translate into life-preserving technology through multi-modal detection, autonomous coordination, and human-centric design.</p>
-
-<p><strong>From equations to impact — saving lives through intelligent systems</strong></p>
-</div>
-
-<div class="research-section">
-<h2><strong>Applied Projects</strong></h2>
-
 <a href="/research/turtlebot_project/" class="btn btn--primary btn--large">Industrial Safety System</a>
 
 <p><em>Theory in Practice</em></p>
