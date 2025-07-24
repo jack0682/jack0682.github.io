@@ -99,23 +99,6 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 
 The system employs a hub-and-spoke topology with fault-tolerant communication:
 
-```mermaid
-graph TB
-    A[Main Monitoring System] --> B[MQTT Cloud Server]
-    B --> C[Robot System 0]
-    B --> D[Robot System 1]
-    B --> E[Robot System N]
-    
-    C --> F[Human Detection]
-    C --> G[Crack Detection]
-    C --> H[Navigation Module]
-    
-    subgraph "Robot Components"
-        F
-        G
-        H
-    end
-```
 
 ![System Architecture Diagram](/assets/images/turtlebot_project/system_overvies.png)
 *Figure 5: Detailed system architecture showing component interactions and data flow*
@@ -291,24 +274,6 @@ $$\sigma_A^2 = \left(\frac{\partial A}{\partial Z}\right)^2 \sigma_Z^2 + \left(\
 
 The navigation system implements a hierarchical control structure:
 
-```mermaid
-stateDiagram-v2
-    [*] --> SystemStart
-    SystemStart --> MQTTConnection
-    MQTTConnection --> NavInitialization
-    NavInitialization --> InitialPoseSet
-    InitialPoseSet --> PatrolMode
-    PatrolMode --> EventDetection
-    EventDetection --> PriorityAssessment
-    PriorityAssessment --> HumanEvent : High Priority
-    PriorityAssessment --> UserCommand : Medium Priority
-    PriorityAssessment --> CrackEvent : Low Priority
-    HumanEvent --> ResponseExecution
-    UserCommand --> ResponseExecution
-    CrackEvent --> ResponseExecution
-    ResponseExecution --> PatrolMode
-```
-
 ![Navigation Architecture](/assets/images/turtlebot_project/navigation_architecture.png)
 *Figure 14: Navigation system state machine showing event handling hierarchy*
 
@@ -345,9 +310,6 @@ Subject to constraints:
 - 60% reduction in stuck events
 - 25% improvement in path efficiency
 - Maintained collision avoidance safety
-
-![Navigation Optimization](/assets/images/turtlebot_project/navigation_optimization.png)
-*Figure 15: Before/after comparison of navigation buffer optimization showing improved path planning*
 
 ---
 
@@ -759,78 +721,156 @@ mqtt_config:
     robot_status: "robot/status"
     commands: "robot/commands"
 ```
-
 ## Appendix B: Mathematical Derivations
 
 ### B.1 Kalman Filter Derivation for 4D State Space
 
 Given the state transition model:
-$\mathbf{x}_k = \mathbf{F}\mathbf{x}_{k-1} + \mathbf{w}_{k-1}$
+
+$$\mathbf{x}_k = \mathbf{F}\mathbf{x}_{k-1} + \mathbf{w}_{k-1}$$
 
 Where $\mathbf{w}_{k-1} \sim \mathcal{N}(0, \mathbf{Q})$
 
 **Prediction Step:**
-$\hat{\mathbf{x}}_{k|k-1} = \mathbf{F}\hat{\mathbf{x}}_{k-1|k-1}$
-$\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}$
+
+$$\hat{\mathbf{x}}_{k \mid k-1} = \mathbf{F}\hat{\mathbf{x}}_{k-1 \mid k-1}$$
+
+$$\mathbf{P}_{k \mid k-1} = \mathbf{F}\mathbf{P}_{k-1 \mid k-1}\mathbf{F}^T + \mathbf{Q}$$
 
 **Update Step:**
+
 Given measurement $\mathbf{z}_k = \mathbf{H}\mathbf{x}_k + \mathbf{v}_k$ where $\mathbf{v}_k \sim \mathcal{N}(0, \mathbf{R})$
 
 Innovation:
-$\tilde{\mathbf{y}}_k = \mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k|k-1}$
+
+$$\tilde{\mathbf{y}}_k = \mathbf{z}_k - \mathbf{H}\hat{\mathbf{x}}_{k \mid k-1}$$
 
 Innovation covariance:
-$\mathbf{S}_k = \mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R}$
+
+$$\mathbf{S}_k = \mathbf{H}\mathbf{P}_{k \mid k-1}\mathbf{H}^T + \mathbf{R}$$
 
 Kalman gain:
-$\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T\mathbf{S}_k^{-1}$
+
+$$\mathbf{K}_k = \mathbf{P}_{k \mid k-1}\mathbf{H}^T\mathbf{S}_k^{-1}$$
 
 State update:
-$\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k\tilde{\mathbf{y}}_k$
+
+$$\hat{\mathbf{x}}_{k \mid k} = \hat{\mathbf{x}}_{k \mid k-1} + \mathbf{K}_k\tilde{\mathbf{y}}_k$$
 
 Covariance update:
-$\mathbf{P}_{k|k} = (\mathbf{I} - \mathbf{K}_k\mathbf{H})\mathbf{P}_{k|k-1}$
+
+$$\mathbf{P}_{k \mid k} = (\mathbf{I} - \mathbf{K}_k\mathbf{H})\mathbf{P}_{k \mid k-1}$$
 
 ### B.2 MQTT vs DDS Reliability Analysis
 
 For $n$ network segments with individual reliability $p_i$:
 
 **DDS Mesh Network:**
+
 All segments must be operational for system function:
-$P_{DDS} = \prod_{i=1}^{n} p_i$
+
+$$P_{\text{DDS}} = \prod_{i=1}^{n} p_i$$
 
 For $p_i = 0.95$ and $n = 4$:
-$P_{DDS} = (0.95)^4 = 0.815$
+
+$$P_{\text{DDS}} = (0.95)^4 = 0.815$$
 
 **MQTT Star Network:**
-Each device connects independently to broker:
-$P_{MQTT} = \prod_{i=1}^{n} p_{device_i \rightarrow broker}$
 
-For $p_{device \rightarrow broker} = 0.98$ and $n = 4$:
-$P_{MQTT} = (0.98)^4 = 0.922$
+Each device connects independently to broker:
+
+$$P_{\text{MQTT}} = \prod_{i=1}^{n} p_{\text{device}_i \rightarrow \text{broker}}$$
+
+For $p_{\text{device} \rightarrow \text{broker}} = 0.98$ and $n = 4$:
+
+$$P_{\text{MQTT}} = (0.98)^4 = 0.922$$
 
 **Reliability Improvement:**
-$\frac{P_{MQTT}}{P_{DDS}} = \frac{0.922}{0.815} = 1.13$
 
-13% improvement in system reliability.
+$$\frac{P_{\text{MQTT}}}{P_{\text{DDS}}} = \frac{0.922}{0.815} = 1.13$$
+
+This represents a 13% improvement in system reliability.
 
 ### B.3 Multi-Robot Task Allocation Optimization
 
 **Objective Function:**
-$\min \sum_{i=1}^{m}\sum_{j=1}^{n} c_{ij}x_{ij}$
+
+$$\min \sum_{i=1}^{m}\sum_{j=1}^{n} c_{ij}x_{ij}$$
 
 **Constraints:**
-1. Each task assigned to exactly one robot: $\sum_{i=1}^{m} x_{ij} = 1, \forall j$
-2. Robot capacity constraint: $\sum_{j=1}^{n} x_{ij} \leq C_i, \forall i$
-3. Binary assignment: $x_{ij} \in \{0,1\}$
+
+1. Each task assigned to exactly one robot: 
+   $$\sum_{i=1}^{m} x_{ij} = 1, \quad \forall j$$
+
+2. Robot capacity constraint: 
+   $$\sum_{j=1}^{n} x_{ij} \leq C_i, \quad \forall i$$
+
+3. Binary assignment: 
+   $$x_{ij} \in \{0,1\}$$
 
 Where:
 - $c_{ij}$ = cost of assigning robot $i$ to task $j$
-- $x_{ij}$ = binary decision variable
+- $x_{ij}$ = binary decision variable  
 - $C_i$ = capacity of robot $i$
 
 **Hungarian Algorithm Solution:**
-For balanced assignment ($m = n$ and $C_i = 1$), optimal solution in $O(n^3)$ time.
+
+For balanced assignment ($m = n$ and $C_i = 1$), optimal solution achievable in $O(n^3)$ time complexity.
+
+### B.4 Risk Assessment Mathematical Framework
+
+**Instantaneous Risk Model:**
+
+$$R(t) = \sum_{i=1}^{n} P_i(t) \cdot S_i \cdot E_i(t)$$
+
+Where:
+- $P_i(t)$ = Time-dependent probability of incident type $i$
+- $S_i$ = Severity coefficient for incident $i$  
+- $E_i(t)$ = Dynamic exposure frequency to risk $i$
+
+**Optimization Objective:**
+
+$$\min \int_0^T R(t) \, dt \quad \text{subject to} \quad \sum_{j=1}^m C_j \leq B$$
+
+Where $C_j$ represents deployment costs and $B$ is the budget constraint.
+
+### B.5 Sensor Fusion for Enhanced Accuracy
+
+**Multi-Sensor Fusion Model:**
+
+$$\hat{\mathbf{x}}_{\text{fused}} = \sum_{i=1}^{n} w_i \hat{\mathbf{x}}_i$$
+
+Where weights are optimized based on sensor reliability:
+
+$$w_i = \frac{\sigma_i^{-2}}{\sum_{j=1}^{n} \sigma_j^{-2}}$$
+
+**Expected Performance Improvement:**
+
+$$\sigma_{\text{fused}}^2 = \left(\sum_{i=1}^{n} \sigma_i^{-2}\right)^{-1} \leq \min_i \sigma_i^2$$
+
+This theoretical framework guarantees improved accuracy through optimal sensor combination.
+
+### B.6 2D vs 4D State Model Performance Analysis
+
+**Mean Squared Error Comparison:**
+
+For velocity-informed tracking, the performance difference between 2D and 4D models:
+
+$$\text{MSE}_{2D} - \text{MSE}_{4D} = (\dot{x}_{k-1})^2(\Delta t)^2 \geq 0$$
+
+**Theoretical Proof:**
+
+When $\dot{x}_{k-1} \neq 0$, the 4D model consistently achieves lower MSE by incorporating velocity information into state prediction.
+
+**Computational Complexity Trade-off:**
+
+| Model | State Prediction | Covariance Update | Kalman Gain | Total |
+|-------|-----------------|------------------|-------------|-------|
+| 2D | $O(4)$ | $O(8)$ | $O(8)$ | $O(20)$ |
+| 4D | $O(16)$ | $O(64)$ | $O(32)$ | $O(112)$ |
+| 6D | $O(36)$ | $O(216)$ | $O(72)$ | $O(324)$ |
+
+The 4D model provides optimal balance between computational efficiency and tracking accuracy for industrial applications.
 
 ## Appendix C: Code Implementations
 
