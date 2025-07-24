@@ -1,0 +1,66 @@
+#intro-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: linear-gradient(135deg, #0d1117, #1c1f26);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+  overflow: hidden;
+}
+
+#intro-overlay.exit {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.lottie-container {
+  width: 240px;
+  height: 240px;
+  margin-bottom: 1.5em;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #3498db;
+  animation: typing 3s steps(36), blink 0.8s step-end infinite;
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  color: white;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.sig {
+  margin-top: 1em;
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+}
+
+#intro-overlay button {
+  padding: 12px 28px;
+  background: transparent;
+  color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#intro-overlay button:hover {
+  background: #3498db;
+  color: white;
+  box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
