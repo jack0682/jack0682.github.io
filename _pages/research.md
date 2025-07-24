@@ -16,7 +16,7 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <div class="research-section">
 <h2><strong>Vision & Roadmap</strong></h2>
 
-<a href="/research/roadmap/" class="btn btn--primary btn--large">Explore Vision & Roadmap</a>
+<a href="/research/roadmap/" class="btn btn--primary btn--large ripple-entry">Explore Vision & Roadmap</a>
 
 <p><em>Where We're Heading</em></p>
 
@@ -28,7 +28,7 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <div class="research-section">
 <h2><strong>System Papers</strong></h2>
 
-<a href="/research/papers/" class="btn btn--primary btn--large">Read the Papers</a>
+<a href="/research/papers/" class="btn btn--primary btn--large ripple-entry">Read the Papers</a>
 
 <p><em>What We've Discovered</em></p>
 
@@ -40,7 +40,7 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <div class="research-section">
 <h2><strong>Applied Projects</strong></h2>
 
-<a href="/research/turtlebot_project/" class="btn btn--primary btn--large">Industrial Safety System</a>
+<a href="/research/turtlebot_project/" class="btn btn--primary btn--large ripple-entry">Industrial Safety System</a>
 
 <p><em>Theory in Practice</em></p>
 
@@ -52,7 +52,7 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <div class="research-section">
 <h2><strong>Experiments</strong></h2>
 
-<a href="/research/experiments/" class="btn btn--primary btn--large">View Experiments</a>
+<a href="/research/experiments/" class="btn btn--primary btn--large ripple-entry">View Experiments</a>
 
 <p><em>How We Know It Works</em></p>
 
@@ -280,4 +280,20 @@ hr {
   background: linear-gradient(to right, transparent, #ddd, transparent);
   margin: 3em 0;
 }
+
+@keyframes rippleEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ripple-entry {
+  animation: rippleEntry 0.7s ease-out both;
+}
+
 </style>

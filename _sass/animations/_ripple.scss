@@ -1,0 +1,14 @@
+@keyframes rippleEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ripple-entry {
+  animation: rippleEntry 0.5s ease-out both;
+}
