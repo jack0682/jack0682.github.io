@@ -12,7 +12,11 @@
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}
-    {% include intro.html %}
+    
+    <!-- 메인 페이지에서만 인트로 표시 -->
+    {% if page.url == "/" or page.url == "/index.html" %}
+      {% include intro.html %}
+    {% endif %}
 
     <div class="initial-content">
       {{ content }}
