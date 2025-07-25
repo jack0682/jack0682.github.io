@@ -19,7 +19,7 @@
   </div>
 
   <!-- 중앙 콘텐츠 컨테이너 -->
-  <div style="text-align:center; width:100%; max-width:800px; padding:2rem;">
+  <div style="text-align:center; width:100%; max-width:800px; padding:2rem; position:relative; z-index:10;">
     
     <!-- 메인 철학 구절 -->
     <div style="margin-bottom: 3rem; animation: fadeInUp 1.2s ease-out;">
@@ -63,17 +63,17 @@
     <!-- 버튼 -->
     <div style="animation: fadeInUp 2.1s ease-out 0.9s both;">
       <button onclick="exitIntro()" 
-              style="padding: 16px 32px; font-size: 1rem; background: rgba(255,255,255,0.05); color: #42a5f5; border: 1px solid rgba(66,165,245,0.3); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(66,165,245,0.15), inset 0 1px 0 rgba(255,255,255,0.1); animation: buttonPulse 3s ease-in-out 3s infinite; font-weight: 300; letter-spacing: 0.5px;"
-              onmouseover="this.style.background='rgba(66,165,245,0.2)'; this.style.borderColor='#42a5f5'; this.style.boxShadow='0 6px 25px rgba(66,165,245,0.3), inset 0 1px 0 rgba(255,255,255,0.2)'; this.style.transform='translateY(-2px)'"
-              onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(66,165,245,0.3)'; this.style.boxShadow='0 4px 20px rgba(66,165,245,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
-        Enter the Realm →
+              style="padding: 18px 36px; font-size: 1rem; background: rgba(255,255,255,0.03); color: #42a5f5; border: 1px solid rgba(66,165,245,0.25); border-radius: 14px; cursor: pointer; transition: all 0.4s ease; backdrop-filter: blur(15px); box-shadow: 0 6px 25px rgba(66,165,245,0.12), inset 0 1px 0 rgba(255,255,255,0.08); animation: buttonPulse 3s ease-in-out 3s infinite; font-weight: 300; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;"
+              onmouseover="this.style.background='rgba(66,165,245,0.15)'; this.style.borderColor='#42a5f5'; this.style.boxShadow='0 8px 30px rgba(66,165,245,0.25), inset 0 1px 0 rgba(255,255,255,0.15)'; this.style.transform='translateY(-3px)'; this.style.letterSpacing='1.5px'"
+              onmouseout="this.style.background='rgba(255,255,255,0.03)'; this.style.borderColor='rgba(66,165,245,0.25)'; this.style.boxShadow='0 6px 25px rgba(66,165,245,0.12), inset 0 1px 0 rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'; this.style.letterSpacing='1px'">
+        Ingredere Regnum →
       </button>
     </div>
     
   </div>
     
-  <!-- Lottie 애니메이션 (페이지 하단) -->
-  <div id="lottie-animation" style="position:absolute; bottom:0; left:0; width:100%; height:30%; pointer-events:none; opacity:0.7;"></div>
+  <!-- Lottie 애니메이션 (페이지 절반 크기로 확대) -->
+  <div id="lottie-animation" style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:80%; height:50%; max-width:800px; pointer-events:none; opacity:0.4; z-index:1;"></div>
     
 </div>
   
