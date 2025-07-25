@@ -240,7 +240,139 @@ contact_cta:
 }
 </style>
 
+<!-- Tech Stack Section - Ultra Compact & Sleek -->
+<section class="tech-stack-compact">
+  <div class="tech-container">
+    <h3>Technical Stack</h3>
+    <div class="tech-grid">
+      <div class="tech-row">
+        <span class="tech-label">Core</span>
+        <img src="https://skillicons.dev/icons?i=python,java,cpp,pytorch,tensorflow,ros,docker,aws&theme=light&perline=8" alt="Core Tech" class="tech-icons">
+      </div>
+      <div class="tech-row">
+        <span class="tech-label">Tools</span>
+        <img src="https://skillicons.dev/icons?i=fastapi,flask,neo4j,mongodb,redis,js,react,git&theme=light&perline=8" alt="Dev Tools" class="tech-icons">
+      </div>
+    </div>
+  </div>
+</section>
 
+<style>
+/* Ultra Compact Tech Stack */
+.tech-stack-compact {
+  background: var(--white);
+  padding: 1.5em 0;
+  margin: 1em 0;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tech-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2em;
+  text-align: center;
+}
+
+.tech-container h3 {
+  font-size: 1.3em;
+  color: var(--primary-color);
+  margin-bottom: 1em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tech-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.tech-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2em;
+  padding: 0.6em 1em;
+  background: var(--light-bg);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tech-row:hover {
+  background: rgba(52, 152, 219, 0.05);
+  transform: translateY(-1px);
+}
+
+.tech-label {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--text-color);
+  min-width: 40px;
+  text-align: right;
+  opacity: 0.8;
+}
+
+.tech-icons {
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.tech-icons:hover {
+  transform: scale(1.02);
+}
+
+/* 반응형 - 모바일 최적화 */
+@media (max-width: 768px) {
+  .tech-stack-compact {
+    padding: 1.2em 0;
+    margin: 0.8em 0;
+  }
+  
+  .tech-container {
+    padding: 0 1em;
+  }
+  
+  .tech-container h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.8em;
+  }
+  
+  .tech-row {
+    flex-direction: column;
+    gap: 0.8em;
+    padding: 0.8em 0.6em;
+  }
+  
+  .tech-label {
+    min-width: auto;
+    text-align: center;
+    font-size: 0.8em;
+  }
+  
+  .tech-icons {
+    height: 28px;
+  }
+  
+  .tech-grid {
+    gap: 0.6em;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-container h3 {
+    font-size: 1.1em;
+  }
+  
+  .tech-icons {
+    height: 24px;
+  }
+  
+  .tech-row {
+    padding: 0.6em 0.4em;
+  }
+}
+</style>
 
 <section class="core-research-section">
   <div class="section-container">
