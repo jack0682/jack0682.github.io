@@ -7,9 +7,245 @@
   <head>
     {% include head.html %}
     {% include head/custom.html %}
+    
+    <!-- Philosophical Loading Experience -->
+    <style>
+      .thought-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, 
+          rgba(26, 26, 46, 0.95) 0%, 
+          rgba(15, 15, 35, 0.98) 50%, 
+          rgba(8, 8, 20, 1) 100%);
+        backdrop-filter: blur(3px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 1;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: all;
+      }
+
+      .thought-loading-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Concentric Thought Circles */
+      .thought-ripples {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 40px;
+      }
+
+      .thought-circle {
+        position: absolute;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      }
+
+      .thought-circle:nth-child(1) {
+        width: 40px;
+        height: 40px;
+        border-color: rgba(255, 255, 255, 0.9);
+        border-width: 3px;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
+        animation: thought-core-pulse 2s ease-in-out infinite;
+      }
+
+      .thought-circle:nth-child(2) {
+        width: 70px;
+        height: 70px;
+        border-color: rgba(255, 255, 255, 0.6);
+        border-width: 2px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+        animation: thought-ripple 2.5s ease-out infinite 0.3s;
+      }
+
+      .thought-circle:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        animation: thought-ripple 3s ease-out infinite 0.6s;
+      }
+
+      .thought-circle:nth-child(4) {
+        width: 130px;
+        height: 130px;
+        border-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        animation: thought-ripple 3.5s ease-out infinite 0.9s;
+      }
+
+      @keyframes thought-core-pulse {
+        0%, 100% { 
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        50% { 
+          transform: translate(-50%, -50%) scale(1.15);
+          opacity: 0.8;
+          box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      @keyframes thought-ripple {
+        0% { 
+          transform: translate(-50%, -50%) scale(0.3);
+          opacity: 0;
+        }
+        20% { 
+          opacity: 1;
+        }
+        80% { 
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.8;
+        }
+        100% { 
+          transform: translate(-50%, -50%) scale(1.3);
+          opacity: 0;
+        }
+      }
+
+      /* Floating Thought Particles */
+      .thought-particles {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: float-particle 8s linear infinite;
+      }
+
+      .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+      .particle:nth-child(2) { left: 40%; animation-delay: 2s; }
+      .particle:nth-child(3) { left: 60%; animation-delay: 4s; }
+      .particle:nth-child(4) { left: 80%; animation-delay: 6s; }
+
+      @keyframes float-particle {
+        0% {
+          transform: translateY(100px) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) translateX(20px);
+          opacity: 0;
+        }
+      }
+
+      /* Philosophical Loading Text */
+      .thought-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-align: center;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        margin-bottom: 15px;
+        animation: text-breathe 4s ease-in-out infinite;
+      }
+
+      .thought-subtext {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        text-align: center;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-style: italic;
+        animation: text-breathe 4s ease-in-out infinite 1s;
+      }
+
+      @keyframes text-breathe {
+        0%, 100% { 
+          opacity: 0.9;
+          transform: translateY(0);
+        }
+        50% { 
+          opacity: 0.6;
+          transform: translateY(-2px);
+        }
+      }
+
+      /* Prevent body scroll during loading */
+      body.in-thought {
+        overflow: hidden;
+      }
+
+      /* Subtle background star field */
+      .thought-loading-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.1), transparent),
+          radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.08), transparent),
+          radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.06), transparent),
+          radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.04), transparent),
+          radial-gradient(1px 1px at 160px 30px, rgba(255,255,255,0.1), transparent);
+        background-repeat: repeat;
+        background-size: 200px 100px;
+        animation: stars-drift 20s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes stars-drift {
+        0% { transform: translateX(0) translateY(0); }
+        100% { transform: translateX(-200px) translateY(-100px); }
+      }
+    </style>
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
+    
+    <!-- Philosophical Loading Experience -->
+    <div class="thought-loading-overlay" id="thoughtLoadingOverlay">
+      <div class="thought-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      
+      <div class="thought-ripples">
+        <div class="thought-circle"></div>
+        <div class="thought-circle"></div>
+        <div class="thought-circle"></div>
+        <div class="thought-circle"></div>
+      </div>
+      
+      <div class="thought-text" id="thoughtText">Contemplating</div>
+      <div class="thought-subtext" id="thoughtSubtext">the threads of meaning</div>
+    </div>
+
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}
     
@@ -37,6 +273,115 @@
     </div>
 
     {% include scripts.html %}
+
+    <!-- Philosophical Loading Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const thoughtOverlay = document.getElementById('thoughtLoadingOverlay');
+        const thoughtText = document.getElementById('thoughtText');
+        const thoughtSubtext = document.getElementById('thoughtSubtext');
+        
+        // Philosophical loading messages
+        const contemplations = [
+          { main: "Contemplating", sub: "the threads of meaning" },
+          { main: "Weaving", sub: "fragments into understanding" },
+          { main: "Listening", sub: "to the silence between words" },
+          { main: "Gathering", sub: "scattered thoughts" },
+          { main: "Translating", sub: "the language of existence" },
+          { main: "Bridging", sub: "moments of knowing" }
+        ];
+        
+        let contemplationIndex = 0;
+        let textChangeInterval;
+        
+        function updateContemplation() {
+          const current = contemplations[contemplationIndex];
+          thoughtText.textContent = current.main;
+          thoughtSubtext.textContent = current.sub;
+          contemplationIndex = (contemplationIndex + 1) % contemplations.length;
+        }
+        
+        // Page load completion handler
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            clearInterval(textChangeInterval);
+            thoughtOverlay.classList.add('fade-out');
+            document.body.classList.remove('in-thought');
+            
+            // Remove from DOM after transition
+            setTimeout(function() {
+              if (thoughtOverlay && thoughtOverlay.parentNode) {
+                thoughtOverlay.parentNode.removeChild(thoughtOverlay);
+              }
+            }, 800);
+          }, 800); // 더 긴 표시 시간으로 동심원 애니메이션 확인 가능
+        });
+
+        // Internal link navigation handler
+        document.addEventListener('click', function(e) {
+          const link = e.target.closest('a');
+          
+          if (link && 
+              link.hostname === window.location.hostname && 
+              !link.classList.contains('no-loading') &&
+              !link.href.includes('#') &&
+              !link.href.includes('mailto:') &&
+              !link.href.includes('tel:') &&
+              link.target !== '_blank' &&
+              !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+            
+            // Create new overlay if removed
+            let overlay = document.getElementById('thoughtLoadingOverlay');
+            if (!overlay) {
+              overlay = document.createElement('div');
+              overlay.className = 'thought-loading-overlay';
+              overlay.id = 'thoughtLoadingOverlay';
+              overlay.innerHTML = `
+                <div class="thought-particles">
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                </div>
+                <div class="thought-ripples">
+                  <div class="thought-circle"></div>
+                  <div class="thought-circle"></div>
+                  <div class="thought-circle"></div>
+                  <div class="thought-circle"></div>
+                </div>
+                <div class="thought-text" id="thoughtText">Navigating</div>
+                <div class="thought-subtext" id="thoughtSubtext">to new reflections</div>
+              `;
+              document.body.appendChild(overlay);
+            }
+            
+            overlay.classList.remove('fade-out');
+            document.body.classList.add('in-thought');
+            
+            // Start text cycling for navigation
+            const navThoughts = [
+              { main: "Navigating", sub: "to new reflections" },
+              { main: "Transitioning", sub: "between thoughts" },
+              { main: "Seeking", sub: "the next understanding" }
+            ];
+            
+            let navIndex = 0;
+            const navText = overlay.querySelector('#thoughtText');
+            const navSubtext = overlay.querySelector('#thoughtSubtext');
+            
+            textChangeInterval = setInterval(function() {
+              const current = navThoughts[navIndex];
+              navText.textContent = current.main;
+              navSubtext.textContent = current.sub;
+              navIndex = (navIndex + 1) % navThoughts.length;
+            }, 2000);
+          }
+        });
+        
+        // Initial text cycling
+        textChangeInterval = setInterval(updateContemplation, 3000);
+      });
+    </script>
 
   </body>
 </html>
