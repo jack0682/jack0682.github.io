@@ -19,7 +19,6 @@ toc: true
 toc_sticky: true
 ---
 
-
 > *"In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."*
 
 ## Abstract

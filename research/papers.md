@@ -8,7 +8,6 @@ toc: true
 toc_sticky: true
 ---
 
-# System Papers
 *Foundational Research Publications for Cognitive Robotics*
 
 > *"Each paper represents not just technical contribution, but a philosophical commitment to building machines that think with, rather than for, humans."*

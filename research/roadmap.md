@@ -8,7 +8,6 @@ toc: true
 toc_sticky: true
 ---
 
-#  Vision & Roadmap
 *Charting the Future of Human-Centric Cognitive Robotics*
 
 > *"The future belongs not to those who surrender their humanity to machines, but to those who use machines to become more deeply human."*
