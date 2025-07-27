@@ -12,12 +12,12 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "aqua" # "air", "aqua""dark", "contrast", "default", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Jack's Blog"
+title                    : "Resonance of Thought"
 title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Jaehong Oh"
@@ -313,6 +313,50 @@ compress_html:
 
 # Defaults
 defaults:
+  # _posts: 블로그 게시글 기본값
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+      comments: false          # 필요 시 true로 (예: giscus 등 활성화)
+      toc: true                # Table of Contents 자동 삽입
+      toc_sticky: true         # 화면 스크롤 시 TOC 고정
+      sidebar:
+        nav: "main"
+
+  # _pages: 단일 페이지들 (home, about, csa 등)
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      sidebar:
+        nav: "main"
+      toc: true
+      toc_label: "📑 contexts"
+      toc_icon: "list"
+      read_time: true
+      share: true
+
+  # drafts (optional)
+  - scope:
+      path: ""
+      type: drafts
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+
+# Defaults
+aqua:
   # _posts: 블로그 게시글 기본값
   - scope:
       path: ""
