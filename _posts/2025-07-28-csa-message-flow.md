@@ -7,8 +7,6 @@ tags:
   - Issue
 ---
 
-# CSA Framework Development: Comprehensive Experimental Log
-
 ## Project Overview
 **Project**: Cognitive Synergy Architecture (CSA) for Human-Centric Collaborative Robots  
 **Principal Investigator**: Jaehong Oh  

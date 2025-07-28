@@ -1,6 +1,6 @@
 ---
 title: "Morning Language of Self-Inquiry"
-date: 2025-07-09
+date: 2025-05-09
 categories:
   - Diary
 tags:
