@@ -276,49 +276,158 @@
 
     <!-- Philosophical Loading Script -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const thoughtOverlay = document.getElementById('thoughtLoadingOverlay');
-        const thoughtText = document.getElementById('thoughtText');
-        const thoughtSubtext = document.getElementById('thoughtSubtext');
+      (function() {
+        'use strict';
         
-        // Philosophical loading messages
-        const contemplations = [
-          { main: "Contemplating", sub: "the threads of meaning" },
-          { main: "Weaving", sub: "fragments into understanding" },
-          { main: "Listening", sub: "to the silence between words" },
-          { main: "Gathering", sub: "scattered thoughts" },
-          { main: "Translating", sub: "the language of existence" },
-          { main: "Bridging", sub: "moments of knowing" }
-        ];
-        
-        let contemplationIndex = 0;
+        let thoughtOverlay;
         let textChangeInterval;
+        let isNavigating = false;
+        let initialLoadComplete = false;
         
-        function updateContemplation() {
-          const current = contemplations[contemplationIndex];
-          thoughtText.textContent = current.main;
-          thoughtSubtext.textContent = current.sub;
-          contemplationIndex = (contemplationIndex + 1) % contemplations.length;
+        // Initialize loading system
+        function initThoughtLoading() {
+          thoughtOverlay = document.getElementById('thoughtLoadingOverlay');
+          if (!thoughtOverlay) return;
+          
+          const thoughtText = document.getElementById('thoughtText');
+          const thoughtSubtext = document.getElementById('thoughtSubtext');
+          
+          // Philosophical loading messages
+          const contemplations = [
+            { main: "Contemplating", sub: "the threads of meaning" },
+            { main: "Weaving", sub: "fragments into understanding" },
+            { main: "Listening", sub: "to the silence between words" },
+            { main: "Gathering", sub: "scattered thoughts" },
+            { main: "Translating", sub: "the language of existence" },
+            { main: "Bridging", sub: "moments of knowing" }
+          ];
+          
+          let contemplationIndex = 0;
+          
+          function updateContemplation() {
+            if (thoughtText && thoughtSubtext) {
+              const current = contemplations[contemplationIndex];
+              thoughtText.textContent = current.main;
+              thoughtSubtext.textContent = current.sub;
+              contemplationIndex = (contemplationIndex + 1) % contemplations.length;
+            }
+          }
+          
+          // Start initial text cycling
+          textChangeInterval = setInterval(updateContemplation, 3000);
+          
+          return { updateContemplation, contemplations };
         }
         
-        // Page load completion handler
-        window.addEventListener('load', function() {
-          setTimeout(function() {
+        // Hide loading overlay
+        function hideLoadingOverlay() {
+          if (textChangeInterval) {
             clearInterval(textChangeInterval);
+            textChangeInterval = null;
+          }
+          
+          if (thoughtOverlay) {
             thoughtOverlay.classList.add('fade-out');
             document.body.classList.remove('in-thought');
             
-            // Remove from DOM after transition
             setTimeout(function() {
               if (thoughtOverlay && thoughtOverlay.parentNode) {
                 thoughtOverlay.parentNode.removeChild(thoughtOverlay);
+                thoughtOverlay = null;
               }
             }, 800);
-          }, 800); // 더 긴 표시 시간으로 동심원 애니메이션 확인 가능
-        });
-
-        // Internal link navigation handler
-        document.addEventListener('click', function(e) {
+          }
+          
+          isNavigating = false;
+        }
+        
+        // Show loading overlay for navigation
+        function showNavigationLoading() {
+          if (isNavigating || !initialLoadComplete) return;
+          
+          isNavigating = true;
+          
+          // Create overlay if it doesn't exist
+          if (!thoughtOverlay) {
+            thoughtOverlay = document.createElement('div');
+            thoughtOverlay.className = 'thought-loading-overlay';
+            thoughtOverlay.id = 'thoughtLoadingOverlay';
+            thoughtOverlay.innerHTML = `
+              <div class="thought-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+              <div class="thought-ripples">
+                <div class="thought-circle"></div>
+                <div class="thought-circle"></div>
+                <div class="thought-circle"></div>
+                <div class="thought-circle"></div>
+              </div>
+              <div class="thought-text" id="thoughtText">Navigating</div>
+              <div class="thought-subtext" id="thoughtSubtext">to new reflections</div>
+            `;
+            document.body.appendChild(thoughtOverlay);
+          }
+          
+          thoughtOverlay.classList.remove('fade-out');
+          document.body.classList.add('in-thought');
+          
+          // Navigation text cycling
+          const navThoughts = [
+            { main: "Navigating", sub: "to new reflections" },
+            { main: "Transitioning", sub: "between thoughts" },
+            { main: "Seeking", sub: "the next understanding" }
+          ];
+          
+          let navIndex = 0;
+          const navText = thoughtOverlay.querySelector('#thoughtText');
+          const navSubtext = thoughtOverlay.querySelector('#thoughtSubtext');
+          
+          if (navText && navSubtext) {
+            textChangeInterval = setInterval(function() {
+              const current = navThoughts[navIndex];
+              navText.textContent = current.main;
+              navSubtext.textContent = current.sub;
+              navIndex = (navIndex + 1) % navThoughts.length;
+            }, 2000);
+          }
+        }
+        
+        // Handle page visibility changes (back/forward navigation)
+        function handleVisibilityChange() {
+          if (document.hidden) {
+            // Page is becoming hidden (user navigating away)
+            return;
+          } else {
+            // Page is becoming visible (user came back)
+            if (initialLoadComplete && isNavigating) {
+              // Hide loading if we're returning to this page
+              setTimeout(hideLoadingOverlay, 100);
+            }
+          }
+        }
+        
+        // Handle popstate (back/forward button)
+        function handlePopState() {
+          if (initialLoadComplete && isNavigating) {
+            setTimeout(hideLoadingOverlay, 100);
+          }
+        }
+        
+        // Handle page load completion
+        function handlePageLoad() {
+          setTimeout(function() {
+            hideLoadingOverlay();
+            initialLoadComplete = true;
+          }, 800);
+        }
+        
+        // Handle internal link clicks
+        function handleInternalNavigation(e) {
+          if (!initialLoadComplete) return;
+          
           const link = e.target.closest('a');
           
           if (link && 
@@ -330,57 +439,36 @@
               link.target !== '_blank' &&
               !e.ctrlKey && !e.metaKey && !e.shiftKey) {
             
-            // Create new overlay if removed
-            let overlay = document.getElementById('thoughtLoadingOverlay');
-            if (!overlay) {
-              overlay = document.createElement('div');
-              overlay.className = 'thought-loading-overlay';
-              overlay.id = 'thoughtLoadingOverlay';
-              overlay.innerHTML = `
-                <div class="thought-particles">
-                  <div class="particle"></div>
-                  <div class="particle"></div>
-                  <div class="particle"></div>
-                  <div class="particle"></div>
-                </div>
-                <div class="thought-ripples">
-                  <div class="thought-circle"></div>
-                  <div class="thought-circle"></div>
-                  <div class="thought-circle"></div>
-                  <div class="thought-circle"></div>
-                </div>
-                <div class="thought-text" id="thoughtText">Navigating</div>
-                <div class="thought-subtext" id="thoughtSubtext">to new reflections</div>
-              `;
-              document.body.appendChild(overlay);
-            }
-            
-            overlay.classList.remove('fade-out');
-            document.body.classList.add('in-thought');
-            
-            // Start text cycling for navigation
-            const navThoughts = [
-              { main: "Navigating", sub: "to new reflections" },
-              { main: "Transitioning", sub: "between thoughts" },
-              { main: "Seeking", sub: "the next understanding" }
-            ];
-            
-            let navIndex = 0;
-            const navText = overlay.querySelector('#thoughtText');
-            const navSubtext = overlay.querySelector('#thoughtSubtext');
-            
-            textChangeInterval = setInterval(function() {
-              const current = navThoughts[navIndex];
-              navText.textContent = current.main;
-              navSubtext.textContent = current.sub;
-              navIndex = (navIndex + 1) % navThoughts.length;
-            }, 2000);
+            showNavigationLoading();
           }
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+          initThoughtLoading();
+          
+          // Event listeners
+          window.addEventListener('load', handlePageLoad);
+          window.addEventListener('popstate', handlePopState);
+          document.addEventListener('visibilitychange', handleVisibilityChange);
+          document.addEventListener('click', handleInternalNavigation);
+          
+          // Cleanup on page unload
+          window.addEventListener('beforeunload', function() {
+            if (textChangeInterval) {
+              clearInterval(textChangeInterval);
+            }
+          });
         });
         
-        // Initial text cycling
-        textChangeInterval = setInterval(updateContemplation, 3000);
-      });
+        // Expose for debugging (optional)
+        window.thoughtLoading = {
+          hide: hideLoadingOverlay,
+          isNavigating: function() { return isNavigating; },
+          isInitialized: function() { return initialLoadComplete; }
+        };
+        
+      })();
     </script>
 
   </body>
