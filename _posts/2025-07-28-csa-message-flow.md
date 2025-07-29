@@ -41,7 +41,7 @@ tags:
 
 ### Project Scope and Objectives
 
-The SEGO (Semantic-Enhanced Geometry Object) Recognition System represents a cutting-edge integration of multiple artificial intelligence and computer vision technologies within a unified ROS2-based framework. The system is designed to provide real-time semantic understanding of 3D environments through the fusion of:
+The SEGO (Semantic Graph Ontology mapper) Recognition System represents a cutting-edge integration of multiple artificial intelligence and computer vision technologies within a unified ROS2-based framework. The system is designed to provide real-time semantic understanding of 3D environments through the fusion of:
 
 - **Simultaneous Localization and Mapping (SLAM)** using ORB-SLAM2 for precise 6-DOF pose estimation
 - **Deep Learning Object Detection** via YOLOv5 for real-time object recognition
