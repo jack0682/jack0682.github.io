@@ -2,7 +2,7 @@
 title: "Error Report #1: SEGO System Implementation"
 date: 2025-07-25
 categories:
-  - Report
+  - Report2
 tags:
   - Issue2
 ---
