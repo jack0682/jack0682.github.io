@@ -4,7 +4,7 @@ date: 2025-07-25
 categories:
   - Report
 tags:
-  - Issue
+  - Issue2
 ---
 
 # SEGO System Implementation: Comprehensive Error Analysis and Technical Report #1
