@@ -13,7 +13,7 @@ tags:
 **Report ID:** CSA-SEGO-ERR-001  
 **Date:** June 25, 2025  
 **Experiment Duration:** 10 hours continuous development and debugging  
-**Lead Researcher:** Jack Hong  
+**Lead Researcher:** Jaehong Oh
 **System Designation:** SEGO (Semantic-Enhanced Geometry Object) Recognition System  
 **ROS2 Distribution:** Humble Hawksbill  
 **Target Platform:** Ubuntu 22.04 LTS  
