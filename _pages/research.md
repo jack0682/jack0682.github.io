@@ -49,6 +49,19 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <p><strong>From equations to impact — saving lives through intelligent systems</strong></p>
 </div>
 
+
+<div class="research-section">
+  <h2><strong>Precision Liquid Injection System</strong></h2>
+
+  <a href="/research/liquid_injection/" class="btn btn--primary btn--large ripple-entry">Explore the System</a>
+
+  <p><em>Automation Meets Accuracy</em></p>
+
+  <p>An advanced ROS2-based robotic system using Doosan M0609 and high-precision load cells to perform automated liquid pouring with ±1ml accuracy. Integrates MQTT communication, real-time control, and dynamic feedback for precision compound preparation.</p>
+  
+  <p><strong>Where robotics meets chemistry — down to the last milliliter</strong></p>
+</div>
+
 <div class="research-section">
 <h2><strong>Experiments</strong></h2>
 
