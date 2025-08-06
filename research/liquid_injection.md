@@ -722,7 +722,7 @@ Experimental comparison of filtering methods in static conditions:
 
 **Statistical Significance Test:**
 
-$t_{statistic} = \frac{\bar{e}_1 - \bar{e}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$
+$$t_{statistic} = \frac{\bar{e}_1 - \bar{e}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
 
 The 2D Kalman filter demonstrates statistically significant improvement (p < 0.001).
 
@@ -1073,7 +1073,7 @@ where e = x - x_m is the tracking error.
 
 **Prior Distribution:**
 
-$p(\boldsymbol{\theta}) \sim \mathcal{N}(\boldsymbol{\mu}_0, \boldsymbol{\Sigma}_0)$
+$$p(\boldsymbol{\theta}) \sim \mathcal{N}(\boldsymbol{\mu}_0, \boldsymbol{\Sigma}_0)$$
 
 **Likelihood Function:**
 
@@ -1109,11 +1109,11 @@ where Q_α denotes the α-quantile.
 
 **Integral Performance Indices:**
 
-$IAE = \int_0^T |e(t)| dt$
+$$IAE = \int_0^T |e(t)| dt$$
 
-$ISE = \int_0^T e^2(t) dt$
+$$ISE = \int_0^T e^2(t) dt$$
 
-$ITAE = \int_0^T t|e(t)| dt$
+$$ITAE = \int_0^T t|e(t)| dt$$
 
 **Experimental Results:**
 - IAE: 23.4 g·s
