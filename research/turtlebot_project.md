@@ -47,19 +47,19 @@ Industrial safety remains a persistent challenge despite technological advanceme
 
 ### 1.2 Mathematical Risk Framework
 
-We define the instantaneous risk level $R(t)$ at time $t$ as:
+We define the instantaneous risk level $$R(t)$$ at time $$t$$ as:
 
 $$R(t) = \sum_{i=1}^{n} P_i(t) \cdot S_i \cdot E_i(t)$$
 
 Where:
-- $P_i(t)$ = Time-dependent probability of incident type $i$
-- $S_i$ = Severity coefficient for incident $i$
-- $E_i(t)$ = Dynamic exposure frequency to risk $i$
+- $$P_i(t)$$ = Time-dependent probability of incident type $$i$$
+- $$S_i$$ = Severity coefficient for incident $$i$$
+- $$E_i(t)$$ = Dynamic exposure frequency to risk $$i$$
 
 **Objective Function:**
 $$\min \int_0^T R(t) \, dt \quad \text{subject to} \quad \sum_{j=1}^m C_j \leq B$$
 
-Where $C_j$ represents deployment costs and $B$ is the budget constraint.
+Where $$C_j$$ represents deployment costs and $B$ is the budget constraint.
 
 ### 1.3 Root Cause Analysis
 
@@ -67,10 +67,10 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 
 | Risk Factor | Mathematical Model | Mitigation Strategy |
 |-------------|-------------------|-------------------|
-| **Cognitive Fatigue** | $V(t) = V_0 e^{-\lambda t}$ | Continuous monitoring |
-| **Cultural Pressure** | $P_{speed} > P_{safety}$ | Automated enforcement |
-| **Monitoring Gaps** | $\eta_{monitoring} < \eta_{required}$ | Real-time surveillance |
-| **Communication Barriers** | $I_{effective} = I_{transmitted} \cdot \alpha$ | Visual/audio alerts |
+| **Cognitive Fatigue** | $$V(t) = V_0 e^{-\lambda t}$$ | Continuous monitoring |
+| **Cultural Pressure** | $$P_{speed} > P_{safety}$$ | Automated enforcement |
+| **Monitoring Gaps** | $$\eta_{monitoring} < \eta_{required}$$ | Real-time surveillance |
+| **Communication Barriers** | $$I_{effective} = I_{transmitted} \cdot \alpha$$ | Visual/audio alerts |
 
 ![Risk Factor Analysis](/assets/images/turtlebot_project/risk_factors.png)
 *Figure 3: Pie chart showing distribution of accident causes with behavioral factors highlighted*
@@ -103,7 +103,7 @@ The system employs a hub-and-spoke topology with fault-tolerant communication:
 
 ### 2.3 Reliability Analysis
 
-For a distributed system with $n$ robots, system reliability $R_{system}$ is:
+For a distributed system with $n$ robots, system reliability $$R_{system}$$ is:
 
 $$R_{system} = 1 - \prod_{i=1}^{n}(1 - R_i)$$
 
@@ -150,7 +150,7 @@ $$C(x,y) = \begin{cases}
 0 & \text{otherwise}
 \end{cases}$$
 
-Where $\phi(x,y)$ represents feature extraction at pixel $(x,y)$ and $\sigma$ is the sigmoid activation.
+Where $$\phi(x,y)$$ represents feature extraction at pixel $$(x,y)$$ and $$\sigma$$ is the sigmoid activation.
 
 **PPE Compliance Assessment:**
 $$\text{PPE}_{score} = \prod_{i \in \{\text{helmet, vest, boots}\}} \max_{j} C_i^{(j)}$$
@@ -162,9 +162,9 @@ $$\text{PPE}_{score} = \prod_{i \in \{\text{helmet, vest, boots}\}} \max_{j} C_i
 
 **Sensor Noise Characterization:**
 Statistical analysis of OAK-D depth measurements reveals:
-- Standard Deviation: $\sigma = 0.4261$ m
-- Variance: $\sigma^2 = 0.1815$ m²
-- Temporal Correlation: $\rho(\tau) = 0.85 e^{-\tau/2.3}$
+- Standard Deviation: $$\sigma = 0.4261$$ m
+- Variance: $$\sigma^2 = 0.1815$$ m²
+- Temporal Correlation: $$\rho(\tau) = 0.85 e^{-\tau/2.3}$$
 
 
 **State Space Model Design:**
@@ -196,7 +196,7 @@ $$\mathbf{F} = \begin{bmatrix}
 Comparing 2D vs 4D models, the Mean Squared Error difference:
 $$\text{MSE}_{2D} - \text{MSE}_{4D} = (\dot{x}_{k-1})^2(\Delta t)^2 \geq 0$$
 
-This proves the 4D model's theoretical superiority when velocity $\dot{x}_{k-1} \neq 0$.
+This proves the 4D model's theoretical superiority when velocity $$\dot{x}_{k-1} \neq 0$$.
 
 
 **Experimental Validation:**
@@ -228,7 +228,7 @@ The crack detection system employs a hybrid approach combining deep learning and
 
 **Rationale for HSV Selection:**
 - **Illumination Invariance:** Separates color information from lighting conditions
-- **Computational Efficiency:** Linear complexity $O(n)$ for pixel processing
+- **Computational Efficiency:** Linear complexity $$O(n)$$ for pixel processing
 - **Threshold Interpretability:** Intuitive parameter tuning for industrial deployment
 - **Robustness:** Effective performance with limited training data
 
@@ -249,7 +249,7 @@ $$\text{ratio}_x = \frac{Z}{f_x}, \quad \text{ratio}_y = \frac{Z}{f_y}$$
 **Surface Area Estimation:**
 $$A_{crack} = \sum_{i,j \in \text{crack pixels}} \frac{Z_{i,j}}{f_x} \cdot \frac{Z_{i,j}}{f_y} \cdot \cos(\theta_{i,j})$$
 
-Where $\theta_{i,j}$ represents the surface normal angle at pixel $(i,j)$.
+Where $$\theta_{i,j}$$ represents the surface normal angle at pixel $$(i,j)$$.
 
 **Error Propagation Analysis:**
 $$\sigma_A^2 = \left(\frac{\partial A}{\partial Z}\right)^2 \sigma_Z^2 + \left(\frac{\partial A}{\partial f_x}\right)^2 \sigma_{f_x}^2 + \left(\frac{\partial A}{\partial f_y}\right)^2 \sigma_{f_y}^2$$
@@ -281,15 +281,15 @@ The navigation system implements a hierarchical control structure:
 $$P(e_i) = w_1 \cdot U(e_i) + w_2 \cdot T(e_i) + w_3 \cdot D(e_i)$$
 
 Where:
-- $U(e_i)$ = Urgency level of event $i$
-- $T(e_i)$ = Time since event detection
-- $D(e_i)$ = Distance to event location
-- $w_1, w_2, w_3$ = Weighting factors ($w_1 > w_2 > w_3$)
+- $$U(e_i)$$ = Urgency level of event $i$
+- $$T(e_i)$$ = Time since event detection
+- $$D(e_i)$$ = Distance to event location
+- $$w_1, w_2, w_3$$ = Weighting factors ($$w_1 > w_2 > w_3$$)
 
 **Resource Allocation Optimization:**
 $$\min \sum_{i,j} c_{ij}x_{ij} \quad \text{subject to} \quad \sum_j x_{ij} = 1, \sum_i x_{ij} \leq 1$$
 
-Where $x_{ij} \in \{0,1\}$ indicates assignment of robot $i$ to task $j$.
+Where $$x_{ij} \in \{0,1\}$$ indicates assignment of robot $$i$$ to task $$j$$.
 
 ### 5.3 Navigation Parameter Optimization
 
@@ -300,9 +300,9 @@ Original configuration caused navigation failures in constrained environments. T
 $$\min_{b} J(b) = \alpha \cdot P_{collision}(b) + \beta \cdot E[T_{stuck}(b)] + \gamma \cdot E[P_{deviation}(b)]$$
 
 Subject to constraints:
-- $b_{min} \leq b \leq b_{max}$
-- $P_{collision}(b) \leq P_{threshold}$
-- $T_{response}(b) \leq T_{max}$
+- $$b_{min} \leq b \leq b_{max}$$
+- $$P_{collision}(b) \leq P_{threshold}$$
+- $$T_{response}(b) \leq T_{max}$$
 
 **Solution:** Reduced inflation radius from 0.4m to 0.1m, resulting in:
 - 60% reduction in stuck events
@@ -317,7 +317,7 @@ Subject to constraints:
 
 **Reliability Comparison for Industrial Networks:**
 
-For a network with $n$ segments, failure probability analysis:
+For a network with $$n$$ segments, failure probability analysis:
 
 **ROS2 DDS (Mesh Topology):**
 $$P_{DDS_{failure}} = 1 - \prod_{i=1}^{n} P_{segment_i}$$
@@ -325,7 +325,7 @@ $$P_{DDS_{failure}} = 1 - \prod_{i=1}^{n} P_{segment_i}$$
 **MQTT (Star Topology):**
 $$P_{MQTT_{success}} = \prod_{i=1}^{n} P_{device \rightarrow broker}$$
 
-Since devices connect independently: $P_{MQTT_{success}} \gg P_{DDS_{success}}$
+Since devices connect independently: $$P_{MQTT_{success}} \gg P_{DDS_{success}}$$
 
 ![Protocol Comparison](/assets/images/turtlebot_project/protocol_comparison.png)
 *Figure 16: Network topology comparison showing MQTT's resilience advantages*S
@@ -346,8 +346,8 @@ Since devices connect independently: $P_{MQTT_{success}} \gg P_{DDS_{success}}$
 **Message Overhead Analysis:**
 
 For 100-byte payload:
-- MQTT: 2-7% overhead ($\eta_{MQTT} = 0.93-0.98$)
-- HTTP: 200-800% overhead ($\eta_{HTTP} = 0.12-0.33$)
+- MQTT: 2-7% overhead ($$\eta_{MQTT} = 0.93-0.98$$)
+- HTTP: 200-800% overhead ($$\eta_{HTTP} = 0.12-0.33$$)
 
 $$\text{Efficiency Ratio} = \frac{\eta_{MQTT}}{\eta_{HTTP}} \approx 3-8$$
 
@@ -379,10 +379,10 @@ Based on performance analysis, 10 fps provides optimal balance of reliability an
 $$T_{total} = T_{detection} + T_{processing} + T_{communication} + T_{response}$$
 
 Measured components:
-- $T_{detection} = 52 \pm 8$ ms (YOLOv8n inference)
-- $T_{processing} = 23 \pm 5$ ms (coordinate transformation)
-- $T_{communication} = 95 \pm 15$ ms (MQTT round-trip)
-- $T_{response} = 180 \pm 30$ ms (navigation initiation)
+- $$T_{detection} = 52 \pm 8$$ ms (YOLOv8n inference)
+- $$T_{processing} = 23 \pm 5$$ ms (coordinate transformation)
+- $$T_{communication} = 95 \pm 15$$ ms (MQTT round-trip)
+- $$T_{response} = 180 \pm 30$$ ms (navigation initiation)
 
 **Total System Response Time: 350 ± 35 ms**
 
@@ -453,7 +453,7 @@ Systematic offset between detected object coordinates and actual global map posi
 **Mathematical Error Model:**
 $$\mathbf{p}_{measured} = \mathbf{R}\mathbf{p}_{actual} + \mathbf{t} + \boldsymbol{\epsilon}_{systematic} + \boldsymbol{\eta}_{noise}$$
 
-Where $\mathbf{R}$ and $\mathbf{t}$ represent systematic rotation and translation errors.
+Where $$\mathbf{R}$$ and $$\mathbf{t}$$ represent systematic rotation and translation errors.
 
 **Solution Implementation:**
 
