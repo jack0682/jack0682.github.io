@@ -364,6 +364,7 @@ subject to:
 ### 6.1 Container Geometric Characterization
 
 #### 6.1.1 Geometric Parameters
+
 The experimental container exhibits non-uniform cross-sectional geometry requiring precise mathematical characterization:
 
 | Parameter | Symbol | Value | Unit |
@@ -653,7 +654,7 @@ For highly nonlinear systems, UKF provides superior performance through determin
 
 **Sigma Point Generation:**
 
-$\mathcal{X}_{k-1} = \begin{bmatrix} \hat{\mathbf{x}}_{k-1} & \hat{\mathbf{x}}_{k-1} + \sqrt{(n+\lambda)\mathbf{P}_{k-1}} & \hat{\mathbf{x}}_{k-1} - \sqrt{(n+\lambda)\mathbf{P}_{k-1}} \end{bmatrix}$
+$$\mathcal{X}_{k-1} = \begin{bmatrix} \hat{\mathbf{x}}_{k-1} & \hat{\mathbf{x}}_{k-1} + \sqrt{(n+\lambda)\mathbf{P}_{k-1}} & \hat{\mathbf{x}}_{k-1} - \sqrt{(n+\lambda)\mathbf{P}_{k-1}} \end{bmatrix}$$
 
 where:
 - n = state dimension
