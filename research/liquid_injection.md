@@ -1,5 +1,6 @@
 ---
-title: "Precision Liquid Injection System with Doosan M0609"
+title: "Robot-Based Precision Concentration Control System: An Integrated Approach to Fluid Dynamic Modeling and Adaptive Control Algorithms"
+
 excerpt: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication"
 date: 2025-08-06
 categories:
@@ -19,8 +20,6 @@ header:
 toc: true
 toc_sticky: true
 ---
-
-# Robot-Based Precision Concentration Control System: An Integrated Approach to Fluid Dynamic Modeling and Adaptive Control Algorithms
 
 > *"Machines translate the intuition of human hands into mathematical formulas. The accuracy of this translation determines the depth of technology."*
 
