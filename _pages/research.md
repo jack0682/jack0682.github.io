@@ -63,6 +63,18 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 </div>
 
 <div class="research-section">
+  <h2><strong>Doosan M0609-Based Soma Cube Assembly System: Reinforcement Learning Integration</strong></h2>
+
+  <a href="/research/RL_soma/" class="btn btn--primary btn--large ripple-entry">Explore the System</a>
+
+  <p><em>Automation assembly system</em></p>
+
+  <p>reinforcement learning, and collaborative robotics for autonomous Soma cube puzzle solving</p>
+  
+  <p><strong>Robotics assembly systyem</strong></p>
+</div>
+
+<div class="research-section">
 <h2><strong>Experiments</strong></h2>
 
 <a href="/research/experiments/" class="btn btn--primary btn--large ripple-entry">View Experiments</a>
