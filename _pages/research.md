@@ -49,6 +49,18 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 <p><strong>From equations to impact — saving lives through intelligent systems</strong></p>
 </div>
 
+<div class="research-section">
+<h2><strong>Autonomous Assembly Research</strong></h2>
+
+<a href="/research/somacube-rl-assembly/" class="btn btn--primary btn--large ripple-entry">Soma Cube RL Assembly</a>
+
+<p><em>Intelligence in Motion</em></p>
+
+<p>Breakthrough research in autonomous 3D puzzle assembly combining Legal-Action Masked Deep Q-Network with Safe ZYZ Regrasp planning. This comprehensive system demonstrates how reinforcement learning can achieve human-level spatial reasoning in collaborative robotics, featuring 75% assembly success and 91% sim-to-real transfer efficiency.</p>
+
+<p><strong>From algorithms to assembly — teaching robots spatial intelligence through deep learning</strong></p>
+</div>
+
 
 <div class="research-section">
   <h2><strong>Precision Liquid Injection System</strong></h2>
@@ -63,15 +75,15 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 </div>
 
 <div class="research-section">
-  <h2><strong>Doosan M0609-Based Soma Cube Assembly System: Reinforcement Learning Integration</strong></h2>
+  <h2><strong>Legal-Action Masked DQN for Soma Cube Assembly</strong></h2>
 
-  <a href="/research/RL_soma/" class="btn btn--primary btn--large ripple-entry">Explore the System</a>
+  <a href="/research/somacube-rl-assembly/" class="btn btn--primary btn--large ripple-entry">Read the Paper</a>
 
-  <p><em>Automation assembly system</em></p>
+  <p><em>Autonomous 3D Puzzle Solving with Safe Robotics</em></p>
 
-  <p>reinforcement learning, and collaborative robotics for autonomous Soma cube puzzle solving</p>
+  <p>A comprehensive robotic assembly system integrating Legal-Action Masked Deep Q-Network, Safe ZYZ Regrasp planning, and real-time perception for autonomous Soma Cube puzzle solving using a Doosan M0609 collaborative robot. Features 75% assembly success rate, 91% sim-to-real transfer efficiency, and multi-modal safety architecture with Korean speech recognition.</p>
   
-  <p><strong>Robotics assembly systyem</strong></p>
+  <p><strong>Where reinforcement learning meets precision robotics — solving 3D puzzles with human-level spatial intelligence</strong></p>
 </div>
 
 <div class="research-section">
