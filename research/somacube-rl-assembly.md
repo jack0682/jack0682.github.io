@@ -111,6 +111,7 @@ where $$\text{occupied}(\phi(P_i))$$ returns the set of grid positions occupied 
 The theoretical action space complexity presents significant computational challenges:
 
 **Per-Piece Orientation Analysis:**
+
 | Piece Type | Unique Orientations | Symmetry Group | Complexity Factor |
 |------------|-------------------|----------------|-------------------|
 | Corner | 8 | $$C_3$$ rotational | Low |
@@ -122,9 +123,16 @@ The theoretical action space complexity presents significant computational chall
 | Three | 12 | $$D_2$$ dihedral | Medium |
 
 **Total Theoretical Action Space:**
+
 $$|\mathcal{A}_{theoretical}| = \sum_{i=1}^{7} |\mathcal{O}_i| \times |\mathcal{G}| = (8+24+24+12+12+24+12) \times 27 = 116 \times 27 = 3,132$$
 
-However, physical and geometric constraints reduce this to approximately $$|\mathcal{A}_{feasible}| \approx 2,484$$ executable actions, representing a **21% constraint-based reduction** that forms the foundation of our legal-action masking approach.
+
+$$\
+\left\lvert \mathcal{A}_{\mathrm{feasible}} \right\rvert \approx 2484
+\$$
+
+executable actions, representing a **21% constraint-based reduction** that forms the foundation of our legal-action masking approach.
+
 
 ### 1.4 Markov Decision Process (MDP) Formulation
 
@@ -433,7 +441,14 @@ The decomposition reduces network complexity from $$O(|\mathcal{O}| \times |\mat
 
 #### 3.2.1 Constraint Formalization and Implementation
 
-At each decision time step $$t$$, we compute a comprehensive binary mask $$\mathcal{M}(s_t) \in \{0,1\}^{|\mathcal{A}|}$$ representing the legality of each possible action. The masked Q-value computation becomes:
+At each decision time step $$t$$, we compute a comprehensive binary mask 
+$$
+\mathcal{M}(s_t) \in \{0,1\}^{\lvert \mathcal{A} \rvert}
+$$ 
+representing the legality of each possible action. 
+
+The masked Q-value computation becomes:
+
 
 $$Q_{\text{masked}}(s,a) = \begin{cases}
 Q(s,a) & \text{if } \mathcal{M}(s)[a] = 1 \\
@@ -1212,50 +1227,50 @@ The overall **91.0% transfer efficiency** validates our domain randomization and
 
 ## 6. 실험
 
-본 섹션에서는 제안된 소마 큐브 조립 시스템의 포괄적인 실험적 검증을 제시하며, 시뮬레이션 기반 DQN 학습 성능과 Doosan M0609 협력 로봇에서의 실제 배치를 모두 평가한다.
+This section presents comprehensive experimental validation of the proposed Soma Cube assembly system, evaluating both simulation-based DQN learning performance and real-world deployment on the Doosan M0609 collaborative robot.
 
-### 6.1 실험 프로토콜
+### 6.1 Experimental Protocol
 
-#### 6.1.1 훈련 및 평가 프레임워크
+#### 6.1.1 Training and Evaluation Framework
 
-실험적 검증은 시뮬레이션 기반 DQN 훈련과 실제 배치 검증을 모두 포함하는 포괄적인 프로토콜을 따른다. 훈련은 에피소드 종료 조건을 가진 100,000개의 시뮬레이션 에피소드로 구성된다:
-- (1) 성공적인 퍼즐 완성
-- (2) 1,000개 행동 단계 도달
-- (3) 불가능한 상태 검출(떠있는 조각들)
+Experimental validation follows a comprehensive protocol encompassing both simulation-based DQN training and real-world deployment verification. Training consists of 100,000 simulation episodes with episode termination conditions:
+- (1) Successful puzzle completion
+- (2) Reaching 1,000 action steps
+- (3) Detection of impossible states (floating pieces)
 
-실제 로봇 호출은 내부 정책 평가를 기반으로 선택적으로 발생한다. RL 에이전트의 성공 플래그가 True로 전환될 때(높은 신뢰도 조립 완성을 나타냄), 시스템은 물리적 로봇에서 계획된 순서를 실행한다. 이러한 선택적 배치 프로토콜은 100,000개의 총 시뮬레이션 에피소드에서 5,247개의 실제 로봇 정책 호출을 결과로 나타내어, 학습 효율성과 하드웨어 검증의 균형을 맞추는 5.2%의 sim-to-real 실행 비율을 나타낸다.
+Actual robot invocation occurs selectively based on internal policy evaluation. When the RL agent's success flag transitions to True (indicating high-confidence assembly completion), the system executes the planned sequence on the physical robot. This selective deployment protocol results in 5,247 actual robot policy invocations from 100,000 total simulation episodes, representing a 5.2% sim-to-real execution ratio that balances learning efficiency with hardware verification.
 
-#### 6.1.2 성공 기준과 지표
+#### 6.1.2 Success Criteria and Metrics
 
-조립 성공은 겹침이나 틈 없이 3×3×3 목표 격자 내에 배치된 모든 7개의 소마 큐브 조각을 요구한다. 위치 정확도 임계값은 그리퍼 컴플라이언스와 조각 제조 허용오차를 고려하여 ±1.8mm로 설정된다. 시간적 성능은 인간-로봇 협업 시나리오에서 실시간 응답성을 유지하기 위해 100ms 제어 주기 내 완성을 요구한다.
+Assembly success requires all 7 Soma Cube pieces placed within the 3×3×3 target grid without overlaps or gaps. Position accuracy thresholds are set to ±1.8mm considering gripper compliance and piece manufacturing tolerances. Temporal performance requires completion within 100ms control cycles to maintain real-time responsiveness in human-robot collaboration scenarios.
 
-#### 6.1.3 통계적 평가 방법론
+#### 6.1.3 Statistical Evaluation Methodology
 
-성능 평가는 통계적 유의성을 달성하기 위해 무작위화된 초기 조각 구성을 가진 300회의 독립적인 시행을 사용한다. 각 시행은 완전한 시스템 재설정, 조각 무작위화, 다중 모달 센서 보정을 포함한다. 성공률 계산은 알고리즘 성능 평가에 집중하기 위해 하드웨어 오작동(전원 중단, 센서 연결 해제)으로 인해 종료된 시행을 제외한다.
+Performance evaluation uses 300 independent trials with randomized initial piece configurations to achieve statistical significance. Each trial includes complete system reset, piece randomization, and multi-modal sensor calibration. Success rate calculations exclude trials terminated due to hardware malfunction (power interruptions, sensor disconnections) to focus on algorithmic performance assessment.
 
-통계 분석은 성공률 추정을 위해 이항 신뢰구간을 사용한다. n=300 시행과 관찰된 성공률 p=75%로, 95% 신뢰구간은 다음과 같이 계산된다:
+Statistical analysis uses binomial confidence intervals for success rate estimation. With n=300 trials and observed success rate p=75%, the 95% confidence interval is calculated as:
 
 $$CI_{95\%} = p \pm z_{0.025}\sqrt{\frac{p(1-p)}{n}} = 0.75 \pm 1.96\sqrt{\frac{0.75 \times 0.25}{300}} = [0.701, 0.799]$$
 
-이는 75% ±4.9%의 신뢰구간을 산출하여 실용적 배치 고려사항에 대한 허용 가능한 정밀도로 시스템 성능 주장의 견고한 통계적 검증을 제공한다.
+This yields a confidence interval of 75% ±4.9%, providing robust statistical validation of system performance claims with acceptable precision for practical deployment considerations.
 
-### 6.2 실험 설정
+### 6.2 Experimental Setup
 
-#### 6.2.1 하드웨어 구성
+#### 6.2.1 Hardware Configuration
 
-실험 플랫폼은 OnRobot RG2 2F 그리퍼(110mm 스트로크, 힘 제어 능력)와 Intel RealSense D435i RGB-D 카메라(0.1-10m 깊이 범위, 30fps)가 장착된 Doosan M0609 6자유도 협력 로봇(6kg 페이로드, 900mm 도달 범위, ±0.05mm 반복성)으로 구성된다. 설정은 안전 장벽, 조명 시스템, 조각 저장과 최종 조립 목표를 위한 지정 영역을 포함한다. 작업공간 치수는 3×3×3 소마 큐브 목표 구성과 주변 조각 배치 영역을 수용하기 위해 270mm × 270mm이다.
+The experimental platform consists of a Doosan M0609 6-DOF collaborative robot (6kg payload, 900mm reach, ±0.05mm repeatability) equipped with an OnRobot RG2 2F gripper (110mm stroke, force control capability) and Intel RealSense D435i RGB-D camera (0.1-10m depth range, 30fps). The setup includes safety barriers, lighting systems, and designated areas for piece storage and final assembly targets. Workspace dimensions are 270mm × 270mm to accommodate the 3×3×3 Soma Cube target configuration and surrounding piece placement areas.
 
-#### 6.2.2 소프트웨어 스택
+#### 6.2.2 Software Stack
 
-시스템은 ROS2 Humble 미들웨어를 가진 Ubuntu 22.04 LTS에서 작동하며, 운동 제어를 위한 Doosan Robot SDK와 충돌 검출을 위한 MoveIt2를 활용한다. DQN 에이전트는 CUDA 11.8 가속을 가진 PyTorch 1.13으로 구현된다. 전역 매핑 시각화는 포인트 클라우드 렌더링을 위한 실시간 ROS-Unity 브리지 통신을 가진 Unity 2022.3 LTS를 사용한다.
+The system operates on Ubuntu 22.04 LTS with ROS2 Humble middleware, utilizing Doosan Robot SDK for motion control and MoveIt2 for collision detection. The DQN agent is implemented with PyTorch 1.13 with CUDA 11.8 acceleration. Global mapping visualization uses Unity 2022.3 LTS with real-time ROS-Unity bridge communication for point cloud rendering.
 
-#### 6.2.3 소마 큐브 데이터셋
+#### 6.2.3 Soma Cube Dataset
 
-훈련 데이터셋은 4가지 조명 조건(자연광, LED, 형광, 혼합), 5가지 카메라 각도(정면, 30°, 45°, 60°, 측면), 11가지 조각 배열 패턴에 걸쳐 캡처된 220개의 라벨링된 RGB-D 이미지로 구성된다. 각 이미지는 평균 4.3개의 블록을 포함하여 97.2% 주석자 간 일치를 가진 946개의 총 바운딩 박스 주석을 결과로 한다. 데이터 증강 기법(회전 ±15°, 밝기 ±20%, 가우시안 노이즈 σ=0.02)이 데이터셋을 1,100개의 훈련 샘플로 확장했다.
+The training dataset comprises 220 labeled RGB-D images captured across 4 lighting conditions (natural, LED, fluorescent, mixed), 5 camera angles (frontal, 30°, 45°, 60°, side), and 11 piece arrangement patterns. Each image contains an average of 4.3 blocks, resulting in 946 total bounding box annotations with 97.2% inter-annotator agreement. Data augmentation techniques (rotation ±15°, brightness ±20%, Gaussian noise σ=0.02) expanded the dataset to 1,100 training samples.
 
-### 6.3 강화학습 훈련
+### 6.3 Reinforcement Learning Training
 
-#### 6.3.1 환경 구성
+#### 6.3.1 Environment Configuration
 
 DQN 환경은 34차원 상태 공간을 가진 3×3×3 조립 격자를 모델링한다: 격자 점유를 위한 27차원(이진) + 현재 조각 원-핫 인코딩을 위한 7차원. 행동 공간은 테이블 경계, 중력 지지, 충돌 회피, 연결성 요구사항을 포함한 물리적 제약에 의해 감소된 이론적 7×24×27 = 4,536 조합에서 2,484개의 이산 행동으로 구성된다.
 
@@ -1354,28 +1369,28 @@ Whisper STT 통합은 제조 소음 조건(SNR 10-15dB) 하에서 한국어 명�
 
 메모리 사용량은 동시 Unity 시각화와 DQN 훈련 중에 3.6GB에서 최고점을 찍으며, 3시간 연속 작동에서 허용 가능한 성능 저하를 가진다.
 
-## 7. 결과 및 토론
+## 7. Results and Discussion
 
-본 섹션에서는 통합된 소마 큐브 조립 시스템의 정량적 결과를 제시하며, Doosan M0609 플랫폼에서 구성요소 수준의 성능과 종단 간 조립 효과를 모두 분석한다. 우리의 광범위한 평가는 3개의 커리큘럼 레벨에 걸쳐 105,300개의 훈련 에피소드를 다루며, 기준 접근법에 대한 상당한 개선을 보여준다.
+This section presents quantitative results from the integrated Soma Cube assembly system, analyzing both component-level performance and end-to-end assembly effectiveness on the Doosan M0609 platform. Our extensive evaluation covers 105,300 training episodes across three curriculum levels, demonstrating substantial improvements over baseline approaches.
 
-### 7.1 학습 성능 분석
+### 7.1 Learning Performance Analysis
 
-#### 7.1.1 훈련 수렴과 커리큘럼 학습
+#### 7.1.1 Training Convergence and Curriculum Learning
 
-커리큘럼 학습을 가진 우리의 계층적 DQN 훈련은 3단계의 점진적 난이도 수준에 걸쳐 놀라운 효율성을 보여준다:
+Our hierarchical DQN training with curriculum learning demonstrates remarkable efficiency across three progressive difficulty levels:
 
-**레벨 1 (2조각 조립):** 500 에피소드 내에 100% 성공률로 완벽한 수렴을 달성했다. 에이전트는 기본 배치 제약과 충돌 회피를 빠르게 마스터하여 근본적인 조작 기술을 확립했다.
+**Level 1 (2-piece assembly):** Achieved perfect convergence with 100% success rate within 500 episodes. The agent rapidly mastered basic placement constraints and collision avoidance, establishing fundamental manipulation skills.
 
-**레벨 2 (3조각 조립):** 1,600 에피소드에 걸쳐 92.9% 성공률로 높은 성능을 유지했다. 873.2점의 평균 보상은 효율적인 행동 선택을 보여주는 4.99 단계의 평균 에피소드 길이로 일관된 최적 해 발견을 나타낸다.
+**Level 2 (3-piece assembly):** Maintained high performance with 92.9% success rate over 1,600 episodes. The average reward of 873.2 points with an average episode length of 4.99 steps indicates consistent optimal solution discovery with efficient action selection.
 
-**레벨 3 (7조각 완전 조립):** 102,100 에피소드에 걸쳐 평균 보상 775.5점으로 39.9% 성공률을 달성했다. 이 레벨에서의 광범위한 훈련은 총 에피소드의 96.97%를 나타내어 부분 조립에서 완전 조립으로의 복잡성 확장을 강조한다.
+**Level 3 (7-piece complete assembly):** Achieved 39.9% success rate with average reward of 775.5 points over 102,100 episodes. The extensive training at this level represents 96.97% of total episodes, highlighting the complexity scaling from partial to complete assembly.
 
-![훈련 진행](/assets/images/somacube-paper/success_per_episode.png)
-*커리큘럼 학습을 가진 105,300 에피소드에 걸친 성공률 진화를 보여주는 훈련 진행*
+![Training Progress](/assets/images/somacube-paper/success_per_episode.png)
+*Training progress showing success rate evolution across 105,300 episodes with curriculum learning*
 
-#### 7.1.2 학습 역학의 통계 분석
+#### 7.1.2 Statistical Analysis of Learning Dynamics
 
-105,300 에피소드의 포괄적인 통계 분석은 정교한 학습 패턴을 보여준다:
+Comprehensive statistical analysis of 105,300 episodes reveals sophisticated learning patterns:
 
 $$\begin{align}
 \mu_{\text{reward}} &= 775.38, \quad \sigma_{\text{reward}} = 312.41\\
@@ -1383,159 +1398,159 @@ $$\begin{align}
 \text{Correlation}(\text{loss}, \text{episode}) &= 0.521
 \end{align}$$
 
-보상과 에피소드 길이 간의 중간 양의 상관관계(r=0.495)는 성공적인 조립이 탐욕적인 즉시 배치보다는 더 신중하고 긴 순서를 요구하는 경향이 있음을 나타낸다. 이는 체계적 조립 접근법을 장려하는 우리의 보상 형성을 검증한다.
+The moderate positive correlation between reward and episode length (r=0.495) indicates that successful assemblies tend to require more deliberate, longer sequences rather than greedy immediate placement. This validates our reward shaping that encourages systematic assembly approaches.
 
-![보상 분포](/assets/images/somacube-paper/reward_histogram.png)
-*580(부분), 600(고급), 1180(완전) 점에서 구별된 피크를 가진 삼봉 행동을 보여주는 보상 분포*
+![Reward Distribution](/assets/images/somacube-paper/reward_histogram.png)
+*Reward distribution showing trimodal behavior with distinct peaks at 580 (partial), 600 (advanced), 1180 (complete) points*
 
-보상 분포는 구별된 피크를 가진 삼봉 형태를 보여준다:
-- **실패 모드 (~580점):** 2-4개 조각이 배치된 부분 조립
-- **거의 성공 모드 (~600점):** 5-6개 조각을 가진 고급 조립
-- **성공 모드 (~1180점):** 완전한 7조각 조립
+The reward distribution exhibits a trimodal shape with distinct peaks:
+- **Failure Mode (~580 points):** Partial assemblies with 2-4 pieces placed
+- **Near-Success Mode (~600 points):** Advanced assemblies with 5-6 pieces
+- **Success Mode (~1180 points):** Complete 7-piece assemblies
 
-이러한 다중 모드 구조는 단일 지역 최적값으로의 수렴보다는 정성적으로 다른 해 전략의 에이전트 발견을 보여준다.
+This multi-modal structure demonstrates agent discovery of qualitatively different solution strategies rather than convergence to a single local optimum.
 
-#### 7.1.3 손실 함수 분석과 수렴
+#### 7.1.3 Loss Function Analysis and Convergence
 
-DQN 훈련 손실은 특성적인 2-4k 에피소드 진동과 함께 수렴을 보여주며, EWMA 수렴으로 에피소드 35,000 근처에서 안정화된다. 지속적인 진동은 정책 안정화 후에도 에이전트가 유익한 탐색을 계속함을 시사하여 훈련 불안정성을 나타내는 것이 아니라 견고성에 기여한다.
+DQN training loss shows convergence with characteristic 2-4k episode oscillations, stabilizing near episode 35,000 with EWMA convergence. The persistent oscillations suggest the agent continues beneficial exploration even after policy stabilization, contributing to robustness rather than indicating training instability.
 
-![손실 진화](/assets/images/somacube-paper/loss_over_episode.png)
-*유익한 탐색 진동을 가진 수렴을 보여주는 DQN 훈련 손실 진화*
+![Loss Evolution](/assets/images/somacube-paper/loss_over_episode.png)
+*DQN training loss evolution showing convergence with beneficial exploration oscillations*
 
-### 7.2 구성요소 성능 평가
+### 7.2 Component Performance Evaluation
 
-#### 7.2.1 비전 시스템 정확도
+#### 7.2.1 Vision System Accuracy
 
-모든 7개 소마 큐브 조각 클래스에 걸친 객체 검출 결과는 전체 mAP@50 97%를 달성하여 견고한 시각적 인식을 보여준다:
-- 직사각형: 99%
-- Z자 모양: 96%
-- T자 모양: 95%
-- L자 모양: 94%
-- 나머지 조각: 95-98%
+Object detection results across all 7 Soma Cube piece classes achieve an overall mAP@50 of 97%, demonstrating robust visual recognition:
+- Rectangle: 99%
+- Z-shape: 96%
+- T-shape: 95%
+- L-shape: 94%
+- Remaining pieces: 95-98%
 
-L자 모양 조각은 복잡한 방향 중 모호한 가장자리 경계로 인해 약간 낮은 정확도를 보인다.
+The L-shaped piece shows slightly lower accuracy due to ambiguous edge boundaries among complex orientations.
 
-자세 추정 정확도는 0.8m 작업 거리에서 ±1.8mm 표준편차를 유지하여 ±2mm 목표 사양을 충족한다. Hand-Eye 보정은 1.2mm RMS 오차를 기여하고, 좌표 변환은 2.1mm 총 불확실성까지 추가 오차를 축적하여 설계 허용 오차에 접근하지만 초과하지는 않는다.
+Pose estimation accuracy maintains ±1.8mm standard deviation at 0.8m working distance, meeting the ±2mm target specification. Hand-Eye calibration contributes 1.2mm RMS error, and coordinate transformation accumulates additional error up to 2.1mm total uncertainty, approaching but not exceeding design tolerances.
 
-#### 7.2.2 경로 계획 효과
+#### 7.2.2 Path Planning Effectiveness
 
-ZYZ 특이점 회피는 테스트 사례의 95.7%(49회 시행 중 47회)에서 계산적 불안정성을 성공적으로 방지하며, 특이점 가드 없이는 0% 성공과 비교된다. 근접 지수 임계값 ε = 0.1은 자세 계산 시간에 단지 1.1% 계산 오버헤드(0.4ms)를 추가하면서 접근하는 특이점을 효과적으로 검출한다.
+ZYZ singularity avoidance successfully prevents computational instabilities in 95.7% of test cases (47 out of 49 trials), compared to 0% success without singularity guards. The proximity index threshold ε = 0.1 effectively detects approaching singularities while adding only 1.1% computational overhead (0.4ms) to pose calculation time.
 
-재파지 최소화 순서는 직접 재파지 시도와 비교하여 불필요한 운동을 35% 감소시켜 평균 재파지 시간을 12.7초에서 8.3초로 감소시킨다. 경로 부드러움은 15.2 rad/s³에서 8.7 rad/s³로 저크 감소와 함께 크게 개선되어 더 자연스러운 로봇 운동과 기계적 스트레스 감소에 기여한다.
+Regrasp minimization sequencing reduces unnecessary movements by 35% compared to direct regrasp attempts, decreasing average regrasp time from 12.7 seconds to 8.3 seconds. Path smoothness improves significantly with jerk reduction from 15.2 rad/s³ to 8.7 rad/s³, contributing to more natural robot motion and reduced mechanical stress.
 
-### 7.3 시스템 통합 결과
+### 7.3 System Integration Results
 
-#### 7.3.1 종단 간 조립 성능
+#### 7.3.1 End-to-End Assembly Performance
 
-300회의 조립 시도에 걸친 포괄적인 평가는 75.0% ±4.9% 전체 성공률(95% CI: [70.1%, 79.9%])을 산출하여 최적화 전 35.2% 기준선에서 상당한 개선을 나타낸다. 최적화 단계를 통한 진행은 환경 제약 추가(+26 퍼센트 포인트)와 재파지 알고리즘 구현(+12 퍼센트 포인트)에서 가장 중요한 이득을 달성했다.
+Comprehensive evaluation across 300 assembly attempts yields 75.0% ±4.9% overall success rate (95% CI: [70.1%, 79.9%]), representing substantial improvement from the pre-optimization baseline of 35.2%. Progress through optimization stages achieved most significant gains from environmental constraint addition (+26 percentage points) and regrasp algorithm implementation (+12 percentage points).
 
-조립 완성 시간은 평균 12.3 ± 1.8분(목표: <15분)이며 위치 정확도 ±1.8mm와 파지 성공률 89%를 가진다. 시스템은 3시간 연속 작동 세션에 걸쳐 일관된 성능을 보여주며, 연장 사용 후에도 성공률이 73%를 유지하여 적절한 열적 및 기계적 안정성을 나타낸다.
+Assembly completion time averages 12.3 ± 1.8 minutes (target: <15 minutes) with position accuracy of ±1.8mm and grasp success rate of 89%. The system demonstrates consistent performance across 3-hour continuous operation sessions, maintaining 73% success rate even after extended use, indicating adequate thermal and mechanical stability.
 
-#### 7.3.2 Simulation-to-Real 전이 분석
+#### 7.3.2 Simulation-to-Real Transfer Analysis
 
-Sim-to-real 차이는 실용적 배치를 위한 중요한 검증 지표를 나타낸다:
+Sim-to-real differences represent critical validation metrics for practical deployment:
 
-| 성능 지표 | 시뮬레이션 | 실제 로봇 | 차이 (%) |
-|-----------|------------|-----------|----------|
-| 성공률 (%) | 82.4 ± 3.1 | 75.0 ± 4.9 | -7.4 |
-| 평균 조립 시간 (분) | 9.8 ± 1.2 | 12.3 ± 1.8 | +25.5 |
-| 궤적 길이 (행동) | 14.2 ± 2.3 | 18.7 ± 3.1 | +31.7 |
-| 자세 정확도 (mm RMS) | 0.8 ± 0.2 | 1.8 ± 0.4 | +125.0 |
-| 운동 저크 (rad/s³) | 5.2 ± 1.1 | 8.7 ± 2.3 | +67.3 |
-| 재파지 빈도 | 0.9 ± 0.3 | 1.4 ± 0.3 | +55.6 |
-| **전체 전이 효율성** | **91.0%** | -- | **-9.0%** |
+| Performance Metric | Simulation | Real Robot | Difference (%) |
+|-------------------|------------|-------------|----------------|
+| Success Rate (%) | 82.4 ± 3.1 | 75.0 ± 4.9 | -7.4 |
+| Average Assembly Time (min) | 9.8 ± 1.2 | 12.3 ± 1.8 | +25.5 |
+| Trajectory Length (actions) | 14.2 ± 2.3 | 18.7 ± 3.1 | +31.7 |
+| Pose Accuracy (mm RMS) | 0.8 ± 0.2 | 1.8 ± 0.4 | +125.0 |
+| Motion Jerk (rad/s³) | 5.2 ± 1.1 | 8.7 ± 2.3 | +67.3 |
+| Regrasp Frequency | 0.9 ± 0.3 | 1.4 ± 0.3 | +55.6 |
+| **Overall Transfer Efficiency** | **91.0%** | -- | **-9.0%** |
 
-시뮬레이션에서 실제 배치로의 7.4% 성공률 저하는 효과적인 도메인 전이를 보여주며, 주요 성능 손실은 다음에 기인한다:
-1. 자세 정확도 저하에 기여하는 센서 노이즈와 보정 불확실성
-2. 궤적 실행 시간을 증가시키는 기계적 컴플라이언스와 액추에이터 역학  
-3. 추가 안전 여백을 요구하는 실제 충돌 회피
+The 7.4% success rate degradation from simulation to real deployment demonstrates effective domain transfer, with major performance losses attributed to:
+1. Sensor noise and calibration uncertainties contributing to pose accuracy degradation
+2. Mechanical compliance and actuator dynamics increasing trajectory execution time  
+3. Real collision avoidance requiring additional safety margins
 
-91.0%의 전체 전이 효율성은 물리학 모델링과 감각운동 불확실성 표현의 특정 개선 영역을 강조하면서 시뮬레이션 환경의 충실도를 검증한다.
+The 91.0% overall transfer efficiency validates the fidelity of the simulation environment while highlighting specific improvement areas in physics modeling and sensorimotor uncertainty representation.
 
-## 8. 결론 및 미래 연구 방향
+## 8. Conclusion and Future Research Directions
 
-### 8.1 연구 요약 및 주요 성과
+### 8.1 Research Summary and Key Achievements
 
-본 포괄적인 연구는 **Legal-Action Masked Deep Q-Network**, **Safe ZYZ Regrasp 계획**, 및 **다중 모달 로봇 인식**의 획기적인 통합을 협업 로봇을 사용한 자율 3D 퍼즐 조립을 위해 제시한다. 우리의 체계적 접근법은 학습 기반 로봇 조작의 근본적인 도전과제들을 해결하면서 안전성, 효율성, 실세계 적용 가능성에 대한 새로운 벤치마크를 설정한다.
+This comprehensive research presents the groundbreaking integration of **Legal-Action Masked Deep Q-Network**, **Safe ZYZ Regrasp Planning**, and **Multi-modal Robot Perception** for autonomous 3D puzzle assembly using collaborative robots. Our systematic approach addresses fundamental challenges in learning-based robotic manipulation while establishing new benchmarks for safety, efficiency, and real-world applicability.
 
-#### 8.1.1 주요 기술적 기여
+#### 8.1.1 Key Technical Contributions
 
-**1. 제약 인식 강화학습 프레임워크**
-- **Legal-action 마스킹**이 조합 폭발을 4,536에서 2,484개의 실행 가능한 행동으로 감소
-- 표준 DQN 접근법 대비 **26% 샘플 효율성 개선**
-- 물리적 로봇 제약 하에서 **해 완전성 보장**
-- **22× 계산 복잡도 감소**를 달성한 계층적 행동 분해
+**1. Constraint-Aware Reinforcement Learning Framework**
+- **Legal-action masking** reduces combinatorial explosion from 4,536 to 2,484 feasible actions
+- **26% sample efficiency improvement** over standard DQN approaches
+- **Solution completeness guarantee** under physical robot constraints
+- **22× computational complexity reduction** achieved through hierarchical action decomposition
 
-**2. 안전 운동 계획 시스템**  
-- 96.1% 성공률을 가진 ZYZ 특이점 검출을 위한 **새로운 근접 지수**
-- 실행 시간을 35% 감소시킨 **체계적 재파지 최소화**
-- **67% 운동 부드러움 개선** (저크를 15.2에서 8.7 rad/s³로 감소)
-- 완벽한 충돌 회피 기록을 가진 **무관용 안전성**
+**2. Safe Motion Planning System**  
+- **Novel proximity index** for ZYZ singularity detection with 96.1% success rate
+- **Systematic regrasp minimization** reducing execution time by 35%
+- **67% motion smoothness improvement** (jerk reduction from 15.2 to 8.7 rad/s³)
+- **Zero-tolerance safety** with perfect collision avoidance record
 
-**3. 생산 준비 Sim-to-Real 파이프라인**
-- 시뮬레이션에서 물리적 배치로 **91% 전이 효율성**
-- 기하학적, 물리적, 센서 매개변수에 걸친 **포괄적인 도메인 랜덤화**
-- 100ms 제어 주기 준수(99.7% 성공률)를 가진 **실시간 성능**
-- **78% 자동 복구 기능**을 가진 견고한 장애 복구
+**3. Production-Ready Sim-to-Real Pipeline**
+- **91% transfer efficiency** from simulation to physical deployment
+- **Comprehensive domain randomization** across geometric, physical, and sensor parameters
+- **Real-time performance** with 100ms control cycle compliance (99.7% success rate)
+- **Robust failure recovery** with 78% automatic recovery capability
 
-**4. 다중 모달 인간-로봇 협업**
-- 제조 환경에서 **94.2% 한국어 음성 인식 정확도**
-- 안전 요구사항을 초과하는 **123ms 비상 응답 시간**
-- Unity-ROS2 통합을 통한 **30fps 실시간 시각화**
-- 300회의 독립적인 시행에 걸친 **포괄적인 안전 검증**
+**4. Multi-modal Human-Robot Collaboration**
+- **94.2% Korean speech recognition accuracy** in manufacturing environments
+- **123ms emergency response time** exceeding safety requirements
+- **30fps real-time visualization** through Unity-ROS2 integration
+- **Comprehensive safety validation** across 300 independent trials
 
-#### 8.1.2 정량적 성능 달성
+#### 8.1.2 Quantitative Performance Achievement
 
-| 성능 영역 | 사양 | 달성 결과 | 산업적 의미 |
+| Performance Area | Specification | Achieved Result | Industrial Significance |
 |-----------|------|----------|-------------|
-| **조립 성공률** | > 70% | **75.0% ± 4.9%** | 자율 조립의 최첨단 |
-| **완성 시간** | < 15분 | **12.3 ± 1.8분** | 목표 사양보다 18% 빠름 |
-| **위치 정확도** | ± 2mm | **± 1.8mm** | 정밀 제조 요구사항 초과 |
-| **안전 성능** | 0 사고 | **0/300 시행** | 인간 협업을 가능하게 하는 완벽한 안전 기록 |
-| **전이 효율성** | 미지정 | **91%** | 업계 선도 sim-to-real 성능 |
-| **실시간 성능** | 10 Hz | **99.7% 준수** | 생산 배치에 적합 |
+| **Assembly Success Rate** | > 70% | **75.0% ± 4.9%** | State-of-the-art in autonomous assembly |
+| **Completion Time** | < 15 min | **12.3 ± 1.8 min** | 18% faster than target specification |
+| **Position Accuracy** | ± 2mm | **± 1.8mm** | Exceeds precision manufacturing requirements |
+| **Safety Performance** | 0 incidents | **0/300 trials** | Perfect safety record enabling human collaboration |
+| **Transfer Efficiency** | Unspecified | **91%** | Industry-leading sim-to-real performance |
+| **Real-time Performance** | 10 Hz | **99.7% compliance** | Suitable for production deployment |
 
-### 8.2 과학적 및 공학적 통찰
+### 8.2 Scientific and Engineering Insights
 
-#### 8.2.1 로봇공학 및 AI에 대한 이론적 기여
+#### 8.2.1 Theoretical Contributions to Robotics and AI
 
-**강화학습 이론:**
-- 물리학 인식 행동 마스킹이 샘플 효율성을 극적으로 개선하면서 해 최적성을 보존함을 증명하는 **제약 통합 방법론**
-- 성공적인 RL 에이전트가 단일 지역 최적값으로 수렴하기보다는 다양한 해 전략을 발견함을 보여주는 **다중 모드 보상 수렴 분석**
-- 지수적 상태 공간 성장을 가진 복잡한 순차 조립 작업에 대한 **커리큘럼 학습 효과**
+**Reinforcement Learning Theory:**
+- **Constraint integration methodology** proving that physics-aware action masking dramatically improves sample efficiency while preserving solution optimality
+- **Multi-modal reward convergence analysis** showing that successful RL agents discover diverse solution strategies rather than converging to a single local optimum
+- **Curriculum learning effects** for complex sequential assembly tasks with exponential state space growth
 
-**로봇 운동 계획:**
-- 안전한 방향 제어를 위한 수학적 프레임워크를 제공하는 **ZYZ 특이점 근접 분석**
-- 조작 효율성과 운동학적 안전 제약의 균형을 맞추는 **재파지 최적화 이론**
-- 계산 오버헤드와 운동 품질 간 최적 절충을 달성하는 **실시간 계획 알고리즘**
+**Robotic Motion Planning:**
+- **ZYZ singularity proximity analysis** providing mathematical framework for safe orientation control
+- **Regrasping optimization theory** balancing manipulation efficiency with kinematic safety constraints
+- **Real-time planning algorithms** achieving optimal trade-off between computational overhead and motion quality
 
-**인간-로봇 상호작용:**
-- 음성, 시각, 힘, 비상정지 시스템을 통합하는 **다중 모달 안전 아키텍처**
-- 비영어권 환경에서 산업 로봇공학을 위한 **문화적 및 언어적 적응**
-- 협업 제조 환경을 위한 **신뢰 및 신뢰성 지표**
+**Human-Robot Interaction:**
+- **Multi-modal safety architecture** integrating voice, visual, force, and emergency stop systems
+- **Cultural and linguistic adaptation** for industrial robotics in non-English speaking environments
+- **Trust and reliability metrics** for collaborative manufacturing environments
 
-### 8.3 현재 한계 및 연구 과제
+### 8.3 Current Limitations and Research Challenges
 
-#### 8.3.1 기술적 한계
+#### 8.3.1 Technical Limitations
 
-**환경 제약:**
-- **통제된 실험실 조건**: 현재 평가가 일관된 조명, 깨끗한 표면, 정적 환경으로 제한됨
-- **제한된 객체 다양성**: 시스템이 현재 알려진 기하학적 특성을 가진 7개의 특정 소마 큐브 조각을 처리함
-- **단일 로봇 배치**: 다중 로봇 조정과 인간-로봇 협업이 미래 확장으로 남아있음
+**Environmental Constraints:**
+- **Controlled laboratory conditions**: Current evaluation limited to consistent lighting, clean surfaces, static environment
+- **Limited object diversity**: System currently handles 7 specific Soma Cube pieces with known geometric properties
+- **Single robot deployment**: Multi-robot coordination and human-robot collaboration remain future extensions
 
-**성능 한계:**
-- **75% 성공률**: 최첨단이지만, 산업 채택을 위한 상당한 개선 기회가 존재함
-- **조립 복잡성**: 현재 시스템이 27개 단위 큐브로 제한됨; 더 큰 조립품에 대한 확장성이 불확실함
-- **실시간 요구사항**: 100ms 제어 주기가 고속 제조 응용에 불충분할 수 있음
+**Performance Limitations:**
+- **75% success rate**: State-of-the-art, but significant improvement opportunities exist for industrial adoption
+- **Assembly complexity**: Current system limited to 27 unit cubes; scalability to larger assemblies uncertain
+- **Real-time requirements**: 100ms control cycles may be insufficient for high-speed manufacturing applications
 
-#### 8.3.2 방법론적 과제
+#### 8.3.2 Methodological Challenges
 
-**일반화 능력:**
-- **도메인 특이성**: Legal-action 마스킹과 보상 함수가 폴리큐브 조립에 맞춤화됨
-- **전이학습 한계**: 근본적으로 다른 조립 작업에서의 성능이 불확실함
-- **Sim-to-real 격차**: 9% 성능 저하가 여전히 개선 여지를 나타냄
+**Generalization Capabilities:**
+- **Domain specificity**: Legal-action masking and reward functions tailored to polycube assembly
+- **Transfer learning limitations**: Performance on fundamentally different assembly tasks uncertain
+- **Sim-to-real gap**: 9% performance degradation still indicates room for improvement
 
-### 8.4 미래 연구 방향
+### 8.4 Future Research Directions
 
 #### 6.4.1 Short-Term Extensions (6-12 months)
 
