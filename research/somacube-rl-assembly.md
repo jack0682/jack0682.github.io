@@ -24,6 +24,14 @@ toc_sticky: true
 
 > *"In the intersection of reinforcement learning and classical robotics, we discover not merely automated assembly, but the emergence of spatial intelligence that rivals human intuition."*
 
+### **"Learning to Assemble the Soma Cube with Legal-Action Masked DQN and Safe ZYZ Regrasp on a Doosan M0609"**
+
+**Publication Details:**
+- **arXiv ID**: [2508.21272](https://arxiv.org/abs/2508.21272)
+- **Submission Date**: Aug 29, 2025
+- **Author**: Oh Jaehong, Seungjun Jung, Sawoong Kim
+- **Affiliation**: Doosan Robotics Rokey Bootcamp 4th
+
 ## Abstract
 
 This comprehensive research presents a groundbreaking approach to autonomous 3D puzzle assembly using a Doosan M0609 collaborative robot equipped with **Legal-Action Masked Deep Q-Network (DQN)** and **Safe ZYZ Regrasp strategy**. The Soma Cube puzzle, consisting of seven distinct polycube pieces requiring assembly into a 3×3×3 cube, serves as an ideal benchmark for evaluating complex spatial reasoning capabilities in robotic manipulation systems.
