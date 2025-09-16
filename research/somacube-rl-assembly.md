@@ -28,15 +28,15 @@ toc_sticky: true
 
 **Publication Details:**
 - **arXiv ID**: [2508.21272](https://arxiv.org/abs/2508.21272)
-- **Submission Date**: Aug 29, 2025
-- **Author**: Oh Jaehong, Seungjun Jung, Sawoong Kim
+- **Submission Date**: Aug 29, 2024
+- **Authors**: Oh Jaehong, Seungjun Jung, Sawoong Kim
 - **Affiliation**: Doosan Robotics Rokey Bootcamp 4th
 
 ## Abstract
 
 This comprehensive research presents a groundbreaking approach to autonomous 3D puzzle assembly using a Doosan M0609 collaborative robot equipped with **Legal-Action Masked Deep Q-Network (DQN)** and **Safe ZYZ Regrasp strategy**. The Soma Cube puzzle, consisting of seven distinct polycube pieces requiring assembly into a 3×3×3 cube, serves as an ideal benchmark for evaluating complex spatial reasoning capabilities in robotic manipulation systems.
 
-Our methodology addresses fundamental challenges in learning-based robotic assembly through four revolutionary contributions:
+Our methodology addresses fundamental challenges in learning-based robotic assembly through four key contributions:
 
 1. **Legal-Action Masking Framework**: Reduces combinatorial action space from 4,536 theoretical combinations to 2,484 physically feasible actions, achieving 26% sample efficiency improvement while maintaining solution completeness
 2. **ZYZ Singularity Guard System**: Novel proximity index-based singularity detection preventing computational instabilities with 95.7% success rate in critical configurations  
@@ -45,8 +45,8 @@ Our methodology addresses fundamental challenges in learning-based robotic assem
 
 **Experimental Validation Results:**
 - **Simulation Performance**: 92% assembly success rate with 775.5 average reward over 105,300 training episodes
-- **Physical Robot Performance**: 75% end-to-end assembly success rate with ±1.8mm positional accuracy
-- **System Integration**: Complete assembly in 12.3±1.8 minutes with robust multi-component coordination
+- **Physical Robot Performance**: 75% end-to-end assembly success rate with ± 1.8mm positional accuracy
+- **System Integration**: Complete assembly in 12.3 ± 1.8 minutes with robust multi-component coordination
 - **Safety Validation**: Zero collision events over 300 trials with comprehensive emergency stop mechanisms
 
 ![System Architecture](/assets/images/somacube-paper/system_architecture.png)
@@ -1233,7 +1233,7 @@ The overall **91.0% transfer efficiency** validates our domain randomization and
 
 ---
 
-## 6. 실험
+## 6. Experimental Validation
 
 This section presents comprehensive experimental validation of the proposed Soma Cube assembly system, evaluating both simulation-based DQN learning performance and real-world deployment on the Doosan M0609 collaborative robot.
 
@@ -1250,7 +1250,7 @@ Actual robot invocation occurs selectively based on internal policy evaluation. 
 
 #### 6.1.2 Success Criteria and Metrics
 
-Assembly success requires all 7 Soma Cube pieces placed within the 3×3×3 target grid without overlaps or gaps. Position accuracy thresholds are set to ±1.8mm considering gripper compliance and piece manufacturing tolerances. Temporal performance requires completion within 100ms control cycles to maintain real-time responsiveness in human-robot collaboration scenarios.
+Assembly success requires all 7 Soma Cube pieces placed within the 3×3×3 target grid without overlaps or gaps. Position accuracy thresholds are set to ± 1.8mm considering gripper compliance and piece manufacturing tolerances. Temporal performance requires completion within 100ms control cycles to maintain real-time responsiveness in human-robot collaboration scenarios.
 
 #### 6.1.3 Statistical Evaluation Methodology
 
@@ -1280,102 +1280,102 @@ The training dataset comprises 220 labeled RGB-D images captured across 4 lighti
 
 #### 6.3.1 Environment Configuration
 
-DQN 환경은 34차원 상태 공간을 가진 3×3×3 조립 격자를 모델링한다: 격자 점유를 위한 27차원(이진) + 현재 조각 원-핫 인코딩을 위한 7차원. 행동 공간은 테이블 경계, 중력 지지, 충돌 회피, 연결성 요구사항을 포함한 물리적 제약에 의해 감소된 이론적 7×24×27 = 4,536 조합에서 2,484개의 이산 행동으로 구성된다.
+The DQN environment models a 3×3×3 assembly grid with 34-dimensional state space: 27 dimensions (binary) for grid occupancy + 7 dimensions for current piece one-hot encoding. The action space consists of 2,484 discrete actions reduced from theoretical 7×24×27 = 4,536 combinations through physical constraints including table boundaries, gravity support, collision avoidance, and connectivity requirements.
 
-#### 6.3.2 네트워크 아키텍처와 하이퍼파라미터
+#### 6.3.2 Network Architecture and Hyperparameters
 
-DQN은 512-256 은닉층, ReLU 활성화, 정규화를 위한 0.3 드롭아웃을 가진 완전 연결 네트워크를 사용한다. 훈련 하이퍼파라미터는 다음을 포함한다:
-- 학습률 α = 10⁻⁴
-- 할인 인수 γ = 0.99
-- 40,000 에피소드에 걸쳐 0.9에서 0.1로 엡실론 감쇠
-- 20 에피소드마다 목표 네트워크 업데이트
-- 50,000 경험의 재생 버퍼 크기
+The DQN employs a fully connected network with 512-256 hidden layers, ReLU activation, and 0.3 dropout for regularization. Training hyperparameters include:
+- Learning rate α = 10⁻⁴
+- Discount factor γ = 0.99
+- Epsilon decay from 0.9 to 0.1 over 40,000 episodes
+- Target network updates every 20 episodes
+- Replay buffer size of 50,000 experiences
 
-#### 6.3.3 보상 함수 설계
+#### 6.3.3 Reward Function Design
 
-보상 구조는 탐색과 작업 완성의 균형을 맞춘다:
+The reward structure balances exploration and task completion:
 
 $$r(s,a) = \begin{cases}
-+100 & \text{퍼즐 완성 시} \\
-+1 & \text{유효한 배치가 밀도를 증가시킬 시} \\
--5 \sim -10 & \text{무효한 행동 시} \\
-0 & \text{그 외의 경우}
++100 & \text{puzzle completion} \\
++1 & \text{valid placement increases density} \\
+-5 \sim -10 & \text{invalid actions} \\
+0 & \text{otherwise}
 \end{cases}$$
 
-부정적 보상은 탐색 인센티브를 유지하면서 불가능한 배치를 억제하기 위해 위반 심각도에 따라 스케일된다.
+Negative rewards are scaled by violation severity to discourage impossible placements while maintaining exploration incentives.
 
-### 6.4 비전 파이프라인 평가
+### 6.4 Vision Pipeline Evaluation
 
-#### 6.4.1 객체 검출 성능
+#### 6.4.1 Object Detection Performance
 
-YOLOv8n은 모든 7개 소마 큐브 조각 클래스에 걸쳐 97% mAP@50을 달성하며, 개별 클래스 성능은 94%(L자 모양)에서 99%(직사각형)까지 범위를 가진다. TensorRT 최적화는 검출 정확도를 유지하면서 추론 시간을 40ms에서 23ms로 감소시킨다. 0.5의 신뢰도 임계값은 조립 시나리오에서 2.3% 가양성 비율을 산출한다.
+YOLOv8n achieves 97% mAP@50 across all 7 Soma Cube piece classes, with individual class performance ranging from 94% (L-shaped) to 99% (rectangular). TensorRT optimization reduces inference time from 40ms to 23ms while maintaining detection accuracy. A confidence threshold of 0.5 yields a 2.3% false positive rate in assembly scenarios.
 
-#### 6.4.2 자세 추정 파이프라인
+#### 6.4.2 Pose Estimation Pipeline
 
-Hand-Eye 보정은 체스보드 목표를 가진 12개의 구별된 로봇 자세를 사용하여 1.2mm RMS 오차를 달성한다. YOLO 바운딩 박스에서 3D 위치로의 변환은 0.8m 작업 거리에서 ±2mm 정확도를 유지한다. ZYZ 오일러 각 추출은 β = ±90° 근처에서 계산적 불안정성을 방지하기 위해 근접 지수 임계값 ε = 0.1을 가진 특이점 회피를 포함한다.
+Hand-Eye calibration achieves 1.2mm RMS error using 12 distinct robot poses with chessboard targets. Transformation from YOLO bounding boxes to 3D positions maintains ±2mm accuracy at 0.8m working distance. ZYZ Euler angle extraction includes singularity avoidance with proximity index threshold ε = 0.1 to prevent computational instabilities near β = ±90°.
 
-### 6.5 운동 계획 및 제어 검증
+### 6.5 Motion Planning and Control Validation
 
-#### 6.5.1 ZYZ 재파지 순서 테스트
+#### 6.5.1 ZYZ Regrasp Sequence Testing
 
-6단계 재파지 최소화 순서는 특이점에 취약한 방향을 포함한 50회 시행에 걸쳐 평가되었다. 성공률은 54%(특이점 가드 없음)에서 96%(가드 있음)으로 개선되어 평균 재파지 시간을 12.7초에서 8.3초로 감소시켰다. 근접 지수는 접근하는 특이점을 효과적으로 검출하여 예방적 β 제한을 89.9°로 유발한다.
+The 6-step regrasp minimization sequence was evaluated over 50 trials including singularity-prone orientations. Success rate improved from 54% (no singularity guard) to 96% (with guard), reducing average regrasp time from 12.7s to 8.3s. The proximity index effectively detects approaching singularities, triggering preventive β limitations at 89.9°.
 
-#### 6.5.2 전역 매핑 정확도
+#### 6.5.2 Global Mapping Accuracy
 
-Unity 기반 포인트 클라우드 시각화는 120MB 메모리 사용량(50청크 순환 버퍼)으로 30fps에서 프레임당 약 300,000개의 점을 처리한다. 공간 해상도는 테이블 표면 평탄도 표준편차 0.8mm로 1mm 판별을 달성한다. 다각도 캡처 간의 등록 정확도는 ICP 정제를 사용하여 1.4mm RMS 오차를 산출한다.
+Unity-based point cloud visualization processes approximately 300,000 points per frame at 30fps with 120MB memory usage (50-chunk circular buffer). Spatial resolution achieves 1mm discrimination with table surface flatness standard deviation of 0.8mm. Registration accuracy between multi-angle captures yields 1.4mm RMS error using ICP refinement.
 
-### 6.6 인간-로봇 상호작용 평가
+### 6.6 Human-Robot Interaction Evaluation
 
-#### 6.6.1 음성 인식 성능
+#### 6.6.1 Speech Recognition Performance
 
-Whisper STT 통합은 제조 소음 조건(SNR 10-15dB) 하에서 한국어 명령 "시작해"(start)에 대해 94% 인식 정확도를 보여준다. 평균 응답 지연시간은 95퍼센타일에서 245ms인 203ms이다. 거리 견고성 테스트는 1.5m 화자-마이크 분리까지 >95% 정확도를 유지하며, 2m 거리에서 87%로 저하된다.
+Whisper STT integration demonstrates 94% recognition accuracy for Korean commands "시작해" (start) under manufacturing noise conditions (SNR 10-15dB). Average response latency is 203ms with 95th percentile at 245ms. Distance robustness testing maintains >95% accuracy up to 1.5m speaker-microphone separation, degrading to 87% at 2m distance.
 
-#### 6.6.2 협업 안전 기능
+#### 6.6.2 Collaborative Safety Functions
 
-"멈춰"(stop) 명령을 통한 비상 정지는 운동 감속을 포함하여 평균 시스템 응답 시간 1.2초로 100% 인식률을 달성한다. 관절 한계 모니터링은 제조업체 사양 내 5° 안전 각도 임계값으로 설정된 특이점 유발 불규칙적 움직임을 방지한다.
+Emergency stop through "멈춰" (stop) commands achieves 100% recognition rate with average system response time of 1.2s including motion deceleration. Joint limit monitoring prevents singularity-inducing erratic movements with 5° safety margin thresholds set within manufacturer specifications.
 
-### 6.7 통합 시스템 평가
+### 6.7 Integrated System Evaluation
 
-#### 6.7.1 학습 진행 분석
+#### 6.7.1 Learning Progress Analysis
 
-훈련 진행은 명확한 개선 단계를 보여준다:
-- 기준선 DQN (0% 성공)
-- 재생 버퍼 추가 (0.4% 성공)
-- PER과 듀얼링 개선 (4% 성공)
-- 보상 형성을 가진 커리큘럼 재설계 (17% 성공)
-- 로깅과 적응적 보상을 가진 최종 최적화 (45% 성공)
+Training progress demonstrates clear improvement phases:
+- Baseline DQN (0% success)
+- Replay buffer addition (0.4% success)
+- PER and dueling improvements (4% success)
+- Curriculum redesign with reward shaping (17% success)
+- Final optimization with logging and adaptive rewards (45% success)
 
-학습 곡선은 롤링 평균 수렴으로 약 35,000 에피소드에서 안정화된다.
+The learning curve stabilizes around 35,000 episodes with rolling average convergence.
 
-#### 6.7.2 조립 성공률 지표
+#### 6.7.2 Assembly Success Rate Metrics
 
-300회의 독립적인 시행에 걸친 종단 간 조립 평가는 75.0% ±4.9% 성공률(95% CI: [70.1%, 79.9%])을 달성하여 초기 35.2% 기준선에서 39.8 퍼센트 포인트 개선을 나타낸다.
+End-to-end assembly evaluation across 300 independent trials achieves 75.0% ±4.9% success rate (95% CI: [70.1%, 79.9%]), representing a 39.8 percentage point improvement from the initial 35.2% baseline.
 
-#### 6.7.3 실패 모드 분류
+#### 6.7.3 Failure Mode Classification
 
-실패 모드 분석 결과:
+Failure mode analysis results:
 
-| 실패 카테고리 | 빈도 (%) | 개수 | 주요 원인 |
-|--------------|----------|------|-----------|
-| 자세 추정 오류 | 12.0 | 9 | 좌표 변환 드리프트 |
-| 파지 불안정성 | 16.0 | 12 | 운반 중 조각 미끄러짐 |
-| 특이점 처리 | 10.0 | 8 | ZYZ 임계값 위반 |
-| 시뮬레이션 불일치 | 26.0 | 20 | 시뮬레이션에서 바닥 침투 |
-| ROS–Unity 동기화 | 6.0 | 4 | IPC 지연 |
-| 하드웨어 오작동 | 4.0 | 3 | 센서/전원 손실 |
-| 알 수 없음/기타 | 16.0 | 19 | 기타 오류 |
-| **성공률** | **75.0** | **225** | **완전한 조립** |
+| Failure Category | Frequency (%) | Count | Primary Cause |
+|------------------|---------------|--------|---------------|
+| Pose Estimation Error | 12.0 | 9 | Coordinate transformation drift |
+| Grasping Instability | 16.0 | 12 | Piece slippage during transport |
+| Singularity Handling | 10.0 | 8 | ZYZ threshold violations |
+| Simulation Mismatch | 26.0 | 20 | Floor penetration in simulation |
+| ROS–Unity Sync | 6.0 | 4 | IPC latency |
+| Hardware Malfunction | 4.0 | 3 | Sensor/power loss |
+| Unknown/Other | 16.0 | 19 | Miscellaneous errors |
+| **Success Rate** | **75.0** | **225** | **Complete assembly** |
 
-#### 6.7.4 성능 병목 분석
+#### 6.7.4 Performance Bottleneck Analysis
 
-시스템 수준 타이밍 분석은 주요 병목을 식별한다:
-- YOLOv8n 추론: 23ms
-- DQN 결정: 12ms
-- 경로 계획: 35ms
-- 로봇 실행: 30ms
-- 총 제어 주기: 100ms
+System-level timing analysis identifies key bottlenecks:
+- YOLOv8n inference: 23ms
+- DQN decision: 12ms
+- Path planning: 35ms
+- Robot execution: 30ms
+- Total control cycle: 100ms
 
-메모리 사용량은 동시 Unity 시각화와 DQN 훈련 중에 3.6GB에서 최고점을 찍으며, 3시간 연속 작동에서 허용 가능한 성능 저하를 가진다.
+Memory usage peaks at 3.6GB during concurrent Unity visualization and DQN training, with acceptable performance degradation over 3-hour continuous operation.
 
 ## 7. Results and Discussion
 
@@ -1560,7 +1560,7 @@ This comprehensive research presents the groundbreaking integration of **Legal-A
 
 ### 8.4 Future Research Directions
 
-#### 6.4.1 Short-Term Extensions (6-12 months)
+#### 8.4.1 Short-Term Extensions (6-12 months)
 
 **Enhanced Robustness and Generalization:**
 
@@ -1582,7 +1582,7 @@ This comprehensive research presents the groundbreaking integration of **Legal-A
    - **Edge computing integration**: Distributed processing across multiple computational units
    - **Target**: 20 Hz control frequency with 95%+ deadline compliance
 
-#### 6.4.2 Medium-Term Research Directions (1-3 years)
+#### 8.4.2 Medium-Term Research Directions (1-3 years)
 
 **Advanced Learning and Generalization:**
 
@@ -1604,7 +1604,7 @@ This comprehensive research presents the groundbreaking integration of **Legal-A
    - **Intention recognition**: Understanding human assembly intentions for proactive assistance
    - **Target**: Enable seamless human-robot collaborative assembly in production environments
 
-#### 6.4.3 Long-Term Vision (3-10 years)
+#### 8.4.3 Long-Term Vision (3-10 years)
 
 **Revolutionary Manufacturing Capabilities:**
 
@@ -1626,9 +1626,9 @@ This comprehensive research presents the groundbreaking integration of **Legal-A
    - **Global accessibility**: Democratization of advanced manufacturing capabilities worldwide
    - **Vision**: Technology contributing to sustainable, equitable, and beneficial industrial development
 
-### 6.5 Methodological Framework for Future Research
+### 8.5 Methodological Framework for Future Research
 
-#### 6.5.1 Systematic Research Roadmap
+#### 8.5.1 Systematic Research Roadmap
 
 **Phase 1: Foundation Strengthening (Year 1)**
 - Environmental robustness validation across diverse industrial conditions

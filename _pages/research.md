@@ -50,17 +50,16 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
 </div>
 
 <div class="research-section">
-<h2><strong>Autonomous Assembly Research</strong></h2>
+<h2><strong>Legal-Action Masked DQN for Soma Cube Assembly</strong></h2>
 
-<a href="/research/somacube-rl-assembly/" class="btn btn--primary btn--large ripple-entry">Soma Cube RL Assembly</a>
+<a href="/research/somacube-rl-assembly/" class="btn btn--primary btn--large ripple-entry">Explore the Research</a>
 
-<p><em>Intelligence in Motion</em></p>
+<p><em>Autonomous 3D Puzzle Solving with Safe Robotics</em></p>
 
-<p>Breakthrough research in autonomous 3D puzzle assembly combining Legal-Action Masked Deep Q-Network with Safe ZYZ Regrasp planning. This comprehensive system demonstrates how reinforcement learning can achieve human-level spatial reasoning in collaborative robotics, featuring 75% assembly success and 91% sim-to-real transfer efficiency.</p>
+<p>A comprehensive robotic assembly system integrating Legal-Action Masked Deep Q-Network, Safe ZYZ Regrasp planning, and real-time perception for autonomous Soma Cube puzzle solving using a Doosan M0609 collaborative robot. Features 75% assembly success rate, 91% sim-to-real transfer efficiency, and multi-modal safety architecture with Korean speech recognition.</p>
 
-<p><strong>From algorithms to assembly — teaching robots spatial intelligence through deep learning</strong></p>
+<p><strong>Where reinforcement learning meets precision robotics — solving 3D puzzles with human-level spatial intelligence</strong></p>
 </div>
-
 
 <div class="research-section">
   <h2><strong>Precision Liquid Injection System</strong></h2>
@@ -70,20 +69,8 @@ Welcome to the central repository of my research journey into **Cognitive Synerg
   <p><em>Automation Meets Accuracy</em></p>
 
   <p>An advanced ROS2-based robotic system using Doosan M0609 and high-precision load cells to perform automated liquid pouring with ±1ml accuracy. Integrates MQTT communication, real-time control, and dynamic feedback for precision compound preparation.</p>
-  
+
   <p><strong>Where robotics meets chemistry — down to the last milliliter</strong></p>
-</div>
-
-<div class="research-section">
-  <h2><strong>Legal-Action Masked DQN for Soma Cube Assembly</strong></h2>
-
-  <a href="/research/somacube-rl-assembly/" class="btn btn--primary btn--large ripple-entry">Read the Paper</a>
-
-  <p><em>Autonomous 3D Puzzle Solving with Safe Robotics</em></p>
-
-  <p>A comprehensive robotic assembly system integrating Legal-Action Masked Deep Q-Network, Safe ZYZ Regrasp planning, and real-time perception for autonomous Soma Cube puzzle solving using a Doosan M0609 collaborative robot. Features 75% assembly success rate, 91% sim-to-real transfer efficiency, and multi-modal safety architecture with Korean speech recognition.</p>
-  
-  <p><strong>Where reinforcement learning meets precision robotics — solving 3D puzzles with human-level spatial intelligence</strong></p>
 </div>
 
 <div class="research-section">
