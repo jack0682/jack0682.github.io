@@ -14,7 +14,7 @@ header:
   overlay_image: /assets/images/cover-letter-bg.jpg
   actions:
     - label: "Download PDF"
-      url: "/assets/docs/영어소개.md"
+      url: "/assets/docs/cv.pdf"
       class: "btn--primary"
 ---
 
@@ -35,19 +35,19 @@ I am writing to express my strong interest in the Robotics Engineer position at 
 
 ## Core Strengths and Professional Characteristics
 
-### 🚀 Exceptional Execution Speed and Action-Oriented Mindset
+### Exceptional Execution Speed and Action-Oriented Mindset
 
 My greatest strength lies in rapid implementation and action-oriented thinking. When faced with complex problems, I prioritize quick identification of core ideas and immediate execution over excessive planning. During drone development projects with the aerospace society, I adopted a "rapid prototyping" approach—building functional prototypes even when theoretical designs weren't perfect, then improving through practical testing. This iterative methodology consistently proved more efficient than traditional development processes.
 
-### 🔄 Superior Adaptability and Flexible Problem-Solving
+### Superior Adaptability and Flexible Problem-Solving
 
 I excel in adapting to changing situations and turning unexpected challenges into opportunities. During Janus particle generation experiments in the fluid mechanics laboratory, when results deviated from expectations, I immediately formulated new hypotheses and adjusted experimental conditions rather than adhering to original plans. This flexible response approach often led to more interesting research discoveries and demonstrates my ability to thrive in the rapidly evolving robotics field.
 
-### 👥 Team Leadership and Motivation Excellence
+### Team Leadership and Motivation Excellence
 
 As a team leader, I consistently drive momentum and motivate team members through concrete action and personal example. When projects stagnated or team members faced difficulties, I provided specific action items and led by demonstration to restore team momentum. As club president, I focused on achievable short-term goals rather than abstract long-term visions, ensuring team members experienced regular success and maintained motivation.
 
-### 📈 Continuous Improvement and Self-Awareness
+### Continuous Improvement and Self-Awareness
 
 I recognize that my focus on rapid execution can sometimes lead to insufficient detail management. To address this, I've implemented a checklist-based quality management system and established personal processes that ensure thorough review phases follow rapid implementation. For documentation improvement, I practice concurrent logging and regular consolidation of these records into comprehensive project documentation.
 
@@ -55,13 +55,13 @@ I recognize that my focus on rapid execution can sometimes lead to insufficient 
 
 ## Current Research Position and Activities
 
-### 🔬 Currently: Undergraduate Researcher at Intelligent Robotics Laboratory
+### Currently: Undergraduate Researcher at Intelligent Robotics Laboratory
 
 I am currently working on a sophisticated **"Hidden Object Finding with Manipulator"** project based on reinforcement learning at the Intelligent Robotics Laboratory. This project requires integration of computer vision, reinforcement learning, and robotics control technologies, representing a cutting-edge research challenge in autonomous manipulation.
 
 In the current development phase, I focus on environment modeling and reward function design. I'm developing a novel approach that transcends traditional visual-information-dependent methods by combining haptic feedback with predictive reasoning. The goal is to enable robot manipulators to intelligently search for and manipulate visually occluded objects—a capability with significant implications for real-world manufacturing applications.
 
-### 🌊 Previous Research: Fluid Mechanics Laboratory
+### Previous Research: Fluid Mechanics Laboratory
 
 As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted research on Electrohydrodynamics (EHD) and Janus particle generation using 3D-printed Y-shaped channels. This experience provided me with precise understanding of microscopic phenomena and experimental design methodologies. The mutual verification between CFD simulation of microfluidic phenomena and experimental results developed my ability to understand and correct theory-reality gaps.
 
@@ -69,7 +69,7 @@ As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted re
 
 ## Detailed Technical Projects and Achievements
 
-### 🧩 Soma Cube Reinforcement Learning Assembly System
+### Soma Cube Reinforcement Learning Assembly System
 *Algorithm Development Leadership*
 
 **Legal-Action Masking Algorithm (Original Development)**
@@ -89,7 +89,7 @@ As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted re
 - Systematically modeled physical parameters, sensor noise, and lighting condition variations in Unity environment
 - Minimized performance degradation in actual robot deployment
 
-### 💧 Precision Liquid Injection Control System
+### Precision Liquid Injection Control System
 *System Architecture Design Leadership*
 
 **Mathematical Modeling and Control System**
@@ -107,7 +107,7 @@ As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted re
 - Built distributed communication systems via MQTT protocol for system scalability
 - Ensured real-time performance through efficient resource management
 
-### 🛡️ Industrial Safety Monitoring System
+### Industrial Safety Monitoring System
 *Integrated Implementation*
 
 **Computer Vision Pipeline Development**
@@ -124,7 +124,7 @@ As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted re
 
 ## Scientific Publications and Academic Achievements
 
-### 📄 First-Author arXiv Publications
+### First-Author arXiv Publications
 
 1. **["Towards Cognitive Collaborative Robots: Semantic-Level Integration and Explainable Control for Human-Centric Cooperation"](https://arxiv.org/abs/2505.03815)** (arXiv:2505.03815)
    - Presented new directions for human-robot collaboration
@@ -134,7 +134,7 @@ As an undergraduate researcher in the Fluid Mechanics Laboratory, I conducted re
    - Proposed novel architectures capable of relational semantic understanding
    - Implemented semantic preservation mechanisms using Forman-Ricci curvature and persistent homology
 
-### 🛩️ Aerospace Society 'Cheongeumbi' Team Leadership
+### Aerospace Society 'Cheongeumbi' Team Leadership
 
 As team leader, I guided drone development projects from conception to completion, including CAD design, frame fabrication, and control system implementation. Achieved stable flight control through PID control algorithm implementation and sensor fusion technology while coordinating multidisciplinary collaboration between mechanical, electrical, and software specialists.
 
@@ -145,7 +145,7 @@ As team leader, I guided drone development projects from conception to completio
 <div class="skills-grid">
 
 <div class="skill-category">
-  <h4>🔧 Hardware Integration and Control</h4>
+  <h4>Hardware Integration and Control</h4>
   <ul>
     <li>Universal Robots UR5, Intel RealSense D435, precision load cells</li>
     <li>Sensor fusion and calibration methodologies</li>
@@ -154,7 +154,7 @@ As team leader, I guided drone development projects from conception to completio
 </div>
 
 <div class="skill-category">
-  <h4>💻 Advanced Software Development</h4>
+  <h4>Advanced Software Development</h4>
   <ul>
     <li>Python, C++, ROS2, PyTorch for real-time applications</li>
     <li>Distributed system architecture design (MQTT, WebSocket)</li>
@@ -164,7 +164,7 @@ As team leader, I guided drone development projects from conception to completio
 </div>
 
 <div class="skill-category">
-  <h4>🤖 AI/ML Specialization</h4>
+  <h4>AI/ML Specialization</h4>
   <ul>
     <li>YOLOv5, StrongSORT, ORB-SLAM2 implementation</li>
     <li>PPO-based reinforcement learning with custom environments</li>
@@ -174,7 +174,7 @@ As team leader, I guided drone development projects from conception to completio
 </div>
 
 <div class="skill-category">
-  <h4>📐 Mathematical and Engineering Foundations</h4>
+  <h4>Mathematical and Engineering Foundations</h4>
   <ul>
     <li>Advanced fluid mechanics and CFD simulation</li>
     <li>Control theory and control engineering</li>
@@ -189,15 +189,15 @@ As team leader, I guided drone development projects from conception to completio
 
 ## Professional Aspirations and Future Vision
 
-### 🎯 Immediate Impact and Contribution
+### Immediate Impact and Contribution
 
 My primary goal is to work as an engineer who can make immediate practical contributions. I aim to systematically learn robotics control systems and safety architectures while researching ways to apply my developed technologies—Legal-Action Masked DQN and ZYZ singularity avoidance—to actual products for measurable performance improvements.
 
-### 🔧 Practical Problem-Solving Excellence
+### Practical Problem-Solving Excellence
 
 Developing field-centered problem-solving capabilities is my first priority. I want to understand the differences between academic research and actual industrial environments while developing practical engineering skills to accurately capture customer requirements and implement them as technical solutions.
 
-### 🚀 Next-Generation Technology Leadership
+### Next-Generation Technology Leadership
 
 Long-term, I aspire to lead next-generation technology development as a core talent. Based on my expertise in AI and robotics, I want to develop innovative technologies that prove themselves in real markets and contribute to improving global competitiveness in robotics technology.
 
@@ -209,15 +209,15 @@ The technologies I've developed represent a comprehensive approach to next-gener
 
 <div class="innovation-showcase">
   <div class="innovation-item">
-    <h4>⚡ Legal-Action Masked DQN</h4>
+    <h4>Legal-Action Masked DQN</h4>
     <p>Enhances learning efficiency by systematically constraining action spaces</p>
   </div>
   <div class="innovation-item">
-    <h4>🛡️ ZYZ Singularity Guard</h4>
+    <h4>ZYZ Singularity Guard</h4>
     <p>Ensures safety through mathematical prevention of computational instabilities</p>
   </div>
   <div class="innovation-item">
-    <h4>🧠 Cognitive Synergy Architecture</h4>
+    <h4>Cognitive Synergy Architecture</h4>
     <p>Provides intelligence through semantic-level human-robot integration</p>
   </div>
 </div>
