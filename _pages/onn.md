@@ -11,6 +11,159 @@ sidebar:
 
 *A Unified Architecture for Semantic Cognition and Delay-Robust Control in Robotics*
 
+<!-- Advanced Research Paper Download Section -->
+<div class="research-paper-notice">
+  <div class="paper-announcement">
+    <h4>📄 Advanced Research Publication Available</h4>
+    <p><strong>"Advanced Topology-Preserving Neural Networks: An Extension of ONN-ORTSF Framework with Dynamic Structural Optimization"</strong></p>
+    <p class="paper-description">
+      The complete extended research with radical topological innovations and dynamic structural optimization techniques.
+      This comprehensive paper includes advanced mathematical frameworks, experimental validations, and breakthrough methodologies
+      that extend the ONN-ORTSF architecture into new frontiers of cognitive robotics.
+    </p>
+    <div class="download-actions">
+      <a href="/assets/docs/Advanced Topology-Preserving Neural Networks An Extension of ONN:ORTSF Framework with Dynamic Structural Optimization.pdf"
+         class="btn btn-primary btn-large" download>
+        <span class="download-icon">📊</span>
+        Download Full Research Paper
+      </a>
+      <div class="paper-stats">
+        <span class="stat-badge">Extended Framework</span>
+        <span class="stat-badge">Advanced Topology</span>
+        <span class="stat-badge">Dynamic Optimization</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Research Paper Download Section */
+.research-paper-notice {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 2.5em;
+  margin: 2em 0 3em 0;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.paper-announcement h4 {
+  color: white;
+  margin-bottom: 1em;
+  font-size: 1.4em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.paper-announcement p {
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  margin-bottom: 1.5em;
+  font-weight: 500;
+}
+
+.paper-description {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9) !important;
+  max-width: 800px;
+  margin: 0 auto 2em auto !important;
+}
+
+.download-actions {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ee5a52 0%, #d63447 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.download-icon {
+  font-size: 1.3em;
+}
+
+.paper-stats {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.4em 1em;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .research-paper-notice {
+    padding: 2em 1.5em;
+    margin: 1.5em 0 2.5em 0;
+  }
+
+  .paper-announcement h4 {
+    font-size: 1.2em;
+  }
+
+  .btn-primary {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+
+  .paper-stats {
+    gap: 0.5em;
+  }
+
+  .stat-badge {
+    font-size: 0.8em;
+    padding: 0.3em 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .research-paper-notice {
+    padding: 1.5em 1em;
+  }
+
+  .paper-announcement h4 {
+    font-size: 1.1em;
+  }
+
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 0.95em;
+  }
+}
+</style>
+
 ## **Abstract**
 
 The advancement of autonomous robotic systems has led to impressive capabilities in perception, localization, mapping, and control. Yet, a fundamental gap remains: existing frameworks excel at geometric reasoning and dynamic stability but fall short in representing and preserving relational semantics, contextual reasoning, and cognitive transparency essential for collaboration in dynamic, human-centric environments.
