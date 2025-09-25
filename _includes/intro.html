@@ -490,12 +490,15 @@
   // 부드러운 페이지 전환 애니메이션
   function exitIntro() {
     const overlay = document.getElementById('intro-overlay');
-    
+
+    // sessionStorage에 intro가 표시되었다고 기록 (브라우저 세션 동안만 유지)
+    sessionStorage.setItem('homepage-intro-viewed', 'true');
+
     // 상단으로 슬라이드하면서 스케일 효과
     overlay.style.transform = 'translateY(-100%) scale(0.95)';
     overlay.style.opacity = '0';
     overlay.style.filter = 'blur(10px)';
-    
+
     // 애니메이션 완료 후 완전히 제거
     setTimeout(() => {
       overlay.style.display = 'none';
@@ -508,13 +511,22 @@
     }, 1400);
   }
   
-  // 메인 콘텐츠 초기 숨김 상태
+  // 메인 콘텐츠 초기 숨김 상태 및 intro 표시 제어
   document.addEventListener('DOMContentLoaded', function() {
-    const mainContent = document.querySelector('.initial-content, main, body > div:not(#intro-overlay)');
-    if (mainContent) {
-      mainContent.style.opacity = '0';
-      mainContent.style.transform = 'translateY(20px)';
-      mainContent.style.transition = 'opacity 1s cubic-bezier(0.23, 1, 0.32, 1), transform 1s cubic-bezier(0.23, 1, 0.32, 1)';
+    const overlay = document.getElementById('intro-overlay');
+    const introViewed = sessionStorage.getItem('homepage-intro-viewed');
+
+    if (introViewed === 'true') {
+      // 이미 한번 봤으면 intro를 숨기고 메인 콘텐츠 바로 표시
+      overlay.style.display = 'none';
+    } else {
+      // 처음 방문이면 메인 콘텐츠 숨김
+      const mainContent = document.querySelector('.initial-content, main, body > div:not(#intro-overlay)');
+      if (mainContent) {
+        mainContent.style.opacity = '0';
+        mainContent.style.transform = 'translateY(20px)';
+        mainContent.style.transition = 'opacity 1s cubic-bezier(0.23, 1, 0.32, 1), transform 1s cubic-bezier(0.23, 1, 0.32, 1)';
+      }
     }
   });
   
