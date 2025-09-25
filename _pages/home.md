@@ -1522,9 +1522,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 개발자용: localStorage 리셋 함수 (콘솔에서 사용 가능)
+// 개발자용: sessionStorage 리셋 함수 (콘솔에서 사용 가능)
 window.resetIntroDisplay = function() {
-    localStorage.removeItem('homepage-intro-viewed');
+    sessionStorage.removeItem('homepage-intro-viewed');
     console.log('Intro display reset. Refresh the page to see intro again.');
 };
 </script>
