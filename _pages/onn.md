@@ -22,15 +22,38 @@ sidebar:
       that extend the ONN-ORTSF architecture into new frontiers of cognitive robotics.
     </p>
     <div class="download-actions">
-      <a href="/assets/docs/Advanced Topology-Preserving Neural Networks An Extension of ONN:ORTSF Framework with Dynamic Structural Optimization.pdf"
-         class="btn btn-primary btn-large" download>
-        <span class="download-icon">📊</span>
-        Download Full Research Paper
-      </a>
+      <div class="paper-buttons">
+        <a href="/assets/docs/2506.19277v3.pdf"
+           class="btn btn-conceptual btn-large"
+           download="ONN-ORTSF_Conceptual_Framework.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span class="download-icon">📘</span>
+          Conceptual Framework Paper
+        </a>
+        <a href="/assets/docs/Advanced%20Topology-Preserving%20Neural%20Networks%20An%20Extension%20of%20ONN%3AORTSF%20Framework%20with%20Dynamic%20Structural%20Optimization.pdf"
+           class="btn btn-advanced btn-large"
+           download="Advanced_Topology-Preserving_Neural_Networks_ONN-ORTSF_Extension.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          <span class="download-icon">📊</span>
+          Advanced Research Paper
+        </a>
+      </div>
+      <div class="paper-descriptions">
+        <div class="paper-desc-item">
+          <h5>📘 Conceptual Framework</h5>
+          <p>Core theoretical foundations and mathematical architecture of ONN-ORTSF</p>
+        </div>
+        <div class="paper-desc-item">
+          <h5>📊 Advanced Extension</h5>
+          <p>Radical topological innovations with dynamic structural optimization</p>
+        </div>
+      </div>
       <div class="paper-stats">
-        <span class="stat-badge">Extended Framework</span>
-        <span class="stat-badge">Advanced Topology</span>
-        <span class="stat-badge">Dynamic Optimization</span>
+        <span class="stat-badge">Dual Publication</span>
+        <span class="stat-badge">Conceptual + Advanced</span>
+        <span class="stat-badge">Complete Framework</span>
       </div>
     </div>
   </div>
@@ -75,28 +98,83 @@ sidebar:
   margin-top: 2em;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-  color: white;
-  padding: 14px 32px;
+.paper-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1em;
   display: inline-flex;
   align-items: center;
   gap: 0.8em;
   transition: all 0.3s ease;
   border: none;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn-conceptual {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.btn-conceptual:hover {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.6);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-advanced {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
   box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
-.btn-primary:hover {
+.btn-advanced:hover {
   background: linear-gradient(135deg, #ee5a52 0%, #d63447 100%);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
   color: white;
   text-decoration: none;
+}
+
+.paper-descriptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  margin-bottom: 2em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paper-desc-item {
+  text-align: center;
+}
+
+.paper-desc-item h5 {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.paper-desc-item p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.9em !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
 }
 
 .download-icon {
@@ -133,9 +211,19 @@ sidebar:
     font-size: 1.2em;
   }
 
-  .btn-primary {
+  .paper-buttons {
+    gap: 1em;
+  }
+
+  .btn {
     padding: 12px 24px;
     font-size: 1em;
+    min-width: 180px;
+  }
+
+  .paper-descriptions {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
   }
 
   .paper-stats {
@@ -157,9 +245,16 @@ sidebar:
     font-size: 1.1em;
   }
 
-  .btn-primary {
+  .paper-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .btn {
     padding: 10px 20px;
     font-size: 0.95em;
+    min-width: 160px;
   }
 }
 </style>

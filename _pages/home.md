@@ -202,180 +202,121 @@ contact_cta:
 
 ---
 
-<!-- Cover Letters Section -->
-<section class="cover-letters-section">
-  <div class="cover-letters-container">
-    <h3>📄 Cover Letters / Bewerbungsschreiben / 志望動機書 / Cartas de Presentación</h3>
-    <p>Choose your language / Wählen Sie Ihre Sprache / 言語を選択してください / Seleccione su idioma</p>
-    <div class="cover-letters-grid">
-      <a href="/assets/docs/영어소개.md" class="cover-letter-btn" download>
-        <span class="flag">🇺🇸</span>
-        <span class="language">English</span>
-        <span class="description">Professional cover letter in English</span>
+<!-- Compact Cover Letters Section -->
+<section class="cover-letters-compact">
+  <div class="letters-container">
+    <h4>📄 Multilingual Introduction</h4>
+    <div class="letters-row">
+      <a href="/cover-letters/english/" class="letter-link">
+        <span class="flag-mini">🇺🇸</span>
+        <span class="lang-text">English</span>
       </a>
-      <a href="/assets/docs/독일 소개.md" class="cover-letter-btn" download>
-        <span class="flag">🇩🇪</span>
-        <span class="language">Deutsch</span>
-        <span class="description">Bewerbungsschreiben auf Deutsch</span>
+      <a href="/cover-letters/deutsch/" class="letter-link">
+        <span class="flag-mini">🇩🇪</span>
+        <span class="lang-text">Deutsch</span>
       </a>
-      <a href="/assets/docs/일본어소개.md" class="cover-letter-btn" download>
-        <span class="flag">🇯🇵</span>
-        <span class="language">日本語</span>
-        <span class="description">日本語での志望動機書</span>
+      <a href="/cover-letters/japanese/" class="letter-link">
+        <span class="flag-mini">🇯🇵</span>
+        <span class="lang-text">日本語</span>
       </a>
-      <a href="/assets/docs/스페ㄴ어소개.md" class="cover-letter-btn" download>
-        <span class="flag">🇪🇸</span>
-        <span class="language">Español</span>
-        <span class="description">Carta de presentación en español</span>
+      <a href="/cover-letters/spanish/" class="letter-link">
+        <span class="flag-mini">🇪🇸</span>
+        <span class="lang-text">Español</span>
       </a>
     </div>
   </div>
 </section>
 
 <style>
-/* Cover Letters Section */
-.cover-letters-section {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 3em 0;
-  margin: 2em 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.cover-letters-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 2em;
+/* Compact Cover Letters Section */
+.cover-letters-compact {
+  background: rgba(52, 152, 219, 0.05);
+  border: 1px solid rgba(52, 152, 219, 0.1);
+  border-radius: 8px;
+  padding: 1.5em;
+  margin: 1.5em 0;
   text-align: center;
 }
 
-.cover-letters-container h3 {
-  font-size: 1.8em;
+.letters-container h4 {
+  font-size: 1.1em;
   color: #2c3e50;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   font-weight: 600;
 }
 
-.cover-letters-container p {
-  color: #5a6c7d;
-  margin-bottom: 2em;
-  font-style: italic;
-}
-
-.cover-letters-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5em;
-  margin-top: 2em;
-}
-
-.cover-letter-btn {
-  background: white;
-  padding: 1.8em 1.5em;
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
+.letters-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8em;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  border: 2px solid transparent;
-  min-height: 150px;
   justify-content: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
 }
 
-.cover-letter-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-  border-color: #3498db;
-  color: inherit;
-}
-
-.cover-letter-btn .flag {
-  font-size: 2.5em;
-  line-height: 1;
-}
-
-.cover-letter-btn .language {
-  font-size: 1.2em;
-  font-weight: 600;
+.letter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.6em 1em;
+  background: white;
+  border-radius: 20px;
+  text-decoration: none;
   color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.cover-letter-btn .description {
+.letter-link:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  text-decoration: none;
+}
+
+.flag-mini {
+  font-size: 1.2em;
+}
+
+.lang-text {
   font-size: 0.9em;
-  color: #5a6c7d;
-  text-align: center;
-  line-height: 1.4;
 }
 
 /* 반응형 */
 @media (max-width: 768px) {
-  .cover-letters-section {
-    padding: 2em 0;
-    margin: 1.5em 0;
+  .cover-letters-compact {
+    padding: 1.2em;
+    margin: 1em 0;
   }
 
-  .cover-letters-container {
-    padding: 0 1em;
+  .letters-container h4 {
+    font-size: 1em;
   }
 
-  .cover-letters-container h3 {
-    font-size: 1.4em;
-  }
-
-  .cover-letters-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  .letters-row {
     gap: 1em;
   }
 
-  .cover-letter-btn {
-    padding: 1.5em 1em;
-    min-height: 120px;
-  }
-
-  .cover-letter-btn .flag {
-    font-size: 2em;
-  }
-
-  .cover-letter-btn .language {
-    font-size: 1.1em;
-  }
-
-  .cover-letter-btn .description {
-    font-size: 0.8em;
+  .letter-link {
+    padding: 0.5em 0.8em;
+    font-size: 0.85em;
   }
 }
 
 @media (max-width: 480px) {
-  .cover-letters-container h3 {
-    font-size: 1.2em;
-    line-height: 1.3;
-  }
-
-  .cover-letters-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .letters-row {
     gap: 0.8em;
   }
 
-  .cover-letter-btn {
-    padding: 1.2em 0.8em;
-    min-height: 100px;
+  .letter-link {
+    padding: 0.4em 0.7em;
+    font-size: 0.8em;
   }
 
-  .cover-letter-btn .flag {
-    font-size: 1.8em;
-  }
-
-  .cover-letter-btn .language {
-    font-size: 1em;
-  }
-
-  .cover-letter-btn .description {
-    font-size: 0.75em;
-    display: none; /* 매우 작은 화면에서는 설명 숨김 */
+  .lang-text {
+    font-size: 0.8em;
   }
 }
 </style>
