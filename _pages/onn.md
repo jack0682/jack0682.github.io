@@ -1620,13 +1620,15 @@ where $$C(\theta, \dot{\theta})$$ are Coriolis terms and $$G(\theta) = \nabla U(
 
 ### **Proof 1: Non-Circular PH Stability Bound**
 
-**Theorem**: Under the filtration function $$f_t(e_{ij}) = \alpha \ \lvert\mathcal{S}_i(t) - \mathcal{S}_j(t) \rvert\ \_2 + \beta \lvert \operatorname{Ric}_F(e_{ij})\rvert$$, the persistent homology distance satisfies:
+**Theorem**: Under the filtration function $$f_t(e_{ij}) = \alpha \|\mathcal{S}_i(t) - \mathcal{S}_j(t)\|_2 + \beta \lvert \operatorname{Ric}_F(e_{ij})\rvert$$, the persistent homology distance satisfies:
 
-$$d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq L_c \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + \eta(\mathcal{L}_{\operatorname{ph}})$$
+$$d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq L_c \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + \eta(\mathcal{L}_{\text{ph}})$$
 
 **Complete Proof**:
 
-*Step 1: Apply Bottleneck Stability Theorem*
+
+#### **Step 1: Apply Bottleneck Stability Theorem**
+
 
 By the stability theorem of Cohen-Steiner, Edelsbrunner, and Harer, for any two filtration functions $$f, g$$ on the same simplicial complex:
 
@@ -1634,13 +1636,17 @@ $$d_B(D(f), D(g)) \leq \|f - g\|_\infty$$
 
 where $$d_B$$ is the bottleneck distance between persistence diagrams.
 
-*Step 2: Decompose Filtration Difference*
+
+#### **Step 2: Decompose Filtration Difference**
+
 
 For $$f_t$$ and $$f_{t+\delta}$$:
 
 $$\lvert f_t(e_{ij}) - f_{t+\delta}(e_{ij})\rvert = \left\lvert \alpha \left(\|\mathcal{S}_i(t) - \mathcal{S}_j(t)\|_2 - \|\mathcal{S}_i(t+\delta) - \mathcal{S}_j(t+\delta)\|_2\right) + \beta \left(\lvert\operatorname{Ric}_F(e_{ij})(t)\rvert - \lvert\operatorname{Ric}_F(e_{ij})(t+\delta)\rvert\right) \right\rvert$$
 
-*Step 3: Apply Triangle Inequality and Lipschitz Bounds*
+
+#### **Step 3: Apply Triangle Inequality and Lipschitz Bounds**
+
 
 By reverse triangle inequality:
 
@@ -1650,21 +1656,27 @@ For curvature terms, assume Lipschitz continuity of Ricci curvature with respect
 
 $$\lvert\operatorname{Ric}_F(e_{ij})(t) - \operatorname{Ric}_F(e_{ij})(t+\delta)\rvert \leq L_{Ric}\|w(e_{ij})(t) - w(e_{ij})(t+\delta)\|$$
 
-*Step 4: Connect to Loss Functions*
 
-From our curvature variance loss: $$\mathcal{L}_{\operatorname{ricci\text{-}internal}} = \sum_{e \in E} (\operatorname{Ric}_F(e) - \overline{\operatorname{Ric}}_F)^2$$
+#### **Step 4: Connect to Loss Functions**
+
+
+From our curvature variance loss: $$\mathcal{L}_{\text{ricci-internal}} = \sum_{e \in E} (\operatorname{Ric}_F(e) - \overline{\operatorname{Ric}}_F)^2$$
 
 By Cauchy-Schwarz and finite edge count $$\lvert E \rvert$$:
 
-$$\max_{e \in E} \lvert \operatorname{Ric}_F(e) - \overline{\operatorname{Ric}}_F\rvert \leq \sqrt{\lvert E\rvert} \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}}$$
+$$\max_{e \in E} \lvert \operatorname{Ric}_F(e) - \overline{\operatorname{Ric}}_F\rvert \leq \sqrt{\lvert E\rvert} \sqrt{\mathcal{L}_{\text{ricci-internal}}}$$
 
-*Step 5: L²-L∞ Norm Conversion*
+
+#### **Step 5: L²-L∞ Norm Conversion**
+
 
 For finite graphs with bounded degree: $$\lvert f_t - f_{t+\delta}\rvert _\infty \leq \kappa \lvert f_t - f_{t+\delta}\rvert _2$$
 
 where $$\kappa = \sqrt{\lvert E \rvert}$$ for edge-indexed functions.
 
-*Step 6: Semantic Label Contribution*
+
+#### **Step 6: Semantic Label Contribution**
+
 
 The semantic label mismatch $$\mathcal{L}_{\operatorname{ph}} = \sum_{i,j} \operatorname{CE}(\hat{y}_{ij}^{\operatorname{sem}}, y_{ij}^{\operatorname{sem}})$$ affects topology through edge weight perturbations. Under bounded label influence:
 
@@ -1672,23 +1684,27 @@ $$\eta(\mathcal{L}_{\operatorname{ph}}) = C_{sem} \mathcal{L}_{\operatorname{ph}
 
 for some constant $$C_{sem} > 0$$ depending on label-to-weight mapping sensitivity.
 
-**Conclusion**: $$d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq L_c \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + C_{sem} \sqrt{\mathcal{L}_{\operatorname{ph}}}$$
+**Conclusion**: $$d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq L_c \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + C_{sem} \sqrt{\mathcal{L}_{\text{ph}}}$$
 
 where $$L_c = \max(\alpha L_S, \beta L_{Ric})$$ combines Lipschitz constants. $$\square$$
 
 ### **Proof 2: Discrete Predictor Continuity and Grönwall Bound**
 
-**Theorem**: The discrete finite-difference predictor $$\mathcal{P}(\mathcal{R}_{\operatorname{trace}}(t)) = \mathcal{R}_{\operatorname{trace}}(t) + \delta \Delta \mathcal{R}_{\operatorname{trace}}(t)$$ with Lipschitz assumption $$\lvert\mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2)\\rvert \leq L_\mathcal{P} \lvert\mathcal{R}_1 - \mathcal{R}_2\\rvert$$ ensures ORTSF continuity:
+**Theorem**: The discrete finite-difference predictor $$\mathcal{P}(\mathcal{R}_{\operatorname{trace}}(t)) = \mathcal{R}_{\operatorname{trace}}(t) + \delta \Delta \mathcal{R}_{\operatorname{trace}}(t)$$ with Lipschitz assumption $$\|\mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2)\| \leq L_\mathcal{P} \|\mathcal{R}_1 - \mathcal{R}_2\|$$ ensures ORTSF continuity:
 
-$$\lvert\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t)) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t-\Delta t))\right\\rvert \leq L_{\operatorname{total}} \left \lvert\mathcal{R}_{\operatorname{trace}}(t) - \mathcal{R}_{\operatorname{trace}}(t-\Delta t)\right\\rvert $$
+$$\|\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t)) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t-\Delta t))\| \leq L_{\operatorname{total}} \|\mathcal{R}_{\operatorname{trace}}(t) - \mathcal{R}_{\operatorname{trace}}(t-\Delta t)\|$$
 
 **Complete Proof**:
 
-*Step 1: ORTSF Composition Structure*
+
+#### **Step 1: ORTSF Composition Structure**
+
 
 $$\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}) = \mathcal{C}(s) \cdot \mathcal{C}_{\operatorname{delay}}(s) \circ \mathcal{P}(\mathcal{R})$$
 
-*Step 2: Discrete Predictor Lipschitz Property*
+
+#### **Step 2: Discrete Predictor Lipschitz Property**
+
 
 For the finite-difference predictor:
 $$\lvert \mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2) \rvert 
@@ -1715,25 +1731,31 @@ $$\lvert \mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2) \rvert
 \leq \bigl(1 + \delta L_\Pi (1 + \rho^h)\bigr) \, \lvert \mathcal{R}_1 - \mathcal{R}_2 \rvert 
 =: L_\mathcal{P} \, \lvert \mathcal{R}_1 - \mathcal{R}_2 \rvert$$
 
-*Step 3: Compensator and Controller Continuity*
+
+#### **Step 3: Compensator and Controller Continuity**
+
 
 Assume $$\mathcal{C}_{\operatorname{delay}}(s)$$ and $$\mathcal{C}(s)$$ are Lipschitz continuous operators with constants $$L_{\operatorname{delay}}$$ and $$L_C$$ respectively.
 
-*Step 4: Composite Lipschitz Bound*
 
-$$\lvert\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_1) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_2)\right\| = \lvert\mathcal{C}(s) \cdot \mathcal{C}_{\operatorname{delay}}(s) \circ \mathcal{P}(\mathcal{R}_1) - \mathcal{C}(s) \cdot \mathcal{C}_{\operatorname{delay}}(s) \circ \mathcal{P}(\mathcal{R}_2)\|$$
+#### **Step 4: Composite Lipschitz Bound**
 
-$$\leq L_C L_{\operatorname{delay}} \lvert\mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2)\| \leq L_C L_{\operatorname{delay}} L_\mathcal{P} \lvert\mathcal{R}_1 - \mathcal{R}_2\|$$
 
-*Step 5: Grönwall-Type Stability*
+$$\|\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_1) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_2)\| = \|\mathcal{C}(s) \cdot \mathcal{C}_{\operatorname{delay}}(s) \circ \mathcal{P}(\mathcal{R}_1) - \mathcal{C}(s) \cdot \mathcal{C}_{\operatorname{delay}}(s) \circ \mathcal{P}(\mathcal{R}_2)\|$$
+
+$$\leq L_C L_{\operatorname{delay}} \|\mathcal{P}(\mathcal{R}_1) - \mathcal{P}(\mathcal{R}_2)\| \leq L_C L_{\operatorname{delay}} L_\mathcal{P} \|\mathcal{R}_1 - \mathcal{R}_2\|$$
+
+
+#### **Step 5: Grönwall-Type Stability**
+
 
 Define $$L_{\operatorname{total}} = L_C L_{\operatorname{delay}} L_\mathcal{P}$$. Under the recursive relation from PH bound:
 
-$$\lvert\mathcal{R}_{\operatorname{trace}}(t) - \mathcal{R}_{\operatorname{trace}}(t-\Delta t)\| \leq C_{PH} \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + \eta(\mathcal{L}_{\operatorname{ph}})$$
+$$\|\mathcal{R}_{\operatorname{trace}}(t) - \mathcal{R}_{\operatorname{trace}}(t-\Delta t)\| \leq C_{PH} \sqrt{\mathcal{L}_{\text{ricci-internal}}} + \eta(\mathcal{L}_{\text{ph}})$$
 
 This gives the recursive stability bound:
 
-$$\lvert\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t)) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t-\Delta t))\right\| \leq L_{\operatorname{total}} (C_{PH} \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + \eta(\mathcal{L}_{\operatorname{ph}}))$$
+$$\|\mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t)) - \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t-\Delta t))\| \leq L_{\operatorname{total}} (C_{PH} \sqrt{\mathcal{L}_{\text{ricci-internal}}} + \eta(\mathcal{L}_{\text{ph}}))$$
 
 As loss functions converge to zero, the control output deviation vanishes, ensuring system stability. $$\square$$
 
@@ -1747,7 +1769,9 @@ where $$\lvert \Delta f_c \rvert \leq \alpha \lvert \Delta G \rvert$$, $$\epsilo
 
 **Complete Proof**:
 
-*Step 1: Crossover Frequency Shift Analysis*
+
+#### **Step 1: Crossover Frequency Shift Analysis**
+
 
 Let the nominal open-loop transfer function be $$L_0(s) = G(s)C(s)$$ with crossover frequency $$f_{c0}$$ where $$\lvert L_0(j2\pi f_{c0})\rvert = 1$$.
 
@@ -1757,13 +1781,17 @@ The new crossover frequency $$f_c$$ satisfies $$\lvert L(j2\pi f_c)\rvert = 1$$:
 
 $$\lvert G(j2\pi f_c)\rvert \lvert C(j2\pi f_c)\rvert \lvert C_{\operatorname{delay}}(j2\pi f_c)\rvert = 1$$
 
-*Step 2: Perturbation Analysis*
+
+#### **Step 2: Perturbation Analysis**
+
 
 For small perturbations $$\Delta G(s)$$: $$G_{\operatorname{actual}}(s) = G(s) + \Delta G(s)$$
 
 The perturbed crossover condition: $$\lvert(G + \Delta G)(j2\pi f_c)\rvert \lvert C(j2\pi f_c)\rvert \lvert C_{\operatorname{delay}}(j2\pi f_c)\rvert = 1$$
 
-*Step 3: First-Order Frequency Sensitivity*
+
+#### **Step 3: First-Order Frequency Sensitivity**
+
 
 Taking logarithmic derivative with respect to frequency around nominal $$f_{c0}$$:
 
@@ -1771,7 +1799,9 @@ $$\frac{d}{df}\log\lvert L(j2\pi f)\rvert\Big\rvert_{f=f_{c0}} = \frac{d}{df}\lo
 
 Under typical assumptions: $$\left\lvert\frac{d}{df}\log\lvert L(j2\pi f)\rvert\Big\rvert_{f=f_{c0}}\right\rvert \approx \gamma > 0$$
 
-*Step 4: Model Uncertainty Bound*
+
+#### **Step 4: Model Uncertainty Bound**
+
 
 For structured uncertainty $$\|\Delta G\|_\infty \leq \epsilon_G$$:
 
@@ -1790,7 +1820,9 @@ $$
 \alpha = \frac{1}{\gamma \,\lvert G(j2\pi f_{c0}) \rvert}.
 $$
 
-*Step 5: Phase Margin Degradation*
+
+#### **Step 5: Phase Margin Degradation**
+
 
 Combining all effects:
 
@@ -1802,7 +1834,9 @@ $$
 + \phi_{\operatorname{comp}} - \epsilon
 $$
 
-*Step 6: Safety Buffer Justification*
+
+#### **Step 6: Safety Buffer Justification**
+
 
 To ensure robustness: $$\phi_{\operatorname{margin}}^{\operatorname{effective}} \geq \phi_{\operatorname{safe}} + \sigma$$
 
@@ -1816,15 +1850,19 @@ f_t(e_{ij}) = \alpha \|\mathcal{S}_i(t) - \mathcal{S}_j(t)\|_2
 + \beta \lvert \operatorname{Ric}_F(e_{ij}) \rvert
 $$
 
-$$d_{\operatorname{PH}}^{(0:3)}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + C_{2,k} \eta(\mathcal{L}_{\operatorname{ph}}) \right)$$
+$$d_{\operatorname{PH}}^{(0:3)}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + C_{2,k} \eta(\mathcal{L}_{\text{ph}}) \right)$$
 
 **Complete Proof**:
 
-*Step 1: Dimension-Specific Bottleneck Stability*
+
+#### **Step 1: Dimension-Specific Bottleneck Stability**
+
 
 For each homological dimension $$k$$: $$d_B(D_k(f_t), D_k(f_{t+\delta})) \leq \|f_t - f_{t+\delta}\|_\infty$$
 
-*Step 2: Dimension-Dependent Constants*
+
+#### **Step 2: Dimension-Dependent Constants**
+
 
 The Lipschitz constants $$C_{1,k}$$ and $$C_{2,k}$$ vary with homological dimension:
 
@@ -1835,19 +1873,23 @@ The Lipschitz constants $$C_{1,k}$$ and $$C_{2,k}$$ vary with homological dimens
 | $$H_2$$ (cavities) | $$C_{1,2} \approx 2.0$$ | Sensitive to face perturbations |
 | $$H_3$$ (voids) | $$C_{1,3} \approx 2.5$$ | Most sensitive to 3D structure changes |
 
-*Step 3: Weighted Summation*
+
+#### **Step 3: Weighted Summation**
+
 
 $$d_{\operatorname{PH}}^{(0:3)} = \sum_{k=0}^{3} \alpha_k \, d_B(D_k(f_t), D_k(f_{t+\delta})) \leq \sum_{k=0}^{3} \alpha_k \|f_t - f_{t+\delta}\|_\infty = \|f_t - f_{t+\delta}\|_\infty$$
 
 since $$\sum \alpha_k = 1$$.
 
-*Step 4: Connection to Loss Functions*
 
-Following Proof 1: $$\|f_t - f_{t+\delta}\|_\infty \leq L_c \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + \eta(\mathcal{L}_{\operatorname{ph}})$$
+#### **Step 4: Connection to Loss Functions**
+
+
+Following Proof 1: $$\|f_t - f_{t+\delta}\|_\infty \leq L_c \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + \eta(\mathcal{L}_{\text{ph}})$$
 
 However, dimension-specific constants reflect varying sensitivity of different homological features.
 
-**Conclusion**: $$d_{\operatorname{PH}}^{(0:3)} \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + C_{2,k} \eta(\mathcal{L}_{\operatorname{ph}}) \right)$$
+**Conclusion**: $$d_{\operatorname{PH}}^{(0:3)} \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + C_{2,k} \eta(\mathcal{L}_{\text{ph}}) \right)$$
 
 where the weighted sum accounts for relative importance and sensitivity of each homological dimension. $$\square$$
 
@@ -1861,17 +1903,23 @@ where $$\Delta_f = \sup_\sigma \|f_t^{(\sigma)} - f_{t+\delta}^{(\sigma)}\|_\inf
 
 **Complete Proof**:
 
-*Step 1: Lipschitz Property of Smoothing Operators*
+
+#### **Step 1: Lipschitz Property of Smoothing Operators**
+
 
 Since $$\Phi_\sigma$$ is 1-Lipschitz:
 
 $$\|f_t^{(\sigma)} - f_{t+\delta}^{(\sigma)}\|_\infty = \|\Phi_\sigma(f_t) - \Phi_\sigma(f_{t+\delta})\|_\infty \leq \|f_t - f_{t+\delta}\|_\infty$$
 
-*Step 2: Uniform Bound Across Scales*
+
+#### **Step 2: Uniform Bound Across Scales**
+
 
 $$\sup_{\sigma \in \Sigma} \|f_t^{(\sigma)} - f_{t+\delta}^{(\sigma)}\|_\infty \leq \|f_t - f_{t+\delta}\|_\infty$$
 
-*Step 3: Scale-Uniform Bottleneck Stability*
+
+#### **Step 3: Scale-Uniform Bottleneck Stability**
+
 
 For each scale $$\sigma$$: $$d_B\big(D(f_t^{(\sigma)}), D(f_{t+\delta}^{(\sigma)})\big) \leq \|f_t^{(\sigma)} - f_{t+\delta}^{(\sigma)}\|_\infty$$
 
@@ -1879,7 +1927,7 @@ Taking supremum:
 
 $$\sup_{\sigma \in \Sigma} d_B\big(D(f_t^{(\sigma)}), D(f_{t+\delta}^{(\sigma)})\big) \leq \sup_{\sigma \in \Sigma} \|f_t^{(\sigma)} - f_{t+\delta}^{(\sigma)}\|_\infty \leq \|f_t - f_{t+\delta}\|_\infty$$
 
-$$\leq L_c \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}} + \eta(\mathcal{L}_{\operatorname{ph}})$$
+$$\leq L_c \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}} + \eta(\mathcal{L}_{\text{ph}})$$
 
 **Conclusion**: Multi-scale filtrations preserve stability bounds uniformly across all scales. $$\square$$
 
@@ -1891,23 +1939,31 @@ $$\mathbb{P}\left(d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta
 
 **Complete Proof**:
 
-*Step 1: Bottleneck Stability Chain*
+
+#### **Step 1: Bottleneck Stability Chain**
+
 
 $$d_{\operatorname{PH}}(G_\mathcal{C}(t), G_\mathcal{C}(t+\delta)) \leq L_c \|f_t - f_{t+\delta}\|_\infty$$
 
-*Step 2: Sub-Gaussian Concentration*
+
+#### **Step 2: Sub-Gaussian Concentration**
+
 
 Let $$X = \|f_t - f_{t+\delta}\|_\infty$$ be sub-Gaussian with parameter $$\sigma^2$$:
 
 $$\mathbb{P}(X > \mathbb{E}[X] + u) \leq \exp\left(-\frac{u^2}{2\sigma^2}\right)$$
 
-*Step 3: Transformation to PH Distance*
+
+#### **Step 3: Transformation to PH Distance**
+
 
 Since $$d_{\operatorname{PH}} \leq L_c X$$:
 
 $$\mathbb{P}(d_{\operatorname{PH}} > \varepsilon) \leq \mathbb{P}(L_c X > \varepsilon) = \mathbb{P}\left(X > \frac{\varepsilon}{L_c}\right)$$
 
-*Step 4: Sub-Gaussian Tail Application*
+
+#### **Step 4: Sub-Gaussian Tail Application**
+
 
 Setting $$u = \frac{\varepsilon}{L_c} - \mathbb{E}[X]$$ and noting $$\mathbb{E}[X] \approx 0$$ for stationary processes:
 
@@ -1928,11 +1984,15 @@ The factor of 2 comes from considering both upper and lower tail bounds.
 
 **Complete Proof**:
 
-*Step 1: System Decomposition*
+
+#### **Step 1: System Decomposition**
+
 
 $$u(t) = \mathcal{F}_{\operatorname{ORTSF}}(\mathcal{R}_{\operatorname{trace}}(t)) = \mathcal{C}(s) \mathcal{C}_{\operatorname{delay}}(s) \mathcal{P}(\mathcal{R}_{\operatorname{trace}}(t))$$
 
-*Step 2: Bounded Reasoning Trace*
+
+#### **Step 2: Bounded Reasoning Trace**
+
 
 Since $$\mathcal{L}_{\operatorname{total}} \to 0$$:
 
@@ -1941,7 +2001,9 @@ Since $$\mathcal{L}_{\operatorname{total}} \to 0$$:
 
 This implies $$\{\mathcal{R}_{\operatorname{trace}}(t)\}$$ is bounded.
 
-*Step 3: Lipschitz Predictor Boundedness*
+
+#### **Step 3: Lipschitz Predictor Boundedness**
+
 
 Since $$\mathcal{P}$$ is Lipschitz with constant $$L_{\mathcal{P}}$$ and $$\mathcal{R}_{\operatorname{trace}}(t)$$ is bounded:
 
@@ -1952,7 +2014,9 @@ $$
 =: M_P < \infty
 $$
 
-*Step 4: Phase Margin Stability*
+
+#### **Step 4: Phase Margin Stability**
+
 
 The condition $$\phi_{\operatorname{margin}}^{\operatorname{effective}} > \phi_{\operatorname{safe}}$$ guarantees:
 
@@ -1960,13 +2024,17 @@ $$\|S(j\omega)\|_\infty < \gamma_S < \infty, \quad \|T(j\omega)\|_\infty < \gamm
 
 where $$S(s)$$ and $$T(s)$$ are sensitivity and complementary sensitivity functions.
 
-*Step 5: Linear Operator Boundedness*
+
+#### **Step 5: Linear Operator Boundedness**
+
 
 Since $$\mathcal{C}_{\operatorname{delay}}(s)$$ and $$\mathcal{C}(s)$$ are stable linear time-invariant systems:
 
 $$\|\mathcal{C}(s) \mathcal{C}_{\operatorname{delay}}(s)\|_{\mathcal{H}_\infty} =: L_{\operatorname{control}} < \infty$$
 
-*Step 6: BIBO Stability Conclusion*
+
+#### **Step 6: BIBO Stability Conclusion**
+
 
 For any bounded input $$\|\mathcal{R}_{\operatorname{trace}}(t)\| \leq M_R$$:
 
@@ -1993,21 +2061,27 @@ where $$G_\mathcal{C}^*$$ represents the optimal topology and $$k$$ is the itera
 
 **Complete Proof**:
 
-*Step 1: Loss Function Decomposition*
+
+#### **Step 1: Loss Function Decomposition**
+
 
 $$\mathcal{L}_{\operatorname{total}} = \mathcal{L}_{\operatorname{convex}} + \mathcal{L}_{\operatorname{non-convex}}$$
 
 where:
 - $$\mathcal{L}_{\operatorname{convex}} = \mathcal{L}_{\operatorname{pred}} + \mathcal{L}_{\operatorname{flow}} + \mathcal{L}_{\operatorname{relation}}$$
-- $$\mathcal{L}_{\operatorname{non-convex}} = \mathcal{L}_{\operatorname{context}} = \mathcal{L}_{\operatorname{ricci\text{-}internal}} + \lambda_{\operatorname{ph}} \mathcal{L}_{\operatorname{ph}}$$
+- $$\mathcal{L}_{\operatorname{non-convex}} = \mathcal{L}_{\operatorname{context}} = \mathcal{L}_{\text{ricci-internal}} + \lambda_{\text{ph}} \mathcal{L}_{\text{ph}}$$
 
-*Step 2: Convex Component Analysis*
+
+#### **Step 2: Convex Component Analysis**
+
 
 For convex components, standard SGD analysis gives:
 
 $$\mathbb{E}[\mathcal{L}_{\operatorname{convex}}(k)] - \mathcal{L}_{\operatorname{convex}}^* \leq \frac{C_{\operatorname{convex}}}{k}$$
 
-*Step 3: Non-Convex Component Analysis*
+
+#### **Step 3: Non-Convex Component Analysis**
+
 
 For topological terms satisfying weak Polyak-Łojasiewicz condition with $$\mu > 0$$:
 
@@ -2019,21 +2093,27 @@ $$
 
 This leads to: $$\mathbb{E}[\mathcal{L}_{\operatorname{non-convex}}(k)] - \mathcal{L}_{\operatorname{non-convex}}^* \leq \frac{C_{\operatorname{non-convex}}}{\sqrt{k}}$$
 
-*Step 4: Combined Rate*
+
+#### **Step 4: Combined Rate**
+
 
 The combined convergence rate is dominated by the slower non-convex rate:
 
 $$\mathbb{E}[\mathcal{L}_{\operatorname{total}}(k)] - \mathcal{L}_{\operatorname{total}}^* \leq \frac{C_{\operatorname{convex}}}{k} + \frac{C_{\operatorname{non-convex}}}{\sqrt{k}} = O(k^{-1/2})$$
 
-*Step 5: Connection to PH Distance*
+
+#### **Step 5: Connection to PH Distance**
+
 
 From multi-dimensional PH stability bound:
 
-$$d_{\operatorname{PH}}^{(0:3)}(G_\mathcal{C}(k), G_\mathcal{C}^*) \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\operatorname{ricci\text{-}internal}}(k)} + C_{2,k} \eta(\mathcal{L}_{\operatorname{ph}}(k)) \right)$$
+$$d_{\operatorname{PH}}^{(0:3)}(G_\mathcal{C}(k), G_\mathcal{C}^*) \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{\mathcal{L}_{\text{ricci-internal}}(k)} + C_{2,k} \eta(\mathcal{L}_{\text{ph}}(k)) \right)$$
 
-*Step 6: Final Rate Derivation*
 
-Since both $$\mathcal{L}_{\operatorname{ricci\text{-}internal}}(k)$$ and $$\mathcal{L}_{\operatorname{ph}}(k)$$ converge at rate $$O(k^{-1/2})$$:
+#### **Step 6: Final Rate Derivation**
+
+
+Since both $$\mathcal{L}_{\text{ricci-internal}}(k)$$ and $$\mathcal{L}_{\text{ph}}(k)$$ converge at rate $$O(k^{-1/2})$$:
 
 $$\mathbb{E}[d_{\operatorname{PH}}^{(0:3)}(G_\mathcal{C}(k), G_\mathcal{C}^*)] \leq \sum_{k=0}^{3} \alpha_k \left( C_{1,k} \kappa \sqrt{O(k^{-1/2})} + C_{2,k} O(k^{-1/2}) \right)$$
 
