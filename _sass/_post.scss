@@ -39,4 +39,37 @@
   .page__content strong {
     color: #3b2f22;
   }
+
+  /* News cards */
+  .news-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 14px;
+    padding: 14px 16px;
+    margin: 14px 0;
+    border: 1px solid #e7e1d6;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(35, 26, 13, 0.06);
+  }
+
+  .news-card__thumb img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f7f5f2;
+    border: 1px solid #efe9df;
+  }
+
+  .news-card__body h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+  }
+
+  .news-card__source {
+    margin: 0 0 6px;
+    font-size: 0.85rem;
+    color: #6a5f52;
+  }
 }
