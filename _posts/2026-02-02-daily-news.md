@@ -9,8 +9,6 @@ tags:
   - International
 ---
 
-# Daily AI & Robotics Brief — 2026-02-02
-
 ## Robotics
 1) **IEEE Spectrum — CES 2026 로봇 영상 모음**
 
