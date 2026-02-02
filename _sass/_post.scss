@@ -1,0 +1,42 @@
+/* Post-only typography & review styling */
+
+.layout--single {
+  .page__title {
+    font-family: 'Merriweather', Georgia, "Times New Roman", serif;
+    letter-spacing: -0.01em;
+  }
+
+  .page__content {
+    max-width: 780px;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    color: #1f1f1f;
+  }
+
+  .page__content h2 {
+    margin-top: 2.2rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e7e1d6;
+  }
+
+  .page__content h3 {
+    margin-top: 1.6rem;
+  }
+
+  .page__content blockquote {
+    border-left: 4px solid #c7b59a;
+    background: #fbf9f5;
+    padding: 0.75rem 1rem;
+    color: #51483e;
+  }
+
+  .page__content hr {
+    border: 0;
+    border-top: 1px solid #e7e1d6;
+    margin: 2rem 0;
+  }
+
+  .page__content strong {
+    color: #3b2f22;
+  }
+}
