@@ -22,6 +22,8 @@
             </li>
           {%- endfor -%}
         </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌓</button>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Toggle language">KR/EN</button>
         {% if site.search == true %}
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>
