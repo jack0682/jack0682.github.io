@@ -11,8 +11,6 @@ tags:
   - arXiv
 ---
 
-# Weekly Research Digest — 2026-02-02 (Week 06)
-
 > **Issue Focus**: Human‑centric reliability, explainable HRI, and constraint‑aware autonomy.
 > **Reviewer’s Lens**: CSA/ONN alignment + real‑world deployability.
 
