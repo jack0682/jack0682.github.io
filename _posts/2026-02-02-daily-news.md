@@ -13,7 +13,7 @@ tags:
 
 <div class="news-card">
   <div class="news-card__thumb">
-    <img src="https://logo.clearbit.com/spectrum.ieee.org" alt="IEEE Spectrum logo" />
+    <img src="/assets/images/logos/ieee-spectrum.png" alt="IEEE Spectrum logo" />
   </div>
   <div class="news-card__body">
     <h3><a href="https://spectrum.ieee.org/robots-ces-2026">IEEE Spectrum — CES 2026 로봇 영상 모음</a></h3>
@@ -25,7 +25,7 @@ tags:
 
 <div class="news-card">
   <div class="news-card__thumb">
-    <img src="https://logo.clearbit.com/reuters.com" alt="Reuters logo" />
+    <img src="/assets/images/logos/reuters.png" alt="Reuters logo" />
   </div>
   <div class="news-card__body">
     <h3><a href="https://www.reuters.com/world/china/physical-ai-dominates-ces-humanity-will-still-have-wait-while-humanoid-servants-2026-01-09/">Reuters — CES 2026에서 Physical AI 부상</a></h3>
@@ -37,7 +37,7 @@ tags:
 
 <div class="news-card">
   <div class="news-card__thumb">
-    <img src="https://logo.clearbit.com/reuters.com" alt="Reuters logo" />
+    <img src="/assets/images/logos/reuters.png" alt="Reuters logo" />
   </div>
   <div class="news-card__body">
     <h3><a href="https://www.reuters.com/business/autos-transportation/hyundai-motor-group-plans-deploy-humanoid-robots-us-factory-2028-2026-01-05/">Reuters — 현대차, 2028년 미국 공장에 휴머노이드 배치 계획</a></h3>
@@ -49,7 +49,7 @@ tags:
 
 <div class="news-card">
   <div class="news-card__thumb">
-    <img src="https://logo.clearbit.com/reuters.com" alt="Reuters logo" />
+    <img src="/assets/images/logos/reuters.png" alt="Reuters logo" />
   </div>
   <div class="news-card__body">
     <h3><a href="https://www.reuters.com/business/autos-transportation/arm-launches-physical-ai-division-expand-robotics-market-2026-01-07/">Reuters — Arm, ‘Physical AI’ 전담 조직 신설</a></h3>
@@ -99,7 +99,7 @@ tags:
 
 <div class="news-card">
   <div class="news-card__thumb">
-    <img src="https://logo.clearbit.com/nytimes.com" alt="The New York Times logo" />
+    <img src="/assets/images/logos/nytimes.png" alt="The New York Times logo" />
   </div>
   <div class="news-card__body">
     <h3><a href="https://www.nytimes.com/2026/01/08/technology/personaltech/2026-tech-trends.html">NYT — 2026 기술 트렌드(AI 확산/로보택시 등)</a></h3>
