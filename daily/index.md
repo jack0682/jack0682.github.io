@@ -8,3 +8,5 @@
 - 2026-02-10: [ONN Daily - 2026-02-10 - Delay-Amplification Calibration Acceptance Inequality](/2026-02-10-onn-daily-delay-amplification-calibration-acceptance-inequality/)
 
 - 2026-02-11: [ONN Daily - 2026-02-11 - Finite-Sample Conservative Envelope](/2026-02-11-onn-daily-finite-sample-conservative-envelope-lipschitz-delay/)
+
+- 2026-02-12: [ONN Daily - 2026-02-12 - MIMO mu Acceptance Inequality](/2026-02-12-onn-daily-mimo-mu-acceptance-inequality/)
