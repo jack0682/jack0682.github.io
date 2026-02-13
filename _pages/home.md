@@ -326,7 +326,7 @@ contact_cta:
   <img src="/assets/images/logo1.jpg" alt="Logo 1" class="logo-img logo-large">
   <img src="/assets/images/logo2.jpg" alt="Logo 2" class="logo-img">
   <img src="/assets/images/logo3.png" alt="Logo 3" class="logo-img">
-  <img src="/assets/images/logo4.jpg" alt="Logo 4" class="logo-img">
+  <img src="/assets/images/logo5.png" alt="Logo 5" class="logo-img">
 </div>
 
 <style>
