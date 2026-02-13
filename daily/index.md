@@ -14,3 +14,4 @@
 - 2026-02-13: [ONN Daily - 2026-02-13 - Block-Structured Delta_J and mu Bound](/2026-02-13-onn-daily-block-structured-delta-j-mu-bound/)
 - 2026-02-13: daily/2026-02-13_onn_daily.md
 - 2026-02-13: daily/2026-02-13_deepening_addendum.md
+- 2026-02-13: [ONN Daily - 2026-02-13 - Leakage-Aware Structured-mu Screening](/2026-02-13-onn-daily-leakage-aware-structured-mu-screening/)
