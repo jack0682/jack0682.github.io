@@ -106,13 +106,13 @@ Every algorithm we design, every experiment we conduct, and every paper we publi
 
 <div class="impact-item">
 <h3><strong>Publications</strong></h3>
-<p><strong>3 Core Papers</strong></p>
+<p><strong>6 Core Papers</strong></p>
 <p>arXiv publications establishing CSA and ONN frameworks</p>
 </div>
 
 <div class="impact-item">
 <h3><strong>Applied Systems</strong></h3>
-<p><strong>1 Industrial Deployment</strong></p>
+<p><strong>2 Industrial Deployment</strong></p>
 <p>Multi-robot safety monitoring with 93% detection accuracy</p>
 </div>
 
