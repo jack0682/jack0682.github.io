@@ -10,3 +10,5 @@
 - 2026-02-11: [ONN Daily - 2026-02-11 - Finite-Sample Conservative Envelope](/2026-02-11-onn-daily-finite-sample-conservative-envelope-lipschitz-delay/)
 
 - 2026-02-12: [ONN Daily - 2026-02-12 - MIMO mu Acceptance Inequality](/2026-02-12-onn-daily-mimo-mu-acceptance-inequality/)
+
+- 2026-02-13: [ONN Daily - 2026-02-13 - Block-Structured Delta_J and mu Bound](/2026-02-13-onn-daily-block-structured-delta-j-mu-bound/)
