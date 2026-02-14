@@ -15,3 +15,4 @@
 - 2026-02-13: daily/2026-02-13_onn_daily.md
 - 2026-02-13: daily/2026-02-13_deepening_addendum.md
 - 2026-02-13: [ONN Daily - 2026-02-13 - Leakage-Aware Structured-mu Screening](/2026-02-13-onn-daily-leakage-aware-structured-mu-screening/)
+- 2026-02-14: [ONN Daily - 2026-02-14 - Time-Varying Leakage Certificate](/2026-02-14-onn-daily-time-varying-leakage-certificate/)
