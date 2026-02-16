@@ -42,6 +42,58 @@ Semantic Manifold 100K Scalability Proof for ONN/LOGOS.
 - Elevated the solver claim from "memory-optimized" to "resource-certified semantic convergence" by coupling success-rate evidence with iteration stability.
 - Integrated the benchmark API bug fix into the argument chain as a validity guard: only post-fix runs count toward certificate evidence.
 
+### Evidence Figures
+**Figure A - Benchmark overview (time, memory, category, distribution):**
+![ONN benchmark overview](/assets/images/onn/2026-02-16/benchmark_figures.png)
+
+**Figure B - Full 12-panel comprehensive analysis:**
+![ONN comprehensive 12-panel analysis](/assets/images/onn/2026-02-16/paper_comprehensive_analysis_12panel.png)
+
+**Figure C - Extreme-condition validation:**
+![ONN extreme-condition validation](/assets/images/onn/2026-02-16/paper_extreme_condition_validation.png)
+
+**Figure D - Bug fix and post-fix success evidence:**
+![ONN benchmark bug fix and final success](/assets/images/onn/2026-02-16/paper_bug_fix_and_results.png)
+
+### Data Tables
+**Table 1 - Scalability summary (post-fix benchmark):**
+
+| Scale | Nodes | Avg Edges | Density | Avg Time (s) | Avg Memory (MB) | Avg Iterations | Status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Micro | 1K | 1,235 | 0.25% | 0.18 | 8.5 | 29.0 | Pass |
+| Small | 5K | 9,231 | 0.07% | 0.43 | 32 | 28.0 | Pass |
+| Medium | 10K | 18,673 | 0.04% | 0.80 | 60 | 27.0 | Pass |
+| Large | 50K | 93,651 | 0.01% | 3.63 | 284 | 27.5 | Pass |
+| Huge | 100K | 187,303 | 0.005% | 7.17 | 563 | 27.5 | Pass |
+
+**Table 2 - Category-level performance (59/59 final run):**
+
+| Category | Graphs | Avg Time (s) | Avg Memory (MB) | Avg Iterations | Avg Improvement (%) |
+|---|---:|---:|---:|---:|---:|
+| Density | 10 | 0.74 | 58 | 27 | 25.2 |
+| Scalability | 30 | 2.44 | 189 | 28 | 17.9 |
+| Structure | 9 | 4.51 | 374 | 44 | 62.0 |
+| Real-world | 1 | 0.09 | 3 | 24 | 22.8 |
+| Hybrid | 9 | 0.98 | 73 | 31 | 28.5 |
+
+**Table 3 - Extreme-condition reproducibility (5 rounds, 90 tests):**
+
+| Condition | Setup | Rounds | Avg Peak Memory (MB) | Variation | Success Rate |
+|---|---|---:|---:|---:|---:|
+| Ultra-dense | 1K nodes, 30% density | 5 | 262 | <0.2% | 100% |
+| Ultra-sparse | 100K nodes, 0.005% density | 5 | 632 | <0.4% | 100% |
+| Scale-free | 10K nodes, BA(k=4) | 5 | 395 | <1.8% | 100% |
+| Small-world | 10K nodes, WS | 5 | 277 | <0.3% | 100% |
+
+**Table 4 - Failure-to-success transition (benchmark API patch):**
+
+| Run File | Before/After Fix | Result |
+|---|---|---|
+| `benchmark_20260216_033814.json` | Before | 0/59 successful (API mismatch) |
+| `benchmark_20260216_034719.json` | After | 59/59 successful |
+
+The figure set and tables jointly support the strengthened claim: ONN now demonstrates bounded-resource semantic convergence at 100K-node scale under the tested benchmark envelope.
+
 ## Paper Patch Notes (actionable edits)
 - P-301: Add a "Scalability Certificate" subsection with explicit S_time, S_mem, and S_iter definitions.
 - P-302: Add a reproducibility table with the 90/90 extreme test result and 59/59 benchmark completion result.
