@@ -6,29 +6,51 @@ categories: [Research, ONN, Daily]
 tags: [ONN, ORTSF, LOGOS, semantic-manifold, scalability, a100, benchmark]
 toc: true
 toc_sticky: true
-excerpt: "Validated ONN semantic-manifold scalability to 100K nodes with stable convergence and integrated operator-splitting and network-dynamics literature to strengthen the theoretical claim."
+excerpt: "Prioritized core-capability and architecture analyses to show ONN as a semantic-constraint solver with stable 100K-node convergence and explicit 3-fiber design implications."
 ---
 
 [ONN Daily Index](/onn-daily/) | [Previous: 2026-02-15 - M_off Empirical Bound for Leakage-Aware Structured-mu](/2026-02-15-onn-daily-m-off-empirical-bound-leakage-mu/)
 
 ## Context
-Today's objective was to convert the A100 huge-scale benchmark package into a publishable theoretical update for ONN. The central result is not only memory recovery from prior OOM behavior, but a stronger claim: the semantic manifold formulation remains computationally stable and convergent at 100K-node scale across repeated extreme-condition runs.
+This revision prioritizes two core documents from today's package: `ONN_CORE_CAPABILITY_PROOF.md` and `ONN_ARCHITECTURE_IMPLICATIONS.md`. The post now emphasizes capability interpretation and architecture meaning first, then uses benchmark tables and figures as supporting evidence. The central claim is that ONN should be read as a semantic-constraint optimization system that remains stable at 100K-node scale.
 
 ## Today's Theory Target
 Semantic Manifold 100K Scalability Proof for ONN/LOGOS.
 
 ## What Changed in the Theory
 ### Restatement (cleaned)
-- Define the practical scalability certificate over a benchmark family B:
-  - S_time(N) = median wall time for size N.
-  - S_mem(N) = peak memory for size N.
-  - S_iter(N) = convergence iterations for size N.
-- Empirical certificate observed on B = {1K, 5K, 10K, 50K, 100K}:
+- ONN is treated as a semantic manifold solver, not as a generic vector processor.
+- Each node is interpreted as a 64-dim semantic state with a 3-fiber structure:
+  - Bound tensor (16), Form tensor (32), Intent tensor (16).
+- LOGOS is interpreted as projection-consensus dynamics that map a potentially contradictory raw graph to a constraint-consistent semantic graph.
+- Practical certificate over benchmark family B = {1K, 5K, 10K, 50K, 100K}:
   - S_time(100K) = 7.17s average (5.66-8.70s envelope).
   - S_mem(100K) = 563MB average (454-672MB envelope).
   - S_iter(N) in [27, 29] for all tested scales.
-- Extreme-condition reproducibility: 90/90 success across 5 repeated stress rounds.
-- Large benchmark reproducibility: 59/59 success after API fix in the benchmark generator.
+- Reproducibility evidence remains: 90/90 success in stress tests and 59/59 success in post-fix benchmark runs.
+
+### Core Capability Emphasis (ONN_CORE_CAPABILITY_PROOF)
+- Capability claim upgraded: ONN can optimize and stabilize semantic consistency for 100,000 entities in one run, not only toy-scale graphs.
+- Semantic manifold existence claim strengthened by repeated convergence across sizes and seeds:
+  - 1K to 100K all converge.
+  - Iteration count remains near constant (~28), suggesting scale-invariant convergence behavior.
+- LOGOS behavior is interpreted as structure-driven rather than size-driven:
+  - Realistic structures (scale-free/small-world) converge efficiently.
+  - Even worst-case random dense structures remain bounded and non-OOM.
+- The previous memory-fix narrative is demoted to an enabling condition; the primary result is semantic scalability under constraints.
+
+### Architecture Emphasis (ONN_ARCHITECTURE_IMPLICATIONS)
+- The 3-fiber representation is treated as the implementation-level reason for stable semantic updates:
+  - `B_i`: physical/boundary constraints.
+  - `F_i`: invariant form/identity.
+  - `I_i`: intent/task constraints.
+- Edge semantics are interpreted through relation embedding and gated strength:
+  - Effective edge strength = `weight * probability * gate`.
+- Architectural implication:
+  - The solver should preserve fiber-separable meaning during projection and consensus updates.
+  - Monitoring should include not only global convergence but also fiber-level drift and edge-gate stability.
+- Deployment implication:
+  - Scale validation should be reported with topology class (random, scale-free, small-world), because structure materially changes compute cost and convergence profiles.
 
 ### Proof Audit (gaps & required assumptions)
 - The current evidence is empirical and hardware-specific (A100-SXM4-80GB); portability to other GPU/CPU classes remains an open requirement.
@@ -39,7 +61,7 @@ Semantic Manifold 100K Scalability Proof for ONN/LOGOS.
 ### Strengthening (new lemma / tighter condition / fix)
 - Added a practical bounded-resource lemma for deployment review:
   - If graph density is in tested envelope and topology is within benchmark family support, then convergence is expected with bounded memory (< 1GB at 100K) and bounded iterations (~28).
-- Elevated the solver claim from "memory-optimized" to "resource-certified semantic convergence" by coupling success-rate evidence with iteration stability.
+- Elevated the solver claim from "memory-optimized" to "resource-certified semantic convergence with explicit architectural semantics" by coupling success-rate evidence with iteration stability and the 3-fiber interpretation.
 - Integrated the benchmark API bug fix into the argument chain as a validity guard: only post-fix runs count toward certificate evidence.
 
 ### Evidence Figures
@@ -110,8 +132,9 @@ The figure set and tables jointly support the strengthened claim: ONN now demons
 ## Development Actions (next 72 hours)
 - Run a CPU-only replication subset (1K to 10K) to estimate hardware transfer error.
 - Add topology-stratified confidence intervals for S_time, S_mem, and S_iter.
+- Add fiber-level diagnostics (`B/F/I` drift metrics) per iteration.
 - Add a regression gate that fails CI if `iterations > 30` or `memory > expected envelope`.
-- Publish a benchmark manifest with seed, density, and structure metadata for strict reruns.
+- Publish a benchmark manifest with seed, density, structure, and fiber-drift summaries.
 - Add one real ontology-scale graph test to replace purely synthetic transfer assumptions.
 
 ## Open Problems (carried + new)
@@ -120,6 +143,7 @@ The figure set and tables jointly support the strengthened claim: ONN now demons
 - OP-020 (new): formalize a topology-aware convergence bound explaining near-constant iterations.
 - OP-021 (new): derive hardware-transfer correction bounds from A100 to commodity GPU/CPU settings.
 - OP-022 (new): prove benchmark-to-real-ontology transfer conditions for the semantic manifold certificate.
+- OP-023 (new): formalize fiber-level invariants to guarantee semantic separation (`B/F/I`) during large-scale updates.
 
 ## Next-day Seed
 Construct a topology-stratified theorem sketch that explains why iteration count stays near constant while node count increases to 100K.
