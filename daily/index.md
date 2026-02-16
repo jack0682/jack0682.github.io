@@ -17,3 +17,4 @@
 - 2026-02-13: [ONN Daily - 2026-02-13 - Leakage-Aware Structured-mu Screening](/2026-02-13-onn-daily-leakage-aware-structured-mu-screening/)
 - 2026-02-14: [ONN Daily - 2026-02-14 - Time-Varying Leakage Certificate](/2026-02-14-onn-daily-time-varying-leakage-certificate/)
 - 2026-02-15: [ONN Daily - 2026-02-15 - M_off Empirical Bound for Leakage-Aware Structured-mu](/2026-02-15-onn-daily-m-off-empirical-bound-leakage-mu/)
+- 2026-02-16: [ONN Daily - 2026-02-16 - Semantic Manifold 100K Scalability Proof](/2026-02-16-onn-daily-semantic-manifold-100k-scalability-proof/)
