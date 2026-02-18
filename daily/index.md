@@ -19,3 +19,4 @@
 - 2026-02-15: [ONN Daily - 2026-02-15 - M_off Empirical Bound for Leakage-Aware Structured-mu](/2026-02-15-onn-daily-m-off-empirical-bound-leakage-mu/)
 - 2026-02-16: [ONN Daily - 2026-02-16 - Semantic Manifold 100K Scalability Proof](/2026-02-16-onn-daily-semantic-manifold-100k-scalability-proof/)
 - 2026-02-17: [ONN Daily - 2026-02-17 - Finite-Sample Quantile Transfer Correction for Leakage Gate](/2026-02-17-onn-daily-finite-sample-quantile-transfer-correction-leakage/)
+- 2026-02-18: [ONN Daily - 2026-02-18 - Dependence-Robust Quantile Gate with Block Bootstrap Correction](/2026-02-18-onn-daily-dependence-robust-quantile-gate-block-bootstrap/)
