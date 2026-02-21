@@ -22,3 +22,4 @@
 - 2026-02-18: [ONN Daily - 2026-02-18 - Dependence-Robust Quantile Gate with Block Bootstrap Correction](/2026-02-18-onn-daily-dependence-robust-quantile-gate-block-bootstrap/)
 - 2026-02-19: [ONN Daily - 2026-02-19 - Long-Memory Diagnostic + Fallback Quantile Gate](/2026-02-19-onn-daily-long-memory-diagnostic-fallback-quantile-gate/)
 - 2026-02-20: [ONN Daily - 2026-02-20 - LRD Diagnostic Calibration + Block-Maxima Conservatism](/2026-02-20-onn-daily-lrd-diagnostic-calibration-block-maxima-conservatism/)
+- 2026-02-21: [ONN Daily - 2026-02-21 - Finite-sample LRD gate with change-point guard](/2026-02-21-onn-daily-finite-sample-lrd-gate-change-point-guard/)
