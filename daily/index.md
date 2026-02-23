@@ -24,3 +24,4 @@
 - 2026-02-20: [ONN Daily - 2026-02-20 - LRD Diagnostic Calibration + Block-Maxima Conservatism](/2026-02-20-onn-daily-lrd-diagnostic-calibration-block-maxima-conservatism/)
 - 2026-02-21: [ONN Daily - 2026-02-21 - Finite-sample LRD gate with change-point guard](/2026-02-21-onn-daily-finite-sample-lrd-gate-change-point-guard/)
 - 2026-02-22: [ONN Daily — 2026-02-22 — CP-preemption + Hurst-bias envelope](/2026-02-22-onn-daily-cp-preemption-hurst-bias-envelope-lrd-gate/)
+- 2026-02-23: [ONN Daily — 2026-02-23 — Calibration-aware LRD gate](/2026-02-23-onn-daily-calibration-aware-lrd-gate-cp-preemption/)
