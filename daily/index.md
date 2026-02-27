@@ -28,3 +28,4 @@
 - 2026-02-24: [ONN Daily — 2026-02-24 — Cross-noise calibration lemma](/2026-02-24-onn-daily-cross-noise-calibration-bh-lcp/)
 - 2026-02-25: [ONN Daily - 2026-02-25 - MC Calibration CI Validity for b_H and L_cp^p](/2026-02-25-onn-daily-mc-calibration-ci-validity-bh-lcp/)
 - 2026-02-26: [ONN Daily — 2026-02-26 — Dependence-aware Cross-noise Safety Gate](/2026-02-26-onn-daily-dependence-aware-cross-noise-safety-gate/)
+- 2026-02-27: [ONN Daily — 2026-02-27 — Strong-LRD CI floor + skew-heavy-tail inflation cap](/2026-02-27-onn-daily-strong-lrd-ci-floor-skew-inflation/)
