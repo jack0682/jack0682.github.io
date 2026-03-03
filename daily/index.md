@@ -32,3 +32,4 @@
 - 2026-02-28: [ONN Daily — 2026-02-28 — Delay-margin repair for ORTSF](/2026-02-28-onn-daily-delay-margin-repair-ortsf/)
 - 2026-03-01: [ONN Daily — 2026-03-01 — Impulsive-Surgery Bridge for ORTSF](/2026-03-01-onn-daily-impulsive-surgery-bridge-ortsf/)
 - 2026-03-02: [ONN Daily — 2026-03-02 — Boundary-safe CI floor + hysteretic guard](/2026-03-02-onn-daily-boundary-safe-ci-floor-hysteretic-guard/)
+- 2026-03-03: [ONN Daily — 2026-03-03 — Operating envelope + false-reject screen](/2026-03-03-onn-daily-operating-envelope-false-reject-screen/)
