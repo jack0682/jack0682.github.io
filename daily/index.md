@@ -34,3 +34,4 @@
 - 2026-03-02: [ONN Daily — 2026-03-02 — Boundary-safe CI floor + hysteretic guard](/2026-03-02-onn-daily-boundary-safe-ci-floor-hysteretic-guard/)
 - 2026-03-03: [ONN Daily — 2026-03-03 — Operating envelope + false-reject screen](/2026-03-03-onn-daily-operating-envelope-false-reject-screen/)
 - 2026-03-04: [ONN Daily — 2026-03-04 — Additive topology-noise budget + cell-wise eta_top tolerance](/2026-03-04-onn-daily-additive-topology-noise-budget-cell-tolerance/)
+- 2026-03-05: [ONN Daily — 2026-03-05 — Two-component topology uncertainty budget repair](/2026-03-05-onn-daily-two-component-topology-uncertainty-budget-repair/)
