@@ -35,3 +35,4 @@
 - 2026-03-03: [ONN Daily — 2026-03-03 — Operating envelope + false-reject screen](/2026-03-03-onn-daily-operating-envelope-false-reject-screen/)
 - 2026-03-04: [ONN Daily — 2026-03-04 — Additive topology-noise budget + cell-wise eta_top tolerance](/2026-03-04-onn-daily-additive-topology-noise-budget-cell-tolerance/)
 - 2026-03-05: [ONN Daily — 2026-03-05 — Two-component topology uncertainty budget repair](/2026-03-05-onn-daily-two-component-topology-uncertainty-budget-repair/)
+- 2026-03-06: [ONN Daily — 2026-03-06 — Lag-aware vector screen conservatism](/2026-03-06-onn-daily-lag-aware-vector-screen-conservatism/)
