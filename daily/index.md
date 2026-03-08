@@ -37,3 +37,4 @@
 - 2026-03-05: [ONN Daily — 2026-03-05 — Two-component topology uncertainty budget repair](/2026-03-05-onn-daily-two-component-topology-uncertainty-budget-repair/)
 - 2026-03-06: [ONN Daily — 2026-03-06 — Lag-aware vector screen conservatism](/2026-03-06-onn-daily-lag-aware-vector-screen-conservatism/)
 - 2026-03-07: [ONN Daily — 2026-03-07 — Quantile-Calibrated Lag Envelope Theorem](/2026-03-07-onn-daily-quantile-calibrated-lag-envelope-theorem/)
+- 2026-03-08: [ONN Daily — 2026-03-08 — Dependence-aware quantile confidence repair](/2026-03-08-onn-daily-dependence-aware-quantile-confidence-repair-lag-calibrated/)
