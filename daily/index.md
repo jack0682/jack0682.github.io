@@ -39,3 +39,5 @@
 - 2026-03-07: [ONN Daily — 2026-03-07 — Quantile-Calibrated Lag Envelope Theorem](/2026-03-07-onn-daily-quantile-calibrated-lag-envelope-theorem/)
 - 2026-03-08: [ONN Daily — 2026-03-08 — Dependence-aware quantile confidence repair](/2026-03-08-onn-daily-dependence-aware-quantile-confidence-repair-lag-calibrated/)
 - 2026-03-09: [ONN Daily — 2026-03-09 — Effective-sample lower-envelope theorem](/2026-03-09-onn-daily-effective-sample-lower-envelope-lag-quantile-theorem/)
+
+- 2026-03-10: [ONN Daily — 2026-03-10 — Dependence-class selector inflation closure](/2026-03-10-onn-daily-dependence-class-selector-inflation-closure/)
