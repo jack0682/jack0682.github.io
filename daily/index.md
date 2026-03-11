@@ -41,3 +41,5 @@
 - 2026-03-09: [ONN Daily — 2026-03-09 — Effective-sample lower-envelope theorem](/2026-03-09-onn-daily-effective-sample-lower-envelope-lag-quantile-theorem/)
 
 - 2026-03-10: [ONN Daily — 2026-03-10 — Dependence-class selector inflation closure](/2026-03-10-onn-daily-dependence-class-selector-inflation-closure/)
+
+- 2026-03-11: [ONN Daily — 2026-03-11 — Tri-Guard finite-sample closure](/2026-03-11-onn-daily-tri-guard-finite-sample-closure/)
