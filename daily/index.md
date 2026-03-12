@@ -43,3 +43,4 @@
 - 2026-03-10: [ONN Daily — 2026-03-10 — Dependence-class selector inflation closure](/2026-03-10-onn-daily-dependence-class-selector-inflation-closure/)
 
 - 2026-03-11: [ONN Daily — 2026-03-11 — Tri-Guard finite-sample closure](/2026-03-11-onn-daily-tri-guard-finite-sample-closure/)
+- 2026-03-12: [ONN Daily — 2026-03-12 — Extrapolation inflation closure](/2026-03-12-onn-daily-extrapolation-inflation-closure-tri-guard-support/)
