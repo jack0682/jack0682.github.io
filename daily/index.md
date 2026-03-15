@@ -45,3 +45,4 @@
 - 2026-03-11: [ONN Daily — 2026-03-11 — Tri-Guard finite-sample closure](/2026-03-11-onn-daily-tri-guard-finite-sample-closure/)
 - 2026-03-12: [ONN Daily — 2026-03-12 — Extrapolation inflation closure](/2026-03-12-onn-daily-extrapolation-inflation-closure-tri-guard-support/)
 - 2026-03-13: [ONN Daily — 2026-03-13 — Dominance-calibrated extrapolation envelope](/2026-03-13-onn-daily-dominance-calibrated-extrapolation-envelope/)
+- 2026-03-15: [ONN Daily — 2026-03-15 — Sparse-Cell Safe Promotion Gate for Dominance-Calibrated Extrapolation Claims](/2026-03-15-onn-daily-sparse-cell-safe-promotion-gate/)
