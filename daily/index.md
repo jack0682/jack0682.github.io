@@ -48,3 +48,4 @@
 - 2026-03-15: [ONN Daily — 2026-03-15 — Sparse-Cell Safe Promotion Gate for Dominance-Calibrated Extrapolation Claims](/2026-03-15-onn-daily-sparse-cell-safe-promotion-gate/)
 - 2026-03-16: [ONN Daily — 2026-03-16 — Adaptive Sparse-Support Threshold with Safety-Budget Coupling](/2026-03-16-onn-daily-adaptive-sparse-support-threshold-safety-budget/)
 - 2026-03-17: [ONN Daily — 2026-03-17 — Budget-Calibrated Adaptive Threshold with Asynchronous Version Safety](/2026-03-17-onn-daily-budget-calibrated-adaptive-threshold-async-safety/)
+- 2026-03-18: [ONN Daily — 2026-03-18 — Confidence-Bounded Optimization of Class Budget Map](/2026-03-18-onn-daily-confidence-bounded-optimization-class-budget-map/)
