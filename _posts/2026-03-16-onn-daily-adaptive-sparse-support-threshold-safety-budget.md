@@ -19,7 +19,7 @@ This entry converts the 2026-03-16 ONN log into a publish-ready update centered 
 
 ## 2. Today’s Theory Target
 
-Target: Adaptive Sparse-Support Threshold `n_cell_min` with Safety-Budget Coupling.
+Target: Adaptive Sparse-Support Threshold $n_{cell,min}$ with Safety-Budget Coupling.
 
 Primary claim set: `C169`-`C174`, extending the prior sparse-cell promotion gate and addressing carryover contradiction `OP-056` on static-threshold brittleness.
 
@@ -28,35 +28,35 @@ Primary claim set: `C169`-`C174`, extending the prior sparse-cell promotion gate
 ### Restatement (cleaned)
 
 Promotion now depends on an adaptive sparse predicate:
-`M_sparse^adp = 1[n_cell >= n_cell_min^safe(k, d_sup, n_eff_lb)]`.
+$M_{sparse}^{adp} = 1[n_{cell} \ge n_{cell,min}^{safe}(k, d_{sup}, n_{eff,lb})]$.
 
 With
 a deterministic guard stack,
-`Pi_promote^adp = M_mono * M_dom * M_sparse^adp * M_holdout`,
-so any sparse-threshold failure forces `Pi_promote^adp = 0`.
+$Pi_{promote}^{adp} = M_{mono} * M_{dom} * M_{sparse}^{adp} * M_{holdout}$,
+so any sparse-threshold failure forces $Pi_{promote}^{adp} = 0$.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `C169` and `C170` require atomic predicate evaluation and version-consistent scheduler reads (`A90`, `A91`).
-- `C171` requires nonnegative scheduler parameters and conservative `n_eff_lb` handling (`A84`, `A92`).
+- `C171` requires nonnegative scheduler parameters and conservative $n_{eff,lb}$ handling (`A84`, `A92`).
 - `C172` depends on calibrated mapping from class-wise interruption limits to threshold aggressiveness (`A93`).
 - `C173` remains unresolved for unseen nonstationary support shifts (`A85`, `A89`).
 - `C174` holds only with explicit screening-vs-certification scope separation.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Replaced fixed `n_cell_min` with class-aware adaptive schedule:
-`n_cell_min^safe = ceil(n0 + alpha_k*d_sup + beta_k/max(1, n_eff_lb))`, with `alpha_k, beta_k >= 0`.
-- Added monotonicity constraint: larger `d_sup` or smaller `n_eff_lb` cannot reduce threshold.
+- Replaced fixed $n_{cell,min}$ with class-aware adaptive schedule:
+$n_{cell,min}^{safe} = ceil(n0 + alpha_{k}*d_{sup} + beta_{k}/max(1, n_{eff,lb}))$, with $alpha_{k}, beta_{k} \ge 0$.
+- Added monotonicity constraint: larger $d_{sup}$ or smaller $n_{eff,lb}$ cannot reduce threshold.
 - Added scheduler-version check to block stale-threshold acceptance paths.
 - Kept hard scope boundary: predicate success is screening evidence, not closed-loop robust certification.
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - `P-636`: Replace fixed sparse-support threshold text with adaptive schedule definition and parameter constraints.
-- `P-637`: Add no-false-promotion invariant for `Pi_promote^adp` with explicit version-consistency assumption.
+- `P-637`: Add no-false-promotion invariant for $Pi_{promote}^{adp}$ with explicit version-consistency assumption.
 - `P-638`: Extend falsifier matrix with scheduler-race and undercoverage stress tests.
-- `P-639`: Add class-budget coupling table linking `B_safe(k)` to admissible threshold floor/ceiling.
+- `P-639`: Add class-budget coupling table linking $B_{safe}(k)$ to admissible threshold floor/ceiling.
 - `P-640`: Clarify screening-only interpretation in theorem discussion and limitations.
 
 ## 5. New Literature Integrated (≥3)
@@ -68,10 +68,10 @@ so any sparse-threshold failure forces `Pi_promote^adp = 0`.
 
 ## 6. Development Actions (next 72 hours)
 
-1. Implement and log `threshold_version == class_version` checks in promotion telemetry.
+1. Implement and log $threshold_{version} = class_{version}$ checks in promotion telemetry.
 2. Run dependence-stratified sparse-support ablations comparing fixed vs adaptive threshold under same splits.
-3. Quantify undercoverage and veto rates as a function of `d_sup` and `n_eff_lb` bins.
-4. Fit conservative `B_safe(k)` calibration map with explicit interruption-rate caps.
+3. Quantify undercoverage and veto rates as a function of $d_{sup}$ and $n_{eff,lb}$ bins.
+4. Fit conservative $B_{safe}(k)$ calibration map with explicit interruption-rate caps.
 5. Draft experiment prerequisites for unresolved lemma `L-173a`.
 
 ## 7. Open Problems (carried + new)

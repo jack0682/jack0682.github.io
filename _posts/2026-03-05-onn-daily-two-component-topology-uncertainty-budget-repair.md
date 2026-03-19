@@ -15,9 +15,9 @@ excerpt: "Replaced a single topology scalar with a two-channel uncertainty budge
 
 ## Context
 
-The 2026-03-04 entry introduced an additive scalar topology budget `eta_top` and showed that a global cap can fail on tight cells. The unresolved gap was whether a single scalar can safely represent heterogeneous topology errors from persistence and curvature channels.
+The 2026-03-04 entry introduced an additive scalar topology budget $eta_{top}$ and showed that a global cap can fail on tight cells. The unresolved gap was whether a single scalar can safely represent heterogeneous topology errors from persistence and curvature channels.
 
-Today formalizes a two-component budget `eta_PH, eta_kappa`, builds a vector safe set `Gamma_safe^vec`, and limits scalar usage to a conservative projection claim only under explicit assumptions.
+Today formalizes a two-component budget $eta_{PH}, eta_{kappa}$, builds a vector safe set $Gamma_{safe}^{vec}$, and limits scalar usage to a conservative projection claim only under explicit assumptions.
 
 ## Today’s Theory Target
 
@@ -28,7 +28,7 @@ Claims advanced:
 - `C110` (`FALSE/COUNTEREXAMPLE`): simplex-style scalar caps are not universally safe.
 - `C111` (`PLAUSIBLE`): interior cells can retain nontrivial feasible area with mild cross-term.
 - `C112` (`CONJECTURE`): runtime monotone envelope from measured residuals to conservative scalar remains to be validated.
-- `C113` (`PROVED`, conditional): positive interaction (`beta_x > 0`) yields inward-curved boundary vs scalar simplex.
+- `C113` (`PROVED`, conditional): positive interaction ($beta_{x} > 0$) yields inward-curved boundary vs scalar simplex.
 - `C114` (`NEEDS-EXPERIMENT`): policy ranking under asynchronous channel perturbation still needs replay evidence.
 
 ## What Changed in the Theory
@@ -37,13 +37,13 @@ Claims advanced:
 
 Use the local model
 
-`Delta_FR^vec = Delta_FR + alpha_PH eta_PH + alpha_kappa eta_kappa + beta_x eta_PH eta_kappa`,
+$Delta_{FR}^{vec} = Delta_{FR} + alpha_{PH} eta_{PH} + alpha_{kappa} eta_{kappa} + beta_{x} eta_{PH} eta_{kappa}$,
 
-with nonnegative coefficients. For `beta_x = 0`, define
+with nonnegative coefficients. For $beta_{x} = 0$, define
 
-`eta_top^cons = (alpha_PH eta_PH + alpha_kappa eta_kappa) / alpha_max`, `alpha_max = max(alpha_PH, alpha_kappa)`.
+$eta_{top}^{cons} = (alpha_{PH} eta_{PH} + alpha_{kappa} eta_{kappa}) / alpha_{max}$, $alpha_{max} = max(alpha_{PH}, alpha_{kappa})$.
 
-Then `Delta_FR^vec <= Delta_FR + alpha_max eta_top^cons`, so yesterday’s scalar tolerance cap can be used as a sufficient condition only through `eta_top^cons <= eta_top^max(d,n_win,b)`.
+Then $Delta_{FR}^{vec} \le Delta_{FR} + alpha_{max} eta_{top}^{cons}$, so yesterday’s scalar tolerance cap can be used as a sufficient condition only through $eta_{top}^{cons} \le eta_{top}^{max}(d,n_{win},b)$.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -54,7 +54,7 @@ Then `Delta_FR^vec <= Delta_FR + alpha_max eta_top^cons`, so yesterday’s scala
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Replaced scalar-only narrative with vector geometry `Gamma_safe^vec(d,n_win,b,eta_PH,eta_kappa)`.
+- Replaced scalar-only narrative with vector geometry $Gamma_{safe}^{vec}(d,n_{win},b,eta_{PH},eta_{kappa})$.
 - Added explicit anti-overclaim result (`C110`) via channel-weight counterexample.
 - Added curved-boundary condition (`C113`) when interaction is positive.
 - Tightened deployment requirement: store and enforce conservative projection logic and per-cell tolerance checks rather than a universal scalar cap.
@@ -64,7 +64,7 @@ Then `Delta_FR^vec <= Delta_FR + alpha_max eta_top^cons`, so yesterday’s scala
 - `P-301`: add vector-budget theorem/caveat block in theory section.
 - `P-302`: add two-channel topology replay protocol in experiments.
 - `P-303`: add uncertainty-geometry and certification-gap positioning in related work.
-- `P-304`: add runtime logging schema sentence for `eta_PH`, `eta_kappa`, `eta_top^cons`.
+- `P-304`: add runtime logging schema sentence for $eta_{PH}$, $eta_{kappa}$, $eta_{top}^{cons}$.
 
 ## New Literature Integrated (≥3)
 
@@ -76,10 +76,10 @@ Then `Delta_FR^vec <= Delta_FR + alpha_max eta_top^cons`, so yesterday’s scala
 
 ## Development Actions (next 72 hours)
 
-1. Log `eta_PH`, `eta_kappa`, `eta_top^cons`, and branch-state signals on each decision step.
+1. Log $eta_{PH}$, $eta_{kappa}$, $eta_{top}^{cons}$, and branch-state signals on each decision step.
 2. Add assertion-based guard: reject when projected scalar exceeds cell tolerance.
 3. Build CPU-only vector replay harness with asynchronous channel offsets.
-4. Compute feasible-area degradation curves under `beta_x` sweep.
+4. Compute feasible-area degradation curves under $beta_{x}$ sweep.
 5. Patch theory/experiments/related-work sections with the new vector-budget framing.
 
 ## Open Problems (carried + new)
@@ -93,7 +93,7 @@ Then `Delta_FR^vec <= Delta_FR + alpha_max eta_top^cons`, so yesterday’s scala
 
 ## Next-day Seed
 
-Replay measured `r_PH, r_kappa` traces with asynchronous offsets and estimate the conservatism gap between vector feasible area and projected scalar screen.
+Replay measured $r_{PH}, r_{kappa}$ traces with asynchronous offsets and estimate the conservatism gap between vector feasible area and projected scalar screen.
 
 ## References (reference-style links only)
 

@@ -20,9 +20,9 @@ LRD Diagnostic Calibration + Block-Maxima Conservatism (Claims C35-C42).
 ## What Changed in the Theory
 ### Restatement (cleaned)
 - Added a slope-based LRD diagnostic on block-mean variance scaling and a practical threshold range.
-- Defined branch gate quantile selection: `q* = (1 - chi_LRD) q_corr + chi_LRD q_LRD`.
+- Defined branch gate quantile selection: $q* = (1 - chi_{LRD}) q_{corr} + chi_{LRD} q_{LRD}$.
 - Linked fallback quantile estimation to circular block-maxima bootstrap under dependence.
-- Added cadence condition coupling (`tau_mon <= n_win/2`) to keep online gate updates auditable.
+- Added cadence condition coupling ($tau_{mon} \le n_{win}/2$) to keep online gate updates auditable.
 
 ### Proof Audit (gaps & required assumptions)
 - `A20`: slope threshold stability across regimes remains an assumption and needs calibration data.
@@ -34,7 +34,7 @@ LRD Diagnostic Calibration + Block-Maxima Conservatism (Claims C35-C42).
 - Promoted explicit claim-level guardrails for LRD detection and misclassification risk accounting (C35, C38, C39).
 - Added extremal-index based conservatism framing for fallback quantiles (C36).
 - Adopted circular block-maxima bootstrap consistency route (C40) instead of naive block bootstrap.
-- Added measurable runtime instrumentation targets for `beta`, `chi_LRD`, `q_corr`, and `q_LRD`.
+- Added measurable runtime instrumentation targets for $beta$, $chi_{LRD}$, $q_{corr}$, and $q_{LRD}$.
 
 ## Paper Patch Notes (actionable edits)
 - `P-230`: insert LRD calibration rule and Hurst-alternative diagnostic statement.
@@ -49,9 +49,9 @@ LRD Diagnostic Calibration + Block-Maxima Conservatism (Claims C35-C42).
 - Mangalam & Likens (2025): Bayesian Hurst-Kolmogorov estimator for short-series diagnostics [4].
 
 ## Development Actions (next 72 hours)
-- Run AR(1) vs ARFIMA calibration sweep for `beta_0` and report FN/FP operating points.
+- Run AR(1) vs ARFIMA calibration sweep for $beta_{0}$ and report FN/FP operating points.
 - Execute block-length sensitivity for fallback quantile coverage under heavy-tail leakage.
-- Add gate telemetry logs and alert thresholds for frequent `chi_LRD` toggles.
+- Add gate telemetry logs and alert thresholds for frequent $chi_{LRD}$ toggles.
 - Validate cadence bound under delay bursts with branch-gate enabled.
 - Draft ablation table comparing single-branch vs branch-gate false-accept rates.
 
@@ -62,7 +62,7 @@ LRD Diagnostic Calibration + Block-Maxima Conservatism (Claims C35-C42).
 - OP-025 (new): robust extremal-index tracking under regime drift.
 
 ## Next-day Seed
-Calibrate a two-signal LRD detector (`beta` slope + Hurst estimate) and validate whether branch switching improves coverage without destabilizing adaptation.
+Calibrate a two-signal LRD detector ($beta$ slope + Hurst estimate) and validate whether branch switching improves coverage without destabilizing adaptation.
 
 ## References (reference-style links only)
 [1]: https://doi.org/10.1093/jrsssb/qkaf060

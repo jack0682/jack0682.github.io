@@ -25,7 +25,7 @@ Target: **Quantile-Calibrated Lag Envelope Theorem**.
 
 Hardened claim set from today’s log:
 - `C121` (`PROVED`, conditional): calibrated lag envelope yields a conservative vector-screen upper bound.
-- `C122` (`PROVED`): quantile underestimation `eps_q` shifts the sufficient threshold by `-(lambda_lag/alpha_max) eps_q`.
+- `C122` (`PROVED`): quantile underestimation $eps_{q}$ shifts the sufficient threshold by $-(lambda_{lag}/alpha_{max}) eps_{q}$.
 - `C123` (`PROVED`): cells with negative shifted threshold must run fallback-only policy.
 - `C124` (`PLAUSIBLE`): ranking preservation requires strict interior slack above the shift magnitude.
 - `C125` (`NEEDS-EXPERIMENT`): stale hard-reject can increase interruption near tail drift.
@@ -36,20 +36,22 @@ Hardened claim set from today’s log:
 ### Restatement (cleaned)
 
 Using
-`Delta_FR^vec(t) <= Delta_FR(t) + alpha_PH eta_PH(t) + alpha_kappa eta_kappa(t) + lambda_lag delta_lag(t)`,
+$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t) + lambda_{lag} delta_{lag}(t)$,
 define
-`eta_top^cons,lag(t) = (alpha_PH eta_PH(t) + alpha_kappa eta_kappa(t))/alpha_max + (lambda_lag/alpha_max) delta_lag(t)`
-with `alpha_max = max(alpha_PH, alpha_kappa)` and calibrated lag cap `delta_lag(t) <= Q_p_hat + m_conf`.
+$$
+eta_{top}^{cons},lag(t) = (alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t))/alpha_{max} + (lambda_{lag}/alpha_{max}) delta_{lag}(t)
+$$
+with $alpha_{max} = max(alpha_{PH}, alpha_{kappa})$ and calibrated lag cap $delta_{lag}(t) \le Q_{p,hat} + m_{conf}$.
 Then
-`Delta_FR^vec(t) <= Delta_FR(t) + alpha_max eta_top^cons,lag(t)`,
+$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{max} eta_{top}^{cons},lag(t)$,
 so sufficient screening condition is
-`eta_top^cons,lag(t) <= eta_top^max(d,n_win,b)`.
+$eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `A63`: affine lag envelope must stay conservative in burst tails.
 - `A65`: one-sided quantile confidence margin must dominate underestimation risk.
-- `A64`: timestamp integrity is mandatory; clock skew and reorder can invalidate `delta_lag`.
+- `A64`: timestamp integrity is mandatory; clock skew and reorder can invalidate $delta_{lag}$.
 - `A67/A68`: stale rejection and score monotonicity still need replay evidence for stable ranking behavior.
 
 ### Strengthening (new lemma / tighter condition / fix)
@@ -76,10 +78,10 @@ so sufficient screening condition is
 
 ## Development Actions (next 72 hours)
 
-1. Instrument runtime logs for `delta_lag`, `Q_p_hat`, `m_conf`, and per-cell slack.
+1. Instrument runtime logs for $delta_{lag}$, $Q_{p}_{hat}$, $m_{conf}$, and per-cell slack.
 2. Enforce lag unit normalization (seconds vs milliseconds) before threshold computation.
 3. Run asynchronous replay under tail-drift and clock-skew scenarios with deterministic seeds.
-4. Estimate `lambda_lag` from high-quantile tails and produce confidence-bounded calibration tables.
+4. Estimate $lambda_{lag}$ from high-quantile tails and produce confidence-bounded calibration tables.
 5. Evaluate interruption-rate increase from stale hard-reject versus safety gain.
 6. Decide whether `C124` remains plausible or is downgraded based on replay evidence.
 
@@ -87,7 +89,7 @@ so sufficient screening condition is
 
 - Carried `OP-043`: calibrate and validate lag-envelope conservativeness under drift.
 - Carried `OP-044`: verify ranking stability under asynchronous replay and stale-gate ablation.
-- Carried `OP-045`: obtain confidence-bounded `lambda_lag` calibration.
+- Carried `OP-045`: obtain confidence-bounded $lambda_{lag}$ calibration.
 - Carried `OP-046`: prove timestamp integrity assumptions under bounded skew/reorder.
 - New `OP-047`: define adaptive margin inflation rule when quantile drift exceeds calibration horizon.
 

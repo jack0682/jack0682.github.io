@@ -35,30 +35,30 @@ Continuity carried from yesterday:
 
 ### Restatement (cleaned)
 
-- Gate acceptance is now explicitly conditioned on `CP(x)=0` and `Hhat <= H0 - b_H`.
-- `b_H` is promoted from heuristic margin to calibrated envelope with binomial coverage control.
-- CP preemption is parameterized by `L_cp^0.95 <= L_max` under a calibration regime.
+- Gate acceptance is now explicitly conditioned on $CP(x) = 0$ and $Hhat \le H0 - b_{H}$.
+- $b_{H}$ is promoted from heuristic margin to calibrated envelope with binomial coverage control.
+- CP preemption is parameterized by $L_{cp}^{0.95} \le L_{max}$ under a calibration regime.
 
 ### Proof Audit (gaps & required assumptions)
 
-- C56 depends on adequate Monte Carlo count (`N_mc`) and dependence-aware bootstrap validity.
+- C56 depends on adequate Monte Carlo count ($N_{mc}$) and dependence-aware bootstrap validity.
 - C57 depends on CP preemption reliability under slow drift and sufficient CP SNR.
-- C58 remains contingent on controlling FR inflation when `b_H` is conservative.
+- C58 remains contingent on controlling FR inflation when $b_{H}$ is conservative.
 - C59 monotonicity can fail in short windows and requires post-calibration smoothing.
 - C61 transfer to unseen noise families is still experimental, not theorem-complete.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added calibration lemma using Clopper-Pearson lower bound to certify `P(|Hhat-H| <= b_H) >= 1-alpha_H` under calibration assumptions.
-- Added conservative CP preemption condition using empirical lead-time quantile `L_cp^0.95 <= L_max`.
-- Added practical fixes: isotonic smoothing for `b_H(n_win)` and CP hysteresis with an envelope cap `b_H_max`.
+- Added calibration lemma using Clopper-Pearson lower bound to certify $P(|Hhat-H| \le b_{H}) \ge 1-alpha_{H}$ under calibration assumptions.
+- Added conservative CP preemption condition using empirical lead-time quantile $L_{cp}^{0.95} \le L_{max}$.
+- Added practical fixes: isotonic smoothing for $b_{H}(n_{win})$ and CP hysteresis with an envelope cap $b_{H}_{max}$.
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - `P-239` (`paper/sections/05_theory.typ`): insert calibration lemma (binomial coverage + CP lower-bound criterion).
-- `P-240` (`paper/sections/05_theory.typ`): define `L_cp^p`, `alpha_H`, `N_mc`, and guard condition placement.
-- `P-241` (`paper/sections/06_experiments.typ`): add ARFIMA/fGn protocol for `b_H` coverage and CP lead-time quantiles.
-- `P-242` (`paper/sections/06_experiments.typ`): add noise-family transfer stress test (Gaussian vs `t_5`).
+- `P-240` (`paper/sections/05_theory.typ`): define $L_{cp}^{p}$, $alpha_{H}$, $N_{mc}$, and guard condition placement.
+- `P-241` (`paper/sections/06_experiments.typ`): add ARFIMA/fGn protocol for $b_{H}$ coverage and CP lead-time quantiles.
+- `P-242` (`paper/sections/06_experiments.typ`): add noise-family transfer stress test (Gaussian vs $t_{5}$).
 - `P-243` (`paper/sections/07_related_work.typ`): integrate CP segmentation and Hurst-bias-correction references cited today.
 
 ## 5. New Literature Integrated (>=3)
@@ -76,24 +76,24 @@ Continuity carried from yesterday:
 
 ## 6. Development Actions (next 72 hours)
 
-1. Run Monte Carlo calibration for `b_H(n_win)` and `L_cp` over ARFIMA/fGn windows (`n_win >= 2000`).
-2. Add isotonic post-processing for `b_H(n_win)` with coverage-preservation check.
-3. Add CP lead-time CI computation and gate monitoring metrics (`FR`, `FA`, `L_cp^p`).
-4. Execute Gaussian vs `t_5` transfer calibration and report delta coverage.
-5. Implement logging fields (`Hhat`, `b_H`, `CP score`, decision branch) for deployment traceability.
+1. Run Monte Carlo calibration for $b_{H}(n_{win})$ and $L_{cp}$ over ARFIMA/fGn windows ($n_{win} \ge 2000$).
+2. Add isotonic post-processing for $b_{H}(n_{win})$ with coverage-preservation check.
+3. Add CP lead-time CI computation and gate monitoring metrics (`FR`, `FA`, $L_{cp}^{p}$).
+4. Execute Gaussian vs $t_{5}$ transfer calibration and report delta coverage.
+5. Implement logging fields ($Hhat$, $b_{H}$, $CP score$, decision branch) for deployment traceability.
 
 ## 7. Open Problems (carried + new)
 
 - OP-022: block size selection under dependence/drift remains unstable.
 - OP-023: multivariate gate extension not yet integrated.
 - OP-024: CP preemption reliability still needs empirical confirmation across drift regimes.
-- OP-027: `b_H` coverage validation remains open across ARFIMA/fGn settings.
-- OP-028 (new): calibrate `b_H(n_win)` with explicit finite-sample coverage guarantees by noise family.
-- OP-029 (new): validate `L_cp^0.95 <= L_max` under drift floor `d0` with CI reporting.
+- OP-027: $b_{H}$ coverage validation remains open across ARFIMA/fGn settings.
+- OP-028 (new): calibrate $b_{H}(n_{win})$ with explicit finite-sample coverage guarantees by noise family.
+- OP-029 (new): validate $L_{cp}^{0.95} \le L_{max}$ under drift floor $d0$ with CI reporting.
 
 ## 8. Next-day Seed
 
-Run the ARFIMA/fGn calibration sweep with Gaussian and `t_5` innovations to estimate `b_H` coverage and `L_cp` quantile stability for direct paper insertion.
+Run the ARFIMA/fGn calibration sweep with Gaussian and $t_{5}$ innovations to estimate $b_{H}$ coverage and $L_{cp}$ quantile stability for direct paper insertion.
 
 ## 9. References (reference-style links only)
 

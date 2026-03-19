@@ -29,36 +29,36 @@ Rationale: yesterday's unresolved extrapolation lemma (`L-145a`) blocked promoti
 
 Define total inflation and extrapolation-safe bound as:
 
-\[
+$$
 \zeta_{\text{tot}}(t)=\zeta_{\text{cls}}(t)+\zeta_{\text{ext}}(d_{\text{sup}}(t)), \quad
 U_{(p,\alpha)}^{\text{safe,ext}}=\hat Q_p+m_{\text{conf}}+\zeta_{\text{tot}}.
-\]
+$$
 
 Define novelty-aware guard:
 
-\[
+$$
 \Phi_{\text{ext}}=\max\left(\Phi_{\text{tri}},\ u_{\text{cov}}-u_{\text{tol}},\ d_{\text{sup}}-d_{\text{thr}}\right).
-\]
+$$
 
-Acceptance is allowed only when `Phi_tri <= 0` for in-support behavior, or `Phi_ext <= 0` under novelty; otherwise fallback is mandatory.
+Acceptance is allowed only when $Phi_{tri} \le 0$ for in-support behavior, or $Phi_{ext} \le 0$ under novelty; otherwise fallback is mandatory.
 
 ### Proof Audit (gaps & required assumptions)
 
-- `C151` and `C154` remain conditional on `A84`/`A85` because sufficiency depends on how tightly `zeta_ext(d_sup)` upper-bounds optimism outside support.
+- `C151` and `C154` remain conditional on `A84`/`A85` because sufficiency depends on how tightly $zeta_{ext}(d_{sup})$ upper-bounds optimism outside support.
 - `C152`/`C153`/`C155` were upgraded via policy-theorem linkage: novelty-triggered invalidation and forced fallback are explicit and auditable.
-- Main unresolved gap: identify an envelope family for `zeta_ext` with monotonicity and finite-sample undercoverage guarantees under coupled nonstationary shifts (`L-154a`).
+- Main unresolved gap: identify an envelope family for $zeta_{ext}$ with monotonicity and finite-sample undercoverage guarantees under coupled nonstationary shifts (`L-154a`).
 - Critical risk remains novelty delay: a one-window lag can temporarily violate undercoverage unless fallback triggers conservatively.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added decomposition `zeta_tot = zeta_cls + zeta_ext` to separate in-support and extrapolation optimism sources.
-- Introduced hard invalidation rule: if extrapolation guard fails (`Phi_ext > 0`), prior closure claims are downgraded immediately and alarmed.
+- Added decomposition $zeta_{tot} = zeta_{cls} + zeta_{ext}$ to separate in-support and extrapolation optimism sources.
+- Introduced hard invalidation rule: if extrapolation guard fails ($Phi_{ext} > 0$), prior closure claims are downgraded immediately and alarmed.
 - Tightened scope language: the result is a screening-level safety guarantee, not a closed-loop robust-stability certificate.
 - Added explicit experiment gate for claim promotion: no upgrade of `C154` without replay-cell evidence on out-of-support regimes.
 
 ## 4. Paper Patch Notes (actionable edits)
 
-- `P-621`: extend telemetry tuple with `(d_sup, zeta_ext, zeta_tot, phi_nov, Phi_ext)`.
+- `P-621`: extend telemetry tuple with $(d_{sup}, zeta_{ext}, zeta_{tot}, phi_{nov}, Phi_{ext})$.
 - `P-622`: insert extrapolation inflation closure theorem (`C151`–`C155`) in theory.
 - `P-623`: add out-of-support falsifier matrix and claim-status gate in experiments.
 - `P-624`: strengthen related-work boundary between screening guarantees and certification claims.
@@ -74,21 +74,21 @@ Acceptance is allowed only when `Phi_tri <= 0` for in-support behavior, or `Phi_
 
 ## 6. Development Actions (next 72 hours)
 
-1. Implement monotonicity and invariant tests for `zeta_ext(d_sup)` and `zeta_tot >= zeta_cls`.
-2. Add hard downgrade assertion for `phi_nov = 1` with `Phi_ext > 0`.
-3. Build out-of-support replay matrix across `(d_sup, parser_drop, drift_latency)`.
+1. Implement monotonicity and invariant tests for $zeta_{ext}(d_{sup})$ and $zeta_{tot} \ge zeta_{cls}$.
+2. Add hard downgrade assertion for $phi_{nov} = 1$ with $Phi_{ext} > 0$.
+3. Build out-of-support replay matrix across $(d_{sup}, parser_{drop}, drift_{latency})$.
 4. Quantify novelty detector delay and stale-accept persistence bounds.
 5. Run interruption-vs-safety Pareto analysis before promoting `C154`.
 
 ## 7. Open Problems (carried + new)
 
 - `UPDATED OP-052`: extrapolation stability under unseen dependence classes remains open.
-- `UPDATED OP-053`: prove sufficiency and monotonicity conditions for `zeta_ext`.
-- `NEW OP-054`: identify minimal `zeta_ext(d_sup)` envelope family preserving undercoverage tolerance under coupled shocks.
+- `UPDATED OP-053`: prove sufficiency and monotonicity conditions for $zeta_{ext}$.
+- `NEW OP-054`: identify minimal $zeta_{ext}(d_{sup})$ envelope family preserving undercoverage tolerance under coupled shocks.
 
 ## 8. Next-day Seed
 
-Construct candidate `zeta_ext(d_sup)` families, falsify them on full out-of-support replay cells, and decide whether `C154` can be promoted to `{PROVED}`.
+Construct candidate $zeta_{ext}(d_{sup})$ families, falsify them on full out-of-support replay cells, and decide whether `C154` can be promoted to `{PROVED}`.
 
 ## 9. References (reference-style links only)
 

@@ -19,25 +19,25 @@ Dependence-Robust Quantile Gate with Block Bootstrap Correction.
 
 ## What Changed in the Theory
 ### Restatement (cleaned)
-- Define an effective sample size `n_eff` from autocorrelation and use it in a dependence-adjusted DKW-style correction.
-- Replace the raw 95th-percentile gate with a conservative corrected quantile `q_(0.95 + epsilon_eff)`.
+- Define an effective sample size $n_{eff}$ from autocorrelation and use it in a dependence-adjusted DKW-style correction.
+- Replace the raw 95th-percentile gate with a conservative corrected quantile $q_{(0.95 + epsilon_{eff})}$.
 - Make the acceptance rule regime-conditional and reject unconditional quantile transfer across shifted regimes.
 - Pair quantile correction with block-bootstrap regime testing so stale calibration is invalidated on drift.
 
 ### Proof Audit (gaps & required assumptions)
 - `A14`: leakage sequence must satisfy short-range dependence assumptions; long-range dependence remains a known breaker.
-- `A15`: block bootstrap validity depends on a reasonable block length `b`.
+- `A15`: block bootstrap validity depends on a reasonable block length $b$.
 - `A16`: regime labels and drift alarms must be timely enough for recalibration.
 - Exact constants for the dependence-adjusted DKW step still need a formal citation-level lemma in the paper text.
 
 ### Strengthening (new lemma / tighter condition / fix)
-- Added a tighter conservative quantile route using `n_eff` instead of `n_win`.
+- Added a tighter conservative quantile route using $n_{eff}$ instead of $n_{win}$.
 - Added a runtime linkage between monitor cadence and recalibration freshness.
 - Refuted the prior unconditional transfer claim with a heavy-tail regime-shift counterexample and restricted claims to regime-conditional validity.
 
 ## Paper Patch Notes (actionable edits)
-- `P-225`: insert dependence-corrected quantile gate text in `paper/sections/05_theory.typ`, including `n_eff`, `epsilon_eff(delta)`, and block-bootstrap drift trigger.
-- `P-226`: add block-length sweep and drift-reset protocol in `paper/sections/06_experiments.typ` (`b in {5,10,20,40}`; reset on `p < delta`).
+- `P-225`: insert dependence-corrected quantile gate text in `paper/sections/05_theory.typ`, including $n_{eff}$, $epsilon_{eff}(delta)$, and block-bootstrap drift trigger.
+- `P-226`: add block-length sweep and drift-reset protocol in `paper/sections/06_experiments.typ` ($b \in {5,10,20,40}$; reset on $p < delta$).
 - Add acceptance checks to verify conservative coverage recovery under AR(1)-style dependence after correction.
 
 ## New Literature Integrated (>=3)
@@ -47,19 +47,19 @@ Dependence-Robust Quantile Gate with Block Bootstrap Correction.
 - Yang et al. (2024): high-dimensional blockwise bootstrap testing, used as a practical two-sample testing reference point [4].
 
 ## Development Actions (next 72 hours)
-- Implement and unit-test autocorrelation-truncated `n_eff` estimation on synthetic AR(1) leakage.
+- Implement and unit-test autocorrelation-truncated $n_{eff}$ estimation on synthetic AR(1) leakage.
 - Implement block-bootstrap consecutive-window regime test and drift-triggered quantile reset.
-- Run coverage sweeps across `phi`, `n_win`, and `b`, and verify false-accept <= 5%.
-- Log `q_0.95`, corrected quantile, `n_eff`, and drift score per window for diagnosis.
+- Run coverage sweeps across $phi$, $n_{win}$, and $b$, and verify false-accept <= 5%.
+- Log $q_{0.95}$, corrected quantile, $n_{eff}$, and drift score per window for diagnosis.
 - Re-run delay-jitter acceptance sweeps using corrected gate inputs.
 
 ## Open Problems (carried + new)
 - OP-021 (carried): validate regime drift detector plus bootstrap coverage under realistic shift patterns.
-- OP-019 (carried): verify monitor-cadence bound `tau_mon <= n_win/2` under nonstationary windows.
+- OP-019 (carried): verify monitor-cadence bound $tau_{mon} \le n_{win}/2$ under nonstationary windows.
 - OP-022 (new): adaptive block-size selection under unknown dependence to reduce calibration sensitivity.
 
 ## Next-day Seed
-Validate the `n_eff` estimator on ARFIMA leakage and compare coverage against block-bootstrap-only correction.
+Validate the $n_{eff}$ estimator on ARFIMA leakage and compare coverage against block-bootstrap-only correction.
 
 ## References (reference-style links only)
 [1]: https://doi.org/10.3390/e16031247

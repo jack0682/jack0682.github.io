@@ -22,7 +22,7 @@ Today closes two blocking gaps from the prior day: explicit change-point preempt
 Carried context:
 - Open-problem continuity: OP-022, OP-023, OP-024, OP-025.
 - Main reviewer objections: CP vs LRD confounding, CP false positives, unquantified Hurst bias.
-- Scope of today's closure: CP preemption inequality + bootstrap bias envelope `b_H(n_win)`.
+- Scope of today's closure: CP preemption inequality + bootstrap bias envelope $b_{H}(n_{win})$.
 
 ## 2. Today's Theory Target
 
@@ -36,31 +36,31 @@ Carried context:
 
 ### Restatement (cleaned)
 
-- Core gate rule: accept short-memory branch only when `CP(x)=0` and `Hhat <= H0 - b_H(n_win)`.
-- New parameterization: detection lag `L_cp`, false-negative target `alpha_cp`, drift floor `d0`, and allowed lead-time bound `L_max`.
+- Core gate rule: accept short-memory branch only when $CP(x) = 0$ and $Hhat \le H0 - b_{H}(n_{win})$.
+- New parameterization: detection lag $L_{cp}$, false-negative target $alpha_{cp}$, drift floor $d0$, and allowed lead-time bound $L_{max}$.
 - Operational effect: CP alarms preempt long-memory misclassification when slope drift is present.
 
 ### Proof Audit (gaps & required assumptions)
 
 - C51 needs `A28` (preemption reliability) and stronger SNR/overlap conditions to prevent delayed triggers.
-- C52 needs bootstrap validity restrictions in finite windows; repaired to ARFIMA with `|phi| <= 0.5` and `n_win >= 2000`.
-- C53 needs a conservative remainder margin; repaired as `H0 - b_H - Delta_H` with tighter CP miss budget.
+- C52 needs bootstrap validity restrictions in finite windows; repaired to ARFIMA with $|phi| \le 0.5$ and $n_{win} \ge 2000$.
+- C53 needs a conservative remainder margin; repaired as $H0 - b_{H} - Delta_{H}$ with tighter CP miss budget.
 - C54 remains sensitive to extremal-index instability; patched with circular block-maxima and conservative upper bounds.
 - C55 requires empirical calibration to avoid CP-induced false-reject bursts.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- New lemma (preemption): if drift `>= d0`, `P(preempt) >= 1-alpha_cp`, and `L_cp <= L_max`, then CP triggers before `Hhat` crosses `H0` in-window.
-- New guard band: bootstrap envelope `b_H(n_win)` provides an explicit bias budget for `Hhat`.
-- Tighter condition set: CP hysteresis + envelope cap `b_H_max` to prevent over-conservative fallback.
+- New lemma (preemption): if drift $\ge d0$, $P(preempt) \ge 1-alpha_{cp}$, and $L_{cp} \le L_{max}$, then CP triggers before $Hhat$ crosses $H0$ in-window.
+- New guard band: bootstrap envelope $b_{H}(n_{win})$ provides an explicit bias budget for $Hhat$.
+- Tighter condition set: CP hysteresis + envelope cap $b_{H}_{max}$ to prevent over-conservative fallback.
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - P-234 (`paper/sections/05_theory.typ`): add formal CP-preemption lemma and inequality.
-- P-235 (`paper/sections/05_theory.typ`): add `b_H(n_win)` definition and guard-band acceptance rule.
+- P-235 (`paper/sections/05_theory.typ`): add $b_{H}(n_{win})$ definition and guard-band acceptance rule.
 - P-236 (`paper/sections/06_experiments.typ`): add ARFIMA/fGn CP-preemption protocol with lag tracking and envelope coverage plots.
 - P-237 (`paper/sections/07_related_work.typ`): integrate CP-vs-LRD and bootstrap references used in this update.
-- P-238 (`paper/sections/05_theory.typ`): formalize notation (`L_cp`, `alpha_cp`, `d0`, `L_max`) and place inequality after lemma.
+- P-238 (`paper/sections/05_theory.typ`): formalize notation ($L_{cp}$, $alpha_{cp}$, $d0$, $L_{max}$) and place inequality after lemma.
 
 ## 5. New Literature Integrated (>=3)
 
@@ -73,25 +73,25 @@ Carried context:
 
 ## 6. Development Actions (next 72 hours)
 
-1. Implement `b_H(n_win)` bootstrap envelope in the gate path.
+1. Implement $b_{H}(n_{win})$ bootstrap envelope in the gate path.
 2. Add CP detector hysteresis and false-positive cap.
 3. Run ARFIMA/fGn Monte Carlo for envelope coverage and CP lead-time distributions.
-4. Add integration test: CP preemption under slope drift with `n_win >= 2000`.
-5. Add unit tests for `b_H` monotonicity and guard-band decisions.
-6. Instrument runtime logging for `CP score`, `Hhat`, `b_H`, and gate branch decisions.
+4. Add integration test: CP preemption under slope drift with $n_{win} \ge 2000$.
+5. Add unit tests for $b_{H}$ monotonicity and guard-band decisions.
+6. Instrument runtime logging for $CP score$, $Hhat$, $b_{H}$, and gate branch decisions.
 
 ## 7. Open Problems (carried + new)
 
 - OP-022: block-size selection under regime drift remains unstable.
 - OP-023: multivariate leakage gate extension is still open.
 - OP-024: CP-preemption probability target and FN calibration need empirical confirmation.
-- OP-025: `chi_LRD` calibration for slope + HK union diagnostic remains pending.
-- OP-026: verify CP preemption lag bound `L_cp <= L_max` under controlled drift.
-- OP-027: quantify `b_H(n_win)` coverage across ARFIMA/fGn window sizes.
+- OP-025: $chi_{LRD}$ calibration for slope + HK union diagnostic remains pending.
+- OP-026: verify CP preemption lag bound $L_{cp} \le L_{max}$ under controlled drift.
+- OP-027: quantify $b_{H}(n_{win})$ coverage across ARFIMA/fGn window sizes.
 
 ## 8. Next-day Seed
 
-2026-02-23 seed: execute ARFIMA/fGn benchmark sweep to estimate `b_H(n_win)` coverage and CP lead-time distributions, then fold thresholds into theory and experiment sections.
+2026-02-23 seed: execute ARFIMA/fGn benchmark sweep to estimate $b_{H}(n_{win})$ coverage and CP lead-time distributions, then fold thresholds into theory and experiment sections.
 
 ## 9. References (reference-style links only)
 

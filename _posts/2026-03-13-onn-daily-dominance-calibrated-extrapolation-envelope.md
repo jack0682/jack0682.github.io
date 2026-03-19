@@ -15,7 +15,7 @@ excerpt: "Defined a monotone dominance-calibrated extrapolation envelope with ex
 
 ## 1. Context
 
-This entry converts the 2026-03-13 ONN/ORTSF log into a publish-ready update centered on closing the extrapolation-envelope gap left by `L-154a`. The focus is a minimal envelope family for `zeta_ext(d_sup)` that is monotone, auditable, and tied to downgrade behavior when dominance residuals turn positive.
+This entry converts the 2026-03-13 ONN/ORTSF log into a publish-ready update centered on closing the extrapolation-envelope gap left by `L-154a`. The focus is a minimal envelope family for $zeta_{ext}(d_{sup})$ that is monotone, auditable, and tied to downgrade behavior when dominance residuals turn positive.
 
 ## 2. Today’s Theory Target
 
@@ -29,36 +29,36 @@ The target is high-leverage because it resolves yesterday's unresolved envelope-
 
 Define the candidate envelope family:
 
-\[
+$$
 F_\theta(d)=a(1-e^{-bd})+cd,\quad a,b,c\ge 0.
-\]
+$$
 
 Use dominance-aware guard and safe bound:
 
-\[
+$$
 \Phi_{\text{dom}}=\max(\Phi_{\text{ext}},\,u_{\text{cov}}-u_{\text{tol}}),\quad
 U_{(p,\alpha)}^{\text{safe,dom}}=\hat Q_p+m_{\text{conf}}+\zeta_{\text{cls}}+F_\theta(d_{\text{sup}}).
-\]
+$$
 
-Accept only when `Phi_dom <= 0`; otherwise fallback is mandatory.
+Accept only when $Phi_{dom} \le 0$; otherwise fallback is mandatory.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `C157`, `C158`, `C160`, `C161`, `C162` were promoted with explicit assumptions and downgrade policy.
 - `C159` remains conditional on envelope sufficiency across replay novelty cells (`A81`, `A85`, `A87`), so no global guarantee is claimed.
 - Unresolved lemma: `L-159a` (global sufficiency under coupled nonstationary shocks) remains `{NEEDS-EXPERIMENT}`.
-- Main risk: sparse replay-cell coverage can hide underfit at mid-support `d_sup`.
+- Main risk: sparse replay-cell coverage can hide underfit at mid-support $d_{sup}$.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Enforced monotonicity by constraining fitted parameters to `a,b,c >= 0` and requiring dense-grid slope checks.
-- Added dominance residual `r_dom=u_cov-u_tol` into guard precedence so any positive residual forces non-ignorable fallback.
+- Enforced monotonicity by constraining fitted parameters to $a,b,c \ge 0$ and requiring dense-grid slope checks.
+- Added dominance residual $r_{dom} = u_{cov}-u_{tol}$ into guard precedence so any positive residual forces non-ignorable fallback.
 - Tightened manuscript boundary: result is a screening-layer conservatism repair, not robust closed-loop synthesis certification.
 - Added explicit promotion gate: no status upgrade without replay evidence for monotonicity, guard precedence, and fit-cell support.
 
 ## 4. Paper Patch Notes (actionable edits)
 
-- `P-626`: extend telemetry with `(a,b,c,r_dom,Phi_dom,fit_cell_count)`.
+- `P-626`: extend telemetry with $(a,b,c,r_{dom},Phi_{dom},fit_{cell}_{count})$.
 - `P-627`: add theorem block for dominance-calibrated envelope and guard (`C157`–`C162`).
 - `P-628`: insert falsifier matrix and promotion criteria in experiments.
 - `P-629`: clarify related-work boundary against robust synthesis claims.
@@ -74,10 +74,10 @@ Accept only when `Phi_dom <= 0`; otherwise fallback is mandatory.
 
 ## 6. Development Actions (next 72 hours)
 
-1. Add unit tests for monotonicity of `F_theta` over dense `d_sup` grids.
-2. Enforce guard precedence test: `Phi_dom > 0` must trigger immediate fallback.
-3. Run replay matrix across `(d_sup, parser_drop, drift_latency)` and log `r_dom`.
-4. Quantify minimal `fit_cell_count` thresholds for reliable parameter identification.
+1. Add unit tests for monotonicity of $F_{theta}$ over dense $d_{sup}$ grids.
+2. Enforce guard precedence test: $Phi_{dom} > 0$ must trigger immediate fallback.
+3. Run replay matrix across $(d_{sup}, parser_{drop}, drift_{latency})$ and log $r_{dom}$.
+4. Quantify minimal $fit_{cell}_{count}$ thresholds for reliable parameter identification.
 5. Attempt `L-159a` stress validation under coupled novelty and topology shocks.
 
 ## 7. Open Problems (carried + new)

@@ -27,7 +27,7 @@ The day centered on claims `C133`-`C138` to resolve carryover tensions from prio
 
 ### Restatement (cleaned)
 
-Given candidate effective counts `N={n1,n2,n3}`, define `n_eff_lb=min(N)` and build one-sided lag quantile confidence with this lower envelope. Screening is accepted only under conservative bound construction and valid runtime completeness assumptions.
+Given candidate effective counts $N = {n1,n2,n3}$, define $n_{eff}_{lb} = min(N)$ and build one-sided lag quantile confidence with this lower envelope. Screening is accepted only under conservative bound construction and valid runtime completeness assumptions.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -40,14 +40,14 @@ Given candidate effective counts `N={n1,n2,n3}`, define `n_eff_lb=min(N)` and bu
 
 - Added lower-envelope effective-count theorem (`C133`) to enforce conservative confidence width by construction.
 - Repaired interior ranking theorem (`C135`) with explicit inequality:
-  `s_min > (lambda_lag/alpha_max)*epsilon_q + xi_drift`.
-- Added parser completeness downgrade lemma (`C136`): if `pi_alarm < 1-epsilon_alarm`, no interior acceptance claim is allowed.
+  $s_{min} > (lambda_{lag}/alpha_{max})*epsilon_{q} + xi_{drift}$.
+- Added parser completeness downgrade lemma (`C136`): if $pi_{alarm} < 1-epsilon_{alarm}$, no interior acceptance claim is allowed.
 - Added cooldown/hysteresis switch-count control (`C137`) and explicit screening-not-certification boundary (`C138`).
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - `P-501`: insert lower-envelope effective-count theorem plus repaired interior inequality.
-- `P-502`: add runtime logging contract (`n_eff_*`, `pi_alarm`, drift stats) and parser completeness guard.
+- `P-502`: add runtime logging contract ($n_{eff}_*$, $pi_{alarm}$, drift stats) and parser completeness guard.
 - `P-503`: add dependent replay matrix with falsifier criteria for undercoverage and downgrade behavior.
 - `P-504`: tighten related-work positioning for dependence bootstrap and delayed switched-control comparators.
 - `P-505`: append accepted dependent-resampling references to bibliography.
@@ -60,7 +60,7 @@ Given candidate effective counts `N={n1,n2,n3}`, define `n_eff_lb=min(N)` and bu
 
 ## 6. Development Actions (next 72 hours)
 
-1. Implement runtime `n_eff_lb` operator with telemetry for each candidate estimator.
+1. Implement runtime $n_{eff}_{lb}$ operator with telemetry for each candidate estimator.
 2. Enforce hard fallback on parser completeness breach and add violation counters.
 3. Run dependent replay matrix (AR(1), ARFIMA, heavy-tail burst) and classify `C134` as proved or falsified.
 4. Add drift-latency quantile monitoring and ranking-inversion alarms.

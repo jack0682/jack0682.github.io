@@ -15,11 +15,11 @@ excerpt: "Formalized a confidence-bounded objective for class-conditioned budget
 
 ## 1. Context
 
-This entry converts the 2026-03-18 ONN research log into a publish-ready post centered on finite-sample, confidence-bounded optimization of class-conditioned interruption budgets `B_safe(k)`.
+This entry converts the 2026-03-18 ONN research log into a publish-ready post centered on finite-sample, confidence-bounded optimization of class-conditioned interruption budgets $B_{safe}(k)$.
 
 ## 2. Today’s Theory Target
 
-Target: **Confidence-Bounded Optimization of Class Budget Map `B_safe(k)`**.
+Target: **Confidence-Bounded Optimization of Class Budget Map $B_{safe}(k)$**.
 
 Primary claim focus: `C181`-`C186`, with direct closure of the prior carryover contradiction on missing finite-sample optimization criteria.
 
@@ -27,20 +27,26 @@ Primary claim focus: `C181`-`C186`, with direct closure of the prior carryover c
 
 ### Restatement (cleaned)
 
-For each dependence class `k`, define:
+For each dependence class $k$, define:
 
-`u_k^U(B) = u_k(B) + r_k(n_eff_lb, delta)`
+$$
+u_{k}^{U}(B) = u_{k}(B) + r_{k}(n_{eff,lb}, delta)
+$$
 
-`J_k(B) = w_u * u_k^U(B) + w_i * i_k(B) + w_f * f_k(B),  w_u >> w_i >= 0, w_f >= 0`
+$$
+J_{k}(B) = w_{u} * u_{k}^{U}(B) + w_{i} * i_{k}(B) + w_{f} * f_{k}(B), w_{u} >> w_{i} \ge 0, w_{f} \ge 0
+$$
 
 Select
-`B_k^* in argmin_B J_k(B)`
+$$
+B_{k}^{*} \in argmin_{B} J_{k}(B)
+$$
 subject to:
-- `u_k^U(B) <= u_tol,k`
-- `rho_k(B) >= rho_min`
-- `M_async(B) = 1` on accepted cells
+- $u_{k}^{U}(B) \le u_{tol},k$
+- $rho_{k}(B) \ge rho_{min}$
+- $M_{async}(B) = 1$ on accepted cells
 
-If no feasible candidate exists, class `k` is downgraded to fallback-only.
+If no feasible candidate exists, class $k$ is downgraded to fallback-only.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -52,13 +58,13 @@ If no feasible candidate exists, class `k` is downgraded to fallback-only.
 ### Strengthening (new lemma / tighter condition / fix)
 
 - Added a finite-sample confidence penalty term directly inside the optimization objective.
-- Added strict frontier-density gating (`rho_k >= rho_min`) so sparse classes cannot be promoted by optimistic point estimates.
+- Added strict frontier-density gating ($rho_{k} \ge rho_{min}$) so sparse classes cannot be promoted by optimistic point estimates.
 - Enforced conjunction closure with asynchronous hard-veto logic so optimization cannot bypass runtime safety predicates.
 - Added executable acceptance tests for feasible-set emptiness, weight-audit dominance, and async-veto preemption.
 
 ## 4. Paper Patch Notes (actionable edits)
 
-- `P-651`: Extend method telemetry to include `J_k`, `u_k^U`, `rho_k`, and feasible-set status.
+- `P-651`: Extend method telemetry to include $J_{k}$, $u_{k}^{U}$, $rho_{k}$, and feasible-set status.
 - `P-652`: Add CBBO proposition and downgrade rule when feasible set is empty.
 - `P-653`: Add matched-budget replay falsifier matrix and acceptance criteria.
 - `P-654`: Add related-work boundary paragraph on risk-aware calibration and screening/certification non-equivalence.
@@ -73,9 +79,9 @@ If no feasible candidate exists, class `k` is downgraded to fallback-only.
 
 ## 6. Development Actions (next 72 hours)
 
-1. Run matched-budget replay cube over `(k, d_sup, n_eff_lb, tau_mis, lag_skew)` comparing fixed, adaptive, and CBBO+async-veto.
-2. Stress-test sparse-frontier classes to estimate how often feasible sets become empty under conservative `r_k`.
-3. Validate `w_u` policy floor with failure-injection scenarios that attempt interruption-favoring unsafe optima.
+1. Run matched-budget replay cube over $(k, d_{sup}, n_{eff,lb}, tau_{mis}, lag_{skew})$ comparing fixed, adaptive, and CBBO+async-veto.
+2. Stress-test sparse-frontier classes to estimate how often feasible sets become empty under conservative $r_{k}$.
+3. Validate $w_{u}$ policy floor with failure-injection scenarios that attempt interruption-favoring unsafe optima.
 4. Add runtime alarms when confidence-adjusted unsafe bound approaches tolerance edge.
 5. Draft transfer-stress protocol for `L-185a` to upgrade `C185` from conjecture status.
 
@@ -87,7 +93,7 @@ If no feasible candidate exists, class `k` is downgraded to fallback-only.
 
 ## 8. Next-day Seed
 
-Prove or falsify a conservative transfer bound for `B_k^*` under novelty-conditioned topology-delay coupling while preserving `u_k^U` safety caps.
+Prove or falsify a conservative transfer bound for $B_{k}^{*}$ under novelty-conditioned topology-delay coupling while preserving $u_{k}^{U}$ safety caps.
 
 ## 9. References (reference-style links only)
 

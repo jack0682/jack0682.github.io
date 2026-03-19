@@ -26,12 +26,12 @@ The target concentrated on six linked claims (`C127`-`C132`) to close three prac
 
 ### Restatement (cleaned)
 
-For lag-aware screening, replace heuristic quantile inflation with a one-sided dependent-data envelope `Q_p <= U_{p,alpha}` where `U_{p,alpha} = Q_hat_p + m_conf`, and make acceptance logic explicitly conditional on a conservative effective-count lower bound and drift diagnostics.
+For lag-aware screening, replace heuristic quantile inflation with a one-sided dependent-data envelope $Q_{p} \le U_{p,alpha}$ where $U_{p,alpha} = Q_{hat,p} + m_{conf}$, and make acceptance logic explicitly conditional on a conservative effective-count lower bound and drift diagnostics.
 
 ### Proof Audit (gaps & required assumptions)
 
 - Dependent-tail undercoverage remains possible if block sizing is naive (`A69`, `A70`), so confidence claims are conditional and must report estimator conservatism.
-- Calibration validity must be horizon-bounded (`A66`, `A71`): if `tau_drift <= w_cal`, interior acceptance claims are downgraded.
+- Calibration validity must be horizon-bounded (`A66`, `A71`): if $tau_{drift} \le w_{cal}$, interior acceptance claims are downgraded.
 - Runtime integrity assumptions (`A64`, `A72`) were elevated from implicit to explicit theorem-to-implementation requirements.
 
 ### Strengthening (new lemma / tighter condition / fix)
@@ -39,7 +39,7 @@ For lag-aware screening, replace heuristic quantile inflation with a one-sided d
 - Added a dependence-aware confidence-envelope lemma (`C127`, `C128`) tying lag conservatism to one-sided bound construction under dependence.
 - Added drift-horizon downgrade rule (`C129`): stale calibration triggers fallback-only operation.
 - Tightened interior ranking condition (`C130`) with slack requirement:
-  `s_min > (lambda_lag/alpha_max) * epsilon_q + xi_drift`.
+  $s_{min} > (lambda_{lag}/alpha_{max}) * epsilon_{q} + xi_{drift}$.
 - Added parser/unit integrity claims (`C131`, `C132`) to prevent silent overclaim at runtime.
 
 ## 4. Paper Patch Notes (actionable edits)
@@ -60,10 +60,10 @@ For lag-aware screening, replace heuristic quantile inflation with a one-sided d
 
 ## 6. Development Actions (next 72 hours)
 
-1. Implement conservative lower-envelope `n_eff^lb` estimation across dependence regimes.
+1. Implement conservative lower-envelope $n_{eff}^{lb}$ estimation across dependence regimes.
 2. Run replay tests with heavy-tail burst correlation to stress one-sided coverage under dependence.
 3. Add dual drift trigger (distribution test + quantile residual) and enforce immediate fallback downgrade.
-4. Wire telemetry for `Q_hat_p`, `m_conf`, `n_eff^lb`, drift statistics, and alarm completeness heartbeat.
+4. Wire telemetry for $Q_{hat,p}$, $m_{conf}$, $n_{eff}^{lb}$, drift statistics, and alarm completeness heartbeat.
 5. Patch manuscript sections with `P-411` to `P-415` text blocks and update experiment protocol table.
 
 ## 7. Open Problems (carried + new)
@@ -72,11 +72,11 @@ For lag-aware screening, replace heuristic quantile inflation with a one-sided d
 - `OP-046` (carried): calibration-validity horizon estimation under mixed drift regimes.
 - `OP-047` (carried): interruption-rate uncertainty after fallback downgrade policy.
 - `OP-048` (carried): runtime completeness guarantees for parser/alarm paths.
-- `OP-049` (new): robustness of `n_eff^lb` under rapid dependence regime switches.
+- `OP-049` (new): robustness of $n_{eff}^{lb}$ under rapid dependence regime switches.
 
 ## 8. Next-day Seed
 
-Construct a conservative `n_eff^lb` benchmark suite first, then falsify coverage under burst-correlation scenarios before promoting any interior-ranking claim beyond conditional status.
+Construct a conservative $n_{eff}^{lb}$ benchmark suite first, then falsify coverage under burst-correlation scenarios before promoting any interior-ranking claim beyond conditional status.
 
 ## 9. References (reference-style links only)
 

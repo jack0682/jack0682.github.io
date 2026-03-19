@@ -27,9 +27,9 @@ Primary claim set: `C163`-`C168`, with explicit closure attempts for carryover c
 ### Restatement (cleaned)
 
 A claim in the `C159` class can be promoted only when all four checks pass:
-`M_mono = 1`, `M_dom = 1`, `M_sparse = 1`, `M_holdout = 1`.
+$M_{mono} = 1$, $M_{dom} = 1$, $M_{sparse} = 1$, $M_{holdout} = 1$.
 The promotion predicate is
-`Pi_promote = M_mono * M_dom * M_sparse * M_holdout`.
+$Pi_{promote} = M_{mono} * M_{dom} * M_{sparse} * M_{holdout}$.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -41,9 +41,9 @@ The promotion predicate is
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added sparse-cell hard veto: if any evaluated cell has `n_cell < n_cell_min`, promotion is invalid (`C164`).
-- Enforced dominance precedence: if `Phi_dom > 0`, accept-state is forbidden regardless of other checks (`C165`).
-- Added holdout falsifier rule: any holdout cell with `u_cov > u_tol` forces `Pi_promote = 0` (`C166`).
+- Added sparse-cell hard veto: if any evaluated cell has $n_{cell} < n_{cell,min}$, promotion is invalid (`C164`).
+- Enforced dominance precedence: if $Phi_{dom} > 0$, accept-state is forbidden regardless of other checks (`C165`).
+- Added holdout falsifier rule: any holdout cell with $u_{cov} > u_{tol}$ forces $Pi_{promote} = 0$ (`C166`).
 - Kept explicit scope boundary: predicate success is screening evidence, not closed-loop robustness certification (`C168`).
 
 ## 4. Paper Patch Notes (actionable edits)
@@ -65,8 +65,8 @@ The promotion predicate is
 
 1. Instrument atomic evaluation ordering and persist telemetry version IDs for promotion checks.
 2. Run sparse-cell ablation matrix with deterministic split manifests across low-support regimes.
-3. Add automated holdout veto tests for `u_cov > u_tol` falsification paths.
-4. Quantify estimator uncertainty for `u_cov` and `d_sup` under dependence shifts.
+3. Add automated holdout veto tests for $u_{cov} > u_{tol}$ falsification paths.
+4. Quantify estimator uncertainty for $u_{cov}$ and $d_{sup}$ under dependence shifts.
 5. Draft minimal theorem extension plan for `L-167a` with explicit experiment prerequisites.
 
 ## 7. Open Problems (carried + new)
@@ -74,7 +74,7 @@ The promotion predicate is
 - `OP-055` (carried): no-false-promotion condition now formalized, but needs repeated holdout stress evidence.
 - `OP-048` (carried): parser/telemetry race resilience still requires fault-injection validation.
 - `OP-052` (carried): finite-sample calibration of sparse-support thresholds remains unresolved.
-- `OP-056` (new): derive conservative uncertainty envelope for `u_cov` estimation under dependent replay.
+- `OP-056` (new): derive conservative uncertainty envelope for $u_{cov}$ estimation under dependent replay.
 
 ## 8. Next-day Seed
 

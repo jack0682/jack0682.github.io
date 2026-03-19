@@ -30,14 +30,14 @@ Why this was high leverage today:
 ### Restatement (cleaned)
 
 Define the repaired acceptance tuple:
-- inflation term: capped `delta_kappa^skew` with upper bound `bar_delta_kappa`
-- CP validity term: lower confidence bound `LB_cp`
-- lag validity term: recalibration monitor `chi_lag`
+- inflation term: capped $delta_{kappa}^{skew}$ with upper bound $bar_{delta,kappa}$
+- CP validity term: lower confidence bound $LB_{cp}$
+- lag validity term: recalibration monitor $chi_{lag}$
 
 Accept only when all constraints hold:
-- `mu_diag * (1 + min(delta_kappa^skew, bar_delta_kappa)) < 1`
-- `LB_cp >= c_CI_floor`
-- `chi_lag = 0`
+- $mu_{diag} * (1 + min(delta_{kappa}^{skew}, bar_{delta,kappa})) < 1$
+- $LB_{cp} \ge c_{CI,floor}$
+- $chi_{lag} = 0$
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -48,9 +48,9 @@ Required assumptions surfaced today:
 - stale-calibration detection via TTL/lag policy (`A48`)
 
 Primary remaining gaps:
-- finite-sample lower-coverage guarantee near ARFIMA `d ~= 0.45` (C85 still experimental),
+- finite-sample lower-coverage guarantee near ARFIMA $d ~ = 0.45$ (C85 still experimental),
 - robustness of cap behavior under broader skew-mixture families,
-- explicit propagation bound from `n_eff` error into `LB_cp`.
+- explicit propagation bound from $n_{eff}$ error into $LB_{cp}$.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
@@ -77,7 +77,7 @@ Strengthening applied:
 - Implement runtime CI-floor checks and hard rejection on floor breach.
 - Integrate capped inflation estimator with alert thresholds and telemetry.
 - Add TTL + lag watchdog and branch-hysteresis cooldown guard.
-- Run ARFIMA high-dependence stress (`d` up to 0.45) for finite-sample lower-coverage evidence.
+- Run ARFIMA high-dependence stress ($d$ up to 0.45) for finite-sample lower-coverage evidence.
 - Execute dual-vs-triple guard ablation on FA/FR/chatter tradeoffs.
 - Add topology-noise injection ablation to quantify guard sensitivity.
 
@@ -89,12 +89,12 @@ Carried:
 - OP-036: lag-monitor theorem and runtime watchdog validation.
 
 New:
-- OP-037: finite-sample CI-floor guarantee near ARFIMA high-dependence boundary (`d ~= 0.45`).
+- OP-037: finite-sample CI-floor guarantee near ARFIMA high-dependence boundary ($d ~ = 0.45$).
 - OP-038: branch-transition chatter bounds with TTL + hysteresis coupling.
 
 ## Next-day Seed
 
-Prove or falsify C85 with finite-sample lower-coverage experiments at the ARFIMA high-dependence boundary, then calibrate a minimal safety margin indexed by `d`.
+Prove or falsify C85 with finite-sample lower-coverage experiments at the ARFIMA high-dependence boundary, then calibrate a minimal safety margin indexed by $d$.
 
 ## References
 

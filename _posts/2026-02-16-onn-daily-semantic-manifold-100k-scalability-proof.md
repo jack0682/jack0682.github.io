@@ -41,11 +41,11 @@ Semantic Manifold 100K Scalability Proof for ONN/LOGOS.
 
 ### Architecture Emphasis (ONN_ARCHITECTURE_IMPLICATIONS)
 - The 3-fiber representation is treated as the implementation-level reason for stable semantic updates:
-  - `B_i`: physical/boundary constraints.
-  - `F_i`: invariant form/identity.
-  - `I_i`: intent/task constraints.
+  - $B_{i}$: physical/boundary constraints.
+  - $F_{i}$: invariant form/identity.
+  - $I_{i}$: intent/task constraints.
 - Edge semantics are interpreted through relation embedding and gated strength:
-  - Effective edge strength = `weight * probability * gate`.
+  - Effective edge strength = $weight * probability * gate$.
 - Architectural implication:
   - The solver should preserve fiber-separable meaning during projection and consensus updates.
   - Monitoring should include not only global convergence but also fiber-level drift and edge-gate stability.
@@ -121,7 +121,7 @@ The figure set and tables jointly support the strengthened claim: ONN now demons
 - P-302: Add a reproducibility table with the 90/90 extreme test result and 59/59 benchmark completion result.
 - P-303: Add a threat-to-validity paragraph on hardware dependence and topology transfer limits.
 - P-304: Add post-fix benchmark protocol note to separate invalid pre-fix results from final accepted evidence.
-- P-305: Add a deployment checklist threshold line (`100K < 1GB`, `iterations <= 30`, `success rate = 100%`).
+- P-305: Add a deployment checklist threshold line ($100K < 1GB$, $iterations \le 30$, $success rate = 100%$).
 
 ## New Literature Integrated (>=3)
 - Combettes (2024), geometric interpretation of monotone operator splitting, used as the conceptual anchor for fixed-iteration behavior in projection-consensus updates. [1]
@@ -133,13 +133,13 @@ The figure set and tables jointly support the strengthened claim: ONN now demons
 - Run a CPU-only replication subset (1K to 10K) to estimate hardware transfer error.
 - Add topology-stratified confidence intervals for S_time, S_mem, and S_iter.
 - Add fiber-level diagnostics (`B/F/I` drift metrics) per iteration.
-- Add a regression gate that fails CI if `iterations > 30` or `memory > expected envelope`.
+- Add a regression gate that fails CI if $iterations > 30$ or $memory > expected envelope$.
 - Publish a benchmark manifest with seed, density, structure, and fiber-drift summaries.
 - Add one real ontology-scale graph test to replace purely synthetic transfer assumptions.
 
 ## Open Problems (carried + new)
-- OP-013 (carried): prove/refute structured `mu` inflation rule under block-coupled uncertainty.
-- OP-012 (carried): validate block partition and D-scaling conservativeness target (`eta_off^95 <= 0.25`).
+- OP-013 (carried): prove/refute structured $mu$ inflation rule under block-coupled uncertainty.
+- OP-012 (carried): validate block partition and D-scaling conservativeness target ($eta_{off}^{95} \le 0.25$).
 - OP-020 (new): formalize a topology-aware convergence bound explaining near-constant iterations.
 - OP-021 (new): derive hardware-transfer correction bounds from A100 to commodity GPU/CPU settings.
 - OP-022 (new): prove benchmark-to-real-ontology transfer conditions for the semantic manifold certificate.
