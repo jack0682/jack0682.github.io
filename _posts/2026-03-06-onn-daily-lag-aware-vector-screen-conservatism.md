@@ -36,14 +36,14 @@ Claims hardened today:
 ### Restatement (cleaned)
 
 Using
-$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t) + lambda_{lag} delta_{lag}(t)$,
+$$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t) + lambda_{lag} delta_{lag}(t)$$,
 define
-$eta_{top}^{cons},lag(t) = (alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t))/alpha_{max} + (lambda_{lag}/alpha_{max}) delta_{lag}(t)$,
-with $alpha_{max} = max(alpha_{PH}, alpha_{kappa})$.
+$$eta_{top}^{cons},lag(t) = (alpha_{PH} eta_{PH}(t) + alpha_{kappa} eta_{kappa}(t))/alpha_{max} + (lambda_{lag}/alpha_{max}) delta_{lag}(t)$$,
+with $$alpha_{max} = max(alpha_{PH}, alpha_{kappa})$$.
 Then
-$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{max} eta_{top}^{cons},lag(t)$,
+$$Delta_{FR}^{vec}(t) \le Delta_{FR}(t) + alpha_{max} eta_{top}^{cons},lag(t)$$,
 so a sufficient lag-aware acceptance condition is
-$eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$.
+$$eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$$.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -54,7 +54,7 @@ $eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added explicit stale-threshold formula $delta_{lag}^{max}(cell)$ to force hard reject when lag exceeds safe envelope.
+- Added explicit stale-threshold formula $$delta_{lag}^{max}(cell)$$ to force hard reject when lag exceeds safe envelope.
 - Formalized a non-conservatism counter-region (`C117`) to prevent scalar overclaim.
 - Added failure-propagation statement (`C120`) linking lag miscalibration to theorem and deployment safety collapse.
 - Bound the scope explicitly: screening theorem only, not certificate-level robustness.
@@ -63,7 +63,7 @@ $eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$.
 
 - `P-401`: insert lag-aware vector-screen theorem and sufficiency-only caveat in theory section.
 - `P-402`: add asynchronous replay protocol (offset/drop/skew) and falsifiers in experiments.
-- `P-403`: require dual timestamps, $delta_{lag}$, and stale flags in method instrumentation.
+- `P-403`: require dual timestamps, $$delta_{lag}$$, and stale flags in method instrumentation.
 - `P-404`: add comparator-only positioning for delayed/switching literature in related work.
 - `P-405`: preserve bibliography dedup; keep certification-boundary disclaimer.
 
@@ -76,24 +76,24 @@ $eta_{top}^{cons},lag(t) \le eta_{top}^{max}(d,n_{win},b)$.
 
 ## Development Actions (next 72 hours)
 
-1. Add dual-source/ingest timestamps and $delta_{lag}$ logging at every decision step.
-2. Implement $eta_{top}^{cons},lag$ as runtime monitor output and branch input.
-3. Add stale hard-reject gate using per-cell $delta_{lag}^{max}$.
+1. Add dual-source/ingest timestamps and $$delta_{lag}$$ logging at every decision step.
+2. Implement $$eta_{top}^{cons},lag$$ as runtime monitor output and branch input.
+3. Add stale hard-reject gate using per-cell $$delta_{lag}^{max}$$.
 4. Run asynchronous replay with packet drop and clock-skew ablations.
 5. Measure threshold-crossing recall and ranking stability (`C118`) by interior vs boundary cells.
-6. Estimate $lambda_{lag}$ from high-quantile stale tails and report CI sensitivity.
+6. Estimate $$lambda_{lag}$$ from high-quantile stale tails and report CI sensitivity.
 7. Patch theory/experiments/related-work sections using `P-401` to `P-404`.
 
 ## Open Problems (carried + new)
 
 - `OP-043` (updated): validate quantile-calibrated lag envelope and violation frequency.
 - `OP-044` (updated): verify ranking under asynchronous replay with stale hard-reject ablation.
-- `OP-045` (new): calibrate $lambda_{lag}$ with conservative lower-confidence guarantee.
+- `OP-045` (new): calibrate $$lambda_{lag}$$ with conservative lower-confidence guarantee.
 - `OP-046` (new): prove timestamp integrity under bounded clock skew and packet reordering.
 
 ## Next-day Seed
 
-Estimate $lambda_{lag}$ from measured stale-tail quantiles, rerun full asynchronous replay, and decide whether `C118` should be downgraded or retained.
+Estimate $$lambda_{lag}$$ from measured stale-tail quantiles, rerun full asynchronous replay, and decide whether `C118` should be downgraded or retained.
 
 ## References (reference-style links only)
 

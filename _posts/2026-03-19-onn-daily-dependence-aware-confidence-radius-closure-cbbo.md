@@ -27,7 +27,7 @@ Primary claim focus: `C187`-`C192`, with direct closure on the carryover gap beh
 
 ### Restatement (cleaned)
 
-For each dependence class $k$, define a conservative radius and upper unsafe bound:
+For each dependence class $$k$$, define a conservative radius and upper unsafe bound:
 
 $$
 r_{k}(delta) = sqrt(log(1/delta) / (2 * max(1, n_{eff,lb}(k)))) + zeta_{k,dep}
@@ -43,21 +43,21 @@ $$
 F_{k} = {B: u_{k}^{U}(B) \le u_{tol},k, rho_{k}(B) \ge rho_{min}, M_{async}(B) = 1}
 $$
 
-If $F_{k}$ is non-empty, choose $B_{k}^{*}$ via safety-dominant objective minimization with deterministic tie-break; if $F_{k}$ is empty, force fallback-only with no activation.
+If $$F_{k}$$ is non-empty, choose $$B_{k}^{*}$$ via safety-dominant objective minimization with deterministic tie-break; if $$F_{k}$$ is empty, force fallback-only with no activation.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `C187`-`C190` and `C192` are now supported under explicit assumptions `A95`, `A96`, `A98`, `A99`, `A100`, and `A101`.
 - The remaining fragile point is transfer beyond replay support (`C191`), still contingent on unresolved topology-noise and novelty-coupling bounds.
-- Identified failure paths were optimistic $n_{eff,lb}$, stale async transaction state, and hidden activation when feasible set is empty.
+- Identified failure paths were optimistic $$n_{eff,lb}$$, stale async transaction state, and hidden activation when feasible set is empty.
 - Repairs now require conservative lower-count auditing, transaction-scoped async guards, and hard no-activation semantics.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added monotonic-radius lemma: increasing conservative evidence cannot increase $r_{k}$.
+- Added monotonic-radius lemma: increasing conservative evidence cannot increase $$r_{k}$$.
 - Added feasibility sufficiency closure: accepted budgets must satisfy both confidence-adjusted unsafe cap and async validity.
 - Added deterministic tie-break rule to prevent oscillation under equal objective values.
-- Added mandatory downgrade rule when $F_{k} = \emptyset$, preventing stale cached budget activation.
+- Added mandatory downgrade rule when $$F_{k} = \emptyset$$, preventing stale cached budget activation.
 
 ## 4. Paper Patch Notes (actionable edits)
 

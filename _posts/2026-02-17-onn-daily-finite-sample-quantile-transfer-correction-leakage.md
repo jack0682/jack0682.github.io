@@ -19,9 +19,9 @@ Finite-Sample Quantile Transfer Correction for Leakage Gate.
 
 ## What Changed in the Theory
 ### Restatement (cleaned)
-- Unconditional transfer of $m_{off}^{95}$ across regimes is not accepted after a heavy-tail counterexample.
-- The gate is now regime-conditional: estimate $m_{off}^{95}(R)$ within matched regime labels.
-- Add finite-sample correction $epsilon_{n}(delta)$ so the acceptance threshold uses a conservative quantile estimate.
+- Unconditional transfer of $$m_{off}^{95}$$ across regimes is not accepted after a heavy-tail counterexample.
+- The gate is now regime-conditional: estimate $$m_{off}^{95}(R)$$ within matched regime labels.
+- Add finite-sample correction $$epsilon_{n}(delta)$$ so the acceptance threshold uses a conservative quantile estimate.
 - Connect gate validity to monitor cadence and rolling-window size assumptions.
 
 ### Proof Audit (gaps & required assumptions)
@@ -56,8 +56,8 @@ Finite-Sample Quantile Transfer Correction for Leakage Gate.
 - Rebuild `main.typ` after section insertions to verify integration compilation.
 
 ## Open Problems (carried + new)
-- OP-013 (carried): structured $mu$ inflation under block-coupled uncertainty.
-- OP-012 (carried): validate D-scaling conservativeness with measurable $eta_{off}^{95}$ target.
+- OP-013 (carried): structured $$mu$$ inflation under block-coupled uncertainty.
+- OP-012 (carried): validate D-scaling conservativeness with measurable $$eta_{off}^{95}$$ target.
 - OP-020 (updated): finite-sample quantile correction validation with dependence-aware coverage checks.
 - OP-018 (updated): trigger-dependent delay sweep for acceptance boundary robustness.
 - OP-021 (new): regime drift detector plus block-bootstrap coverage test.

@@ -21,21 +21,21 @@ This entry converts the 2026-03-17 ONN log into a publish-ready post focused on 
 
 Target: **Budget-Calibrated Adaptive Threshold with Asynchronous Version Safety**.
 
-Primary claim set: `C175`-`C180`, with emphasis on closing carryover contradictions around stale-version dispatch and making $B_{safe}(k)$ calibration operational.
+Primary claim set: `C175`-`C180`, with emphasis on closing carryover contradictions around stale-version dispatch and making $$B_{safe}(k)$$ calibration operational.
 
 ## 3. What Changed in the Theory
 
 ### Restatement (cleaned)
 
 Promotion now uses an async-safe predicate:
-$Pi_{promote,async} = M_{mono} * M_{dom} * M_{sparse,adp} * M_{holdout} * M_{async}$.
+$$Pi_{promote,async} = M_{mono} * M_{dom} * M_{sparse,adp} * M_{holdout} * M_{async}$$.
 
-$M_{async}$ is a hard veto bit requiring both bounded mismatch duration and exact version agreement:
-$M_{async} = 1[tau_{mis} \le tau_{mis,max}(k)] * 1[threshold_{version} = class_{version}]$.
+$$M_{async}$$ is a hard veto bit requiring both bounded mismatch duration and exact version agreement:
+$$M_{async} = 1[tau_{mis} \le tau_{mis,max}(k)] * 1[threshold_{version} = class_{version}]$$.
 
 The adaptive sparse threshold remains class-conditioned through
-$n_{cell,min,safe}(k, d_{sup}, n_{eff,lb}) = ceil(n0 + alpha_{k}*d_{sup} + beta_{k}/max(1,n_{eff,lb}))$,
-with $(alpha_{k}, beta_{k})$ induced by a monotone map from $B_{safe}(k)$.
+$$n_{cell,min,safe}(k, d_{sup}, n_{eff,lb}) = ceil(n0 + alpha_{k}*d_{sup} + beta_{k}/max(1,n_{eff,lb}))$$,
+with $$(alpha_{k}, beta_{k})$$ induced by a monotone map from $$B_{safe}(k)$$.
 
 ### Proof Audit (gaps & required assumptions)
 
@@ -48,14 +48,14 @@ with $(alpha_{k}, beta_{k})$ induced by a monotone map from $B_{safe}(k)$.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Added a constructive isotonic calibration interface $B_{safe}(k) -> (alpha_{k}, beta_{k})$ to enforce conservative class ordering.
-- Added asynchronous hard-veto closure: $M_{async} = 0 = > Pi_{promote,async} = 0$.
+- Added a constructive isotonic calibration interface $$B_{safe}(k) -> (alpha_{k}, beta_{k})$$ to enforce conservative class ordering.
+- Added asynchronous hard-veto closure: $$M_{async} = 0 = > Pi_{promote,async} = 0$$.
 - Added transaction-ID and mismatch-duration telemetry requirements to block stale cache acceptance paths.
 - Tightened manuscript boundary language to avoid implying closed-loop stability certification.
 
 ## 4. Paper Patch Notes (actionable edits)
 
-- `P-641`: Extend telemetry contract with $tau_{mis}$, $threshold_{version}$, $class_{version}$, and transaction IDs.
+- `P-641`: Extend telemetry contract with $$tau_{mis}$$, $$threshold_{version}$$, $$class_{version}$$, and transaction IDs.
 - `P-642`: Add formal proposition for budget-monotone mapping and async hard-veto invariant.
 - `P-643`: Add replay protocol comparing fixed vs adaptive vs adaptive+async-veto under matched budgets.
 - `P-644`: Add related-work boundary paragraph on screening vs certification in delayed/asynchronous settings.
@@ -71,8 +71,8 @@ with $(alpha_{k}, beta_{k})$ induced by a monotone map from $B_{safe}(k)$.
 ## 6. Development Actions (next 72 hours)
 
 1. Implement transaction-ID-coupled predicate evaluation and log schema checks.
-2. Fit and validate isotonic $B_{safe}(k) -> (alpha_{k}, beta_{k})$ with per-class confidence reporting.
-3. Run stress replay over $(k, d_{sup}, n_{eff,lb}, tau_{mis})$ for fixed/adaptive/async-veto comparators.
+2. Fit and validate isotonic $$B_{safe}(k) -> (alpha_{k}, beta_{k})$$ with per-class confidence reporting.
+3. Run stress replay over $$(k, d_{sup}, n_{eff,lb}, tau_{mis})$$ for fixed/adaptive/async-veto comparators.
 4. Add stale-version forced-fallback regression tests and mismatch alarm diagnostics.
 5. Quantify frontier-density adequacy criterion required to upgrade `C178` toward proof status.
 
@@ -82,12 +82,12 @@ with $(alpha_{k}, beta_{k})$ induced by a monotone map from $B_{safe}(k)$.
 - `OP-052` to `OP-054` (carried): finite-sample calibration and support-proxy reliability concerns.
 - `OP-056` (updated): adaptive threshold now formalized, still needs multi-regime stress evidence.
 - `OP-057` (updated): reduced to runtime validation of async mismatch hard-veto under realistic lag bursts.
-- `OP-058` (new): derive finite-sample optimization criterion for $B_{safe}(k)$ with confidence bounds.
+- `OP-058` (new): derive finite-sample optimization criterion for $$B_{safe}(k)$$ with confidence bounds.
 - `L-179a` (new lemma blocker): transfer condition under unseen topology-delay coupling.
 
 ## 8. Next-day Seed
 
-Derive and test a finite-sample optimization objective for $B_{safe}(k)$ that can promote `C178` from plausible calibration to defensible theorem-level evidence.
+Derive and test a finite-sample optimization objective for $$B_{safe}(k)$$ that can promote `C178` from plausible calibration to defensible theorem-level evidence.
 
 ## 9. References (reference-style links only)
 

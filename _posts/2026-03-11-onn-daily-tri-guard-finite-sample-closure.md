@@ -37,20 +37,20 @@ $$
 \right).
 $$
 
-If $Phi_{tri} \le 0$, then safe margin $m_{conf}^{safe} = m_{conf} + zeta_{cls}$ preserves screening conservatism over calibrated replay cells.
+If $$Phi_{tri} \le 0$$, then safe margin $$m_{conf}^{safe} = m_{conf} + zeta_{cls}$$ preserves screening conservatism over calibrated replay cells.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `C145` remains sufficient (not necessary) and depends on `A80`–`A83` for coupled perturbation validity.
-- `C146` requires finite-sample calibration where $zeta_{cls}$ upper-bounds class-selection optimism (`A78`, `A69`).
+- `C146` requires finite-sample calibration where $$zeta_{cls}$$ upper-bounds class-selection optimism (`A78`, `A69`).
 - `C147` requires parser observability assumptions (`A75`, `A79`) so CI correction reflects true burst-drop behavior.
-- `C148` relies on enforceable runtime guard $tau_{drift}^{0.95} \le w_{cal}$ (`A71`, `A83`).
+- `C148` relies on enforceable runtime guard $$tau_{drift}^{0.95} \le w_{cal}$$ (`A71`, `A83`).
 - Extrapolation outside calibration support is still open and isolated as `L-145a` (`{NEEDS-EXPERIMENT}`).
 
 ### Strengthening (new lemma / tighter condition / fix)
 
 - Introduced composable chain `C146/C147/C148 -> C149` with immediate failure propagation to fallback.
-- Upgraded parser gate to CI-corrected inequality $pi_{alarm} - epsilon_{pi} \ge 1 - epsilon_{alarm}$.
+- Upgraded parser gate to CI-corrected inequality $$pi_{alarm} - epsilon_{pi} \ge 1 - epsilon_{alarm}$$.
 - Added explicit drift-latency quantile guard for stale-calibration prevention.
 - Clarified `C150` scope boundary: screening-layer guarantee only, not controller-level robustness certification.
 
@@ -67,12 +67,12 @@ If $Phi_{tri} \le 0$, then safe margin $m_{conf}^{safe} = m_{conf} + zeta_{cls}$
 1. Lahiri (2003), *Resampling Methods for Dependent Data* — dependence-aware calibration foundations.
 2. Buhlmann (2002), *Bootstraps for Time Series* — finite-sample time-series bootstrap caveats and practice.
 3. Kunsch (1989), *The jackknife and the bootstrap for general stationary observations* — stationary dependence calibration basis.
-4. Politis and Romano (1994), *The Stationary Bootstrap* — practical route for class-conditioned $zeta_{cls}$ calibration.
+4. Politis and Romano (1994), *The Stationary Bootstrap* — practical route for class-conditioned $$zeta_{cls}$$ calibration.
 
 ## 6. Development Actions (next 72 hours)
 
 1. Implement tri-axis replay-cell generator (class-switch, parser-drop, drift-latency).
-2. Serialize calibration constants table for $zeta_{cls}$, $epsilon_{pi}$, and $tau_{drift}^{0.95}$.
+2. Serialize calibration constants table for $$zeta_{cls}$$, $$epsilon_{pi}$$, and $$tau_{drift}^{0.95}$$.
 3. Add monotonicity/invariant checks for tri-guard runtime conditions.
 4. Integrate parser burst-loss and class-boundary adversarial harnesses.
 5. Produce safety-vs-interruption Pareto report with downgrade traceability.
@@ -81,7 +81,7 @@ If $Phi_{tri} \le 0$, then safe margin $m_{conf}^{safe} = m_{conf} + zeta_{cls}$
 
 - `UPDATED OP-052`: validate calibration stability under unseen dependence regimes.
 - `NEW OP-053`: prove or falsify extrapolation guard (`L-145a`) for out-of-support shifts.
-- $RESOLVED OP-051$: dependence-class taxonomy and constants-table schema now specified.
+- $$RESOLVED OP-051$$: dependence-class taxonomy and constants-table schema now specified.
 
 ## 8. Next-day Seed
 

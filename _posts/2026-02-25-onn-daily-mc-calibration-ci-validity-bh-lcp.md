@@ -17,7 +17,7 @@ This entry converts the 2026-02-25 ONN/ORTSF research log into a publish-ready r
 
 ## Today's Theory Target
 
-Target: Monte Carlo calibration protocol plus CI validity for $b_{H}$ and $L_{cp}^{p}$.
+Target: Monte Carlo calibration protocol plus CI validity for $$b_{H}$$ and $$L_{cp}^{p}$$.
 
 Leverage:
 - Converts calibration from heuristic tuning to auditable pass/fail constraints.
@@ -30,13 +30,13 @@ Primary claims advanced today: C68-C74.
 
 ### Restatement (cleaned)
 
-For each noise family $nu$, define calibration trials for the Hurst envelope and estimate coverage $p_{hat,nu}$. After dependence correction via thinning or block resampling, require a conservative lower bound $LB_{nu}(alpha_{H}) \ge 1 - alpha_{H}$. In parallel, estimate $L_{cp}^{0.95}$ and certify a dependent-bootstrap CI; accept gating only when CI upper bounds satisfy operational latency constraints.
+For each noise family $$nu$$, define calibration trials for the Hurst envelope and estimate coverage $$p_{hat,nu}$$. After dependence correction via thinning or block resampling, require a conservative lower bound $$LB_{nu}(alpha_{H}) \ge 1 - alpha_{H}$$. In parallel, estimate $$L_{cp}^{0.95}$$ and certify a dependent-bootstrap CI; accept gating only when CI upper bounds satisfy operational latency constraints.
 
 ### Proof Audit (gaps and required assumptions)
 
 Critical assumptions checked:
 - Effective independence after thinning (`A38`) for coverage lower bounds.
-- Valid dependent-bootstrap CI behavior for $L_{cp}^{p}$ (`A39`, `A12`).
+- Valid dependent-bootstrap CI behavior for $$L_{cp}^{p}$$ (`A39`, `A12`).
 - Cross-noise inflation control (`A30`) and sufficient MC depth (`A31`).
 
 Main identified gaps:
@@ -47,15 +47,15 @@ Main identified gaps:
 ### Strengthening (new lemma / tighter condition / fix)
 
 Strengthening introduced today:
-- Replace raw trial count with conservative effective count $n_{eff}$ when forming lower bounds.
-- Restrict cross-noise transfer to bounded-kurtosis families and explicitly calibrate inflation factor $delta_{kappa}$.
+- Replace raw trial count with conservative effective count $$n_{eff}$$ when forming lower bounds.
+- Restrict cross-noise transfer to bounded-kurtosis families and explicitly calibrate inflation factor $$delta_{kappa}$$.
 - Gate acceptance on both envelope coverage and CI upper-bound constraints, not one metric alone.
-- Require instrumentation tuple $(nu, N_{mc}, tau_{thin}, p_{hat,nu}, LB_{nu}, L_{cp}^{0.95}, CI_{cp}^{0.95})$ for auditability.
+- Require instrumentation tuple $$(nu, N_{mc}, tau_{thin}, p_{hat,nu}, LB_{nu}, L_{cp}^{0.95}, CI_{cp}^{0.95})$$ for auditability.
 
 ## Paper Patch Notes (actionable edits)
 
-- Insert theorem-level acceptance criterion combining $LB_{nu}(alpha_{H})$ and CI latency ceiling.
-- Add dependence-aware calibration subsection documenting thinning, block bootstrap, and $n_{eff}$.
+- Insert theorem-level acceptance criterion combining $$LB_{nu}(alpha_{H})$$ and CI latency ceiling.
+- Add dependence-aware calibration subsection documenting thinning, block bootstrap, and $$n_{eff}$$.
 - Add falsifier table for heavy-tail and strong-memory failure cases.
 - Add implementation logging schema and validation checks for reproducible audits.
 
@@ -69,25 +69,25 @@ Source patch draft: `daily/patch_notes/2026-02-25_paper_edits.md` in the upstrea
 
 ## Development Actions (next 72 hours)
 
-- Run family-stratified Monte Carlo with explicit thinning schedule and log $n_{eff}$ per condition.
-- Validate CI coverage for $L_{cp}^{0.95}$ on ARFIMA and heavy-tail settings, including failure-rate reports.
-- Fit and stress-test $delta_{kappa}$ under bounded-kurtosis families ($t_{nu}$, $nu \ge 5$).
+- Run family-stratified Monte Carlo with explicit thinning schedule and log $$n_{eff}$$ per condition.
+- Validate CI coverage for $$L_{cp}^{0.95}$$ on ARFIMA and heavy-tail settings, including failure-rate reports.
+- Fit and stress-test $$delta_{kappa}$$ under bounded-kurtosis families ($$t_{nu}$$, $$nu \ge 5$$).
 - Translate the strengthened acceptance test into paper theorem statements and experiment checklist.
 
 ## Open Problems (carried + new)
 
 Carried:
-- Dependence-corrected coverage guarantees for $b_{H}$ in long-memory regimes.
-- Bootstrap CI validity boundary for $L_{cp}^{p}$ under strong dependence.
-- Practical upper bounds on cross-noise inflation $delta_{kappa}$.
+- Dependence-corrected coverage guarantees for $$b_{H}$$ in long-memory regimes.
+- Bootstrap CI validity boundary for $$L_{cp}^{p}$$ under strong dependence.
+- Practical upper bounds on cross-noise inflation $$delta_{kappa}$$.
 
 New:
-- Quantify how conservative $n_{eff}$ estimation must be to avoid optimistic lower bounds.
+- Quantify how conservative $$n_{eff}$$ estimation must be to avoid optimistic lower bounds.
 - Determine whether CI-intersection strategy remains stable under drift spikes and heteroskedastic bursts.
 
 ## Next-day Seed
 
-Construct a minimal theorem package proving conservative acceptance under bounded-kurtosis plus weak-dependence assumptions, then run a contradiction-driven simulation set to identify the tightest admissible $delta_{kappa}$ and block-size regime.
+Construct a minimal theorem package proving conservative acceptance under bounded-kurtosis plus weak-dependence assumptions, then run a contradiction-driven simulation set to identify the tightest admissible $$delta_{kappa}$$ and block-size regime.
 
 ## References
 

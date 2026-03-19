@@ -18,7 +18,7 @@ This post converts the 2026-02-26 ONN/ORTSF research log into a publish-ready re
 
 ## Today's Theory Target
 
-Target: Dependence-aware cross-noise safety gate for $b_{H}$ and $L_{cp}^{0.95}$.
+Target: Dependence-aware cross-noise safety gate for $$b_{H}$$ and $$L_{cp}^{0.95}$$.
 
 Why this was high leverage today:
 - Bridges C68-C74 calibration results into deployable acceptance logic.
@@ -29,23 +29,23 @@ Why this was high leverage today:
 
 ### Restatement (cleaned)
 
-For each tracked noise family $nu$, require conservative coverage certification for $b_{H}(n_{win}, nu)$ through dependence-corrected lower bounds $LB_{nu}(alpha_{H})$. In parallel, require CP lead-time safety through dependent-bootstrap confidence intervals on $L_{cp}^{0.95}(nu)$. Accept only when both guards pass:
-- coverage guard: $LB_{nu}(alpha_{H}) \ge 1 - alpha_{H}$
-- lead-time guard: $max_{nu} CI_{cp}^{0.95}(nu) \le L_{max}$
+For each tracked noise family $$nu$$, require conservative coverage certification for $$b_{H}(n_{win}, nu)$$ through dependence-corrected lower bounds $$LB_{nu}(alpha_{H})$$. In parallel, require CP lead-time safety through dependent-bootstrap confidence intervals on $$L_{cp}^{0.95}(nu)$$. Accept only when both guards pass:
+- coverage guard: $$LB_{nu}(alpha_{H}) \ge 1 - alpha_{H}$$
+- lead-time guard: $$max_{nu} CI_{cp}^{0.95}(nu) \le L_{max}$$
 
 ### Proof Audit (gaps & required assumptions)
 
 Main assumptions surfaced: effective sample conservatism (`A40`), bounded heavy-tail inflation (`A41`), and dependent-bootstrap CI validity (`A42`).
 
 Primary gaps identified:
-- optimistic $n_{eff}$ can invalidate coverage guarantees,
+- optimistic $$n_{eff}$$ can invalidate coverage guarantees,
 - unbounded inflation under skewed heavy tails can break cross-noise transfer,
 - CI undercoverage can appear under stronger long-memory regimes.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
 Strengthening applied today:
-- Replaced IID-style counts with conservative $n_{eff}$ from thinning/block-bootstrap policy.
+- Replaced IID-style counts with conservative $$n_{eff}$$ from thinning/block-bootstrap policy.
 - Introduced dual-guard acceptance (coverage + CI) to replace single-guard logic.
 - Added explicit uncertainty-block interpretation for calibration effects and failure propagation.
 - Marked Gaussian-only sufficiency as false by counterexample and replaced it with bounded-family logic.
@@ -60,16 +60,16 @@ Strengthening applied today:
 ## New Literature Integrated (>=3)
 
 1. Pinheiro and Colon (2024), uncertainty analysis/synthesis for time-delay systems with Padé approximations. https://doi.org/10.1016/j.jfranklin.2024.01.044
-2. Zheng and Zhao (2024), robust $H_∞$ stabilization with uncertain input delay. https://doi.org/10.1016/j.jfranklin.2024.107223
+2. Zheng and Zhao (2024), robust $$H_∞$$ stabilization with uncertain input delay. https://doi.org/10.1016/j.jfranklin.2024.107223
 3. Mo et al. (2025), Razumikhin-ISS/small-gain theorem for discrete-time delay systems. https://doi.org/10.1016/j.automatica.2025.112111
 4. Wegner and Wendler (2024), robust CP detection under dependence with wild bootstrap. https://doi.org/10.1007/s00362-024-01577-7
 
 ## Development Actions (next 72 hours)
 
-- Validate CI lower coverage under ARFIMA/fGn stress with conservative $n_{eff}$ choices.
+- Validate CI lower coverage under ARFIMA/fGn stress with conservative $$n_{eff}$$ choices.
 - Stress-test skewed heavy-tail mixtures to bound inflation factor stability.
 - Add dual-guard ablation (single vs dual) with false-accept/false-reject tradeoff reporting.
-- Extend certification logs to enforce schema checks for $(nu, n_{eff}, LB_{nu}, L_{cp}^{0.95}, CI_{cp}^{0.95}, delta_{kappa})$.
+- Extend certification logs to enforce schema checks for $$(nu, n_{eff}, LB_{nu}, L_{cp}^{0.95}, CI_{cp}^{0.95}, delta_{kappa})$$.
 
 ## Open Problems (carried + new)
 

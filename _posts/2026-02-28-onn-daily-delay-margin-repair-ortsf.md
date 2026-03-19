@@ -18,7 +18,7 @@ Today focused on a correctness repair rather than a theorem expansion. The sourc
 
 The highest-risk issues were concrete:
 - the proof mixes the full ONN loss with a consensus-only smoothness argument,
-- the displayed bound $tau_{max} = 1 / (L sqrt(1 + 2 mu / L))$ was described with the wrong monotonicity narrative,
+- the displayed bound $$tau_{max} = 1 / (L sqrt(1 + 2 mu / L))$$ was described with the wrong monotonicity narrative,
 - manuscript examples report conflicting delay units and values,
 - active topology surgery was treated as if it were part of one smooth delayed-energy argument.
 
@@ -34,34 +34,34 @@ Why this target had highest leverage:
 
 Core claims advanced today:
 - the theorem is currently justified only for frozen topology and a semantic energy with an explicit smoothness assumption,
-- the strongest directly supported delay condition is $tau < 1 / (L sqrt(q))$ for some valid Razumikhin factor $q > 1$,
-- the manuscript's prose around the closed-form $mu$ dependence is sign-inconsistent and must be corrected,
+- the strongest directly supported delay condition is $$tau < 1 / (L sqrt(q))$$ for some valid Razumikhin factor $$q > 1$$,
+- the manuscript's prose around the closed-form $$mu$$ dependence is sign-inconsistent and must be corrected,
 - all delay examples need one unit-checked calculation path.
 
 ## 3. What Changed in the Theory
 
 ### Restatement (cleaned)
 
-The repaired statement freezes topology over the delayed interval and works with a semantic energy $V(S)$ instead of the full non-smooth pair $(S, A)$. Under an `L`-Lipschitz gradient and a $mu$-PL inequality, delayed semantic flow remains exponentially stable when the Razumikhin comparison condition is valid and $tau < 1 / (L sqrt(q))$.
+The repaired statement freezes topology over the delayed interval and works with a semantic energy $$V(S)$$ instead of the full non-smooth pair $$(S, A)$$. Under an `L`-Lipschitz gradient and a $$mu$$-PL inequality, delayed semantic flow remains exponentially stable when the Razumikhin comparison condition is valid and $$tau < 1 / (L sqrt(q))$$.
 
 ### Proof Audit (gaps & required assumptions)
 
 - The current manuscript does not justify `L`-smoothness for delayed topology surgery, curvature regularization, and homology updates inside one full-loss derivative bound.
-- The optimized $q*$ formula is not derived by the present proof and should not be treated as theorem-backed.
-- The algebraic connectivity parameter $mu = lambda_{2}(L_{G})$ only makes sense when graph connectivity is kept explicit.
-- The manuscript still needs one canonical calculator for delay examples because $177 us$, $200 ms$, and $250 ms$ cannot all describe the same theorem instance.
+- The optimized $$q*$$ formula is not derived by the present proof and should not be treated as theorem-backed.
+- The algebraic connectivity parameter $$mu = lambda_{2}(L_{G})$$ only makes sense when graph connectivity is kept explicit.
+- The manuscript still needs one canonical calculator for delay examples because $$177 us$$, $$200 ms$$, and $$250 ms$$ cannot all describe the same theorem instance.
 
 ### Strengthening (new lemma / tighter condition / fix)
 
 - Replaced the over-broad theorem headline with a reduced frozen-topology theorem that matches the proof ingredients already on the page.
-- Isolated the repaired decay rate as $tilde_{mu} = mu (1 - L tau sqrt(q))$.
-- Added the monotonicity fix: differentiating the displayed closed-form bound shows it decreases with larger $mu$, so the prior narrative had the wrong sign.
+- Isolated the repaired decay rate as $$tilde_{mu} = mu (1 - L tau sqrt(q))$$.
+- Added the monotonicity fix: differentiating the displayed closed-form bound shows it decreases with larger $$mu$$, so the prior narrative had the wrong sign.
 - Moved active topology surgery out of the theorem body and into the future-work / disturbance-model bucket.
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - `P-001`: replace the unsupported optimized delay formula in the delay-robustness section with the reduced-scope Razumikhin theorem for frozen topology.
-- `P-002`: add an explicit counterexample note showing that the displayed $tau_{max}(mu)$ expression decreases in $mu$, correcting the manuscript prose.
+- `P-002`: add an explicit counterexample note showing that the displayed $$tau_{max}(mu)$$ expression decreases in $$mu$$, correcting the manuscript prose.
 - `P-003`: insert a related-work bridge tying the repaired claim to Razumikhin delay criteria, algebraic connectivity, and persistence-stability scope boundaries.
 
 ## 5. New Literature Integrated (≥3)
@@ -74,15 +74,15 @@ The repaired statement freezes topology over the delayed interval and works with
 
 ## 6. Development Actions (next 72 hours)
 
-1. Prove or estimate a measurable Razumikhin factor $q$ for actual ORTSF runs.
+1. Prove or estimate a measurable Razumikhin factor $$q$$ for actual ORTSF runs.
 2. Build one canonical delay-bound calculator and route every theorem example and figure caption through it.
-3. Add runtime logging for $mu$, `L`, observed delay, and bound margin to connect theorem scope to telemetry.
+3. Add runtime logging for $$mu$$, `L`, observed delay, and bound margin to connect theorem scope to telemetry.
 4. Separate active topology surgery into an impulsive or disturbance-aware model instead of treating it as a smooth delayed term.
 5. Draft the discrete-time counterpart of the repaired theorem for controller-facing implementation.
 
 ## 7. Open Problems (carried + new)
 
-- `OP-001`: prove or estimate a valid Razumikhin factor $q$ for active ORTSF runs.
+- `OP-001`: prove or estimate a valid Razumikhin factor $$q$$ for active ORTSF runs.
 - `OP-002`: extend the delay theorem from frozen topology to delayed surgery.
 - `OP-003`: remove contradictory numerical delay claims with one unit-checked calculator path.
 - `OP-004`: quantify how curvature and homology terms affect local Lipschitz growth.

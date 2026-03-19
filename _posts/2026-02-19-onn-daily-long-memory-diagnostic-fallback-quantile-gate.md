@@ -19,9 +19,9 @@ Long-Memory Diagnostic + Fallback Quantile Gate.
 
 ## What Changed in the Theory
 ### Restatement (cleaned)
-- Introduce a block-mean variance slope diagnostic on $V(ell)$ to detect long-range dependence.
+- Introduce a block-mean variance slope diagnostic on $$V(ell)$$ to detect long-range dependence.
 - Use a two-branch quantile rule: corrected quantile under short-memory, block-maxima fallback under detected long-memory.
-- Define a runtime indicator $chi_{LRD}$ and propagate it directly into gate selection.
+- Define a runtime indicator $$chi_{LRD}$$ and propagate it directly into gate selection.
 - Tie gate refresh behavior to monitoring cadence so regime drift does not silently invalidate calibration.
 
 ### Proof Audit (gaps & required assumptions)
@@ -31,10 +31,10 @@ Long-Memory Diagnostic + Fallback Quantile Gate.
 - Exact maximal-inequality rate constants for the correction width are still not fully pinned down in-text.
 
 ### Strengthening (new lemma / tighter condition / fix)
-- Added claim-level guardrails ($C27-C34$) that split short-memory and long-memory regimes explicitly.
+- Added claim-level guardrails ($$C27-C34$$) that split short-memory and long-memory regimes explicitly.
 - Replaced single-path quantile transfer with branch-aware selection:
-  $q* = (1 - chi_{LRD}) q_{corr} + chi_{LRD} q_{LRD}$.
-- Added practical instrumentation requirements ($V(ell)$ slope, branch indicator, both quantiles) for auditability.
+  $$q* = (1 - chi_{LRD}) q_{corr} + chi_{LRD} q_{LRD}$$.
+- Added practical instrumentation requirements ($$V(ell)$$ slope, branch indicator, both quantiles) for auditability.
 - Added fallback conservativeness framing so false accepts are bounded under heavy-tail leakage.
 
 ## Paper Patch Notes (actionable edits)
@@ -50,7 +50,7 @@ Long-Memory Diagnostic + Fallback Quantile Gate.
 
 ## Development Actions (next 72 hours)
 - Implement and test long-memory slope diagnostic classification on AR(1) vs ARFIMA leakage series.
-- Add branch gate runtime logging and safety counters for $chi_{LRD}$ transitions.
+- Add branch gate runtime logging and safety counters for $$chi_{LRD}$$ transitions.
 - Run coverage and false-accept sweeps across block length, window size, and monitoring cadence.
 - Validate delay-handoff stability with branch-gate inputs under delay jitter and regime drift.
 - Prepare ablation tables for slope threshold and fallback quantile conservativeness.
@@ -58,7 +58,7 @@ Long-Memory Diagnostic + Fallback Quantile Gate.
 ## Open Problems (carried + new)
 - OP-022 (carried): adaptive block-size selection remains unresolved under unknown dependence.
 - OP-023 (carried): multivariate quantile gate extension is still open.
-- OP-019 (carried): monitor cadence bound $tau_{mon} \le n_{win}/2$ remains unvalidated.
+- OP-019 (carried): monitor cadence bound $$tau_{mon} \le n_{win}/2$$ remains unvalidated.
 - OP-024 (new): prove diagnostic correctness and finite-sample reliability for long-memory detection.
 
 ## Next-day Seed

@@ -27,29 +27,29 @@ Primary claim set: `C139`-`C144`, with emphasis on closing carryover gaps from `
 
 ### Restatement (cleaned)
 
-At each step $t$, select dependence class $k_{t}$ conservatively, then inflate confidence margin by a class-selection uncertainty term:
-$m_{conf}^{safe} = m_{conf} + zeta_{cls}$.
+At each step $$t$$, select dependence class $$k_{t}$$ conservatively, then inflate confidence margin by a class-selection uncertainty term:
+$$m_{conf}^{safe} = m_{conf} + zeta_{cls}$$.
 Screening acceptance is allowed only when parser completeness also passes a confidence-corrected gate:
-$pi_{alarm} - epsilon_{pi} \ge 1 - epsilon_{alarm}$.
+$$pi_{alarm} - epsilon_{pi} \ge 1 - epsilon_{alarm}$$.
 
 ### Proof Audit (gaps & required assumptions)
 
 - `C139` still depends on safe class selection assumptions (`A73`, `A77`) and remains conditional under abrupt class transitions.
-- `C140` requires $zeta_{cls}$ to upper-bound selector error in finite samples (`A78`, `A69`).
+- `C140` requires $$zeta_{cls}$$ to upper-bound selector error in finite samples (`A78`, `A69`).
 - `C141` depends on reliable parser-drop observability (`A75`, `A79`) to avoid false-safe acceptance.
 - `C142` is conservative only if class, drift, and parser guards are jointly enforced (`A70`, `A71`, `A73`, `A78`).
 
 ### Strengthening (new lemma / tighter condition / fix)
 
-- Hardened finite-sample inflation closure (`C140`) by making $zeta_{cls}$ an explicit uncertainty constant.
-- Hardened parser estimation-error gate (`C141`) with confidence correction $epsilon_{pi}$.
+- Hardened finite-sample inflation closure (`C140`) by making $$zeta_{cls}$$ an explicit uncertainty constant.
+- Hardened parser estimation-error gate (`C141`) with confidence correction $$epsilon_{pi}$$.
 - Added failure-propagation rule (`C143`): if selector safety assumptions break, downgrade conservatism claim immediately.
 - Reasserted scope boundary (`C144`): screening conservatism only, not closed-loop certification.
 
 ## 4. Paper Patch Notes (actionable edits)
 
 - `P-601`: insert class-selection uncertainty inflation theorem block (`C140`) and parser estimation-error gate (`C141`).
-- `P-602`: insert runtime telemetry contract for $(k_{t}, n_{eff}^{(k)}, zeta_{cls}, pi_{alarm}, epsilon_{pi})$.
+- `P-602`: insert runtime telemetry contract for $$(k_{t}, n_{eff}^{(k)}, zeta_{cls}, pi_{alarm}, epsilon_{pi})$$.
 - `P-603`: insert joint falsifier matrix over class-switch, parser-drop, and drift-latency regimes.
 - `P-604`: clarify related-work positioning and keep screening-vs-certification boundary explicit.
 - `P-605`: append accepted dependence/bootstrap references to bibliography.
@@ -59,25 +59,25 @@ $pi_{alarm} - epsilon_{pi} \ge 1 - epsilon_{alarm}$.
 1. Lahiri (2003), *Resampling Methods for Dependent Data* — supports conservative dependence-aware margin design and replay calibration.
 2. Buhlmann (2002), *Bootstraps for Time Series* — supports class-conditional bootstrap assumptions and finite-sample caveats.
 3. Kunsch (1989), *The jackknife and the bootstrap for general stationary observations* — anchors stationary dependence handling in the class taxonomy.
-4. Politis and Romano (1994), *The Stationary Bootstrap* — supports candidate calibration mechanism for $zeta_{cls}$ under serial dependence.
+4. Politis and Romano (1994), *The Stationary Bootstrap* — supports candidate calibration mechanism for $$zeta_{cls}$$ under serial dependence.
 
 ## 6. Development Actions (next 72 hours)
 
-1. Instrument $k_{t}$ and class-wise $n_{eff}^{(k)}$ telemetry in calibration logs.
-2. Implement and persist $zeta_{cls}$; enforce $m_{conf}^{safe}$ in the acceptance path.
-3. Implement parser confidence envelope $epsilon_{pi}$ and enforce corrected gate.
+1. Instrument $$k_{t}$$ and class-wise $$n_{eff}^{(k)}$$ telemetry in calibration logs.
+2. Implement and persist $$zeta_{cls}$$; enforce $$m_{conf}^{safe}$$ in the acceptance path.
+3. Implement parser confidence envelope $$epsilon_{pi}$$ and enforce corrected gate.
 4. Run combined falsifier matrix (class-switch + parser-drop + drift-latency).
-5. Produce finite-sample constants table for $zeta_{cls}$ and downgrade thresholds.
+5. Produce finite-sample constants table for $$zeta_{cls}$$ and downgrade thresholds.
 
 ## 7. Open Problems (carried + new)
 
 - `OP-051` (updated): taxonomy now defined, but constants table and combined falsifier closure remain open.
 - `OP-048` (updated): parser gate includes CI correction, but calibration evidence is incomplete.
-- `OP-052` (new): finite-sample calibration of $zeta_{cls}$ and $epsilon_{pi}$ under joint class-switch/parser-drop.
+- `OP-052` (new): finite-sample calibration of $$zeta_{cls}$$ and $$epsilon_{pi}$$ under joint class-switch/parser-drop.
 
 ## 8. Next-day Seed
 
-Build the finite-sample constants table for $zeta_{cls}$/$epsilon_{pi}$ and adjudicate `C142` with the combined falsifier matrix.
+Build the finite-sample constants table for $$zeta_{cls}$$/$$epsilon_{pi}$$ and adjudicate `C142` with the combined falsifier matrix.
 
 ## 9. References (reference-style links only)
 
