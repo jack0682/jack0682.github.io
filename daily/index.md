@@ -50,3 +50,5 @@
 - 2026-03-17: [ONN Daily — 2026-03-17 — Budget-Calibrated Adaptive Threshold with Asynchronous Version Safety](/2026-03-17-onn-daily-budget-calibrated-adaptive-threshold-async-safety/)
 - 2026-03-18: [ONN Daily — 2026-03-18 — Confidence-Bounded Optimization of Class Budget Map](/2026-03-18-onn-daily-confidence-bounded-optimization-class-budget-map/)
 - 2026-03-19: [ONN Daily — 2026-03-19 — Dependence-Aware Confidence Radius Closure for CBBO Feasibility](/2026-03-19-onn-daily-dependence-aware-confidence-radius-closure-cbbo/)
+
+- 2026-03-23: [ONN Daily — 2026-03-23 — Executable Predicate-Binding and Delta_u Confidence Gate](/2026-03-23-onn-daily-predicate-binding-delta-u-confidence-gate/)
