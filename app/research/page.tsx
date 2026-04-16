@@ -19,6 +19,22 @@ export default function ResearchPage() {
         lead="A small number of long-running research threads, each building on a shared foundation: that perception, representation, and control are best understood as one continuous mathematical object."
       />
 
+      <Link
+        href="/notes/part-0/integrated-architecture/"
+        className="group -mt-2 mb-14 flex max-w-[44rem] items-start gap-4 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+      >
+        <span className="mt-[3px] font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
+          North star
+        </span>
+        <span className="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
+          All five threads below serve one ultimate target: a single{" "}
+          <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+            cognitive-reasoning architecture unifying SCC and ONN
+          </span>
+          . Read the integration plan →
+        </span>
+      </Link>
+
       <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
         {researchTracks.map((track, i) => (
           <li key={track.slug}>

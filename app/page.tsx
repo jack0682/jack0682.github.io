@@ -29,6 +29,16 @@ export default function Home() {
           , cohomological structure in learned representations, and the
           mathematics of delay-robust embodied control.
         </p>
+        <p className="mt-5 max-w-[36rem] text-base leading-relaxed text-[var(--color-muted)]">
+          The ultimate target is a single{" "}
+          <Link
+            href="/notes/part-0/integrated-architecture/"
+            className="text-[var(--color-ink)] underline decoration-[var(--color-accent)]/40 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
+          >
+            cognitive-reasoning architecture
+          </Link>{" "}
+          unifying Soft Cognitive Cohesion and Ontology Neural Networks.
+        </p>
 
         <div className="mt-12 flex flex-wrap gap-5 text-sm font-medium">
           <Link

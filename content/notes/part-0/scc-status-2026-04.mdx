@@ -1,0 +1,197 @@
+---
+title: "SCC — Current Research Status (April 2026)"
+slug: scc-status-2026-04
+part: 0
+chapter: 1
+section: "Status report"
+summary: "An active research status for Soft Cognitive Cohesion as of April 2026 — the theorem ledger, implementation state, iteration history, organisational reboot into a Research OS, and the three open problems currently blocking consolidation."
+tags: [scc, status, theorems, research-os, open-problems]
+---
+
+*This is a living page. It documents the state of **Soft Cognitive
+Cohesion** — the research thread I am currently most active on — at
+the level of granularity that lets a collaborator (or future me)
+pick up where things stand without re-reading a year of notes.*
+
+**Last updated:** 2026-04-16. &nbsp; **Canonical version:**
+v1.2 (2026-04-12, audit-driven). &nbsp; **Full specification:** see
+the [Canonical Spec note](/notes/part-0/canonical-spec-scc/).
+
+<Callout tone="idea" title="Why this work matters to the larger programme">
+SCC is the pre-objective layer of a larger goal: a **single
+cognitive-reasoning architecture that unifies SCC and ONN.** SCC
+supplies the graded field from which stable structure emerges; ONN
+supplies the topology-aware reasoning that turns that structure into
+inferences. The [Integrated Architecture note](/notes/part-0/integrated-architecture/)
+describes that unification as a design target; everything on this
+page is in service of it.
+</Callout>
+
+## What SCC is, in one breath
+
+A mathematical theory of how **coherent formations emerge prior to
+discrete objecthood**. The primitive is a soft cohesion field
+
+$$
+u_t : X_t \to [0, 1]
+$$
+
+over a relational support space. Objects are a distinguished limit of
+the formation space, not its starting point. Four independent energy
+terms govern closure, separation, boundary, and transport; a
+diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist})$
+reads off formation state.
+
+## Theorem ledger (v2.1)
+
+### ✓ Category A — Fully proved (27)
+
+Existence (T1), closure fixed point (T6a/T6b), axiom monotonicity
+(T-A2), phase transition core (T8-Core), axiom consistency (T20),
+gradient flow (T14), stability duo (T3 / T6-Stability), enhanced
+metastability (T7, $p = 0.037$), $\Gamma$-convergence (T11), plus
+four quantum-mechanical results QM1–4, the Predicate–Energy Bridge
+(upgraded from B), Deep Core Dominance 2b (upgraded from B), and a
+handful of auxiliary results.
+
+### ◇ Category B — Proved with structural parameter (3)
+
+- **T-Bind-Proj / T-Bind-Full** — proved for $\tau = 1/2$; general
+  $\tau$ remains Category B.
+- **T-Persist-K-Sep** — proved for the well-separated multi-formation
+  regime, conditional on per-formation T-Persist-1 plus WS / SR
+  conditions.
+
+### ◯ Category C — Conditional (6)
+
+- **T-Persist-1** — subcomponents (a) and (c) proved; (b) corrected
+  to *away-from-bifurcation*; (e) proved via Schauder.
+- **T-Persist-Full** — conditional on T-Persist-1.
+- **T-Persist-K-Weak** — weakly-interacting regime.
+- **C3″** — conditional variant of C3.
+
+### ★ New in v2.1
+
+**T-Persist-K-Unified** — a parametric theorem covering Sep / Weak /
+Strong regimes via the coupling scale
+$\Lambda_{\mathrm{coupling}} = \lambda_{\mathrm{rep}} \omega_{jk} / \min(\mu_j, \mu_k)$,
+with five conditions (PS, ND, BC′-K, TC-K, SR-Λ) and 100 %
+validation across exp46–47.
+
+### ✗ Retracted (2)
+
+- **K-Saddle Conjecture**
+- **Theorem 3.3** (general $\tau$ form of $\bar r_0$)
+
+A 5/5 clean sweep on the five single-formation predictions:
+
+| # | Prediction | Outcome |
+|---|---|---|
+| P1 | Contraction | ✓ |
+| P2 | Independence | ✓ |
+| P3 | Enhanced dwell | ✓ (p = 0.037) |
+| P4 | Path dependence | ✓ |
+| P5 | Sep-before-Inside | ✓ |
+
+## Open problems (as of 2026-04-12 audit)
+
+Three unresolved items that currently gate consolidation toward the
+next canonical version:
+
+- **OP-0001 · F-1** — Foundational assumption unexplicated in the
+  theorem statements (fixed $K$ manifold). Needs promotion from
+  implicit to explicit in the canonical text.
+- **OP-0002 · M-1** — Measure-theoretic assumption on the transport
+  kernel that is currently carried silently through K-field results.
+- **OP-0003 · MO-1** — Modelling assumption about closure
+  idempotence vs. stabilisation tendency; the theory deliberately
+  omits primitive idempotence (A3 stabilisation only), but some
+  downstream arguments implicitly assume it.
+
+Separately, the **exp65 validation failure** (2026-04-12) has
+prompted the Type A / Type B classification to be retracted and
+replaced with a more careful taxonomy.
+
+## Implementation
+
+### `scc/` package — 174 tests passing
+
+| module | responsibility |
+|---|---|
+| `graph.py` | `GraphState` — sparse adjacency, Laplacian, Fiedler, row-normalised $P$ |
+| `params.py` | `ParameterRegistry` — constraint validation ($a_{\mathrm{cl}} < 4$, spinodal range, $\beta_{\mathrm{crit}}$) |
+| `operators.py` | closure, distinction, aggregation, resolvent — with exact JVP for gradient |
+| `energy.py` | $E_{\mathrm{cl}}, E_{\mathrm{sep}}, E_{\mathrm{bd}}$ with FD-verified gradients (1e-9) |
+| `optimizer.py` | `find_formation()` — semi-implicit projected GD on $\Sigma_m$ with BB step |
+| `diagnostics.py` | `DiagnosticVector` — Bind / Sep / Inside / Persist |
+| `multi.py` | K-field architecture (I9), inter-formation repulsion, coupled transport |
+| `transport.py` | temporal transport kernel, Sinkhorn partial OT, `persist_transport` |
+
+The pipeline is canonical:
+**graph → params → operators → energy → optimizer → diagnostics.**
+
+### Experiments — exp1 through exp65
+
+Fifty-seven experiments have run to completion, with exp65 flagged
+as a validation failure that drove the 2026-04-12 audit. Each
+experiment is registered under an `E-xxxx` ID in the experiment
+registry.
+
+## Twelve iterations of method
+
+The path from brainstorming to the current spec can be read as
+twelve distinct iterations:
+
+| Iter | Focus | Key output |
+|---|---|---|
+| I1 | Brainstorming (10 rounds) | 44 settled points |
+| I2 | Deep mathematics | 12 theorems proved |
+| I3 | Implementation design | Algorithm + module specs |
+| I4 | Extensions | Gestalt mapping, 10 predictions |
+| I5 | Vulnerability audit | 17 vulnerabilities found |
+| I6 | Spec rewrite | Canonical Spec v2.0 |
+| I7 | Temporal theory | T-Persist-1, Sep identity |
+| I8 | Code + experiments | `scc/` package, 89 tests |
+| I9 | Multi-formation | K-field architecture decided |
+| I10 | Publication | Two paper outlines + drafts |
+| I11 | Transport implementation | `transport.py`, T-Persist verified |
+| I12 | Multi-temporal | T-Persist-K-Sep/Weak, regime classification |
+
+## The Research OS reboot (2026-04-12)
+
+The project's organisational substrate was rebuilt into a **Research
+OS** — an 8-layer structure designed to prevent silent assumptions
+and make every claim traceable to its axioms and experiments.
+
+- **Layer 0** — Project root (`RESEARCH_OS_MASTER_INDEX.md`, `CLAUDE.md`).
+- **Layer 1** — Constitutional foundation (`00_meta/`): ontology,
+  naming convention (`D-`, `S-`, `T-`, `A-`, `OP-`), status codes,
+  promotion rules, five agent roles.
+- **Layer 1b** — Immutable registries (`03_context_memory/`):
+  concept registry (29 entries), symbol registry (46), theorem
+  registry (39 total: 27 proved + 12 with caveats), assumption
+  registry (35, including F-1 / M-1 / MO-1 now explicit).
+- **Layers 2–7** — Canonical specs, roadmap, questions, claims,
+  proofs, counterexamples, experiments, results, papers,
+  discussions, archive, figures, scripts, templates.
+
+The net effect: every statement in the theory is now tagged with its
+dependency chain, and no claim can be promoted to canonical status
+without passing an audit pass through the registries.
+
+## Papers on this track
+
+Dedicated SCC manuscripts are in revision; when posted, they will
+appear in the [papers index](/papers/). In the meantime, the closest
+published-side work is the [*Axiomatic Framework for Understanding
+Relations via Gauge-Invariant Cohomology*](/papers/axiomatic-cohomology-relations/),
+which establishes the relational substrate underpinning SCC.
+
+## Related
+
+- [Canonical Specification v2.1](/notes/part-0/canonical-spec-scc/) —
+  the full 1,183-line formal text of SCC.
+- [Part I · RelationWorld Foundations](/notes/) — the discrete-gauge
+  substrate SCC operates over.
+- [Perception research track](/research/perception/) — the
+  public-facing overview page.

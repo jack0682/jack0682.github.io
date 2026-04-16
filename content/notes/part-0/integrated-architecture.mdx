@@ -1,0 +1,212 @@
+---
+title: "Integrated Architecture — SCC × ONN as one cognitive-reasoning system"
+slug: integrated-architecture
+part: 0
+chapter: 2
+section: "North-star document"
+summary: "The ultimate design target of the whole research programme: a single cognitive-reasoning architecture that unifies Soft Cognitive Cohesion (SCC) and Ontology Neural Networks (ONN). Four layers, one pipeline, one vision."
+tags: [integration, architecture, scc, onn, ortsf, north-star]
+---
+
+*The ultimate target of the entire programme — the reason every
+other page on this site exists.*
+
+---
+
+## The claim
+
+Perception, representation, reasoning, and control are **one
+continuous mathematical object**. The claim of this research is
+that Soft Cognitive Cohesion (SCC) and Ontology Neural Networks
+(ONN) — together with their mathematical substrate (RelationWorld
+Theory) and their control-theoretic closure (ORTSF) — can be
+composed into a single cognitive-reasoning architecture that
+carries structure without loss from the pre-objective soft field all
+the way down to an embodied control signal.
+
+This is the design target. The rest is bookkeeping.
+
+---
+
+## The four layers
+
+<Callout tone="note" title="Reading order">
+Bottom up: SCC → RelationWorld → ONN → ORTSF. Each layer consumes
+the output of the one below and exposes a well-typed interface to
+the one above.
+</Callout>
+
+### Layer 1 — Soft Cognitive Cohesion (pre-objective)
+
+**Primitive.** A soft cohesion field
+$u_t : X_t \to [0, 1]$ over a relational support space; the value
+$u_t(x)$ is the degree to which site $x$ participates in a cohesive
+formation.
+
+**Operators.** Closure $\mathrm{Cl}_t$ (self-completion), distinction
+$\mathbf{D}_t$ (self-contrast), temporal transport $\mathbf{M}_{t \to s}$.
+
+**Energy.**
+$E = \lambda_{\mathrm{cl}} E_{\mathrm{cl}} + \lambda_{\mathrm{sep}} E_{\mathrm{sep}} + \lambda_{\mathrm{bd}} E_{\mathrm{bd}} + \lambda_{\mathrm{tr}} E_{\mathrm{tr}}$
+on the volume-constrained simplex $\Sigma_m$.
+
+**Output.** A proto-cohesion diagnostic vector
+$\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist}) \in [0, 1]^4$.
+
+**Ontological commitment.** The field is primitive; objects are
+derivative. [Deeper dive →](/notes/part-0/scc-status-2026-04/)
+
+### Layer 2 — RelationWorld (structural discovery)
+
+**Substrate.** A weighted relational field $\mathcal{W}_t = (V, W_t, g_t)$
+where every edge carries both a positive weight and a group-valued
+transit.
+
+**Discovery.** Fruits — low-conductance clusters detectable via the
+Cheeger condition $\phi_t(F) \le \theta$ — are the **natural stable
+structures** in the relational field. Doors are the boundary-adjacent
+singularities that signal contact with an exterior not explicitly
+modelled.
+
+**Output.** A fruit set $\mathfrak{F}_t$ together with its existence
+triple $([A_\infty], \Sigma, \mathbf{e})$ — a gauge-invariant portrait.
+
+**Role in the architecture.** This is the layer that makes SCC
+*concrete*: the graded soft field acquires a relational substrate
+with a theory of what counts as *existing*. [Deeper dive →](/notes/part-1/ch01-overview/)
+
+### Layer 3 — Ontology Neural Networks (relational semantics)
+
+**Substrate.** A fruit-node semantic graph — fruits as nodes, their
+inter-fruit relations as edges, the ontology's type structure as
+type algebra on both.
+
+**Process.** Constraint-based semantic inference on this graph,
+projecting onto a topology-aware manifold. The ONN's internal state
+is not a flat vector but a typed object carrying the structure of
+the target ontology.
+
+**Output.** A semantic structure augmented with action predicates —
+*what* follows from *what the fruits mean*.
+
+**Role in the architecture.** ONN is what turns discovered structure
+into **actionable meaning**, with invariants that can be read as
+cohomology classes. [Deeper dive →](/research/onn/)
+
+### Layer 4 — ORTSF (embodied action)
+
+**Substrate.** A delay-robust control fabric consuming ONN semantic
+output.
+
+**Process.** Meaning-preserving trajectory synthesis under stochastic
+communication, sensing, and compute delay.
+
+**Output.** A real-time embodied control signal whose stability
+margins are stated in cohomological terms, not raw state norms.
+
+**Role in the architecture.** This is what closes the loop from
+*cognition* back to *the world*. [Deeper dive →](/research/control/)
+
+---
+
+## Why each layer requires the next
+
+```
+Layer 1 — SCC
+  "Objects are given, but how does anything first hold together?"
+  → Soft field, four energy terms, graded cohesion.
+      │ "u_t is abstract. What is the relational substrate?"
+      ▼
+Layer 2 — RelationWorld
+  "If cohesion is relational, what makes relations cohere?"
+  → Weighted gauged graph, fruits, doors, existence.
+      │ "Fruits are discovered. How do they interact semantically?"
+      ▼
+Layer 3 — ONN
+  "Fruits are topological units — how do we reason between them
+   while preserving their internal structure?"
+  → Topology-aware constraint inference, type-preserving projection.
+      │ "Semantics are inferred. How do we embody them in action?"
+      ▼
+Layer 4 — ORTSF
+  "Semantic structure is defined. How do we preserve that meaning
+   in real-time control under stochastic delay?"
+  → Delay-robust control, Lyapunov from loss, cohomology-stated bounds.
+```
+
+---
+
+## Forward flow and backward flow
+
+Forward flow is the bottom-up emergence of meaning:
+
+$$
+\text{Relational substrate}
+\;\xrightarrow{\text{Cheeger}}\;
+\text{Fruits}
+\;\xrightarrow{\text{ONN}}\;
+\text{Semantic constraints}
+\;\xrightarrow{\text{ORTSF}}\;
+\text{Embodied behaviour}
+$$
+
+Backward flow is the top-down validation and refinement:
+
+$$
+\text{Embodied outcome}
+\;\to\;
+\text{Semantic check}
+\;\to\;
+\text{Structural check}
+\;\to\;
+\text{Field refinement}
+$$
+
+The architecture is only whole when both flows are closed — the
+system not only produces behaviour but uses the outcomes of that
+behaviour to update its beliefs about what exists, what is, and what
+it should do next.
+
+---
+
+## Why this integration matters
+
+Most architectures for perception-to-control keep representation
+learning, semantic reasoning, and control synthesis as **separate
+problems with separate guarantees**. The integrated architecture
+proposed here insists that the three share a single mathematical
+substrate — topology — and that guarantees in one layer translate
+directly into guarantees in the others.
+
+<Theorem kind="proposition" name="Design target">
+There exists a composition of SCC, RelationWorld, ONN, and ORTSF
+such that the stability margins of the closed control loop are
+governed by the cohomological invariants of the learned ontology,
+which are in turn governed by the topological invariants of the
+fruit structure discovered from the soft cohesion field.
+</Theorem>
+
+Whether this proposition is provable in its strongest form is the
+open question the programme is organised around. The theorems of
+Part II (stability, localisation, flow convergence) and the ONN +
+ORTSF framework are the pieces already in place; what remains is
+the **composition theorem** that ties them together into one
+certificate.
+
+---
+
+## Where this stands today
+
+- **Layer 1 (SCC)** — 27 fully proved results, three open problems
+  (F-1, M-1, MO-1). See the [status page](/notes/part-0/scc-status-2026-04/).
+- **Layer 2 (RelationWorld)** — Theorems A–H proved. See
+  [Part I](/notes/) and [Part II summary](/notes/part-2/summary/).
+- **Layer 3 (ONN)** — Framework paper **accepted at *Int. J. Topol.***
+  ([paper](/papers/onn-ortsf-2026/)); empirical follow-up reaching
+  99.75 % of theoretical optimality
+  ([paper](/papers/advanced-onn-ortsf-extension/)).
+- **Layer 4 (ORTSF)** — Constructive Lyapunov functions proved
+  ([paper](/papers/constructive-lyapunov-onn/)); $\tau_{\max} = 177\,\mu$s
+  for 3M-node systems.
+- **Integration theorem** — in progress. The piece that turns four
+  separate results into one architecture.
