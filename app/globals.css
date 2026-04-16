@@ -107,3 +107,49 @@ hr {
 html {
   transition: background-color 250ms ease, color 250ms ease;
 }
+
+/* ── mobile / touch niceties ──────────────────────────────────── */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ── overflow protection for MDX body content ─────────────────── */
+.prose :where(pre) {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose :where(table) {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+/* KaTeX block math can be very wide on narrow viewports */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0;
+}
+
+/* inline math should never force horizontal scroll on the page */
+.katex { white-space: nowrap; }
+
+/* ── reduced-motion: quiet the animations ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -35,7 +35,7 @@ export function Footer() {
   return (
     <footer className="mt-40 border-t border-[var(--color-rule)]">
       <Container>
-        <div className="grid gap-10 py-16 sm:grid-cols-3">
+        <div className="grid gap-10 py-14 sm:grid-cols-2 sm:py-16 lg:grid-cols-3">
           {cols.map((col) => (
             <div key={col.heading}>
               <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
@@ -56,7 +56,7 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between border-t border-[var(--color-rule)] py-6 text-xs text-[var(--color-subtle)]">
+        <div className="flex flex-col gap-2 border-t border-[var(--color-rule)] py-6 text-xs text-[var(--color-subtle)] sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <span>© {year} Jaehong Oh.</span>
           <span className="font-mono">jack0682.github.io</span>
         </div>

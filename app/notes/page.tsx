@@ -30,26 +30,26 @@ export default function NotesPage() {
         lead="A long, chapter-by-chapter book on the algebraic and topological foundations underlying the rest of the research. Chapters appear here as they are cleaned for public reading."
       />
 
-      <div className="space-y-16 border-t border-[var(--color-rule)] pt-14">
+      <div className="space-y-14 border-t border-[var(--color-rule)] pt-12 sm:space-y-16 sm:pt-14">
         {notesByPart.map(([part, items]) => (
           <section key={part}>
-            <h2 className="font-display text-2xl tracking-tight text-[var(--color-ink)]">
+            <h2 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] sm:text-2xl">
               {partTitles[part] ?? `Part ${part}`}
             </h2>
-            <ul className="mt-6 divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+            <ul className="mt-5 divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)] sm:mt-6">
               {items.map((note) => (
                 <li key={note.slug}>
                   <Link
                     href={`/notes/part-${note.part}/${note.slug}/`}
-                    className="group flex items-baseline gap-6 py-5"
+                    className="group flex items-baseline gap-4 py-5 sm:gap-6"
                   >
-                    <span className="font-mono text-xs text-[var(--color-subtle)] w-12 shrink-0">
+                    <span className="shrink-0 font-mono text-xs text-[var(--color-subtle)] sm:w-12">
                       {note.chapter !== undefined
                         ? `§${note.part}.${note.chapter}`
                         : `§${note.part}`}
                     </span>
-                    <div className="flex-1">
-                      <p className="text-lg text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-base leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-lg">
                         {note.title}
                       </p>
                       {note.summary && (

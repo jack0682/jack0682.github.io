@@ -40,16 +40,16 @@ export default function Home() {
           unifying Soft Cognitive Cohesion and Ontology Neural Networks.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-5 text-sm font-medium">
+        <div className="mt-10 flex flex-col gap-4 text-sm font-medium sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-5">
           <Link
             href="/research/"
-            className="inline-flex items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             Enter the research →
           </Link>
           <Link
             href="/journal/"
-            className="inline-flex items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
+            className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
           >
             Read the journal
           </Link>
@@ -97,7 +97,7 @@ export default function Home() {
               <li key={item.permalink}>
                 <Link
                   href={item.permalink}
-                  className="group grid items-baseline gap-4 py-6 md:grid-cols-[8rem_1fr]"
+                  className="group grid items-baseline gap-2 py-5 md:grid-cols-[8rem_1fr] md:gap-4 md:py-6"
                 >
                   <time
                     dateTime={toIsoDate(item.date)}
@@ -106,7 +106,7 @@ export default function Home() {
                     {formatDate(item.date)}
                   </time>
                   <div>
-                    <h3 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                    <h3 className="font-display text-lg leading-snug tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] md:text-xl">
                       {item.title}
                     </h3>
                     {item.summary && (

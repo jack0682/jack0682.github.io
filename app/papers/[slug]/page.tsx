@@ -44,16 +44,16 @@ export default async function PaperPage({ params }: Props) {
       <TOC toc={paper.toc} />
       <PageEnter>
         <Container width="prose">
-          <header className="pt-20 pb-10 md:pt-28">
-            <p className="mb-5 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
+          <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
+            <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)] sm:mb-5">
               {statusLabel[paper.status]} · {paper.year}
               {paper.venue && (
-                <span className="text-[var(--color-muted)] normal-case tracking-normal ml-2">
+                <span className="ml-2 inline-block break-words text-[var(--color-muted)] normal-case tracking-normal">
                   · {paper.venue}
                 </span>
               )}
             </p>
-            <h1 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] tracking-[-0.01em] text-[var(--color-ink)]">
+            <h1 className="font-display text-[clamp(1.75rem,5.5vw,3.25rem)] leading-[1.12] tracking-[-0.01em] text-[var(--color-ink)]">
               {paper.title}
             </h1>
             <p className="mt-6 text-base text-[var(--color-muted)]">

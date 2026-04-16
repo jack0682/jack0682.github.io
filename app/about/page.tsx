@@ -57,7 +57,7 @@ export default function AboutPage() {
         <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Education
         </p>
-        <div className="grid grid-cols-[8rem_1fr] items-baseline gap-x-6 gap-y-2">
+        <div className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
           <time className="font-mono text-xs text-[var(--color-subtle)]">
             2019 – present
           </time>
@@ -80,7 +80,7 @@ export default function AboutPage() {
           Research experience
         </p>
         <ol className="space-y-10">
-          <li className="grid grid-cols-[8rem_1fr] items-baseline gap-x-6 gap-y-2">
+          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
             <time className="font-mono text-xs text-[var(--color-subtle)]">
               2026 – present
             </time>
@@ -96,7 +96,7 @@ export default function AboutPage() {
             </div>
           </li>
 
-          <li className="grid grid-cols-[8rem_1fr] items-baseline gap-x-6 gap-y-2">
+          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
             <time className="font-mono text-xs text-[var(--color-subtle)]">
               2024 – 2026
             </time>
@@ -114,7 +114,7 @@ export default function AboutPage() {
             </div>
           </li>
 
-          <li className="grid grid-cols-[8rem_1fr] items-baseline gap-x-6 gap-y-2">
+          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
             <time className="font-mono text-xs text-[var(--color-subtle)]">
               2022 – 2023
             </time>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             </div>
           </li>
 
-          <li className="grid grid-cols-[8rem_1fr] items-baseline gap-x-6 gap-y-2">
+          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
             <time className="font-mono text-xs text-[var(--color-subtle)]">
               2022 – 2023
             </time>
@@ -268,7 +268,7 @@ export default function AboutPage() {
         <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Technical
         </p>
-        <dl className="grid grid-cols-[9rem_1fr] gap-x-6 gap-y-5 text-sm">
+        <dl className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm sm:grid-cols-[9rem_1fr] sm:gap-y-5">
           <dt className="font-medium text-[var(--color-ink)]">
             Robotics & control
           </dt>
@@ -335,7 +335,7 @@ export default function AboutPage() {
         <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Contact
         </p>
-        <dl className="grid grid-cols-[6rem_1fr] gap-x-6 gap-y-2 text-sm">
+        <dl className="grid grid-cols-1 gap-x-6 gap-y-3 text-sm sm:grid-cols-[6rem_1fr] sm:gap-y-2">
           <dt className="text-[var(--color-muted)]">Email</dt>
           <dd>
             <a

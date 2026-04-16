@@ -25,17 +25,17 @@ export default function JournalPage() {
           <li key={entry.slug}>
             <Link
               href={entry.permalink}
-              className="group block py-8 transition-colors"
+              className="group block py-6 transition-colors sm:py-8"
             >
-              <div className="flex items-baseline gap-6">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-6">
                 <time
                   dateTime={toIsoDate(entry.date)}
-                  className="font-mono text-xs text-[var(--color-subtle)] w-24 shrink-0"
+                  className="font-mono text-xs text-[var(--color-subtle)] sm:w-24 sm:shrink-0"
                 >
                   {formatDate(entry.date)}
                 </time>
-                <div className="flex-1">
-                  <h2 className="font-display text-2xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                <div className="flex-1 min-w-0">
+                  <h2 className="font-display text-xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
                     {entry.title}
                   </h2>
                   {entry.summary && (

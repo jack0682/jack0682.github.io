@@ -32,31 +32,31 @@ export default function PapersPage() {
           <li key={paper.slug}>
             <Link
               href={paper.permalink}
-              className="group block py-10 transition-colors"
+              className="group block py-8 transition-colors sm:py-10"
             >
-              <div className="flex items-start gap-6">
-                <span className="font-mono text-xs text-[var(--color-subtle)] pt-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
+                <span className="order-1 font-mono text-xs text-[var(--color-subtle)] sm:order-none sm:pt-2">
                   {paper.year}
                 </span>
-                <div className="flex-1">
-                  <p className="mb-3 text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
+                <div className="order-3 flex-1 sm:order-none">
+                  <p className="mb-2 text-xs uppercase tracking-[0.18em] text-[var(--color-accent)] sm:mb-3">
                     {statusLabel[paper.status] ?? paper.status}
                     {paper.venue && (
-                      <span className="text-[var(--color-muted)] normal-case tracking-normal ml-2">
+                      <span className="ml-2 text-[var(--color-muted)] normal-case tracking-normal">
                         · {paper.venue}
                       </span>
                     )}
                   </p>
-                  <h2 className="font-display text-2xl leading-[1.15] tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                  <h2 className="font-display text-xl leading-[1.15] tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
                     {paper.title}
                   </h2>
-                  <p className="mt-3 text-sm text-[var(--color-muted)]">
+                  <p className="mt-2 text-sm text-[var(--color-muted)] sm:mt-3">
                     {paper.authors.join(", ")}
                   </p>
                 </div>
                 <span
                   aria-hidden
-                  className="font-mono text-xs text-[var(--color-subtle)] pt-2 transition-colors group-hover:text-[var(--color-accent)]"
+                  className="hidden font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] sm:inline sm:pt-2"
                 >
                   →
                 </span>

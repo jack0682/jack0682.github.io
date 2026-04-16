@@ -40,23 +40,23 @@ export default function ResearchPage() {
           <li key={track.slug}>
             <Link
               href={track.permalink}
-              className="group block py-10 transition-colors"
+              className="group block py-8 transition-colors sm:py-10"
             >
-              <div className="flex items-baseline gap-6">
-                <span className="font-mono text-xs text-[var(--color-subtle)]">
+              <div className="flex items-baseline gap-4 sm:gap-6">
+                <span className="font-mono text-xs text-[var(--color-subtle)] shrink-0">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="flex-1">
-                  <h2 className="font-display text-3xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                <div className="flex-1 min-w-0">
+                  <h2 className="font-display text-2xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-3xl">
                     {track.title}
                   </h2>
-                  <p className="mt-3 max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)]">
+                  <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:mt-3 sm:text-base">
                     {track.summary}
                   </p>
                 </div>
                 <span
                   aria-hidden
-                  className="font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)]"
+                  className="hidden shrink-0 font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] sm:inline"
                 >
                   →
                 </span>

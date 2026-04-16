@@ -13,17 +13,17 @@ type Props = {
  */
 export function PageHeader({ eyebrow, title, lead, className }: Props) {
   return (
-    <header className={cn("pt-20 pb-12 md:pt-32 md:pb-16", className)}>
+    <header className={cn("pt-16 pb-10 sm:pt-20 md:pt-32 md:pb-16", className)}>
       {eyebrow && (
-        <p className="mb-5 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
+        <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)] sm:mb-5">
           {eyebrow}
         </p>
       )}
-      <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.02] tracking-[-0.02em] text-[var(--color-ink)]">
+      <h1 className="font-display text-[clamp(2rem,7vw,4.5rem)] leading-[1.05] tracking-[-0.02em] text-[var(--color-ink)]">
         {title}
       </h1>
       {lead && (
-        <p className="mt-8 max-w-[38rem] text-lg leading-relaxed text-[var(--color-muted)]">
+        <p className="mt-6 max-w-[38rem] text-base leading-relaxed text-[var(--color-muted)] sm:mt-8 sm:text-lg">
           {lead}
         </p>
       )}
