@@ -1,0 +1,160 @@
+import { defineConfig, defineCollection, s } from "velite";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypePrettyCode, {
+  type Options as PrettyCodeOptions,
+} from "rehype-pretty-code";
+
+/* ──────────────────────────────────────────────────────────────
+   jack0682.github.io — content layer
+   Velite drives MDX compilation + typed collections.
+   Import from "#content" in app code (alias in tsconfig.json).
+   ────────────────────────────────────────────────────────────── */
+
+const computeFields = <T extends { slug: string; collection: string }>(
+  data: T,
+) => ({
+  ...data,
+  permalink: `/${data.collection}/${data.slug}/`,
+});
+
+/* ── posts ─ general essays & long-form writing ────────────── */
+const posts = defineCollection({
+  name: "Post",
+  pattern: "posts/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(160),
+      slug: s.slug("post"),
+      date: s.isodate(),
+      updated: s.isodate().optional(),
+      summary: s.string().max(320).optional(),
+      tags: s.array(s.string()).default([]),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "posts" })),
+});
+
+/* ── papers ─ publications and manuscripts ─────────────────── */
+const papers = defineCollection({
+  name: "Paper",
+  pattern: "papers/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(240),
+      slug: s.slug("paper"),
+      authors: s.array(s.string()).min(1),
+      venue: s.string().optional(),
+      year: s.number().int().gte(2000).lte(2100),
+      status: s
+        .enum(["published", "accepted", "submitted", "preprint", "in-progress"])
+        .default("in-progress"),
+      date: s.isodate(),
+      pdf: s.string().optional(),
+      arxiv: s.string().optional(),
+      doi: s.string().optional(),
+      bibtex: s.string().optional(),
+      abstract: s.string().min(20),
+      tags: s.array(s.string()).default([]),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "papers" })),
+});
+
+/* ── journal ─ dated research-log entries ─────────────────── */
+const journal = defineCollection({
+  name: "JournalEntry",
+  pattern: "journal/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(160),
+      slug: s.slug("journal"),
+      date: s.isodate(),
+      summary: s.string().max(320).optional(),
+      tags: s.array(s.string()).default([]),
+      track: s
+        .enum(["onn", "perception", "theory", "control", "robotics", "meta"])
+        .optional(),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "journal" })),
+});
+
+/* ── research ─ track index pages (one per major thread) ──── */
+const research = defineCollection({
+  name: "ResearchTrack",
+  pattern: "research/*.mdx",
+  schema: s
+    .object({
+      track: s.enum(["onn", "perception", "theory", "control", "robotics"]),
+      title: s.string().max(160),
+      slug: s.slug("research"),
+      summary: s.string().max(320),
+      ordinal: s.number().int().default(99),
+      status: s
+        .enum(["active", "paused", "archived"])
+        .default("active"),
+      updated: s.isodate().optional(),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "research" })),
+});
+
+/* ── notes ─ mathematical notes, organised into parts ─────── */
+const notes = defineCollection({
+  name: "Note",
+  pattern: "notes/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(200),
+      slug: s.slug("note"),
+      part: s.number().int().gte(0).lte(10),
+      chapter: s.number().int().gte(0).optional(),
+      section: s.string().optional(),
+      summary: s.string().max(320).optional(),
+      tags: s.array(s.string()).default([]),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "notes" })),
+});
+
+/* ── shared MDX plugin stack ──────────────────────────────── */
+const prettyCodeOptions: PrettyCodeOptions = {
+  theme: { light: "github-light", dark: "github-dark-dimmed" },
+  keepBackground: false,
+  defaultLang: { block: "plaintext", inline: "plaintext" },
+};
+
+export default defineConfig({
+  root: "content",
+  output: {
+    data: ".velite",
+    assets: "public/content-assets",
+    base: "/content-assets/",
+    name: "[name]-[hash:6].[ext]",
+    clean: true,
+  },
+  collections: { posts, papers, journal, research, notes },
+  mdx: {
+    remarkPlugins: [remarkGfm, remarkMath],
+    rehypePlugins: [
+      [rehypeKatex, { strict: false, trust: true, output: "html" }],
+      [rehypePrettyCode, prettyCodeOptions],
+    ],
+  },
+});
