@@ -206,6 +206,41 @@ body {
   color: var(--color-muted);
 }
 
+/* Monospaced data values — use inline in prose for metrics etc.
+   e.g. <span class="sci-data">τ_max = 177 μs</span>.
+   Tabular numerals keep digit columns aligned. */
+.sci-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "lnum"; /* opt out of old-style here */
+  font-size: 0.95em;
+  color: var(--color-ink);
+}
+
+.sci-meta {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--color-subtle);
+}
+
+/* Sidenote reference marker — superscript numeral in the body. */
+.sci-sidenote-ref {
+  font-feature-settings: "sups";
+  font-variant-position: super;
+  margin-left: 0.12em;
+  color: var(--color-accent);
+  cursor: help;
+}
+
+/* Inline `<code>` inside prose gets the academic monospace +
+   tabular numerals so inline quantities ("τ = 4 ms") read like data. */
+.prose :where(code):not(pre code) {
+  font-feature-settings: "tnum", "lnum";
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── reduced-motion: quiet the animations ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -25,6 +25,7 @@ export default function NotesPage() {
   return (
     <Container>
       <PageHeader
+        mark="ℓ"
         eyebrow="Notes"
         title="Mousse-notes."
         lead="A long, chapter-by-chapter book on the algebraic and topological foundations underlying the rest of the research. Chapters appear here as they are cleaned for public reading."

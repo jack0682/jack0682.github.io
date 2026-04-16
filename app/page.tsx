@@ -59,6 +59,23 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* decorative formula row — purely typographic, no content load.
+            Kept behind the muted colour and aria-hidden so screen readers
+            skip it. Axis-tick strip sits beneath as a notebook motif. */}
+        <div
+          aria-hidden
+          className="sci-formula-row mt-16 select-none text-xs text-[var(--color-subtle)]"
+        >
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <TeX expr="\int_{X} \omega \;=\; \langle [\omega], [X] \rangle" />
+            <span className="opacity-60">·</span>
+            <TeX expr="H^{n}(X;\mathbb{R}) \;\cong\; \mathrm{Hom}(H_{n},\mathbb{R})" />
+            <span className="opacity-60">·</span>
+            <TeX expr="\kappa \cdot u_{t} \longrightarrow \Phi_{t}" />
+          </div>
+          <div className="sci-axis-ticks mt-3 h-2 opacity-60" />
+        </div>
+
         {/* accepted badge — quietly announces the latest acceptance */}
         <Link
           href="/papers/onn-ortsf-2026/"

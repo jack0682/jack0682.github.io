@@ -33,7 +33,7 @@ export default async function ResearchTrackPage({ params }: Props) {
   return (
     <PageEnter>
       <Container width="prose">
-        <PageHeader eyebrow="Research" title={t.title} lead={t.summary} />
+        <PageHeader mark="∮" eyebrow="Research" title={t.title} lead={t.summary} />
         <Prose>
           <MDXContent code={t.body} />
         </Prose>

@@ -18,11 +18,18 @@ const toneConfig: Record<Tone, { Icon: typeof Info; label: string }> = {
 export function Callout({
   tone = "note",
   title,
+  mark,
   children,
   className,
 }: {
   tone?: Tone;
   title?: string;
+  /**
+   * If provided, a textual glyph (e.g. `§`, `⟂`, `*`, `?`) replaces
+   * the default lucide icon. Useful for matching the academic voice
+   * on notes that sit alongside formulae.
+   */
+  mark?: string;
   children: ReactNode;
   className?: string;
 }) {
@@ -34,13 +41,22 @@ export function Callout({
         className,
       )}
     >
-      <Icon
-        size={18}
-        strokeWidth={1.5}
-        className="mt-1 shrink-0 text-[var(--color-accent)]"
-      />
+      {mark ? (
+        <span
+          aria-hidden
+          className="sci-section-mark mt-[-0.1em] shrink-0 text-lg leading-none text-[var(--color-accent)]"
+        >
+          {mark}
+        </span>
+      ) : (
+        <Icon
+          size={18}
+          strokeWidth={1.5}
+          className="mt-1 shrink-0 text-[var(--color-accent)]"
+        />
+      )}
       <div className="flex-1">
-        <p className="mb-1 text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
+        <p className="mb-1 sci-eyebrow text-xs text-[var(--color-accent)]">
           {title ?? label}
         </p>
         <div className="text-[var(--color-muted)] leading-relaxed">

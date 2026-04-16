@@ -2,6 +2,12 @@ import { cn } from "@/lib/cn";
 
 type Props = {
   eyebrow?: string;
+  /**
+   * Scientific marker glyph rendered before the eyebrow. Defaults to
+   * `§` (section sign) to match the academic-paper voice. Pass `χ`,
+   * `∂`, `∮`, `α`, `ℓ`, etc. on a per-page basis.
+   */
+  mark?: string;
   title: string;
   lead?: string;
   className?: string;
@@ -11,11 +17,20 @@ type Props = {
  * Standard page header used on section index pages and essays.
  * Three-part structure: eyebrow → display title → lead paragraph.
  */
-export function PageHeader({ eyebrow, title, lead, className }: Props) {
+export function PageHeader({
+  eyebrow,
+  mark = "§",
+  title,
+  lead,
+  className,
+}: Props) {
   return (
     <header className={cn("pt-16 pb-10 sm:pt-20 md:pt-32 md:pb-16", className)}>
       {eyebrow && (
-        <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)] sm:mb-5">
+        <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
+          <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
+            {mark}
+          </span>
           {eyebrow}
         </p>
       )}

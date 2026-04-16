@@ -45,7 +45,10 @@ export default async function PaperPage({ params }: Props) {
       <PageEnter>
         <Container width="prose">
           <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
-            <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)] sm:mb-5">
+            <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
+              <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
+                χ
+              </span>
               {statusLabel[paper.status]} · {paper.year}
               {paper.venue && (
                 <span className="ml-2 inline-block break-words text-[var(--color-muted)] normal-case tracking-normal">

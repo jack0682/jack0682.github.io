@@ -15,6 +15,7 @@ export default function JournalPage() {
   return (
     <Container>
       <PageHeader
+        mark="∂"
         eyebrow="Journal"
         title="Research in motion."
         lead="A dated journal of work in progress — curated excerpts from the daily notebook, surfacing the open questions and intermediate results that shape the research."

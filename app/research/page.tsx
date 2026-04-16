@@ -14,6 +14,7 @@ export default function ResearchPage() {
   return (
     <Container>
       <PageHeader
+        mark="∮"
         eyebrow="Research"
         title="Threads in progress."
         lead="A small number of long-running research threads, each building on a shared foundation: that perception, representation, and control are best understood as one continuous mathematical object."

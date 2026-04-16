@@ -38,9 +38,13 @@ export function Theorem({
         className,
       )}
     >
-      <p className="mb-2 text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
+      <p className="mb-2 sci-eyebrow text-xs text-[var(--color-accent)]">
         {kindLabel[kind]}
-        {number && <span className="ml-2 font-mono normal-case">{number}</span>}
+        {number && (
+          <span className="ml-2 font-mono normal-case tabular-nums">
+            {number}
+          </span>
+        )}
         {name && (
           <span className="ml-2 normal-case italic text-[var(--color-muted)]">
             ({name})

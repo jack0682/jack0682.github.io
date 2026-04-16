@@ -13,6 +13,7 @@ export default function AboutPage() {
   return (
     <Container width="prose">
       <PageHeader
+        mark="α"
         eyebrow="About"
         title="Jaehong Oh."
         lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently a Research Intern on the Perception Team at ROBOTIS, and a Mechanical Engineering undergraduate at Soongsil University, Seoul."

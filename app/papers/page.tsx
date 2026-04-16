@@ -22,6 +22,7 @@ export default function PapersPage() {
   return (
     <Container>
       <PageHeader
+        mark="χ"
         eyebrow="Papers"
         title="Manuscripts."
         lead="Published, submitted, and in-progress manuscripts. Each entry links to the abstract page and, where available, to the preprint PDF and supporting artefacts."

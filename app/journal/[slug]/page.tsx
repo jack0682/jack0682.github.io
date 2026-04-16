@@ -34,7 +34,10 @@ export default async function JournalEntryPage({ params }: Props) {
     <PageEnter>
       <Container width="prose">
         <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
-          <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)] sm:mb-5">
+          <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
+            <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
+              ∂
+            </span>
             Journal
             {entry.track && (
               <span className="ml-2 text-[var(--color-muted)] normal-case tracking-normal">
