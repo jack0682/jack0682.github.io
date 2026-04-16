@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { TeX } from "@/components/mdx/TeX";
 import { recentWriting, researchTracks } from "@/lib/content";
 import { formatDate, toIsoDate } from "@/lib/format";
 
@@ -11,8 +12,11 @@ export default function Home() {
     <Container width="wide">
       {/* hero */}
       <section className="mt-20 max-w-[48rem] md:mt-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
-          Research · 2026 —
+        <p className="mb-6 sci-eyebrow text-xs text-[var(--color-accent)]">
+          <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
+            §
+          </span>
+          Research · 2026
         </p>
         <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.02em] text-[var(--color-ink)]">
           A topology of

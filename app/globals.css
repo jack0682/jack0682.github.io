@@ -139,6 +139,73 @@ html {
 /* inline math should never force horizontal scroll on the page */
 .katex { white-space: nowrap; }
 
+/* ──────────────────────────────────────────────────────────────
+   Science-paper micro-typography & decorative motifs
+   ────────────────────────────────────────────────────────────── */
+
+/* Section symbol marker used as an eyebrow prefix. */
+.sci-eyebrow {
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp", "c2sc";
+  letter-spacing: 0.22em;
+}
+
+.sci-section-mark {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+/* Old-style figures + ligatures in body copy for a manuscript feel.
+   KaTeX is explicitly opted OUT so math glyphs keep their own metrics. */
+body {
+  font-feature-settings: "onum", "ss01", "cv11", "liga";
+}
+.katex,
+.katex * {
+  font-feature-settings: normal;
+}
+
+/* Lab-notebook dot-grid — applied to decorative panels. */
+.sci-dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--color-ink) 12%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+  background-position: 0 0;
+}
+
+/* Horizontal axis-tick pattern. */
+.sci-axis-ticks {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-ink) 20%, transparent) 0 1px,
+    transparent 1px 100%
+  );
+  background-size: 12px 100%;
+  background-repeat: repeat-x;
+}
+
+/* Keep KaTeX renderings calm by default; no hard scroll on wraps. */
+.katex-display-wrap {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.katex-display-wrap > .katex {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Hero formula row — very subtle, never competes with headline. */
+.sci-formula-row .katex {
+  font-size: 0.95em;
+  color: var(--color-muted);
+}
+
 /* ── reduced-motion: quiet the animations ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

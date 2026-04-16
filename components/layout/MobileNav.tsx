@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -16,7 +17,13 @@ type Item = { href: string; label: string };
  */
 export function MobileNav({ items }: { items: Item[] }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  // Portal target is `document.body` — only available after mount.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on ESC; restore body scroll.
   useEffect(() => {
@@ -56,52 +63,52 @@ export function MobileNav({ items }: { items: Item[] }) {
         <Menu size={20} strokeWidth={1.75} />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <div
-            id="mobile-nav"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site navigation"
-            className="fixed inset-0 z-50"
-          >
-            {/* backdrop — independently animated, no backdrop-filter so
-                it doesn't create a stacking context that bleeds into
-                the panel */}
-            <motion.button
-              key="mobile-nav-backdrop"
-              aria-label="Close navigation menu"
-              onClick={() => setOpen(false)}
-              className="absolute inset-0 bg-black/55"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            />
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <div
+                id="mobile-nav"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Site navigation"
+                className="fixed inset-0 z-[1000]"
+                style={{ isolation: "isolate" }}
+              >
+                {/* backdrop — fully opaque-enough to kill any bleed-through.
+                    No backdrop-filter: that would create a containing block
+                    and cause the panel to blend weirdly. */}
+                <motion.button
+                  key="mobile-nav-backdrop"
+                  aria-label="Close navigation menu"
+                  onClick={() => setOpen(false)}
+                  className="absolute inset-0 bg-black/70"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                />
 
-            {/* sliding panel — explicit z-index, opaque surface colour
-                via inline style so it is guaranteed independent of any
-                CSS-variable resolution weirdness from Tailwind v4's
-                arbitrary-value syntax */}
-            <motion.aside
-              key="mobile-nav-panel"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                color: "var(--color-ink)",
-              }}
-              className={cn(
-                "absolute right-0 top-0 z-10 flex h-full w-[min(22rem,85vw)] flex-col",
-                "border-l border-[var(--color-rule)]",
-                "shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.25)]",
-                "pt-[max(1.25rem,env(safe-area-inset-top))]",
-                "pb-[max(1.25rem,env(safe-area-inset-bottom))]",
-                "pl-7 pr-6",
-              )}
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.28, ease: [0.22, 0.61, 0.36, 1] }}
-            >
+                {/* sliding panel — hard-coded hex backgrounds so it cannot
+                    accidentally inherit transparency from anywhere.
+                    Tailwind's `dark:` variant handles theme switching. */}
+                <motion.aside
+                  key="mobile-nav-panel"
+                  className={cn(
+                    "absolute right-0 top-0 z-[1] flex h-full w-[min(22rem,85vw)] flex-col",
+                    "bg-[#ffffff] text-[#1a1814]",
+                    "dark:bg-[#171411] dark:text-[#ede7db]",
+                    "border-l border-[var(--color-rule)]",
+                    "shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.25)]",
+                    "pt-[max(1.25rem,env(safe-area-inset-top))]",
+                    "pb-[max(1.25rem,env(safe-area-inset-bottom))]",
+                    "pl-7 pr-6",
+                  )}
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "100%" }}
+                  transition={{ duration: 0.28, ease: [0.22, 0.61, 0.36, 1] }}
+                >
               <div className="flex items-center justify-between">
                 <span className="font-display text-base text-[var(--color-ink)]">
                   Jaehong&nbsp;Oh
@@ -148,9 +155,11 @@ export function MobileNav({ items }: { items: Item[] }) {
                 <ThemeToggle />
               </div>
             </motion.aside>
-          </div>
+              </div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </div>
   );
 }
