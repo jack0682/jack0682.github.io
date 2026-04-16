@@ -1,0 +1,117 @@
+---
+title: "ONN + ORTSF — a field note on testable claims and proxy controllers"
+slug: onn-ortsf-field-note
+date: 2026-02-03
+track: onn
+summary: "A compact field note distilled from a multi-round research-planning session: testable claims for the ONN + ORTSF pipeline, an evaluation matrix, acceptance thresholds, and the risks that most threaten faithful reproduction."
+tags: [onn, ortsf, planning, delay-robust-control, evaluation]
+---
+
+*An edited extract from the 2026-02-03 working session. The underlying
+meeting notes are iterative; this is the version that survived three
+passes of critique.*
+
+---
+
+## The session's question
+
+*Can the ONN + ORTSF pipeline be reduced to a small set of **testable
+claims**, each backed by a minimal experiment, without pretending to
+reproduce implementation details we do not have?*
+
+The honest answer turned out to be **yes, but only if ORTSF is
+treated as a conceptual layer and swapped for a well-chosen proxy
+controller for experimental purposes.** The theoretical stability
+and topological-invariance claims of the original framework are
+strong; the empirical harness that validates them is not yet fully
+public.
+
+## What we anchored to
+
+Three papers formed the backbone of the review:
+
+- **ONN + ORTSF framework** — arXiv:2506.19277. The primary source.
+  Frames ONN as an ontology-driven neural representation and ORTSF
+  as a control layer that compensates delay while preserving phase
+  margin.
+- **ONN for topologically conditioned constraint satisfaction** —
+  arXiv:2601.05304. Useful specifically for understanding how
+  ontology schema constraints shape embedding consistency.
+- **Constructive Lyapunov functions via topology-preserving neural
+  networks** — arXiv:2510.24730. The bridge to classical stability
+  analysis.
+
+Across the three, the *conceptual unification* is stronger than the
+*empirical evidence base*: large-scale validation under realistic
+(bursty, heavy-tailed) delay distributions is the gap worth closing.
+
+## Three testable hypotheses
+
+- **H1.** Topology-consistent ONN embeddings improve control
+  stability under stochastic delay.
+- **H2.** ORTSF-style compensation yields higher phase margin than
+  a Smith predictor baseline in the heavy-tailed delay regime.
+- **H3.** Ontology schema complexity has a **U-shaped** effect on
+  robustness — too sparse and the topology fails to constrain; too
+  dense and schema bias dominates.
+
+H3 is the one most worth stress-testing; it's the claim most likely
+to be wrong in its strongest form.
+
+## An experiment ladder
+
+Three rungs, each minimal, each isolating one variable:
+
+1. **Topology-only reasoning** — no delay. Measure embedding
+   consistency across schema variants.
+2. **Reasoning + control at fixed delay** — classical delay, fixed
+   $\tau$. Measure phase margin and tracking error against a baseline
+   MPNN + Smith predictor.
+3. **Reasoning + control at stochastic delay** — the interesting
+   regime. Start with log-normal, then move to bursty and bimodal.
+
+## Evaluation matrix (draft)
+
+| Axis | Levels |
+|---|---|
+| Ontology complexity | low · medium · high |
+| Delay distribution | Gaussian · log-normal · bursty · bimodal |
+| Metric | phase margin · tracking error · embedding consistency · runtime per frame |
+
+## Acceptance thresholds (draft)
+
+- Phase margin $\ge 25^\circ$ under **bursty** delay.
+- Tracking error $\le$ baseline $+ 10\%$ under the worst delay
+  distribution.
+- Embedding consistency $\ge 0.85$ (normalised).
+- Runtime $\le 20$ ms/frame on the target hardware.
+
+None of these are final. They are the numbers at which we'd accept
+the hypotheses and move on.
+
+## Risk register
+
+- **R1.** ORTSF implementation details insufficient for reproduction.
+  *Mitigation:* treat ORTSF as a conceptual layer and build a
+  **proxy controller** — a predictive controller with tunable
+  delay-compensation gain — as a stand-in. Document what is ORTSF
+  and what is proxy.
+- **R2.** Dataset mismatch — scene graphs exist for SLAM benchmarks,
+  but not for delayed-control tasks. *Mitigation:* build a synthetic
+  graph simulator coupled to a delayed-control plant.
+- **R3.** Ontology-schema bias. *Mitigation:* include a sensitivity
+  analysis across schema depth, branching factor, and relation
+  cardinality.
+
+## One concrete deliverable
+
+An **evaluation-matrix dashboard** — a single table that auto-updates
+the four metrics above against ontology complexity and delay
+distribution. The artefact is small; the discipline of maintaining it
+is the point.
+
+---
+
+*This note is lightly edited from the session's internal minutes.
+The underlying artefacts — action items, ideas backlog, iterated
+findings — remain in the research archive.*
