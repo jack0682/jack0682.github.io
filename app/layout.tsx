@@ -8,6 +8,9 @@ import { Masthead } from "@/components/layout/Masthead";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { RouteProgress } from "@/components/motion/RouteProgress";
+import { CommandPalette } from "@/components/layout/CommandPalette";
+import { FloatingChip } from "@/components/layout/FloatingChip";
+import { searchIndex } from "@/lib/content";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -59,6 +62,8 @@ export default function RootLayout({
           <Masthead />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CommandPalette items={searchIndex} />
+          <FloatingChip items={searchIndex} />
         </ThemeProvider>
       </body>
     </html>

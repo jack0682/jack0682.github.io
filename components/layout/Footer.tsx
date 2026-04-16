@@ -15,10 +15,10 @@ const cols = [
   {
     heading: "Writing",
     links: [
+      { href: "/scc/", label: "SCC · hub" },
       { href: "/papers/", label: "Papers" },
       { href: "/journal/", label: "Journal" },
       { href: "/notes/", label: "Notes" },
-      { href: "/archive/", label: "Archive" },
     ],
   },
   {

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
+import { PaletteTrigger } from "./PaletteTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const nav = [
   { href: "/research/", label: "Research" },
+  { href: "/scc/", label: "SCC" },
   { href: "/papers/", label: "Papers" },
   { href: "/journal/", label: "Journal" },
   { href: "/notes/", label: "Notes" },
@@ -51,6 +53,7 @@ export function Masthead() {
               aria-hidden
               className="mx-3 hidden h-4 w-px bg-[var(--color-rule)] sm:inline-block"
             />
+            <PaletteTrigger />
             <ThemeToggle />
           </nav>
 

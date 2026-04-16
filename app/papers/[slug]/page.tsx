@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
+import { RelatedDocs } from "@/components/layout/RelatedDocs";
 import { TOC } from "@/components/layout/TOC";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
-import { papers } from "@/lib/content";
+import { allNotes, journalEntries, papers } from "@/lib/content";
 import { formatDate } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -38,11 +40,25 @@ export default async function PaperPage({ params }: Props) {
   const paper = papers.find((p) => p.slug === slug);
   if (!paper) notFound();
 
+  const crumbs = [
+    { href: "/papers/", label: "Papers" },
+    { label: paper.year.toString() },
+    { label: paper.title.length > 60 ? paper.title.slice(0, 58) + "…" : paper.title },
+  ];
+
+  const relatedNotes = allNotes.filter((n) =>
+    paper.related?.includes(n.slug),
+  );
+  const citingJournal = journalEntries.filter((j) =>
+    j.refs?.includes(paper.slug),
+  );
+
   return (
     <>
       <TOC toc={paper.toc} />
       <Container width="prose">
         <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
+          <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
             <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
               χ
@@ -109,6 +125,11 @@ export default async function PaperPage({ params }: Props) {
         <Prose className="mt-14 border-t border-[var(--color-rule)] pt-10">
           <MDXContent code={paper.body} />
         </Prose>
+
+        <RelatedDocs
+          relatedNotes={relatedNotes}
+          citingJournal={citingJournal}
+        />
       </Container>
     </>
   );

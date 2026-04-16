@@ -60,6 +60,12 @@ const papers = defineCollection({
       bibtex: s.string().optional(),
       abstract: s.string().min(20),
       tags: s.array(s.string()).default([]),
+      /** Research-track association — used by SCC hub & track rails. */
+      track: s
+        .enum(["onn", "perception", "theory", "control", "robotics"])
+        .optional(),
+      /** Note/journal slugs this paper is tied to (cross-ref hints). */
+      related: s.array(s.string()).default([]),
       draft: s.boolean().default(false),
       body: s.mdx(),
       toc: s.toc(),
@@ -82,6 +88,11 @@ const journal = defineCollection({
       track: s
         .enum(["onn", "perception", "theory", "control", "robotics", "meta"])
         .optional(),
+      /**
+       * Note/paper slugs referenced by the entry. Used by the
+       * related-docs rail to show "mentioned in journal".
+       */
+      refs: s.array(s.string()).default([]),
       draft: s.boolean().default(false),
       body: s.mdx(),
       toc: s.toc(),
@@ -125,6 +136,25 @@ const notes = defineCollection({
       section: s.string().optional(),
       summary: s.string().max(320).optional(),
       tags: s.array(s.string()).default([]),
+      /**
+       * Document-level classifier. Lets the SCC hub (and future
+       * Part-N hubs) group documents into meaningful rows rather
+       * than a flat chapter list. Optional — untagged notes fall
+       * into the "essay" bucket.
+       */
+      kind: s
+        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay"])
+        .optional(),
+      /**
+       * Optional track association — lets a note appear in the
+       * related-docs rail of a research track page.
+       */
+      track: s
+        .enum(["onn", "perception", "theory", "control", "robotics"])
+        .optional(),
+      updated: s.isodate().optional(),
+      /** Sibling slugs referenced by this note (manual cross-refs). */
+      related: s.array(s.string()).default([]),
       draft: s.boolean().default(false),
       body: s.mdx(),
       toc: s.toc(),
