@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
+import { PageEnter } from "@/components/motion/PageEnter";
 import { researchTracks } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -30,11 +31,13 @@ export default async function ResearchTrackPage({ params }: Props) {
   if (!t) notFound();
 
   return (
-    <Container width="prose">
-      <PageHeader eyebrow="Research" title={t.title} lead={t.summary} />
-      <Prose>
-        <MDXContent code={t.body} />
-      </Prose>
-    </Container>
+    <PageEnter>
+      <Container width="prose">
+        <PageHeader eyebrow="Research" title={t.title} lead={t.summary} />
+        <Prose>
+          <MDXContent code={t.body} />
+        </Prose>
+      </Container>
+    </PageEnter>
   );
 }

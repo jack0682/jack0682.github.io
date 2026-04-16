@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
+import { PageEnter } from "@/components/motion/PageEnter";
 import { journalEntries } from "@/lib/content";
 import { formatDate, toIsoDate } from "@/lib/format";
 
@@ -30,30 +31,32 @@ export default async function JournalEntryPage({ params }: Props) {
   if (!entry) notFound();
 
   return (
-    <Container width="prose">
-      <header className="pt-20 pb-10 md:pt-28">
-        <p className="mb-5 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
-          Journal
-          {entry.track && (
-            <span className="ml-2 text-[var(--color-muted)] normal-case tracking-normal">
-              · {entry.track}
-            </span>
-          )}
-        </p>
-        <h1 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.08] tracking-[-0.01em] text-[var(--color-ink)]">
-          {entry.title}
-        </h1>
-        <time
-          dateTime={toIsoDate(entry.date)}
-          className="mt-6 block font-mono text-xs text-[var(--color-subtle)]"
-        >
-          {formatDate(entry.date)}
-        </time>
-      </header>
+    <PageEnter>
+      <Container width="prose">
+        <header className="pt-20 pb-10 md:pt-28">
+          <p className="mb-5 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
+            Journal
+            {entry.track && (
+              <span className="ml-2 text-[var(--color-muted)] normal-case tracking-normal">
+                · {entry.track}
+              </span>
+            )}
+          </p>
+          <h1 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.08] tracking-[-0.01em] text-[var(--color-ink)]">
+            {entry.title}
+          </h1>
+          <time
+            dateTime={toIsoDate(entry.date)}
+            className="mt-6 block font-mono text-xs text-[var(--color-subtle)]"
+          >
+            {formatDate(entry.date)}
+          </time>
+        </header>
 
-      <Prose className="border-t border-[var(--color-rule)] pt-10">
-        <MDXContent code={entry.body} />
-      </Prose>
-    </Container>
+        <Prose className="border-t border-[var(--color-rule)] pt-10">
+          <MDXContent code={entry.body} />
+        </Prose>
+      </Container>
+    </PageEnter>
   );
 }
