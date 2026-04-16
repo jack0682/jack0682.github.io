@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
-import { PageEnter } from "@/components/motion/PageEnter";
 import { journalEntries } from "@/lib/content";
 import { formatDate, toIsoDate } from "@/lib/format";
 
@@ -31,8 +30,7 @@ export default async function JournalEntryPage({ params }: Props) {
   if (!entry) notFound();
 
   return (
-    <PageEnter>
-      <Container width="prose">
+    <Container width="prose">
         <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
             <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
@@ -56,10 +54,9 @@ export default async function JournalEntryPage({ params }: Props) {
           </time>
         </header>
 
-        <Prose className="border-t border-[var(--color-rule)] pt-10">
-          <MDXContent code={entry.body} />
-        </Prose>
-      </Container>
-    </PageEnter>
+      <Prose className="border-t border-[var(--color-rule)] pt-10">
+        <MDXContent code={entry.body} />
+      </Prose>
+    </Container>
   );
 }

@@ -113,6 +113,10 @@ html {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Hash-link navigation eases rather than jumps. The reduced-motion
+     media query below overrides this to `auto` for accessibility. */
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* account for sticky masthead */
 }
 
 /* ── overflow protection for MDX body content ─────────────────── */
@@ -223,6 +227,18 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.02em;
   color: var(--color-subtle);
+}
+
+/* Typographic loading dash — breathes between -50% … 100% opacity. */
+@keyframes sci-loading-dash {
+  0%   { opacity: 0.25; transform: translateX(-2px); }
+  50%  { opacity: 1;    transform: translateX(0); }
+  100% { opacity: 0.25; transform: translateX(2px); }
+}
+.sci-loading-dash {
+  display: inline-block;
+  animation: sci-loading-dash 1.4s ease-in-out infinite;
+  color: var(--color-accent);
 }
 
 /* Sidenote reference marker — superscript numeral in the body. */

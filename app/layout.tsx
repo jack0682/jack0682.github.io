@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { Masthead } from "@/components/layout/Masthead";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { RouteProgress } from "@/components/motion/RouteProgress";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -53,6 +54,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
         <ThemeProvider>
+          <RouteProgress />
           <ScrollProgress />
           <Masthead />
           <main className="flex-1">{children}</main>

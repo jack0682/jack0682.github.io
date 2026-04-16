@@ -4,7 +4,6 @@ import { Container } from "@/components/layout/Container";
 import { TOC } from "@/components/layout/TOC";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
-import { PageEnter } from "@/components/motion/PageEnter";
 import { allNotes } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -45,8 +44,7 @@ export default async function NotePage({ params }: Props) {
   return (
     <>
       <TOC toc={note.toc} />
-      <PageEnter>
-        <Container width="prose">
+      <Container width="prose">
           <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
             <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
               <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
@@ -67,8 +65,7 @@ export default async function NotePage({ params }: Props) {
           <Prose essay className="border-t border-[var(--color-rule)] pt-10">
             <MDXContent code={note.body} />
           </Prose>
-        </Container>
-      </PageEnter>
+      </Container>
     </>
   );
 }
