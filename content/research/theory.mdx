@@ -5,13 +5,95 @@ slug: theory
 ordinal: 3
 status: active
 updated: 2026-04-16
-summary: "A long book-in-progress covering the algebraic and topological machinery that underwrites the rest of the research: categories, sheaves, cohomology, and the geometry of learned state spaces."
+summary: "RelationWorld Theory — a mathematically rigorous theory of discrete gauge structure on finite graphs, developing analogues of Yang–Mills, Uhlenbeck compactness, and Cheeger spectral geometry in a purely combinatorial setting."
 ---
 
-The *Mousse-notes* — a long, book-length sequence of chapters on the
-algebraic and topological machinery that underwrites the ONN programme.
-The material is partitioned into Parts I through VII, from elementary
-foundations through frontier topics and robotics applications.
+A long book-in-progress (working title: *RelationWorld Theory*) that
+develops the mathematical machinery the rest of the programme depends
+on. The object of study is a **weighted graph equipped with a discrete
+gauge structure** — every edge carries both a positive weight and a
+group-valued transition. The question is: *what can be said about
+this object with the tools of algebraic topology and gauge theory?*
 
-Chapters appear in the notes section as they are cleaned for public
-reading.
+The answer turns out to be: quite a lot. Yang–Mills gauge theory,
+Uhlenbeck compactness, and Cheeger spectral geometry all have clean
+combinatorial analogues in this setting, and together they give a
+picture where natural aggregates (*fruits*), internal singularities
+(*doors*), and existence itself become gauge-invariant topological
+invariants computable by finite linear algebra.
+
+## Structure
+
+Six parts plus appendices, each building on the previous one.
+
+| Part | Chapters | Focus |
+|---|---|---|
+| **I. Foundations** | ch01–ch08 | Relation, relational field, fruit, stem, door, existence, world |
+| **II. Theorems** | ch09–ch10 | Eight theorems A–H with complete proofs; examples |
+| **III. Cohomology** | ch11–ch12 | Čech framework; three axes of topological readout |
+| **IV. Dynamics** | ch13–ch14 | Yang–Mills flow; time evolution and phase transitions |
+| **V. Applications** | ch15 | Physics, topology, combinatorics |
+| **VI. Frontiers** | ch16 | Open problems and conjectures |
+
+Part I is [reproduced in full in the notes](/notes/); Part II is
+summarised there and Parts III–VI will follow as the chapters settle.
+
+## The six axioms
+
+- **A0.** Structure group $G$ is a compact Lie group with bi-invariant metric.
+- **A1.** Finite node set $V$, $|V| = n$.
+- **A2.** Discrete time set $\mathbb{T} \subseteq \mathbb{Z}$.
+- **A3.** Fruit threshold $\theta \in (0, 1)$.
+- **A4.** Door threshold $\tau > 0$.
+- **A5.** Intrinsic data axiom — boundary coupling is internally computable.
+
+## The eight main theorems
+
+<Theorem kind="theorem" number="A" name="Energy Isolation">
+Fruit internal energy is at least $1 - \theta$ of the total.
+</Theorem>
+
+<Theorem kind="theorem" number="B" name="Finiteness of Doors">
+$|\Sigma| \le E_{\mathrm{total}} / \tau$.
+</Theorem>
+
+<Theorem kind="theorem" number="C" name="Self-Interpretation">
+The interior determines its own door set.
+</Theorem>
+
+<Theorem kind="theorem" number="D" name="Metastability">
+Escape time is bounded below by $1 / (2\theta)$.
+</Theorem>
+
+<Theorem kind="theorem" number="E" name="Curvature Localisation">
+Curvature decays exponentially from doors.
+</Theorem>
+
+<Theorem kind="theorem" number="F" name="Spectral Stability">
+Small weight perturbation implies small conductance change.
+</Theorem>
+
+<Theorem kind="theorem" number="G" name="Door Stability">
+Small weight perturbation implies stable door set.
+</Theorem>
+
+<Theorem kind="theorem" number="H" name="Flow Stability">
+The Yang–Mills gradient flow converges to a stable equilibrium.
+</Theorem>
+
+Full proofs live in [Part II of the notes](/notes/).
+
+## Papers on this track
+
+- [An Axiomatic Framework for Understanding Relations via Gauge-Invariant Cohomology](/papers/axiomatic-cohomology-relations/) — the published-facing statement of the theory.
+- Three LQG manuscripts that deploy the same mathematical machinery
+  in a quantum-gravity setting: [*Quantum Bounce*](/papers/lqg-quantum-bounce/),
+  [*Internal Time and GR Emergence*](/papers/lqg-internal-time-gr-emergence/),
+  and [*Scalable LQG Simulations*](/papers/lqg-scalable-info-geometry/).
+
+## Related
+
+- [Perception theory](/research/perception/) — where this machinery
+  is used to ground Soft Cognitive Cohesion.
+- [Ontology Neural Networks](/research/onn/) — where it certifies
+  the invariants of learned representations.

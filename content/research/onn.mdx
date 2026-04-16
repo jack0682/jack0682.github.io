@@ -5,24 +5,59 @@ slug: onn
 ordinal: 1
 status: active
 updated: 2026-04-16
-summary: "A learning architecture whose representational state carries the explicit structure of an ontology — opening the door to cohomological analysis of learned features and to delay-robust embodied control."
+summary: "A learning architecture whose latent state carries the explicit type structure of a target ontology, enabling cohomological analysis of learned features and delay-robust embodied control through the companion ORTSF framework."
 ---
 
-The **Ontology Neural Network** (ONN) program studies learning systems in
-which the internal state is not a flat vector but a typed object carrying
-ontological structure. This lets us analyse representations with tools from
-algebraic topology and type theory, and — in turn — to reason about the
-control laws that close the loop around such a perceiver.
+An **Ontology Neural Network** (ONN) is a neural model whose internal
+state is not a flat vector but a typed object carrying the structure
+of a target ontology. Training preserves the type algebra by
+construction; inference is a constraint-projection onto a topology-aware
+manifold. The companion **ORTSF** (Ontological Real-Time State
+Feedback) framework turns the output of that inference into a
+closed-loop controller whose stability margins are stated in
+cohomological terms.
 
-## Current threads
+The programme begins with the observation that **the topology of a
+representation space is itself a control-theoretic object.** Once
+recognised, the usual separation between representation learning and
+controller synthesis dissolves: the same invariants that classify
+learned features also certify that the loop closed around them is
+stable under delay.
 
-- **Representational cohomology.** How invariants of a learned ontology
-  manifest as cohomology classes, and what this implies about
-  generalisation.
-- **Predicate-binding gates.** Executable operators that compose typed
-  features under delay — the practical machinery of the ORTSF framework.
-- **Dependence-aware confidence.** Closure theorems for confidence radii
-  in a world where features are not independent.
+<Callout tone="note" title="Where this sits">
+ONN is Layer 3 of the larger cohesion-first architecture — downstream
+of the discovery of stable structure (Layer 2: [RelationWorld](/research/theory/))
+and upstream of embodied action (Layer 4: [Delay-robust control](/research/control/)).
+</Callout>
 
-Each of these lives in the journal and, in more polished form, in the
-papers section.
+## Three active threads
+
+- **Representational cohomology.** How the invariants of a learned
+  ontology appear as cohomology classes, and what that implies about
+  generalisation. The formal scaffolding lives in
+  [*An Axiomatic Framework for Understanding Relations via Gauge-Invariant
+  Cohomology*](/papers/axiomatic-cohomology-relations/).
+- **Constraint projection and topological conditioning.** A series of
+  papers sharpening the projection step with Forman–Ricci curvature
+  and Deep Delta Learning. See
+  [*ONN for Topologically Conditioned Constraint Satisfaction*](/papers/onn-constraint-satisfaction/)
+  and the empirical follow-up
+  [*Advanced Topology-Preserving Neural Networks*](/papers/advanced-onn-ortsf-extension/),
+  which reaches 99.75 % of the theoretically predicted optimality.
+- **Lyapunov functions that fall out of the loss.** The ONN total loss
+  𝓛_total turns out to *be* a constructive Lyapunov function —
+  closing a sixty-year gap left open by Massera and Kurzweil. Treated
+  in full in [*Constructive Lyapunov Functions via Topology-Preserving
+  Neural Networks*](/papers/constructive-lyapunov-onn/).
+
+## Papers on this track
+
+- [Ontology Neural Network and ORTSF — *Int. J. Topol.*, accepted April 2026](/papers/onn-ortsf-2026/)
+- [Ontology Neural Networks for Topologically Conditioned Constraint Satisfaction](/papers/onn-constraint-satisfaction/)
+- [Advanced Topology-Preserving Neural Networks](/papers/advanced-onn-ortsf-extension/)
+- [Constructive Lyapunov Functions via Topology-Preserving Neural Networks](/papers/constructive-lyapunov-onn/)
+- [An Axiomatic Framework for Understanding Relations via Gauge-Invariant Cohomology](/papers/axiomatic-cohomology-relations/)
+
+The working implementation — benchmarks against transformer baselines,
+ablation studies, and the ORTSF gate library — is maintained privately
+and results are surfaced here as they are cleaned for public reading.

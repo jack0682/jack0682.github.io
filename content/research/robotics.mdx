@@ -5,11 +5,68 @@ slug: robotics
 ordinal: 5
 status: active
 updated: 2026-04-16
-summary: "Where the theory meets physical systems — the experiments, the instrumentation, and the engineering that turns the above into something that can move in the world."
+summary: "Physical systems as test instruments for specific theoretical claims. The cognitive-robotics stack — SEGO architecture, semantic scene graphs, explainable control, and production-grade assembly on a Doosan M0609 — where the rest of the programme meets hardware."
 ---
 
-The place where the theoretical work meets physical systems: the
-experiments, the instrumentation, and the engineering that turns the
-above into something that moves in the world. Robotics platforms here
-are treated as test instruments for specific theoretical claims, not
-as ends in themselves.
+Where the theory meets physical systems. The experiments, the
+instrumentation, and the engineering that turn the rest of the
+programme into something that moves in the world.
+
+Robotics platforms here are treated as **test instruments** for
+specific theoretical claims, not as ends in themselves. A claim about
+delay-robust control is only as good as its behaviour on actual
+hardware; a claim about semantic mapping is only as good as the
+quality of the scene graphs it produces under realistic frame rates;
+a claim about reinforcement-learned assembly is only as good as the
+sim-to-real gap closes.
+
+## Three integrated pieces
+
+### 1. Semantic-level perception — SEGO
+
+**SEGO** (Semantic Graph Ontology mapper) unifies geometric SLAM,
+deep-learning object detection, and ontology-driven reasoning into a
+single pipeline that produces *cognitive scene graphs* consistent with
+both geometry and domain knowledge. On the TUM RGB-D dataset the
+SRQI (Semantic Recognition Quality Index) improves from 0.662 at
+10 FPS to 0.703 at 30 FPS, then plateaus — aligning with the known
+limit of human perceptual integration.
+
+See [*Cognitive Synergy Architecture: SEGO*](/papers/cognitive-synergy-sego/).
+
+### 2. The five-pillar review
+
+A survey of the architectural pieces needed for cognitive collaborative
+robots: semantic-level perception, cognitive action planning,
+explainable learning and control, safety-aware motion design, and
+multimodal human-intention recognition. The review proposes a unified
+Cognitive Synergy Architecture as the integration layer.
+
+See [*Towards Cognitive Collaborative Robots*](/papers/cognitive-collaborative-robots/).
+
+### 3. Production-grade assembly — Soma cube on a Doosan M0609
+
+The most hands-on piece in the collection. A 6-DOF collaborative
+robot learns to assemble the seven distinct Soma-cube pieces into a
+$3 \times 3 \times 3$ cube using legal-action masked DQN with safe
+ZYZ regrasp. Key numbers:
+
+- **Action space** 4,536 → 2,484 feasible actions (26% reduction).
+- **Motion success rate** 54 % → 96 % after adding the ZYZ regrasp.
+- **Sim-to-real** 75 % assembly success with ±1.8 mm positioning.
+- **Whisper-based Korean-language HRI** at 94 % recognition accuracy.
+
+See [*Learning to Assemble the Soma Cube*](/papers/soma-cube-assembly-dqn/).
+
+## Papers on this track
+
+- [Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots](/papers/cognitive-synergy-sego/)
+- [Towards Cognitive Collaborative Robots](/papers/cognitive-collaborative-robots/)
+- [Learning to Assemble the Soma Cube with Legal-Action Masked DQN and Safe ZYZ Regrasp on a Doosan M0609](/papers/soma-cube-assembly-dqn/)
+
+## Related
+
+- [Ontology Neural Networks](/research/onn/) — the representational
+  layer that these systems would ideally consume.
+- [Delay-robust control](/research/control/) — the stability
+  guarantees that close the loop around the robot.

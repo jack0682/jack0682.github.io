@@ -5,13 +5,78 @@ slug: perception
 ordinal: 2
 status: active
 updated: 2026-04-16
-summary: "The mathematical structure of perception as a hypothesis-forming process, and what it takes to treat that process as a first-class object of analysis rather than a pre-step to control."
+summary: "Soft Cognitive Cohesion — a mathematical theory of how coherent formations emerge prior to discrete objecthood. The graded field that precedes the world being parsed into separately-identified things."
 ---
 
-Perception is rarely the focus of control-oriented accounts; it is
-treated as a pre-step whose output is a vector to be acted on. This
-track takes the opposite view: that the *shape* of the perceptual
-process is itself what we should analyse, and that the geometry of
-its state space dictates which control laws are even admissible.
+Most accounts of perception start from objects and ask how they
+relate. This track starts one step earlier and asks: *what holds
+anything together enough to become an object in the first place?*
 
-More to come as entries migrate from the research log.
+The answer offered here is **Soft Cognitive Cohesion (SCC)**. Its
+primitive is a graded field
+
+$$
+u_t : X_t \to [0, 1]
+$$
+
+over a relational support space, where $u_t(x)$ measures the degree
+to which site $x$ participates in a cohesive formation. It is not a
+probability, not a segmentation mask, and not a clustering assignment.
+Objects are a distinguished limit of this formation space, not its
+starting point.
+
+## Formal structure in one paragraph
+
+<Theorem kind="definition" name="Formal universe of SCC">
+$$
+\mathfrak{C}^{\mathrm{soft}} = \Big( \mathbb{T},\ \{X_t\},\ \{u_t\},\ \{\mathrm{Cl}_t\},\ \{\mathbf{N}_t, \mathbf{D}_t\},\ \{\mathbf{M}_{t \to s}\} \Big)
+$$
+with operator pair $(\mathrm{Cl}_t, \mathbf{D}_t)$ (self-completion
+and self-contrast) and a four-term energy
+$E = \lambda_{\mathrm{cl}} E_{\mathrm{cl}} + \lambda_{\mathrm{sep}} E_{\mathrm{sep}} + \lambda_{\mathrm{bd}} E_{\mathrm{bd}} + \lambda_{\mathrm{tr}} E_{\mathrm{tr}}$
+on the volume-constrained simplex $\Sigma_m$. Formation is read off a
+diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist}) \in [0,1]^4$.
+</Theorem>
+
+A phase transition separates the two regimes:
+
+$$
+\frac{\beta}{\alpha} > \frac{4 \lambda_2}{|W''(c)|}, \qquad c \in \left( \tfrac{3 - \sqrt{3}}{6},\ \tfrac{3 + \sqrt{3}}{6} \right).
+$$
+
+## Commitments that shape the theory
+
+<Callout tone="note" title="Ontological priorities">
+- The soft field is primitive; crisp objects are derivative.
+- The four energy terms are conceptually independent and never collapsed.
+- Distinction is the self-contrast of a field against its exterior, not an edge detector.
+- Closure has a stabilisation tendency, not primitive idempotence.
+- The theory is not fuzzy segmentation, not clustering, not tracking.
+</Callout>
+
+## State of play
+
+Twenty-seven theorems are proved fully (Category A), including
+existence (T1), closure fixed-points (T6a/T6b), phase transition
+(T8-Core), axiom consistency (T20), gradient flow convergence (T14),
+and a suite of metastability and Γ-convergence results. Three more
+are proved with a structural parameter (Category B), and six remain
+conditional (Category C) — a rich register of *what is open* is kept
+alongside the proofs.
+
+A full listing with statements and status lives in the notes:
+the **Canonical Specification** is reproduced at
+[notes/part-2](/notes/) (Part II for the SCC-adjacent theorems).
+
+## Papers on this track
+
+- [An Axiomatic Framework for Understanding Relations via Gauge-Invariant Cohomology](/papers/axiomatic-cohomology-relations/) — the formal bridge from SCC to RelationWorld.
+- *In preparation:* the two principal SCC manuscripts (mathematical
+  and cognitive-science treatments) are being revised for submission.
+
+## Related
+
+- [Ontology Neural Networks](/research/onn/) — how the outputs of
+  SCC become inputs to learned semantic reasoning.
+- [Mathematical foundations](/research/theory/) — the RelationWorld
+  framework that gives SCC a concrete relational substrate.
