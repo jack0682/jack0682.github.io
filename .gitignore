@@ -1,32 +1,71 @@
-# Vim
-*~
-*.sw[p_]
+# ──────────────────────────────────────────────────────────────
+# jack0682.github.io — .gitignore
+# Stack: Next.js 15 (App Router) + MDX, deployed to GitHub Pages
+# ──────────────────────────────────────────────────────────────
 
-# IntelliJ IDEA
-*.idea
+# Private reference archive — NEVER commit (user explicit rule)
+JaehongOh's_refenernce/
 
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# Ruby Gem
-*.gem
-.bundle
-Gemfile.lock
-**/vendor/bundle
-
-# Node.js and NPM
-node_modules
+# ── Node / package managers ──
+node_modules/
+.pnp
+.pnp.*
+.yarn/install-state.gz
 npm-debug.log*
-package-lock.json
-codekit-config.json
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# macOS
-.DS_Store
+# ── Next.js ──
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
 
-# Jekyll generated files
-.jekyll-cache
+# ── Content build caches ──
+.contentlayer/
+.velite/
+.turbo/
+
+# ── Env / secrets ──
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ── Deploy ──
+.vercel/
+
+# ── Testing / coverage ──
+coverage/
+*.lcov
+
+# ── Jekyll legacy (in case _site/ resurfaces) ──
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-.sass-cache
-_asset_bundler_cache
-_site
+Gemfile.lock
+
+# ── Editor / OS ──
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# ── Python venvs (may appear inside reference mirrors) ──
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# ── Zone.Identifier (Windows-origin artifacts) ──
+*:Zone.Identifier
