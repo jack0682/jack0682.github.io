@@ -1,0 +1,38 @@
+---
+title: "Scalable Loop Quantum Gravity Simulations with Information-Geometry Mixed Potential"
+slug: lqg-scalable-info-geometry
+authors: ["Jaehong Oh"]
+year: 2025
+status: preprint
+date: 2025-10-19
+pdf: "/papers/lqg-scalable-info-geometry.pdf"
+abstract: "We present a scalable computational framework for Loop Quantum Gravity (LQG) simulations based on a novel information-geometry mixed potential that implements a smooth quantum-to-classical transition. Building on our previous internal-time functional T[γ] defined on spin-network configuration space, we introduce a dynamically weighted potential Φ_IG(a) = α(a)S + β(a)⟨V̂⟩, where entropy S dominates at small scales (quantum regime) and volume ⟨V̂⟩ dominates at large scales (classical regime). Through systematic scaling experiments on spin networks from N = 2 to N = 100 nodes across three graph topologies (cubic lattice, random, scale-free), we establish four key results: (1) universal internal-time convergence T_total ≈ 5–6 independent of system size for N ≳ 25; (2) sub-quadratic computational scaling T_comp ∝ M^{1.74}; (3) robust singularity resolution (13/15 simulations show bounce with a_min > 0); (4) validation consistent with prior N = 2 work within 10%."
+tags: [lqg, quantum-gravity, spin-networks, internal-time, information-geometry, scalability]
+---
+
+## Overview
+
+Third in a sequence on LQG with explicit internal time. This paper
+tackles the scalability question: can the framework, previously
+validated on 2-node toy models, run on networks of ~100 nodes while
+preserving physical validity?
+
+## What the paper shows
+
+- **Universal internal-time convergence** — a crossover at N ≈ 25
+  beyond which total internal time T_total saturates near ≈ 5–6, a
+  genuinely system-size-independent timescale for quantum cosmological
+  bounces.
+- **Sub-quadratic scaling** — algorithm complexity T_comp ∝ M^{1.74}
+  (with M edges), tractable on standard workstations.
+- **Singularity resolution robustness** across random, cubic-lattice,
+  and scale-free topologies.
+- Delivered with ~7,850 lines of open-source implementation.
+
+## Where it sits
+
+Companion paper to the two earlier LQG manuscripts on
+[quantum bounce](/papers/lqg-quantum-bounce/) and
+[internal-time GR emergence](/papers/lqg-internal-time-gr-emergence/).
+Together they form the foundation for the absolute-time and
+mathematical-foundations strand of the notes.

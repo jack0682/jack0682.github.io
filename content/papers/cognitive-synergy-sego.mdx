@@ -1,0 +1,38 @@
+---
+title: "Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots"
+slug: cognitive-synergy-sego
+authors: ["Jaehong Oh"]
+year: 2025
+status: preprint
+date: 2025-06-16
+pdf: "/papers/cognitive-synergy-sego.pdf"
+arxiv: "https://arxiv.org/abs/2506.13149"
+abstract: "This paper presents SEGO (Semantic Graph Ontology mapper), a cognitive mapping architecture designed to integrate geometric perception, semantic reasoning, and explanation generation into a unified framework for human-centric collaborative robotics. SEGO constructs dynamic cognitive scene graphs representing not only the spatial configuration of the environment but also the semantic relations and ontological consistency among detected objects. The architecture combines SLAM-based localization, deep-learning-based object detection and tracking, and ontology-driven reasoning to enable real-time, semantically coherent mapping. Systematic experimental evaluation on the TUM RGB-D dataset, with frame rates from 10 to 60 FPS, shows SEGO achieves SRQI (Semantic Recognition Quality Index) improvements from 0.662 at 10 FPS to 0.703 at 30 FPS, beyond which gains plateau. This frame-rate-dependent behavior aligns with known limits of human perceptual integration, supporting SEGO's suitability for intuitive human-robot interaction."
+tags: [cognitive-robotics, semantic-slam, scene-graphs, ontology, human-robot-collaboration]
+---
+
+## Overview
+
+The architectural contribution in the cognitive-robotics strand.
+SEGO unifies three capabilities that usually live in separate
+subsystems — geometric mapping, semantic labelling, and ontological
+reasoning — and shows how they interact at frame rates consistent
+with human perceptual integration.
+
+## What the paper shows
+
+- **SRQI metric** — a composite semantic recognition quality index
+  capturing consistency, relation entropy, and logical coherence.
+- **Frame-rate study** — SRQI improves from 0.662 (10 FPS) to 0.703
+  (30 FPS) and then plateaus, echoing the 24–30 FPS limit of human
+  perceptual integration.
+- **Logical consistency** enforcement catches e.g. spatial
+  impossibilities like (cup above table) ∧ (cup below table) ⇒ ⊥.
+- **Explainability** through traceable perceptual-symbolic chains
+  𝓔 : S ↦ (A, R).
+
+## Where it sits
+
+A precursor to the cognitive-collaborative-robots review, and the
+architectural basis for the downstream [Soma-cube assembly
+work](/papers/soma-cube-assembly-dqn/).

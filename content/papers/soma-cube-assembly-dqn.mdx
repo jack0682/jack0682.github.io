@@ -1,0 +1,46 @@
+---
+title: "Learning to Assemble the Soma Cube with Legal-Action Masked DQN and Safe ZYZ Regrasp on a Doosan M0609"
+slug: soma-cube-assembly-dqn
+authors: ["Jaehong Oh", "Seungjun Jung", "Sawoong Kim"]
+year: 2025
+status: preprint
+date: 2025-08-29
+pdf: "/papers/soma-cube-assembly-dqn.pdf"
+arxiv: "https://arxiv.org/abs/2508.21272"
+abstract: "This paper presents the first comprehensive application of legal-action masked Deep Q-Networks with safe ZYZ regrasp strategies to an underactuated gripper-equipped 6-DOF collaborative robot for autonomous Soma-cube assembly learning. We address three critical challenges in robotic manipulation: combinatorial explosion in action spaces, unsafe motion planning, and systematic assembly-strategy learning. Our system integrates a legal-action-masked DQN with hierarchical architecture that decomposes Q-function estimation into orientation and position components, reducing computational complexity from O(3, 132) to O(116) + O(27) while maintaining solution completeness. Curriculum learning across three progressive difficulty levels (2-piece, 3-piece, 7-piece) achieves training efficiency of 100% for Level 1 within 500 episodes, 92.9% for Level 2, and 39.9% for Level 3 over 105,300 total training episodes. ZYZ singularity guards prevent gimbal lock, improving motion success from 54% to 96%. Real-time perception via Unity-based global mapping processes 300,000 points at 30 FPS with Intel RealSense D435i. Human-robot collaboration through Whisper-based speech recognition achieves 94% accuracy for Korean commands. Extensive experimental validation on a Doosan M0609 demonstrates a production-ready platform advancing intelligent collaborative robotics."
+tags: [reinforcement-learning, motion-planning, soma-cube, doosan-m0609, human-robot-collaboration, action-masking]
+---
+
+## Overview
+
+A full production-grade collaborative-robotics system built around
+the Soma-cube assembly task, demonstrating that disciplined action
+masking, singularity-safe regrasp planning, and multimodal HRI can
+be composed into a deployable platform. First published on arXiv as
+2508.21272.
+
+## What the paper shows
+
+- **Legal-action masking** reduces the action space from 4,536 → 2,484
+  feasible actions — a 26% sample-efficiency improvement with no loss
+  of solution completeness.
+- **ZYZ regrasp** with proximity-based singularity detection prevents
+  gimbal lock, raising motion success 54% → 96%.
+- **Sim-to-real bridge** — 75% assembly success rate with ±1.8 mm
+  positioning accuracy in manufacturing-relevant conditions.
+- **Curriculum learning** achieves 100% / 92.9% / 39.9% success across
+  2-piece, 3-piece, and 7-piece levels.
+- **Korean-language HRI** — Whisper-based speech recognition at 94%
+  accuracy.
+
+## Authors & acknowledgements
+
+Jaehong Oh, Seungjun Jung, Sawoong Kim — Doosan Robotics Rokey
+Bootcamp, Seoul. Work supported by K-Digital Training Program,
+mentored by Chunghyeon Lee.
+
+## Where it sits
+
+The most hands-on paper in the collection. It exercises the
+cognitive-robotics stack end-to-end on real hardware and links
+tightly to the [SEGO architecture](/papers/cognitive-synergy-sego/).

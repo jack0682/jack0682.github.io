@@ -1,0 +1,40 @@
+---
+title: "An Axiomatic Framework for Understanding Relations via Gauge-Invariant Cohomology"
+slug: axiomatic-cohomology-relations
+authors: ["Jaehong Oh"]
+year: 2025
+status: preprint
+date: 2025-09-01
+pdf: "/papers/axiomatic-cohomology-relations.pdf"
+abstract: "What does it mean for something to exist within a web of relations? We answer this question by developing a rigorous mathematical framework in which existence emerges not as a primitive concept but as a gauge-invariant topological invariant of relational structure. Starting from five foundational axioms grounded in graph theory and gauge theory, we define (i) relations as edges carrying both scalar weights and group-valued transitions; (ii) natural aggregates (\"fruits\") as low-conductance clusters detectable via spectral clustering; (iii) boundary signatures (\"doors\") as internal singularities arising from anomalous external contact; and (iv) existence as a gauge-invariant triple ([A_∞], Σ, e) combining optimal gauge class, door locus, and residual energy. The framework yields three complementary topological readouts: intrinsic cohomology revealing internal holes; relative cohomology capturing aggregate-singularity interface via explicit matrix rank formulas; and multi-scale persistence barcode structure of singularities. We prove all three axes satisfy a long exact sequence, encode a gauge-invariant portrait of the system, and are computable via finite linear algebra. Validation on five- and ten-node examples with U(1) gauge structure confirms theoretical predictions across all three axes."
+tags: [cohomology, gauge-theory, relational-structure, topology, persistent-homology]
+---
+
+## Overview
+
+The mathematical companion to the RelationWorld research thread —
+this paper formalises what it means for an aggregate to *exist* in a
+purely relational setting. The answer, in short: existence is a
+gauge-invariant topological invariant computable from the weighted
+graph alone.
+
+## What the paper shows
+
+- **Five axioms** (A1–A5) sufficient for deriving all subsequent
+  definitions and theorems.
+- **Six definitions** characterising Fruit, Door, Kernel, Existence,
+  and the connecting maps between them.
+- **Three-axis cohomological framework**:
+  - *Axis 1* — intrinsic fruit cohomology H*(K_α; 𝔽)
+  - *Axis 2* — pair relative cohomology H*(K_α, L_α; 𝔽) with explicit
+    matrix rank formulas
+  - *Axis 3* — persistence barcode on the singular locus Σ
+- All three axes related by a long exact sequence (Theorem 2).
+- **Explicit polynomial-time algorithms** for each axis.
+
+## Where it sits
+
+Provides the formal backbone of the [RelationWorld
+notes](/notes/) and feeds directly into the perception-theory
+strand. Related to the Cheeger-spectral and Yang–Mills-flow chapters
+of the theory book.

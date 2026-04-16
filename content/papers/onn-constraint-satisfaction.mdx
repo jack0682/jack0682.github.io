@@ -1,0 +1,36 @@
+---
+title: "Ontology Neural Networks for Topologically Conditioned Constraint Satisfaction"
+slug: onn-constraint-satisfaction
+authors: ["Jaehong Oh"]
+year: 2025
+status: preprint
+date: 2025-05-01
+pdf: "/papers/onn-constraint-satisfaction.pdf"
+abstract: "Neuro-symbolic reasoning systems face fundamental challenges in maintaining semantic coherence while satisfying physical and logical constraints. Building upon our previous work on Ontology Neural Networks, we present an enhanced framework that integrates topological conditioning with gradient stabilization mechanisms. The approach employs Forman–Ricci curvature to capture graph topology, Deep Delta Learning for stable rank-one perturbations during constraint projection, and Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for parameter optimization. Experimental evaluation across multiple problem sizes demonstrates that the method achieves topology-loss reduction to 1.15 compared to baseline values of 11.68, with 95% success rate in constraint-satisfaction tasks. The framework exhibits seed-independent convergence and graceful scaling behavior up to twenty-node problems, suggesting that topological structure can inform gradient-based optimization without sacrificing interpretability or computational efficiency."
+tags: [onn, neuro-symbolic, constraint-satisfaction, forman-ricci, cma-es, topology]
+---
+
+## Overview
+
+An enhanced ONN formulation targeting the specific failure modes
+that appeared when projecting learned states onto constraint
+manifolds in the original framework. The paper combines three
+ingredients — Forman–Ricci curvature, Deep Delta Learning, and
+CMA-ES — into a single solver called LOGOS.
+
+## What the paper shows
+
+- **Topology-loss reduction** from baseline 11.68 → 1.15.
+- **95% success rate** across constraint-satisfaction benchmarks,
+  **seed-independent** across twenty random initialisations.
+- **Graceful scaling** from 2 to 20 nodes.
+- Delivered as a full pipeline (Meta-LOGOS diagnostics, LOGOS solver,
+  CMA-ES optimiser) that can be embedded in downstream ontology
+  systems.
+
+## Where it sits
+
+The methodological bridge between the original ONN construction and
+the [ONN + ORTSF framework paper](/papers/onn-ortsf-2026/). It
+isolates and fixes the constraint-projection subsystem before it is
+composed with the delay-robust control layer.

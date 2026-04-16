@@ -1,0 +1,37 @@
+---
+title: "Advanced Topology-Preserving Neural Networks: An Extension of ONN/ORTSF Framework with Dynamic Structural Optimization"
+slug: advanced-onn-ortsf-extension
+authors: ["Jaehong Oh"]
+year: 2025
+status: preprint
+date: 2025-12-01
+pdf: "/papers/advanced-onn-ortsf-extension.pdf"
+abstract: "This work presents the first comprehensive empirical investigation into the practical realization of performance bounds theoretically established by the Ontology Neural Network (ONN) and Ontological Real-Time State Feedback (ORTSF) framework. While the original framework provided rigorous mathematical foundations for topology-preserving neural networks through projection-consensus systems, the empirical instantiation of these theoretical limits remained unexplored. We systematically identify parameter regimes that approach the theoretical optimality conditions — surgery decay rates δ = 0.0005, cycle thresholds θ = 8, and minimal connectivity k = 2 — and demonstrate that strategic configurations reach 99.75% of the predicted optimality (topology loss 0.0234 vs. baseline 9.23). The results provide empirical confirmation that ONN's projection-consensus operators and contextual-constraint mechanisms can be instantiated in practice, bridging the gap between mathematical formalism and computational implementation."
+tags: [onn, ortsf, topology-preservation, empirical-validation, optimization]
+---
+
+## Overview
+
+A direct empirical follow-up to the ONN + ORTSF framework paper. The
+original manuscript established mathematical performance bounds for
+topology-preserving neural networks; this one asks *whether* — and
+*under what conditions* — those bounds are actually reachable on a
+working machine.
+
+## What the paper shows
+
+- **Enhanced regime** (𝓛_topo = 0.0792) reaches **99.14%** of the
+  theoretically predicted optimum.
+- **Advanced regime** (𝓛_topo = 0.0234) reaches **99.75%**.
+- Counter-intuitively, **minimal connectivity (k = 2)** and **extreme
+  precision (surgery decay δ = 0.0005)** outperform denser, coarser
+  configurations — inverting conventional neural-network design wisdom.
+- Results transfer to transformer architectures (14.7% perplexity
+  reduction) and graph neural networks (2.3× faster convergence on
+  WikiText-103).
+
+## Where it sits
+
+Downstream of the accepted [ONN + ORTSF paper](/papers/onn-ortsf-2026/),
+which provides the theory this one validates. Upstream of the
+production-grade ONN implementation documented in the research notes.
