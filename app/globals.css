@@ -1,0 +1,98 @@
+/* ──────────────────────────────────────────────────────────────
+   jack0682.github.io — global stylesheet
+   Tailwind v4 + design tokens for academic blog
+   ────────────────────────────────────────────────────────────── */
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── Design tokens (light / warm paper) ───────────────────────── */
+:root {
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-ink: #1a1814;
+  --color-muted: #6b655c;
+  --color-subtle: #a59f95;
+  --color-accent: #7a3b2e; /* burnt sienna */
+  --color-accent-soft: #c67a5c;
+  --color-rule: #e8e2d6;
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure: 68ch;
+}
+
+/* ── Dark ─────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0e0c0a;
+    --color-surface: #171411;
+    --color-ink: #ede7db;
+    --color-muted: #8a8278;
+    --color-subtle: #5c564d;
+    --color-accent: #e8a07a;
+    --color-accent-soft: #c67a5c;
+    --color-rule: #2a241e;
+  }
+}
+
+/* ── Tailwind v4 @theme bridge ─ exposes tokens as utilities ─── */
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-subtle: var(--color-subtle);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-rule: var(--color-rule);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* ── Utility classes for display typography ───────────────────── */
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "dlig";
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+.prose-essay {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 14, "SOFT" 50;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
