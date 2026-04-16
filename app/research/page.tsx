@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ComingSoon } from "@/components/layout/ComingSoon";
+import { researchTracks } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Research threads on Ontology Neural Networks, perception theory, mathematical foundations, and delay-robust control.",
+    "Research threads on Ontology Neural Networks, perception theory, mathematical foundations, delay-robust control, and robotics.",
 };
 
 export default function ResearchPage() {
@@ -17,7 +18,37 @@ export default function ResearchPage() {
         title="Threads in progress."
         lead="A small number of long-running research threads, each building on a shared foundation: that perception, representation, and control are best understood as one continuous mathematical object."
       />
-      <ComingSoon note="The research hub will index the active threads — Ontology Neural Networks, perception theory, cohomological structure, and delay-robust control — each with its own dedicated space for results, proofs, and working notes." />
+
+      <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+        {researchTracks.map((track, i) => (
+          <li key={track.slug}>
+            <Link
+              href={track.permalink}
+              className="group block py-10 transition-colors"
+            >
+              <div className="flex items-baseline gap-6">
+                <span className="font-mono text-xs text-[var(--color-subtle)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1">
+                  <h2 className="font-display text-3xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                    {track.title}
+                  </h2>
+                  <p className="mt-3 max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)]">
+                    {track.summary}
+                  </p>
+                </div>
+                <span
+                  aria-hidden
+                  className="font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)]"
+                >
+                  →
+                </span>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Container>
   );
 }

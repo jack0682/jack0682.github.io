@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { recentWriting, researchTracks } from "@/lib/content";
+import { formatDate, toIsoDate } from "@/lib/format";
 
-/**
- * Landing page — typography-first hero + a temporary type specimen
- * section used to QA the design language. The specimen will be
- * replaced by a "Recent writing" module in P4.
- */
 export default function Home() {
+  const recent = recentWriting.slice(0, 4);
+  const tracks = researchTracks.slice(0, 3);
+
   return (
     <Container width="wide">
       {/* hero */}
@@ -46,40 +46,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* type specimen — temporary, for design QA */}
+      {/* recent writing */}
       <section className="mt-32 border-t border-[var(--color-rule)] pt-10">
-        <p className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-          type specimen
-        </p>
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-              Display · Fraunces
-            </p>
-            <p className="font-display mt-3 text-5xl leading-tight text-[var(--color-ink)]">
-              The architecture of meaning.
-            </p>
-            <p className="prose-essay mt-5 text-lg text-[var(--color-muted)]">
-              A perception that is never merely passive, but always a
-              hypothesis about the world it inhabits — continuously revised,
-              continuously refined.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-              Body · Inter
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
-              Each page of this site is meant to support the longform reading
-              of technical material: theorems, proofs, and the occasional
-              essay. The typography is tuned for extended sessions rather than
-              glance value.
-            </p>
-            <p className="mt-4 font-mono text-sm text-[var(--color-muted)]">
-              ∫_X ω = ⟨[ω], [X]⟩ &nbsp;— Stokes, informally
-            </p>
-          </div>
+        <div className="mb-10 flex items-baseline justify-between">
+          <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+            Recent writing
+          </p>
+          <Link
+            href="/journal/"
+            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+          >
+            All entries →
+          </Link>
         </div>
+        {recent.length === 0 ? (
+          <p className="text-[var(--color-muted)]">No entries yet.</p>
+        ) : (
+          <ul className="divide-y divide-[var(--color-rule)]">
+            {recent.map((item) => (
+              <li key={item.permalink}>
+                <Link
+                  href={item.permalink}
+                  className="group grid items-baseline gap-4 py-6 md:grid-cols-[8rem_1fr]"
+                >
+                  <time
+                    dateTime={toIsoDate(item.date)}
+                    className="font-mono text-xs text-[var(--color-subtle)]"
+                  >
+                    {formatDate(item.date)}
+                  </time>
+                  <div>
+                    <h3 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                      {item.title}
+                    </h3>
+                    {item.summary && (
+                      <p className="mt-1 max-w-[40rem] text-sm leading-relaxed text-[var(--color-muted)]">
+                        {item.summary}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* research tracks preview */}
+      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
+        <div className="mb-10 flex items-baseline justify-between">
+          <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+            Threads
+          </p>
+          <Link
+            href="/research/"
+            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+          >
+            All threads →
+          </Link>
+        </div>
+        <ul className="grid gap-6 md:grid-cols-3">
+          {tracks.map((track) => (
+            <li key={track.slug}>
+              <Link
+                href={track.permalink}
+                className="group block border-t border-[var(--color-rule)] pt-6"
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
+                  {track.track}
+                </p>
+                <h3 className="font-display mt-3 text-xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                  {track.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+                  {track.summary}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </Container>
   );
