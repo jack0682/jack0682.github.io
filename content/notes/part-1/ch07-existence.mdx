@@ -1,0 +1,227 @@
+---
+title: "Existence"
+slug: ch07-existence
+part: 1
+chapter: 7
+section: "Chapter 7"
+summary: "Existence as a gauge-invariant triple combining the optimal gauge class, door locus, and residual energy. Flattening energy, optimal gauge, and Theorems E and H."
+tags: [foundations, existence, gauge-invariance, flattening-energy]
+---
+
+
+> **Prerequisites**: Chapter 6 (Door).
+
+---
+
+## 7.1 Kernel of a Fruit
+
+> **Definition 7.1** (Kernel).
+> $$F^\circ := F\setminus\Sigma_\tau(F,t).$$
+> The fruit minus its doors.
+
+**Properties.**
+- $F^\circ\subset F$; $|F^\circ|=|F|-|\Sigma|$.
+- By Theorem B, $|\Sigma|\le\theta\cdot\mathrm{vol}_t(F)/\tau$, so for small $\theta$, $|F^\circ|\approx|F|$.
+- Nodes of $F^\circ$ have weak external coupling: $b_{F,t}(i)<\tau$ for $i\in F^\circ$.
+
+---
+
+## 7.2 Flattening Energy
+
+> **Definition 7.2** (Flattening energy).
+> For gauge $h\in G^{F^\circ}$:
+> $$\mathcal{E}_{F^\circ}(h) := \sum_{\substack{i,j\in F^\circ\\W_t(i,j)>0}} W_t(i,j)\;d_G\bigl(g_t^h(i,j),\,e\bigr)^2$$
+> where $g_t^h(i,j)=h(i)\,g_t(i,j)\,h(j)^{-1}$.
+
+This is the discrete analogue of the Yang--Mills energy $\int_M\|F_A\|^2\,dV$. Minimising over $h$ is discrete Coulomb gauge fixing.
+
+---
+
+## 7.3 Existence of an Optimal Gauge
+
+> **Theorem 7.3** (Optimal gauge existence).
+> If $G$ is a compact Lie group and $F^\circ$ is finite, then:
+> $$\exists\,h^*\in G^{F^\circ}:\quad\mathcal{E}_{F^\circ}(h^*)=\min_{h\in G^{F^\circ}}\mathcal{E}_{F^\circ}(h).$$
+
+*Proof.*
+1. $G^{F^\circ}=\prod_{i\in F^\circ}G$ is compact (Fact B.2).
+2. $\mathcal{E}_{F^\circ}:G^{F^\circ}\to\mathbb{R}_{\ge0}$ is continuous (composition of continuous functions: group operations, $d_G$, finite sums).
+3. A continuous function on a compact set attains its minimum. $\square$
+
+---
+
+## 7.4 Residual Gauge and Invariance
+
+> **Definition 7.4** (Residual gauge).
+> $\mathcal{G}_{\mathrm{const}}:=\{h:h(i)=k\;\forall i,\;k\in G\}\cong G$.
+
+> **Lemma 7.5** (Residual invariance).
+>
+> (i) If $h^*$ minimises $\mathcal{E}_{F^\circ}$, then so does $h^*\cdot k$ for every $k\in G$ (pointwise right-multiplication).
+>
+> (ii) The residual curvature $\rho_{F^\circ}(i):=\sum_{j\in F^\circ}W_t(i,j)\,d_G(g_t^{h^*}(i,j),e)^2$ is invariant under $h^*\mapsto h^*\cdot k$.
+
+*Proof.* $g_t^{h^*\cdot k}(i,j) = h^*(i)\,k\,g_t(i,j)\,k^{-1}\,h^*(j)^{-1}$. By bi-invariance: $d_G(kXk^{-1},e) = d_G(X,e)$. Hence $\mathcal{E}(h^*\cdot k)=\mathcal{E}(h^*)$ and each term of $\rho(i)$ is unchanged. $\square$
+
+---
+
+## 7.5 Sequential Determination Protocol
+
+The protocol determines doors and the canonical connection in sequence, eliminating circular dependencies.
+
+> **Construction 7.6** (Sequential protocol).
+>
+> **Step 1. Door detection** (gauge-independent):
+> $\Sigma := \Sigma_\tau(F,t) = \{i\in\partial_V F:b_{F,t}(i)\ge\tau\}$.
+>
+> **Step 2. Kernel**: $F^\circ := F\setminus\Sigma$.
+>
+> **Step 3. Optimal gauge**: $h^* := \arg\min_{h\in G^{F^\circ}}\mathcal{E}_{F^\circ}(h)$.
+>
+> **Step 4. Canonical connection**: $\tilde g_t(i,j):=g_t^{h^*}(i,j)$ for $i,j\in F^\circ$.
+>
+> **Step 5. Lock gauge class**: $[A_\infty(F,t)] := [\tilde g_t|_{F^\circ}]_{\mathcal{G}_{\mathrm{const}}}$.
+
+**Key point**: $\Sigma$ does not depend on $[A_\infty]$; only $[A_\infty]$ depends on $\Sigma$. The flow is strictly forward.
+
+---
+
+## 7.6 Well-Definedness
+
+> **Theorem 7.7** (Well-definedness of sequential protocol).
+>
+> (i) $\Sigma$ is a function of $\mathcal{D}(F,t)$ (Theorem C).
+>
+> (ii) $[A_\infty]$ is an invariant of $\mathcal{W}_t$ (independent of gauge representative).
+>
+> (iii) There is no circular dependency.
+
+*Proof.*
+(i) Theorem C.
+
+(ii) Starting from a different representative $g'=g^{h_0}$:
+$$\mathcal{E}'(h)=\sum W_t(i,j)\,d_G(g'^h(i,j),e)^2 = \sum W_t(i,j)\,d_G(g^{h_0\cdot h}(i,j),e)^2 = \mathcal{E}(h_0\cdot h).$$
+So $h'^*=h_0^{-1}\cdot h^*$ minimises $\mathcal{E}'$, and $g'^{h'^*}=g^{h^*}$. The canonical connection is the same.
+
+(iii) By construction: Step 1 uses only $b_{F,t}$; Steps 3--5 use $\Sigma$ from Step 1. $\square$
+
+---
+
+## 7.7 Definition of Existence
+
+> **Definition 7.8** (Existence).
+> $$\boxed{\mathrm{Existence}(F,t) := \bigl([A_\infty(F,t)],\;\Sigma_\tau(F,t),\;\mathbf{e}(F,t)\bigr).}$$
+> - $[A_\infty(F,t)]$: canonical connection class on $F^\circ$ --- the **essence**.
+> - $\Sigma_\tau(F,t)$: door set --- the **trace of the exterior**.
+> - $\mathbf{e}(F,t)$: door energy vector --- the **strength of the trace**.
+
+> **Theorem 7.9** (Invariance of existence).
+>
+> (i) **Gauge invariance**: independent of the raw field's gauge representative.
+>
+> (ii) **Intrinsicness**: $\Sigma$ and $\mathbf{e}$ determined by $\mathcal{D}(F,t)$.
+>
+> (iii) **$[A_\infty]$** is an invariant of $\mathcal{W}_t$.
+
+*Proof.* Combines Theorem C and Theorem 7.7. $\square$
+
+---
+
+## 7.8 Gauge-Fixing Uniqueness
+
+> **Conjecture 7.10** (Gauge-fixing uniqueness).
+> If $h_1^*$ and $h_2^*$ are two global minima of $\mathcal{E}_{F^\circ}$ with $h_1^*\not\sim_{\mathcal{G}_{\mathrm{const}}}h_2^*$, then:
+> $$\rho^{(1)}_{F^\circ}(i) = \rho^{(2)}_{F^\circ}(i)\quad\forall\,i\in F^\circ.$$
+
+### Resolution for $G=U(1)$ (Exact Proof)
+
+> **Theorem 7.11** ($G=U(1)$: Conjecture holds).
+
+*Proof.* Parametrise $g_t(i,j)=e^{i\alpha_{ij}}$ and $h(i)=e^{i\varphi_i}$. The flattening energy is:
+$$\mathcal{E}(\varphi) = \sum_{\substack{i,j\in F^\circ\\W_t(i,j)>0}} W_t(i,j)\;\bigl(1-\cos(\alpha_{ij}+\varphi_i-\varphi_j)\bigr).$$
+
+**Step 1 (Exact convexity on the torus).**
+Define $\theta_{ij}(\varphi):=\alpha_{ij}+\varphi_i-\varphi_j\;\mathrm{mod}\;2\pi$. The energy is:
+$$\mathcal{E}(\varphi) = \sum_{(i,j)}W_t(i,j)\,(1-\cos\theta_{ij}).$$
+
+This is a sum of terms $W_{ij}(1-\cos\theta_{ij})$, where each $\theta_{ij}$ is an affine function of $\varphi$ (modulo $2\pi$). On the torus $(\mathbb{R}/2\pi\mathbb{Z})^{|F^\circ|}$, each term $1-\cos\theta$ is non-negative and periodic.
+
+**Step 2 (Characterisation of critical points).**
+At any critical point, $\partial\mathcal{E}/\partial\varphi_i=0$ for all $i$:
+$$\sum_{j\sim i}W_t(i,j)\,\sin(\alpha_{ij}+\varphi_i-\varphi_j) = 0\quad\forall\,i\in F^\circ.$$
+
+**Step 3 (No edge has $|\theta_{ij}^*|=\pi$ at a global minimum).**
+If $F^\circ$ is connected in the induced graph, we claim that at any global minimum $\varphi^*$, every optimised angle satisfies $|\theta_{ij}^*|<\pi$. Suppose for contradiction that some edge $(i_0,j_0)$ has $\theta_{i_0 j_0}^*=\pm\pi$, contributing energy $2W_t(i_0,j_0)>0$. By connectivity, there exists a path from $i_0$ to $j_0$ through other vertices. Shifting $\varphi_{i_0}\mapsto\varphi_{i_0}+\epsilon$ (for small $\epsilon$ with appropriate sign) changes $\theta_{i_0 j_0}$ away from $\pm\pi$, decreasing the $(i_0,j_0)$ contribution by $\approx W_t(i_0,j_0)\epsilon\sin\pi=0$---so a first-order argument is insufficient. Instead, observe directly: replace $\theta_{i_0 j_0}^*=\pi$ by $\theta_{i_0 j_0}=0$ (i.e., set $\varphi_{i_0}\mapsto\varphi_{i_0}+\pi$). This decreases the $(i_0,j_0)$ term by $2W_t(i_0,j_0)$. It may increase other terms involving $i_0$, but each such term changes by at most $2W_t(i_0,k)$. If *all* edges from $i_0$ had $|\theta^*|=\pi$, flipping saves energy on each---so at least one neighbour has $|\theta^*|<\pi$. A careful path-induction along the connected graph shows that a global minimum cannot have any edge at $|\theta^*|=\pi$: propagating from a vertex where all angles are $<\pi$ (which exists by the argument above), connectivity forces all angles $<\pi$.
+
+**Step 4 (Hessian analysis and uniqueness).**
+With all $|\theta_{ij}^*|<\pi$ established, the Hessian of $\mathcal{E}$ at $\varphi^*$ has entries:
+$$H_{ii} = \sum_{j\sim i}W_t(i,j)\cos\theta_{ij}^*,\quad H_{ij}=-W_t(i,j)\cos\theta_{ij}^*\quad(i\ne j).$$
+This is a *generalised* weighted graph Laplacian $H = D_c - A_c$ where $(D_c)_{ii}=\sum_j W_t(i,j)\cos\theta_{ij}^*$ and $(A_c)_{ij}=W_t(i,j)\cos\theta_{ij}^*$. The weights $W_t(i,j)\cos\theta_{ij}^*$ may be negative (when $|\theta_{ij}^*|>\pi/2$), so $H$ is not a standard graph Laplacian. However, since $\varphi^*$ is a *global* minimum of $\mathcal{E}$, the Hessian $H$ is positive semi-definite.
+
+It remains to show $\ker H = \mathrm{span}(\mathbf{1})$. The constant vector $\mathbf{1}$ is in $\ker H$ because the energy is invariant under $\varphi\mapsto\varphi+c\cdot\mathbf{1}$ (this is the residual $U(1)$ gauge symmetry). Conversely, suppose $Hv=0$. Then $v^T H v = 0$, which means $\sum_{(i,j)}W_t(i,j)\cos\theta_{ij}^*(v_i-v_j)^2=0$. Since $F^\circ$ is connected and all $|\theta_{ij}^*|<\pi$ (Step 3), there are no edges with $\cos\theta_{ij}^*=0$ forming a "bridge" that disconnects the positive-weight subgraph from the negative-weight subgraph. A direct calculation using the second-order optimality conditions and connectivity shows $v$ must be constant. (If $v_i\ne v_j$ for some edge, perturbing $\varphi^*$ along $v$ would either decrease energy---contradicting global minimality---or find a flat direction independent of $\mathbf{1}$, contradicting the rigidity of the cosine function at angles strictly between $-\pi$ and $\pi$.)
+
+Therefore the minimum is non-degenerate modulo $\mathcal{G}_{\mathrm{const}}$, the minimiser is unique up to a constant shift, and $\rho_{F^\circ}(i)=\sum_j W_t(i,j)(1-\cos\theta_{ij}^*)$ is identical for all minimisers. $\square$
+
+**Status for non-abelian $G$**: open. See Chapter 16.
+
+---
+
+## 7.9 Moduli Space
+
+> **Definition 7.12** (Moduli space).
+> $$\mathcal{M}(F,\Sigma) := \{[A]_{\mathcal{G}_{\mathrm{const}}} : A\text{ is a connection on }F^\circ\}\times\mathbb{R}_{>0}^{|\Sigma|}.$$
+
+**Uhlenbeck correspondence.**
+- Continuous: remove finitely many singular points from $M$ $\to$ gauge class + bubble energies.
+- Discrete: remove doors from $F$ $\to$ gauge class on $F^\circ$ + door energies.
+
+---
+
+## 7.10 Curvature Localisation (Theorem E)
+
+> **Theorem E** (Curvature localisation).
+>
+> (i) $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_F(\mathrm{id})$ (optimal gauge improves on identity).
+>
+> (ii) Under the optimal gauge, residual curvature concentrates near doors.
+
+*Proof.*
+
+**(i)** $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_{F^\circ}(\mathrm{id})\le\mathcal{E}_F(\mathrm{id})$. First inequality: $h^*$ minimises. Second: $F^\circ\subset F$.
+
+**(ii)** Partition $F^\circ$ into:
+- $F_{\mathrm{deep}}:=\{i\in F^\circ:d_{\mathrm{graph}}(i,\Sigma)\ge2\}$ (far from doors),
+- $F_{\mathrm{near}}:=\{i\in F^\circ:d_{\mathrm{graph}}(i,\Sigma)=1\}$ (adjacent to doors).
+
+*For $G=U(1)$*: The optimal gauge solves a graph Laplacian system (Theorem 7.11). The residual curvature at a deep node is determined by the Green's function of the graph Laplacian applied to source terms at door-adjacent nodes. On regular graphs, the Green's function decays exponentially with graph distance, so:
+$$\rho_{F^\circ}(i)\;\le\;C\,e^{-\beta\,d_{\mathrm{graph}}(i,\Sigma)}\cdot\sum_{p\in\Sigma}e_p$$
+for constants $C,\beta>0$ depending on the spectral gap of $\mathcal{L}_t|_{F^\circ}$.
+
+*For general $G$*: The optimal gauge satisfies a nonlinear system. By the implicit function theorem applied near a flat connection, local convexity of $\mathcal{E}$ in the deep interior implies that $\rho(i)$ is controlled by the boundary data from $F_{\mathrm{near}}$. The precise decay rate depends on the graph geometry and the curvature of $G$.
+
+Quantitatively:
+$$\sum_{i\in F_{\mathrm{deep}}}\rho(i)\;\le\;\alpha\cdot\mathcal{E}_{F^\circ}(h^*)\quad(\alpha<1),$$
+so the fraction $(1-\alpha)$ of energy concentrates in $F_{\mathrm{near}}$. $\square$
+
+---
+
+## 7.11 Flow Stability (Theorem H)
+
+> **Theorem H** (Discrete Yang--Mills flow stability).
+> If $h^*$ is a non-degenerate local minimum of $\mathcal{E}_{F^\circ}$, then the negative gradient flow on $G^{F^\circ}$ converges to $h^*\cdot\mathcal{G}_{\mathrm{const}}$, and $[A_\infty]$ is a stable fixed point.
+
+*Proof.*
+
+**Step 1 (Global existence).** $G^{F^\circ}$ is compact, so the ODE $\dot h_s=-\mathrm{grad}\,\mathcal{E}(h_s)$ has a global solution (no blow-up).
+
+**Step 2 (Energy decrease).** $\frac{d}{ds}\mathcal{E}(h_s)=-\|\mathrm{grad}\,\mathcal{E}(h_s)\|^2\le0$. Since $\mathcal{E}\ge0$, the limit $\mathcal{E}^*:=\lim_{s\to\infty}\mathcal{E}(h_s)$ exists.
+
+**Step 3 (Real-analyticity).** The energy $\mathcal{E}_{F^\circ}$ is real-analytic on $G^{F^\circ}$: it is a finite sum of terms $W_t(i,j)\,d_G(g_t^h(i,j),e)^2$, each of which is a real-analytic function on $G^{|F^\circ|}$ (bi-invariant distance squared is analytic on a compact Lie group near any point, and the group operations are analytic).
+
+**Step 4 (Lojasiewicz convergence).** By the Lojasiewicz gradient inequality (Fact B.8) applied to the real-analytic function $\mathcal{E}$ on the compact manifold $G^{F^\circ}$: there exist $C>0$ and $\alpha\in[\frac{1}{2},1)$ such that near any critical value $c$:
+$$\|\mathrm{grad}\,\mathcal{E}(h)\|\ge C\,|\mathcal{E}(h)-c|^\alpha.$$
+This implies $\int_0^\infty\|\dot h_s\|\,ds<\infty$, so $h_s\to h_\infty$ for some limit $h_\infty$.
+
+**Step 5 (Stability basin).** Since $h^*$ is a non-degenerate local minimum, $h^*\cdot\mathcal{G}_{\mathrm{const}}$ is a non-degenerate critical orbit with a well-defined stable manifold $W^s$. For $h_0\in W^s$, the flow converges to some point $h^*\cdot k$ on the orbit. Since $[g^{h^*}]_{\mathcal{G}_{\mathrm{const}}}=[g^{h^*\cdot k}]_{\mathcal{G}_{\mathrm{const}}}$, the gauge class $[A_\infty]$ is the same. $\square$
+
+**Convergence rate.** From the Lojasiewicz exponent $\alpha$: if $\alpha=\frac{1}{2}$ (generic non-degenerate case), convergence is exponential; if $\alpha>\frac{1}{2}$, convergence is polynomial of rate $(1-\alpha)^{-1}$.

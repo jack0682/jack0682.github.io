@@ -1,0 +1,136 @@
+---
+title: "Relational Field"
+slug: ch03-relational-field
+part: 1
+chapter: 3
+section: "Chapter 3"
+summary: "Gauge group and action on relational fields, scalar invariants, holonomy and discrete curvature, and the completeness of invariants in the connected case."
+tags: [foundations, gauge-theory, curvature, holonomy]
+---
+
+
+> **Prerequisites**: Chapter 2 (Relation).
+
+---
+
+## 3.1 Raw Relational Field
+
+> **Definition 3.1** (Raw relational field).
+> The **raw relational field** at time $t$ is the triple:
+> $$\mathcal{W}_t^{\mathrm{raw}} := (V,\;w_t,\;g_t)$$
+> - $V$: finite node set ($n:=|V|$),
+> - $w_t:V\times V\to\mathbb{R}_{\ge0}$: weight function,
+> - $g_t:V\times V\to G$: transit function.
+
+This is the "coordinate-fixed" collection of all relations.
+
+---
+
+## 3.2 Gauge Symmetry
+
+### Motivation
+
+The same relational structure can look different in different coordinate systems. A gauge transformation is a change of viewpoint, not a change of physics.
+
+Each node $i$ carries a local frame. Re-framing by $h(i)\in G$ at every node transforms the transit $g_t(i,j)$ into $h(i)\,g_t(i,j)\,h(j)^{-1}$, while the scalar weight is unaffected.
+
+### Definitions
+
+> **Definition 3.2** (Gauge group).
+> $$\mathcal{G} := G^V = \{h:V\to G\}.$$
+> Pointwise multiplication: $(h_1\cdot h_2)(i):=h_1(i)\cdot h_2(i)$.
+>
+> Since $G$ is compact and $V$ is finite, $\mathcal{G}=G^n$ is compact (Fact B.2).
+
+> **Definition 3.3** (Gauge action).
+> For $h\in\mathcal{G}$:
+> $$g_t^h(i,j) := h(i)\,g_t(i,j)\,h(j)^{-1}, \qquad w_t^h(i,j) := w_t(i,j).$$
+> Transits transform; weights are invariant.
+
+---
+
+## 3.3 Properties of the Gauge Action
+
+> **Lemma 3.4** (Group action).
+> The action of $\mathcal{G}$ on raw relational fields is a valid group action:
+>
+> (i) $g_t^e = g_t$.
+>
+> (ii) $(g_t^{h_1})^{h_2} = g_t^{h_2\cdot h_1}$ (right action).
+
+*Proof.*
+(i) $g_t^e(i,j)=e\,g_t(i,j)\,e^{-1}=g_t(i,j)$.
+
+(ii) $(g_t^{h_1})^{h_2}(i,j) = h_2(i)\,[h_1(i)\,g_t(i,j)\,h_1(j)^{-1}]\,h_2(j)^{-1} = (h_2\cdot h_1)(i)\,g_t(i,j)\,(h_2\cdot h_1)(j)^{-1} = g_t^{h_2\cdot h_1}(i,j)$.
+
+Note: this is a right action. To get a left action, set $h\cdot g := g^{h^{-1}}$. $\square$
+
+> **Lemma 3.5** (Scalar invariants).
+> Under gauge transformation:
+>
+> (i) $W_t^h(i,j) = W_t(i,j)$, (ii) $d_t^h(i)=d_t(i)$.
+
+*Proof.* Since $w_t^h=w_t$, we have $W_t^h=W_t$. Degree is a sum of $W_t$. $\square$
+
+---
+
+## 3.4 Relational Field
+
+> **Definition 3.6** (Relational field).
+> The **relational field** at time $t$:
+> $$\mathcal{W}_t := [\mathcal{W}_t^{\mathrm{raw}}]_{\mathcal{G}} = \bigl\{(V,w_t,g_t^h) : h\in\mathcal{G}\bigr\}.$$
+> The gauge orbit---the equivalence class of all raw fields connected by gauge transformation.
+
+> **Proposition 3.7** (Equivalence relation).
+> $\mathcal{W}^{\mathrm{raw}}\sim\mathcal{W}'^{\mathrm{raw}} \iff \exists\,h\in\mathcal{G}: g'=g^h$ and $w'=w$ is an equivalence relation.
+
+*Proof.* Reflexivity ($h=e$), symmetry ($h\mapsto h^{-1}$), transitivity ($h_1,h_2\mapsto h_2\cdot h_1$). $\square$
+
+---
+
+## 3.5 Invariants of the Relational Field
+
+> **Proposition 3.8** (Classification of invariants).
+>
+> **Scalar invariants** (fully invariant):
+> - (i) $w_t(i,j)$, $W_t(i,j)$, $d_t(i)$---all weight- and degree-related quantities.
+>
+> **Conjugacy-class invariants**:
+> - (ii) For a closed loop $\gamma=(i_0,i_1,\ldots,i_k,i_0)$, the **holonomy**
+>   $$\mathrm{Hol}_t(\gamma) := g_t(i_0,i_1)\,g_t(i_1,i_2)\cdots g_t(i_k,i_0)\in G$$
+>   has gauge-invariant conjugacy class $[\mathrm{Hol}_t(\gamma)]_{\mathrm{conj}}$.
+
+*Proof.* (i) Lemma 3.5. (ii) Under gauge $h$, the telescoping product gives $\mathrm{Hol}_t^h(\gamma) = h(i_0)\,\mathrm{Hol}_t(\gamma)\,h(i_0)^{-1}$. The conjugacy class is therefore invariant. $\square$
+
+---
+
+## 3.6 Discrete Curvature
+
+> **Corollary 3.9** (Discrete curvature).
+> For a triangle $\triangle=(i,j,k)$:
+> $$\Omega_t(\triangle) := g_t(i,j)\,g_t(j,k)\,g_t(k,i)\in G$$
+> is the length-3 holonomy. Its conjugacy class is gauge-invariant.
+>
+> **Scalar curvature**: for bi-invariant distance $d_G$,
+> $$\omega_t(\triangle) := d_G\bigl(\Omega_t(\triangle),e\bigr)^2$$
+> is fully gauge-invariant.
+
+*Proof.* $\Omega_t^h = h(i)\,\Omega_t\,h(i)^{-1}$. Bi-invariance: $d_G(h\Omega h^{-1},e) = d_G(\Omega,e)$. $\square$
+
+**Interpretation.**
+- $\Omega_t(\triangle)=e$: the triangle is *flat*---three transits are perfectly compatible.
+- $\Omega_t(\triangle)\ne e$: non-zero curvature---a twist or inconsistency in the transits.
+- $\omega_t(\triangle)$ is the discrete analogue of $\|F_A\|^2$ in Yang--Mills theory.
+
+---
+
+## 3.7 Completeness of Invariants
+
+> **Proposition 3.10** (Completeness---connected case).
+> If $(V,E_t)$ is connected, the relational field $\mathcal{W}_t$ is uniquely determined (up to gauge) by:
+>
+> (i) all edge weights $\{w_t(i,j)\}$,
+>
+> (ii) the holonomies of fundamental loops with respect to a fixed spanning tree $T\subset E_t$.
+
+*Proof sketch.* Fix a root $i_0\in V$. The unique $T$-path from $i_0$ to each node $i$ determines a gauge $h$ that trivialises all tree edges ($g^h|_T=e$). The residual transits on non-tree edges are then determined by the fundamental-loop holonomies. This gauge fixing is unique up to a global constant $k\in G$, so the conjugacy classes of holonomies determine $\mathcal{W}_t$. $\square$

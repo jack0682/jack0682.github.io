@@ -1,0 +1,174 @@
+---
+title: "Part II · Main Theorems A–H (summary)"
+slug: summary
+part: 2
+chapter: 9
+section: "Chapter 9"
+summary: "A condensed statement of the eight main theorems of RelationWorld Theory with one-paragraph proof ideas and their logical dependencies. Full proofs live in the research archive."
+tags: [theorems, cheeger, metastability, gauge-theory, yang-mills-flow]
+---
+
+Part II of the book collects the **complete proofs** of the eight
+theorems that pin down the behaviour of fruits, doors, and the
+optimal gauge under perturbation and flow. The proofs themselves
+involve spectral-graph techniques (Cheeger, Sinclair–Jerrum),
+Łojasiewicz convergence, and a discrete harmonic-map analysis; the
+full text lives in the research archive. This page collects the
+statements and one-paragraph proof ideas.
+
+## The eight theorems at a glance
+
+| Thm | Name | Statement (informal) |
+|---|---|---|
+| **A** | Energy isolation | Internal edge-energy of a fruit is at least $(1-\theta)$ of its total volume. |
+| **B** | Finiteness of doors | $\|\Sigma_\tau(F)\| \le \theta \cdot \mathrm{vol}(F) / \tau$. |
+| **C** | Self-interpretation | The door set and residual energy are determined by the fruit's intrinsic data alone (Axiom A5). |
+| **D** | Metastability | Expected escape time from a fruit under the lazy walk is at least $1 / (2\theta)$. |
+| **E** | Curvature localisation | Residual curvature decays exponentially from doors; for general $G$, deep-interior energy is a contraction of the near-door energy. |
+| **F** | Spectral stability | Small weight perturbations produce bounded conductance changes; strong fruits persist. |
+| **G** | Door stability | Doors with margin above $\|V\| \cdot \|\delta W\|_\infty$ are stable; only a thin boundary layer of candidates can change. |
+| **H** | Flow stability | The Yang–Mills gradient flow converges to a stable equilibrium; convergence is exponential at non-degenerate minima. |
+
+## Logical dependencies
+
+```
+              ┌─────────────┐
+              │  Theorem A  │  Energy isolation
+              └──────┬──────┘
+         ┌──────────┼─────────────┬──────────────┐
+         ▼          ▼             ▼              ▼
+    Thm B,C      Thm D         Thm F          (Ch 7)
+   (Doors)   (Metastability) (Stability)         │
+         │                                       ▼
+         ▼                                   Thm H
+    Thm E + G                            (Flow stability)
+```
+
+A is the foundation. B, C, D, F are first-tier consequences.
+E and G require the sequential protocol and perturbation analysis
+introduced in Ch 6. H stands somewhat apart, drawing on compactness
+and Łojasiewicz rather than the other theorems.
+
+---
+
+## Theorem A — Energy Isolation
+
+<Theorem kind="theorem" number="A" name="Energy isolation">
+For any fruit $F \in \mathfrak{F}_t$,
+$$
+\frac{\sum_{i, j \in F} W_t(i, j)}{\mathrm{vol}_t(F)} \;\ge\; 1 - \theta.
+$$
+</Theorem>
+
+**Proof idea.** The volume decomposes as $\mathrm{vol}_t(F) = \sum_{i,j \in F} W_t(i,j) + \mathrm{cut}_t(F, \bar F)$. Under the fruit condition (F2) $\phi_t(F) \le \theta$, so $\mathrm{cut}_t(F, \bar F) \le \theta \cdot \mathrm{vol}_t(F)$. Rearranging gives the bound. Equality holds at the threshold and at volume balance.
+
+---
+
+## Theorem B — Finiteness of Doors
+
+<Theorem kind="theorem" number="B" name="Finiteness of doors">
+For fruit $F$ with door threshold $\tau > 0$:
+$$|\Sigma_\tau(F, t)| \;\le\; \frac{\theta \cdot \mathrm{vol}_t(F)}{\tau},
+\qquad
+\sum_{p \in \Sigma} e_p \;\le\; \theta \cdot \mathrm{vol}_t(F).
+$$
+</Theorem>
+
+**Proof idea.** $\tau \cdot |\Sigma_\tau|$ is bounded by the sum of door boundary values, which is in turn bounded by $\mathrm{cut}_t(F, \bar F) \le \theta \cdot \mathrm{vol}_t(F)$. The second inequality follows by the same argument applied to $\sum e_p$.
+
+---
+
+## Theorem C — Self-Interpretation
+
+<Theorem kind="theorem" number="C" name="Self-interpretation">
+Under Axiom A5, $\Sigma_\tau(F, t)$ and $\mathbf{e}(F, t)$ are determined
+by the intrinsic data $\mathcal{D}(F, t)$ alone.
+</Theorem>
+
+**Proof idea.** The door measure $b_{F, t}(i) = d_t(i) - \sum_{j \in F} W_t(i, j)$ uses only quantities available from inside $F$: the degree sum $d_t(i)$ and the internal weights. The door set is a level set of $b$; its energies are $e_p = b_{F, t}(p)$. No exterior information is required.
+
+---
+
+## Theorem D — Metastability
+
+<Theorem kind="theorem" number="D" name="Metastability">
+Let $F \in \mathfrak{F}_t$ and $X_0 \sim \pi_F$. The escape time under
+the lazy walk $\tilde P_t$ satisfies
+$$
+\mathbb{E}\bigl[T_{\mathrm{esc}}(F)\bigr] \;\ge\; \frac{1}{2 \theta}.
+$$
+</Theorem>
+
+**Proof idea.** Define the restricted sub-stochastic chain on $F$ and show that its conductance $\Phi_F \le \phi_t(F) \le \theta$. The Sinclair–Jerrum bound gives a spectral-gap estimate $\tilde\gamma_F \le \theta$; Aldous–Fill's hitting-time inequality then yields $\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}] \ge 1 / (2 \tilde\gamma_F)$. The bound is tight up to constants (barbell graph).
+
+---
+
+## Theorem E — Curvature Localisation
+
+<Theorem kind="theorem" number="E" name="Curvature localisation">
+Under the optimal gauge $h^*$, the residual curvature concentrates
+near doors: for $G = U(1)$ there exist $C, \beta > 0$ with
+$$
+\rho_{F^\circ}(i) \;\le\; C \, e^{-\beta \, d_{\mathrm{graph}}(i, \Sigma)} \sum_{p \in \Sigma} e_p.
+$$
+For general compact $G$, the deep-interior energy fraction is a strict
+contraction of the near-door energy.
+</Theorem>
+
+**Proof idea.** For $U(1)$, the optimal gauge solves a linear system $L \varphi^* = -B \, \mathrm{diag}(W) \, \alpha$; the residuals lie in the projection onto the cycle space, whose source terms sit near the doors. The discrete Green's function on a graph with spectral gap $\lambda_2$ decays as $e^{-\sqrt{\lambda_2} \, d}$ (Chung–Yau), giving the stated exponential localisation with $\beta = \sqrt{\lambda_2(F^\circ)}$. For general $G$, a discrete harmonic-map and maximum-principle argument on $F_{\mathrm{deep}}$ gives the contraction.
+
+---
+
+## Theorem F — Spectral Stability
+
+<Theorem kind="theorem" number="F" name="Spectral stability">
+If $\|\delta W\|_\infty := \max_{i, j} |W'_t(i, j) - W_t(i, j)|$, then
+$$
+|\phi'_t(F) - \phi_t(F)| \;\le\; \frac{C_1 \|\delta W\|_\infty |V|^2}{\mathrm{vol}_t(F)},
+\qquad C_1 = 2(1 + \theta) \le 4.
+$$
+In particular, a fruit with margin $\phi_t(F) \le \theta - \varepsilon$
+persists as long as $\|\delta W\|_\infty < \varepsilon \cdot \mathrm{vol}_t(F) / (C_1 |V|^2)$.
+</Theorem>
+
+**Proof idea.** Perturbation of numerator (cut) and denominator (volume) of $\phi = \mathrm{cut} / \mathrm{vol}$ are each bounded by $|V|^2 \|\delta W\|_\infty$. A direct quotient-rule estimate yields the stated linear bound in $\|\delta W\|_\infty$ with explicit constant $C_1$.
+
+---
+
+## Theorem G — Door Stability
+
+<Theorem kind="theorem" number="G" name="Door stability">
+Under a perturbation of size $\varepsilon = |V| \cdot \|\delta W\|_\infty$,
+$|b' - b| \le \varepsilon$, so doors with margin strictly above $\varepsilon$
+are stable; only an $\varepsilon$-thin boundary layer of door candidates
+can change status.
+</Theorem>
+
+**Proof idea.** Both degree and internal-weight terms of $b_{F, t}$ are linear in $W$; the perturbation inherits a $|V| \cdot \|\delta W\|_\infty$ bound directly. Doors with values away from the threshold therefore remain doors.
+
+---
+
+## Theorem H — Flow Stability
+
+<Theorem kind="theorem" number="H" name="Flow stability">
+If $h^*$ is a non-degenerate local minimum of $\mathcal{E}_{F^\circ}$,
+the gradient flow $\dot h_s = -\mathrm{grad} \, \mathcal{E}(h_s)$
+converges to $h^* \cdot \mathcal{G}_{\mathrm{const}}$, and $[A_\infty]$
+is a stable fixed point. When the Łojasiewicz exponent at $h^*$ is
+$\alpha = 1/2$, convergence is exponential:
+$$
+d\bigl(h_s,\; h^* \cdot \mathcal{G}_{\mathrm{const}}\bigr) \;\le\; C_0 \, e^{-\gamma s},
+$$
+with $\gamma$ set by the Hessian of $\mathcal{E}$ at $h^*$.
+</Theorem>
+
+**Proof idea.** Four ingredients: (i) $\mathcal{E}$ is real-analytic on the compact manifold $G^{F^\circ}$; (ii) the flow exists globally by compactness; (iii) the Łojasiewicz inequality applies, giving finite arc-length and hence convergence (Simon, 1983); (iv) at a non-degenerate minimum the Hessian's smallest eigenvalue $\lambda_{\min}$ governs the rate, yielding the exponential bound with $\gamma = \lambda_{\min} / 2$ after a Grönwall argument.
+
+---
+
+## Related reading
+
+- [Part I · Chapter 9 dependency context](/notes/part-1/ch04-fruit/) — Theorem A is introduced here.
+- [Part I · Chapter 6](/notes/part-1/ch06-door/) — setup for Theorems B, C, G.
+- [Part I · Chapter 7](/notes/part-1/ch07-existence/) — optimal gauge for Theorems E, H.
+- Full proofs and the worked Part II examples (5-node, 10-node, $SU(2)$ sketch) remain in the research archive and will be surfaced as chapters are cleaned for public reading.

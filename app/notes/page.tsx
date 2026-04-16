@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 };
 
 const partTitles: Record<number, string> = {
-  0: "Part 0 · Pre-ontology",
-  1: "Part I · Foundations",
-  2: "Part II · Theorems",
+  0: "Part 0 · Soft Cognitive Cohesion (canonical spec)",
+  1: "Part I · Foundations of RelationWorld",
+  2: "Part II · Main theorems",
   3: "Part III · Cohomology",
   4: "Part IV · Dynamics",
   5: "Part V · Applications",

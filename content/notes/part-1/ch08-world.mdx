@@ -1,0 +1,130 @@
+---
+title: "World"
+slug: ch08-world
+part: 1
+chapter: 8
+section: "Chapter 8"
+summary: "The world as a three-layer hierarchy of relational fields, fruits with existence triples, and their inter-fruit connectivity. Theorem F (Spectral Stability) closes Part I."
+tags: [foundations, world, hierarchy, spectral-stability]
+---
+
+
+> **Prerequisites**: Chapter 7 (Existence).
+
+---
+
+## 8.1 Definition of the World
+
+> **Definition 8.1** (Instantaneous world).
+> $$\boxed{\mathfrak{W}_t := \bigl(\mathcal{W}_t,\;\mathfrak{F}_t,\;\Sigma_t\bigr)}$$
+> - $\mathcal{W}_t$: the relational field (Definition 3.6) --- the **substrate**.
+> - $\mathfrak{F}_t$: the fruit set (Definition 4.6) --- the **cohesion layer**.
+> - $\Sigma_t:\mathfrak{F}_t\to\mathcal{P}(V)$: the door function $F\mapsto\Sigma_\tau(F,t)$ --- the **connection layer**.
+
+> **Definition 8.2** (Full world).
+> $$\boxed{\mathfrak{W} := \{\mathfrak{W}_t\}_{t\in\mathbb{T}}.}$$
+
+> **Definition 8.3** (Existence functor).
+> $$\mathrm{Ex}_t:\mathfrak{F}_t\to\bigsqcup_{F\in\mathfrak{F}_t}\mathcal{M}(F,\Sigma_t(F)),\qquad \mathrm{Ex}_t(F):=\mathrm{Existence}(F,t).$$
+
+---
+
+## 8.2 Three-Layer Structure
+
+> **Theorem 8.4** (Decomposition of the world).
+>
+> **Layer 1 (Substrate)**: $\mathcal{W}_t$ --- the relational field.
+>
+> **Layer 2 (Cohesion)**: $\mathfrak{F}_t$ --- the fruit set.
+>
+> **Layer 3 (Connection)**: $\Sigma_t$ --- the door function.
+>
+> Determination is sequential: $\mathcal{W}_t\Rightarrow\mathfrak{F}_t\Rightarrow\Sigma_t$.
+
+*Proof.*
+- $\mathcal{W}_t$: the gauge class of the raw data.
+- $\mathfrak{F}_t$: determined by the scalar invariants $W_t,d_t$ of $\mathcal{W}_t$ (Definition 4.5 uses only $\phi_t$ and $\mathrm{vol}_t$).
+- $\Sigma_t(F)$: determined by each $F\in\mathfrak{F}_t$ together with $\mathcal{D}(F,t)$ (Theorem C).
+
+The dependency is $\mathcal{W}_t\to\mathfrak{F}_t\to\Sigma_t$, with no backward dependencies. $\square$
+
+---
+
+## 8.3 Gauge Invariance of the World
+
+> **Theorem 8.5** (Gauge invariance).
+>
+> (i) $\mathcal{W}_t$ is a gauge class by definition.
+>
+> (ii) $\mathfrak{F}_t$ is gauge-invariant (Proposition 4.7(ii)).
+>
+> (iii) $\Sigma_t(F)$ is gauge-invariant (Theorem G).
+>
+> Therefore $\mathfrak{W}_t$ does not depend on the choice of gauge representative.
+
+---
+
+## 8.4 Spectral Stability (Theorem F)
+
+> **Theorem F** (Spectral stability).
+> Let $\|\delta W\|_\infty:=\max_{i,j}|W'_t(i,j)-W_t(i,j)|$.
+>
+> (i) $|\phi'_t(F)-\phi_t(F)|\le C_1\cdot\|\delta W\|_\infty\cdot|V|^2/\mathrm{vol}_t(F)$.
+>
+> (ii) If $\phi_t(F)\le\theta-\epsilon$, then $F\in\mathfrak{F}'_t$ provided $\|\delta W\|_\infty<\delta_0(\epsilon,F)$.
+
+*Proof.*
+
+**(i)** Track the perturbation of numerator and denominator separately.
+
+$$|\Delta_{\mathrm{cut}}| = \Bigl|\sum_{i\in F}\sum_{j\notin F}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|\bar F|\cdot\|\delta W\|_\infty.$$
+
+$$|\Delta_{\mathrm{vol}}| = \Bigl|\sum_{i\in F}\sum_{j\in V}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|V|\cdot\|\delta W\|_\infty.$$
+
+The fractional perturbation of $\phi_t(F)=\mathrm{cut}/\mathrm{vol}$:
+$$\phi'_t(F)-\phi_t(F) = \frac{\mathrm{cut}'\cdot\mathrm{vol}-\mathrm{cut}\cdot\mathrm{vol}'}{\mathrm{vol}'\cdot\mathrm{vol}}.$$
+
+The numerator is bounded by $\|\delta W\|_\infty\cdot|V|^2\cdot C\cdot\mathrm{vol}_t(F)$. The denominator $\ge\mathrm{vol}_t(F)^2/2$ for small perturbations.
+
+Hence $|\phi'-\phi|\le C_1\cdot\|\delta W\|_\infty\cdot|V|^2/\mathrm{vol}_t(F)$, where:
+$$C_1 = \frac{2(1+\theta)}{1}\le 4.$$
+
+**(ii)** Set $\delta_0:=\epsilon\cdot\mathrm{vol}_t(F)/(C_1\cdot|V|^2)$. Then $|\phi'-\phi|<\epsilon$, so $\phi'_t(F)<\theta$. The volume condition $\mathrm{vol}_t(F)\le\frac{1}{2}\mathrm{vol}_t(V)$ is preserved similarly. $\square$
+
+**Explicit constant.** $C_1\le 4$ suffices in all cases. For fruits with $\phi_t(F)\ll\theta$, the stability margin $\epsilon=\theta-\phi_t(F)$ is large.
+
+---
+
+## 8.5 Reading the World
+
+The complete procedure for interpreting a world:
+
+1. **Observe** the raw data $(V,w_t,g_t)$ (gauge-dependent representation).
+2. **Identify fruits**: compute $W_t,d_t$, then $\phi_t(S)$ for candidate subsets; collect $\mathfrak{F}_t$.
+3. **Detect doors**: for each $F\in\mathfrak{F}_t$, compute $b_{F,t}(i)$ and determine $\Sigma_\tau(F,t)$.
+4. **Extract existence**: on $F^\circ=F\setminus\Sigma$, minimise $\mathcal{E}_{F^\circ}(h)$ and record $[A_\infty]$.
+5. **Record**: $\mathrm{Existence}(F,t)=([A_\infty],\Sigma,\mathbf{e})$.
+
+**Key point**: the world is unchanged throughout this process. The interpreter observes and records; interpretation does not alter the world (Principle V).
+
+---
+
+## 8.6 Discrete--Continuous Correspondence
+
+| Discrete (this theory) | Continuous (differential geometry / gauge theory) |
+|------------------------|--------------------------------------------------|
+| Finite set $V$ | Manifold $M$ |
+| Symmetric weight $W_t(i,j)$ | Riemannian metric $g_{\mu\nu}$ |
+| Edge group element $g_t(i,j)\in G$ | Connection $A$ on a principal $G$-bundle |
+| Gauge group $\mathcal{G}=G^V$ | Gauge transformation group |
+| Triangle holonomy $\Omega_t(\triangle)$ | Curvature $F_A$ |
+| Conductance $\phi_t(F)$ | Cheeger constant $h(M)$ |
+| Fruit $F$ | Metastable sub-manifold |
+| Door $\Sigma$ | Uhlenbeck singular set |
+| Door energy $e_p$ | Bubble energy |
+| Canonical connection $[A_\infty]$ | Limit connection (gauge class) |
+| Flattening energy $\mathcal{E}_{F^\circ}$ | Yang--Mills energy $\int\|F_A\|^2$ |
+| Existence $([A_\infty],\Sigma,\mathbf{e})$ | Point in Uhlenbeck compactification |
+| World $\mathfrak{W}_t$ | Manifold + connection + matter fields |
+
+A detailed dictionary is given in Appendix C.

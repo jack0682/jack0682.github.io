@@ -1,0 +1,97 @@
+---
+title: "Relation"
+slug: ch02-relation
+part: 1
+chapter: 2
+section: "Chapter 2"
+summary: "The fundamental unit of RelationWorld — a relation tuple (i, j, w, g) carrying scalar intensity and group-valued transit, with symmetrised weight, degree, and their basic properties."
+tags: [foundations, relation, gauge-theory]
+---
+
+
+> **Prerequisites**: Appendix B (compact Lie groups, bi-invariant metric).
+
+---
+
+## 2.1 Axiomatic Definition
+
+### Motivation
+
+In this theory, a **relation** is the most fundamental unit of the world. Nodes (individuals) are secondary; they acquire meaning only as endpoints of relations.
+
+Every relation has two aspects:
+- **Scalar intensity**: how strong the relation is (a non-negative real number).
+- **Group-valued transit**: what kind of transformation the relation carries (an element of a compact Lie group $G$).
+
+### Definition
+
+> **Definition 2.1** (Relation).
+> Over a finite set $V$, a **relation** at time $t\in\mathbb{T}$ is a tuple
+> $$(i,\,j,\,w_t(i,j),\,g_t(i,j))$$
+> where:
+> - $i,j\in V$: source and target nodes,
+> - $w_t(i,j)\in\mathbb{R}_{\ge0}$: **relation weight** (scalar, non-negative),
+> - $g_t(i,j)\in G$: **relation transit** (parallel transport from $i$ to $j$).
+
+**Physical interpretation.**
+- $w_t(i,j)$: confidence, capacity, or influence of the relation from $i$ to $j$.
+- $g_t(i,j)$: a "translation rule" for comparing the internal states of $i$ and $j$.
+
+**Geometric interpretation.**
+$g_t(i,j)$ is a discrete analogue of parallel transport in differential geometry. Discretising a connection on a vector bundle assigns a group element to each edge---exactly the structure captured here.
+
+---
+
+## 2.2 Conventions
+
+> **Convention 2.2** (No self-relation).
+> $$w_t(i,i) = 0,\qquad g_t(i,i) = e.$$
+> Self-reference is excluded from the scope of relations.
+
+*Rationale.* Allowing self-loops creates unnecessary complications in the conductance definition and is conceptually unnatural: a relation is inherently "between two".
+
+> **Convention 2.3** (Asymmetry).
+> In general:
+> $$w_t(i,j)\neq w_t(j,i),\qquad g_t(i,j)\neq g_t(j,i)^{-1}.$$
+> Relations are directed; the $i\to j$ relation is independent of the $j\to i$ relation.
+
+*Remark.* When $g_t(i,j)=g_t(j,i)^{-1}$, we say the relation is **compatible** (traversing $i\to j\to i$ returns to the identity). This is not assumed in general.
+
+---
+
+## 2.3 Symmetrised Weight
+
+From the asymmetric weights we extract a direction-free scalar intensity.
+
+> **Definition 2.4** (Symmetric weight).
+> $$W_t(i,j) := \tfrac{1}{2}\bigl(w_t(i,j)+w_t(j,i)\bigr).$$
+> **Properties**: $W_t(i,j)=W_t(j,i)\ge0$ and $W_t(i,i)=0$.
+
+*Motivation.* Graph-theoretic quantities (conductance, volume, cut) are defined via $W_t$. While $w_t$ preserves directional information, the topological structure---which nodes cluster together---is determined by $W_t$ alone.
+
+> **Definition 2.5** (Degree).
+> $$d_t(i) := \sum_{j\in V}W_t(i,j).$$
+> The total relational capacity of node $i$ with respect to the entire set $V$.
+
+> **Proposition 2.6** (Basic properties of degree).
+>
+> (i) $d_t(i)\ge0$; equality iff $i$ is completely isolated.
+>
+> (ii) $\sum_{i\in V}d_t(i) = 2\sum_{i<j}W_t(i,j)$ (double counting).
+>
+> (iii) $d_t(i)$ is a **global** quantity: it requires summation over all of $V\setminus\{i\}$.
+
+*Proof.* (i) Sum of non-negative reals. (ii) Symmetry of $W_t$. (iii) By definition. $\square$
+
+**Key observation** (foreshadowing Chapter 6): $d_t(i)$ cannot be computed from a subset $F\ni i$ alone. Whether to include $d_t(i)$ in the "intrinsic data" of a fruit is the central modelling choice of Chapter 6.
+
+---
+
+## 2.4 Categorical Perspective (Remark)
+
+The data $(V,w_t,g_t)$ can be viewed categorically:
+- Nodes of $V$ are objects.
+- Positive-weight relations $(i,j)$ are morphisms.
+- Transits $g_t(i,j)$ are $G$-valued labels on morphisms.
+
+This makes the relational field a finite version of a $G$-enriched weighted directed graph. Since no composition rule is postulated, it is not a category in the strict sense.

@@ -1,0 +1,87 @@
+---
+title: "Stem"
+slug: ch05-stem
+part: 1
+chapter: 5
+section: "Chapter 5"
+summary: "The connective tissue between fruits. Stem region, bridge edges, and the no-boundary principle that prevents the exterior from being defined explicitly."
+tags: [foundations, stem, no-boundary-principle]
+---
+
+
+> **Prerequisites**: Chapter 4 (Fruit).
+
+---
+
+## 5.1 Definitions
+
+If a fruit is a "strongly cohesive cluster", then the stem is the weak connective tissue between fruits.
+
+> **Definition 5.1** (Fruit union).
+> $$\mathcal{F}_t^{\cup} := \bigcup_{F\in\mathfrak{F}_t} F.$$
+
+> **Definition 5.2** (Stem region).
+> $$\mathcal{S}_t := V\setminus\mathcal{F}_t^{\cup}.$$
+> Nodes that belong to no fruit.
+
+> **Definition 5.3** (Bridge edge).
+> $$E_t^{\mathrm{bridge}} := \bigl\{(i,j)\in E_t : \nexists\,F\in\mathfrak{F}_t\text{ with }i,j\in F\bigr\}.$$
+> Edges whose endpoints do not co-occur in any single fruit.
+
+> **Definition 5.4** (Stem).
+> $$\mathrm{Stem}_t := \bigl(\mathcal{S}_t\cup\partial_t^{\mathrm{bridge}},\;E_t^{\mathrm{bridge}}\bigr)$$
+> where $\partial_t^{\mathrm{bridge}}:=\{i\in V:\exists\,(i,j)\in E_t^{\mathrm{bridge}}\}$.
+
+---
+
+## 5.2 Properties
+
+> **Proposition 5.5** (Characterisation of stem nodes).
+> If $i\in\mathcal{S}_t$, then no subset of $V$ containing $i$ simultaneously satisfies conditions (F1) and (F2) of Definition 4.5.
+
+A stem node is one that is "not strongly bound to any cluster". This can happen because:
+1. Its relations are spread evenly across multiple fruits, or
+2. There is no cohesive structure around it at all.
+
+> **Proposition 5.6** (Weakness of stem connections).
+> For any fruit $F\in\mathfrak{F}_t$:
+> $$\sum_{i\in F}\sum_{j\in\mathcal{S}_t}W_t(i,j) \;\le\; \mathrm{cut}_t(F,\bar F) \;\le\; \theta\cdot\mathrm{vol}_t(F).$$
+
+*Proof.* The left-hand side is a partial sum of $\mathrm{cut}_t(F,\bar F)$ (restricting the outer sum to $j\in\mathcal{S}_t$). The right-hand inequality follows from $\phi_t(F)\le\theta$ and condition (F1). $\square$
+
+**Interpretation.** The total relation leaking from a fruit to the stem is at most a fraction $\theta$ of the fruit's volume. For $\theta=0.05$, less than 5% leaks out.
+
+---
+
+## 5.3 The No-Boundary Principle
+
+This is a central philosophical choice of the theory.
+
+> **Principle 5.7** (No-boundary principle).
+> In the mathematical description of a fruit, the stem (exterior) is **never modelled explicitly**. The exterior's existence and properties are detected only through interior *traces* (doors).
+
+### Why not boundary conditions?
+
+Modelling the stem explicitly would require:
+1. Arbitrary assumptions about the stem's relational structure.
+2. Forced boundary conditions at the fruit--stem interface.
+3. Inevitable arbitrariness from "inventing the exterior".
+
+The alternative (Uhlenbeck approach):
+1. Do not define the exterior.
+2. Detect it only through singularities (doors) inside the fruit.
+3. Singularities emerge naturally as energy-concentration points, not as imposed boundary data.
+
+This is the subject of Chapter 6.
+
+---
+
+## 5.4 Classification of Stem Components (Remark)
+
+The stem can be subdivided:
+
+- **Type A (inter-fruit bridges)**: edges connecting distinct fruits $F_1$ and $F_2$.
+- **Type B (fruit--stem filaments)**: edges between a fruit $F$ and the stem region $\mathcal{S}_t$.
+- **Type C (pure stem)**: edges internal to $\mathcal{S}_t$.
+
+By the no-boundary principle, all three types are treated as "exterior" from the perspective of any individual fruit.

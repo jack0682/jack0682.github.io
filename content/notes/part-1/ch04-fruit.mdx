@@ -1,0 +1,216 @@
+---
+title: "Fruit"
+slug: ch04-fruit
+part: 1
+chapter: 4
+section: "Chapter 4"
+summary: "Low-conductance clusters as the basic unit of cohesive existence. Cheeger conductance, the fruit definition with threshold θ, and Theorems A (Energy Isolation) and D (Metastability)."
+tags: [foundations, fruit, conductance, cheeger, metastability]
+---
+
+
+> **Prerequisites**: Chapter 3 (Relational Field).
+
+---
+
+## 4.1 Induced Weighted Graph
+
+The scalar part $W_t$ of the relational field defines a weighted graph. The definition of a fruit depends only on this graph (it is gauge-independent).
+
+> **Definition 4.1** (Induced weighted graph).
+> $$\mathcal{G}_t := (V,\,E_t,\,W_t)$$
+> where $E_t:=\{(i,j):W_t(i,j)>0,\;i\ne j\}$.
+
+---
+
+## 4.2 Volume, Cut, Conductance
+
+> **Definition 4.2** (Graph quantities).
+> For non-empty $S\subset V$:
+>
+> - **Volume**: $\displaystyle\mathrm{vol}_t(S):=\sum_{i\in S}d_t(i)=\sum_{i\in S}\sum_{j\in V}W_t(i,j).$
+>
+> - **Cut**: $\displaystyle\mathrm{cut}_t(S,\bar S):=\sum_{i\in S}\sum_{j\in V\setminus S}W_t(i,j).$
+>
+> - **Conductance** (Cheeger ratio): $\displaystyle\phi_t(S):=\frac{\mathrm{cut}_t(S,\bar S)}{\min\{\mathrm{vol}_t(S),\,\mathrm{vol}_t(\bar S)\}}.$
+
+---
+
+## 4.3 Properties of Conductance
+
+> **Lemma 4.3** (Basic properties).
+>
+> (i) **Symmetry**: $\phi_t(S)=\phi_t(\bar S)$.
+>
+> (ii) **Non-negativity**: $\phi_t(S)\ge0$; equality iff $S$ is an isolated component.
+>
+> (iii) **Upper bound**: $\phi_t(S)\le1$.
+>
+> (iv) **Gauge invariance**: $\phi_t^h(S)=\phi_t(S)$ for all $h\in\mathcal{G}$.
+
+*Proof.*
+(i) $\mathrm{cut}_t(S,\bar S)=\mathrm{cut}_t(\bar S,S)$ by symmetry of $W_t$; the $\min$ in the denominator is symmetric.
+
+(ii) The numerator is a sum of non-negative terms; it vanishes iff $W_t(i,j)=0$ for all $i\in S,\,j\notin S$.
+
+(iii) Volume decomposition: $\mathrm{vol}_t(S)=\sum_{i\in S}\sum_{j\in S}W_t(i,j)+\mathrm{cut}_t(S,\bar S)$, so $\mathrm{cut}_t(S,\bar S)\le\mathrm{vol}_t(S)$; similarly for $\bar S$.
+
+(iv) By Lemma 3.5, $W_t$ and $d_t$ are gauge-invariant, hence so is $\phi_t$. $\square$
+
+---
+
+## 4.4 Definition of a Fruit
+
+> **Axiom 4.4** (Fruit threshold).
+> Fix a constant $\theta\in(0,1)$, the "cohesion standard".
+>
+> Smaller $\theta$ demands stronger cohesion:
+> - $\theta=0.01$: only strongly cohesive fruits.
+> - $\theta=0.5$: even weakly cohesive sets count.
+
+> **Definition 4.5** (Fruit).
+> $F\subset V$ is a **fruit** at time $t$ if:
+>
+> **(F1)** Non-trivial minority: $0<\mathrm{vol}_t(F)\le\tfrac{1}{2}\mathrm{vol}_t(V)$.
+>
+> **(F2)** Low conductance: $\phi_t(F)\le\theta$.
+
+> **Definition 4.6** (Fruit set).
+> $$\mathfrak{F}_t := \{F\subset V : F\text{ is a fruit at time }t\}.$$
+
+---
+
+## 4.5 Basic Properties of Fruits
+
+> **Proposition 4.7** (Properties).
+>
+> (i) $|\mathfrak{F}_t|\le 2^n$ (finite).
+>
+> (ii) $\mathfrak{F}_t$ is gauge-invariant (Lemma 4.3(iv)).
+>
+> (iii) $V\notin\mathfrak{F}_t$, $\emptyset\notin\mathfrak{F}_t$ (by (F1)).
+>
+> (iv) Fruits may overlap: $F_1\cap F_2\ne\emptyset$ is possible.
+>
+> (v) $F\in\mathfrak{F}_t$ does not imply $\bar F\in\mathfrak{F}_t$.
+
+*Proof.* (i)--(iii) immediate. (iv) Consider three dense clusters with pairwise overlap. (v) If $\mathrm{vol}_t(\bar F)>\frac{1}{2}\mathrm{vol}_t(V)$, then $\bar F$ violates (F1). $\square$
+
+---
+
+## 4.6 Connectivity of Fruits
+
+> **Definition 4.8** (Minimal fruit).
+> A fruit $F$ is **minimal** if no proper non-empty subset of $F$ is itself a fruit.
+
+> **Lemma 4.9** (Connectivity of minimal fruits). *[Corrected]*
+> Every minimal fruit is connected in the induced subgraph $\mathcal{G}_t[F]$.
+
+*Proof.*
+Suppose $F$ is a minimal fruit and $F=F_1\sqcup F_2$ is a non-trivial partition with no edges between $F_1$ and $F_2$ inside $F$. We derive a contradiction.
+
+**Step 1.** Since there are no internal edges between $F_1$ and $F_2$:
+$$\mathrm{cut}_t(F,\bar F) = \mathrm{cut}_t(F_1,\bar F) + \mathrm{cut}_t(F_2,\bar F)$$
+and in particular, for each component $F_k$ ($k=1,2$):
+$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,V\setminus F_k) = \mathrm{cut}_t(F_k,\bar F) + 0$$
+(the zero comes from no $F_1$--$F_2$ edges). So:
+$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,\bar F).$$
+
+**Step 2 (Both components satisfy (F2)).** We show that *both* $F_1$ and $F_2$ satisfy the energy ratio condition (F2). From Theorem A (energy isolation), the internal energy of $F$ satisfies:
+$$\sum_{i,j\in F}W_t(i,j)\ge(1-\theta)\,\mathrm{vol}_t(F).$$
+Since $F_1$ and $F_2$ are disconnected within $F$, the internal energy of $F$ decomposes exactly:
+$$\sum_{i,j\in F}W_t(i,j) = \sum_{i,j\in F_1}W_t(i,j) + \sum_{i,j\in F_2}W_t(i,j).$$
+The volume likewise decomposes: $\mathrm{vol}_t(F) = \mathrm{vol}_t(F_1) + \mathrm{vol}_t(F_2)$. We claim that for *each* $k\in\{1,2\}$:
+$$\frac{\sum_{i,j\in F_k}W_t(i,j)}{\mathrm{vol}_t(F_k)} \ge (1-\theta).$$
+Indeed, suppose for contradiction that one component, say $F_1$, has ratio $<(1-\theta)$. Then:
+$$\sum_{i,j\in F}W_t(i,j) < (1-\theta)\,\mathrm{vol}_t(F_1) + \mathrm{vol}_t(F_2) \le (1-\theta)\,\mathrm{vol}_t(F),$$
+where the last inequality uses $\sum_{i,j\in F_2}W_t(i,j)\le\mathrm{vol}_t(F_2)$. This contradicts Theorem A. So both components satisfy (F2), giving for each $k$:
+$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{vol}_t(F_k)-\sum_{i,j\in F_k}W_t(i,j) \le \theta\cdot\mathrm{vol}_t(F_k).$$
+
+**Step 3 (At least one component satisfies (F1)).** Since $\mathrm{vol}_t(F)=\mathrm{vol}_t(F_1)+\mathrm{vol}_t(F_2)$ and both volumes are positive, at least one component---say $F_1$---satisfies $\mathrm{vol}_t(F_1)\le\frac{1}{2}\mathrm{vol}_t(F)\le\frac{1}{2}\mathrm{vol}_t(V)$, which is condition (F1).
+
+**Conclusion.** By Step 2, $F_1$ satisfies (F2). By Step 3, $F_1$ satisfies (F1). Therefore:
+$$\phi_t(F_1)=\frac{\mathrm{cut}_t(F_1,\bar{F_1})}{\mathrm{vol}_t(F_1)}\le\theta.$$
+So $F_1$ is a fruit---contradicting the minimality of $F$. $\square$
+
+> **Corollary 4.10** (Connectivity of general fruits).
+> Every fruit contains a connected sub-fruit. In particular, every "meaningful" (minimal) fruit is connected.
+
+*Proof.* Any fruit either is minimal (hence connected by Lemma 4.9) or contains a proper sub-fruit. Iterating produces a minimal sub-fruit, which is connected. $\square$
+
+---
+
+## 4.7 Spectral Characterisation
+
+> **Definition 4.11** (Normalised Laplacian).
+> $$\mathcal{L}_t := I - D_t^{-1/2}\,A_t\,D_t^{-1/2}$$
+> where $D_t=\mathrm{diag}(d_t(i))$ and $(A_t)_{ij}=W_t(i,j)$.
+> Eigenvalues: $0=\lambda_1\le\lambda_2\le\cdots\le\lambda_n$.
+
+### Discrete Cheeger Inequality
+
+> **Theorem 4.12** (Discrete Cheeger inequality; Fact B.3).
+> For the Cheeger constant $h_t:=\min_{\emptyset\ne S\subsetneq V}\phi_t(S)$:
+> $$\frac{\lambda_2}{2}\;\le\;h_t\;\le\;\sqrt{2\lambda_2}.$$
+
+*Proof sketch.*
+
+**Lower bound** ($\lambda_2\le 2h_t$). Use the variational characterisation of $\lambda_2$ and test with the normalised indicator of any set $S$:
+$$f_S(i)=\begin{cases}\sqrt{\mathrm{vol}_t(\bar S)/\mathrm{vol}_t(V)}&i\in S,\\-\sqrt{\mathrm{vol}_t(S)/\mathrm{vol}_t(V)}&i\notin S.\end{cases}$$
+Then $f_S\perp D_t^{1/2}\mathbf{1}$ and the Rayleigh quotient satisfies $R(f_S)\le 2\phi_t(S)$.
+
+**Upper bound** ($h_t\le\sqrt{2\lambda_2}$). Sweep the level sets of the second eigenvector $f_2$ and apply the discrete coarea inequality (Alon--Milman). $\square$
+
+### Spectral Approximation
+
+> **Corollary 4.13** (Spectral signature of fruits).
+> If a fruit $F$ exists with $\phi_t(F)\le\theta$, then $\lambda_k\le 2\theta$ for some $k$, and the normalised indicator of $F$ is approximated to $O(\theta)$ accuracy by a linear combination of the first $k$ eigenvectors.
+
+*Proof sketch.* The Rayleigh quotient of $F$'s indicator is $\le 2\theta$. By min-max, $\lambda_k\le 2\theta$ for some $k$. Davis--Kahan's $\sin\Theta$ theorem (Fact B.4) bounds the angle. $\square$
+
+---
+
+## 4.8 Energy Isolation (Theorem A)
+
+> **Theorem A** (Energy isolation).
+> For any fruit $F\in\mathfrak{F}_t$:
+> $$\frac{\sum_{i,j\in F}W_t(i,j)}{\mathrm{vol}_t(F)}\;\ge\;1-\theta.$$
+
+*Proof.*
+
+**Step 1.** Volume decomposition:
+$$\mathrm{vol}_t(F)=\sum_{i,j\in F}W_t(i,j)+\mathrm{cut}_t(F,\bar F).$$
+
+**Step 2.** By (F2), $\phi_t(F)\le\theta$. By (F1), $\mathrm{vol}_t(F)=\min\{\mathrm{vol}_t(F),\mathrm{vol}_t(\bar F)\}$. Thus:
+$$\mathrm{cut}_t(F,\bar F)=\phi_t(F)\cdot\mathrm{vol}_t(F)\le\theta\cdot\mathrm{vol}_t(F).$$
+
+**Step 3.** $\displaystyle\sum_{i,j\in F}W_t(i,j)=\mathrm{vol}_t(F)-\mathrm{cut}_t(F,\bar F)\ge(1-\theta)\,\mathrm{vol}_t(F)$. Divide by $\mathrm{vol}_t(F)>0$. $\square$
+
+**Sharpness.** Equality holds when $\phi_t(F)=\theta$ and $\mathrm{vol}_t(F)=\frac{1}{2}\mathrm{vol}_t(V)$.
+
+---
+
+## 4.9 Metastability (Theorem D)
+
+> **Definition 4.14** (Random walk).
+> Transition matrix: $P_t(i,j):=W_t(i,j)/d_t(i)$.
+> Lazy version: $\tilde P_t:=\frac{1}{2}(I+P_t)$.
+
+> **Theorem D** (Metastability).
+> Let $X_0\sim\pi_F$ (the stationary distribution restricted to $F$). The escape time from $F$ under $\tilde P_t$ satisfies:
+> $$\mathbb{E}[T_{\mathrm{esc}}(F)]\;\ge\;\frac{1}{2\theta}.$$
+
+*Proof.*
+
+**Step 1.** Define the restricted sub-stochastic matrix $P_F(i,j):=W_t(i,j)/d_t(i)$ for $i,j\in F$ (zero otherwise). Row sums are $1-r_{F,t}(i)<1$ (leakage). The lazy version is $\tilde P_F:=\frac{1}{2}(I|_F+P_F)$.
+
+**Step 2.** Let $\Phi_F$ denote the conductance of $\tilde P_F$ viewed as a chain on $F$ with absorbing boundary. By the Sinclair--Jerrum bound (Fact B.6), the spectral gap satisfies $\gamma_F\le 2\Phi_F$.
+
+**Step 3.** The internal conductance $\Phi_F$ is bounded by the external conductance: $\Phi_F\le\phi_t(F)\le\theta$. This is because any internal cut $S\subsetneq F$ either has the same cut value as a cut of $V$ (contributing to $\phi_t(F)$), or the absorbing boundary provides additional "leakage" but does not reduce conductance.
+
+**Step 4.** For the lazy chain, the spectral gap is $\tilde\gamma_F=\gamma_F/2\le\theta$.
+
+**Step 5.** The expected absorption time (escape time) from the stationary distribution satisfies the standard bound (see Levin--Peres--Wilmer, Theorem 12.4):
+$$\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}]\;\ge\;\frac{1}{2\tilde\gamma_F}\;\ge\;\frac{1}{2\theta}.\qquad\square$$
+
+**Interpretation.** A random walk starting inside a fruit remains trapped for $\Omega(1/\theta)$ steps. For $\theta=0.05$, the expected escape time is at least 10 steps.

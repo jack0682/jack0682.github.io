@@ -1,0 +1,159 @@
+---
+title: "Door"
+slug: ch06-door
+part: 1
+chapter: 6
+section: "Chapter 6"
+summary: "Internal singularities arising from anomalous external contact, detectable only within the fruit interior. The intrinsic data axiom A5, door definitions, and Theorems B, C, G."
+tags: [foundations, door, singularity, intrinsic-data]
+---
+
+
+> **Prerequisites**: Chapter 5 (Stem), Chapter 4 (Fruit).
+
+---
+
+## 6.1 The Intrinsic Data Axiom
+
+For a fruit to "interpret itself", we must first specify which data is intrinsic.
+
+### The core problem
+
+The degree $d_t(i)=\sum_{j\in V}W_t(i,j)$ is a **global sum**. The internal weights $\{W_t(i,j)\}_{i,j\in F}$ alone do not determine $d_t(i)$.
+
+However, including $d_t(i)$ in the intrinsic data enables internal computation of external coupling.
+
+> **Axiom 6.1** (Intrinsic data axiom).
+> The **intrinsic data** of a fruit $F\in\mathfrak{F}_t$ is:
+> $$\mathcal{D}(F,t) := \bigl(\{W_t(i,j)\}_{i,j\in F},\;\{g_t(i,j)\}_{i,j\in F},\;\{d_t(i)\}_{i\in F}\bigr).$$
+
+**Justification.**
+1. *Physical*: $d_t(i)$ is the total relational capacity of $i$, observable by $i$ itself.
+2. *Probabilistic*: $d_t(i)$ is the normalisation constant for the random walk at $i$; if $i$ observes its own transition probabilities, it knows $d_t(i)$.
+3. *Information-theoretic*: excluding $d_t(i)$ makes door detection impossible, breaking the theory's self-consistency.
+
+---
+
+## 6.2 Internal Computation of External Coupling
+
+> **Lemma 6.2** (Boundary coupling from intrinsic data).
+> Under Axiom 6.1, the total external coupling:
+> $$b_{F,t}(i) := d_t(i) - \sum_{j\in F}W_t(i,j) = \sum_{j\notin F}W_t(i,j)$$
+> is a function of $\mathcal{D}(F,t)$.
+
+*Proof.* $b_{F,t}(i) = d_t(i) - \sum_{j\in F}W_t(i,j)$. The first term is the third component of $\mathcal{D}$; the second is computed from the first component. No information about any $j\notin F$ is needed. $\square$
+
+> **Definition 6.3** (Leakage rate).
+> $$r_{F,t}(i) := \frac{b_{F,t}(i)}{d_t(i)} = 1 - \frac{\sum_{j\in F}W_t(i,j)}{d_t(i)}\;\in[0,1].$$
+> $r=0$: all relations internal. $r=1$: all relations external.
+
+---
+
+## 6.3 Fruit Boundary
+
+> **Definition 6.4** (Fruit boundary).
+> $$\partial_V F := \{i\in F : b_{F,t}(i)>0\}.$$
+
+**Properties**: $\partial_V F\subset F$; $F\setminus\partial_V F$ consists of fully internal nodes; $\partial_V F$ is gauge-invariant.
+
+---
+
+## 6.4 Door Definition (Energy-Based)
+
+> **Axiom 6.5** (Door threshold). Fix $\tau>0$.
+
+> **Definition 6.6** (Door---energy-based).
+> $$\boxed{\Sigma_\tau(F,t) := \{i\in\partial_V F : b_{F,t}(i)\ge\tau\}.}$$
+> Boundary nodes with external coupling at or above threshold $\tau$.
+
+**Interpretation.** A door is a "hole in the wall" of the fruit. Not every boundary node is a door: weak leakage ($b<\tau$) is ignored; only strong leakage ($b\ge\tau$) is recorded as a singularity.
+
+This parallels Uhlenbeck compactness, where only energy concentrations exceeding a quantum $\epsilon_0$ are recorded as singular points.
+
+---
+
+## 6.5 Main Door Theorems (Theorems B, C)
+
+> **Theorem B** (Finiteness of doors and energy concentration).
+>
+> (i) $|\Sigma_\tau(F,t)|\le\theta\cdot\mathrm{vol}_t(F)/\tau$.
+>
+> (ii) $\sum_{p\in\Sigma}e_p\le\theta\cdot\mathrm{vol}_t(F)$.
+>
+> (iii) $|\Sigma_\tau|/|F|\le\theta\cdot d_{\max}(F,t)/\tau$.
+
+*Proof.*
+
+**(i)** Each $i\in\Sigma_\tau$ has $b_{F,t}(i)\ge\tau$, so:
+$$\tau\cdot|\Sigma_\tau|\le\sum_{i\in\Sigma_\tau}b_{F,t}(i)\le\sum_{i\in F}b_{F,t}(i)=\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F).$$
+
+**(ii)** $\sum_{p\in\Sigma}e_p=\sum_{p\in\Sigma}b_{F,t}(p)\le\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**(iii)** Use $\mathrm{vol}_t(F)\le|F|\cdot d_{\max}(F,t)$ in (i). $\square$
+
+> **Theorem C** (Self-interpretation).
+> Under Axiom 6.1, $\Sigma_\tau(F,t)$ and $\mathbf{e}(F,t)$ are determined by $\mathcal{D}(F,t)$ alone. No information about the exterior is needed.
+
+*Proof.* $b_{F,t}(i)$ is a function of $\mathcal{D}(F,t)$ (Lemma 6.2). $\Sigma_\tau$ is a level set of $b_{F,t}$. $e_p=b_{F,t}(p)$. All computed from $\mathcal{D}$. $\square$
+
+**Philosophical significance.**
+> An existence can *read the traces left by the exterior without knowing what the exterior is*. This is the mathematical realisation of "self-interpretation".
+
+---
+
+## 6.6 Door Definition (Holonomy-Based)---Alternative
+
+A second door detection method using gauge structure.
+
+> **Definition 6.7** (Boundary-traversing loops).
+> $$\mathcal{L}_\partial(F):=\{(i,j,k):i,k\in F,\;j\notin F,\;W_t(i,j)>0,\;W_t(j,k)>0\}.$$
+
+> **Definition 6.8** (Holonomy door energy).
+> $$\varepsilon^{\mathrm{hol}}_{F,t}(i):=\sum_{(i,j,k)\in\mathcal{L}_\partial(F)}W_t(i,j)\,W_t(j,k)\;\omega_t(i,j,k)$$
+> where $\omega_t(i,j,k)=d_G(\Omega_t(i,j,k),e)^2$.
+
+> **Proposition 6.9** (Gauge invariance of holonomy door energy).
+> $\varepsilon^{\mathrm{hol}}_{F,t}(i)$ is gauge-invariant.
+
+*Proof.* $W_t$ is invariant (Lemma 3.5). $\omega_t$ is invariant (Corollary 3.9). Their product and sum are invariant. $\square$
+
+### Comparison of the Two Definitions
+
+| Property | $\Sigma_\tau$ (energy) | $\Sigma^{\mathrm{hol}}_\tau$ (holonomy) |
+|----------|----------------------|---------------------------------------|
+| Gauge invariant | Yes | Yes |
+| Needs only intrinsic data | Yes (Axiom 6.1) | No ($j\notin F$ info needed) |
+| What it measures | "How much leaks out" | "How much curvature twists" |
+| Computational cost | Low | Higher (triangle enumeration) |
+
+**Conclusion.** With Axiom 6.1, the **energy-based door is the primary definition**. The holonomy-based door provides complementary curvature information.
+
+---
+
+## 6.7 Door Energy Vector
+
+> **Definition 6.10** (Door energy vector).
+> $$\mathbf{e}(F,t):=\{e_p\}_{p\in\Sigma_\tau(F,t)},\qquad e_p:=b_{F,t}(p).$$
+
+> **Proposition 6.11** (Energy bound).
+> $\sum_{p\in\Sigma}e_p\le\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+---
+
+## 6.8 Perturbation Stability of Doors (Theorem G)
+
+> **Theorem G** (Door perturbation stability).
+> Let $\|\delta W\|_\infty:=\max_{i,j}|W_t'(i,j)-W_t(i,j)|$ be small. Then:
+>
+> (i) $|b'_{F,t}(i)-b_{F,t}(i)|\le|V|\cdot\|\delta W\|_\infty$ for all $i\in F$.
+>
+> (ii) If $b_{F,t}(i)\ge\tau+\epsilon$, then $i\in\Sigma'$ (door persists).
+>
+> (iii) If $b_{F,t}(i)\le\tau-\epsilon$, then $i\notin\Sigma'$ (non-door persists).
+>
+> (iv) Only nodes with $b_{F,t}(i)\in[\tau-\epsilon,\tau+\epsilon]$ may change status, where $\epsilon:=|V|\cdot\|\delta W\|_\infty$.
+
+*Proof.*
+(i) $b'(i)=d'_t(i)-\sum_{j\in F}W'_t(i,j)$. We have $|d'_t(i)-d_t(i)|\le|V|\cdot\|\delta W\|_\infty$ and $|\sum_{j\in F}(W'_t-W_t)(i,j)|\le|F|\cdot\|\delta W\|_\infty$. These partially cancel in the difference, giving $|b'-b|\le|V|\cdot\|\delta W\|_\infty$.
+
+(ii)--(iv) follow from (i) with $\epsilon=|V|\cdot\|\delta W\|_\infty$. $\square$
