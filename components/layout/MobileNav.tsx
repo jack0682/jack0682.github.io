@@ -58,34 +58,41 @@ export function MobileNav({ items }: { items: Item[] }) {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            key="mobile-nav-root"
+          <div
             id="mobile-nav"
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
             className="fixed inset-0 z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
           >
-            {/* backdrop */}
+            {/* backdrop — independently animated, no backdrop-filter so
+                it doesn't create a stacking context that bleeds into
+                the panel */}
             <motion.button
+              key="mobile-nav-backdrop"
               aria-label="Close navigation menu"
               onClick={() => setOpen(false)}
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/55"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
             />
 
-            {/* sliding panel */}
+            {/* sliding panel — explicit z-index, opaque surface colour
+                via inline style so it is guaranteed independent of any
+                CSS-variable resolution weirdness from Tailwind v4's
+                arbitrary-value syntax */}
             <motion.aside
+              key="mobile-nav-panel"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                color: "var(--color-ink)",
+              }}
               className={cn(
-                "absolute right-0 top-0 flex h-full w-[min(22rem,85vw)] flex-col",
-                "bg-[var(--color-bg)] shadow-[0_0_40px_rgba(0,0,0,0.15)]",
+                "absolute right-0 top-0 z-10 flex h-full w-[min(22rem,85vw)] flex-col",
+                "border-l border-[var(--color-rule)]",
+                "shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.25)]",
                 "pt-[max(1.25rem,env(safe-area-inset-top))]",
                 "pb-[max(1.25rem,env(safe-area-inset-bottom))]",
                 "pl-7 pr-6",
@@ -141,7 +148,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                 <ThemeToggle />
               </div>
             </motion.aside>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
