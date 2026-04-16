@@ -1,26 +1,54 @@
 ---
-title: "Ontology Neural Networks and the ORTSF Framework: Topological Reasoning for Delay-Robust Control"
+title: "Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"
 slug: onn-ortsf-2026
 authors: ["Jaehong Oh"]
-venue: "Preprint"
+venue: "International Journal of Topology (MDPI)"
 year: 2026
-status: preprint
-date: 2026-03-01
-abstract: "We introduce the Ontology Neural Network (ONN), a learning architecture whose latent state inherits the type structure of a target ontology, and accompany it with the ORTSF framework — a family of predicate-binding operators that remain robust under communication delay. Together they suggest a tight coupling between the topology of learned representations and the stability of the closed-loop systems they drive."
-tags: [onn, ortsf, control, cohomology]
+status: accepted
+date: 2026-04-03
+pdf: "/papers/onn-ortsf-2026.pdf"
+abstract: "We introduce the Ontology Neural Network (ONN), a learning architecture whose latent state inherits the type structure of a target ontology, and accompany it with the ORTSF (Ontology-Resolved Topological State Feedback) framework — a family of predicate-binding operators that remain robust under communication delay. Together they suggest a tight coupling between the topology of learned representations and the stability of the closed-loop systems they drive, and we formalise that coupling with cohomological invariants that serve simultaneously as representational and control-theoretic quantities."
+tags: [onn, ortsf, control, cohomology, topology, delay-robust]
 ---
 
-## Abstract
+## Publication status
 
-We introduce the **Ontology Neural Network (ONN)**, a learning architecture
-whose latent state inherits the type structure of a target ontology, and
-accompany it with the **ORTSF** framework — a family of predicate-binding
-operators that remain robust under communication delay.
+The manuscript was accepted to the *International Journal of Topology*
+(MDPI, ISSN 2813-9542) on **3 April 2026** under submission ID
+`ijt-4083673`. The final camera-ready version is being prepared; the
+abstract above mirrors the submitted text.
 
-## Why this matters
+## At a glance
 
 Most perception-for-control pipelines treat representation learning and
-controller synthesis as separate problems. We argue that the topology of
-the representation space is itself a control-theoretic object, and that
-recognising this lets us state delay-robustness guarantees in terms of
-cohomological invariants of the learned ontology.
+controller synthesis as separate problems. The central claim here is
+that the **topology of the representation space is itself a
+control-theoretic object**: recognising this lets us state
+delay-robustness guarantees in terms of cohomological invariants of the
+learned ontology, and lets us build controllers — the **ORTSF**
+operators — that exploit precisely that structure.
+
+## Contributions
+
+- **ONN architecture.** A neural model whose internal state is a typed
+  object carrying the structure of a target ontology rather than a flat
+  vector. Training preserves the type algebra by construction.
+- **ORTSF operators.** A family of predicate-binding gates that compose
+  typed features under communication and sensing delay, with provable
+  stability bounds stated in cohomological terms.
+- **Representational cohomology.** A correspondence between the learned
+  ontology's cohomology and classical control-theoretic Lyapunov
+  certificates, making the two languages interoperable.
+- **Empirical validation.** Benchmarks against transformer baselines on
+  topologically-conditioned constraint-satisfaction tasks, and a
+  delay-robustness study on a manipulation platform.
+
+## Where this sits in the broader programme
+
+This paper is the first formal statement of the ONN + ORTSF framework.
+It sits downstream of the RelationWorld mathematical foundations
+(see [the notes](/notes/)) and upstream of the cognitive-robotics work
+on collaborative manipulation. Related recent manuscripts include
+*Constructive Lyapunov Functions via Topology-Preserving Neural
+Networks* and *Advanced Topology-Preserving Neural Networks*, both
+listed in the [papers index](/papers/).

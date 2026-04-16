@@ -44,6 +44,26 @@ export default function Home() {
             Read the journal
           </Link>
         </div>
+
+        {/* accepted badge — quietly announces the latest acceptance */}
+        <Link
+          href="/papers/onn-ortsf-2026/"
+          className="group mt-16 flex max-w-[36rem] items-start gap-4 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+        >
+          <span className="mt-[3px] font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
+            Recently accepted
+          </span>
+          <span className="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
+            <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+              Ontology Neural Network and ORTSF
+            </span>
+            {" — "}
+            <em className="text-[var(--color-muted)]">
+              Int. J. Topol.
+            </em>
+            , April 2026.
+          </span>
+        </Link>
       </section>
 
       {/* recent writing */}
