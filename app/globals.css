@@ -6,6 +6,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Dark mode is driven by a `.dark` class on <html> (next-themes).
+   Tailwind v4 lets us redefine the dark variant to match that class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ── Design tokens (light / warm paper) ───────────────────────── */
 :root {
   --color-bg: #faf8f5;
@@ -22,20 +26,22 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --measure: 68ch;
+
+  color-scheme: light;
 }
 
-/* ── Dark ─────────────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0e0c0a;
-    --color-surface: #171411;
-    --color-ink: #ede7db;
-    --color-muted: #8a8278;
-    --color-subtle: #5c564d;
-    --color-accent: #e8a07a;
-    --color-accent-soft: #c67a5c;
-    --color-rule: #2a241e;
-  }
+/* ── Dark (manual via .dark class) ────────────────────────────── */
+:root.dark {
+  --color-bg: #0e0c0a;
+  --color-surface: #171411;
+  --color-ink: #ede7db;
+  --color-muted: #8a8278;
+  --color-subtle: #5c564d;
+  --color-accent: #e8a07a;
+  --color-accent-soft: #c67a5c;
+  --color-rule: #2a241e;
+
+  color-scheme: dark;
 }
 
 /* ── Tailwind v4 @theme bridge ─ exposes tokens as utilities ─── */
@@ -95,4 +101,9 @@ hr {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* prevent layout shift on theme switch */
+html {
+  transition: background-color 250ms ease, color 250ms ease;
 }

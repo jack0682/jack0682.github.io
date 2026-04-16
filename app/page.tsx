@@ -1,36 +1,16 @@
 import Link from "next/link";
+import { Container } from "@/components/layout/Container";
 
 /**
- * Landing page — typography-first hero.
- * Intentionally minimal in features and maximal in type care, so we can
- * lock in the design language before building out routes.
+ * Landing page — typography-first hero + a temporary type specimen
+ * section used to QA the design language. The specimen will be
+ * replaced by a "Recent writing" module in P4.
  */
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-[72rem] flex-1 flex-col px-6 py-20 sm:px-10 md:py-32">
-      {/* top rail */}
-      <header className="flex items-center justify-between text-sm font-medium tracking-wide text-[var(--color-muted)]">
-        <span className="font-display text-base text-[var(--color-ink)]">
-          Jaehong&nbsp;Oh
-        </span>
-        <nav className="flex gap-8">
-          <Link href="/research/" className="hover:text-[var(--color-accent)]">
-            Research
-          </Link>
-          <Link href="/papers/" className="hover:text-[var(--color-accent)]">
-            Papers
-          </Link>
-          <Link href="/journal/" className="hover:text-[var(--color-accent)]">
-            Journal
-          </Link>
-          <Link href="/about/" className="hover:text-[var(--color-accent)]">
-            About
-          </Link>
-        </nav>
-      </header>
-
+    <Container width="wide">
       {/* hero */}
-      <section className="mt-28 md:mt-40 max-w-[48rem]">
+      <section className="mt-20 max-w-[48rem] md:mt-32">
         <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-accent)]">
           Research · 2026 —
         </p>
@@ -53,7 +33,7 @@ export default function Home() {
         <div className="mt-12 flex flex-wrap gap-5 text-sm font-medium">
           <Link
             href="/research/"
-            className="inline-flex items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]"
+            className="inline-flex items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             Enter the research →
           </Link>
@@ -101,11 +81,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="mt-32 flex items-center justify-between border-t border-[var(--color-rule)] pt-8 text-xs text-[var(--color-subtle)]">
-        <span>© {new Date().getFullYear()} Jaehong Oh</span>
-        <span className="font-mono">jack0682.github.io</span>
-      </footer>
-    </main>
+    </Container>
   );
 }

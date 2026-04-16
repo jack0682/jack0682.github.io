@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
-// Display serif — Fraunces variable, for hero & headings
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { Masthead } from "@/components/layout/Masthead";
+import { Footer } from "@/components/layout/Footer";
+
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -10,7 +13,6 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-// Body sans — Inter variable, for UI & body text
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -47,8 +49,12 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
-        {children}
+      <body className="flex min-h-full flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
+        <ThemeProvider>
+          <Masthead />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
