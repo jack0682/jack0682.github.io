@@ -33,41 +33,6 @@ This document captures the state of the Ontology Neural Network (ONN) and LOGOS 
 
 ## I. REPOSITORY STRUCTURE POST-CLEANUP
 
-### Root-Level Organization
-
-```plaintext
-/Users/ojaehong/ONN_folder/
-├── src/                    # Core implementation (preserved, active)
-│   ├── onn/               # ONN package
-│   │   ├── core/          # Tensors, projections, semantics
-│   │   ├── ops/           # LOGOS solver, CSA pipeline
-│   │   ├── eval/          # Gates, evaluation
-│   │   ├── topo/          # Topology analysis
-│   │   ├── es/            # Evolution strategy
-│   │   └── monitoring/    # Drift guard, quantiles, gates, loggers
-│   └── ...
-├── tests/                  # Test suites (preserved, active)
-│   ├── unit/              # 87 unit test modules
-│   ├── integration/       # Integration tests
-│   └── smoke/             # Sanity checks
-├── Archive/               # Consolidated artifacts (NEW, Phase 3)
-│   ├── 00_SNAPSHOTS/      # Safety snapshots, inventory, audit trails
-│   ├── 01_CONTRACTS_AND_RECONCILIATION/  # Specs, validation contracts
-│   ├── 02_BENCHMARKS/     # Experiment results (scaling, daily, evidence)
-│   ├── 03_TEST_EVIDENCE/  # Test logs, CI gates, sabotage evidence
-│   ├── 04_REPORTS_AND_SUMMARIES/  # Phase completions, deployment status
-│   ├── 05_CI_WORKFLOWS/   # CI configuration (onn-qa-gate.yml)
-│   ├── 06_THEORY_NOTES/   # Lemma sketches, proof routes (to populate)
-│   ├── 08_RESEARCH_LOGS/  # Daily markdown logs 2026-02-16+
-│   └── 99_QUARANTINE/     # Uncertain/legacy items (TBD)
-├── result_Huge/           # Daily research hub
-│   ├── daily/             # Research logs (also in Archive/08_RESEARCH_LOGS)
-│   ├── paper/             # Paper structure (sections, bib)
-│   └── Daily_pdf/         # PDF versions
-├── .github/workflows/     # CI definitions (onn-qa-gate.yml)
-├── docs/                  # Documentation (THIS FILE HERE)
-└── [scripts/, data/, results/, etc.]
-```
 
 ### Archive Subdirectory Details
 
