@@ -156,8 +156,8 @@ Given a topological constraint graph G with ONN dynamics T = T_proj ∘ T_consen
 | Family | Parametrization | Status | Implementation |
 |--------|-----------------|--------|---|
 | CE-1a | Fiber coupling λ_cross ∈ [0, 1] | TESTABLE | test_fiber_coupling_diagnostic.py |
-| CE-1b | Scale-dependent bounds, \|V\| ∈ &#123;'&#123;'&#125;1K, 10K, 100K&#125; | TESTED (59 runs, 100% pass) | test_core_tensors.py |
-| CE-3a | Dense random graphs p ∈ &#123;'&#123;'&#125;0.1, 0.3, 0.5, 0.7, 0.9&#125; | TESTABLE | tests/unit/*dense* |
+| CE-1b | Scale-dependent bounds, $\|V\| \in \{1\text{K}, 10\text{K}, 100\text{K}\}$ | TESTED (59 runs, 100% pass) | test_core_tensors.py |
+| CE-3a | Dense random graphs $p \in \{0.1, 0.3, 0.5, 0.7, 0.9\}$ | TESTABLE | tests/unit/*dense* |
 | CE-3b | Heterogeneous weights + clustering | TESTABLE | test_curvature_moff_harness.py |
 
 ### Proof Routes (Multiple Paths per Target)
@@ -206,7 +206,7 @@ Given a topological constraint graph G with ONN dynamics T = T_proj ∘ T_consen
 | F2 | Real delay-jitter logs violate gate by >5% | Recalibrate κ_off |
 | F3 | Constructor alias regression re-introduces mismatch | Emergency schema lock |
 | F4 | Drift detector triggers spuriously on stable regime (>1% FP rate) | Recalibrate δ_KL |
-| F5 | Quantile transfer fails across regime shift (coverage <90%) | Switch to conformal |
+| F5 | Quantile transfer fails across regime shift (coverage &lt; 90%) | Switch to conformal |
 
 ---
 
@@ -249,8 +249,8 @@ Given a topological constraint graph G with ONN dynamics T = T_proj ∘ T_consen
 - [ ] Drift detector (A3') calibrated for deployment regime
 - [ ] Quantile envelope (A4') validated on 50+ representative samples
 - [ ] Delay amplification envelope (Γ̂) measured for target system
-- [ ] False-accept rate audit complete (<0.5% threshold)
-- [ ] False-reject rate audit complete (<2% threshold)
+- [ ] False-accept rate audit complete (&lt; 0.5% threshold)
+- [ ] False-reject rate audit complete (&lt; 2% threshold)
 - [ ] Monitor lag verified < instability onset time − 10-step margin
 - [ ] Operator manual written with guard rails and fallback policies
 

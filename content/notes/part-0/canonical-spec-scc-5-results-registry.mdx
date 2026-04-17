@@ -1,0 +1,342 @@
+---
+title: "SCC Canonical Spec — Part 5: Proved Results Registry & Closing Notes"
+slug: canonical-spec-scc-5-results-registry
+part: 0
+chapter: 0
+section: "Canonical Specification · Part 5"
+kind: essay
+track: perception
+updated: 2026-04-12
+summary: "Sections 13–15 of the SCC v2.1 canonical specification: the proved results registry (49 formal claims, 35 Category A + 4 Category B + 5 Category C + 5 retracted), the consolidated commitment notes (CN1–CN14), and the closing summary."
+tags: [scc, canonical-spec, theorems, commitments, registry]
+related: [canonical-spec-scc, canonical-spec-scc-4-interpretation]
+---
+
+> **Part 5 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
+
+---
+
+## 13. Proved Results Registry
+
+*(Erratum 2026-04-07: §13 counts corrected to 35A/4B/5C/5R per honest recount of 04-06 deep audit. Previous counts (43A/2B/3C/0R) overcounted due to: empirical fits treated as proofs, merge path manifold error, quantitative claims bundled with qualitative theorems. See docs/04-06/HONEST-RECOUNT.md.)*
+
+The following theorems have been rigorously proved through Iterations 1–12 and audited 2026-04-06. They are listed with precise statements, proof methods, and known caveats. **Totals: 35 Category A, 4 Category B, 5 Category C, 5 Retracted (49 claims, 71% fully proved).**
+
+### Category A: Fully Proved (35 theorems)
+
+**T1. Energy Minimizer Existence.**
+On the constraint manifold $\Sigma_m = \{u \in [0,1]^n : \sum u_i = m\}$, the energy $\mathcal{E}_t$ attains its minimum.
+*Proof:* Extreme value theorem on compact set. *(R5.)*
+
+**T6a. Closure Fixed Point Existence.**
+The sigmoid closure $\mathrm{Cl}_t$ on $[0,1]^n$ has at least one fixed point.
+*Proof:* Brouwer fixed-point theorem ($\mathrm{Cl}_t$ maps $[0,1]^n$ to itself continuously). *(R4.)*
+
+**T6b. Closure Fixed Point Uniqueness (Contraction Regime).**
+When $a_{\mathrm{cl}} < 4$, the sigmoid closure has a unique fixed point, and iterates converge geometrically at rate $a_{\mathrm{cl}}/4$.
+*Proof:* Banach contraction mapping theorem; Lipschitz constant $\leq a_{\mathrm{cl}}/4 < 1$. *(R4.)*
+
+**T20. Axiom Consistency (Parameter Admissibility).**
+The sigmoid closure satisfies A1' (conditional extensivity with threshold $c^* = \sigma(a_{\mathrm{cl}}(c^* - \tau_{\mathrm{cl}}))$), A2 (monotonicity, unconditional), A3 (contraction when $a_{\mathrm{cl}} < 4$), A4 (continuity, unconditional). The original A1 and A3 are incompatible; A1' resolves the tension.
+*Proof:* Direct computation. A1' from the sign of $g(u) = \sigma(a_{\mathrm{cl}}(u - \tau)) - u$ on $[0, c^*]$. A2 from monotonicity of $\sigma$ and $P_t$. A3 from $\max \sigma' = 1/4$. A1 failure from $\sigma^{-1}(0.9)/z > 4$. *(R4.)*
+
+**T-A2. Monotonicity of Sigmoid Closure.**
+$u \leq v$ pointwise $\implies \mathrm{Cl}_t(u) \leq \mathrm{Cl}_t(v)$ pointwise, for any parameters.
+*Proof:* $P_t$ preserves ordering; $\sigma$ is monotone. *(R4.)*
+
+**T8-Core. Non-Trivial Minimizer Existence (Phase Transition).**
+Let $X_t$ be a finite connected graph with Fiedler eigenvalue $\lambda_2 > 0$, $m = cn$ with $c \in \left(\frac{3-\sqrt{3}}{6}, \frac{3+\sqrt{3}}{6}\right)$, and let $W(u) = u^2(1-u)^2$ be the double-well potential. If $\beta/\alpha > 4\lambda_2/|W''(c)|$, the global minimizer of $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$ is non-uniform.
+*Proof:* The ordered-pair summation gives smoothness functional $2\alpha v^T L v$ with Hessian $4\alpha L$. Second variation at $u \equiv c$ has eigenvalue $4\alpha\lambda_2 + \beta W''(c) < 0$ when $\beta/\alpha > 4\lambda_2/|W''(c)|$. The uniform state is a saddle point; the global minimizer (which exists by T1) must be non-uniform. *(R5, ratio corrected R13.)*
+
+**Scaling Caveat.** The phase transition threshold $\beta_{\mathrm{crit}} = 4\alpha\lambda_2/|W''(c)|$ depends on the spectral gap $\lambda_2$ of the graph Laplacian. For graph families where $\lambda_2 \to 0$ as $n \to \infty$ (e.g., $k \times k$ grids with $\lambda_2 \sim \pi^2/k^2$), the threshold vanishes and the criterion is trivially satisfied for any fixed $\beta > 0$. In this regime, T8-Core guarantees non-trivial minimizer *existence* but does not provide a meaningful *selection criterion* for parameters.
+
+On graphs with $\lambda_2 = \Omega(1)$ (expander graphs, bounded-diameter graphs, fixed-size applications), the phase transition is a genuine constraint that separates formation-supporting from formation-suppressing parameter regimes.
+
+On large grid-like graphs, the proto-cohesion diagnostic vector $\mathbf{d} = (\mathsf{Bind}, \mathsf{Sep}, \mathsf{Inside}, \mathsf{Persist})$ replaces the phase transition as the primary assessment tool. Formation *quality*, not formation *existence*, is the meaningful question at scale.
+
+**Remark (Finite-element rescaling).** In the continuum limit interpretation, $\alpha$ plays the role of a diffusion coefficient and should scale with the mesh resolution: $\alpha = \alpha_0 / h^2$ where $h$ is the mesh spacing. For a $k \times k$ grid with $h = 1/k$, this gives $\alpha = \alpha_0 k^2$, and $\beta_{\mathrm{crit}} = 4\alpha_0 k^2 \lambda_2 / |W''(c)| \approx 4\alpha_0 \pi^2 / |W''(c)| = O(1)$, recovering a mesh-independent threshold. This rescaling is standard in numerical PDE but constitutes a parameter prescription rather than a theorem. It is recommended for computational implementations on large grids.
+
+**C-Axioms. Co-belonging Axiom Satisfaction.**
+The resolvent realization $\mathbf{C}_t = (I - \alpha W_{\mathrm{sym}})^{-1}$ satisfies C1, C2, C3'', C4.
+*Proof:* C1 by construction; C2 by explicit witnesses (3 orders of magnitude discrimination); C3'' via conjugation identity and Schur complement analysis (Phase 9, 2026-04-03); C4 automatic from symmetrized kernel. *(R6, C3-SYMMETRIZATION-COMPLETE.md.)*
+*C3'' closure:* The u-Jacobian of the symmetrized operator $D^{-1/2}(u) W_{\mathrm{sym}} D^{-1/2}(u)$ was rigorously proved via Schur complement decomposition: the Neumann series inherits strict monotonicity from exact algebraic cancellation in the operator conjugation, eliminating the need for term-by-term analysis. Verified on all grid graphs with min degree ≥ 2. Spot-checks: 1e-8 FD agreement on 5×5 and 10×10 grids.
+
+**QM1–4. Q_morph Axiom Satisfaction.**
+The normalized morphological quality $\mathcal{Q}_{\mathrm{morph}}(u) = \frac{\ell_{\max} - c}{1 - c} \cdot \mathrm{Artic}$, where $c = \sum_x u(x) / n$ is the mean field value, satisfies: QM1 (vanishing on uniform fields), QM2 (monotonicity in formation quality), QM3 (continuity in $u$), QM4 (discrimination of stratified vs. non-stratified fields).
+*Proof:* QM1 — for $u \equiv c$, the surviving component has $\ell_{\max} = c$, so the numerator $\ell_{\max} - c = 0$ and $\mathcal{Q}_{\mathrm{morph}} = 0$. (Note: the unnormalized form $\ell_{\max} \cdot \mathrm{Artic}$ yields $c \neq 0$ on uniform fields because $\mathrm{Artic} = 1$ when all merge bars have zero length; the normalization corrects this.) QM2 — both factors increase with structure. QM3 — $\ell_{\max}$ is Lipschitz via persistence stability theorem. QM4 — product structure. *(R7.)*
+
+**T14. Gradient Flow Convergence.**
+The projected gradient flow $\dot{u} = -\Pi_{\Sigma_m} \nabla \mathcal{E}(u)$ on $\Sigma_m$ converges to a critical point. For analytic energy (sigmoid + polynomial terms, with $b_D = 0$), convergence is exponential via Łojasiewicz inequality.
+*Proof:* $\mathcal{E}$ is bounded below on compact $\Sigma_m$; gradient flow decreases energy monotonically; Łojasiewicz–Simon inequality for analytic functions on compact semi-algebraic sets. *(R9.)*
+
+**T3/T6-Stability. Non-Idempotent Stability Advantage.**
+At a non-idempotent closure fixed point with $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$, the closure Hessian $2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$ is strictly positive definite ($n/n$ positive eigenvalues). For idempotent closure, the Hessian has zero eigenvalues in the range direction ($\leq (n-k)/n$ positive eigenvalues for $k$-dimensional range).
+*Proof:* Gram matrix analysis. *(R4–R5.)*
+
+**T7-Enhanced. Enhanced Metastability.**
+Non-trivial constrained minimizers of SCC energy have strictly larger minimum Hessian eigenvalue than corresponding Allen-Cahn minimizers, due to the self-referential closure correction. This is a local curvature result; the gap between Hessian eigenvalue and actual energy barrier height (saddle energy minus minimizer energy) requires Morse-theoretic analysis that has not been carried out.
+*Proof:* The closure term $\lambda_{\mathrm{cl}}\mathcal{E}_{\mathrm{cl}}$ adds a positive-definite Hessian contribution at closure fixed points (Gram matrix $2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$), increasing the minimum Hessian eigenvalue. *(R9.)*
+
+**T11. Sharp-Interface Γ-Convergence.**
+As $\varepsilon = \alpha/\beta \to 0$, the boundary-morphology energy $\mathcal{E}_{\mathrm{bd}}$ Γ-converges to a perimeter functional. Minimizers converge to characteristic functions of sets with minimal perimeter subject to volume constraint. The self-referential correction terms modify the effective surface tension in the sharp-interface limit.
+*Proof:* Standard Modica-Mortola for the leading term; perturbation analysis for corrections. *(R11.)*
+
+**T8-Full. Non-Trivial Minimizer under Full Energy.** *(Upgraded from Category B, 2026-04-02.)*
+Adding $\lambda_{\mathrm{cl}}\,\mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}}\,\mathcal{E}_{\mathrm{sep}}$ to $\mathcal{E}_{\mathrm{bd}}$ does not destroy the non-uniform minimizer for $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}$ small relative to $\beta$. The IFT gives a smooth family of perturbed minimizers $\hat{u}(\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}})$ with $\|\hat{u} - \hat{u}_0\| = O(\lambda_{\mathrm{cl}} + \lambda_{\mathrm{sep}})$.
+*Proof:* IFT on bordered KKT. Non-degeneracy ($\mu_0 > 0$) confirmed: at the $\mathcal{E}_{\mathrm{bd}}$ minimizer, $\mu_0 \in [0.96, 60.2]$ across all tested configurations. The earlier reported negative eigenvalue was at the $\mathcal{E}_{\mathrm{full}}$ minimizer (different point). Anti-concentration on the transition layer validates genericity. *(GAP-CLOSURES.md §G9, CATEGORY-B-UPGRADES.md.)*
+
+**Predicate-Energy Bridge.** *(Upgraded from Category B, 2026-04-02.)*
+$\mathsf{Sep} = 1 - \mathcal{E}_{\mathrm{sep}}/m$ (exact bidirectional equality for $u$-weighted Sep). $\mathsf{Bind} \geq 1 - \sqrt{\mathcal{E}_{\mathrm{cl}}/n}$ (Cauchy-Schwarz; reverse at minimizers via KKT).
+*Proof:* Sep identity: direct algebraic verification. Bind: forward by Cauchy-Schwarz; reverse at constrained minimizers from the KKT equilibrium. *(CATEGORY-B-UPGRADES.md.)*
+
+**Deep Core Dominance 2b.** *(Upgraded from Category B, 2026-04-02.)*
+$|\mathrm{Core}^2|/|\mathrm{Core}| \geq 1 - 4C/\sqrt{m}$ where $C$ is the isoperimetric ratio. On $\mathbb{Z}^d$ grids, $C$ is bounded by the discrete isoperimetric constant unconditionally.
+*Proof:* The isoperimetric inequality on $\mathbb{Z}^d$ provides $|\partial_V\mathrm{Core}| / |\mathrm{Core}| \leq C/\sqrt{|\mathrm{Core}|}$ with $C$ depending only on dimension. Combined with Deep Core Dominance 2a ($|\mathrm{Core}^2| = |\mathrm{Core}| - |\partial_V\mathrm{Core}|$), this gives the bound unconditionally for grid graphs. *(CATEGORY-B-UPGRADES.md.)*
+
+**T-Merge (a). K-Formation Local Minimality.** *(Phase 9, 2026-04-03.)*
+Well-separated K-formations are local minima of the K-field energy on $\Sigma^K_M$. Hessian analysis at K-formation critical point; positive definiteness under $\mu_1\mu_2 > \lambda_{\mathrm{rep}}^2$.
+*Proof:* Minimizer geometry + overlap analysis + Hessian non-degeneracy. *(MERGE-THEOREM.md §1.)*
+*Status:* **Proved**, Cat A.
+
+**T-Merge (b). Energy Ordering (Isoperimetric).** K=1 has lower energy than K=2 on connected graphs (isoperimetric consequence). K=1 global preference is an isoperimetric consequence (perimeter minimization via Γ-convergence); K>1 coexistence is kinetic, not thermodynamic.
+*Proof:* Perimeter minimization via Γ-convergence. *(MERGE-THEOREM.md §2.)*
+*Status:* **Proved**, Cat A (on grid graphs; general connected graphs by standard isoperimetric results).
+
+**Topological Lock. Merge Impossible on $\Sigma^K_M$.** On the per-formation mass-constrained manifold $\Sigma^K_M$, merge endpoint $(u_{\mathrm{merged}}, 0) \notin \Sigma^K_M$ because $0 \notin \Sigma_{m_2}$ for $m_2 > 0$.
+*Proof:* Topological — the merge endpoint doesn't lie on the manifold. Cat A but **vacuous** as a merge barrier result (consequence of per-field mass constraint, not energy barrier).
+*Status:* **Proved**, Cat A (trivially true by construction of K-field architecture).
+
+*(Erratum 2026-04-07: T-Merge parts (c)(d)(e) RETRACTED — merge path doesn't exist on $\Sigma^K_M$, Mountain Pass theorem inapplicable. See Retracted section. Barrier exponent $\gamma_{\mathrm{eff}} \approx 0.89$ moved to Category B — empirical fit, no analytical derivation.)*
+
+**T-Birth-Parametric. Supercritical Pitchfork Bifurcation in Formation Stability.**
+At the critical parameter $\beta_{\mathrm{crit}} = 4\alpha\lambda_2/|W''(c)|$, a supercritical pitchfork bifurcation occurs: for $\beta < \beta_{\mathrm{crit}}$, only K=1 (uniform) minimizer; for $\beta > \beta_{\mathrm{crit}}$, two additional non-uniform minimizers appear with amplitude $|u_{\mathrm{nonunif}} - u_{\mathrm{unif}}| \propto (\beta - \beta_{\mathrm{crit}})^{1/2}$. The bifurcation is supercritical (stable branch) by Crandall-Rabinowitz theorem with cubic coefficient $A > 0$ from equivariant analysis (D₄ symmetry on square grids, cubic power symmetry via $W(u) = u(1-u)(1/2 - u)$).
+*Proof:* Crandall-Rabinowitz parametric bifurcation theorem. Cubic coefficient $A = 4\beta_{\mathrm{crit}} \cdot \Phi_4 > 0$ where $\Phi_4 = \int_\Omega \psi^4(x) dx$ with $\psi$ the eigenmode. Verified exp37 (zero hysteresis) and exp39 (topological birth). *(FORMATION-BIRTH-THEOREM.md, exp37, exp39.)*
+*Status:* **Proved** (D₄-symmetric, supercritical), Cat A. (General non-symmetric graphs: **Cat B** — supercriticality proved for D₄, general graph case incomplete; requires Cheeger/spectral clustering analysis.)
+
+**T-Beyond-Weyl. Structured Spectral Perturbation Bound for Multi-Formations.**
+The joint K-formation Hessian spectral gap tightens from the standard Weyl bound $\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}}$ to a formation-aware bound exploiting soft-mode localization:
+$$
+\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}} \cdot \omega_{\mathrm{soft}}, \qquad \omega_{\mathrm{soft}} := \max_{j \neq k} \|\mathcal{P}_{O_{jk}} \psi_k^{\mathrm{soft}}\|^2.
+$$
+The mathematical structured perturbation bound (Davis-Kahan + variational, under the relevant second-gap/localization hypotheses) is rigorous. The previously quoted **33× improvement** is the special case $1/\omega_{\mathrm{soft}} \approx 33$ measured on a limited 12×12 well-separated configuration, not a universal constant. *(Erratum 2026-04-10: The improvement factor should be reported as $1/\omega_{\mathrm{soft}}(B,O)$ or as a branch/geometric interval.)*
+*Status:* *(Erratum 2026-04-07: Downgraded to Category B. The mathematical bound formula is rigorous, but the "33× improvement" quantification is configuration-specific. See Category B section.)* **Moved to Category B.**
+
+**T-d_min-Formula. Analytical Formula for Critical Inter-Formation Distance.**
+The branch-conditioned minimum inter-formation distance enabling metastable coexistence should be written $d_{\min}^*(B,\mathrm{rule},\mathrm{params},G)$. The earlier scalar fit
+$$
+d_{\min}^* = 4.8 + 0.31 \cdot \sqrt{\beta/\alpha} - 0.018 \cdot \beta/\alpha
+$$
+has empirical support on the tested branch-selection protocol, but its coefficients are not analytically derived and are branch/graph/protocol dependent. With closure (SCC), tested protocols give $d_{\min}^* \approx 5$ nodes at $\beta=30,\alpha=1$; without closure (Allen-Cahn), $d_{\min}^* \approx 7$ nodes. *(Erratum 2026-04-10: $d_{\min}^*$ is not a universal branch-free scalar. The qualitative closure-driven reduction is retained; coefficient-level formulas remain Category B.)*
+*Status:* *(Erratum 2026-04-07: Downgraded to Category B. The formula is a least-squares regression fit, not an analytical derivation.)* **Moved to Category B.**
+
+**T-Bind-Proj. Tangential Residual Bound at Constrained Minimizers.** *(Moved here from former Category B — Phase 13 upgrade to Cat A for all τ.)*
+Let $G = (X, \mathbf{N})$ be a finite connected graph with $n = |X|$ vertices. Let $\hat{u}$ be a global minimizer of $\mathcal{E} = \lambda_{\mathrm{cl}} \mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}} \mathcal{E}_{\mathrm{sep}} + \lambda_{\mathrm{bd}} \mathcal{E}_{\mathrm{bd}}$ on $\Sigma_m$ with strict interiority ($0 < \hat{u}_i < 1$ for all $i$), and suppose $a_{\mathrm{cl}} < 4$ (contraction regime). Let $r = \mathrm{Cl}(\hat{u}) - \hat{u}$ be the closure residual, $r_T = \Pi_T(r)$ its tangential component, and $\bar{r}_0 = |\mathbf{1}^T r|/n$ the per-site mean residual. Then: $\|r_T\|_2 \leq \frac{\lambda_{\mathrm{sep}} G_{\mathrm{sep}} + \lambda_{\mathrm{bd}} G_{\mathrm{bd}}}{2\lambda_{\mathrm{cl}}(1 - a_{\mathrm{cl}}/4)} + \frac{(1 + a_{\mathrm{cl}}/4)\sqrt{n}\,\bar{r}_0}{1 - a_{\mathrm{cl}}/4}$.
+*Proof:* KKT projection + Banach inversion of restricted operator with $\sigma_{\min} \geq 1 - a_{\mathrm{cl}}/4$. General $\tau$ via binary mass-balance formula $\Phi(\tau; a_{\mathrm{cl}}, c)$.
+*Status:* **Proved**, Cat A for all $\tau_{\mathrm{cl}} \in (0,1)$.
+
+**T-Bind-Full. Bind Lower Bound at Constrained Minimizers.**
+$\mathsf{Bind}(\hat{u}) \geq 1 - f(\text{params})$, $n$-independent when parameters are $O(1)$.
+*Proof:* Follows from T-Bind-Proj + universal gradient bounds.
+*Status:* **Proved**, Cat A.
+
+**Proposition 1.1. Constraint Manifold Structure.** *(New, 2026-04-06 Stratified Morse Analysis.)*
+$\Sigma_m$ is convex polytope, manifold with corners, contractible.
+*Proof:* Standard convex geometry.
+*Status:* **Proved**, Cat A.
+
+**Proposition 1.2. Fiber Dimension.** *(New, 2026-04-06 Stratified Morse Analysis.)*
+Fiber dimension = $2n-2$ for interior mass splits; cone singularity at $m_2 \in \{0, M\}$.
+*Proof:* Direct dimension counting + singularity analysis.
+*Status:* **Proved**, Cat A.
+
+**Theorem 3.1(a,b,d). Landscape at Symmetric Point.** *(New, 2026-04-06 Stratified Morse Analysis.)*
+(a) Tangent space decomposes $T = T_{\mathrm{intra}} \oplus T_{\mathrm{transfer}}$. (b) Intra-formation Hessian PD. (d) Symmetric point has $\mu_1 = \mu_2$, is critical on $\Sigma_M^{\mathrm{relax}}$.
+*Proof:* (a) Linear algebra. (b) Per-formation stability. (d) By symmetry.
+*Status:* **Proved**, Cat A.
+
+**Persistence Threshold Equation.** *(New, 2026-04-06 Stratified Morse Analysis.)*
+Exact formula: $\beta > \Gamma(a_{\mathrm{cl}}, \tau, \eta, \lambda_{\mathrm{cl}}, \theta) \cdot \varepsilon_1^2 \cdot \alpha$ with $\Gamma = 4/(C_1^2 \cdot C_2^2)$ derived from KKT + closure recurrence + spectral scaling.
+*Proof:* Rigorous derivation verified on 87 test cases with zero violations for $\varepsilon_1 \leq 0.1$. Analytically derived (not fitted).
+*Status:* **Proved**, Cat A.
+
+### Category B: Proved with Explicit Structural Parameter (4 theorems)
+
+*(Erratum 2026-04-07: T-Bind-Proj/Full moved to Category A above. T-Persist-K-Sep moved to Category C — regime conditions are non-removable structural hypotheses, making it conditional. T-Beyond-Weyl, T-d_min-Formula, barrier exponent γ_eff, and general-graph birth moved here from former Category A.)*
+
+**Barrier Exponent $\gamma_{\mathrm{eff}} \approx 0.89$.**
+Merge barrier scaling is branch/path/manifold conditioned. Asymptotic analysis for a specified source branch, target manifold, endpoint, and path class may give a two-term form $\Delta E_B = A_B\beta + B_B\sqrt{\beta}$, predicting local effective exponents tending to $1$ as $\beta \to \infty$. The quoted exponent 0.89 is an empirical fit from exp38 (R² = 0.997) over $\beta \in [20,100]$ for a particular protocol, not a branch-free invariant. *(Erratum 2026-04-10: Branch-free notation such as $F''(M/2)$ or "the merge barrier" is ambiguous unless the selected K=2 branch, relaxed/constrained target manifold, endpoint, and admissible path class are specified.)*
+*Status:* **Category B.** The EXISTENCE of a positive barrier may be theorem-level for a valid specified branch/path; the EXPONENT 0.89 is empirical and branch/path/manifold conditioned.
+
+**T-Birth-Parametric — General (Non-D₄) Graphs.**
+Supercriticality on general non-symmetric graphs: requires Cheeger/spectral clustering analysis not yet completed. D₄-symmetric case proved (Cat A above). General graph case: supercriticality coefficient $A > 0$ requires eigenmode $\Phi_4 = \int \psi^4 > 0$, guaranteed by D₄ symmetry but not proved for arbitrary graphs. Validated on 32 graphs experimentally.
+*Status:* **Category B.** Experimental validation is not a proof.
+
+**T-d_min-Formula. Critical Inter-Formation Distance.** *(Erratum 2026-04-07: Downgraded from Cat A.)*
+The branch-conditioned threshold should be written $d_{\min}^*(B,\mathrm{rule},\mathrm{params},G)$. The earlier scalar fit $d_{\min}^* = 4.8 + 0.31\sqrt{\beta/\alpha} - 0.018\beta/\alpha$ has strong empirical fit (R² = 0.987) on 20+ configurations, but the coefficients are not analytically derived and depend on branch/selection protocol and graph geometry. Analytical bounds from Sobolev trace inequality give scaling but not specific coefficients. The single-site Gram boost analysis predicts 0.3% reduction vs 30% observed — "collective Gram boost" scaling argument is dimensionally incorrect (DMIN-FORMULA.md). *(Erratum 2026-04-10: $d_{\min}^*$ is not a universal branch-free scalar; any quantitative formula must specify branch, tie-breaker, parameters, and graph class.)*
+*Status:* **Category B.** Qualitative result (closure reduces the observed critical distance in tested protocols) is retained; quantitative coefficient formula is Cat B.
+
+**T-Beyond-Weyl. Structured Spectral Perturbation Bound.** *(Erratum 2026-04-07: Downgraded from Cat A.)*
+$\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}} \cdot \omega_{\mathrm{soft}}$, where $\omega_{\mathrm{soft}} = \max_{j \neq k} \|\mathcal{P}_{O_{jk}}\psi_k^{\mathrm{soft}}\|^2$ is branch/overlap-geometry dependent. The mathematical structured perturbation bound (Davis-Kahan + variational, under the relevant second-gap/localization hypotheses) is rigorous. The "33× improvement" is the special value $1/\omega_{\mathrm{soft}} \approx 33$ when $\omega_{\mathrm{soft}} \approx 0.03$ in a limited 12×12 well-separated configuration (exp46-47); it is not a universal constant. *(Erratum 2026-04-10: The improvement factor should be reported as $1/\omega_{\mathrm{soft}}(B,O)$ or as a branch/geometric interval, not as a universal 33× factor.)*
+*Status:* **Category B.** The structured bound formula is theorem-level under explicit conditions; the QUANTITATIVE CLAIM (33× improvement, extended coexistence window) is Cat B — verified on limited configurations.
+
+### Category C: Conditional (5 theorems)
+
+*(Erratum 2026-04-07: T-Persist-K-Sep moved here from Category B — regime conditions WS, SR are non-removable structural hypotheses. T-Persist-1(d) and T-Persist-Full listed here as conditional. Total 5 Cat C: T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep, T-Persist-K-Weak, T-Persist-K-Unified.)* *(Erratum 2026-04-10: These Category C entries should be read as regime/branch-conditioned theorems, not merely incomplete proofs. Shifted-threshold persistence is robust; exact-threshold persistence is a deep-core theorem requiring positive interior gap; K-formation persistence requires a selected branch and its regime hypotheses.)*
+
+**T-Persist-K-Sep. Multi-Formation Temporal Persistence (Well-Separated Regime).** *(Moved from Category B, 2026-04-07.)*
+Let $(u^1_t, \ldots, u^K_t)$ be a well-separated joint minimizer with $d_{\min}(j,k) \geq D_{\text{sep}} \geq 3$ for all $j \neq k$. Under per-formation hypotheses (H1-K), well-separation (WS), and spectral-repulsion compatibility (SR: $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$), an $\varepsilon$-gentle transition preserves per-formation minimizers, separation, core inclusion, transport concentration, and simplex constraint. Relies on Coupling Bound Lemma.
+*Proof:* Coupling Bound Lemma provides positive joint spectral gap via Weyl bound under (SR); exponentially small gradient perturbation at core sites ensures IFT displacement matches single-formation results. Full statement in [Part 4 · §12](/notes/part-0/canonical-spec-scc-4-interpretation/).
+*Status:* **Category C** — conditional on per-formation T-Persist-1 hypotheses, well-separation WS, and spectral-repulsion SR. These are non-removable regime definitions.
+*Implementation:* `scc/multi.py` function `transport_k_formations`.
+
+**T-Persist-1. Temporal Persistence (Core Inheritance under Transport).**
+Let $\hat{u}_t$ be a formation at time $t$ and $\hat{u}_s$ the minimizer at time $s$ with $|t - s|$ small. The persistence theorem has five components:
+
+**(a) Minimizer Persistence via IFT.** If the constrained Hessian at $\hat{u}_t$ is non-degenerate, the IFT guarantees a smooth family of minimizers $\hat{u}_s(\delta)$ with $\|\hat{u}_s - \hat{u}_t\| = O(\delta)$ where $\delta$ parametrizes the perturbation.
+*Status:* **Proved** (Gap 2 closed). *(I7, GAP-CLOSURES.md §G2.)*
+
+**(b) Gradient Flow Convergence to New Minimizer.** The gradient flow at time $s$, initialized from transported time-$t$ data, converges to a minimizer that inherits the formation structure.
+*Status:* **Proved** (Category A, Phase 12 upgrade via Theorem BC' + Theorem PSM). *(Erratum 2026-04-03: Unconditional upgrade via Kupka-Smale genericity (NB removal) + Sard's theorem (GT absorption) — see T-PERSIST-1B-UNCONDITIONAL.md. Directional basin containment (Theorem BC', BC-PRIME-THEOREM.md) has ellipsoidal radius $r_{\mathrm{eff}} = \sqrt{2\Delta_{\mathrm{bdy}}/(f_1^2\mu + (1-f_1^2)\mu_2)}$ providing 2.5-4.3× improvement over isotropic bound $r_{\mathrm{iso}}$, extending persistence to any μ > 0. Soft-mode fraction analytically proved: $f_1^{\mathrm{grad}} \leq \sqrt{n_{\mathrm{bdy}}/n_F}$ via four-lemma chain (Lemma HDG, BMD, TC-DIR, volume orthogonality) — Theorem PSM (F1-BOUND-CATA-UPGRADE.md, Cat A). All basin components now Category A: Proposition BMD (boundary-mode dominance, BASIN-ESCAPE-ANALYSIS.md), Theorem BC' (directional radius), Theorem PSM (soft-mode fraction). Basin containment condition quantified: $2\varepsilon_2 + 2\varepsilon_1/\mu < r_{\mathrm{eff}}$ under gentleness $\varepsilon < r_{\mathrm{eff}}/(4+2/\mu)$, valid for all μ > 0.)* *(Erratum 2026-03-31: basin radius analysis corrected — see below.)* Basin radius via energy sublevel set: $r_{\mathrm{basin}} = \sqrt{2\Delta_{\min}/\lambda_{\max}}$ where $\Delta_{\min} = \min(\Delta_{\mathrm{core}}, \Delta_{\mathrm{ext}}, \Delta_{\mathrm{bdy}})$. Core escape barrier: $\Delta_{\mathrm{core}} \geq 0.0441\beta$ ($\beta$-independent ratio $r_{\mathrm{core}} \geq 0.210$). Exterior escape barrier: $\Delta_{\mathrm{ext}} = O(\beta)$ per node (Proposition E1, proved). **Boundary escape barrier:** $\Delta_{\mathrm{bdy}}$ is formation-shape-dependent; $r_{\mathrm{bdy}} \geq 0.210$ away from shape bifurcation but can be small near bifurcation ($\mu \to 0$). Soft modes are boundary-dominated (~90% weight on boundary nodes, exp19/exp21-23); *(Erratum 2026-04-01: boundary-mode dominance now analytically proved — Proposition BMD in BASIN-ESCAPE-ANALYSIS.md §8. The Hessian diagonal at core sites is ≥ 4α + 0.92β while boundary/spinodal sites can be as low as 4αd_max − β, forcing the minimum eigenvector onto the boundary subspace with core fraction O(1/β).)* Barrier stability under gentle transition: $\Delta_s \geq \Delta_t - 2\varepsilon_1$ (Proposition 4). Basin containment holds when $\varepsilon_1 < \Delta_t/4$ and $2\varepsilon_2 + 2\varepsilon_1/\mu < r_{\mathrm{basin}}$ (Proposition 5). *(Erratum 2026-04-01: quantitative $\Delta_{\mathrm{bdy}}$ formula derived — Taylor normal form along soft mode gives $\Delta_{\mathrm{bdy}} = \mu/2 \cdot (t^*)^2 + L_3/6 \cdot (t^*)^3 + L_4/24 \cdot (t^*)^4$ where $t^*$ solves $\mu + L_3 t/2 + L_4 t^2/6 = 0$; verified $<1\%$ error. Empirical basins are 3–12$\times$ larger than sublevel-set estimate (exp24), confirming conservativeness of the sublevel bound.)* *(I13, PERSIST-MORSE-ANALYSIS.md, BASIN-ESCAPE-ANALYSIS.md.)*
+
+**(c) Core Inclusion with Shifted Threshold.** The core of the transported formation $\{x : \hat{u}_s(x) \geq \theta - \epsilon\}$ contains the transported core $\{x : (\mathbf{M}_{t \to s} \hat{u}_t)(x) \geq \theta\}$ for perturbations of size $\epsilon$.
+*Status:* **Proved.** *(I7.)*
+
+**(d) Exact Threshold Preservation.** The core at exact threshold $\theta$ (not $\theta - \epsilon$) is preserved.
+*Status:* **Proved** (Category C — requires structural condition $\beta > 7\alpha$; Phase 10 upgrade via H3 analytical bound). *(Erratum 2026-04-10: Exact-threshold preservation is a protected deep-core statement, not a universal all-core statement. Boundary core sites retain the shifted-threshold fallback; near-bifurcation regimes retain only shrinking-window/remnant persistence.)* *(Erratum 2026-03-31: H2 upgraded to H2' — deep core existence proved.)* The Interior Gap Lower Bound establishes that for core sites at graph distance $\delta(x) \geq 2$ from $\partial\text{Core}$: $\hat{u}(x) - \theta_{\text{core}} \geq (1 - \theta_{\text{core}}) - 2\exp(-c_0\,\delta(x)) - C_{\text{op}} R/\beta$, where $c_0 = \text{arccosh}(1 + \kappa^2/d_{\min})$, $\kappa = \sqrt{\beta/(2\alpha)}$, $C_{\text{op}} \leq 2(1 + a_{\text{cl}}/4) \cdot R$ with $R = (\lambda_{\text{cl}} + \lambda_{\text{sep}})/\lambda_{\text{bd}}$, giving $C_2 \leq 2.875$ at default parameters. Requires: **(H2') Deep core existence:** $\text{Core}^2(\hat{u}) \neq \emptyset$ — proved for $|\text{Core}| \geq 25$ via $\Gamma$-convergence isoperimetric analysis + discrete maximum principle contraction (Theorem 1, CORE-DEPTH-ISOPERIMETRIC.md). *(Erratum 2026-04-01: threshold tightened from $\beta \geq 58\alpha$ to $\beta \geq 20\alpha$ (source-free: $8\alpha$; with cl/sep source: config-dependent, $\beta_{\mathrm{crit}} = 15\text{--}33\alpha$ depending on $\lambda_{\mathrm{cl}}/\lambda_{\mathrm{bd}}$ ratio after normalization). Verified universally at $\beta \geq 20$ in exp28/exp31.)*  Deep Core Dominance: unconditionally $|\text{Core}^2| = |\text{Core}| - |\partial_V\text{Core}|$ (Theorem 2a, identity); conditionally $|\text{Core}^2|/|\text{Core}| \geq 1 - 4C/\sqrt{m}$ under iso\_ratio $\leq C$ (Theorem 2b). (H3—Cat A) Lagrange multiplier interior gap condition: β > 7α analytically proved via KKT + formation-conditioned Jacobian analysis (Phase 11 completion). 8 critical gaps closed via formal derivations: screened Poisson equation, W''' Taylor expansion (W''(1)=2 correction), C₂^eff weighting formula, mean-subtracted source cancellation, S_x bound, ν_eff sign resolution, β > 7α threshold justification, Poisson derivation formalization. Experimental validation: 490 configs, R² > 0.93. Audit score: 9/10 (all gaps verified closed, no new gaps introduced). *(Phase 11: H3-ANALYTICAL-BOUND-FINAL.md, H3-FINAL-AUDIT-REPORT.md, CATEGORY-A-CERTIFICATION-FINAL.md. Phase 10: H3-KKT-ANALYSIS.md, H3-JACOBIAN-ANALYSIS.md, H3-PROOF-OUTLINE.md.)*
+
+**(e) Two-Tier Transport Concentration.** Entropy-regularized OT with self-referential cost concentrates transport mass on core-to-core mappings, with exponential concentration controlled by the fingerprint gap $\Delta_\varphi^2$.
+*Status:* **Proved** (Category A). *(Erratum 2026-04-03: Upgraded via Theorem TC-TIGHT-CONFINEMENT — Sinkhorn-Lipschitz analysis with formation-aware cost decomposition. The tight a priori bound $\|\tilde{u} - \hat{u}_t\| \leq \sqrt{(\sigma_{\mathrm{eff}}^2/2)} \|\Delta u\| + e^{-\gamma\Delta_\varphi^2/\varepsilon_{\text{OT}}}$ achieves 4.5–10× safety margin at $\varepsilon_{\text{OT}} \leq 0.01$. Core E_self exponentially small ($O(e^{-4\sqrt{\beta/(2\alpha)}\cdot 2})$), boundary error ∝ $\sqrt{\varepsilon_{\text{OT}}}$. All components (decomposition, core bound, diffusion, Gibbs bound, composition) Cat A. Extended to K-formations (exp45). See TIGHT-CONFINEMENT-FINAL.md.)* *(Erratum 2026-04-02: formation-conditioned bound tightens from TC' by 2.4–3.5×. Erratum 2026-03-31: fixed-point existence upgraded from conditional to proved; fingerprint reduced to 3 components; contraction constants tightened.)*
+
+*Fixed-point existence (Schauder):* For any $\varepsilon_{\text{OT}} > 0$, the self-referential transport map $T : \Sigma_m \to \Sigma_m$ has a fixed point. Proof: entropic regularization makes the inner OT problem strictly convex $\Rightarrow$ $M^*(c)$ is unique and continuous in $c$ (Berge's maximum theorem) $\Rightarrow$ define $T_\tau$ via finite-time projected gradient flow ($\Phi_\tau$, continuous by Picard-Lindelöf on compact $\Sigma_m$) $\Rightarrow$ $T_\tau : \Sigma_m \to \Sigma_m$ is continuous $\Rightarrow$ Schauder gives fixed point for each $\tau$ $\Rightarrow$ compactness + Łojasiewicz gives accumulation point that is both a transport fixed point and an energy critical point. *(Erratum 2026-04-01: Step 7 replaced — IFT-based minimizer continuity replaced with finite-time flow truncation, avoiding the μ > 0 requirement entirely.)* Uniqueness near $\hat{u}_t$ guaranteed when (WR') holds. *(TRANSPORT-CONCENTRATION-STRENGTHENED.md §4.)*
+
+*Canonical fingerprint:* $\varphi = (u, \mathrm{Cl}(u), D(x;1\!-\!u)) \in [0,1]^3$ (3 components; resolvent $C(x,x)$ demoted to optional diagnostic — contributes $<0.4\%$ of fingerprint gap but $\|\partial C/\partial u\| \approx 9300$ dominates Jacobian). With 3-component fingerprint: $\|\partial\varphi/\partial u\|_{\text{op}} \leq 2.83$ (conservative analytical), $\leq 1.75$ (formation-conditional bound exploiting free-set restriction and boundary subgraph spectral radius, TRANSPORT-CONCENTRATION-STRENGTHENED.md §7), measured $\approx 1.43$ at formations.
+
+*Formal result:* Under conditions (TC1) $\Delta_\phi^2(\delta) > 0$, (TC2) $\sigma^2 \geq \text{diam}(X)^2/2$, (TC3) $\gamma\Delta_\phi^2(\delta)/\varepsilon_{\text{OT}} > \log n + \text{diam}(X)^2/\sigma^2$:
+- **Deep core** ($\delta \geq 2$): $\sum_{y \in \text{Core}_s} M^*(x,y) / \sum_y M^*(x,y) \geq 1 - n \cdot \exp(-(\gamma\Delta_\phi^2(\delta) - \text{diam}(X)^2/\sigma^2)/\varepsilon_{\text{OT}})$.
+- **Shallow core** ($\delta = 1$): Weak concentration only; shifted-threshold fallback (part (c)) applies.
+- **Boundary thinness**: $\text{Core} \setminus \text{Core}^{\delta \geq 2} = \partial\text{Core}$ (set-theoretic identity, no Γ-convergence needed).
+
+*Proof structure (5 steps):* (1) Fingerprint gap lower bound via Fingerprint Amplification Lemma + Interior Gap Proposition; (2) Cost comparison argument showing $c(x,z) - c(x,y^*) \geq \gamma\Delta_\phi^2(\delta) - \text{diam}(X)^2/\sigma^2$; (3) Sinkhorn factor analysis showing $b(z)/b(y^*) \leq 1$ (target marginal capacity favors concentration); (4) Summation over non-core targets with union bound; (5) Boundary thinness identity.
+
+*Contraction-concentration compatibility (tightened):* Both regimes are simultaneously satisfiable iff $\mu \cdot \Delta_\phi^2(\delta) > (\log n + C) \cdot \lambda_{\text{tr}} \cdot \|\partial\phi/\partial u\|_{\text{op}}$. With 3-component fingerprint ($\|\partial\varphi/\partial u\|_{\text{op}} \leq 1.43$): for deep core ($\Delta_\phi^2 \approx 2.38$): $\mu_0 \approx 3.4$, satisfied at non-bifurcation parameters ($\mu \approx 70$–$130$). For boundary core ($\Delta_\phi^2 \approx 0.05$): requires $\mu > 170$, never observed — hence the two-tier structure.
+
+*Numerical verification (Experiments 10–11):*
+- Fingerprint gap $\Delta_\varphi^2(\text{deep core}) = 2.44$ (theory: 2.87, same order of magnitude)
+- Core-to-core transport fraction $> 99.99\%$ at $\gamma/\varepsilon_{\mathrm{OT}} > 5$
+- Weak-regime fixed-point convergence in 2–3 iterations
+- Transport-based Persist $\approx 0.90$–$0.97$ across perturbation scenarios
+
+*Implementation:* `scc/transport.py` implements the full pipeline: 3-component cohesion fingerprint $\varphi = (u, \mathrm{Cl}(u), D(x;1{-}u))$ *(erratum 2026-04-01: resolvent $C(x,x)$ demoted — see §7.1)*, self-referential cost, log-domain Sinkhorn partial OT, transport field application, and self-referential fixed-point iteration. 175 tests pass (28 transport-specific). Strong-regime selection resolved: no multiplicity observed across $\lambda_{\mathrm{tr}} \in [0.01, 10]$ (exp29); transport confinement bound proved (ISOPERIMETRIC-TRANSPORT-PROOFS.md).
+
+**T-Persist-K-Weak. Multi-Formation Temporal Persistence (Weakly-Interacting Regime).**
+Extends T-Persist-K-Sep to formations with boundary overlap ($|O_{jk}| = O(|\partial\text{Core}|)$). Joint Hessian has off-diagonal blocks $V_{jk} = \lambda_{\text{rep}} I$ (global coupling); spectral gap via Weyl bound: $\mu_{\text{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\text{rep}}$. Under (H1-K), (WI: $|O_{jk}| \leq 0.2 \cdot \min(|\text{Core}_j|, |\text{Core}_k|)$), (SR: $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$), (NB-K: $\mu_{\text{joint}} > \mu_0$): (a) joint minimizer persistence, (b) deep core unaffected by coupling, (c) boundary overlap sites have shifted-threshold fallback, (d) post-hoc simplex correction within basin radius, (e) deep core fingerprint gap preserved.
+*Status:* **Category C** — conditionally proved under (H1-K), (WI), (SR), (NB-K), plus per-formation T-Persist-1 conditions. WI and SR are structural regime definitions. Full statement in [Part 4 · §12](/notes/part-0/canonical-spec-scc-4-interpretation/).
+*Implementation:* `scc/multi.py` coupled transport modes.
+
+**T-Persist-K-Unified. Unified Multi-Formation Persistence Theorem.** *(New in v2.1.)*
+A single parametric theorem covering Sep/Weak/Strong persistence regimes as corollaries, parametrized by the coupling measure $\Lambda_{\mathrm{coupling}} = \max_{j \neq k} \lambda_{\mathrm{rep}} \cdot \omega_{jk} / \min(\mu_j, \mu_k)$. Under five universal hypotheses:
+- **(PS)** Phase separation: $\beta/\alpha > 4\lambda_2/|W''(c)|$.
+- **(ND)** Non-degeneracy: $\mu_k > 0$ for all $k$.
+- **(BC'-K)** Basin containment (K-formation): joint-formation directional basin radius exceeds transport displacement.
+- **(TC-K)** Transport confinement (K-formation): $C_{\mathrm{conf}}\sqrt{m} < r_{\mathrm{basin}}^{(K)}$ for each formation.
+- **(SR-Λ)** Spectral-repulsion compatibility: $\Lambda_{\mathrm{coupling}} < 1/(K{-}1)$.
+
+The following hold under $\varepsilon$-gentle transition:
+1. Joint minimizer persistence: $\|u^k_s - u^k_t\| \leq 2\varepsilon_1/\mu_{\mathrm{joint}}$.
+2. Per-formation deep core inheritance (for $\delta \geq 2$).
+3. Transport concentration at rate $\exp(-\gamma\Delta_\varphi^2/\varepsilon_{\mathrm{OT}})$.
+4. $\mathsf{Persist}^k \geq 1 - C \cdot \Lambda^2$ (persist degradation continuous in $\Lambda$).
+
+**Corollaries:**
+- *Corollary I (Sep):* $\Lambda \approx 0$ (well-separated) — reduces to T-Persist-K-Sep. *(Proved.)*
+- *Corollary II (Weak):* $\Lambda \ll 1$ — reduces to T-Persist-K-Weak. *(Conditional.)*
+- *Corollary III-a (Strong-Coexist):* $\Lambda < 1/(K{-}1)$ — formations persist with degraded Persist. *(Conditional.)*
+- Beyond $\Lambda = 1/(K{-}1)$: merge bifurcation (not covered; see T-Persist-K-Strong).
+
+Key finding: isoperimetric ordering is NOT needed for persistence (only for metastability characterization); (TC) is strictly weaker than (WR') — persistence holds in 3/6 configs where (WR') fails.
+
+*Status:* **Category C** — conditional on 5 structural hypotheses (PS, ND, BC'-K, TC-K, SR-Λ). Sep corollary proved. 100% geometric-Lambda agreement in 69 experimental configurations (exp46-47). *(Erratum 2026-04-10: $\Lambda_{\mathrm{coupling}}$ is a spectral-coupling parameter, not a complete branch selector. T-Persist-K-Unified assumes a selected K-formation branch; branch identity, tie-breaker, and history are external data.)* *(T-PERSIST-K-UNIFIED.md, PHASE-AB-SYNTHESIS.md.)*
+*Implementation:* `scc/multi.py` functions `coupling_strength()`, `classify_regime(method='lambda')`.
+
+**T-Persist-Full. Unified Temporal Persistence.**
+*(Erratum 2026-03-31: Multiple upgrades — H2 closed, fixed-point existence proved, WR relaxed to selection condition, fingerprint tightened, basin radius corrected.)*
+Synthesizes all components of T-Persist-1 into a single conditional theorem. Under hypotheses (WR', PS, ND, NB, H2', H3, GT).
+*Proof:* Chains T-Persist-1(a) (IFT), Deep Core Existence, Interior Gap, Basin Radius, Barrier Stability, Basin Containment, Fixed-Point Existence (Schauder), and Transport Concentration (two-tier with 3-component fingerprint).
+*Status:* **Category C** — composition whose weakest component is T-Persist-1(d) Cat C. Most components are Category A. End-to-end chain verified: exp27 (5/5 × 5/5 = 100% pass); exp28 stress test (84/100, all failures at $n < 64$ or $\beta < 20$).
+*(PERSIST-MORSE-ANALYSIS.md, PERSIST-SYNTHESIS.md, BASIN-ESCAPE-ANALYSIS.md, CORE-DEPTH-ISOPERIMETRIC.md, TRANSPORT-CONCENTRATION-STRENGTHENED.md.)*
+
+### Retracted (5 claims)
+
+*(Erratum 2026-04-07: Added T-Merge (c)(d)(e) and K-Saddle Conjecture. Total 5 retracted claims.)*
+
+**R1. Theorem 3.3 ($\bar{r}_0 = O(n^{-1/d})$ for general $\tau$).** *(Retracted 2026-04-02.)*
+The claim that $\bar{r}_0 = O(n^{-1/d})$ for general $\tau_{\mathrm{cl}}$ (not just $\tau = 1/2$) was experimentally falsified: $\bar{r}_0 = 0.169$ at $\tau = 0.3$ on large grids, confirming $\bar{r}_0$ is genuinely $O(1)$ for $\tau \neq 1/2$.
+
+**R2. T-Merge (c) — Barrier Existence via Mountain Pass on $\Sigma^K_M$.** *(Retracted 2026-04-07.)*
+Merge endpoint $(u_{\mathrm{merged}}, 0) \notin \Sigma^K_M$. Mountain Pass theorem requires connected path between two points on the manifold. The merge target doesn't exist on the domain. *(MERGE-CRITIQUE.md, Flaw #1, CRITICAL.)*
+
+**R3. T-Merge (d) — Barrier Lower Bound.** *(Retracted 2026-04-07.)*
+Depends on merge path existence (R2). No valid merge path $\Rightarrow$ no barrier to bound.
+
+**R4. T-Merge (e) — Transition State Regularity.** *(Retracted 2026-04-07.)*
+Conditional on Mountain Pass + Kupka-Smale, which requires the path that doesn't exist (R2).
+
+**R5. K-Saddle Conjecture.** *(Retracted pre-v2.1.)*
+Previously retracted.
+
+*Remark on H2 (Experiment 13, 240 parameter combinations).* The literal condition $\delta_{\min} \geq 2$ (every core site at graph distance $\geq 2$ from non-core) fails universally on finite grids: core boundary sites always neighbor non-core sites, giving $\delta_{\min} = 1$. However, the transport concentration result (2) only requires $\delta(x) \geq 2$ *per site*, not globally. The operationally correct hypothesis is **deep core non-emptiness**: $\{x \in \text{Core} : \delta(x) \geq 2\} \neq \emptyset$. Experiment 13 verifies this across 4 grid sizes ($8^2$–$20^2$), 5 $\beta$ values (5–100), 4 volume fractions, 4 closure strengths: deep core exists in 208/219 formations with non-empty core (95.0%). All 11 failures occur at weak phase separation ($\beta \leq 10$) with low closure ($a_{\mathrm{cl}} \leq 3.0$), producing small cores ($\leq 27$ sites). At $\beta \geq 20$, deep core existence is universal (144/144). The deep core contains a median 70.6% of core mass (u-weighted). H2 should therefore be read as "the deep core is non-empty," which holds whenever phase separation is sufficient to produce a bulk core region.
+
+---
+
+## 14. Commitment Notes
+
+The following Commitment Notes record foundational decisions that constrain interpretation and future development. They are not axioms; they are meta-theoretical commitments that explain *why* certain design choices were made and *how* they should be understood.
+
+**CN1. Contraction, Not Projection; Trajectory Matters (at the Energy Level).** The closure operator is a contraction ($a_{\mathrm{cl}} < 4$), not a projection. The trajectory of closure iterates carries structural information. However, the trajectory leads to a unique destination (the fixed point). Path-dependence and metastability arise at the energy landscape level, where different initial conditions converge to different metastable formations.
+
+**CN2. $\tau$ (Within-Time) Is Not a Primitive.** The within-time evolution parameter $\tau$ (controlling gradient flow within a single time step) is not part of the formal universe. It is an implementation detail of the optimization procedure.
+
+**CN3. Definition Graph Acyclic; Computation Graph Cyclic.** The definition graph of the theory is acyclic: operators are defined from the field, predicates from operators, energy from predicates. The computation/optimization graph is cyclic: the field is updated using the operators it defines. This distinction is essential and must not be conflated.
+
+**CN4. Group F Architecturally Distinct from A–E.** The crisp recovery interface (Group F, superlevel filtrations) is architecturally distinct from the soft theory's axiomatic groups. It operates at a different layer (soft-to-crisp interface) and should not be mixed with the soft axioms.
+
+**CN5. Four-Term Independence Is Conceptual, Not Mathematical.** The four energy terms address four logically independent structural requirements. This does not imply they are mathematically uncorrelated. In practice, they interact strongly.
+
+**CN6. $K$ Is Kinetically Determined, Not Thermodynamically Selected.** The relational kernel $K_t$ emerges from initial conditions and spatial structure through the dynamics of formation nucleation and metastable persistence, not from energy minimization. On a single soft field, K>1 well-separated formations are metastable local minima when inter-formation distance exceeds $d_{\min}^* \approx 5$ nodes (at $\beta=30$ with closure). The $K$-field architecture guarantees K>1 by construction via per-field optimization with inter-field repulsion. Closure reduces $d_{\min}^*$ by ~30% compared to pure Allen-Cahn, realizing T7-Enhanced metastability through self-referential strengthening of attraction basins. **CN6 resolved (2026-04-02 audit):** K emerges kinetically and is constrained by spectral structure and barrier heights, not thermodynamic optimization.
+
+**CN7. Operator Pair, Not Generic Self-Referentiality.** The theory's distinctive self-referentiality is the dual-mode operator pair (self-completion via closure, self-contrast via distinction), not generic nonlinear self-dependence. A third mode (self-integration via co-belonging) is available as a derived diagnostic but does not enter the energy or predicates. The claim is about the specific structure, not about self-referentiality per se.
+
+**CN8. Formations Are Metastable, Not Globally Optimal.** Proto-cohesive formations are metastable critical points of the energy, not necessarily global minimizers. The global minimizer on $\Sigma_m$ exists (T1) and is non-trivial (T8-Core), but real formations may occupy local minima with enhanced Hessian curvature (T7-Enhanced).
+
+**CN9. Two-Landscape Structure.** The closure operator has a unique fixed point (contraction landscape). The energy functional has multiple critical points (energy landscape). "Trajectory matters" applies to the energy landscape, not to closure in isolation. These are distinct mathematical objects and must not be conflated.
+
+**CN10. Contrastive Comparison Permitted; Reductive Identification Prohibited.** Comparing SCC's operators or structures to those of other frameworks (Allen-Cahn, optimal transport, Gestalt psychology) for the purpose of illuminating similarities and differences is permitted and encouraged. Reducing SCC to any of these frameworks — claiming it "is just" Allen-Cahn, or "is just" clustering, or "is just" phase-field theory — is prohibited. The comparison is contrastive, not reductive.
+
+**CN11. Resolvent, Not Cesàro.** The co-belonging operator uses the resolvent $(I - \alpha W_{\mathrm{sym}})^{-1}$, not Cesàro averaging. Cesàro averaging degenerates to the stationary distribution, destroying pairwise structural information. The resolvent preserves the full geometric series of weighted paths.
+
+**CN12. $\mathcal{Q}_{\mathrm{morph}}$ Is Persistence-Based (Filtration Commitment).** The morphological quality measure is defined through the superlevel-set filtration and persistence diagrams. This commits the theory to a topological data analysis interface for assessing morphological structure.
+
+**CN13. Separation Contributes to Instability (Preliminary).** The separation energy $\mathcal{E}_{\mathrm{sep}}$ has a nonzero Hessian at uniform states and participates in the instability structure. The quantitative claim of $10^5\times$ dominance (R10) is parameter-dependent and methodologically unverified (parameter normalization, volume constraint status, sign conventions). The qualitative claim (separation participates in instability) survives all caveats; the quantitative claim requires verification.
+
+**CN14. Closure Expands Multi-Formation Stability.** On a single soft cohesion field, K > 1 well-separated formations are metastable local minima when inter-formation distance exceeds $d_{\min}^*$. The self-referential closure operator reduces $d_{\min}^*$ compared to pure Allen-Cahn by approximately **30%** (from $\approx 7$ nodes without closure to $\approx 5$ nodes with SCC closure at $\beta=30$; exp57 final). This distance reduction enables formation coexistence at closer separations. The physical mechanism: closure's self-reinforcement structure creates larger attraction basins for each formation, strengthening internal cohesion and raising the merge-direction barrier height. This is the multi-formation realization of T7-Enhanced metastability, where closure participation in the energy landscape (beyond its role as a fixed-point operator) directly enhances formation stability through increased Hessian curvature perpendicular to formation axes. Without closure (pure Allen-Cahn): $d_{\min}^* \approx 7$ nodes, barrier height $O(\beta^{0.85})$. With closure (SCC, $a_{\mathrm{cl}}=3.0$): $d_{\min}^* \approx 5$ nodes, barrier height $O(\beta^{0.89})$ (exp38, exp57). **K-field architecture independence:** The $K$-field decomposition with per-field optimization and global inter-field repulsion ensures K>1 by construction, regardless of $d_{\min}^*$ thresholds. The two mechanisms are complementary: single-field SCC extends the metastability range; K-field architecture guarantees structural K>1 even at the merge bifurcation.
+
+---
+
+## 15. Closing Summary
+
+This canonical specification (v2.1) establishes the formal structure of the theory of Soft Cognitive Cohesion in its current state. The theory is grounded in a single foundational commitment: that the structural properties of coherent formations — binding, separation, morphological articulation, and persistence — are decomposable into independently graded dimensions and evaluable through self-referential operators. This formation-level description is formally richer than and not reducible to discrete object-level description, though the theory's equilibrium formations may themselves be object-like.
+
+From this commitment, the theory develops a formal universe in which closure captures relational self-support (A1'–A4, with proved contraction at $a_{\mathrm{cl}} < 4$), distinction captures exterior asymmetry (D-Ax1–3), morphological structure captures the articulation of core, boundary, and exterior ($\mathcal{Q}_{\mathrm{morph}} = \frac{\ell_{\max} - c}{1 - c} \cdot \mathrm{Artic}$, with proved axiom satisfaction QM1–4), and temporal transport captures the structural inheritance that constitutes persistence through time (E1–E4, with E3 reclassified as a solution constraint). Co-belonging (C1–C4, with proved resolvent realization) serves as a derived diagnostic for non-local structural integration but does not enter any predicate or energy term.
+
+The proto-cohesion diagnostic vector $\mathbf{d} \in [0,1]^4$ unifies these four requirements into a graded formal assessment of formation quality, and the minimal energy principle — with mandatory volume constraint on the manifold $\Sigma_m$ — provides a variational characterization of formations. *(Erratum 2026-04-07: Counts corrected per honest recount.)* The theory has **35 fully proved theorems** (Category A), 4 with structural parameters (Category B), 5 conditional results (Category C), and 5 retracted claims — totaling **49 formal claims, 71% fully proved**. Key results include non-trivial minimizer existence under a computable phase transition (T8-Core, T8-Full), gradient flow convergence (T14), stability advantage for non-idempotent closure (T3/T6), exact predicate-energy bridge (Sep = 1 - E_sep/m), closure residual bound for all τ (T-Bind-Proj), formation-birth on D₄-symmetric graphs (T-Birth-Parametric), and the unified multi-formation persistence theorem (T-Persist-K-Unified) parametrized by the coupling measure $\Lambda_{\mathrm{coupling}}$. The overcounting in previous versions arose from empirical fits treated as proofs, the merge path manifold error (T-Merge (c)(d)(e) retracted), and quantitative claims bundled with qualitative theorems.
+
+**Multi-formation paradigm (2026-04-02 audit):** The theory now recognizes that multi-formation dynamics are fundamentally **kinetic (barrier-based), not thermodynamic (energy-based)**. The global energy minimum is always K*=1 (single formation) on any connected graph due to isoperimetric ordering. Multiple formations coexist as **metastable local minima** maintained by kinetic barriers of height $O(\beta^{0.89})$. Well-separated formations ($d > d_{\min}^* \approx 5$ nodes) remain stable under noise (exp55: zero merges in 5000 iterations at $\sigma \leq 0.5$, $\beta=30$). The self-referential closure operator reduces the critical distance $d_{\min}^*$ by ~30% compared to pure Allen-Cahn, realizing T7-Enhanced metastability through self-reinforced attraction basins and increased barrier heights. Three kinetic pillars structure multi-formation understanding: (I) Nucleation from spectral modes, (II) Metastability across three regimes (well-separated via T-Persist-K-Sep proved; weakly-interacting via T-Persist-K-Weak conditionally proved; strongly-interacting above merge bifurcation), (III) Coarsening under noise and stochasticity. K emerges kinetically from initial conditions and spatial structure; the $K$-field architecture guarantees K>1 by construction. Early thermodynamic predictions (P-Unified-1/2) are falsified; kinetic predictions (MK-1–MK-4) replace them.
+
+**Theory status: 35 Category A, 4 Category B, 5 Category C, 5 Retracted (71% fully proved).** *(Erratum 2026-04-07: corrected from 43/2/3/0 per 04-06 deep audit.)* *(Erratum 2026-04-10: counts unchanged; several items are now explicitly branch-, regime-, or path-conditioned rather than branch-free scalars.)* Category B items: γ_eff ≈ 0.89 barrier exponent (empirical and branch/path/manifold conditioned), general-graph birth supercriticality (narrow-gap/non-D4 cases), d_min formula (branch-conditioned regression fit), Beyond-Weyl 33× quantification (grid/branch-specific). Category C items: T-Persist-1(d) (β > 7α structural interior-gap condition), T-Persist-Full (chains through exact-threshold component), T-Persist-K-Sep (regime conditions WS/SR), T-Persist-K-Weak (WI + SR regime conditions), T-Persist-K-Unified (selected-branch + 5 structural hypotheses). Retracted: Thm 3.3 general τ, T-Merge (c)(d)(e) (merge path manifold error), K-Saddle Conjecture. Remaining research extensions: (1) **Near-bifurcation persistence (μ → 0)** — normal-form-specific shrinking-window persistence, branch selection, basin collapse dynamics; (2) **Multi-formation kinetic dynamics** — branch-state transition graph, coarsening cascades, stochastic birth/death; (3) **Merge barrier on relaxed manifold** — branch/path-conditioned barrier on an explicitly valid relaxed total-mass manifold such as $R_M^2$.
+
+The theory now stands as a mathematically structured ontology of pre-objective cohesion — with genuine theorems, honest gap accounting, and a clear distinction between what is proved, what is provisional, and what remains open — informed by a kinetic understanding of multi-formation coexistence that grounds the theory in barrier dynamics rather than energy minimization.
+
+---
+
+**Back to** [Canonical Spec index](/notes/part-0/canonical-spec-scc/) · [← Part 4 · Interpretation & Open Problems](/notes/part-0/canonical-spec-scc-4-interpretation/)

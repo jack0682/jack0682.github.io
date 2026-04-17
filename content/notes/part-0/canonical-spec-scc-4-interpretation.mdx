@@ -1,0 +1,226 @@
+---
+title: "SCC Canonical Spec — Part 4: Structural Interpretation, Commitments & Open Problems"
+slug: canonical-spec-scc-4-interpretation
+part: 0
+chapter: 0
+section: "Canonical Specification · Part 4"
+kind: essay
+track: perception
+updated: 2026-04-12
+summary: "Sections 10–12 of the SCC v2.1 canonical specification: the structural interpretation of the theory, fixed commitments versus open design choices, and the open research problems organized by foundational, bridging, and extension layers."
+tags: [scc, canonical-spec, interpretation, open-problems, commitments]
+related: [canonical-spec-scc, canonical-spec-scc-3-energy, canonical-spec-scc-5-results-registry]
+---
+
+> **Part 4 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
+
+---
+
+## 10. Structural Interpretation
+
+This section states, in disciplined theoretical prose, the core claims of the theory about the nature of cohesion, individuation, and persistence.
+
+**Existence is not first given as objecthood.** The theory asserts that the most basic level of structured encounter — whether perceptual, cognitive, or computational — does not consist of already-individuated objects. What is first given is a field of graded relational intensity from which coherent formations may or may not emerge. Objects are late achievements, not starting points.
+
+**Cohesion precedes object individuation.** Before a region of the world can be singled out as a distinct individual — before it can be named, classified, tracked, or reasoned about as a discrete entity — it must first hold together as a cohesive formation. This holding-together is the work of the cohesion field: the graded pattern of mutual relational support that makes a formation cohere rather than scatter. Individuation presupposes cohesion; it does not produce it.
+
+**A genuine cohesive formation must exhibit internal support, exterior distinction, and temporal inheritance.** Mere intensity is not cohesion. A random pattern of high values in a field does not constitute a formation. A genuine formation is one that is self-supporting under its own relational structure (closure), structurally asymmetric with respect to its exterior (distinction), internally articulated with core, boundary, and exterior strata (morphology), and inherited through time as a structurally continuous organization (persistence). These four conditions jointly define the concept of proto-cohesion.
+
+**The same thing through time is not a pointwise identical set of sites.** Temporal identity is not spatial identity. A formation that moves, deforms, partially dissolves, and reconstitutes itself may still be the same formation — provided that its structurally significant core is inherited under transport. What persists is not a rigid arrangement of points but a relational organization: the pattern of mutual support that defines the formation's cohesive character. This conception of identity is structural and dynamic, not extensional and static.
+
+**The theory does not reduce to segmentation, clustering, or tracking.** Although the formal apparatus may superficially resemble techniques from image segmentation, graph clustering, or multi-object tracking, the theoretical intent is fundamentally different. Segmentation presupposes objects and seeks to delineate them; this theory seeks to explain how anything becomes delineable at all. Clustering groups pre-given data points; this theory asks how coherent groupings emerge from unstructured relational fields. Tracking follows identified objects through time; this theory asks what it means for something to be the same thing through time in the first place.
+
+**The theory's self-referentiality is dual-mode, not generic.** The operators of the theory depend on the field they evaluate in two structurally distinct ways that enter the energy and predicates: self-completion (closure $\mathrm{Cl}_t$ completes the field using its own values) and self-contrast (distinction $\mathbf{D}_t$ compares the field against its own complement). This dual-mode operator pair is the mathematically distinctive feature — not self-referentiality per se, which is routine in nonlinear variational problems (the Euler–Lagrange equation for any nonlinear functional has the solution appearing in the equation). What is distinctive is the specific structure: two independent modes of self-dependence operating simultaneously and entering the theory through different structural channels (closure through $\mathcal{E}_{\mathrm{cl}}$ and the Bind predicate; distinction through $\mathcal{E}_{\mathrm{sep}}$ and the Sep predicate). A third mode — self-integration via co-belonging $\mathbf{C}_t$ — is available as a derived diagnostic but does not currently enter any predicate or energy term.
+
+---
+
+## 11. Fixed Commitments and Open Degrees of Freedom
+
+### 11.1. Fixed Commitments
+
+The following principles constitute the stable core of the theory and are not subject to routine revision:
+
+1. **Primacy of soft cohesion fields.** The primitive ontological entity is the graded cohesion field $u_t : X_t \to [0,1]$, not a crisp subset, a class label, or an instance ID.
+
+2. **Relational priority.** Relations are prior to objecthood. Cohesion, closure, distinction, and persistence are all defined in terms of relational structure, not as intrinsic properties of isolated entities.
+
+3. **Non-primitive status of crisp objects.** Crisp objects may be recovered from the soft system by thresholding or stabilization, but they are derivative constructs, not foundational primitives.
+
+4. **Non-primitive idempotence of closure.** The closure operator is subject to a stabilization tendency (contraction) but is not required to be idempotent at the primitive level.
+
+5. **Four-term minimal energy structure.** The canonical energy comprises four conceptually independent terms — closure, separation, boundary/morphology, and transport — which must remain distinct.
+
+6. **Structural rather than pointwise persistence.** Temporal identity is defined as structural inheritance of the cohesive core under transport, not as pointwise identity of sites.
+
+7. **Boundary as transition band.** Boundary is a graded transition region, not necessarily a sharp codimension-one frontier.
+
+8. **Distinction as exterior asymmetry.** Distinction is a structural asymmetry with respect to the exterior field, not a local contrast measure.
+
+9. **Volume constraint as structural axiom.** Cohesive formations require a finite cohesive budget ($\sum u_i = m$). This is a structural commitment to finite cohesive capacity, not a computational convenience.
+
+10. **A1' conditional extensivity.** Closure is self-regulating: extensive below the scalar closure fixed point $c^*$, contractive above it. The threshold $c^* = \sigma(a_{\mathrm{cl}}(c^* - \tau_{\mathrm{cl}}))$ is computable and unique when $a_{\mathrm{cl}} < 4$. This replaces the original A1.
+
+11. **Diagnostic vector as primary proto-cohesion representation.** Proto-cohesion is $[0,1]^4$, not Boolean. The graded vector is the primary representation; the Boolean conjunction is a secondary projection.
+
+12. **$\mathbf{C}_t$ is a derived diagnostic.** Co-belonging does not enter any predicate or energy term. It is available as a diagnostic tool for analyzing non-local structural integration within formations.
+
+13. **$b_D = 0$ for the distinction operator.** Energy analyticity (required for T14, Łojasiewicz convergence) takes precedence over the explicit gradient term.
+
+### 11.2. Open Design Choices
+
+The following aspects of the theory are constrained by the canonical commitments but not yet uniquely determined:
+
+1. **Final functional form of $\mathbf{C}_t$.** The resolvent is provisional; the co-belonging operator has a fixed conceptual role and fixed axioms (C1–C4) but no single permanent realization.
+
+2. **Closure regularity conditions.** The exact smoothness, continuity, or compactness conditions on $\mathrm{Cl}_t$ beyond the stated axioms remain to be specified.
+
+3. **Threshold recovery rules.** The precise protocol by which crisp objects are extracted from soft cohesion fields (choice of thresholds, stability criteria, hysteresis rules) is not canonically fixed.
+
+4. **Dynamic update laws.** The theory as stated is variational (characterizing formations as energy minimizers) rather than dynamical (specifying how fields evolve in time). The derivation of update laws — whether gradient descent, evolutionary optimization, or other mechanisms — is a future formalization layer.
+
+5. **Variational versus evolutionary optimization strategies.** The canonical energy admits optimization by multiple strategies, including gradient-based variational methods and population-based evolutionary methods (such as xNES). The choice of optimization strategy is an implementation decision, not a theoretical commitment.
+
+6. **Multi-formation interaction.** The canonical specification addresses a single cohesive formation. The interaction between multiple co-existing formations — competition, occlusion, merging, splitting — requires an extension of the theory that is not yet canonically specified.
+
+7. **Self-referential transport.** Making $\mathbf{M}_{t \to s}$ depend only on the cohesion fields (no external features or correspondence) is open. The optimal transport reinterpretation (with self-referential cost $c(x,y; u_t, u_s)$) is mathematically novel but unproved.
+
+8. **Multi-formation architecture.** Whether via $K$-field decomposition ($u^{(1)}, \ldots, u^{(K)}$ with coupling), non-contraction regime ($a_{\mathrm{cl}} \geq 4$), or spectral $\mathbf{C}_t$ decomposition.
+
+9. **Parameter regime.** Principled method for setting $\lambda$ ratios and absolute scales. The $\lambda_{\mathrm{sep}}/\lambda_{\mathrm{bd}} \sim 10^{-5}$ constraint from Hessian normalization analysis is noted but not yet integrated into the parameter framework.
+
+The distinction between fixed and open is not the distinction between important and unimportant. The open choices are constrained and consequential; they are open because the theory has not yet accumulated sufficient evidence or argument to fix them uniquely.
+
+---
+
+## 12. Open Problems and Next Formalization Layers
+
+The following problems remain unresolved and constitute the primary agenda for the next stages of theoretical development, organized by layer.
+
+### Foundational
+
+**Self-referential transport.** *(Erratum 2026-04-01: Largely resolved.)* The transport kernel depends only on $u_t$, $u_s$, and $\mathbf{N}$ via the 3-component cohesion fingerprint $\varphi(x) = (u(x), \mathrm{Cl}(u)(x), D(x; 1{-}u))$. Fixed-point existence proved (Schauder, any $\varepsilon_{\mathrm{OT}} > 0$). Selection/uniqueness: transport confinement bound $C_{\mathrm{conf}} = O(\sigma\sqrt{\varepsilon_{\mathrm{OT}}\log n})$ proved, independent of $u_s$; exp29 confirms no multiplicity across $\lambda_{\mathrm{tr}} \in [0.01, 10]$. Remaining: tight confinement constants (current bound 25–10000× conservative, exp40/41).
+
+**Discrete substrate defense.** The theory claims to describe pre-objective cohesion but defines its fields over individuated discrete sites $X_t$. A formal articulation of why this does not undermine the theory's philosophical claims — distinguishing the substrate (sites as relational loci) from the emergent structure (formations as cohesive organizations) — requires a more developed argument than the brief remark in Section 2. This is a philosophical-foundational problem, not a mathematical one.
+
+**Multi-formation is kinetic.** On any connected graph, the global energy minimum is always a single formation ($K^* = 1$) due to isoperimetric ordering: $E(u^*_m) < (1/K) E(u^*_{m/K})$ for equal volumes. Coexistence of $K > 1$ formations is therefore not thermodynamically favored. Multiple formations persist as **metastable local minima** maintained by kinetic barriers: the energy cost of merging two separated bumps scales as $O(\beta^{0.89})$ (exp38, exp55), creating a timescale separation that stabilizes K>1 against gradient flow. Noise at scale $\sigma \leq 0.5$ cannot overcome barriers of height $\sim 20$ at $\beta=30$ (exp55: zero merges in 5000 iterations). This kinetic multi-formation regime is a direct realization of T7-Enhanced metastability: the self-referential closure operator creates larger attraction basins and higher barrier heights than pure Allen-Cahn.
+
+**Three Pillars of Kinetic Multi-Formation:**
+
+- **Pillar I. Nucleation.** Initial separation of K>1 formations is determined by spectral structure of the graph Laplacian. For small noise, the eigenvector of the second Laplacian eigenvalue $\lambda_2$ provides a natural binary partitioning; higher eigenvectors seed K>1 formations (exp51: on 10 configurations spanning grids, SBM, barbell, random geometric graphs, K*=1 universally confirmed — no spontaneous multi-formation from eigenvectors alone; K>1 requires deliberate volume-constrained initialization).
+  
+- **Pillar II. Metastability.** Once separated by distance $d > d_{\min}^*$, formations are metastable critical points with positive-definite Hessian. The inter-formation distance threshold $d_{\min}^*$ depends on the minimum spectral gap: well-separated (d > 3, T-Persist-K-Sep proved), weakly-interacting (boundary overlap allowed, T-Persist-K-Weak conditionally proved, $|O_{jk}| \leq 0.2 \min(|\text{Core}_j|, |\text{Core}_k|)$), strongly-interacting (significant bulk overlap, barrier-crossing regime, T-Persist-K-Strong local stability proved). Closed transport plans ensure persistence across time steps (T-Persist-K-Sep/Weak/Unified proved under per-regime hypotheses).
+
+- **Pillar III. Coarsening.** Under gradient flow with small noise, K>1 formations should coarsen toward K=1. The coarsening dynamics are kinetically determined: formations merge when noise-driven fluctuations or geometry changes bring them below the barrier crossing threshold. Early predictions (P-Unified-1/2) about coarsening rates were based on parameter coupling; exp49-50 falsified the monotonicity claim. Correct predictions (MK-1–MK-4) are kinetic: K→(K-1) barrier scaling $\propto \beta^{0.89}$, coarsening exponent (within single-field Allen-Cahn regime) $\alpha < 1/2$ (slower than classical), nucleation seeded by spectral mode, barrier enhancement from closure.
+
+**Closure's Role in Multi-Formation Stability.** The self-referential closure operator empirically **reduces the branch-conditioned critical inter-formation distance** $d_{\min}^*(B,\mathrm{rule},\mathrm{params},G)$ by approximately **30%** in the tested branch-selection protocol (from $\approx 7$ nodes without closure to $\approx 5$ nodes with closure at $\beta=30$; exp57 corrected). This is a quantitative realization of T7-Enhanced metastability: closure's self-reinforcement structure expands the attraction basin of each formation, allowing them to coexist at closer distances. For well-separated formations (exp57: width 2 nodes, inter-formation distance > 3), SCC maintains K=4 on a 10×10 grid where pure Allen-Cahn requires 15×15 (doubling grid size). *(Erratum 2026-04-10: $d_{\min}^*$ is not a branch-free scalar; its coefficients depend on branch, selection rule, graph geometry, and parameters. The qualitative closure effect is retained, while coefficient-level formulas remain empirical.)* This closure-driven multi-formation expansion is recorded in **CN14**.
+
+**$K$-field architecture.** The contraction regime ($a_{\mathrm{cl}} < 4$) with a single field guarantees a unique closure fixed point. Extending to multiple overlapping formations requires $K$ coupled soft fields $u^1_t, \ldots, u^K_t$ on a product manifold $\Sigma^K_M = \Sigma_{m_1} \times \cdots \times \Sigma_{m_K}$ with inter-field repulsion $\lambda_{\text{rep}} \langle u^j, u^k \rangle$ and simplex participation constraint $\sum_k u^k(x) \leq 1$. The $K$-field architecture (I9) **guarantees K>1 by construction** — each field optimizes independently under repulsion coupling, ensuring non-zero minimizers for each k (as opposed to single-field gradient flow where K>1 bumps inexorably merge to K=1). This is the current binding decision, with `scc/multi.py` implementing the basic structure.
+
+*(Erratum 2026-04-10: K-formation claims are branch-conditioned. A branch means a selected local K-field minimizer together with its selection rule, tie-breaker, initialization, or history. Scalar quantities such as $F''(M/2)$, $d_{\min}^*$, and merge barriers are not branch-free invariants; they must specify the source branch and selection convention.)*
+
+**Multi-formation temporal evolution.** Independent per-formation transport (Option A) is now implemented for the **well-separated regime** — formations with disjoint supports. The architecture:
+
+- **$K$ transport plans** $\mathbf{M}^k_{t \to s}$, one per formation, each computed independently via the single-formation transport pipeline (cohesion fingerprint, self-referential cost, log-domain Sinkhorn partial OT).
+- **Per-formation fingerprint** $\varphi^k(x) = (u^k(x),\, \mathrm{Cl}^k(u^k)(x),\, D^k(x; 1{-}u^k))$ using formation-specific operators derived from $u^k$. *(Erratum 2026-04-01: resolvent $C^k(x,x)$ demoted from canonical fingerprint.)*
+- **Simplex constraint in the temporal domain**: $\sum_{k=1}^{K} (\mathbf{M}^k \cdot u^k_s)(x) \leq 1$ for all $x$, enforced by post-hoc proportional rescaling when violated.
+- **Per-formation persistence diagnostic**: $\mathsf{Persist}^k = \text{core-to-core inheritance via } \mathbf{M}^k$, applying the single-formation T-Persist directly to each $(u^k_t, u^k_s)$ pair.
+
+When formations have disjoint supports, per-formation T-Persist applies directly: transport plans do not interact, and the simplex constraint is automatically satisfied.
+
+**Resolved:**
+- **Well-separated regime** (T-Persist-K-Sep): Proved. Per-formation T-Persist applies independently; Coupling Bound Lemma ensures exponentially small gradient perturbation at core sites and automatic simplex satisfaction, under spectral-repulsion compatibility (SR).
+- **Weakly-interacting regime** (T-Persist-K-Weak): Conditionally proved. Joint Hessian spectral gap via Weyl bound under (SR): $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$; post-hoc correction within basin radius.
+- **Coupled transport cost**: Implemented — repulsion-aware OT cost penalizes transport to occupied sites.
+- **Multi-formation regimes unified by $\Lambda_{\mathrm{coupling}}$** (T-Persist-K-Unified, Corollary III): Persist degradation rates parametrized by soft overlap measure $\omega_{jk}$ and per-formation spectral gaps. Regime boundaries (Sep ↔ Weak ↔ Strong) occur at $\Lambda = 0.01$ and $\Lambda = 1/(K-1)$.
+
+**Remaining open problems (kinetic structure):**
+- **Strongly-interacting regime** (bulk overlap, $\Lambda > 1/(K{-}1)$): K=2 is always a local minimum (exp30), never a saddle. Merge requires barrier crossing (Kramers transition). K-merge barrier height $\propto \beta^{0.89}$ (exp38). Thermal escape rates and barrier-crossing timescales remain open. Transition state characterization (NEB/string method) needed. *(Erratum 2026-04-10: Merge-barrier claims must specify a source branch, target manifold, endpoint, and admissible path class. The fixed-per-formation constrained endpoint $(u_{\mathrm{merged}},0)$ is invalid; future merge-barrier statements should use an explicitly valid relaxed total-mass manifold such as $R_M^2=\{(u_1,u_2):0\leq u_k\leq1,\;\sum_x(u_1+u_2)=M,\;u_1+u_2\leq1\}$ or another stated path space.)*
+- **Formation birth/death** (variable $K$): Three nucleation mechanisms formalized — parametric (supercritical pitchfork at $\beta_{\mathrm{crit}}$, exp37), topological (graph structure change, exp39), volume-driven (ruled out on homogeneous grids). Remaining: formal birth theorem under general noise, multi-birth ($K \to K{+}2$) scaling laws.
+- **Coarsening dynamics under noise**: How does the noise-driven merge rate scale with barrier height, graph size, and noise amplitude? Early simplified predictions (P-Unified-1/2) falsified; kinetic predictions (MK-1–MK-4) under experimental validation.
+
+**Coupling Bound Lemma (K-Formation Hessian).**
+Let $(u^1, \ldots, u^K)$ be a joint minimizer of the $K$-field energy $\mathcal{E}_K = \sum_k \mathcal{E}_{\text{self}}(u^k) + \sum_{j<k} \lambda_{\text{rep}} \langle u^j, u^k \rangle$ on the product constraint manifold $\Sigma^K_M = \Sigma_{m_1} \times \cdots \times \Sigma_{m_K}$ with simplex constraint $\sum_k u^k(x) \leq 1$. Define the inter-formation distance $d_{\min}(j,k) = \min_{x \in \text{supp}(u^j),\, y \in \text{supp}(u^k)} d_G(x,y)$ where $\text{supp}(u^k) = \{x : u^k(x) \geq \theta_{\text{supp}}\}$.
+
+1. **(Diagonal blocks.)** $H_{kk} = H_k$ (single-formation constrained Hessian). Repulsion contributes zero to diagonal blocks (bilinear cross-term has zero same-variable second derivative).
+
+2. **(Off-diagonal blocks.)** $V_{jk} = \lambda_{\text{rep}} \cdot I_n$ for all $j \neq k$, regardless of formation separation. The coupling is global, not restricted to the overlap.
+
+3. **(Spectral gap.)** By Weyl's inequality: $\mu_{\text{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\text{rep}}$. Under the spectral-repulsion compatibility condition **(SR)** $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$, the joint spectral gap is positive.
+
+4. **(Well-separated simplification.)** When $d_{\min}(j,k) \geq D_{\text{sep}} \geq 3$, the repulsion *gradient* $\lambda_{\text{rep}} \sum_{j \neq k} u^j(x)$ is exponentially small at core sites of each formation ($\leq \lambda_{\text{rep}} \cdot K \cdot 2\exp(-c_0 D_{\text{sep}})$), even though the Hessian coupling $V_{jk} = \lambda_{\text{rep}} I$ is not. This means the IFT displacement and simplex violation are exponentially small in $D_{\text{sep}}$, despite the Hessian not being block-diagonal.
+
+5. **(Cross-term vanishing.)** For all $j \neq k$ and all $x \in \text{Core}(u^j)$: $u^k(x) \leq 2\exp(-c_0 \cdot D_{\text{sep}})$, where $c_0 = \text{arccosh}(1 + \kappa^2/d_{\min})$. At $D_{\text{sep}} = 3$ with default parameters: $u^k(x) \leq 2\exp(-3c_0) < 10^{-3}$.
+
+6. **(Simplex automatic satisfaction.)** $\sum_k u^k(x) \leq u^j(x) + K \cdot 2\exp(-c_0 D_{\text{sep}}) < 1$ for all $x \in \text{supp}(u^j)$.
+
+*Proof sketch.* Item 1: the repulsion term $\lambda_{\text{rep}} \langle u^j, u^k \rangle$ is bilinear in distinct fields, so $\partial^2/\partial (u^k)^2 = 0$. Item 2: the cross-Hessian $\partial^2 \mathcal{E}_K / \partial u^j_x \partial u^k_y = \lambda_{\text{rep}} \delta_{xy}$, which is $\lambda_{\text{rep}} I$ — present for all $j \neq k$ regardless of separation. Item 3: Weyl's inequality applied to the block matrix with off-diagonal perturbation of norm $(K-1)\lambda_{\text{rep}}$. Item 4: despite the global Hessian coupling, the IFT displacement at core sites depends on the gradient perturbation, which involves $u^j(x)$ values that are exponentially small by the Interior Gap Proposition. Item 5: follows from Interior Gap Proposition (screened Poisson decay). Item 6: immediate from Item 5.
+
+*Status:* **Proved.** *(Erratum: replaces the earlier "Decoupling Lemma" which incorrectly claimed block-diagonal Hessian structure. The off-diagonal blocks $V_{jk} = \lambda_{\text{rep}} I$ are global, but the key results survive because the IFT displacement depends on gradient perturbation — not Hessian structure alone — and the gradient perturbation is exponentially small in $D_{\text{sep}}$ at core sites.)*
+
+---
+
+**T-Persist-K-Sep. Multi-Formation Temporal Persistence (Well-Separated Regime).**
+Let $(u^1_t, \ldots, u^K_t)$ be a well-separated joint minimizer of $\mathcal{E}_{K,t}$ with $d_{\min}(j,k) \geq D_{\text{sep}} \geq 3$ for all $j \neq k$. Suppose:
+- **(H1-K)** Each formation $u^k_t$ satisfies the single-formation hypotheses (H1)-(H4) of T-Persist-1.
+- **(WS)** Well-separated: $D_{\text{sep}} \geq 3$ with $4\varepsilon_1/\min_k \mu_k < D_{\text{sep}} - 2$ (separation budget exceeds IFT displacement).
+- **(SR)** Spectral-repulsion compatibility: $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$.
+
+Under an $\varepsilon$-gentle transition from $t$ to $s$:
+
+**(a) Per-formation minimizer persistence.** Each $u^k_s$ exists with $\|u^k_s - u^k_t\| \leq 2\varepsilon_1/\mu_k$.
+
+**(b) Separation preservation.** $d_{\min}(j,k)(s) \geq d_{\min}(j,k)(t) - 4\varepsilon_1/\min(\mu_j, \mu_k)$.
+
+**(c) Per-formation core inclusion.** $\text{Core}_t(u^k_t) \subseteq \text{Core}_s(u^k_s, \theta_{\text{core}} - 2\varepsilon_1/\mu_k)$ for each $k$.
+
+**(d) Per-formation transport concentration.** Each formation's transport plan $\mathbf{M}^k$ satisfies the two-tier concentration bound of T-Persist-1(e) independently.
+
+**(e) Simplex preservation.** $\sum_k u^k_s(x) \leq 1 + O(K\exp(-c_0(D_{\text{sep}} - 4\varepsilon_1/\min_k \mu_k)))$ for all $x$. Under hypothesis (WS), the residual separation $D_{\text{sep}} - 4\varepsilon_1/\min_k \mu_k \geq 2$ ensures the violation is $< K \cdot 10^{-3}$, making post-hoc correction unnecessary.
+
+*Proof.* By the Coupling Bound Lemma, the joint Hessian has off-diagonal blocks $V_{jk} = \lambda_{\text{rep}} I$, but the joint spectral gap is positive under (SR) via Weyl's inequality: $\mu_{\text{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\text{rep}} > 0$. The IFT on the product manifold $\Sigma^K_M$ applies to the full coupled system. Despite the global Hessian coupling, the gradient perturbation at core sites of each formation is exponentially small (Coupling Bound Lemma Item 4), so the IFT displacement at core sites reduces to the single-formation result up to $O(\exp(-c_0 D_{\text{sep}}))$ corrections. Part (b): the support of each $u^k$ shifts by at most $\|u^k_s - u^k_t\|_\infty \leq \|u^k_s - u^k_t\|_2 \leq 2\varepsilon_1/\mu_k$ in field value; sites at distance $\delta$ from the support boundary have field value $\leq 2\exp(-c_0\delta)$, so the support expands by at most $O(1/c_0 \cdot \log(1/\varepsilon_1))$ hops, bounded by $2\varepsilon_1/\mu_k$ for moderate $\varepsilon_1$. Parts (c-d) are direct per-formation applications of T-Persist-1(c-e), valid because the gradient coupling is exponentially small at core sites. Part (e) follows from (b) and the Coupling Bound Lemma Item 6 applied at time $s$.
+
+*Status:* **Proved** (conditional on per-formation T-Persist-1 hypotheses H1-H4, well-separation WS, and spectral-repulsion compatibility SR). First fully proved multi-formation temporal result. *(Erratum: proof updated to use Coupling Bound Lemma with Weyl spectral gap bound, replacing the earlier incorrect claim of block-diagonal Hessian reduction.)*
+
+*Implementation:* `scc/multi.py` function `transport_k_formations` implements Phase 1 (independent transport). The `inter_formation_distances` function verifies the well-separation hypothesis. In the well-separated regime, Phase 2 (simplex correction) is verified to be unnecessary by part (e).
+
+---
+
+**T-Persist-K-Weak. Multi-Formation Temporal Persistence (Weakly-Interacting Regime).**
+Extends T-Persist-K-Sep to the case where formation supports may overlap at their boundaries ($|O_{jk}| = O(|\partial\text{Core}|)$). The joint Hessian on $\Sigma^K_M$ has diagonal blocks $H_{kk} = H_k$ (single-formation Hessians; repulsion contributes zero to diagonal blocks) and off-diagonal blocks $V_{jk} = \lambda_{\text{rep}} I$ (global coupling). Spectral gap bound via Weyl's inequality: $\mu_{\text{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\text{rep}}$. Under hypotheses (H1-K), (WI: $|O_{jk}| \leq 0.2 \cdot \min(|\text{Core}_j|, |\text{Core}_k|)$), (SR: $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$), (NB-K: $\mu_{\text{joint}} > \mu_0$), and $\varepsilon$-gentle transition: (a) joint minimizer persistence with displacement $\leq 2\varepsilon_1/\mu_{\text{joint}}$; (b) deep core sites ($\delta \geq 2$) unaffected by coupling (gradient perturbation exponentially small; T-Persist-1(c,d) applies unchanged); (c) boundary overlap sites have shifted-threshold fallback only; (d) post-hoc simplex correction displacement bounded by $O(|O_{jk}| \cdot \theta_{\text{supp}}) \ll r_{\text{basin}} = 0.210$; (e) deep core fingerprint gap $\Delta_\varphi^2 \geq 2.87 - O(\exp(-c_0))$ at depth $\geq 2$, where $c_0 = \text{arccosh}(1 + \kappa^2/d_{\min})$.
+*Status:* **Conditionally proved** under (H1-K), (WI), (SR), (NB-K), plus per-formation T-Persist-1 conditions. *(Erratum: removed incorrect "repulsion stabilization" claim ($R_k$ boost to diagonal); the repulsion cross-term $\lambda_{\text{rep}} \langle u^j, u^k \rangle$ is bilinear, contributing zero to diagonal Hessian blocks. Spectral gap now uses Weyl bound under (SR) condition.) (docs/03-31/repair/MULTI-TEMPORAL-THEORY.md.)*
+
+**T-Persist-K-Strong. Multi-Formation Metastability (Strongly-Interacting Regime).**
+*(Erratum 2026-04-01: Saddle conjecture falsified by exp30. K=2 is always a local minimum, never a saddle; merge is a barrier-crossing problem, not saddle descent.)*
+When formations have significant bulk overlap ($|O_{jk}| > \eta \cdot \min(|\text{Core}_j|, |\text{Core}_k|)$), temporal evolution follows a dichotomy controlled by the joint spectral gap $\mu_{\text{joint}} = \lambda_{\min}(H_{\text{joint}})$ on $\Sigma^K_M$, where $H_{\text{joint}}$ has diagonal blocks $H_k$ and off-diagonal blocks $\lambda_{\text{rep}} I$: (1) if $\mu_{\text{joint}} > 0$ (compatible overlap, requires (SR): $\min_k \mu_k > (K-1)\lambda_{\text{rep}}$), the IFT applies and formations persist with $K_s = K_t$; (2) if $\mu_{\text{joint}} \leq 0$ (incompatible overlap, (SR) violated), the $K$-formation critical point is still a local minimum (not a saddle as previously conjectured), but the merged $(K{-}1)$-formation has strictly lower energy (isoperimetric ordering: $E(u^*_{2c}) < 2 E(u^*_c)$ on homogeneous graphs). The $K \to K{-}1$ transition requires barrier crossing, not gradient descent. K=2 local stability proved: merge-direction Hessian curvature $\geq \mu_1 + \mu_2 > 0$ (Proposition, MERGE-DICHOTOMY-ANALYSIS.md). Experimental evidence: exp30 shows K=1 always globally preferred on 15×15 grid and dumbbell graphs (bw=1–8), with ΔE ≈ −7.6 (49% energy reduction); Hessian curvature always positive (+1000 to +1500); gradient flow from K=2 perturbation reaches K=1 (ΔE = −10.9).
+*Status:* **Partially proved** (local stability proved; global energy ordering proved on homogeneous graphs). Barrier height quantification and formation birth (K → K+1) remain open. *(docs/04-01/theory/MERGE-DICHOTOMY-ANALYSIS.md.)*
+
+### Bridging
+
+**Temporal proto-cohesion (Persist).** *(Erratum 2026-04-03: Phase 11 completion — all 5 T-Persist-1 conditions now proved or unconditional.)* T-Persist-Full ([Part 5 · Registry](/notes/part-0/canonical-spec-scc-5-results-registry/)) synthesizes all components into a unified theorem under hypotheses (WR', PS, ND, NB, H2', H3, GT). All fully or unconditionally proved: T-Persist-1(a) proved (IFT); T-Persist-1(b) proved via basin radius (Proposition 3, BASIN-ESCAPE-ANALYSIS.md); T-Persist-1(c) proved (gradient flow); T-Persist-1(d) **Category C** (requires structural condition β > 7α; H3 analytically proved but condition cannot be removed); T-Persist-1(e) proved via Schauder (entropic regularization $\Rightarrow$ continuity), concentration with 3-component fingerprint ($\|\partial\varphi/\partial u\|_{\text{op}} \leq 1.43$). H2' proved (deep core via isoperimetric, $C_2 \leq 2.875$ sharp). H3 proved analytically (β > 7α, Phase 11). Remaining genuinely open: (i) near-bifurcation persistence at $\mu \to 0$ (bifurcation crossing / branch selection). *(Erratum 2026-04-01: (ii) strong-regime selection resolved — exp29 finds no multiplicity; transport confinement condition replaces WR'. See TRANSPORT-SELECTION-ANALYSIS.md. (iii) Near-bifurcation partially resolved: directional basin extension (NEARBIF-DIRECTIONAL-EXTENSION.md) extends Tier 1 persistence 2.5–4.3× into near-bif regime via ellipsoidal basin; boundary instability channel verified (exp36, shallow/deep ratio up to 4.3×); only μ = 0 bifurcation crossing remains genuinely open.)*
+
+**Predicate-energy bridge.** Two definitions of "formation" coexist: energy minimizers (variational) and predicate-satisfiers (diagnostic). The forward bridge (low energy → high predicates) is partially proved; the reverse bridge does not hold (high predicates do not imply low energy). Quantitative bounds via Γ-convergence continuity lemmas are needed.
+
+**Sep theorem status.** The exact equality $\mathsf{Sep} = 1 - \mathcal{E}_{\mathrm{sep}}/m$ holds for the current $u$-weighted Sep definition. The relationship between the rejected $\mathbf{C}_t$-weighted alternative and $\mathcal{E}_{\mathrm{sep}}$ remains unknown but is no longer a priority.
+
+**Parameter regime theory.** Principled method for setting the $\lambda$ ratios (closure vs. separation vs. morphology vs. transport weighting) and absolute scales. The Hessian normalization analysis suggests $\lambda_{\mathrm{sep}}/\lambda_{\mathrm{bd}} \sim 10^{-5}$, but this has not been integrated into a general parameter framework.
+
+**Unified regime parametrization.** *(New in v2.1.)* The coupling parameter $\Lambda_{\mathrm{coupling}} = \max_{j \neq k} \lambda_{\mathrm{rep}} \cdot \omega_{jk} / \min(\mu_j, \mu_k)$ provides a single dimensionless measure that continuously parametrizes the Sep/Weak/Strong interaction regimes, where $\omega_{jk} = \langle u^j, u^k \rangle / \min(\|u^j\|^2, \|u^k\|^2)$ is the soft overlap weight and $\mu_k$ is the per-formation spectral gap (smallest positive eigenvalue of the constrained $\mathcal{E}_{\mathrm{bd}}$ Hessian projected to $\mathbf{1}^\perp$). Regularization: $\mu_{\mathrm{eff},k} = \max(\mu_k, \mu_{\mathrm{floor}})$ with $\mu_{\mathrm{floor}} = w_{\mathrm{cl}} \cdot 2(1 - a_{\mathrm{cl}}/4)^2$ (closure curvature bound; value $\approx 0.125$ at default $a_{\mathrm{cl}} = 3.0$). Regime thresholds: $\Lambda < 0.01$ (well-separated), $0.01 \leq \Lambda < 1/(K-1)$ (weakly-interacting), $\Lambda \geq 1/(K-1)$ (strongly-interacting, merge bifurcation). The 2-parameter classification (combining $\Lambda$ with geometric $d_{\min}$ and hard overlap) achieves 100% agreement with geometric regime classification across 69 tested configurations (exp46-47, grids 8×8–10×10, $\beta \in [5, 40]$, $\lambda_{\mathrm{rep}} \in [0.001, 20]$). Implementation: `scc/multi.py` function `coupling_strength()`. Three unified predictions (P-Unified-1/2/3) proposed: persist degradation $\sim 1 - C\Lambda^2$, depth onset $\delta_{\min} \propto \Lambda$, bifurcation sharpness at $\Lambda = 1/(K{-}1)$. **P-Unified-1: FALSIFIED (exp49-50)**; persist degradation is NOT monotone in $\Lambda_{\mathrm{coupling}}$. Λ_coupling reclassified as structural coupling classifier, not a complete branch selector or dynamical predictor. Branch identity also requires selection rule/history/tie-breaker data. Replaced by kinetic predictions **MK-1–MK-4** (nucleation spectral mode, coarsening exponent $\alpha < 1/2$, barrier scaling $\propto \beta^{0.89}$, enhanced metastability from closure). P-Unified-3 partially verified (exp37, exp44).
+
+### Extension
+
+**Self-referential optimal transport existence.** Existence and uniqueness of optimal transport plans with self-referential cost (cost depends on the cohesion fields that the transport is trying to connect). *(Erratum 2026-04-01: Existence proved (Schauder). Uniqueness: transport confinement bound proved — $\|\tilde{u} - u_t\|_2 \leq C_{\mathrm{conf}} \sqrt{m}$ with $C_{\mathrm{conf}} = O(\sigma\sqrt{\varepsilon_{\mathrm{OT}} \log n})$ independent of $u_s$; uniqueness follows when $C_{\mathrm{conf}}\sqrt{m} < r_{\mathrm{basin}}$. Bifurcation at $\beta_{\mathrm{crit}} \approx 5$ on $12{\times}12$: supercritical pitchfork, no hysteresis (exp37). Isoperimetric energy ordering $E(u^*_{2m}) < 2E(u^*_m)$ proved in sharp-interface regime with standard isoperimetric profile. K-merge barrier height was empirically fit in exp38 for a specified protocol; later audit reclassified the exponent as branch/path/manifold conditioned. See ISOPERIMETRIC-TRANSPORT-PROOFS.md.)*
+
+**Renormalization group analysis.** Whether the separation energy remains relevant under coarse-graining (spatial rescaling of $X_t$) determines the theory's behavior at different scales. If $\mathcal{E}_{\mathrm{sep}}$ has a nontrivial fixed point under RG flow, separation is a "relevant" perturbation of Allen-Cahn — mathematically and ontologically significant.
+
+**Sharp-interface dynamics.** The sharp-interface limit of the gradient flow ($\varepsilon = \alpha/\beta \to 0$) should converge to a modified mean curvature flow with self-referential surface tension. This would connect SCC to geometric analysis.
+
+**Crisp recovery protocol.** What thresholding scheme is appropriate? Should thresholds be global or locally adaptive? Can the recovery protocol be derived from the energy principle rather than imposed externally?
+
+**Identifiability.** Given a family of cohesion fields that satisfies proto-cohesion, is the underlying formation uniquely determined (up to reparametrization), or can distinct formations yield the same observable cohesion pattern?
+
+---
+
+**Continue to** [Part 5 · Proved Results Registry & Closing Notes →](/notes/part-0/canonical-spec-scc-5-results-registry/)
+
+**Back to** [Canonical Spec index](/notes/part-0/canonical-spec-scc/) · [← Part 3 · Energy](/notes/part-0/canonical-spec-scc-3-energy/)

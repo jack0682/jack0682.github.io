@@ -1,0 +1,202 @@
+---
+title: "SCC Canonical Spec — Part 3: Energy Principle & Provisional Operators"
+slug: canonical-spec-scc-3-energy
+part: 0
+chapter: 0
+section: "Canonical Specification · Part 3"
+kind: essay
+track: perception
+updated: 2026-04-12
+summary: "Sections 8–9 of the SCC v2.1 canonical specification: the volume constraint, the four-term canonical energy functional, and the currently favored provisional realizations of closure, distinction, co-belonging, and temporal transport operators."
+tags: [scc, canonical-spec, energy, operators, variational]
+related: [canonical-spec-scc, canonical-spec-scc-2-axioms, canonical-spec-scc-4-interpretation]
+---
+
+> **Part 3 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
+
+---
+
+## 8. Minimal Energy Principle
+
+The theory admits a variational formulation in which cohesive formations are characterized as approximate minimizers of a canonical energy functional. The minimal energy principle provides a unified optimization target that encodes all four structural requirements — closure, separation, morphology, and transport — as energetic penalties.
+
+### 8.0. Volume Constraint
+
+The energy is minimized on the constraint manifold
+
+$$
+\Sigma_m = \Big\{u \in [0,1]^n : \sum_{x \in X_t} u_t(x) = m\Big\}
+$$
+
+where $m > 0$ is the cohesive budget and $n = |X_t|$. The volume fraction $c = m/n$ is a structural parameter of the theory.
+
+**Ontological justification.** Any finite relational system has finite capacity to sustain cohesion. The volume constraint formalizes this: a formation must select which regions to cohere, because universal cohesion ($u \equiv 1$ everywhere) is as featureless as universal non-cohesion ($u \equiv 0$). The cohesive budget $m$ is the finite resource that forces selectivity — and selectivity is the precondition for formation.
+
+Without the volume constraint, the trivial field $u \equiv 0$ is the global energy minimizer (since all energy terms are nonnegative and vanish at $u = 0$). The volume constraint is therefore mathematically necessary for the existence of non-trivial minimizers (T8-Core) and ontologically natural as a commitment to finite cohesive capacity.
+
+**Admissible range.** The phase transition theorem (T8-Core) requires $c \in \left(\frac{3-\sqrt{3}}{6},\, \frac{3+\sqrt{3}}{6}\right) \approx (0.211, 0.789)$, which is the range where the double-well second derivative $W''(c) < 0$.
+
+### 8.1. Energy Functional
+
+The canonical energy over a temporal window $W$ is:
+
+$$
+\mathcal{E}(\mathbf{u}) = \lambda_{\mathrm{cl}}\, \mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}}\, \mathcal{E}_{\mathrm{sep}} + \lambda_{\mathrm{bd}}\, \mathcal{E}_{\mathrm{bd}} + \lambda_{\mathrm{tr}}\, \mathcal{E}_{\mathrm{tr}}
+$$
+
+where $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}, \lambda_{\mathrm{bd}}, \lambda_{\mathrm{tr}} > 0$ are weighting coefficients that control the relative importance of each structural requirement. The four terms are defined as follows.
+
+### 8.2. Closure Term
+
+$$
+\mathcal{E}_{\mathrm{cl}}(u_t) = \sum_{x \in X_t} \big( u_t(x) - \mathrm{Cl}_t(u_t)(x) \big)^2
+$$
+
+This term penalizes deviation of the cohesion field from its relationally completed form. Minimizing $\mathcal{E}_{\mathrm{cl}}$ drives the field toward self-support: a state in which the cohesion at every site is consistent with the relational support it receives from its neighborhood. A field that minimizes this term is approximately closed — it sustains itself under its own relational structure.
+
+### 8.3. Separation Term
+
+$$
+\mathcal{E}_{\mathrm{sep}}(u_t) = \sum_{x \in X_t} u_t(x) \big( 1 - \mathbf{D}_t(x; 1-u_t) \big)
+$$
+
+This term penalizes cohesive sites that are not structurally distinguished from the exterior. Minimizing $\mathcal{E}_{\mathrm{sep}}$ drives the field toward a state in which every site that participates in the formation is asymmetrically positioned relative to the non-cohesive surround. A field that minimizes this term exhibits clear structural contrast between interior and exterior.
+
+The separation term is structurally distinctive: because $\mathbf{D}_t$ depends on $u_t$, the energy is self-referential — the field defines what "distinction" means, and then is penalized for failing to be distinctive. This self-referential loop has no analogue in standard Allen-Cahn or phase-field theories.
+
+### 8.4. Boundary and Morphology Term
+
+$$
+\mathcal{E}_{\mathrm{bd}}(u_t) = \alpha \sum_{x,y \in X_t} \mathbf{N}_t(x,y) \big( u_t(x) - u_t(y) \big)^2 + \beta \sum_{x \in X_t} u_t(x)^2 \big( 1 - u_t(x) \big)^2
+$$
+
+where $\alpha, \beta > 0$ are morphological parameters and the sum $\sum_{x,y}$ ranges over ordered pairs (per Section 0).
+
+The first sub-term is a smoothness penalty: it discourages arbitrary high-frequency oscillation in the cohesion field by penalizing large differences between adjacent sites. For symmetric $\mathbf{N}_t$, this equals $2\alpha\, v^T L v$ where $L$ is the graph Laplacian and $v = u_t - c\mathbf{1}$, giving a Hessian contribution of $4\alpha L$.
+
+The second sub-term is a double-well penalty: it penalizes intermediate values of cohesion, favoring fields that are either close to $0$ (exterior) or close to $1$ (interior). This ensures that the field develops a structured morphology with discernible inside and outside regions rather than remaining at a featureless intermediate level.
+
+Together, the two sub-terms drive the field toward a state with smooth, well-defined interior regions, coherent boundary bands, and clear exterior — the morphological signature of a genuine cohesive formation.
+
+### 8.5. Transport Term
+
+$$
+\mathcal{E}_{\mathrm{tr}}(u_t, u_s) = \sum_{x \in X_t} \sum_{y \in X_s} \mathbf{M}_{t \to s}(x,y)\, \omega(u_t(x), u_s(y)) \big( u_s(y) - u_t(x) \big)^2
+$$
+
+where $\omega(a, b) : [0,1]^2 \to [0,\infty)$ is a weighting function that emphasizes inheritance at high-cohesion sites (for example, $\omega(a,b) = a \cdot b$ or $\omega(a,b) = \min(a,b)$). This term penalizes discontinuities in cohesive content under temporal transport. Minimizing $\mathcal{E}_{\mathrm{tr}}$ drives the field toward a state in which the structurally significant part of the formation is smoothly inherited from one time to the next.
+
+### 8.6. Why Four Distinct Terms
+
+The four energy terms correspond to four conceptually independent structural requirements:
+
+- **Closure** ensures internal relational self-support.
+- **Separation** ensures structural contrast with the exterior.
+- **Boundary/morphology** ensures coherent spatial articulation.
+- **Transport** ensures temporal inheritance of cohesive organization.
+
+These requirements are logically independent: a field may be closed but undistinguished, distinguished but morphologically incoherent, morphologically coherent but temporally discontinuous, and so forth.
+
+**Honesty Note.** "Conceptual independence" means each term addresses a logically separable structural requirement. It does not mean the terms are mathematically decoupled — in practice, the smoothness penalty in $\mathcal{E}_{\mathrm{bd}}$ and the distinction requirement in $\mathcal{E}_{\mathrm{sep}}$ interact strongly, and the Allen-Cahn substrate is shared between the morphology term and the closure term. The assertion is structural (four independent *reasons* for penalization), not mathematical (four uncorrelated terms). Collapsing the four terms into fewer would obscure these independent structural motivations and reduce the theory's capacity to diagnose which condition a given formation fails to satisfy.
+
+### 8.7. Natural Geometry
+
+The constraint manifold $\Sigma_m$ carries a natural information-geometric structure. The Shahshahani metric, defined by $g_{ij} = \delta_{ij}/u_i$, induces a Riemannian structure under which the natural gradient differs from the Euclidean gradient. The replicator dynamics connection — whereby the gradient flow of $\mathcal{E}_{\mathrm{bd}}$ under the Shahshahani metric yields a replicator equation — is noted as commentary. Whether the natural gradient improves convergence properties is an implementation question, not a theoretical commitment.
+
+---
+
+## 9. Provisional Concrete Operator Forms
+
+This section presents currently favored functional realizations of the canonical operators. These are adopted because they jointly support self-sustaining cohesion, exterior asymmetry, and non-deterministic structural inheritance in a computationally tractable manner. They are presented explicitly as provisional: they are the best current candidates, not permanently fixed definitions. Future work may refine, replace, or generalize these forms while remaining within the canonical framework.
+
+### 9.1. Local Relation Kernel and Aggregation
+
+The adjacency structure is instantiated through a local relation kernel $K_t : X_t \times X_t \to [0,\infty)$ satisfying
+
+$$
+K_t(x,y) \geq 0, \qquad K_t(x,y) = K_t(y,x).
+$$
+
+The associated aggregation operator is defined as
+
+$$
+(P_t f)(x) = \frac{\sum_{y} K_t(x,y)\, f(y)}{\sum_{y} K_t(x,y) + \varepsilon}
+$$
+
+where $\varepsilon > 0$ is a small stabilization constant that prevents division by zero at isolated sites. The operator $P_t$ computes a locally weighted average of any field $f$ with respect to the relational kernel $K_t$. It is the basic building block from which closure, distinction, and other operators are constructed.
+
+### 9.2. Closure Candidate
+
+The currently adopted closure operator is
+
+$$
+\mathrm{Cl}_t(u)(x) = \sigma\!\Big( a_{\mathrm{cl}} \big( (1 - \eta_{\mathrm{cl}})\, u(x) + \eta_{\mathrm{cl}}\, (P_t u)(x) - \tau_{\mathrm{cl}} \big) \Big)
+$$
+
+where:
+
+- $\sigma$ is the logistic sigmoid $\sigma(z) = 1/(1 + e^{-z})$,
+- $a_{\mathrm{cl}} > 0$ controls the steepness of the closure response,
+- $\eta_{\mathrm{cl}} \in [0,1]$ controls the balance between self-retention and neighborhood aggregation,
+- $\tau_{\mathrm{cl}}$ is a threshold that determines the level of combined support required for cohesion to be maintained.
+
+**Parameter constraint.** $a_{\mathrm{cl}} < 4$ is required for A3 (contraction). The Lipschitz constant of $\mathrm{Cl}_t$ is bounded by $\max \sigma' \cdot a_{\mathrm{cl}} \cdot \max(1-\eta_{\mathrm{cl}}, \eta_{\mathrm{cl}}) \leq a_{\mathrm{cl}}/4$, which is $< 1$ when $a_{\mathrm{cl}} < 4$. At $a_{\mathrm{cl}} \geq 4$, multiple fixed points may exist but A3 is violated.
+
+### 9.3. Distinction Candidate
+
+The currently adopted distinction operator is
+
+$$
+\mathbf{D}_t(x; 1-u) = \sigma\!\Big( a_D \big( (P_t u)(x) - \lambda_D\, (P_t(1-u))(x) \big) - \tau_D \Big)
+$$
+
+where:
+
+- $a_D > 0$ controls the sensitivity of the asymmetry comparison,
+- $\lambda_D > 0$ scales the exterior aggregation relative to the interior aggregation,
+- $\tau_D$ is a threshold.
+
+**Change from v1.0:** The gradient term $b_D \cdot g_t(x; u)$ is removed ($b_D = 0$). This is required for energy analyticity: the absolute value $|\cdot|$ in $g_t$ breaks the analyticity needed for the Łojasiewicz gradient inequality (T14). Boundary sensitivity (D-Ax3) is preserved through the spatial structure of $P_t(1-u)$, which implicitly encodes boundary configuration. The smoothness penalty in $\mathcal{E}_{\mathrm{bd}}$ already enforces spatial coherence of the field, making the explicit gradient term redundant for the variational theory.
+
+### 9.4. Co-belonging Candidate
+
+The currently adopted co-belonging operator is the resolvent form
+
+$$
+\mathbf{C}_t = (I - \alpha\, W_{\mathrm{sym}})^{-1}
+$$
+
+where $W_{\mathrm{sym}}$ is the symmetrized cohesion-weighted adjacency matrix. The resolvent can be expanded as a Neumann series:
+
+$$
+\mathbf{C}_t = \sum_{k=0}^{\infty} \alpha^k W_{\mathrm{sym}}^k
+$$
+
+converging when $\alpha\, \rho(W_{\mathrm{sym}}) < 1$. The $k$-th term captures the contribution of paths of length $k$ through the cohesion-weighted adjacency graph, providing non-local structural integration that is distinct from (and richer than) adjacency alone.
+
+**Parameter constraint.** $\alpha\, \rho(W_{\mathrm{sym}}) < 1$ for convergence. The spectral radius $\rho(W_{\mathrm{sym}})$ depends on both the adjacency structure and the cohesion field.
+
+### 9.5. Transport Candidate
+
+The currently adopted temporal transport kernel is
+
+$$
+\mathbf{M}_{t \to s}(x,y) = \frac{ \exp\!\Big( -\dfrac{\|y - \Psi_{t \to s}(x)\|^2}{2\sigma_M^2} - \gamma_M \|\varphi_t(x) - \varphi_s(y)\|^2 \Big) }{ \sum_{y'} \exp\!\Big( -\dfrac{\|y' - \Psi_{t \to s}(x)\|^2}{2\sigma_M^2} - \gamma_M \|\varphi_t(x) - \varphi_s(y')\|^2 \Big) + \varepsilon }
+$$
+
+where:
+
+- $\Psi_{t \to s} : X_t \to X_s$ is a predicted spatial correspondence (e.g., from motion estimation or optical flow),
+- $\sigma_M > 0$ controls the spatial tolerance of the transport,
+- $\varphi_t(x)$ is a feature representation of site $x$ at time $t$ (capturing qualitative or structural characteristics),
+- $\gamma_M > 0$ controls the importance of feature similarity relative to spatial proximity,
+- $\varepsilon > 0$ prevents degenerate normalization.
+
+This realization is sub-stochastic (satisfying E1) and structurally sensitive (satisfying E4), but it depends on external features $\varphi$ and external correspondence $\Psi$, which are not generated by the cohesion field. A fully self-referential transport realization — where cost depends only on $u_t$, $u_s$, and $\mathbf{N}$ — is an open problem for strong-regime analysis ([Part 4 · Open Problems](/notes/part-0/canonical-spec-scc-4-interpretation/)). A weak-regime implementation now exists using the cohesion fingerprint $\varphi(x) = (u(x), \mathrm{Cl}(u)(x), D(x; 1-u), C(x,x))$ as a self-referential feature vector, with entropy-regularized partial OT and fixed-point iteration for mutual consistency.
+
+---
+
+**Continue to** [Part 4 · Structural Interpretation, Commitments & Open Problems →](/notes/part-0/canonical-spec-scc-4-interpretation/)
+
+**Back to** [Canonical Spec index](/notes/part-0/canonical-spec-scc/) · [← Part 2 · Axioms](/notes/part-0/canonical-spec-scc-2-axioms/)

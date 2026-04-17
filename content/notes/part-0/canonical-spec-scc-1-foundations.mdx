@@ -1,0 +1,218 @@
+---
+title: "SCC Canonical Spec — Part 1: Foundations & Formal Universe"
+slug: canonical-spec-scc-1-foundations
+part: 0
+chapter: 0
+section: "Canonical Specification · Part 1"
+kind: essay
+track: perception
+updated: 2026-04-12
+summary: "Sections 0, 2–5 of the SCC v2.1 canonical specification: the summation convention, the foundational orientation, the formal universe, the primacy of the soft form, and the derived geometric and morphological notions."
+tags: [scc, canonical-spec, foundations, axioms, foundational]
+related: [canonical-spec-scc, canonical-spec-scc-2-axioms]
+---
+
+> **Part 1 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
+
+---
+
+## 0. Summation Convention
+
+All sums of the form $\sum_{x,y \in X_t}$ range over **ordered pairs**: each undirected edge is counted twice when the kernel is symmetric. This convention is load-bearing in the phase transition theorem (T8-Core) and the Hessian analysis. Where unordered-pair sums are intended, the notation $\sum_{\{x,y\}}$ is used explicitly, and the relationship $\sum_{\{x,y\}} f(x,y) = \frac{1}{2}\sum_{x,y} f(x,y)$ holds for symmetric $f$.
+
+---
+
+## 2. Foundational Orientation
+
+The theory of Soft Cognitive Cohesion does not begin from objects. It does not presuppose that the world is first given as a collection of discrete, bounded, individually identifiable things. It does not assume that perception starts with already-separated entities whose properties then need to be classified. Any framework that begins from such assumptions starts too late: it inherits the results of a prior process of individuation without accounting for how that individuation was achieved.
+
+The foundational commitment of this theory is that coherent formation can be characterized as a graded, self-referentially evaluated structural state that is formally richer than and not reducible to discrete objecthood. Objects, in this framework, are a distinguished region of the formation space — the region where all four structural requirements (binding, separation, articulation, persistence) are maximally satisfied — not the starting point of the analysis. What the theory provides is a continuous field of graded cohesion: regions of varying internal support, continuity, and mutual reinforcement, from which object-like stability may or may not eventually emerge.
+
+Cohesion is therefore given as a graded field, not as a binary partition. A soft cohesion field $u_t : X_t \to [0,1]$ assigns to each site in a relational support space a degree of participation in a cohesive formation. This degree is not a probability of class membership. It is an intensity of cohesive participation: how strongly a site is sustained by, and contributes to, the internal relational organization of a formation.
+
+Objects, in this theory, are not primitives. They are later-read stabilized formations: cohesive fields that have achieved sufficient closure (self-support under relational completion), sufficient distinction (asymmetry with respect to their exterior), sufficient morphological articulation (a structured transition from core to boundary to exterior), and sufficient temporal persistence (structural inheritance of their cohesive organization across time). An object is not an input to the theory; it is, at most, a distinguished output — a formation that satisfies all the conditions of proto-cohesion robustly and stably.
+
+Relational structure is prior to discrete individuation. What makes a formation cohere is not an intrinsic property of isolated points but a pattern of local mutual support: sites that reinforce one another, that belong together not because of a shared label but because their relational configuration is self-sustaining. Internality, boundary, and persistence are consequences of this structured cohesion, not presupposed properties of pre-given objects.
+
+**On the status of $X_t$.** The relational support space $X_t$ is a domain of relational loci, not a collection of pre-given objects. The individuation of sites in $X_t$ is a modeling choice at the implementation layer, not an ontological commitment of the theory. The sites of $X_t$ are the substrate over which cohesion is defined; the formations that emerge from the cohesion field are the emergent structure. The theory's claim is that cohesive formation *over* $X_t$ provides a structurally richer description than objecthood *within* $X_t$, capturing graded states that object-level description cannot express. The discrete structure of $X_t$ no more commits the theory to pre-given objects than the discrete structure of a pixel grid commits image analysis to pre-given visual objects. What is ontologically primitive is the cohesion field and its relational organization, not the identity of the sites over which it is defined.
+
+---
+
+## 3. Formal Universe and Primitive Structure
+
+The formal universe of the soft theory is a structured tuple
+
+$$
+\mathfrak{C}^{\mathrm{soft}} = \Big( T,\ \{X_t\}_{t \in T},\ \{u_t\}_{t \in T},\ \{\mathrm{Cl}_t\}_{t \in T},\ \{\mathbf{N}_t, \mathbf{D}_t\}_{t \in T},\ \{\mathbf{M}_{t \to s}\}_{t,s \in T} \Big)
+$$
+
+whose components are defined as follows.
+
+**Change from v1.0:** The transition operator $\mathbf{T}_t$ has been removed from the formal universe. It had zero realizations, zero theorems, zero energy terms, and zero predicate roles across five iterations of development. Its conceptual role — characterizing boundary morphology — is served by the gradient indicator $g_t$, the boundary band $\mathrm{Bd}_t$, and the morphological quality measure $\mathcal{Q}_{\mathrm{morph}}$. The transition operator is retained as a derived diagnostic in Section 5.
+
+**Change from v2.0 (Cycle 2):** The co-belonging operator $\mathbf{C}_t$ has been demoted from the formal universe to a derived diagnostic (Section 9.4). After the separation predicate was corrected to $u$-weighted form (Sep = $\sum u(x) D(x;1-u) / \sum u(x)$), $\mathbf{C}_t$ no longer enters any predicate or any energy term. Like $\mathbf{T}_t$ before it, $\mathbf{C}_t$ retains its conceptual role (non-local structural integration) and its axioms (C1–C4) but has no functional role in the current theory's predicates or energy. The resolvent realization remains available as a diagnostic tool for analyzing formation structure.
+
+### 3.1. Temporal Index Set
+
+$T$ is a linearly ordered set of temporal indices. In the minimal case $T$ may be a finite discrete sequence $\{0, 1, 2, \ldots, n\}$; in the general case it may be any totally ordered set equipped with a notion of succession. The theory does not require continuous time, but it does require that temporal order be well-defined.
+
+### 3.2. Sensory or Relational Support
+
+For each $t \in T$, the set $X_t$ is the sensory or relational support at time $t$. It is the space of sites over which cohesion is defined. In a visual domain, $X_t$ might be a lattice of spatial positions; in a more abstract domain, it might be any finite or countable set of relational loci. The theory does not require that $X_t$ be Euclidean or even metric, though particular realizations may impose such structure.
+
+The sets $X_t$ are allowed to vary with $t$. This generality is necessary because the relational support available to a cognitive or perceptual system may itself change over time.
+
+### 3.3. Soft Cohesion Field
+
+For each $t \in T$, the function
+
+$$
+u_t : X_t \to [0,1]
+$$
+
+is the soft cohesion field at time $t$. This is the primitive carrier of pre-objective cohesion. The value $u_t(x)$ represents the degree to which site $x$ participates in the cohesive formation at time $t$. A value near $1$ indicates full cohesive participation (deep interiority); a value near $0$ indicates effective exteriority; intermediate values indicate transitional or boundary participation.
+
+The cohesion field $u_t$ is not a posterior probability, not a class membership score, and not a segmentation mask. It is the primary ontological entity of the theory: the graded field from which all further structure — closure, distinction, boundary, persistence — is derived.
+
+### 3.4. Soft Closure Operator
+
+For each $t \in T$, the operator
+
+$$
+\mathrm{Cl}_t : [0,1]^{X_t} \to [0,1]^{X_t}
+$$
+
+is the soft closure operator. It maps a cohesion field to its relationally completed form: the field that would result if every site's cohesion were updated to reflect the support it receives from its relational neighborhood. Closure is the mechanism by which cohesion becomes self-sustaining. Its formal properties are specified in Axiomatic Group A below.
+
+### 3.5. Soft Adjacency
+
+For each $t \in T$, the function
+
+$$
+\mathbf{N}_t : X_t \times X_t \to [0,\infty)
+$$
+
+is the soft adjacency kernel. It encodes the local relational support structure: $\mathbf{N}_t(x,y)$ measures the degree to which sites $x$ and $y$ are relationally proximate or locally coupled. Adjacency is the substrate from which closure and boundary sensitivity are built (and from which the derived co-belonging diagnostic is constructed).
+
+### 3.6. Soft Co-belonging (Derived Diagnostic)
+
+The soft co-belonging operator $\mathbf{C}_t : X_t \times X_t \to [0,\infty)$ measures the degree to which two sites participate in the same cohesive formation. It is a **derived diagnostic**, not a primitive of the formal universe: it does not enter any predicate or energy term in the current theory. Its conceptual role (non-local structural integration) and axioms (C1–C4, Group C) remain well-defined, and the resolvent realization (Section 9.4) provides a concrete diagnostic tool for analyzing formation structure — for example, discriminating within-formation from cross-boundary site pairs.
+
+The codomain is $[0,\infty)$ rather than $[0,1]$: the resolvent realization produces diagonal values $\mathbf{C}_t(x,x) \geq 1$ for sites with positive cohesion, since the Neumann series $(I - \alpha W_{\mathrm{sym}})^{-1}$ includes the identity term. Co-belonging is distinct from adjacency: two sites may be adjacent without co-belonging (if they lie on opposite sides of a cohesive boundary), and two sites may co-belong without being adjacent (if they are linked through a chain of mutually supporting intermediate sites).
+
+**Demotion rationale.** Co-belonging was originally included in the formal universe because it entered the separation predicate $\mathsf{Sep}$. When Sep was corrected to $u$-weighted form (removing $\mathbf{C}_t$-weighting, which gave $\mathsf{Sep} \approx 0.5$ regardless of formation quality), $\mathbf{C}_t$ lost its sole predicate role. It does not enter the energy functional by design. Like the transition operator $\mathbf{T}_t$ (demoted in v2.0), $\mathbf{C}_t$ retains diagnostic value without requiring formal-universe status.
+
+### 3.7. Soft Distinction
+
+For each $t \in T$, the operator
+
+$$
+\mathbf{D}_t : X_t \times [0,1]^{X_t} \to [0,1]
+$$
+
+is the soft distinction operator. Given a site $x$ and a reference field (typically the complement $1 - u_t$, representing the exterior), $\mathbf{D}_t(x; 1-u_t)$ measures the degree to which site $x$ is asymmetrically positioned with respect to the exterior. Distinction is not mere local contrast; it is a structural asymmetry of the cohesive interior relative to the surrounding non-cohesive field as a whole.
+
+### 3.8. Temporal Transport Kernel
+
+For each pair $t, s \in T$, the function
+
+$$
+\mathbf{M}_{t \to s} : X_t \times X_s \to [0,1]
+$$
+
+is the temporal transport or inheritance kernel. The value $\mathbf{M}_{t \to s}(x,y)$ represents the degree to which the cohesive role of site $x$ at time $t$ is inherited by site $y$ at time $s$. This kernel is the mechanism by which temporal identity is defined: the same formation through time is the formation whose cohesive core is structurally inherited under transport.
+
+Temporal transport need not be one-to-one. It may be one-to-many (a cohesive region at time $t$ may distribute its inheritance across multiple sites at time $s$), many-to-one (multiple sites at time $t$ may converge onto a single inheritor), partial (some cohesive content may dissipate without successor), or probabilistic. What is required is that transport preserve the structural organization of cohesion, not that it preserve individual site identities.
+
+---
+
+## 4. Why the Soft Form Is Primary
+
+It is essential to state explicitly, and with full theoretical force, that the soft system is not a relaxation, an approximation, or a computational convenience layered over a more fundamental crisp system. The soft system is the deeper and more original layer. The crisp system, if needed at all, is a derivative that may be recovered from the soft system by thresholding or collapse — but that recovery is a secondary operation, not a return to foundations.
+
+The reasons for this primacy are structural, not merely pragmatic.
+
+**Pre-objective cohesion is intrinsically graded.** Before a formation has stabilized into a recognizable object, its cohesion admits degrees. Some regions participate strongly in the formation; others participate weakly or ambiguously; still others lie on the boundary between belonging and not-belonging. A framework that begins from crisp sets $A_t \subseteq X_t$ cannot represent this graded pre-objective phase without immediately distorting it into a binary decision that has not yet been made.
+
+**Inside and outside are not initially sharply separated.** The distinction between the interior of a formation and its exterior is, at the pre-objective stage, a matter of degree. There is typically a transition band — a region in which cohesion tapers from interior intensity to exterior quiescence. A crisp set has no such transition band; it has only membership and non-membership. The soft field $u_t$ naturally represents the full morphology of this transition.
+
+**Closure is emergent rather than fully completed.** In the crisp case, closure is typically idempotent: applying the closure operator twice yields the same result as applying it once. But at the pre-objective level, closure is better understood as a stabilizing tendency rather than an already-completed operation. A cohesion field may be approximately self-supporting without being perfectly closed. The soft framework accommodates this by not imposing idempotence as a primitive axiom.
+
+**External asymmetry is field-relative rather than pointwise.** Distinction — the structural asymmetry that separates a formation from its surround — is defined with respect to the exterior field as a whole, not as a pointwise property. In the soft system, this field-relative character is natural: $\mathbf{D}_t(x; 1-u_t)$ depends on the entire complementary field. In a crisp system, this dependence collapses to a much coarser boundary/non-boundary distinction that loses the graded structure of the asymmetry.
+
+**The crisp system is recoverable but not foundational.** Given a soft cohesion field $u_t$, one may recover a crisp subset by thresholding: $A_t = \{x \in X_t \mid u_t(x) \geq \theta\}$ for a chosen threshold $\theta$. One may also recover crisp boundaries, crisp interiors, and crisp identity predicates. But these crisp entities are projections of the richer soft structure, not the other way around. The theory moves from soft to crisp, not from crisp to soft.
+
+---
+
+## 5. Derived Geometric and Morphological Notions
+
+From the primitive cohesion field $u_t$ and the operators defined above, several derived notions of geometric and morphological significance can be constructed.
+
+### 5.1. Core
+
+The core of a cohesion field at time $t$ is the set of sites whose cohesive participation exceeds a high threshold:
+
+$$
+\mathrm{Core}_t(u_t) = \{x \in X_t \mid u_t(x) \geq \theta_{\mathrm{core}}\}
+$$
+
+where $\theta_{\mathrm{core}}$ is a parameter close to $1$. The core represents the deep interior of the formation: the sites that are most strongly and stably integrated into the cohesive organization. The core plays a distinguished role in temporal persistence, because it is the structural nucleus whose inheritance under transport defines the identity of the formation through time. A formation that loses its core has, in the relevant sense, ceased to persist.
+
+### 5.2. Interior
+
+The interior of a cohesion field is defined by a lower threshold:
+
+$$
+\mathrm{Int}_t(u_t) = \{x \in X_t \mid u_t(x) \geq \theta_{\mathrm{in}}\}
+$$
+
+where $\theta_{\mathrm{in}} < \theta_{\mathrm{core}}$. The interior includes the core together with the surrounding region of strong but not maximal cohesive participation. The interior is the region within which the formation's relational structure is substantially self-supporting.
+
+### 5.3. Boundary Band
+
+The boundary of a cohesion field is not a sharp line but a transition region — a band of sites where cohesion is intermediate between full interior participation and effective exteriority:
+
+$$
+\mathrm{Bd}_t(u_t) = \{x \in X_t \mid \theta_1 < u_t(x) < \theta_2\}
+$$
+
+where $\theta_1$ and $\theta_2$ are parameters chosen so that $0 < \theta_1 < \theta_2 < 1$. Within the boundary band, cohesion is neither fully established nor fully absent. This is the region of maximal structural transition — where the formation's internal relational support gives way to the exterior.
+
+The boundary band may also be characterized in gradient terms. A local gradient indicator may be defined as
+
+$$
+g_t(x; u) = \sum_{y} \mathbf{N}_t(x,y)\, |u_t(x) - u_t(y)|
+$$
+
+which measures the rate of cohesion change at site $x$ relative to its relational neighborhood. Sites at which $g_t(x; u)$ is large are sites of rapid transition — boundary sites in the morphological sense.
+
+The boundary band is not a codimension-one manifold in general. It is a volumetric region whose thickness and structure reflect the morphology of the formation. A formation with a thick boundary band transitions gradually from inside to outside; a formation with a thin boundary band has a more abrupt transition. Both are legitimate; the theory does not impose a preference.
+
+### 5.4. Exterior
+
+The exterior is defined by complementarity:
+
+$$
+\mathrm{Ext}_t(u_t) = \{x \in X_t \mid u_t(x) \leq \theta_{\mathrm{ext}}\}
+$$
+
+where $\theta_{\mathrm{ext}}$ is a threshold near $0$. The exterior is the domain against which the formation's distinction is measured.
+
+### 5.5. Transition Diagnostics
+
+The structural character of the boundary band may be diagnosed by several derived quantities:
+
+- **The gradient indicator** $g_t(x; u)$ defined in Section 5.3.
+- **The boundary band thickness**, characterized by the difference $\theta_2 - \theta_1$ in the $\mathrm{Bd}_t$ definition or, more intrinsically, by the spatial extent of the region where $g_t$ is large.
+- **The morphological quality measure** $\mathcal{Q}_{\mathrm{morph}} = \ell_{\max} \cdot \mathrm{Artic}$ (provisional; see Section 7.1 for the full definition).
+
+These derived quantities collectively fulfill the role previously assigned to the transition operator $\mathbf{T}_t$ (v1.0, Section 3.8). They are diagnostic, not variational — they describe boundary structure but do not enter the energy functional.
+
+**Change from v1.0:** The transition operator $\mathbf{T}_t$, which appeared in the formal universe and carried two axioms (T-Ax1, T-Ax2), had zero realizations, zero theorems, zero energy terms, and zero predicate roles across five iterations. Its axiomatic status was not earned. Its conceptual content — characterizing boundary morphology — is preserved by the transition diagnostics listed above.
+
+---
+
+**Continue to** [Part 2 · Axiomatic Groups & Proto-Cohesion →](/notes/part-0/canonical-spec-scc-2-axioms/)
+
+**Back to** [Canonical Spec index](/notes/part-0/canonical-spec-scc/)

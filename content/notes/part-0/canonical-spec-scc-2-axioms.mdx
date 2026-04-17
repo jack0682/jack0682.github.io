@@ -1,0 +1,261 @@
+---
+title: "SCC Canonical Spec — Part 2: Axiomatic Groups & Proto-Cohesion"
+slug: canonical-spec-scc-2-axioms
+part: 0
+chapter: 0
+section: "Canonical Specification · Part 2"
+kind: essay
+track: perception
+updated: 2026-04-12
+summary: "Sections 6–7 of the SCC v2.1 canonical specification: the five axiomatic groups (closure, adjacency, co-belonging, distinction, temporal transport) and the proto-cohesion diagnostic vector with its four component predicates."
+tags: [scc, canonical-spec, axioms, proto-cohesion, predicates]
+related: [canonical-spec-scc, canonical-spec-scc-1-foundations, canonical-spec-scc-3-energy]
+---
+
+> **Part 2 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
+
+---
+
+## 6. Axiomatic Groups
+
+The axioms of the theory are organized into five groups, corresponding to the five major structural concerns: closure, adjacency, co-belonging, distinction, and temporal transport.
+
+### Group A. Soft Closure
+
+The soft closure operator $\mathrm{Cl}_t : [0,1]^{X_t} \to [0,1]^{X_t}$ is subject to the following axiomatic properties.
+
+**A1'. Conditional Extensivity (Self-Regulation).** For all $u \in [0,1]^{X_t}$ and all $x \in X_t$,
+
+$$
+\mathrm{Cl}_t(u)(x) \geq u(x) \quad \text{whenever } u(x) \leq c^* \text{ and } (P_t u)(x) \geq u(x)
+$$
+
+where $P_t$ is the local aggregation operator (Section 9.1) and $c^*$ is the unique scalar closure fixed point: the solution of $\sigma(a_{\mathrm{cl}}(c - \tau_{\mathrm{cl}})) = c$ in $(0,1)$, which exists and is unique when $a_{\mathrm{cl}} < 4$ (Banach contraction).
+
+*Proof that the sigmoid closure satisfies A1'.* Define $g(u) = \sigma(a_{\mathrm{cl}}(u - \tau_{\mathrm{cl}})) - u$. Then $g(0) = \sigma(-a_{\mathrm{cl}}\tau_{\mathrm{cl}}) > 0$ and $g(c^*) = 0$. Since $g'(c^*) = a_{\mathrm{cl}} \sigma'(a_{\mathrm{cl}}(c^* - \tau_{\mathrm{cl}})) - 1 < 0$ (because $a_{\mathrm{cl}}/4 < 1$), the function $g$ is positive on $[0, c^*)$. When $(P_t u)(x) \geq u(x)$ and $u(x) \leq c^*$, the pre-activation satisfies $z(x) \geq a_{\mathrm{cl}}(u(x) - \tau_{\mathrm{cl}})$, so $\mathrm{Cl}(u)(x) = \sigma(z(x)) \geq \sigma(a_{\mathrm{cl}}(u(x) - \tau_{\mathrm{cl}})) = u(x) + g(u(x)) \geq u(x)$.
+
+This axiom replaces the original A1 (weak extensivity), which was proved incompatible with A3 for the sigmoid closure realization: satisfying A1 at $u(x) = 0.9$ requires $a_{\mathrm{cl}} \geq 5.49$, contradicting $a_{\mathrm{cl}} < 4$ required by A3. The conditional form A1' resolves this tension by restricting extensivity to sites below the self-support threshold $c^*$. This captures self-regulation: closure builds up cohesion below $c^*$ and corrects it above $c^*$. A1' is stronger than A1, not weaker — it adds self-regulation as a structural feature.
+
+**Layer-crossing note.** A1' references the aggregation operator $P_t$, which is defined as a provisional realization in Section 9.1. This creates a dependency between the axiomatic layer and the provisional realization layer. The axiom is understood as holding for *any* local aggregation operator satisfying the structural properties of Group B (nonnegativity, symmetry, locality, non-transitivity); the specific $P_t$ form in Section 9.1 is the canonical instantiation. Any replacement of $P_t$ that preserves B1–B4 would inherit A1' without modification.
+
+**A2. Monotonicity.** For all $u, v \in [0,1]^{X_t}$,
+
+$$
+u \leq v \implies \mathrm{Cl}_t(u) \leq \mathrm{Cl}_t(v)
+$$
+
+where the inequality is pointwise. If one field is everywhere at least as cohesive as another, its closure is also everywhere at least as cohesive. This ensures that the closure operator respects the ordering structure of cohesion fields. Monotonicity is proved unconditionally for the sigmoid closure realization.
+
+**A3. Stabilization Tendency (Contraction).** Iterated application of $\mathrm{Cl}_t$ satisfies the Cauchy condition:
+
+$$
+\|\mathrm{Cl}_t^{(n+1)}(u) - \mathrm{Cl}_t^{(n)}(u)\| \to 0 \quad \text{as } n \to \infty
+$$
+
+for all $u \in [0,1]^{X_t}$ in any $\ell^p$ norm. For the sigmoid closure realization with $a_{\mathrm{cl}} < 4$, contraction holds with geometric rate $a_{\mathrm{cl}}/4$: the iterates converge to a unique fixed point by the Banach contraction mapping theorem (the Lipschitz constant is $\max \sigma' = a_{\mathrm{cl}}/4 < 1$). The sharp bound $a_{\mathrm{cl}} < 4$ is tight.
+
+This axiom replaces the classical requirement of idempotence ($\mathrm{Cl}_t^2 = \mathrm{Cl}_t$) with a convergence condition. The motivation is that pre-objective closure is not instantaneously complete; it is a stabilizing process that tends toward but does not necessarily achieve exact self-reproduction in a single step.
+
+**Commitment Note (Contraction, Not Projection).** The closure operator in the contraction regime ($a_{\mathrm{cl}} < 4$) is a contraction, not a projection. Its trajectory carries structural information: different starting fields approach the fixed point at different rates, and the transient behavior reveals the relational support structure. However, the destination is unique. Path-dependence in the theory arises at the *energy landscape* level (where metastable minima coexist), not at the closure operator level. These are distinct mathematical claims and must not be conflated.
+
+**Commitment Note (Two-Landscape Structure).** The closure operator has a unique fixed point (in the contraction regime). The energy functional has multiple critical points (metastable minima). The philosophical claim that "trajectory matters" and that "the history of stabilization is part of the structure" applies to the energy landscape — where different initial conditions converge to different metastable formations — not to the closure operator in isolation. This two-landscape structure (contraction landscape for closure; multi-well landscape for energy) is a structural feature of the theory, not an ambiguity.
+
+**A4. Continuity.** $\mathrm{Cl}_t$ is continuous as a map $[0,1]^{X_t} \to [0,1]^{X_t}$ in any $\ell^p$ topology.
+
+**Interpretive Remark.** The deliberate omission of primitive idempotence is a signature commitment of the theory. Classical topological closure is idempotent by definition. But the present theory operates at a level prior to completed topological structure: at the level where closure is still a dynamic tendency, not yet an accomplished fact. Imposing idempotence at the primitive level would presuppose that the cohesive formation has already been fully completed, which would undermine the theory's foundational ambition to describe pre-objective emergence. The proved mathematical payoff of non-idempotence is strictly stronger stability: non-idempotent closure gives a strictly positive-definite Hessian contribution ($2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$ with $n/n$ positive eigenvalues), whereas idempotent closure gives a semidefinite Hessian ($\leq (n-k)/n$ positive eigenvalues).
+
+### Group B. Soft Adjacency
+
+The soft adjacency kernel $\mathbf{N}_t : X_t \times X_t \to [0,\infty)$ is subject to the following properties.
+
+**B1. Nonnegativity.** For all $x, y \in X_t$,
+
+$$
+\mathbf{N}_t(x,y) \geq 0.
+$$
+
+Adjacency is a nonnegative quantity representing relational proximity or coupling strength.
+
+**B2. Symmetry.** In the minimal (undirected) case,
+
+$$
+\mathbf{N}_t(x,y) = \mathbf{N}_t(y,x).
+$$
+
+Symmetry may be relaxed in extensions that model directed relational structure, but the canonical theory adopts symmetry as the default.
+
+**B3. Locality.** $\mathbf{N}_t(x,y)$ is negligible or zero for pairs $(x,y)$ that are not relationally proximate. Adjacency encodes local structure, not global equivalence. Two sites may both participate strongly in the same formation without being directly adjacent, if they are connected through intermediate sites.
+
+**B4. Non-Transitivity.** Adjacency is not required to be transitive. The relation "$x$ is adjacent to $y$ and $y$ is adjacent to $z$" does not entail that $x$ is adjacent to $z$. This is essential: adjacency is a local relation, and global coherence (co-belonging) must be built from local adjacency, not assumed as a primitive property of adjacency itself.
+
+**Interpretive Remark.** Adjacency provides the substrate over which closure and boundary sensitivity are defined (and from which the derived co-belonging diagnostic is constructed). It represents the minimal relational structure that the theory requires: a notion of which sites are locally coupled. All further structure is constructed from this local coupling in combination with the cohesion field.
+
+### Group C. Soft Co-belonging
+
+The soft co-belonging operator $\mathbf{C}_t : X_t \times X_t \to [0,\infty)$ measures the degree to which two sites participate in the same cohesive formation.
+
+**C1. Dependence on Cohesion and Adjacency.** $\mathbf{C}_t(x,y)$ must depend on the cohesion field $u_t$ and on the adjacency structure $\mathbf{N}_t$. It is not a standalone relation but a derived or partially derived quantity that reflects the global pattern of cohesive organization.
+
+**C2. Distinction from Adjacency.** Co-belonging is not reducible to adjacency. Two sites may be adjacent without co-belonging (they may lie on opposite sides of a boundary) and may co-belong without being adjacent (they may be connected through a chain of mutually supporting sites). Co-belonging captures the global structural fact of joint participation in a single cohesive formation.
+
+**C3''. Local Monotonicity.** $\mathbf{C}_t(x,x)$ is monotone increasing in $u_t(x)$ with other field values held fixed.
+
+This replaces the original C3 ($\mathbf{C}_t(x,x) = u_t(x)$ or a monotone function thereof). The revised axiom is both weaker (no specific functional form required) and more appropriate: it states that a site's self-co-belonging increases with its cohesive participation, without committing to a particular formula. This is proved for the resolvent realization via the Neumann series monotonicity argument.
+
+**C4. Symmetry.** For all $x, y \in X_t$,
+
+$$
+\mathbf{C}_t(x,y) = \mathbf{C}_t(y,x).
+$$
+
+Co-belonging is symmetric: if $x$ co-belongs with $y$, then $y$ co-belongs with $x$ to the same degree. This axiom was implicit in v1.0 and is now stated explicitly. It is automatic for the resolvent realization constructed from a symmetrized kernel.
+
+**Provisional Realization.** The resolvent form
+
+$$
+\mathbf{C}_t = (I - \alpha\, W_{\mathrm{sym}})^{-1}
+$$
+
+where $W_{\mathrm{sym}}$ is the symmetrized cohesion-weighted adjacency matrix (with entries $W_{\mathrm{sym}}(x,y) = \sqrt{u_t(x)}\, \mathbf{N}_t(x,y)\, \sqrt{u_t(y)} / d_x$ for appropriate degree normalization $d_x$), satisfies C1–C4 (proved, Iteration 2 R6). Convergence of the Neumann series requires $\alpha\, \rho(W_{\mathrm{sym}}) < 1$, where $\rho$ denotes the spectral radius.
+
+This replaces the Cesàro averaging form, which was proved to degenerate to the stationary distribution, destroying pairwise co-belonging information. The resolvent preserves the full geometric series of paths and achieves $3+$ orders of magnitude discrimination between within-formation and cross-boundary site pairs.
+
+**Diagnostic Role.** Co-belonging does not enter any predicate or energy term in the current theory. It serves as a derived diagnostic for analyzing non-local structural integration within formations — for example, discriminating within-formation from cross-boundary site pairs with $3+$ orders of magnitude separation. This architectural status eliminates the primary computational bottleneck (computing or differentiating through $\mathbf{C}_t$) and keeps the energy analytically tractable.
+
+### Group D. Distinction
+
+The soft distinction operator $\mathbf{D}_t(x; 1-u_t)$ measures the degree of structural asymmetry at site $x$ with respect to the exterior field $1 - u_t$.
+
+**D-Ax1. Exterior Sensitivity.** $\mathbf{D}_t(x; 1-u_t)$ depends not only on the local value $u_t(x)$ but on the relational configuration of the exterior field in the neighborhood of $x$. Distinction is not a pointwise property of the cohesion field alone; it is a relational property that requires reference to the complementary (exterior) field.
+
+**D-Ax2. Asymmetry.** Distinction is high when the relational support that site $x$ receives from the interior field $u_t$ substantially exceeds the support it receives from the exterior field $1 - u_t$. This asymmetry is the structural basis for individuation: a formation is distinguished from its surround precisely to the degree that its interior sites are asymmetrically supported relative to the exterior.
+
+**D-Ax3. Boundary Sensitivity.** Distinction is structurally aware of boundary morphology through its dependence on the relational configuration of the exterior field. The explicit gradient term $b_D \cdot g_t$ from the v1.0 distinction candidate is set to zero (or $\varepsilon$-smoothed) for analyticity — this is required by the gradient flow convergence theorem (T14, Łojasiewicz), since the absolute value $|\cdot|$ in $g_t$ breaks energy analyticity. Boundary sensitivity is preserved through the spatial structure of $P_t(1-u)$: the aggregated exterior field carries implicit information about boundary configuration. The gradient indicator $g_t$ remains available as a derived diagnostic (Section 5.5).
+
+**Interpretive Remark.** Distinction is not merely "being different from one neighbor." It is a global structural property: the asymmetry of a site's relational environment with respect to the entire exterior domain. Without distinction, a cohesion field would be a diffuse intensity pattern with no principled inside/outside articulation. Distinction is what prevents the theory from collapsing into a featureless gradient.
+
+**Joint Role of Distinction and Morphology.** Distinction and morphological structure jointly prevent the theory from admitting degenerate solutions. Without distinction, a constant field $u_t \equiv c$ for $c \in (0,1)$ would trivially satisfy closure and adjacency conditions; distinction forces the field to exhibit structural contrast with its exterior. Without morphological structure (ensured by the boundary/morphology energy term), a field could be distinguished but internally unstructured; morphological articulation forces the field to have discernible core, boundary, and exterior strata.
+
+### Group E. Temporal Transport and Persistence
+
+The temporal transport kernel $\mathbf{M}_{t \to s} : X_t \times X_s \to [0,1]$ is subject to the following axiomatic properties.
+
+**E1. Sub-Stochasticity.** For each $x \in X_t$,
+
+$$
+\sum_{y \in X_s} \mathbf{M}_{t \to s}(x,y) \leq 1.
+$$
+
+The inequality (rather than equality) permits partial dissipation: a site's cohesive content may be only partially inherited, with some fraction lost or unaccounted for. Strict equality would enforce perfect conservation of cohesive content, which is too strong for the general case.
+
+**Interpretive Remark.** E1 is a partial transport constraint in the optimal transport sense. The transport kernel defines a sub-stochastic coupling between measures $u_t \cdot \mu_{X_t}$ and $u_s \cdot \mu_{X_s}$. This connects SCC to the framework of unbalanced optimal transport, where mass creation and destruction are permitted.
+
+**E2. Non-Injectivity.** $\mathbf{M}_{t \to s}$ need not be one-to-one. Multiple sites at time $t$ may transport to the same site at time $s$ (convergence), and a single site at time $t$ may transport to multiple sites at time $s$ (divergence). This generality is necessary because cohesive formations may merge, split, expand, or contract through time.
+
+**E3. Core Inheritance (Solution Constraint).** The transport kernel should preferentially preserve the cohesive core. That is, for sites $x$ in $\mathrm{Core}_t(u_t)$, the inherited cohesion at the receiving sites should remain high:
+
+$$
+\sum_{y \in X_s} \mathbf{M}_{t \to s}(x,y)\, u_s(y) \geq \delta \quad \text{for some } \delta > 0
+$$
+
+whenever the formation persists from $t$ to $s$.
+
+**Reclassification Note (v2.0).** E3 is reclassified from an operator axiom to a solution constraint. It characterizes what transport *should achieve at formation-structured fields*, not what the kernel *must satisfy universally*. This is the temporal analogue of proto-cohesion: a property of good solutions, not of the operator. A transport kernel that fails to preserve the core when applied to a genuinely persistent formation is a bad kernel for that formation; but the kernel itself is not required to satisfy E3 at arbitrary (non-formation-structured) fields.
+
+**E4. Structural Sensitivity.** $\mathbf{M}_{t \to s}(x,y)$ should depend on structural features of $x$ at time $t$ and $y$ at time $s$ — not merely on spatial proximity. In particular, it should be sensitive to the representational or feature-level similarity between the two sites, so that transport respects the qualitative character of the cohesive formation, not just its spatial location.
+
+**Honesty Note.** The provisional transport kernel's dependence on external features $\varphi$ and predicted correspondence $\Psi$ breaks the self-referential loop that characterizes the theory's within-time operators. Making transport fully self-referential — with cost depending only on $u_t$, $u_s$, and $\mathbf{N}$ — is a first-class open problem (Section 12). The self-referential optimal transport interpretation (cost $c(x,y; u_t, u_s)$) is mathematically novel but has no proved existence or uniqueness results.
+
+**Interpretive Remark.** Temporal identity in this theory is not pointwise identity. It is not the assertion that "the same pixels" or "the same coordinates" are occupied at successive times. It is the assertion that the structurally significant core of a cohesive formation — the deep interior that defines the formation's relational organization — is inherited under transport. The same thing through time is the thing whose core persists through structural succession, even if its boundary shifts, its shape deforms, or its spatial locus migrates. This conception of identity is closer to the philosophical notion of genidentity than to the computational notion of a tracking ID.
+
+---
+
+## 7. Proto-Cohesion and Pre-Objective Cohesion
+
+The central predicate of the theory is proto-cohesion: the condition under which a family of cohesion fields $\mathbf{u} = (u_t)_{t \in W}$ over a temporal window $W \subseteq T$ constitutes a genuine pre-objective cohesive formation.
+
+### 7.1. Component Predicates
+
+The proto-cohesion predicate is defined in terms of four component conditions, each of which corresponds to one of the core structural requirements of the theory. Each component returns a value in $[0,1]$, enabling graded assessment.
+
+**Binding.** The predicate $\mathsf{Bind}_t(u_t)$ assesses how closely the cohesion field at time $t$ approximates self-support under closure:
+
+$$
+\mathsf{Bind}_t(u_t) = 1 - \frac{\|u_t - \mathrm{Cl}_t(u_t)\|_2}{\sqrt{n}}
+$$
+
+where $n = |X_t|$ and the norm is $\ell^2$. This returns a value in $[0,1]$: a field that is exactly self-supporting ($u_t = \mathrm{Cl}_t(u_t)$) achieves $\mathsf{Bind} = 1$; a maximally discrepant field achieves $\mathsf{Bind} = 0$.
+
+The $\ell^2$ norm is chosen deliberately. The $\ell^\infty$ norm was proved unsuitable: boundary sites have inherent $|u - \mathrm{Cl}(u)|$ values up to $\sim 0.21$ due to the structural tension between the double-well potential and closure, making $\ell^\infty$ Bind fail even at well-formed formations.
+
+**Proved bound:** $\mathsf{Bind} \geq 1 - \sqrt{\mathcal{E}_{\mathrm{cl}}/n}$ (Cauchy–Schwarz inequality). Small closure energy implies high binding.
+
+**Separation.** The predicate $\mathsf{Sep}_t(u_t)$ assesses the degree to which the cohesion field is structurally distinguished from its exterior, weighted by cohesion:
+
+$$
+\mathsf{Sep}_t(u_t) = \frac{\sum_{x \in X_t} u_t(x)\, \mathbf{D}_t(x;\, 1-u_t)}{\sum_{x \in X_t} u_t(x)}
+$$
+
+This is a $u$-weighted average of distinction over all sites. The cohesion value $u_t(x)$ serves as a natural importance weight: sites with higher cohesion contribute more to the separation score. This formulation is threshold-independent, naturally continuous, and restricts the average to the formation's own support.
+
+**Change from v1.0:** The original Sep was a simple average of $\mathbf{D}_t$ over the crisp interior $\mathrm{Int}_t$. The v2.0 revision avoids crisp thresholds and focuses on the formation support. An intermediate $\mathbf{C}_t$-weighted formulation was considered but rejected: because $\mathbf{C}_t(x,x)$ assigns substantial weight to exterior nodes, the $\mathbf{C}_t$-weighted average yields approximately $0.5$ regardless of formation quality, providing no diagnostic discrimination.
+
+**Proved bounds:** The exact equality $\mathsf{Sep} = 1 - \mathcal{E}_{\mathrm{sep}}/m$ holds for this $u$-weighted formulation (see proved results below).
+
+**Inside-Structure.** The predicate $\mathsf{Inside}_t(u_t)$ assesses the morphological articulation of the cohesion field:
+
+$$
+\mathsf{Inside}_t(u_t) = \mathcal{Q}_{\mathrm{morph}}(u_t)
+$$
+
+where the morphological quality measure is defined as
+
+$$
+\mathcal{Q}_{\mathrm{morph}}(u_t) = \frac{\ell_{\max}(u_t) - c}{1 - c} \cdot \mathrm{Artic}(u_t)
+$$
+
+with $c = \sum u_t / n$ (the volume fraction) and:
+
+- $\ell_{\max}(u_t)$: the length (death minus birth) of the longest bar in the $H_0$ (connected component) persistence diagram of the superlevel-set filtration $\{x : u_t(x) \geq \theta\}$ as $\theta$ decreases from $1$ to $0$.
+- $\mathrm{Artic}(u_t) = 1 - \ell_{\mathrm{second}} / \ell_{\max}$: the articulation ratio, measuring how dominant the primary formation is relative to any secondary structure. If $\ell_{\mathrm{second}} = 0$ (no secondary bar), $\mathrm{Artic} = 1$.
+
+The normalization $(\ell_{\max} - c)/(1-c)$ ensures that uniform fields ($u = c \cdot \mathbf{1}$, where $\ell_{\max} = c$) yield $\mathcal{Q}_{\mathrm{morph}} = 0$ (axiom QM1). The product form captures two independent requirements: the normalized persistence measures the robustness of the primary formation above the baseline, while $\mathrm{Artic}$ measures how cleanly a single formation dominates the field.
+
+**Proved properties:** $\mathcal{Q}_{\mathrm{morph}}$ satisfies QM1 (vanishes on uniform fields), QM2 (monotone in formation quality), QM3 (continuous in $u$ via the persistence stability theorem), QM4 (discriminates stratified from non-stratified fields).
+
+**Persistence.** The predicate $\mathsf{Persist}_W(\mathbf{u})$ assesses the degree to which the cohesive organization is structurally inherited across time throughout the window $W$:
+
+$$
+\mathsf{Persist}_W(\mathbf{u}) = \min_{t < s \in W} \frac{\sum_{x \in \mathrm{Core}_t} \sum_{y \in \mathrm{Core}_s} \mathbf{M}_{t \to s}(x,y)\, u_s(y)}{\rho_{\mathrm{persist}}}
+$$
+
+clamped to $[0,1]$. A family of fields that achieves $\mathsf{Persist} = 1$ maintains full structural continuity of its cohesive core through time.
+
+**Status Note.** *(Erratum 2026-04-01: Persistence now has extensive proved results — see [Part 5 · Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/).)* The transport kernel uses a self-referential cost based on the 3-component cohesion fingerprint $\varphi(x) = (u(x), \mathrm{Cl}(u)(x), D(x;1{-}u))$ — the resolvent diagonal $C(x,x)$ was demoted from the canonical fingerprint (contributes $<0.4\%$ of fingerprint gap but has Jacobian norm $\sim$9300). Fixed-point existence proved via Schauder (any $\varepsilon_{\mathrm{OT}} > 0$); uniqueness via transport confinement ($C_{\mathrm{conf}} = O(\sigma\sqrt{\varepsilon_{\mathrm{OT}}\log n})$, independent of $u_s$). The transport-based Persist predicate implements core-to-core inheritance. End-to-end chain verified: exp27 (5/5 × 5/5 = 100% pass), exp28 (84/100, all failures at $n < 64$ or $\beta < 20$).
+
+### 7.2. The Proto-Cohesion Diagnostic Vector
+
+Proto-cohesion is reported as a **diagnostic vector** $\mathbf{d} \in [0,1]^4$:
+
+$$
+\mathbf{d} = \Big(\mathsf{Bind}_t,\ \mathsf{Sep}_t,\ \mathsf{Inside}_t,\ \mathsf{Persist}_W\Big)
+$$
+
+A formation satisfies proto-cohesion to *degree* $\mathbf{d}$, not in a binary yes/no sense. The diagnostic vector preserves full information about which structural requirements are strongly versus weakly satisfied: a field with $\mathbf{d} = (0.95, 0.3, 0.8, 0.7)$ has strong binding but weak separation — diagnostic information that the Boolean conjunction would collapse to a featureless "not proto-cohesive."
+
+**Boolean recovery.** The Boolean proto-cohesion predicate is recoverable by thresholding each component:
+
+$$
+\mathsf{ProtoCoh}^{\mathrm{soft}}_W(\mathbf{u}) \iff \mathsf{Bind}_t \geq \varepsilon_{\mathrm{cl}} \;\wedge\; \mathsf{Sep}_t \geq \delta_{\mathrm{sep}} \;\wedge\; \mathsf{Inside}_t \geq \mu_{\mathrm{in}} \;\wedge\; \mathsf{Persist}_W \geq \rho_{\mathrm{persist}}
+$$
+
+for chosen thresholds. But the graded vector is the primary representation; the Boolean form is a secondary projection.
+
+**Interpretive Remark.** Proto-cohesion is the central concept of the theory. It is the formal expression of what it means for something to "hold together as a coherent something" prior to discrete objecthood. A proto-cohesive formation is not yet an object in the traditional sense: it may have soft boundaries, graded interiority, and only approximate closure. But it is genuinely cohesive: it binds, it distinguishes itself, it has internal structure, and it persists. It is the pre-objective precursor of objecthood — the formation from which, under further stabilization and sharpening, a discrete object may eventually be read off. The diagnostic vector reformulation preserves this interpretation while adding the capacity for graded, multi-dimensional assessment.
+
+---
+
+**Continue to** [Part 3 · Energy Principle & Provisional Operators →](/notes/part-0/canonical-spec-scc-3-energy/)
+
+**Back to** [Canonical Spec index](/notes/part-0/canonical-spec-scc/) · [← Part 1 · Foundations](/notes/part-0/canonical-spec-scc-1-foundations/)
