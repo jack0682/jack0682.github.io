@@ -1,0 +1,60 @@
+---
+title: "Theorem — Cohomological Stability Certificate"
+slug: theorem-cohomological-stability
+kind: theorem
+tags: [onn, theorem, cohomology, stability, certificate]
+summary: "A cohomological certificate ensuring that topological invariants computed by ONN remain stable under bounded perturbation of the ontology graph."
+draft: true
+---
+
+*AI-generated theorem statement drawn from the [cohomology paper](/papers/axiomatic-cohomology-relations/) and the [framework paper](/papers/onn-ortsf-2026/).
+Gaps are marked with TODO comments.*
+
+---
+
+## Statement
+
+**Theorem (Cohomological Stability Certificate).**
+Let $G = (V, E, w)$ be an ontology graph equipped with a $U(1)$ gauge connection, and let $([A_\infty], \Sigma, e)$ be its gauge-invariant existence triple as defined in the [cohomology paper](/papers/axiomatic-cohomology-relations/). Let $G' = (V, E, w')$ be a perturbation of $G$ with $\lVert w - w' \rVert_\infty \leq \varepsilon$.
+
+Then the three cohomological axes are stable in the following sense:
+
+1. **Intrinsic cohomology.** For sufficiently small $\varepsilon$,
+
+$$
+H^k(K_\alpha;\, \mathbb\{F\}) \;\cong\; H^k(K'_\alpha;\, \mathbb\{F\}), \quad k = 0, 1, \ldots
+$$
+
+where $K_\alpha$, $K'_\alpha$ are the fruit subcomplexes of $G$ and $G'$ respectively.
+
+2. **Relative cohomology.** The pair cohomology $H^k(K_\alpha, L_\alpha;\, \mathbb\{F\})$ -- capturing the aggregate-singularity (fruit-door) interface -- has rank given by explicit matrix formulas that are Lipschitz-continuous in $\varepsilon$:
+
+$$
+\bigl\lvert \operatorname\{rank\}\, \partial_k(G) - \operatorname\{rank\}\, \partial_k(G') \bigr\rvert \;\leq\; C_k \cdot \varepsilon
+$$
+
+for constants $C_k$ depending on the combinatorial structure of $G$. {/* TODO: fill exact form of C_k from the paper or derive from the rank formulas */}
+
+3. **Persistence barcode stability.** The bottleneck distance between the persistence barcodes of $\Sigma(G)$ and $\Sigma(G')$ satisfies:
+
+$$
+d_B\bigl(\operatorname\{Dgm\}(\Sigma(G)),\; \operatorname\{Dgm\}(\Sigma(G'))\bigr) \;\leq\; \varepsilon
+$$
+
+by the classical stability theorem for persistent homology (Cohen-Steiner, Edelsbrunner, Harer 2007).
+
+4. **Long exact sequence preservation.** The long exact sequence relating the three axes (Theorem 2 of the [cohomology paper](/papers/axiomatic-cohomology-relations/)) is natural with respect to the perturbation, so the connecting homomorphisms vary continuously.
+
+## Gauge Invariance and Computability
+
+All quantities are gauge-invariant: the triple $([A_\infty], \Sigma, e)$ is an equivalence class under $g : V \to U(1)$, independent of local trivialisation. {/* TODO: verify relaxation to general compact gauge groups */} All three axes admit polynomial-time algorithms (chain-complex reduction, matrix rank, persistent-homology pipelines such as Ripser), so the certificate can be evaluated at deployment time.
+
+## Role in the ONN Programme
+
+This certificate provides the **representational guarantee** complementing the **control-theoretic guarantee** of the [delay-robust bound](/onn/theorem-delay-robust-bound/). The [framework paper](/papers/onn-ortsf-2026/) identifies these cohomological invariants as simultaneously representational and control-theoretic: the same classes that certify structural fidelity appear in the Lyapunov analysis bounding energy dissipation. {/* TODO: cite the specific proposition establishing this dual role */}
+
+## Scope and Limitations
+
+- The isomorphism in (1) requires $\varepsilon$ below a threshold depending on the spectral gap of $G$'s graph Laplacian. {/* TODO: derive the epsilon threshold */}
+- The Lipschitz constant $C_k$ in (2) may be large for near-degenerate boundary operators. {/* TODO: compute C_k for benchmark graphs */}
+- Validated on five- and ten-node examples with $U(1)$ gauge structure. Scaling to 3M nodes is open.

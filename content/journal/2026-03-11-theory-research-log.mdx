@@ -1,0 +1,305 @@
+---
+title: "RelationWorld theory brainstorm -- five cycles on state spaces, gauge, and events"
+slug: 2026-03-11-theory-research-log
+date: 2026-03-11
+summary: "Five brainstorm cycles probing the RelationWorld state-space question: candidate constructions, gauge commitments, red-team objections, and a machine-realisable runtime schema."
+tags: [theory, relationworld, state-space, gauge-theory, brainstorm]
+track: theory
+draft: true
+---
+
+{/* Session metadata -- 2026-03-11T13:53:39 UTC, Foundational Research, Theory-Lab mode */}
+
+## Process rules
+
+- This log is append-only. Failed paths and unresolved tensions are preserved.
+- Every cycle must include objection, rival view, revision, and deeper trigger questions.
+- Prefer long-horizon continuity over neat one-shot closure.
+
+---
+
+## Cycle 0001 -- State-space candidates
+
+### Current problem
+
+Identify the strongest currently justified mathematical state-space constructions for a relation-centred, event-driven world model, distinguishing parameter, semantic, and observable levels.
+
+### Why it matters
+
+The manuscript already defines gauge quotients, fruit/door semantics, and event-like phase transitions, but it also leaves temporal identity and some moduli questions open. A precise state-space choice determines what dynamics can be stated rigorously now.
+
+### Question
+
+What are the best three candidate state spaces supported by Chapters 3, 8, 14, and Appendix A, and which quotients are legitimate versus premature?
+
+### Provisional answer
+
+Three candidates emerge:
+
+1. The **gauge-orbit space** of raw relational fields for substrate dynamics.
+2. The **stratified instantaneous-world space** including fruits, doors, and existence data for semantic snapshots.
+3. A **hybrid path/event state space** whose continuous pieces are world strata and whose jumps are topological phase transitions.
+
+Legitimate quotients now: gauge by $G^V$ and residual constant gauge on $\mathcal{F}^{\circ}$. Premature quotients: temporal identity of fruits/existences across transitions, and strong non-abelian moduli identifications not yet proved unique.
+
+### Objection
+
+Candidate (2) mixes derived data with primary data; since $\mathfrak{F}_t$ and $\Sigma_t$ are determined from $\mathcal{W}_t$, one might argue the true state space should remain only the substrate quotient, with semantics treated as observables.
+
+### Rival view
+
+Use only the quotient of raw relational fields as the state space, and treat fruits, doors, existence triples, and events as state-dependent readouts rather than coordinates.
+
+### Revision
+
+The strongest formulation is **hierarchical** rather than exclusive: candidate (1) is the minimal ontic space, candidate (2) is the canonical semantic enrichment, and candidate (3) is the correct coarse event-level dynamical representation once time evolution is included.
+
+### Open problems
+
+- Definition 14.3 and Chapter 16 leave temporal identity, lifespan, and split/merge correspondence under-specified, so quotienting world histories by "same evolving existence" is not yet rigorous.
+- For non-abelian $G$, uniqueness of the canonical connection representative modulo residual gauge remains open in general, limiting any stronger reduction of the existence moduli.
+
+### Next trigger questions
+
+- Can the hybrid event state space be formalised as a stratified space or category whose objects are instantaneous worlds and whose morphisms are phase-transition events?
+- What minimal observable sigma-algebra should be placed on the world state if fruits and doors are treated as readouts rather than primitive coordinates?
+
+### Auto-selected next question
+
+Can the hybrid event state space be formalised as a stratified space or category whose objects are instantaneous worlds and whose morphisms are phase-transition events?
+
+---
+
+## Cycle 0002 -- Gauge commitments under scrutiny
+
+{/* Session re-entry 2026-03-11T13:54:18 UTC */}
+
+### Current problem
+
+The manuscript may be overcommitting to gauge-theoretic ontology, especially SU(2), quotient/moduli language, when the explanatory task only needs stable comparative structure over time.
+
+### Why it matters
+
+If the formalism overstates its geometric commitments, explanation outputs become harder to compute, harder to justify, and easier to falsify by intervention-divergent counterexamples. The right minimal structure should support world-history explanations without importing unnecessary moduli baggage.
+
+### Question
+
+What is the minimally sufficient structure for explanation-first outputs, and which current gauge/geometric layers are dispensable?
+
+### Provisional answer
+
+SU(2) is not presently justified as a core explanatory layer; it functions mostly as a prestige example and an open-problem generator. Full quotient/moduli semantics are also stronger than needed. For explanation-first outputs, the core payload is a **representation/essence split** with directly computable invariant summaries, temporal structural diffs, activated threshold/consistency constraints, and explicit rejected alternative event hypotheses. Gauge action can remain as a test for representation-independence, but the public interface should be invariant signatures and event comparisons, not orbit-space ontology.
+
+### Objection
+
+- Some quotient semantics may still be necessary to state representation-independence cleanly; replacing them entirely with ad hoc canonicalisation risks smuggling gauge choices back in.
+- Certain intervention-sensitive counterexamples may require richer transport structure than scalar graph summaries, so an anti-gauge simplification could erase genuinely explanatory noncommutative effects.
+
+### Rival view
+
+- Retain the full gauge/moduli story: quotient space for ontology, SU(2) as the canonical non-abelian benchmark, and event explanations as projections from the moduli trajectory.
+- Abandon gauge language almost entirely and treat transits as edge attributes with only loop-based scalar invariants.
+
+### Revision
+
+Keep admissible symmetry action and invariant-testing as internal machinery, but **demote** SU(2), moduli, and orbifold rhetoric from ontology to optional benchmark language. Define explanation outputs over a smaller state: current structural signature, delta from previous signature, list of threshold/compatibility constraints that changed status, and ranked alternative event hypotheses rejected by those changes. Escalate to non-abelian transport only when two states are scalar-indistinguishable yet intervention- or holonomy-distinguishable.
+
+### Open problems
+
+- What is the minimal invariant signature for existence identity over time that separates representation changes from real events without invoking full quotient topology?
+- What concrete counterexample forces non-abelian structure rather than U(1) or generic loop-label data?
+- How should rejected alternative events be represented so that explanations remain falsifiable rather than post hoc narratives?
+
+### Next trigger questions
+
+- Construct a minimal event schema with fields for structural diff, activated constraints, and rejected alternatives, then test it against birth/death/split/merge/door-change cases.
+- Find the smallest manuscript claim that genuinely breaks if moduli language is removed.
+- Design a counterexample pair that is gauge-equivalent in appearance but intervention-divergent, and ask whether the current invariants can separate them.
+
+### Auto-selected next question
+
+Design a counterexample pair that is gauge-equivalent in appearance but intervention-divergent, and ask whether the current invariants can separate them.
+
+---
+
+## Cycle 0003 -- Total state-space for topology-changing evolution
+
+### Current problem
+
+Determine the correct total state-space for RelationWorld when graph topology, fruit topology, and door sets can change under hybrid event-driven evolution.
+
+### Why it matters
+
+A fixed-state ontology cannot support rigorous event maps, continuity claims, or identity tracking unless the carrier itself accommodates topology changes, quotient structure, and threshold singularities.
+
+### Question
+
+Should total world evolution live on a fixed manifold, a plain disjoint union, a stratified space, or a moduli-like quotient construction?
+
+### Provisional answer
+
+A fixed manifold is valid only inside one combinatorial/gauge chamber. The minimal global carrier is the disjoint union over topology-indexed quotient spaces $C(n, E)$, but the natural rigorous object is a **stratified moduli-like space/groupoid** whose strata encode graph topology and derived fruit/door combinatorics, with continuous semiflows inside strata and guard-triggered correspondences across strata.
+
+### Objection
+
+If events are implemented as explicit reset maps between disjoint components, a plain disjoint union may already suffice; extra stratification could be unnecessary formal overhead.
+
+### Rival view
+
+Use only the topology-indexed disjoint union $S = \bigsqcup_{(n,E)} C(n,E)$, treat fruit and door changes as derived observables, and avoid any stronger gluing or moduli semantics.
+
+### Revision
+
+Disjoint union is enough for bookkeeping, but not for geometry of limits or identity-through-transition. Because threshold loci $\phi(F) = \theta$ and $b_F(i) = \tau$ define boundary phenomena, and quotient spaces already acquire singular orbit types, the correct carrier is **stratified**. Because ontology is explicitly orbit/invariant-based, the strata should be moduli-like quotients rather than raw parameter manifolds.
+
+### Open problems
+
+- Is there a canonical incidence/gluing topology making CONTACT/BIRTH/DEATH and fruit/door threshold events continuous, measurable, or only correspondence-valued?
+- For non-abelian $G$ with reducible connections or Gribov copies, should the ontology-level carrier be a groupoid/stack rather than an ordinary quotient space?
+- Should split/merge be modelled as maps, spans/correspondences, or stochastic kernels once invariant redistribution is not uniquely determined?
+
+### Next trigger questions
+
+- Specify the minimal indexing set for strata: graph topology alone, or graph topology plus fruit-door combinatorial type plus stabiliser/orbit type.
+- Classify each event as embedding, projection, restriction, gluing, or correspondence at both the raw-state and existence-moduli levels.
+- Decide whether the evidence functional $\mathrm{Ev}$ is rich enough to determine inter-stratum incidence classes.
+
+### Auto-selected next question
+
+Decide whether the evidence functional $\mathrm{Ev}$ is rich enough to determine inter-stratum incidence classes.
+
+---
+
+## Cycle 0004 -- Red-teaming the abstractions
+
+{/* Session re-entry 2026-03-11T13:55:31 UTC, RelationWorld Red-Team */}
+
+### Current problem
+
+Red-team the current RelationWorld direction for hidden assumptions, category mistakes, and seductive abstractions.
+
+### Why it matters
+
+If these abstractions are wrong, later proofs and dynamics become artefacts of the modelling compression rather than facts about the world concept.
+
+### Question
+
+Which current abstractions are doing the most conceptual damage: edge overloading, premature quotienting, or event incoherence?
+
+### Provisional answer
+
+The worst failure is that the theory **compresses away the very structure it later claims to explain**. It defines ontology from symmetrised scalar cuts, treats exterior summaries as intrinsic, and then tries to recover coherent events and gauge meaning after those compressions.
+
+### Objection
+
+- This may be too harsh if the project is only intended as a calculational scaffold rather than an ontology.
+- A laminar or minimal-fruit restriction could partially rescue event identity without abandoning the current framework.
+
+### Rival view
+
+- Treat fruits as observational candidates only, not ontic objects; ontology lives in a richer event-labelled graph process.
+- Keep the exterior as an explicit interface object or boundary measure instead of quotienting it into node degrees and calling that intrinsic.
+
+### Revision
+
+The current framework looks strongest as a **derived invariant layer** on top of a richer process model, not as the primitive ontology itself. Delay quotienting, separate leakage from singularity, and define canonical event objects before claiming births, merges, or persistence.
+
+### Open problems
+
+- Can fruit identity over time be defined on a canonical laminar basis rather than the full overlapping fruit set?
+- What minimal boundary object preserves exterior structure needed for doors without violating the no-boundary intuition?
+- Which invariants survive if directionality and transit data are allowed to affect objecthood instead of only scalar symmetrised weights?
+
+### Next trigger questions
+
+- What counterexample shows two different exteriors with the same degree profile but different event behaviour, proving that self-interpretation is only exterior compression?
+- What canonicalisation of fruits, if any, makes split and merge events well-defined under overlap?
+- Should door be redefined as a curvature concentration event rather than a thresholded leakage statistic?
+
+### Auto-selected next question
+
+What counterexample shows two different exteriors with the same degree profile but different event behaviour, proving that self-interpretation is only exterior compression?
+
+---
+
+## Cycle 0005 -- Machine-realisable runtime state
+
+### Current problem
+
+Choose a machine-realisable state space for RelationWorld that supports incremental CONTACT/DEFORM/SPLIT/MERGE/BIRTH/DEATH updates without conflating ontology, caches, and evidence.
+
+### Why it matters
+
+A formal state space that is clean mathematically but not incrementally updatable will fail as a runtime substrate; conversely an efficient runtime state that is not invariant-aware will break ontological claims.
+
+### Question
+
+Which candidate state space is actually sufficient and minimal for machine use: raw/gauge-fixed relational state, quotient/invariant state, world-plus-derived layers, existence triples alone, or SRBST-H?
+
+### Provisional answer
+
+The best machine state is a **hybrid representative-level state**: discrete topology/support plus raw or gauge-fixed relational parameters, with fruits/doors/existence/invariants stored only as derived caches. Pure quotient space is semantically right but operationally awkward; existence triples alone are too lossy; SRBST-H mixes state with operators and metadata.
+
+### Objection
+
+- Raw representative-level state is not minimal because it retains gauge redundancy and may overstore directed edge data that can be compressed into a cycle basis plus gauge choice.
+- Even with local updates, fruit and door structure can change nonlocally because fruit detection ranges over subsets, so incremental maintenance is not guaranteed unless the fruit representation itself is weakened or approximated.
+
+### Rival view
+
+- Store only invariant coordinates: symmetric weights plus a complete fundamental-cycle holonomy basis and reconstruct everything else on demand. This removes gauge redundancy while preserving machine realisability.
+- Use SRBST-H as the primary state and treat graph-level data as one implementation of K/B/T; this keeps bulk/interface semantics explicit at the cost of immediate operational clarity.
+
+### Revision
+
+Adopt a **two-tier design**: semantic state equals quotient/invariant content; runtime state equals gauge-fixed representative plus cycle-basis invariants and derived caches. Treat fruits, doors, existence triples, and three-axis outputs as caches/evidence layers, not primitive world state. Replace triangle-holonomy injectivity with spanning-tree plus fundamental-loop holonomies.
+
+### Open problems
+
+- The claim that weights plus triangle holonomies are injective on fixed topology is false on graphs with non-triangular cycles; a corrected completeness theorem must specify a cycle basis.
+- The full fruit set is exponentially large, so $\mathfrak{F}_t$ is not a credible mandatory runtime variable unless restricted to minimal, maximal, or query-generated fruits.
+- Evidence functional $\mathrm{Ev}$ is underspecified: changed-edge sets without old/new values, margins to thresholds, or fruit correspondence cannot certify causal uniqueness of SPLIT versus DEATH or MERGE versus BIRTH.
+
+### Next trigger questions
+
+- What is the smallest corrected runtime schema that separates essential state, derived caches, bookkeeping, and evidence while remaining provably sufficient for all six event types?
+- Can fruit structure be replaced by a smaller maintained object, such as minimal fruits plus lineage/correspondence, without losing the semantics of split and merge?
+
+### Auto-selected next question
+
+What is the smallest corrected runtime schema that separates essential state, derived caches, bookkeeping, and evidence while remaining provably sufficient for all six event types?
+
+---
+
+## Accumulated open problems
+
+- Definition 14.3 and Chapter 16 leave temporal identity, lifespan, and split/merge correspondence under-specified.
+- For non-abelian $G$, uniqueness of the canonical connection representative modulo residual gauge remains open.
+- What is the minimal invariant signature for existence identity over time?
+- What concrete counterexample forces non-abelian structure rather than U(1)?
+- How should rejected alternative events be represented so that explanations remain falsifiable?
+- Is there a canonical incidence/gluing topology for threshold events?
+- For non-abelian $G$ with Gribov copies, should the carrier be a groupoid/stack?
+- Should split/merge be modelled as maps, spans/correspondences, or stochastic kernels?
+- Can fruit identity be defined on a canonical laminar basis?
+- What minimal boundary object preserves exterior structure needed for doors?
+- Which invariants survive if directionality and transit data affect objecthood?
+- Weights + triangle holonomies are not injective on graphs with non-triangular cycles.
+- $\mathfrak{F}_t$ is exponentially large -- credible only if restricted.
+- $\mathrm{Ev}$ is underspecified for certifying causal uniqueness of events.
+
+## Accumulated trigger questions
+
+- Formalise the hybrid event state space as a stratified space or category.
+- Determine the minimal observable sigma-algebra if fruits/doors are readouts.
+- Construct a minimal event schema and test against all six event types.
+- Find the smallest manuscript claim that breaks without moduli language.
+- Design a gauge-equivalent but intervention-divergent counterexample pair.
+- Specify the minimal indexing set for strata.
+- Classify each event type at raw-state and existence-moduli levels.
+- Decide whether $\mathrm{Ev}$ determines inter-stratum incidence classes.
+- Find a counterexample: same degree profile, different event behaviour.
+- Determine canonical fruit representation for well-defined split/merge.
+- Evaluate whether door should be a curvature event, not a leakage statistic.
+- Define the smallest corrected runtime schema sufficient for all six events.
+- Determine whether minimal fruits plus lineage can replace $\mathfrak{F}_t$.

@@ -1,0 +1,169 @@
+---
+title: "SCC Theorem Registry"
+slug: scc-theorem-registry
+part: 0
+kind: registry
+track: perception
+summary: "The authoritative index of all proved SCC theorems — 30+ entries with status, category (A/B/C), proof IDs, and experiment cross-references."
+tags: [scc, theorems, registry, reference]
+draft: true
+---
+
+**Purpose:** Register all claims (C-xxxx), proofs (P-xxxx), and canonical theorems (T-xxxx, CV-x.y). This is the authoritative index of what has been proved.
+
+**Structure:** Rows are organized by canonical version (CV-1.0, CV-1.1, CV-1.2) then status (active, challenged, deprecated).
+
+---
+
+## Canonical Theorems (Accepted into Canonical Spec)
+
+### Canonical Spec v1.2 (2026-04-12) — Current Version
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-1** | Existence of Minimizers | accepted | A | C-0001 | P-0001 | E-0001, E-0002 | SCC minimizer always exists on Σ_m |
+| **T-3** | Stability of Interior Minimizers | accepted | A | C-0003 | P-0003 | E-0003 | Hessian positive on interior; local stability |
+| **T-6a** | Closure Fixed Point (Existence) | accepted | A | C-0006a | P-0006a | E-0005 | u* = Cl_t(u*) ∃ for all parameters |
+| **T-6b** | Closure Fixed Point (Stability) | accepted | A | C-0006b | P-0006b | E-0006 | Closure FP is attracting in stability metric |
+| **T-6-Stability** | Stability of Closure FP | accepted | A | C-0006c | P-0006c | E-0007 | Full spectral analysis |
+| **T-7** | Enhanced Metastability | accepted | A | C-0007 | P-0007 | E-0008, E-0009 | Residence time > expected near saddle |
+| **T-8-Core** | Phase Transition (Core Dominance) | accepted | A | C-0008 | P-0008 | E-0010, E-0011 | Binuclear → mononuclear at critical β |
+| **T-8-Full** | Phase Transition (Global) | accepted | A | C-0009 | P-0009 | E-0012, E-0013 | Full energy landscape bifurcation |
+| **T-11** | Γ-Convergence | accepted | A | C-0011 | P-0011 | E-0014 | Variational convergence under scaling |
+| **T-14** | Gradient Flow | accepted | A | C-0014 | P-0014 | E-0020:E-0022 | Gradient descent converges to minimizer |
+| **T-20** | Axiom Consistency | accepted | A | C-0020 | P-0020 | E-0025 | Axioms A1–E mutually consistent |
+| **C-Axioms** | Cohomology-Resolvent Alignment | accepted | A | C-0101 | P-0101 | E-0030:E-0032 | C3'' symmetrization complete (upgraded 04-03) |
+| **QM-1** | Quantum Mechanical Analogy (Eigenvalue) | accepted | A | C-0110 | P-0110 | E-0040 | Fiedler eigenvalue is binding edge |
+| **QM-2** | QM-2 (Spectral Gap) | accepted | A | C-0111 | P-0111 | E-0041 | Spectral gap related to phase transition |
+| **QM-3** | QM-3 (Perturbation) | accepted | A | C-0112 | P-0112 | E-0042 | Perturbations stay confined |
+| **QM-4** | QM-4 (Commutation) | accepted | A | C-0113 | P-0113 | E-0043 | Operator commutation holds generically |
+| **T-Bind-Proj** | Bind Projection (for τ=1/2) | accepted | B | C-0200 | P-0200 | E-0050:E-0052 | Bind projects onto lower Σ_m layers (condition: τ=1/2) |
+| **T-Bind-Full** | Bind Projection (General τ) | accepted | C | C-0201 | P-0201 | E-0053 | Very conditional; full τ dependence unclear |
+| **Predicate-Energy Bridge** | Energy ↔ Diagnostic Alignment | accepted | A | C-0300 | P-0300 | E-0060:E-0063 | Energy minimization ↔ diagonal optimization (upgraded 04-03) |
+| **Deep Core Dom. 2b** | Deep Core Dominance | accepted | A | C-0301 | P-0301 | E-0064, E-0065 | Core is always dominant in asymmetric regime (upgraded 04-03) |
+| **T-Persist-1(a)** | Transport Persistence (base) | accepted | C | C-0400 | P-0400 | E-0070 | Conditional: assumes generic parameters |
+| **T-Persist-1(b)** | Transport Persistence (basin unconditional) | accepted | A | C-0401 | P-0401 | E-0071, E-0072 | Unconditional: genericity automatic (upgraded 04-03) |
+| **T-Persist-1(d)** | Transport Persistence (fixed stratum) | accepted | C | C-0402 | P-0402 | E-0073 | Conditional: on fixed active stratum |
+| **T-Persist-1(e)** | Transport Persistence (confinement) | accepted | A | C-0403 | P-0403 | E-0074 | Tight confinement bound (upgraded 04-03) |
+| **T-Persist-Full** | Transport Persistence (full composition) | accepted | C | C-0404 | P-0404 | E-0075 | Conditional on multiple regime conditions |
+| **T-Persist-K-Sep** | K-field Persistence (well-separated) | accepted | B | C-0500 | P-0500 | E-0076, E-0077 | Conditional: on well-separated regime + per-formation persist |
+| **T-Persist-K-Weak** | K-field Persistence (weak coupling) | accepted | C | C-0501 | P-0501 | E-0078 | Conditional: on weakly-interacting regime |
+| **T-Persist-K-Unified** | K-field Persistence (parametric) | accepted | B | C-0502 | P-0502 | E-0046, E-0047 | Parametric family (Sep/Weak/Strong); 100% validation (new v1.2) |
+
+---
+
+## Active Claims (Not Yet Canonical)
+
+| C-ID | Name | Status | Category (Intended) | Proof (P-ID) | Experiments | Notes |
+|------|------|--------|---------|----------|-------------|-------|
+| **C-0550** | F-1: K=2 Vacuity Problem | challenged | OP | X-0001 | none | K=2 global stability requires external m constraint; K=1 cheaper |
+| **C-0551** | M-1: K=1 Always Preferred | challenged | OP | X-0001 | none | M₂ landscape monotonically decreases toward K=1 |
+| **C-0552** | MO-1: Morse Theory Invalid | challenged | OP | none | none | M₂ is manifold with corners; smooth Morse theory inapplicable |
+| **C-0553** | Type A/B Classification | challenged | OP | exp65 | E-0065 | exp65 invalidates; Type B never observed |
+| **C-0600** | K-field Model Selection | tentative | pending | none | exp66:exp73 | Propose BIC/free energy mechanism for K determination |
+
+---
+
+## Counterexamples & Challenges (X-xxxx)
+
+| X-ID | Refutes | Status | Description | Impact |
+|------|---------|--------|-------------|--------|
+| **X-0001** | C-0550 (F-1 Validity) | validated | K=2 energy 4.66 vs K=1 energy 2.25 (50% difference); empirical validation | K=2 definition requires external scaffolding |
+| **X-0002** | Type A/B Classification | validated | exp65: all configs Type A (0 Type B observed); breaks 04-07 interpretation | Type classification rejected as non-real phenomenon |
+
+---
+
+## Canonical Spec Version History
+
+### CV-1.0 (2026-04-01)
+
+- **Theorems:** T-1, T-3, T-6a, T-6b, T-6-Stability, T-7, T-8-Core, T-8-Full, T-11, T-14, T-20
+- **QM Results:** QM-1, QM-2, QM-3, QM-4 (11 Category A)
+- **Provisional:** Predicate-Energy Bridge, Deep Core Dom. 2b (Category B at the time)
+- **K-field:** T-Persist-K-Sep (Category B), T-Persist-K-Weak (Category C) 
+- **Notes:** Initial comprehensive spec; 35+ theorems claimed
+
+### CV-1.1 (2026-04-03) — PLAN_0403 Tier 1 Complete
+
+- **Upgraded to Category A:**
+  - C-Axioms (C3'' symmetrization gap closed)
+  - Predicate-Energy Bridge (formalized)
+  - Deep Core Dominance 2b (strengthened)
+- **New Unconditional Results:**
+  - T-Persist-1(b): Basin unconditional via genericity argument
+  - T-Persist-1(e): Confinement tight bounds (2.4-3.5×)
+- **New:** T-Bind-Full (Category A, τ=1/2 only)
+- **Count:** 35 → 38 Category A (3 upgraded)
+
+### CV-1.2 (2026-04-12) — Current, with Audit Clarifications
+
+- **Added:** T-Persist-K-Unified (Category B; parametric coverage of Sep/Weak/Strong regimes)
+- **Explicit Assumptions:** All K-field theorems now state "fixed K, fixed m" constraint
+- **Status Clarifications:**
+  - F-1, M-1, MO-1 documented as unresolved (not silently ignored)
+  - Type A/B classification retracted (exp65 invalidated)
+  - Morse theory MO-1 vulnerability flagged (mitigation: use existing results, defer full Morse)
+- **Count:** 38 + 1 (T-Persist-K-Unified) = 39 theorems
+- **Retracted:** K-Saddle Conjecture, r̄₀ general τ (kept in archive)
+
+---
+
+## Open Problems (OP-xxxx)
+
+| OP-ID | Problem | Severity | Status | Blocker For |
+|-------|---------|----------|--------|-------------|
+| **OP-0001** | F-1: K=2 vacuous | 🔴 CRITICAL | unresolved | K-field theory foundation |
+| **OP-0002** | M-1: K=1 preferred | 🔴 CRITICAL | unresolved | K-selection mechanism |
+| **OP-0003** | MO-1: Morse fails | 🟠 HIGH | unresolved | M₂ full analysis |
+| **OP-0004** | Boundary definition precision | 🟡 MEDIUM | tentative (D-0004) | Morphology formalization |
+| **OP-0005** | Transport kernel exact form | 🟡 MEDIUM | tentative | Full persist theorem |
+| **OP-0006** | Type A/B characterization | 🟠 HIGH | challenged (exp65) | Branch selection theory |
+| **OP-0007** | Dynamic topology | 🟢 LOW | seed | Future multi-scale extension |
+
+---
+
+## Proof Status Summary
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| **Category A (Fully Proved)** | 35 | T-1, T-20, QM-1:4, C-Axioms, Predicate-Energy Bridge, etc. |
+| **Category B (Conditional)** | 4 | T-Bind-Proj (τ=1/2), T-Persist-K-Sep, T-Persist-K-Unified (new) |
+| **Category C (Very Conditional)** | 5 | T-Bind-Full (general τ), T-Persist-1(a), T-Persist-1(d), T-Persist-Full, T-Persist-K-Weak |
+| **Challenged** | 2 | C-0550 (F-1), C-0553 (Type A/B) |
+| **Retracted** | 2 | K-Saddle Conjecture, r̄₀ general τ |
+| **Open** | 7 | OP-0001:0007 |
+
+---
+
+## Cross-Reference by Topic
+
+### Single-Formation Theory
+- **Existence:** T-1
+- **Stability:** T-3, T-6-Stability, T-7
+- **Phase Transition:** T-8-Core, T-8-Full
+- **Convergence:** T-11, T-14
+- **Diagnostics:** T-Bind-Proj/Full, Predicate-Energy Bridge
+
+### Multi-Formation (K-field)
+- **Temporal Persistence:** T-Persist-K-Sep, T-Persist-K-Weak, T-Persist-K-Unified
+- **Global Stability:** Deep Core Dominance 2b (conditional)
+- **Open:** F-1, M-1, OP-0006
+
+### Foundational
+- **Consistency:** T-20, C-Axioms
+- **Quantum Analogy:** QM-1:4
+
+---
+
+## Maintenance
+
+- **Owned by:** Lead + Archivist
+- **Updated:** When new C-xxxx promoted to canonical or P-xxxx completed
+- **Validation:** build_dependency_graph.py checks for consistency
+
+---
+
+**Last updated:** 2026-04-12  
+**Total canonical theorems:** 39 (35 Cat A, 4 Cat B, 5 Cat C, 2 retracted)  
+**Open problems:** 7 (2 critical)  
+**See also:** concept_registry.md, assumption_registry.md, promotion_rules.md

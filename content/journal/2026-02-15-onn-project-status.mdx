@@ -1,0 +1,231 @@
+---
+title: "ONN project status report -- codebase, tests, and paper readiness"
+slug: 2026-02-15-onn-project-status
+date: 2026-02-15
+summary: "Snapshot of the ONN-ES codebase at ~45,800 lines across 154 files: module completion, 98.7% test pass rate, 11/12 paper figures done, and a prioritized punch list."
+tags: [onn, status-report, testing, paper]
+track: onn
+draft: true
+---
+
+## Project overview
+
+ONN-ES (Ontology Neural Networks with Evolution Strategy) is an **edge-centric graph neural network** framework combining topological constraints with evolution strategy (CMA-ES) for inference.
+
+The core architecture follows a **Trinity of Operators** layout:
+
+- **SEGO** (Semantic Graph Observer) -- perception and feature extraction
+- **LOGOS** (Logical Ontology Graph Optimization Solver) -- correction and stabilisation
+- **IMAGO** (Intent Modeling via Graph Optimization) -- planning and path generation
+- **ORTSF** (Ontology Real-Time Stability Fabric) -- delay-compensated control
+
+Environment: Python 3.12.12, PyTorch 2.3.1, NumPy 1.26.4.
+
+---
+
+## Codebase scale
+
+| Category | Files | Lines |
+|---|---|---|
+| Source (`src/onn/`) | 53 | **22,098** |
+| Tests (`tests/`) | 50 | **12,113** |
+| Scripts (`scripts/`) | 51 | **11,595** |
+| **Total** | **154** | **~45,800** |
+
+---
+
+## Module implementation status
+
+### Core (14 files)
+
+| Module | Purpose | Status | Notes |
+|---|---|---|---|
+| `tensors.py` | SemanticNode (64D), SemanticEdge, graph container | Complete | `Bound_16` + `Form_32` + `Intent_16` |
+| `graph.py` | Edge-centric graph, Laplacian | Complete | $L = B B^T$ |
+| `cycles.py` | Fundamental cycle basis | Complete | BFS + Rodrigues formula |
+| `projection.py` | Constraint-set projection $Cx = \tau$ | Complete | Pseudo-inverse fallback, $10^{-6}$ regularisation |
+| `losses.py` | Loss functions (data, context, Ricci, smooth, variance) | Complete | Delta ODE integration support |
+| `solver.py` | Projection-Consensus (PC) solver | Complete | K-step alternating gradient + projection |
+| `diff_solver.py` | Differentiable K-step unroll (Phase 2) | **Partial** | `DifferentiableSolver` class incomplete |
+| `constraint_config.py` | YAML config loader | Complete | Env-var `CSA_*` override |
+| `relation_geometry.py` | SE(3) geometric relation encoding | Complete | SO(3)/SE(3) exp/log |
+| `graph_utils.py` | Graph traversal, validation, pruning | Complete | CPL_006 compliant |
+| `meta.py` | Meta-LOGOS supervision tracking | Complete | `LogosTrace`, `BranchType` |
+
+### Operations (9 files)
+
+| Module | Purpose | Status |
+|---|---|---|
+| `logos_solver.py` | LOGOS correction (autograd) | Complete |
+| `sego_anchor.py` | SEGO perception | Complete (protocol-based; CNN/ViT not yet wired) |
+| `sego_enhanced.py` | Enhanced SEGO (multi-scale) | Complete |
+| `imago_planner.py` | IMAGO planner (Forman-Ricci curvature) | Complete |
+| `ortsf.py` | ORTSF delay-compensated control | Complete (Theorem 4 implemented) |
+| `csa_pipeline.py` | Full CSA pipeline | Complete |
+| `edge_stabilizer.py` | ONN-ES / CSA bridge | Complete |
+| `branching.py` | Stagnation detection + branch strategy | Complete |
+| `paper_solver.py` | Paper-data variant of LOGOS | Complete |
+
+### Evolution Strategy (5 files)
+
+| Module | Purpose | Status |
+|---|---|---|
+| `ask_tell.py` | CMA-ES optimiser (ask/tell) | Complete |
+| `fitness.py` | Episode-based fitness evaluation | Complete |
+| `geometric_integration.py` | SE(3) geometric relation evaluation | Complete |
+| `hybrid_trainer.py` | ES + GD hybrid training | Complete |
+| `schedule.py` | LR schedule (linear, cosine, exp) | Complete |
+
+### Evaluation (4 files)
+
+| Module | Purpose | Status |
+|---|---|---|
+| `metrics.py` | Violation, drift, Ricci, latency, etc. | Complete |
+| `gates.py` | 7-gate verification system | Complete |
+| `reports.py` | Report generation and aggregation | Complete |
+| `cpu_delta_verify.py` | CPU-based Delta ODE verification | **Stub** |
+
+### Relation (7 files)
+
+| Module | Purpose | Status |
+|---|---|---|
+| `se3_encoder.py` | SE(3) transform encoder | Complete |
+| `param.py` | Learnable relation encoder (`W_lin`) | Complete |
+| `basis.py` | Pairwise feature extraction | Complete |
+| `predictive_relation.py` | LSTM-based time-series prediction | Complete |
+| `four_axis_relation.py` | 4-axis relation representation | Complete |
+| `contrastive_relation.py` | Contrastive learning | Complete |
+| `topological_regularizer.py` | Topological regularisation | Complete |
+
+### Other modules
+
+| Package | Module | Status |
+|---|---|---|
+| `modules/curvature.py` | Forman-Ricci discrete curvature | Complete |
+| `modules/delta.py` | Deep Delta Learning residual block | Complete (incl. `DeltaTransformer`) |
+| `topo/filtration.py` | Persistent homology (Betti numbers) | Complete |
+| `topo/ph_distance.py` | Topological distance metric | Complete |
+| `control/stability.py` | Stability analysis (phase/delay margin) | Complete |
+| `simulation/pybullet_env.py` | PyBullet robot environment | Complete |
+| `tlm/model.py` | Temporal Latent Model | Complete |
+
+---
+
+## Test results (2026-02-15 run)
+
+```
+539 passed, 7 failed (546 total) -- 167.45 s
+Pass rate: 98.7%
+```
+
+### Breakdown by tier
+
+| Tier | Files | Status |
+|---|---|---|
+| Unit | 22 | 539 of which 7 failed |
+| Smoke | 10 | All passed |
+| Integration | 16 | All passed |
+
+### Failed tests (7)
+
+| Test | Cause | Severity |
+|---|---|---|
+| `test_logos_energy::test_different_states_positive_loss` | Loss-scale mismatch (1.0 vs 128.0) | Medium -- formula changed, test not updated |
+| `test_logos_energy::test_single_node_squared_distance` | Loss-scale mismatch (0.22 vs 14.0) | Medium -- same root cause |
+| `test_logos_energy::test_empty_graph_handled` | NaN returned (expected 0.0) | Medium -- empty-graph edge case missing |
+| `test_logos_solver::test_data_loss_formula_correct` | Formula mismatch | Medium -- same root cause |
+| `test_meta_enrichment::test_meta_logos_detects_local_gate_collapse` | Case mismatch (`'Local gate'` vs `'Local Gate'`) | Low |
+| `test_meta_logos::test_decide_unbounded_residual` | Case mismatch (`'unbounded'` vs `'Unbounded'`) | Low |
+| `test_meta_logos::test_decide_no_action_on_healthy_trace` | Message changed (`'All checks passed'` vs `'Stable state'`) | Low |
+
+**Analysis.** Four failures trace to LOGOS loss normalisation switching from sum to mean without updating the test expectations. Three are simple string-casing mismatches. No core-logic bugs.
+
+---
+
+## Paper readiness
+
+### Experiment data
+
+| Experiment | CSV | Rows | Status |
+|---|---|---|---|
+| B1 -- Loss Dynamics | `B1_loss_dynamics_steps.csv` | 2,664 | Done |
+| B3 -- Seed Robustness | `B3_seed_robustness.csv` | 41 (20 seeds x 2 versions) | Done |
+| B4 -- Scaling Study | `B4_scaling_study.csv` | 31 (N = 2..32) | Done |
+| B6 -- Ablation Study | `B6_ablation_study.csv` | 51 (6 configs x 5 seeds) | Done |
+
+### Figures (11 / 12)
+
+| Figure | Status |
+|---|---|
+| A1 -- System Overview | Done |
+| A2 -- Node Anatomy | Done |
+| A3 -- LOGOS Loop | Done |
+| A4 -- Tradeoff Triangle | Done |
+| A5 -- Fix Map | Done |
+| A6 -- Meta-LOGOS Gate | Done |
+| B1 -- Loss Dynamics | Done |
+| B2 -- Gradient Stability | Done |
+| B3 -- Seed Robustness | Done |
+| B4 -- Scaling Study | Done |
+| B5 -- (TBD) | **Missing** |
+| B6 -- Ablation Study | Done |
+
+### LaTeX manuscript
+
+| Item | Status |
+|---|---|
+| IEEE template (`IEEEtran.cls`) | Ready |
+| `onn_main.tex` | Ready |
+| `01_introduction.tex` | Ready |
+| `02_related_work.tex` | Ready |
+| `03_methodology.tex` | Ready |
+| `04_experiments.tex` | Ready |
+| `05_discussion.tex` | Ready |
+| `06_conclusion.tex` | **Unconfirmed** |
+| `references.bib` | Ready |
+
+### Reproduction scripts
+
+All four experiment scripts (`paper_experiment_B1/B3/B4/B6.py`), the combined plotter (`paper_plot_B1_to_B6.py`), the logger utility (`paper_collect.py`), and the orchestration script (`paper_run_experiments.py`) are complete.
+
+---
+
+## Overall completion
+
+```
+Core (math)              ████████████████████░  95%   diff_solver incomplete
+Ops (operators)          █████████████████████  100%
+ES (evolution strategy)  █████████████████████  100%
+Eval (evaluation)        ████████████████████░  95%   cpu_delta_verify stub
+Relation (learning)      █████████████████████  100%
+Modules (math ops)       █████████████████████  100%
+Topo (topology)          █████████████████████  100%
+Control                  █████████████████████  100%
+Tests                    ████████████████████░  98.7%
+Paper                    ██████████████████░░░  85%   B5 figure + conclusion TBD
+```
+
+---
+
+## Remaining work (prioritised)
+
+### High
+
+1. Fix the 7 failing tests -- LOGOS loss-scale expectations (4) + message strings (3).
+2. Complete `diff_solver.py` -- `DifferentiableSolver` class needed for Phase 2 training.
+
+### Medium
+
+3. Implement `cpu_delta_verify.py` -- CPU-only Delta ODE verification.
+4. Generate figure B5 -- collect data and produce the plot.
+5. Confirm or complete `06_conclusion.tex`.
+
+### Low
+
+6. Git housekeeping -- finalise `paper/` to `Archive/` migration, clean staged deletes.
+7. Add `__pycache__` to `.gitignore` or `git rm`.
+8. Wire a real CNN/ViT encoder into SEGO (prototype to production).
+
+---
+
+*Report snapshot -- 2026-02-15.*

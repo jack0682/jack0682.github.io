@@ -134,7 +134,7 @@ const onnDocs = defineCollection({
       summary: s.string().max(320).optional(),
       tags: s.array(s.string()).default([]),
       kind: s
-        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay"])
+        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay", "catalogue"])
         .optional(),
       chapter: s.number().int().gte(0).optional(),
       section: s.string().optional(),
@@ -168,7 +168,7 @@ const notes = defineCollection({
        * into the "essay" bucket.
        */
       kind: s
-        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay"])
+        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay", "registry"])
         .optional(),
       /**
        * Optional track association — lets a note appear in the

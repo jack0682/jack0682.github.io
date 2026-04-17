@@ -1,0 +1,116 @@
+---
+title: "ONN Canonical Specification"
+slug: canonical-spec
+kind: canonical
+tags: [onn, canonical, specification, ortsf]
+summary: "The authoritative formal specification of the Ontology Neural Network architecture — primitives, the constraint-satisfaction formalism, the topology-preservation guarantee, and the interface to ORTSF delay-robust control."
+draft: true
+---
+
+{/* NOTE: This is an AI-generated draft for author review. All claims are sourced from the published and preprint manuscripts listed in the ONN papers index. Statements marked TODO require author verification or further derivation. */}
+
+## 1. What ONN Is
+
+The **Ontology Neural Network (ONN)** is a learning architecture whose latent state inherits the type structure of a target ontology rather than residing in a flat vector space. An ONN carries an explicit ontology graph whose vertices correspond to typed semantic primitives and whose edges encode relational constraints; training preserves this type algebra by construction. The architecture is accompanied by the **ORTSF** (Ontology-Resolved Topological State Feedback) framework — a family of predicate-binding operators that compose typed features under communication and sensing delay with provable stability bounds stated in cohomological terms. Together, ONN and ORTSF establish a tight coupling between the topology of learned representations and the stability of the closed-loop systems they drive.
+
+## 2. Formal Primitives
+
+**Ontology graph.** The target ontology is a weighted directed graph
+
+$$
+\mathcal{O} = (V_{\mathcal{O}},\; E_{\mathcal{O}},\; w_{\mathcal{O}})
+$$
+
+where $V_{\mathcal{O}}$ is a finite set of typed vertices (semantic primitives), $E_{\mathcal{O}} \subseteq V_{\mathcal{O}} \times V_{\mathcal{O}}$ encodes relational constraints, and $w_{\mathcal{O}} : E_{\mathcal{O}} \to \mathbb{R}_{>0}$ assigns edge weights encoding constraint strength.
+
+**Latent state.** Each vertex $v \in V_{\mathcal{O}}$ carries a latent fiber. The global latent state is the concatenation
+
+$$
+z = (z_v)_{v \in V_{\mathcal{O}}} \in \mathbb{R}^{|V_{\mathcal{O}}| \times d_{\mathrm{fiber}}}
+$$
+
+where $d_{\mathrm{fiber}} = 64$ in the reference implementation (fiber decomposition $B_{16} \oplus F_{32} \oplus I_{16}$).
+
+**Projection operator.** $T_{\mathrm{proj}}$ projects the latent state onto the constraint manifold defined by the ontology edge set $E_{\mathcal{O}}$.
+
+**Consensus operator.** $T_{\mathrm{consensus}}$ enforces local agreement among adjacent fibers, weighted by $w_{\mathcal{O}}$.
+
+**ONN dynamics.** The composite operator defining a single update step is
+
+$$
+T = T_{\mathrm{proj}} \circ T_{\mathrm{consensus}}.
+$$
+
+The system evolves by iterated application $z^{(k+1)} = T(z^{(k)})$.
+
+## 3. Constraint Satisfaction
+
+The **LOGOS** solver embeds ONN dynamics into a constraint-satisfaction pipeline combining three mechanisms:
+
+1. **Forman--Ricci curvature** of the ontology graph $\mathcal{O}$, used as a topological conditioning signal for gradient stabilisation.
+2. **Deep Delta Learning (DDL)** for stable rank-one perturbations during constraint projection.
+3. **CMA-ES** (Covariance Matrix Adaptation Evolution Strategy) for global parameter optimisation.
+
+**Constraint Satisfaction Rate (CSR).** Given a set of predicates $\{p_i\}_{i=1}^{N}$ bound to edges $e_i \in E_{\mathcal{O}}$, the CSR is the fraction of predicates satisfied at convergence:
+
+$$
+\mathrm{CSR} = \frac{1}{N} \sum_{i=1}^{N} \mathbf{1}[p_i(z^{(\infty)}_{e_i})].
+$$
+
+Empirical results report CSR $\geq 0.95$ across benchmarks up to 20-node problems, with topology-loss reduction from baseline 11.68 to 1.15.
+
+**Predicate-binding mechanism.** Each edge $e = (u,v) \in E_{\mathcal{O}}$ binds a typed predicate $p_e$ that constrains the joint state $(z_u, z_v)$. The projection operator $T_{\mathrm{proj}}$ maps the current state to the nearest point satisfying the active predicate set; the consensus operator $T_{\mathrm{consensus}}$ propagates satisfied constraints along the graph topology.
+
+## 4. Topology Preservation
+
+**Core guarantee.** ONN preserves the topological structure of the ontology graph under the projection-consensus dynamics $T = T_{\mathrm{proj}} \circ T_{\mathrm{consensus}}$. Formally, the persistent homology (Betti numbers) of the learned representation is invariant under the iterated map $T$, ensuring that the qualitative relational structure encoded in $\mathcal{O}$ is not destroyed by learning.
+
+{/* TODO: State the precise conditions (e.g., Lip(T) < 1, fiber Jacobian bounds) under which topology preservation holds. The current-state snapshot lists these as PLAUSIBLE (C2, L5-L6) but not yet fully proved. */}
+
+**Total loss as Lyapunov certificate.** The ONN total loss
+
+$$
+\mathcal{L}_{\mathrm{total}}(S, A) = \mathcal{L}_{\mathrm{semantic}} + \mathcal{L}_{\mathrm{topo}} + \mathcal{L}_{\mathrm{context}}
+$$
+
+combining semantic consensus, topological connection, and contextual constraint terms, serves as an explicit, computable Lyapunov function with closed-form class-$\mathcal{K}_\infty$ bounds. This closes the constructive gap in the classical Lyapunov--Massera--Kurzweil existence theorem: the losses are not merely regularisers but stability certificates.
+
+## 5. Interface to ORTSF
+
+The **ORTSF** (Ontology-Resolved Topological State Feedback) framework consumes the ONN latent state $z$ and the ontology graph $\mathcal{O}$ to synthesise delay-robust controllers. The key interface points are:
+
+1. **Typed feature composition.** ORTSF operators are predicate-binding gates that compose typed ONN features under communication and sensing delay.
+2. **Cohomological invariants.** The correspondence between the learned ontology's cohomology and classical Lyapunov certificates makes the representational and control-theoretic languages interoperable. Cohomological invariants of $\mathcal{O}$ serve simultaneously as representational quality measures and stability certificates for the closed-loop system.
+3. **Delay-robust bound.** The framework provides an explicit maximum tolerable delay $\tau_{\max}$ beyond which stability cannot be guaranteed. Empirical validation reports $\tau_{\max} = 177\;\mu\text{s}$ for 3M-node semantic networks.
+
+## 6. Key Theorems
+
+The following results are stated at the claim level. Each links to the manuscript or detailed page where the full argument appears.
+
+### 6.1 Topology Preservation under Projection-Consensus
+
+*If $\mathrm{Lip}(T_{\mathrm{ONN}}) < 1$ (local contraction), then the persistent homology of the ontology embedding is invariant under $T = T_{\mathrm{proj}} \circ T_{\mathrm{consensus}}$.* Global stability follows via Betti-number preservation through persistent homology.
+
+**Status:** Local contraction is empirically validated on $|V| \in \{1\text{K},\, 10\text{K},\, 100\text{K}\}$ with $c_J \leq 0.7$. Full proof via fiber Jacobian bounds (L5-L6) is in progress. See [Constructive Lyapunov paper](/papers/constructive-lyapunov-onn/).
+
+### 6.2 Delay-Robust Bound $\tau_{\max}$ for ORTSF
+
+*Under the ORTSF feedback law with ONN-derived typed features, the closed-loop system remains stable for all communication delays $\tau \leq \tau_{\max}$, with $\tau_{\max}$ expressible in terms of the cohomological invariants of $\mathcal{O}$.* Empirically: $\tau_{\max} = 177\;\mu\text{s}$ for 3M-node networks.
+
+**Status:** Accepted result in the [ONN + ORTSF framework paper](/papers/onn-ortsf-2026/).
+
+### 6.3 Cohomological Stability Certificate
+
+*The ONN total loss $\mathcal{L}_{\mathrm{total}}$ constitutes a constructive Lyapunov function with class-$\mathcal{K}_\infty$ bounds, bridging the Massera (1949) existence theorem to an explicit, computable certificate.* Extensions cover non-smooth dynamics (Fejér-monotone topology surgery), delay-differential systems (via ORTSF), and Input-to-State Stability for bounded disturbances.
+
+**Status:** Claimed in the [Constructive Lyapunov paper](/papers/constructive-lyapunov-onn/). Empirical validation on 3M-node networks shows 99.75% improvement over baseline methods.
+
+{/* TODO: Clarify which parts of Theorem 6.3 are fully proved vs. empirically validated. The current-state snapshot classifies the combined ONN+ORTSF certificate (C9) as CONJECTURE. */}
+
+## 7. Relationship to SCC
+
+In the [unified architecture](/notes/part-0/integrated-architecture/), ONN implements **Layer 3 — Ontological Reasoning**. The Soft Cognitive Cohesion (SCC) framework (Layers 1-2) provides the perceptual substrate: soft fields, closure operators, and proto-cohesion diagnostics that ground the typed primitives in $V_{\mathcal{O}}$. ONN then lifts these grounded primitives into the ontology graph and runs the projection-consensus dynamics that produce the typed latent state consumed by ORTSF at the control layer. The topology of the SCC soft field and the topology of the ONN ontology embedding are required to be compatible — a constraint formalised by the cohomological correspondence described in Section 5.
+
+---
+
+*Version 0.1 (draft). Generated for author review.*

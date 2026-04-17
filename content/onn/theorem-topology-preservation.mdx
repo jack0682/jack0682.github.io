@@ -1,0 +1,58 @@
+---
+title: "Theorem — Topology Preservation under Projection-Consensus"
+slug: theorem-topology-preservation
+kind: theorem
+tags: [onn, theorem, topology, preservation, projection]
+summary: "ONN's projection-consensus mechanism preserves the topological structure of the ontology graph in the latent space — the core structural guarantee."
+draft: true
+---
+
+*AI-generated theorem statement extracted from the [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/) and the [framework paper](/papers/onn-ortsf-2026/).
+Gaps are marked with TODO comments.*
+
+---
+
+## Statement
+
+**Theorem (Topology Preservation under Projection-Consensus).**
+Let $G = (V, E, w)$ be a weighted ontology graph with Forman--Ricci curvature $\operatorname\{Ric\}_F$ computed on each edge. Let $T = T_\text\{proj\} \circ T_\text\{consensus\}$ be the ONN projection-consensus operator acting on the 64-dimensional fiber space $\mathcal\{F\} = B_\{16\} \oplus F_\{32\} \oplus I_\{16\}$.
+
+Then the LOGOS solver driven by $T$ satisfies:
+
+$$
+\operatorname\{CSR\}(T^n(x_0),\; G) \;\xrightarrow\{n \to \infty\}\; 1.0
+$$
+
+for every admissible initial state $x_0$, where $\operatorname\{CSR\}$ denotes the Constraint Satisfaction Rate (fraction of ontological constraints satisfied). In particular, the Betti numbers of the persistent-homology filtration induced by the latent embedding are preserved:
+
+$$
+\beta_k\bigl(\mathcal\{R\}(T^n(x_0))\bigr) \;=\; \beta_k(G), \quad k = 0, 1, \ldots
+$$
+
+once $\operatorname\{CSR\} = 1.0$ is reached.
+
+{/* TODO: state the precise admissibility conditions on x_0 (bounded energy, compatible fiber decomposition) */}
+
+## Empirical Evidence
+
+The [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/) reports:
+
+- **CSR = 1.0 +/- 0.0** across all tested conditions (55 records), verified in the [claim ledger](/onn/claim-ledger-ral/).
+- Topology loss reduced from 11.68 (baseline) to 1.15.
+- **Seed-independent** convergence across twenty random initialisations on graphs up to twenty nodes.
+- The [Lyapunov paper](/papers/constructive-lyapunov-onn/) extends this to 3M-node networks, confirming Betti-number preservation via persistent homology.
+
+## Proof Sketch
+
+1. **Contraction.** The operator $T$ is non-expansive with respect to the semantic energy metric. Lemma L1 (leakage inflation) bounds the off-diagonal coupling, ensuring that the diagonal contraction dominates when $\mu_\text\{diag\} < 1/(1 + \kappa_\text\{off\})$.
+
+2. **Curvature guidance.** Forman--Ricci curvature $\operatorname\{Ric\}_F(e)$ on each edge $e \in E$ steers gradient updates toward configurations that lower topology loss without violating constraint feasibility.
+
+3. **CMA-ES global search.** Covariance Matrix Adaptation provides a derivative-free outer loop that escapes local minima in the topology-loss landscape, achieving the 95% success rate.
+
+4. **Betti preservation.** Once $\operatorname\{CSR\} = 1.0$, the latent embedding's Rips complex has the same persistent homology as $G$ because every constraint edge is faithfully represented. The persistent-homology computation follows the algorithm in the [Lyapunov paper](/papers/constructive-lyapunov-onn/). {/* TODO: tighten the Rips-complex radius bound needed for exact Betti matching */}
+
+## Scope and Limitations
+
+- The result is demonstrated empirically up to 3M nodes but **formally proved only for the contraction step** (Lemma L1). The global convergence guarantee ($\operatorname\{CSR\} \to 1.0$ for arbitrary graphs) remains a **conjecture** at scales beyond 20 nodes. {/* TODO: verify formal proof status at large scale */}
+- Betti preservation assumes exact arithmetic; finite-precision effects are covered by Assumption A6 (plausible but not proved at 100K+).

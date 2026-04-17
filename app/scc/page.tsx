@@ -120,15 +120,6 @@ export default function SccHubPage() {
             />
           ))
         )}
-        {/* Slot for upcoming per-theorem pages. */}
-        <FuturePlaceholder
-          label="Theorem A · Energy isolation"
-          note="Detailed proof page — coming."
-        />
-        <FuturePlaceholder
-          label="Theorem D · Cheeger estimates"
-          note="Detailed proof page — coming."
-        />
       </HubSection>
 
       {/* ── Related papers ───────────────────────────── */}

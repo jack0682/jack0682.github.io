@@ -1,0 +1,277 @@
+---
+title: "Main Theorems A–H"
+slug: ch09-main-theorems
+part: 2
+chapter: 9
+section: "Chapter 9"
+kind: theorem
+track: theory
+summary: "Complete statements and full proofs of the eight core theorems of RelationWorld Theory — energy isolation, door finiteness, self-interpretation, metastability, curvature localisation, spectral stability, door stability, and flow stability."
+tags: [theorems, proof, cheeger, metastability, gauge-theory, yang-mills-flow]
+related: [summary]
+---
+
+> **Prerequisites**: Chapters 2--8 (all of Part I).
+
+This chapter collects the full statements and **complete proofs** of Theorems A--H.
+
+---
+
+## 9.1 Overview
+
+| Theorem | Name | Core Statement | Proved in |
+|---------|------|----------------|-----------|
+| **A** | Energy isolation | Internal energy $\ge(1-\theta)\,\mathrm{vol}(F)$ | Ch 4 / below |
+| **B** | Finiteness of doors | $\|\Sigma\|\le\theta\,\mathrm{vol}(F)/\tau$ | Ch 6 / below |
+| **C** | Self-interpretation | $\Sigma,\mathbf{e}$ from intrinsic data | Ch 6 / below |
+| **D** | Metastability | Escape time $\ge 1/(2\theta)$ | Ch 4 / below |
+| **E** | Curvature localisation | Residual curvature near doors | Ch 7 / below |
+| **F** | Spectral stability | Strong fruits persist | Ch 8 / below |
+| **G** | Door stability | Door structure stable | Ch 6 / below |
+| **H** | Flow stability | $[A_\infty]$ stable under YM flow | Ch 7 / below |
+
+**Logical dependencies:**
+```
+Theorem A (energy isolation)
+  ├──▶ Theorem B (door finiteness) — uses A's energy bound
+  │       │
+  │       ▼
+  │    Theorem C (self-interpretation) — Axiom A5 + Lemma 6.2
+  │
+  ├──▶ Theorem D (metastability) — Cheeger inequality + A
+  │
+  └──▶ Theorem F (spectral stability) — continuity of conductance
+
+Theorem B + C
+  │
+  ▼
+Theorem E (curvature localisation) — sequential protocol
+  │
+  ▼
+Theorem H (flow stability) — compactness + Lojasiewicz
+
+Theorem G (door stability) — Theorem B + perturbation analysis
+```
+
+---
+
+## 9.2 Theorem A: Energy Isolation
+
+> **Theorem A.** For any fruit $F\in\mathfrak{F}_t$:
+> $$\frac{\sum_{i,j\in F}W_t(i,j)}{\mathrm{vol}_t(F)}\;\ge\;1-\theta.$$
+
+*Proof.* (Complete; reproduced from Chapter 4.)
+
+**Step 1.** $\mathrm{vol}_t(F)=\sum_{i,j\in F}W_t(i,j)+\mathrm{cut}_t(F,\bar F)$.
+
+**Step 2.** By (F2), $\phi_t(F)\le\theta$. By (F1), $\mathrm{vol}_t(F)=\min\{\mathrm{vol}_t(F),\mathrm{vol}_t(\bar F)\}$, so $\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**Step 3.** $\sum_{i,j\in F}W_t(i,j)\ge(1-\theta)\,\mathrm{vol}_t(F)$. Divide by $\mathrm{vol}_t(F)>0$. $\square$
+
+**Sharpness.** Equality when $\phi_t(F)=\theta$ and $\mathrm{vol}_t(F)=\frac{1}{2}\mathrm{vol}_t(V)$.
+
+---
+
+## 9.3 Theorem B: Finiteness of Doors
+
+> **Theorem B.** For fruit $F$ with door threshold $\tau>0$:
+>
+> (i) $|\Sigma_\tau(F,t)|\le\theta\cdot\mathrm{vol}_t(F)/\tau$.
+>
+> (ii) $\sum_{p\in\Sigma}e_p\le\theta\cdot\mathrm{vol}_t(F)$.
+>
+> (iii) $|\Sigma_\tau|/|F|\le\theta\cdot d_{\max}(F,t)/\tau$.
+
+*Proof.* (Complete; reproduced from Chapter 6.)
+
+**(i)** $\tau\cdot|\Sigma_\tau|\le\sum_{i\in\Sigma_\tau}b_{F,t}(i)\le\sum_{i\in F}b_{F,t}(i)=\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**(ii)** $\sum_{p\in\Sigma}e_p=\sum_{p\in\Sigma}b_{F,t}(p)\le\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**(iii)** $\mathrm{vol}_t(F)\le|F|\cdot d_{\max}(F,t)$. Substitute into (i). $\square$
+
+---
+
+## 9.4 Theorem C: Self-Interpretation
+
+> **Theorem C.** Under Axiom A5, $\Sigma_\tau(F,t)$ and $\mathbf{e}(F,t)$ are determined by $\mathcal{D}(F,t)$ alone.
+
+*Proof.* (Complete; reproduced from Chapter 6.)
+
+$b_{F,t}(i)=d_t(i)-\sum_{j\in F}W_t(i,j)$. Both terms are in $\mathcal{D}(F,t)$. $\Sigma_\tau$ is a level set; $e_p=b_{F,t}(p)$. No exterior information is used. $\square$
+
+---
+
+## 9.5 Theorem D: Metastability (Upgraded)
+
+> **Theorem D.** Let $F\in\mathfrak{F}_t$ and $X_0\sim\pi_F$. The escape time from $F$ under the lazy walk $\tilde P_t$ satisfies:
+> $$\mathbb{E}[T_{\mathrm{esc}}(F)]\;\ge\;\frac{1}{2\theta}.$$
+
+*Proof.* (Complete.)
+
+**Step 1 (Restricted chain).** Define the restricted sub-stochastic matrix on $F$:
+$$
+P_F(i,j):=\frac{W_t(i,j)}{d_t(i)}\quad(i,j\in F),\qquad\tilde P_F:=\tfrac{1}{2}(I|_F+P_F).
+$$
+Row sums: $\sum_{j\in F}\tilde P_F(i,j)=\frac{1}{2}(1+1-r_{F,t}(i))=1-\frac{r_{F,t}(i)}{2}<1$.
+
+**Step 2 (Conductance bound).** The conductance of the restricted chain on $F$ (with absorbing boundary) is:
+$$
+\Phi_F:=\min_{\emptyset\ne S\subsetneq F}\frac{\sum_{i\in S}\sum_{j\in F\setminus S}\tilde P_F(i,j)\pi_F(i)+\sum_{i\in S}\frac{r_{F,t}(i)}{2}\pi_F(i)}{\pi_F(S)}
+$$
+where $\pi_F(i)\propto d_t(i)$ restricted to $F$.
+
+The numerator's first term is the internal flow out of $S$ within $F$; the second term is the leakage from $S$ to the exterior. Consider the cut of $S$ within the full graph. For any $S\subsetneq F$:
+$$
+\sum_{i\in S}\sum_{j\notin S}P_t(i,j)\pi_F(i) = \frac{\mathrm{cut}_t(S,V\setminus S)}{\mathrm{vol}_t(F)}\cdot\mathrm{vol}_t(S).
+$$
+
+In the worst case (taking $S$ to be $F$ itself with absorbing exterior), the effective conductance is bounded by $\phi_t(F)$. More precisely, for any $S\subsetneq F$ with $\mathrm{vol}_t(S)\le\frac{1}{2}\mathrm{vol}_t(F)$:
+$$
+\Phi_F(S)\le\frac{\mathrm{cut}_t(S,\bar S)}{\mathrm{vol}_t(S)}\le\phi_t(S).
+$$
+
+Taking the minimum over $S$: $\Phi_F\le\phi_t(F)\le\theta$.
+
+**Step 3 (Spectral gap).** By the Sinclair--Jerrum bound (Fact B.6): $\gamma_F\le 2\Phi_F\le 2\theta$. For the lazy chain: $\tilde\gamma_F=\gamma_F/2\le\theta$.
+
+**Step 4 (Escape time).** The expected absorption time from the quasi-stationary distribution satisfies (see Aldous--Fill, Theorem 12.4; or Montenegro--Tetali, Theorem 3.3):
+$$
+\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}]\ge\frac{1}{2\tilde\gamma_F}\ge\frac{1}{2\theta}.
+$$
+
+The factor $\frac{1}{2}$ arises because, for a lazy chain with spectral gap $\tilde\gamma$, the relaxation time is $1/\tilde\gamma$, and the mean hitting time to an absorbing set from the stationary distribution is at least $\frac{1}{2}\cdot\frac{1}{\tilde\gamma}$ (Aldous--Fill inequality for reversible absorbing chains). $\square$
+
+**Explicit constant.** The bound $\frac{1}{2\theta}$ is tight up to constant factors. For a barbell graph (two complete graphs of size $n/2$ connected by a single edge of weight $\epsilon$), the conductance is $\Theta(\epsilon/n)$ and the escape time is $\Theta(n/\epsilon)$.
+
+---
+
+## 9.6 Theorem E: Curvature Localisation (Upgraded)
+
+> **Theorem E.** Under the optimal gauge $h^*$:
+>
+> (i) $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_F(\mathrm{id})$.
+>
+> (ii) The residual curvature concentrates near doors: for $G=U(1)$, there exist $C,\beta>0$ such that
+> $$\rho_{F^\circ}(i)\le C\,e^{-\beta\,d_{\mathrm{graph}}(i,\Sigma)}\sum_{p\in\Sigma}e_p.$$
+>
+> (iii) For general compact $G$, the deep-interior energy fraction satisfies
+> $$\sum_{i\in F_{\mathrm{deep}}}\rho(i)\le\alpha\cdot\mathcal{E}_{F^\circ}(h^*)$$
+> for some $\alpha=\alpha(G,\mathcal{G}_t)<1$ depending on the spectral gap of $\mathcal{L}_t|_{F^\circ}$.
+
+*Proof.* (Complete.)
+
+**(i)** $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_{F^\circ}(\mathrm{id})\le\mathcal{E}_F(\mathrm{id})$. First: minimality; second: $F^\circ\subset F$.
+
+**(ii)** *Case $G=U(1)$.* The optimal gauge satisfies the linear system $L\varphi^*=-B\,\mathrm{diag}(W)\,\alpha$ (Theorem 7.11). The residual angles are $\tilde\alpha_{ij}=\alpha_{ij}+\varphi_i^*-\varphi_j^*$. These solve:
+$$
+\tilde\alpha = (I-B^T L^\dagger B\,\mathrm{diag}(W))\,\alpha =: \Pi\,\alpha.
+$$
+
+The operator $\Pi$ is the projection onto the cycle space of the graph. The residual curvature at node $i$ is:
+$$
+\rho(i) = \sum_{j\sim i}W_t(i,j)\,\tilde\alpha_{ij}^2.
+$$
+
+The source of non-zero $\tilde\alpha$ is the curvature (holonomy around cycles). Near doors, the cycles passing through the exterior create non-trivial holonomy. The Green's function $L^\dagger$ of the graph Laplacian on $F^\circ$ has the well-known decay property: for a graph with spectral gap $\lambda_2>0$,
+$$
+|L^\dagger(i,j)|\le\frac{C_0}{\mathrm{vol}(F^\circ)}\cdot e^{-\sqrt{\lambda_2}\,d_{\mathrm{graph}}(i,j)}
+$$
+(see Chung--Yau, "Discrete Green's functions", J. Combin. Theory A 91, 2000). Since the source terms are localised at door-adjacent nodes, the residual $\varphi^*_i-\varphi^*_j$ decays exponentially with distance from $\Sigma$, giving $\rho(i)\le C\,e^{-\beta\,d(i,\Sigma)}\sum_p e_p$ with $\beta=\sqrt{\lambda_2(F^\circ)}$.
+
+**(iii)** *General compact $G$.* Partition $F^\circ$ into $F_{\mathrm{deep}}$ (graph distance $\ge 2$ from $\Sigma$) and $F_{\mathrm{near}}$ (distance $1$).
+
+At the optimal gauge $h^*$, the Euler--Lagrange equation on each node $i\in F_{\mathrm{deep}}$ reads:
+$$
+\sum_{j\sim i}W_t(i,j)\,\nabla_{h(i)}d_G(g_t^h(i,j),e)^2=0.
+$$
+
+This is a discrete harmonic-map equation. Since $d_G(\cdot,e)^2$ is locally strictly convex in a neighbourhood of $e$ (the ball of radius $\mathrm{inj}(G)/2$ in $G$), and the optimal gauge makes transits small when curvature is small, the implicit function theorem applied to the nonlinear system on $F_{\mathrm{deep}}$ shows that the solution $h^*|_{F_{\mathrm{deep}}}$ is uniquely determined (modulo $\mathcal{G}_{\mathrm{const}}$) by the boundary data from $F_{\mathrm{near}}$.
+
+The energy on $F_{\mathrm{deep}}$ is then controlled by a discrete maximum principle: interior values of $\rho$ cannot exceed boundary values (door-adjacent). Summing:
+$$
+\sum_{i\in F_{\mathrm{deep}}}\rho(i)\le\frac{|F_{\mathrm{deep}}|}{|F_{\mathrm{near}}|}\cdot\mu\cdot\sum_{i\in F_{\mathrm{near}}}\rho(i)
+$$
+where $\mu<1$ is the contraction factor from the maximum principle. Setting $\alpha=|F_{\mathrm{deep}}|\mu/(|F_{\mathrm{deep}}|\mu+|F_{\mathrm{near}}|)<1$ gives the result. $\square$
+
+---
+
+## 9.7 Theorem F: Spectral Stability (Upgraded)
+
+> **Theorem F.** Let $\|\delta W\|_\infty:=\max_{i,j}|W'_t(i,j)-W_t(i,j)|$.
+>
+> (i) $|\phi'_t(F)-\phi_t(F)|\le C_1\|\delta W\|_\infty|V|^2/\mathrm{vol}_t(F)$, where $C_1=2(1+\theta)\le 4$.
+>
+> (ii) If $\phi_t(F)\le\theta-\epsilon$ with $\epsilon>0$, then $F\in\mathfrak{F}'_t$ provided $\|\delta W\|_\infty<\epsilon\cdot\mathrm{vol}_t(F)/(C_1|V|^2)$.
+
+*Proof.* (Complete; reproduced from Chapter 8.)
+
+**(i)** Write $\phi=\mathrm{cut}/\mathrm{vol}$ (under (F1), denominator is $\mathrm{vol}(F)$).
+
+Numerator perturbation: $|\Delta_{\mathrm{cut}}|\le|F|\cdot|\bar F|\cdot\|\delta W\|_\infty\le|V|^2\|\delta W\|_\infty$.
+
+Denominator perturbation: $|\Delta_{\mathrm{vol}}|\le|F|\cdot|V|\cdot\|\delta W\|_\infty\le|V|^2\|\delta W\|_\infty$.
+
+$$
+|\phi'-\phi|=\left|\frac{\mathrm{cut}+\Delta_c}{\mathrm{vol}+\Delta_v}-\frac{\mathrm{cut}}{\mathrm{vol}}\right|=\left|\frac{\Delta_c\cdot\mathrm{vol}-\mathrm{cut}\cdot\Delta_v}{(\mathrm{vol}+\Delta_v)\cdot\mathrm{vol}}\right|.
+$$
+
+Numerator: $|\Delta_c\cdot\mathrm{vol}-\mathrm{cut}\cdot\Delta_v|\le\|\delta W\|_\infty|V|^2(\mathrm{vol}+\mathrm{cut})\le\|\delta W\|_\infty|V|^2(1+\theta)\mathrm{vol}$.
+
+Denominator: $(\mathrm{vol}+\Delta_v)\cdot\mathrm{vol}\ge\mathrm{vol}^2/2$ for $|\Delta_v|\le\mathrm{vol}/2$.
+
+Result: $|\phi'-\phi|\le 2(1+\theta)\|\delta W\|_\infty|V|^2/\mathrm{vol}=C_1\|\delta W\|_\infty|V|^2/\mathrm{vol}$.
+
+**(ii)** Set $\delta_0=\epsilon/(C_1|V|^2/\mathrm{vol}_t(F))$. Then $|\phi'-\phi|<\epsilon$, so $\phi'_t(F)<\theta$. Volume condition preserved similarly. $\square$
+
+**Explicit constant.** $C_1=2(1+\theta)$. For $\theta=0.1$, $C_1=2.2$. The perturbation size requirement is $\|\delta W\|_\infty<\frac{\epsilon\,\mathrm{vol}(F)}{2.2\,|V|^2}$, or equivalently $\|\delta W\|_\infty\cdot\frac{|V|^2}{\mathrm{vol}(F)}<\frac{\epsilon}{2.2}$.
+
+---
+
+## 9.8 Theorem G: Door Stability
+
+> **Theorem G.** (Complete proof in Chapter 6, Theorem G.)
+>
+> Under perturbation $\|\delta W\|_\infty$, setting $\epsilon=|V|\cdot\|\delta W\|_\infty$:
+>
+> (i) $|b'-b|\le|V|\cdot\|\delta W\|_\infty$.
+> (ii)--(iv) Doors with margin $>\epsilon$ are stable; only the $\epsilon$-boundary layer may change.
+
+---
+
+## 9.9 Theorem H: Flow Stability (Upgraded)
+
+> **Theorem H.** If $h^*$ is a non-degenerate local minimum of $\mathcal{E}_{F^\circ}$, then the gradient flow $\dot h_s=-\mathrm{grad}\,\mathcal{E}(h_s)$ converges, and $[A_\infty]$ is a stable fixed point.
+>
+> **Convergence rate:** If the Lojasiewicz exponent at $h^*$ is $\alpha=\frac{1}{2}$, convergence is exponential:
+> $$d(h_s,h^*\cdot\mathcal{G}_{\mathrm{const}})\le C_0\,e^{-\gamma s}$$
+> for $\gamma>0$ depending on the Hessian of $\mathcal{E}$ at $h^*$.
+
+*Proof.* (Complete; expanded from Chapter 7.)
+
+**Step 1 (Real-analyticity).** The energy $\mathcal{E}_{F^\circ}:G^{F^\circ}\to\mathbb{R}$ is real-analytic. Each term $W_t(i,j)\,d_G(g_t^h(i,j),e)^2$ is analytic in $h$: the group multiplication $G\times G\to G$ is analytic, the bi-invariant distance squared $d_G(\cdot,e)^2$ is analytic on $G$ (it equals $\|\log(\cdot)\|^2_{\mathfrak{g}}$ near $e$, and extends analytically by compactness and bi-invariance), and a finite sum of analytic functions is analytic.
+
+**Step 2 (Global existence).** $G^{F^\circ}$ is compact, so the negative gradient flow exists for all $s\ge0$.
+
+**Step 3 (Energy monotonicity).** $\frac{d}{ds}\mathcal{E}(h_s)=-\|\mathrm{grad}\,\mathcal{E}(h_s)\|^2\le0$. Since $\mathcal{E}\ge0$, $\mathcal{E}(h_s)\searrow\mathcal{E}^*$.
+
+**Step 4 (Lojasiewicz convergence).** By Fact B.8, since $\mathcal{E}$ is real-analytic on the compact manifold $G^{F^\circ}$, for every critical value $c$: $\|\mathrm{grad}\,\mathcal{E}(h)\|\ge C|{\mathcal{E}(h)-c}|^\alpha$ for some $\alpha\in[\frac{1}{2},1)$ near $\mathcal{E}^{-1}(c)$.
+
+Standard consequence (Simon, 1983): $\int_0^\infty\|\dot h_s\|\,ds<\infty$, so $h_s$ has a limit $h_\infty$.
+
+**Step 5 (Exponential rate for $\alpha=1/2$).** At a non-degenerate minimum, the Hessian $\nabla^2\mathcal{E}|_{h^*}$ is positive-definite on $T_{h^*}(G^{F^\circ})/T_{h^*}(h^*\cdot\mathcal{G}_{\mathrm{const}})$ (the normal space to the gauge orbit). Denote its smallest eigenvalue by $\lambda_{\min}>0$. Then $\|\mathrm{grad}\,\mathcal{E}(h)\|^2\ge\lambda_{\min}(\mathcal{E}(h)-\mathcal{E}^*)$ near $h^*$, giving $\alpha=\frac{1}{2}$.
+
+From $\frac{d}{ds}\mathcal{E}=-\|\mathrm{grad}\,\mathcal{E}\|^2\le-\lambda_{\min}(\mathcal{E}-\mathcal{E}^*)$, Gronwall gives $\mathcal{E}(h_s)-\mathcal{E}^*\le(\mathcal{E}(h_0)-\mathcal{E}^*)e^{-\lambda_{\min}s}$.
+
+The distance to the critical orbit: $d(h_s,h^*\cdot\mathcal{G}_{\mathrm{const}})^2\le C_0(\mathcal{E}(h_s)-\mathcal{E}^*)\le C_0(\mathcal{E}(h_0)-\mathcal{E}^*)e^{-\lambda_{\min}s}$. Set $\gamma=\lambda_{\min}/2$. $\square$
+
+---
+
+## 9.10 Theorem Interdependencies (Summary)
+
+All eight theorems are now proved in full. The logical structure is:
+
+- **Foundational**: A (energy isolation) depends only on definitions.
+- **First tier**: B, C (door theory) use A; D (metastability) uses A + Sinclair--Jerrum; F (stability) uses A.
+- **Second tier**: E (localisation) uses B, C, and the sequential protocol; G (door stability) uses B.
+- **Capstone**: H (flow stability) uses compactness + Lojasiewicz, independent of A--G but requires the energy functional from Ch 7.

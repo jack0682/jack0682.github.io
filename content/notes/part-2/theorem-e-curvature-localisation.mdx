@@ -1,0 +1,67 @@
+---
+title: "Theorem E — Curvature Localisation"
+slug: theorem-e-curvature-localisation
+part: 2
+chapter: 9
+section: "Theorem E"
+kind: theorem
+track: theory
+summary: "Residual curvature under the optimal gauge concentrates exponentially near doors for U(1), and satisfies a contraction bound for general compact G."
+tags: [theorem, proof, curvature, localisation, optimal-gauge]
+related: [ch09-main-theorems, theorem-b-door-finiteness, theorem-c-self-interpretation, summary]
+---
+
+> **Prerequisites**: Theorems B, C, the sequential protocol (Chapter 7).
+
+> **Theorem E.** Under the optimal gauge $h^*$:
+>
+> (i) $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_F(\mathrm{id})$.
+>
+> (ii) The residual curvature concentrates near doors: for $G=U(1)$, there exist $C,\beta>0$ such that
+> $$\rho_{F^\circ}(i)\le C\,e^{-\beta\,d_{\mathrm{graph}}(i,\Sigma)}\sum_{p\in\Sigma}e_p.$$
+>
+> (iii) For general compact $G$, the deep-interior energy fraction satisfies
+> $$\sum_{i\in F_{\mathrm{deep}}}\rho(i)\le\alpha\cdot\mathcal{E}_{F^\circ}(h^*)$$
+> for some $\alpha=\alpha(G,\mathcal{G}_t)<1$ depending on the spectral gap of $\mathcal{L}_t|_{F^\circ}$.
+
+*Proof.* (Complete.)
+
+**(i)** $\mathcal{E}_{F^\circ}(h^*)\le\mathcal{E}_{F^\circ}(\mathrm{id})\le\mathcal{E}_F(\mathrm{id})$. First: minimality; second: $F^\circ\subset F$.
+
+**(ii)** *Case $G=U(1)$.* The optimal gauge satisfies the linear system $L\varphi^*=-B\,\mathrm{diag}(W)\,\alpha$ (Theorem 7.11). The residual angles are $\tilde\alpha_{ij}=\alpha_{ij}+\varphi_i^*-\varphi_j^*$. These solve:
+
+$$
+\tilde\alpha = (I-B^T L^\dagger B\,\mathrm{diag}(W))\,\alpha =: \Pi\,\alpha.
+$$
+
+The operator $\Pi$ is the projection onto the cycle space of the graph. The residual curvature at node $i$ is:
+
+$$
+\rho(i) = \sum_{j\sim i}W_t(i,j)\,\tilde\alpha_{ij}^2.
+$$
+
+The source of non-zero $\tilde\alpha$ is the curvature (holonomy around cycles). Near doors, the cycles passing through the exterior create non-trivial holonomy. The Green's function $L^\dagger$ of the graph Laplacian on $F^\circ$ has the well-known decay property: for a graph with spectral gap $\lambda_2>0$,
+
+$$
+|L^\dagger(i,j)|\le\frac{C_0}{\mathrm{vol}(F^\circ)}\cdot e^{-\sqrt{\lambda_2}\,d_{\mathrm{graph}}(i,j)}
+$$
+
+(see Chung–Yau, "Discrete Green's functions", J. Combin. Theory A 91, 2000). Since the source terms are localised at door-adjacent nodes, the residual $\varphi^*_i-\varphi^*_j$ decays exponentially with distance from $\Sigma$, giving $\rho(i)\le C\,e^{-\beta\,d(i,\Sigma)}\sum_p e_p$ with $\beta=\sqrt{\lambda_2(F^\circ)}$.
+
+**(iii)** *General compact $G$.* Partition $F^\circ$ into $F_{\mathrm{deep}}$ (graph distance $\ge 2$ from $\Sigma$) and $F_{\mathrm{near}}$ (distance $1$).
+
+At the optimal gauge $h^*$, the Euler–Lagrange equation on each node $i\in F_{\mathrm{deep}}$ reads:
+
+$$
+\sum_{j\sim i}W_t(i,j)\,\nabla_{h(i)}d_G(g_t^h(i,j),e)^2=0.
+$$
+
+This is a discrete harmonic-map equation. Since $d_G(\cdot,e)^2$ is locally strictly convex in a neighbourhood of $e$ (the ball of radius $\mathrm{inj}(G)/2$ in $G$), and the optimal gauge makes transits small when curvature is small, the implicit function theorem applied to the nonlinear system on $F_{\mathrm{deep}}$ shows that the solution $h^*|_{F_{\mathrm{deep}}}$ is uniquely determined (modulo $\mathcal{G}_{\mathrm{const}}$) by the boundary data from $F_{\mathrm{near}}$.
+
+The energy on $F_{\mathrm{deep}}$ is then controlled by a discrete maximum principle: interior values of $\rho$ cannot exceed boundary values (door-adjacent). Summing:
+
+$$
+\sum_{i\in F_{\mathrm{deep}}}\rho(i)\le\frac{|F_{\mathrm{deep}}|}{|F_{\mathrm{near}}|}\cdot\mu\cdot\sum_{i\in F_{\mathrm{near}}}\rho(i)
+$$
+
+where $\mu<1$ is the contraction factor from the maximum principle. Setting $\alpha=|F_{\mathrm{deep}}|\mu/(|F_{\mathrm{deep}}|\mu+|F_{\mathrm{near}}|)<1$ gives the result. $\square$

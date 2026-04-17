@@ -69,3 +69,4 @@ __pycache__/
 
 # ── Zone.Identifier (Windows-origin artifacts) ──
 *:Zone.Identifier
+PLAN_reference_integration.md

@@ -1,0 +1,53 @@
+---
+title: "ONN Research Status — 2026"
+slug: onn-research-status-2026
+kind: roadmap
+tags: [onn, status, roadmap]
+summary: "Current research status of the ONN programme — what is settled, what is under active development, and the open problems on the critical path."
+draft: true
+---
+
+*AI-generated summary based on the published papers and the [current-state snapshot](/onn/current-state-snapshot-2026/).
+All uncertain items are flagged with inline TODO comments.*
+
+---
+
+## What Is Settled
+
+1. **Projection-consensus descent.** The operator $T = T_\text\{proj\} \circ T_\text\{consensus\}$ contracts in the semantic energy metric. Proved operator-theoretically (see [the framework paper](/papers/onn-ortsf-2026/)).
+
+2. **Constraint satisfaction at CSR = 1.0.** The LOGOS solver (Forman--Ricci curvature + Deep Delta Learning + CMA-ES) achieves topology-loss reduction from 11.68 to 1.15 and a 95% success rate, seed-independent across twenty random initialisations (see [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/)).
+
+3. **Constructor determinism.** After the constructor-alias bug fix, 59/59 benchmark runs reproduce deterministically. CI gates P1--P3 (schema lock, determinism audit, semantic safety) enforce this going forward.
+
+4. **Leakage inflation inequality (Lemma L1).** $\lVert M_\text\{off\} \rVert_2 \leq \mu_\text\{diag\} + \eta_\text\{off\} \cdot \lVert M_\text\{off\} \rVert_2$ is proved and forms the basis for the quantile gate.
+
+5. **Cohomological framework (three-axis).** Intrinsic cohomology, relative cohomology (with rank formulas), and persistence barcodes are related by a long exact sequence and computable in polynomial time (see [cohomology paper](/papers/axiomatic-cohomology-relations/)).
+
+## Active Development
+
+1. **Constructive Lyapunov certificate.** The ONN total loss $\mathcal\{L\}_\text\{total\}(S,A)$ is conjectured to serve as an explicit Lyapunov function with class-$\mathcal\{K\}_\infty$ bounds. Empirical validation on 3M-node networks shows 99.75% improvement over baselines, but formal peer review is pending (see [Lyapunov paper](/papers/constructive-lyapunov-onn/)).
+
+2. **Delay-robust bound ($\tau_\text\{max\}$).** The Lyapunov analysis yields $\tau_\text\{max\} = 177\;\mu\text\{s\}$ for 3M-node systems. The bound is derived but its tightness under real jitter distributions is under empirical audit (OP-019). {/* TODO: verify tightness claim against real-system logs */}
+
+3. **Regime-stratified quantile gates (A3', A4').** Drift guard (KL-divergence detector) and mixing-aware quantile estimation are implemented. Calibration on real deployment logs is the next step (Phase 6 tasks T-03, T-04, T-06).
+
+4. **Fiber Jacobian bounds (Lemmas L5--L6).** Spectral decomposition along the 64D fiber ($B_\{16\} \oplus F_\{32\} \oplus I_\{16\}$) confirms $c_J \leq 0.7$ on 59 benchmark scales, but large-scale (100K+) behaviour is still UNKNOWN. {/* TODO: verify at 100K+ scale */}
+
+## Open Problems
+
+| ID | Problem | Type | Status |
+|----|---------|------|--------|
+| OP-001 | Global (non-conditional) stability theorem | Theoretical | OPEN |
+| OP-018 | Monitor lag quantification on real systems | Empirical | ACTIVE |
+| OP-019 | Delay envelope conservativeness audit | Empirical | ACTIVE |
+| OP-020 | Finite-sample confidence correction formula (DKW mismatch) | Theoretical | NEW |
+
+{/* TODO: verify whether OP-001 has a candidate proof route beyond Route B (Lyapunov/ISS) */}
+
+## Next Steps
+
+1. **Empirical validation (Phase 6).** Run T-03 (fiber Jacobian at scale), T-04 (drift-detector threshold calibration), T-06 (block-bootstrap coverage), and M-04 (curvature-leakage correlation).
+2. **Proof-route selection.** Choose between Route A (small-gain + quantile envelope) and Route B (Lyapunov/ISS) for the main stability theorem based on Phase 6 results.
+3. **Deployment acceptance.** Complete the checklist in the [snapshot](/onn/current-state-snapshot-2026/) -- false-accept/reject audits, monitor-lag calibration, and operator manual.
+4. **Paper finalisation.** Camera-ready version of the [ONN + ORTSF paper](/papers/onn-ortsf-2026/) (accepted, *International Journal of Topology*); preprints for the Lyapunov and constraint-satisfaction papers.

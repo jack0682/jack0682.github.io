@@ -1,0 +1,27 @@
+---
+title: "Theorem A — Energy Isolation"
+slug: theorem-a-energy-isolation
+part: 2
+chapter: 9
+section: "Theorem A"
+kind: theorem
+track: theory
+summary: "Internal edge-energy of a fruit is at least (1-theta) of its total volume. A three-step proof from the conductance bound."
+tags: [theorem, proof, energy, isolation, cheeger]
+related: [ch09-main-theorems, summary]
+---
+
+> **Prerequisites**: Chapters 2–8 (all of Part I).
+
+> **Theorem A.** For any fruit $F\in\mathfrak{F}_t$:
+> $$\frac{\sum_{i,j\in F}W_t(i,j)}{\mathrm{vol}_t(F)}\;\ge\;1-\theta.$$
+
+*Proof.* (Complete; reproduced from Chapter 4.)
+
+**Step 1.** $\mathrm{vol}_t(F)=\sum_{i,j\in F}W_t(i,j)+\mathrm{cut}_t(F,\bar F)$.
+
+**Step 2.** By (F2), $\phi_t(F)\le\theta$. By (F1), $\mathrm{vol}_t(F)=\min\{\mathrm{vol}_t(F),\mathrm{vol}_t(\bar F)\}$, so $\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**Step 3.** $\sum_{i,j\in F}W_t(i,j)\ge(1-\theta)\,\mathrm{vol}_t(F)$. Divide by $\mathrm{vol}_t(F)>0$. $\square$
+
+**Sharpness.** Equality when $\phi_t(F)=\theta$ and $\mathrm{vol}_t(F)=\frac{1}{2}\mathrm{vol}_t(V)$.

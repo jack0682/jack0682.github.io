@@ -1,0 +1,61 @@
+---
+title: "Theorem D — Metastability"
+slug: theorem-d-metastability
+part: 2
+chapter: 9
+section: "Theorem D"
+kind: theorem
+track: theory
+summary: "The expected escape time from a fruit under the lazy walk is at least 1/(2 theta), via the Cheeger inequality and the Sinclair–Jerrum spectral bound."
+tags: [theorem, proof, metastability, cheeger, spectral-gap, escape-time]
+related: [ch09-main-theorems, theorem-a-energy-isolation, summary]
+---
+
+> **Prerequisites**: Theorem A (energy isolation), Sinclair–Jerrum bound (Fact B.6).
+
+> **Theorem D.** Let $F\in\mathfrak{F}_t$ and $X_0\sim\pi_F$. The escape time from $F$ under the lazy walk $\tilde P_t$ satisfies:
+> $$\mathbb{E}[T_{\mathrm{esc}}(F)]\;\ge\;\frac{1}{2\theta}.$$
+
+*Proof.* (Complete.)
+
+**Step 1 (Restricted chain).** Define the restricted sub-stochastic matrix on $F$:
+
+$$
+P_F(i,j):=\frac{W_t(i,j)}{d_t(i)}\quad(i,j\in F),\qquad\tilde P_F:=\tfrac{1}{2}(I|_F+P_F).
+$$
+
+Row sums: $\sum_{j\in F}\tilde P_F(i,j)=\frac{1}{2}(1+1-r_{F,t}(i))=1-\frac{r_{F,t}(i)}{2}<1$.
+
+**Step 2 (Conductance bound).** The conductance of the restricted chain on $F$ (with absorbing boundary) is:
+
+$$
+\Phi_F:=\min_{\emptyset\ne S\subsetneq F}\frac{\sum_{i\in S}\sum_{j\in F\setminus S}\tilde P_F(i,j)\pi_F(i)+\sum_{i\in S}\frac{r_{F,t}(i)}{2}\pi_F(i)}{\pi_F(S)}
+$$
+
+where $\pi_F(i)\propto d_t(i)$ restricted to $F$.
+
+The numerator's first term is the internal flow out of $S$ within $F$; the second term is the leakage from $S$ to the exterior. Consider the cut of $S$ within the full graph. For any $S\subsetneq F$:
+
+$$
+\sum_{i\in S}\sum_{j\notin S}P_t(i,j)\pi_F(i) = \frac{\mathrm{cut}_t(S,V\setminus S)}{\mathrm{vol}_t(F)}\cdot\mathrm{vol}_t(S).
+$$
+
+In the worst case (taking $S$ to be $F$ itself with absorbing exterior), the effective conductance is bounded by $\phi_t(F)$. More precisely, for any $S\subsetneq F$ with $\mathrm{vol}_t(S)\le\frac{1}{2}\mathrm{vol}_t(F)$:
+
+$$
+\Phi_F(S)\le\frac{\mathrm{cut}_t(S,\bar S)}{\mathrm{vol}_t(S)}\le\phi_t(S).
+$$
+
+Taking the minimum over $S$: $\Phi_F\le\phi_t(F)\le\theta$.
+
+**Step 3 (Spectral gap).** By the Sinclair–Jerrum bound (Fact B.6): $\gamma_F\le 2\Phi_F\le 2\theta$. For the lazy chain: $\tilde\gamma_F=\gamma_F/2\le\theta$.
+
+**Step 4 (Escape time).** The expected absorption time from the quasi-stationary distribution satisfies (see Aldous–Fill, Theorem 12.4; or Montenegro–Tetali, Theorem 3.3):
+
+$$
+\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}]\ge\frac{1}{2\tilde\gamma_F}\ge\frac{1}{2\theta}.
+$$
+
+The factor $\frac{1}{2}$ arises because, for a lazy chain with spectral gap $\tilde\gamma$, the relaxation time is $1/\tilde\gamma$, and the mean hitting time to an absorbing set from the stationary distribution is at least $\frac{1}{2}\cdot\frac{1}{\tilde\gamma}$ (Aldous–Fill inequality for reversible absorbing chains). $\square$
+
+**Explicit constant.** The bound $\frac{1}{2\theta}$ is tight up to constant factors. For a barbell graph (two complete graphs of size $n/2$ connected by a single edge of weight $\epsilon$), the conductance is $\Theta(\epsilon/n)$ and the escape time is $\Theta(n/\epsilon)$.

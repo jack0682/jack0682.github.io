@@ -1,0 +1,255 @@
+---
+title: "SCC Glossary"
+slug: scc-glossary
+part: 0
+kind: essay
+track: perception
+summary: "Plain-language definitions of all formal SCC concepts — each entry includes the formal ID, intuitive description, why it matters, and a concrete analogy."
+tags: [scc, glossary, reference]
+draft: true
+---
+
+**Purpose:** Translate formal definitions from registries (D-xxxx, S-xxxx, A-xxxx) into readable English. This is the "user-facing" documentation for theory terms.
+
+---
+
+## Core SCC Concepts
+
+### Cohesion Field `u_t`
+**Formal:** D-0001 / S-0001  
+**Plain English:** A function that assigns a "strength of bonding" value between 0 and 1 to each location in a relational space. Think of it as a heatmap showing where things are "sticking together" at time t. At location x, `u_t(x)` tells you how much cohesion exists there.
+
+**Why it matters:** This is the fundamental entity in SCC—we don't start with objects; we start with this field. Objects emerge from the dynamics of this field.
+
+**Intuition:** If u_t(x) = 0.9, location x is strongly "in the formation." If u_t(x) = 0.1, it's weakly bonded. If u_t(x) = 0, it's outside.
+
+---
+
+### Relational Support Space `X_t`
+**Formal:** D-0002 / S-0002  
+**Plain English:** The graph (network structure) on which the cohesion field lives. It consists of vertices (locations) and edges (connections between them).
+
+**Why it matters:** The field doesn't exist in a vacuum; it exists on a particular network topology. The topology determines how cohesion spreads via the Laplacian.
+
+**Example:** A 10×10 grid graph where each cell is connected to its 4 neighbors. Or a social network where people are vertices and friendships are edges.
+
+---
+
+### Energy Functional `E(u)`
+**Formal:** D-0003 / S-0003:S-0007  
+**Plain English:** A function that scores how "expensive" a given cohesion field configuration is. Like a cost function: lower energy = better, more stable configuration.
+
+**The four terms:**
+1. **E_cl** (Closure): penalizes fields that are "scattered"; rewards consolidation
+2. **E_sep** (Separation): penalizes fields that deviate from isolated regions; rewards distinctness
+3. **E_bd** (Boundary): penalizes sharp boundaries; encourages smooth transitions
+4. **E_tr** (Transport): penalizes temporal discontinuity; rewards inheritance from prior state
+
+**Why it matters:** The cohesion field evolves by flowing downhill on this energy surface (gradient descent). The shape of the energy landscape determines what formations are stable.
+
+---
+
+### Closure Operator `Cl_t`
+**Formal:** D-0004 / S-0013  
+**Plain English:** A transformation that smooths and stabilizes the cohesion field. It "fills in gaps" where cohesion is spotty.
+
+**Key property:** It's NOT idempotent (applying it twice doesn't give the same result as once). This is deliberate—closure has a "tendency" to stabilize, not a fixed point goal.
+
+**Intuition:** If your cohesion looks like scattered patches, closure says "tighten up and become more consolidated."
+
+---
+
+### Distinction Operator `D_t`
+**Formal:** D-0005 / S-0014  
+**Plain English:** A measurement of how much "edge" or "boundary richness" exists in the field. It quantifies where the field changes sharply.
+
+**Formula:** Based on the contrast in `(1 - u_t)` — the "anti-cohesion."
+
+**Intuition:** Where u_t = 0.5 (neither cohesive nor dispersed), D_t is large. Where u_t ≈ 0 or ≈ 1 (clearly inside or outside), D_t is small.
+
+---
+
+### Resolvent `C_t`
+**Formal:** D-0006 / S-0015  
+**Plain English:** A global integration measure. It tells you "how well does the cohesion field hang together across the whole relational space?"
+
+**Technical:** It's the inverse Laplacian applied to the cohesion field.
+
+**Intuition:** If C_t is high, the field is globally connected and integrated. If C_t is low, it's fragmented.
+
+---
+
+### Transport Kernel `M_{t→s}`
+**Formal:** D-0007 / S-0016  
+**Plain English:** A temporal correspondence: "How much of formation-at-time-s becomes formation-at-time-t?"
+
+**Implementation:** Computes optimal transport (Wasserstein distance) between the cohesion fields at two time points, using entropy regularization to smooth the solution.
+
+**Intuition:** If M_\{t→s\} is high between two fields, the formation has persisted—the old formation "transported" into the new one.
+
+---
+
+## Diagnostic Measurements
+
+### Proto-Cohesion Diagnostic `d = (Bind, Sep, Inside, Persist)`
+**Formal:** D-0008 / S-0021  
+**Plain English:** A 4-tuple of numbers (all in [0,1]) that answer: "Is this formation coherent?"
+
+**The four measurements:**
+
+1. **Bind**: How concentrated is the field? (0 = dispersed everywhere, 1 = sharp point mass)
+2. **Sep**: (For K ≥ 2 only) How separated are the formations? (0 = overlapping, 1 = completely disjoint)
+3. **Inside**: How persistent is the core across time? (0 = core disappears, 1 = core unchanged)
+4. **Persist**: How much of the field carries forward temporally? (0 = completely new, 1 = completely inherited)
+
+**Interpretation:** A "good" formation has high d values (especially Bind, Inside, Persist). The quadruple d acts like a quality score.
+
+---
+
+## K-Field (Multi-Formation) Concepts
+
+### K-Field Configuration \{u¹_t, u²_t, ..., u^K_t\}
+**Formal:** D-0014  
+**Plain English:** K different cohesion fields living on the same relational space, with a constraint that they sum to 1 everywhere (simplex constraint: Σ u^j_t(x) = 1 for all x).
+
+**Intuition:** You can think of this as K competing formations; at each location, the K fields share the "cohesion budget" (total 1.0).
+
+**Why it matters:** Extends SCC from single formations (K=1) to multiple interacting formations (K > 1).
+
+---
+
+### Per-Formation Mass `m_j`
+**Formal:** D-0015 / S-0028  
+**Plain English:** The "size" or "volume" of formation j. It's the integral of u^j_t across the entire space.
+
+**Formula:** m_j = ∫ u^j_t dx
+
+**Constraint (problematic):** Usually externally imposed (e.g., m_1 = m_2 = 50 in a K=2 system). This is where the F-1 and M-1 problems arise: if you allow m_j to vary freely, the energy prefers m_j → 0, which means K collapses to 1.
+
+---
+
+### Repulsion Energy `E_rep`
+**Formal:** D-0017  
+**Plain English:** A penalty term that prevents K formations from overlapping too much. Think of it as a "spring" pushing formations apart.
+
+**Formula:** E_rep = λ_rep × [measure of overlap between u^j and u^k for j ≠ k]
+
+**Role:** Without this, all K formations would converge to the same place (lowest energy). With it, they maintain separation.
+
+---
+
+## Status & Category Concepts
+
+### Category A (Unconditional)
+**Formal:** D-0019  
+**Plain English:** A theorem proved without needing any special assumptions beyond the basic SCC axioms. It's "true as stated" with no caveats.
+
+**Example:** T-1 (existence of minimizers) — given any parameters, a minimizer always exists.
+
+---
+
+### Category B (Conditional)
+**Formal:** D-0020  
+**Plain English:** A theorem proved, but only under stated conditions (e.g., "for generic parameters"). The conditions are assumed to hold, but they need to be checked in practice.
+
+**Example:** T-Persist-K-Sep — true provided formations are well-separated AND per-formation persistence holds individually.
+
+---
+
+### Category C (Very Conditional)
+**Formal:** D-0021  
+**Plain English:** A theorem that holds in a very restricted regime. These are specialty results, not broadly applicable.
+
+**Example:** T-Persist-K-Weak — only applies in the "weakly-interacting regime," which is a narrow parameter range.
+
+---
+
+## Critical Open Problems
+
+### F-1: "K=2 is Vacuous"
+**What it is:** K=2 global stability requires that per-formation mass m_j is held fixed externally. But if you allow m_j to vary freely, the energy *always* prefers m_j → 0, collapsing K to 1. So "K=2 is stable" is only true if you artificially constrain the masses.
+
+**Why it matters:** It means K-field theory isn't self-contained; it depends on external scaffolding (fixed masses) to make sense.
+
+**Current status:** Unresolved. No mechanism proposed yet for why K=2 would emerge naturally without external constraint.
+
+---
+
+### M-1: "K=1 Always Wins"
+**What it is:** The K=2 energy landscape is monotonically decreasing as one formation mass m_1 decreases (and is absorbed into m_2 → M). So K=1 with total mass M is always energetically cheaper than K=2 with m_1 = m_2 = M/2.
+
+**Why it matters:** It's the root cause of F-1. K > 1 can never be naturally preferred.
+
+**Current status:** Unresolved. Would require a selection mechanism (BIC? free energy? birth-death process?) to explain K emergence.
+
+---
+
+### MO-1: "Morse Theory Fails"
+**What it is:** The K=2 constrained manifold Σ²_M = \{(u¹, u²) : m_1 = m_2 = M/2\} is NOT a smooth manifold. It has corners (when one formation touches its boundary). Smooth Morse theory requires smoothness everywhere.
+
+**Why it matters:** Theorems relying on Morse theory (like global phase transition analysis) may be invalid.
+
+**Current status:** Unresolved. Possible fix: use stratified Morse theory (more complex) or sidestep the issue by using existing stable results.
+
+---
+
+## Operational Assumptions
+
+### "Fixed K" Assumption
+**Formal:** A-0012  
+**What it means:** K (number of formations) is decided *beforehand* and held constant. Not derived from energy minimization.
+
+**Why stated:** Because all K-field theorems assume this. Without it, K collapses to 1 (M-1).
+
+**Problem:** How does K get decided "beforehand"? The theory doesn't say. This is the F-1/M-1 issue.
+
+---
+
+### "Fixed m_j" Assumption
+**Formal:** A-0013  
+**What it means:** Each formation's mass m_j is held constant (or Σ m_j = M is constant). Not allowed to vary.
+
+**Why stated:** Because allowing m_j → 0 causes K to collapse.
+
+**Problem:** Again, no mechanism for why masses are "fixed." Is it imposed externally? By what?
+
+---
+
+## Deprecated Concepts (Rejected)
+
+### "Type A" and "Type B" (Formations)
+**Status:** REJECTED (exp65 invalidated)  
+**What it was:** Proposed categorization of K=2 configurations as "centered, stable" (Type A) vs "off-center, swap-prone" (Type B).
+
+**Why rejected:** exp65 showed no Type B configurations ever emerge; all experiments clustered at Type A. The divergence between exp62 and exp63 was due to optimizer strategy, not formation type.
+
+**Lesson:** Don't propose unvalidated classifications without empirical backing.
+
+---
+
+## Quick-Reference by Question
+
+**"What is SCC trying to explain?"**  
+→ How coherent formations emerge from relational structure, prior to discrete objects.
+
+**"What's the primitive entity?"**  
+→ The soft cohesion field u_t : X_t → [0,1].
+
+**"How does it work?"**  
+→ The field evolves by gradient descent on an energy functional E(u). The energy has four independent terms (closure, separation, boundary, transport).
+
+**"What about multiple formations?"**  
+→ Use K-field architecture: K fields on the same space, summing to 1 everywhere (simplex constraint).
+
+**"What's broken?"**  
+→ Three critical issues: F-1 (K=2 requires external mass constraint), M-1 (K=1 always energetically preferred), MO-1 (Morse theory inapplicable to constrained manifold).
+
+**"Are the theorems right?"**  
+→ 35 are fully proved (Category A); 4 are conditional (Category B); 5 are very conditional (Category C); 2 retracted. The single-formation results are solid. Multi-formation results depend on resolving F-1/M-1.
+
+---
+
+**Last updated:** 2026-04-12  
+**Audience:** Non-specialists, students, reviewers
+
+---

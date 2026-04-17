@@ -1,0 +1,103 @@
+---
+title: "ORTSF Operator Catalogue"
+slug: ortsf-operator-catalogue
+kind: catalogue
+tags: [onn, ortsf, operators, delay-robust, control]
+summary: "Predicate-binding operators in the Ontology-based Robust Topological Sequencing Framework — closed-loop delay bounds and the map between ontology morphisms and feedback gains."
+draft: true
+---
+
+> **AI-generated draft.** This document was synthesised from the accepted
+> ONN + ORTSF paper and the empirical extension preprint. It requires
+> review by the author (Jaehong Oh) before the `draft` flag is removed.
+
+## What ORTSF Is
+
+The **Ontology-Resolved Topological State Feedback** (ORTSF) framework is
+a family of predicate-binding operators that compose typed features
+produced by the Ontology Neural Network (ONN) under communication and
+sensing delay, with provable stability bounds stated in cohomological
+terms. Its central idea is that the topology of the learned
+representation space is itself a control-theoretic object: recognising
+this allows delay-robustness guarantees to be expressed as cohomological
+invariants of the learned ontology, and allows controllers to exploit
+precisely that structure.
+
+## Operator Family
+
+| Operator class | Symbol / mechanism | Role |
+|---|---|---|
+| **Projection** | $T_{\text{proj}}$ | Projects the ONN latent state onto the typed fibre of the target ontology, enforcing type-algebraic consistency. |
+| **Consensus** | $T_{\text{cons}}$ | Aggregates neighbouring fibres to reach local agreement under the ontology's relational structure. |
+| **Projection-Consensus composite** | $T = T_{\text{proj}} \circ T_{\text{cons}}$ | The core ORTSF dynamics operator; iterative application drives the system toward a topology-preserving fixed point. |
+| **Predicate-binding gates** | Typed gating on ontology predicates | Compose typed features under delay, ensuring that only type-compatible signals pass through the feedback loop. |
+| **Quantile envelope gate** | Two-stage acceptance (leakage + delay guards) | Enforces $\lVert M_{\text{off}}\rVert_2 \le m_{\text{off}}^{95}$ with $P \ge 0.95$, bounding off-diagonal coupling. |
+| **Regime-stratified drift guard** | KL-divergence monitor (A3$'$) | Detects regime shifts that would invalidate the stationarity assumption underlying the delay bounds. |
+
+## Delay-Robust Control
+
+ORTSF guarantees bounded behaviour under communication delay up to a
+maximum $\tau_{\max}$ derived from the topology of the ontology graph.
+The key condition is the **delay-coupling small-gain inequality**:
+
+$$
+\mu_{\text{diag}} < \frac{1}{1 + \kappa_{\text{off}}}, \qquad
+\kappa_{\text{off}} = \eta_{\text{off}}^{95} \cdot m_{\text{off}}^{95}
+$$
+
+where $\mu_{\text{diag}}$ is the diagonal contraction rate and
+$\kappa_{\text{off}}$ captures the 95th-percentile off-diagonal
+coupling. When this holds, the delay-amplification envelope $\hat\Gamma$
+remains bounded, and the system is stable for all delays
+$\tau \le \tau_{\max}$.
+
+{/* TODO: Extract explicit formula for tau_max from the camera-ready version of the accepted paper. */}
+
+The empirical extension confirms that the bound is reachable in practice:
+the advanced regime attains $\mathcal{L}_{\text{topo}} = 0.0234$, i.e.
+**99.75%** of the theoretically predicted optimum.
+
+## Ontology Morphism to Feedback Gain Map
+
+A structural change in the ontology graph — addition or removal of types,
+edges, or predicates — constitutes an **ontology morphism**. The ORTSF
+framework establishes a correspondence between such morphisms and
+adjustments to the closed-loop feedback gains:
+
+- **Cohomological invariants** of the learned ontology serve
+  simultaneously as representational descriptors and as Lyapunov-type
+  certificates for the control loop.
+- When a morphism alters the cohomology class, the associated Lyapunov
+  certificate must be recomputed, which translates directly into an
+  updated gain schedule for the predicate-binding operators.
+
+{/* TODO: Formalise the morphism-to-gain functor once the camera-ready notation is finalised. */}
+
+## Integration with ONN
+
+ORTSF operators consume the ONN's **typed latent state** — a 64-dimensional
+semantic fibre ($B_{16} \oplus F_{32} \oplus I_{16}$) — rather than a
+flat vector embedding. This coupling is what gives the framework its
+topological character:
+
+1. ONN trains with a type-algebra-preserving loss, producing a latent
+   state that carries the ontology's structure by construction.
+2. ORTSF reads that typed state and applies $T = T_{\text{proj}} \circ
+   T_{\text{cons}}$ to enforce consensus across the ontology graph.
+3. The LOGOS solver drives the composite system to a fixed point under
+   ABS\_ENERGY, REL\_ENERGY, and MAX\_ITERATIONS convergence criteria.
+4. Monitoring modules (drift guard, quantile gates) run concurrently,
+   triggering regime-conditional re-calibration when A3$'$ or A4$'$
+   assumptions are violated.
+
+## Open Questions
+
+| ID | Question | Status |
+|---|---|---|
+| OP-001 | Global (non-conditional) stability theorem | OPEN |
+| OP-018 | Monitor lag quantification on real systems | ACTIVE |
+| OP-019 | Delay envelope conservativeness audit | ACTIVE |
+| OP-020 | Finite-sample confidence correction formula | NEW |
+| — | Explicit $\tau_{\max}$ formula as a function of graph topology | OPEN |
+| — | Functorial description of the morphism-to-gain map | OPEN |
+| — | Transfer of delay bounds to transformer-backbone ONN variants | OPEN |

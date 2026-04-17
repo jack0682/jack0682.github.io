@@ -1,0 +1,30 @@
+---
+title: "Theorem B — Finiteness of Doors"
+slug: theorem-b-door-finiteness
+part: 2
+chapter: 9
+section: "Theorem B"
+kind: theorem
+track: theory
+summary: "The number of door nodes is bounded by theta times the volume divided by the threshold. A direct energy-budget argument."
+tags: [theorem, proof, doors, finiteness]
+related: [ch09-main-theorems, theorem-a-energy-isolation, summary]
+---
+
+> **Prerequisites**: Theorem A (energy isolation), Chapter 6 (doors).
+
+> **Theorem B.** For fruit $F$ with door threshold $\tau>0$:
+>
+> (i) $|\Sigma_\tau(F,t)|\le\theta\cdot\mathrm{vol}_t(F)/\tau$.
+>
+> (ii) $\sum_{p\in\Sigma}e_p\le\theta\cdot\mathrm{vol}_t(F)$.
+>
+> (iii) $|\Sigma_\tau|/|F|\le\theta\cdot d_{\max}(F,t)/\tau$.
+
+*Proof.* (Complete; reproduced from Chapter 6.)
+
+**(i)** $\tau\cdot|\Sigma_\tau|\le\sum_{i\in\Sigma_\tau}b_{F,t}(i)\le\sum_{i\in F}b_{F,t}(i)=\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**(ii)** $\sum_{p\in\Sigma}e_p=\sum_{p\in\Sigma}b_{F,t}(p)\le\mathrm{cut}_t(F,\bar F)\le\theta\cdot\mathrm{vol}_t(F)$.
+
+**(iii)** $\mathrm{vol}_t(F)\le|F|\cdot d_{\max}(F,t)$. Substitute into (i). $\square$

@@ -1,0 +1,94 @@
+---
+title: "Appendix C — Discrete–Continuous Correspondence Dictionary"
+slug: appendix-c-correspondence
+part: 8
+chapter: 3
+section: "Appendix C"
+kind: essay
+track: theory
+summary: "A thirty-row dictionary mapping discrete RelationWorld constructions to their continuous differential-geometry counterparts, plus theorem and axiom correspondence tables."
+tags: [correspondence, gauge-theory, appendix, reference]
+---
+
+This appendix provides a unified dictionary relating the discrete constructions of the RelationWorld theory to their counterparts in continuous differential geometry and gauge theory.
+
+---
+
+## C.1 Main Dictionary
+
+| # | Discrete (this theory) | Continuous (gauge theory / Riemannian geometry) |
+|---|------------------------|------------------------------------------------|
+| 1 | Finite set $V$, $|V|=n$ | Smooth manifold $M$ |
+| 2 | Edge set $E_t$ | Tangent bundle structure |
+| 3 | Symmetric weight $W_t(i,j)$ | Riemannian metric $g_{\mu\nu}$ |
+| 4 | Edge group element $g_t(i,j)\in G$ | Connection 1-form $A\in\Omega^1(M,\mathfrak{g})$ |
+| 5 | Gauge group $\mathcal{G}=G^V$ | Gauge transformation group $\mathrm{Map}(M,G)$ |
+| 6 | Gauge action $g_t^h(i,j)=h(i)g_t(i,j)h(j)^{-1}$ | $A^g=gAg^{-1}+g\,dg^{-1}$ |
+| 7 | Triangle holonomy $\Omega_t(\triangle)$ | Curvature 2-form $F_A=dA+A\wedge A$ |
+| 8 | Scalar curvature $\omega_t(\triangle)=d_G(\Omega_t,e)^2$ | $\|F_A\|^2$ |
+| 9 | Degree $d_t(i)$ | Volume element $\sqrt{g}\,d^nx$ |
+| 10 | Volume $\mathrm{vol}_t(S)$ | Riemannian volume $\mathrm{Vol}(U)$ |
+| 11 | Cut $\mathrm{cut}_t(S,\bar S)$ | Boundary area $\mathrm{Area}(\partial U)$ |
+| 12 | Conductance $\phi_t(S)$ | Cheeger constant $h(M)$ |
+| 13 | Fruit $F$ ($\phi_t(F)\le\theta$) | Metastable sub-manifold |
+| 14 | Stem $\mathcal{S}_t$ | Thin neck / bridge region |
+| 15 | Boundary coupling $b_{F,t}(i)$ | Normal flux through $\partial U$ |
+| 16 | Door $\Sigma_\tau(F,t)$ | Uhlenbeck singular set $\{p_1,\ldots,p_L\}$ |
+| 17 | Door energy $e_p$ | Bubble energy $\lim_{r\to0}\int_{B_r(p)}\lvert F_A\rvert^2$ |
+| 18 | Door threshold $\tau$ | Energy quantum $\epsilon_0$ |
+| 19 | Kernel $F^\circ=F\setminus\Sigma$ | Punctured manifold $M\setminus\{p_1,\ldots,p_L\}$ |
+| 20 | Flattening energy $\mathcal{E}_{F^\circ}(h)$ | Yang--Mills energy $\int_M\|F_A\|^2\,dV$ |
+| 21 | Optimal gauge $h^*$ | Coulomb gauge / Uhlenbeck gauge |
+| 22 | Canonical connection $[A_\infty]$ | Limit connection (gauge class) |
+| 23 | Existence $([A_\infty],\Sigma,\mathbf{e})$ | Point in Uhlenbeck compactification |
+| 24 | Moduli space $\mathcal{M}(F,\Sigma)$ | Moduli space of connections |
+| 25 | World $\mathfrak{W}_t$ | Spacetime with gauge field |
+| 26 | Normalised Laplacian $\mathcal{L}_t$ | Laplace--Beltrami operator $\Delta_g$ |
+| 27 | Random walk $P_t$ | Heat kernel / Brownian motion |
+| 28 | Escape time $T_{\mathrm{esc}}$ | Mixing time / first exit time |
+| 29 | YM gradient flow $\dot h=-\nabla\mathcal{E}$ | Yang--Mills flow $\partial_t A=-d_A^*F_A$ |
+| 30 | Lojasiewicz convergence | Simon's convergence theorem |
+
+---
+
+## C.2 Correspondence of Theorems
+
+| Discrete Theorem | Continuous Analogue |
+|-----------------|-------------------|
+| **A** (Energy isolation) | Cheeger inequality |
+| **B** (Finiteness of doors) | Uhlenbeck compactness ($L\le E/\epsilon_0$) |
+| **C** (Self-interpretation) | Internal boundary data determines singular set |
+| **D** (Metastability) | Spectral gap $\Leftrightarrow$ mixing time |
+| **E** (Curvature localisation) | Removable singularity / regularity away from bubbles |
+| **F** (Spectral stability) | Stability of Cheeger constant under metric perturbation |
+| **G** (Door stability) | Stability of singular set under connection perturbation |
+| **H** (Flow stability) | Lojasiewicz--Simon gradient inequality $\Rightarrow$ convergence |
+
+---
+
+## C.3 Axiom Correspondence
+
+| Discrete Axiom | Continuous Counterpart |
+|---------------|----------------------|
+| A0: Compact Lie group $G$ | Structure group of principal bundle |
+| A1: Finite node set $V$ | Compact base manifold $M$ |
+| A2: Time set $\mathbb{T}$ | Time parameter in evolution equations |
+| A3: Fruit threshold $\theta$ | Cheeger constant threshold |
+| A4: Door threshold $\tau$ | Energy concentration quantum $\epsilon_0$ |
+| A5: Intrinsic data axiom | Boundary trace theorem (Sobolev) |
+
+---
+
+## C.4 Key Differences
+
+The discrete theory is **not** merely a discretisation of the continuous theory. Key structural differences:
+
+1. **Finite-dimensionality**: all spaces are finite, so existence and compactness results are immediate (no functional analysis needed).
+
+2. **No regularity issues**: there are no Sobolev spaces, no weak solutions, no regularity theory. All functions are finitely specified.
+
+3. **Exact computations**: cohomology is computed by finite matrix algebra, not by solving PDEs.
+
+4. **Combinatorial conductance**: replaces the geometric Cheeger constant, but retains the same spectral relationship (discrete Cheeger inequality).
+
+5. **Doors vs. bubbles**: discrete doors are individual nodes; continuous bubbles are idealised points with concentration measures. The discrete version is inherently regularised.

@@ -92,10 +92,6 @@ export default function OnnHubPage() {
             />
           ))
         )}
-        <FuturePlaceholder
-          label="ORTSF operator catalogue"
-          note="Predicate-binding operators, closed-loop delay bounds, and the map between ontology morphisms and feedback gains."
-        />
       </HubSection>
 
       {/* ── Research roadmap / status ─────────────────────────── */}
@@ -162,18 +158,6 @@ export default function OnnHubPage() {
             />
           ))
         )}
-        <FuturePlaceholder
-          label="Theorem · Topology preservation under projection-consensus"
-          note="Detailed proof page — coming."
-        />
-        <FuturePlaceholder
-          label="Theorem · Delay-robust bound τ_max for ORTSF"
-          note="Detailed proof page — coming."
-        />
-        <FuturePlaceholder
-          label="Theorem · Cohomological stability certificate"
-          note="Detailed proof page — coming."
-        />
       </HubSection>
 
       {/* ── Related papers ────────────────────────────────────── */}

@@ -1,0 +1,60 @@
+---
+title: "Theorem — Delay-Robust Bound for ORTSF"
+slug: theorem-delay-robust-bound
+kind: theorem
+tags: [onn, theorem, delay, robust, ortsf, control]
+summary: "The maximum tolerable communication delay tau_max under which the ORTSF controller maintains stability — derived from the Lyapunov analysis."
+draft: true
+---
+
+*AI-generated theorem statement drawn from the [framework paper](/papers/onn-ortsf-2026/) and the [Lyapunov paper](/papers/constructive-lyapunov-onn/).
+Gaps are marked with TODO comments.*
+
+---
+
+## Statement
+
+**Theorem (Delay-Robust Bound for ORTSF).**
+Consider the ORTSF (Ontology-Resolved Topological State Feedback) closed-loop system driven by an ONN whose total loss $\mathcal\{L\}_\text\{total\}(S, A)$ serves as a Lyapunov certificate. Let $\tau$ denote the one-way communication delay between the perception (ONN) subsystem and the controller.
+
+There exists a critical delay
+
+$$
+\tau_\text\{max\} = 177\;\mu\text\{s\}
+$$
+
+such that for all $\tau \leq \tau_\text\{max\}$ the closed-loop system satisfies:
+
+1. **Asymptotic stability.** The equilibrium of the delay-differential system is asymptotically stable with exponential convergence rate.
+2. **Topology preservation.** The Betti numbers of the latent representation remain invariant under the delayed feedback.
+3. **Input-to-State Stability (ISS).** For bounded disturbances $\lVert d(t) \rVert \leq \bar\{d\}$, the state deviation remains bounded by a class-$\mathcal\{KL\}$ function of the initial error plus a class-$\mathcal\{K\}$ function of $\bar\{d\}$.
+
+The bound $\tau_\text\{max\} = 177\;\mu\text\{s\}$ is established for a 3M-node semantic network. {/* TODO: state how tau_max scales with network size (conjectured inverse relationship with node count) */}
+
+## Derivation Outline
+
+The derivation, detailed in the [Lyapunov paper](/papers/constructive-lyapunov-onn/), proceeds in three steps:
+
+1. **Lyapunov candidate.** The ONN total loss $\mathcal\{L\}_\text\{total\}(S, A)$ -- combining semantic consensus loss, topological connection loss, and contextual constraint loss -- is shown to be positive definite and radially unbounded with class-$\mathcal\{K\}_\infty$ bounds:
+
+$$
+\alpha_1(\lVert x \rVert) \leq \mathcal\{L\}_\text\{total\}(x) \leq \alpha_2(\lVert x \rVert)
+$$
+
+where $\alpha_1, \alpha_2 \in \mathcal\{K\}_\infty$ are explicitly constructed. {/* TODO: fill exact forms of alpha_1 and alpha_2 from the paper */}
+
+2. **Razumikhin / Krasovskii extension.** The delay-differential form of the closed loop is handled via a Razumikhin-type argument: if $\mathcal\{L\}_\text\{total\}(x(t+\theta)) \leq p \cdot \mathcal\{L\}_\text\{total\}(x(t))$ for $\theta \in [-\tau, 0]$ and some $p > 1$, then $\dot\{\mathcal\{L\}\}_\text\{total\} < 0$ along trajectories. {/* TODO: confirm whether Razumikhin or Krasovskii functional is used */}
+
+3. **Explicit bound computation.** The interplay between the contraction rate of $T = T_\text\{proj\} \circ T_\text\{consensus\}$ (governed by $\mu_\text\{diag\}$ and the off-diagonal coupling $\kappa_\text\{off\}$) and the delay amplification envelope $\hat\{\Gamma\}$ yields:
+
+$$
+\tau_\text\{max\} = \frac\{1 - \mu_\text\{diag\}(1 + \kappa_\text\{off\})\}\{\lambda_\text\{max\}(J_\text\{ONN\}) \cdot \hat\{\Gamma\}\}
+$$
+
+where $\lambda_\text\{max\}(J_\text\{ONN\})$ is the largest eigenvalue of the ONN Jacobian and $\hat\{\Gamma\}$ is the empirically measured delay amplification factor. Substituting the benchmark values ($\mu_\text\{diag\} \approx 0.7$, $\kappa_\text\{off\}$ from quantile estimation, $\hat\{\Gamma\}$ from 3M-node runs) gives the reported $177\;\mu\text\{s\}$. {/* TODO: verify exact numerical substitution */}
+
+## Scope and Limitations
+
+- The delay bound feeds into the main stability theorem via Lemma L4 (delay-coupling via small gain), currently at CONJECTURE status. Route A (small-gain + quantile envelope) is the chosen proof path.
+- The $177\;\mu\text\{s\}$ figure is validated on a 3M-node network; generality across topologies is under investigation (OP-019). {/* TODO: report delay-envelope conservativeness audit results */}
+- Assumes A8 (jitter process bounded), marked NEEDS-EXPERIMENT. Real deployment validation is a Phase 6 task.

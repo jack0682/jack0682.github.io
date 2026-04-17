@@ -1,0 +1,42 @@
+---
+title: "Theorem F — Spectral Stability"
+slug: theorem-f-spectral-stability
+part: 2
+chapter: 9
+section: "Theorem F"
+kind: theorem
+track: theory
+summary: "Small weight perturbations produce bounded conductance changes; strong fruits persist under perturbation with an explicit constant C1 = 2(1+theta)."
+tags: [theorem, proof, spectral-stability, perturbation, conductance]
+related: [ch09-main-theorems, theorem-a-energy-isolation, summary]
+---
+
+> **Prerequisites**: Theorem A (energy isolation), Chapter 8.
+
+> **Theorem F.** Let $\|\delta W\|_\infty:=\max_{i,j}|W'_t(i,j)-W_t(i,j)|$.
+>
+> (i) $|\phi'_t(F)-\phi_t(F)|\le C_1\|\delta W\|_\infty|V|^2/\mathrm{vol}_t(F)$, where $C_1=2(1+\theta)\le 4$.
+>
+> (ii) If $\phi_t(F)\le\theta-\epsilon$ with $\epsilon>0$, then $F\in\mathfrak{F}'_t$ provided $\|\delta W\|_\infty<\epsilon\cdot\mathrm{vol}_t(F)/(C_1|V|^2)$.
+
+*Proof.* (Complete; reproduced from Chapter 8.)
+
+**(i)** Write $\phi=\mathrm{cut}/\mathrm{vol}$ (under (F1), denominator is $\mathrm{vol}(F)$).
+
+Numerator perturbation: $|\Delta_{\mathrm{cut}}|\le|F|\cdot|\bar F|\cdot\|\delta W\|_\infty\le|V|^2\|\delta W\|_\infty$.
+
+Denominator perturbation: $|\Delta_{\mathrm{vol}}|\le|F|\cdot|V|\cdot\|\delta W\|_\infty\le|V|^2\|\delta W\|_\infty$.
+
+$$
+|\phi'-\phi|=\left|\frac{\mathrm{cut}+\Delta_c}{\mathrm{vol}+\Delta_v}-\frac{\mathrm{cut}}{\mathrm{vol}}\right|=\left|\frac{\Delta_c\cdot\mathrm{vol}-\mathrm{cut}\cdot\Delta_v}{(\mathrm{vol}+\Delta_v)\cdot\mathrm{vol}}\right|.
+$$
+
+Numerator: $|\Delta_c\cdot\mathrm{vol}-\mathrm{cut}\cdot\Delta_v|\le\|\delta W\|_\infty|V|^2(\mathrm{vol}+\mathrm{cut})\le\|\delta W\|_\infty|V|^2(1+\theta)\mathrm{vol}$.
+
+Denominator: $(\mathrm{vol}+\Delta_v)\cdot\mathrm{vol}\ge\mathrm{vol}^2/2$ for $|\Delta_v|\le\mathrm{vol}/2$.
+
+Result: $|\phi'-\phi|\le 2(1+\theta)\|\delta W\|_\infty|V|^2/\mathrm{vol}=C_1\|\delta W\|_\infty|V|^2/\mathrm{vol}$.
+
+**(ii)** Set $\delta_0=\epsilon/(C_1|V|^2/\mathrm{vol}_t(F))$. Then $|\phi'-\phi|<\epsilon$, so $\phi'_t(F)<\theta$. Volume condition preserved similarly. $\square$
+
+**Explicit constant.** $C_1=2(1+\theta)$. For $\theta=0.1$, $C_1=2.2$. The perturbation size requirement is $\|\delta W\|_\infty<\frac{\epsilon\,\mathrm{vol}(F)}{2.2\,|V|^2}$, or equivalently $\|\delta W\|_\infty\cdot\frac{|V|^2}{\mathrm{vol}(F)}<\frac{\epsilon}{2.2}$.
