@@ -123,6 +123,31 @@ const research = defineCollection({
     .transform((data) => computeFields({ ...data, collection: "research" })),
 });
 
+/* ── onnDocs ─ ONN programme documents (separate from notes) ── */
+const onnDocs = defineCollection({
+  name: "OnnDoc",
+  pattern: "onn/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(200),
+      slug: s.slug("onn"),
+      summary: s.string().max(320).optional(),
+      tags: s.array(s.string()).default([]),
+      kind: s
+        .enum(["canonical", "roadmap", "overview", "theorem", "proof", "essay"])
+        .optional(),
+      chapter: s.number().int().gte(0).optional(),
+      section: s.string().optional(),
+      updated: s.isodate().optional(),
+      related: s.array(s.string()).default([]),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "onn" })),
+});
+
 /* ── notes ─ mathematical notes, organised into parts ─────── */
 const notes = defineCollection({
   name: "Note",
@@ -179,7 +204,7 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { posts, papers, journal, research, notes },
+  collections: { posts, papers, journal, research, notes, onnDocs },
   mdx: {
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [

@@ -1,0 +1,310 @@
+---
+title: "Chapter 16 — Open Problems"
+slug: ch16-open-problems
+part: 6
+chapter: 16
+section: "Chapter 16"
+kind: essay
+track: theory
+summary: "All open problems and conjectures collected from throughout the theory. Organised by part and difficulty."
+tags: [open-problems, conjectures, frontiers]
+---
+
+
+> **Prerequisites**: Parts I--V.
+
+This chapter consolidates all open problems and conjectures from throughout the theory.
+
+---
+
+## 16.1 Conjecture 7.10: Gauge-Fixing Uniqueness (Non-Abelian $G$)
+
+### Statement
+
+If $h_1^*$ and $h_2^*$ are two global minima of $\mathcal{E}_{F^\circ}$ with $h_1^*\not\sim_{\mathcal{G}_{\mathrm{const}}}h_2^*$, then:
+$$
+\rho^{(1)}_{F^\circ}(i)=\rho^{(2)}_{F^\circ}(i)\quad\forall\,i\in F^\circ.
+$$
+### Status
+
+| $G$ | Status | Method |
+|-----|--------|--------|
+| $U(1)$ | **Resolved** (Theorem 7.11) | Convexity + Laplacian uniqueness |
+| Tree graphs, any $G$ | Expected to hold | Sequential 1-variable optimisation |
+| $SU(2)$, general graphs | **Open** | Non-convex energy landscape |
+| General compact $G$ | **Open** | |
+
+### Approaches
+
+1. **Tree graphs**: no loops, so fixing a root determines all other gauges uniquely (1-variable convex optimisation at each step).
+
+2. **$SU(2)$ Morse theory**: classify critical points of $\mathcal{E}_{F^\circ}:G^{F^\circ}\to\mathbb{R}$ by Morse index. Show that all global minima lie on a single $\mathcal{G}_{\mathrm{const}}$-orbit.
+
+3. **Bypass strategy**: even if the conjecture fails, the sequential protocol (Construction 7.6) ensures $\Sigma$ and $\mathbf{e}$ are well-defined. The issue affects only the reading of $[A_\infty]$ via $\rho$. Using holonomy invariants (conjugacy classes) instead of $\rho$ sidesteps the conjecture entirely.
+
+---
+
+## 16.2 Fruit Dynamics and Continuity
+
+### Problem
+
+Define rigorously when $F_t\in\mathfrak{F}_t$ and $F_{t'}\in\mathfrak{F}_{t'}$ represent "the same existence evolving".
+
+### Proposed definitions (Chapter 14)
+
+- Symmetric-difference criterion: $|F_t\triangle F_{t'}|/|F_t|\le\epsilon$.
+- Moduli distance: $d_{\mathcal{M}}(\mathrm{Ex}_t(F_t),\mathrm{Ex}_{t'}(F_{t'}))\le\delta$.
+
+### Open sub-problems
+
+1. **Lifespan**: define and compute the duration over which a fruit persists.
+2. **Splitting/merging**: classify the events where one fruit becomes two (or vice versa), including the topological signature of the transition.
+3. **Door pattern evolution**: how does $\Sigma_t$ change as the relational field evolves?
+
+---
+
+## 16.3 Gauge--Holonomy Coupling for Doors
+
+### Conjecture
+
+Energy-based doors and holonomy-based doors are related:
+$$
+\Sigma^{\mathrm{hol}}_\tau\subset\Sigma_{\tau'}\quad\text{for some }\tau'=\tau'(\tau,G).
+$$
+That is, a holonomy anomaly always accompanies an energy anomaly.
+
+### Evidence
+
+- For $G=U(1)$: holonomy anomaly at node $i$ requires non-zero external coupling through $i$, so the conjecture holds with $\tau'=\tau/C$ for some constant $C$.
+- Converse fails in general: large $b_{F,t}(i)$ does not imply large holonomy anomaly (a flat connection with large leakage is possible).
+
+---
+
+## 16.4 Inter-Fruit Interaction (Meta-Relational Field)
+
+### Problem
+
+Describe the interaction between two fruits $F_1,F_2$ in a principled way.
+
+### Proposal
+
+Define a meta-relational field with:
+- Meta-weight: $W^{\mathrm{meta}}(F_1,F_2):=\sum_{i\in F_1}\sum_{j\in F_2}W_t(i,j)$.
+- Meta-transit: an appropriately averaged holonomy between $F_1$ and $F_2$.
+
+### Open sub-problems
+
+1. Well-definedness of the averaged holonomy (path dependence for non-abelian $G$).
+2. Recursive structure: do "meta-fruits" exist in the meta-relational field?
+3. Information loss quantification: how much structure is lost in coarse-graining?
+
+---
+
+## 16.5 Extension to Infinite $V$
+
+### Problem
+
+What survives as $|V|\to\infty$?
+
+### Directions
+
+1. **Thermodynamic limit**: scaling of fruit size $|F_n|/n$, conductance $\phi(F_n)$, and door density $|\Sigma_n|/|F_n|$.
+
+2. **Continuum limit**: under appropriate scaling, the discrete relational field should converge to a continuous gauge connection, with:
+   - Discrete conductance $\to$ Cheeger constant.
+   - Discrete holonomy $\to$ continuous curvature.
+   - Discrete doors $\to$ Uhlenbeck singular points.
+
+3. **Graphon limit**: the sequence of weighted graphs converges to a graphon $W:[0,1]^2\to\mathbb{R}_{\ge0}$. Extending the gauge structure to graphons requires a non-trivial construction.
+
+---
+
+## 16.6 Information-Theoretic Interpretation
+
+### Conjecture
+
+The mutual information between a fruit and its exterior is bounded by door energy:
+$$
+I(F;\bar F)\le C\sum_{p\in\Sigma}e_p\log\frac{e_p}{\tau}.
+$$
+### Motivation
+
+Doors are the only channels of information between a fruit and the exterior (by the no-boundary principle). The door energy $e_p$ quantifies the bandwidth of channel $p$.
+
+---
+
+## 16.7 Computational Complexity
+
+### Known
+
+- Finding the minimum-conductance subset is NP-hard in general.
+- Spectral methods give $O(\sqrt{\theta})$-approximation (discrete Cheeger inequality).
+- For $G=U(1)$, optimal gauge is a linear system (polynomial time).
+
+### Open
+
+- For general compact $G$: is finding the global minimum of $\mathcal{E}_{F^\circ}$ NP-hard?
+- Can the number of local minima of $\mathcal{E}_{F^\circ}$ for $G=SU(2)$ be bounded in terms of graph invariants?
+- Efficient algorithms for Axes 1--3 computation on large graphs ($|F|>10^4$).
+
+---
+
+## 16.8 Non-Abelian Convergence Rate
+
+### Problem (from Chapter 13)
+
+For $G=SU(2)$, determine the Lojasiewicz exponent $\alpha$ at critical points of $\mathcal{E}$. This determines whether convergence of the YM flow is exponential ($\alpha=1/2$) or polynomial ($\alpha>1/2$).
+
+### Related
+
+- Classify the Morse--Bott structure of $\mathcal{E}$ on $G^{|E|}$ for specific graph families.
+- Determine whether Gribov copies are isolated or form continuous families.
+
+---
+
+## 16.9 Yang--Mills Uniqueness for Non-Abelian Groups (SU(2))
+
+### Problem
+
+For a fixed graph topology $(n,E)$ and fruit interior $F^\circ$, the flattening energy $\mathcal{E}_{F^\circ}(h) = \sum_{\triangle} \|\Omega(\triangle)\|_G^2$ may have multiple global minima when $G = \mathrm{SU}(2)$.
+
+**Question**: Is the minimizer of $\mathcal{E}_{F^\circ}(h)$ unique (up to gauge equivalence of type $\mathcal{G}_{\mathrm{const}}$)? If not, how does non-uniqueness affect the definition of the existence triple $([A_\infty], \Sigma, \mathbf{e})$ and the state space $C(n,E)$?
+
+### Implications
+
+- **If YES (unique)**: The canonical connection $[A_\infty]$ is well-defined, and the state space $C(n,E) = P(n,E) / G^n$ is a quotient manifold (possibly with orbifold singularities only at flat configurations).
+- **If NO (non-unique)**: The state space has genuine **reducibility** at certain configurations. The existence triple becomes multi-valued: $\mathrm{Existence}(F,t) = ([A_\infty]^{(k)}, \Sigma, \mathbf{e})$ for $k=1,\ldots,m$ distinct minimizers. This complicates the semantic interpretation of the world.
+
+### Related Literature
+
+- **Connes--Douglas (1995)**: Yang--Mills minima for SU(2) connections on compact manifolds.
+- **Donaldson (1990)**: Gauge theory on 4-manifolds; instanton moduli spaces.
+- **Discrete setting**: Rade (1994) on discrete YM energy, but non-uniqueness not fully addressed.
+
+---
+
+## 16.10 Event Completeness and Minimality
+
+### Problem
+
+The six-event vocabulary $\{\mathrm{DEFORM}, \mathrm{CONTACT}, \mathrm{BIRTH}, \mathrm{DEATH}, \mathrm{SPLIT}, \mathrm{MERGE}\}$ is motivated by physical intuition.
+
+**Questions**:
+1. Are these six events **complete**? Can every admissible world trajectory be uniquely decomposed into a sequence of these events?
+2. Are they **minimal**? Is there a smaller set from which all others are derived?
+3. Are they **mutually exclusive**? Can two events fire simultaneously, or must they be serialized?
+
+### Evidence and Sub-Problems
+
+1. **Primitive vs. derived**: SPLIT and MERGE are detected threshold-crossings (derived from continuous DEFORM), while BIRTH/DEATH/CONTACT are primitive (true topology changes). This suggests a refinement:
+   - **Primitive events**: DEFORM, CONTACT, BIRTH, DEATH (4 events).
+   - **Detected events**: SPLIT, MERGE (consequences of DEFORM crossing a threshold).
+   - **Synchronous firing**: Can BIRTH and CONTACT fire at the same time? (A new node might immediately CONTACT existing nodes.)
+
+2. **Commutativity**: Do the event sequences $(e_1, e_2)$ and $(e_2, e_1)$ always lead to the same final state (up to gauge equivalence)? This is crucial for the evidence log to have a canonical interpretation.
+
+3. **Reversibility**: For each event $e$, does an inverse event $e^{-1}$ exist? (E.g., is CONTACT reversible by a DEFORM that drives the edge weight to zero?)
+
+---
+
+## 16.11 Inter-Stratum Topology and Continuity
+
+### Problem
+
+The total state space $\mathcal{S} = \bigsqcup_{(n,E) \in \mathrm{Top}} C(n,E)$ is a disjoint union of spaces with different dimensions.
+
+**Question**: Is there a natural (e.g., metric, diffeological, or compactification) topology on $\mathcal{S}$ such that:
+1. Events like BIRTH and DEATH induce **continuous** maps (or at least measurable in a meaningful sense)?
+2. The stratification respects the topology (strata are open/closed sets)?
+3. Sequences of configurations from different strata can converge in a well-defined sense?
+
+### Motivation
+
+In standard dynamical systems, the state space is a fixed manifold, and evolution is continuous. In RelationWorld, topology changes are discontinuous. Understanding the "nearness" of states in different topologies would allow us to define:
+- **Limit points** of configuration sequences.
+- **Compactifications** of $\mathcal{S}$ (adding "boundary" states corresponding to infinite growth or collapse).
+- **Continuity** of the global transition map.
+
+### Technical Directions
+
+1. **Quotient topology**: Equip $\mathcal{S}$ with the quotient topology from a larger space (e.g., all finite node sets, all edge sets).
+2. **Diophantine geometry**: Use algebraic methods to define "distance" between topologies (e.g., Gromov--Hausdorff).
+3. **Diffeological spaces** (Frölicher--Kriegl): allow a more flexible notion of smoothness across strata.
+
+---
+
+## 16.12 Evidence Completeness and Invertibility
+
+### Problem
+
+The evidence extraction functional:
+$$
+\mathrm{Ev}(s_t, s_{t+1}, e_t) = (e_t, \Delta W, \Delta \Omega, \Delta \mathfrak{F}, \Delta \Sigma)
+$$
+captures what changed. But can it certify *why* a particular event occurred?
+
+**Questions**:
+1. **Completeness**: Is $\mathrm{Ev}(\cdot)$ sufficient to uniquely reconstruct the event $e_t$ from the state transition?
+2. **Invertibility**: Given the evidence log $\{\mathrm{Ev}(s_i, s_{i+1}, e_i)\}_{i=0}^{T}$, can we recover the full trajectory $\{s_i\}$ (up to gauge equivalence)?
+3. **Disambiguation**: If two events would produce the same $\mathrm{Ev}$ output, how do we distinguish them?
+
+### Example
+
+Suppose a single edge $(i,j)$ weight decreases dramatically. Two interpretations:
+- **DEFORM** explanation: a smooth decrease via the DEFORM mechanism.
+- **SPLIT consequence** explanation: the decrease triggered a SPLIT, which is then the "true" event.
+
+The evidence log $(e_t, \Delta W, \Delta \Omega, \Delta \mathfrak{F}, \Delta \Sigma)$ includes $\Delta \mathfrak{F}$ (fruit changes), which disambiguates. But formally proving completeness requires axiomatizing the relationship between events and evidence.
+
+---
+
+## 16.13 Fruit Structure as a Continuous Functor
+
+### Problem
+
+The fruit set $\mathfrak{F}_t$ is derived from the weights $W_t$ via the Cheeger conductance:
+$$
+\mathfrak{F}_t = \{\text{subsets } F : \phi_t(F) < \theta, \text{ maximal}, \text{ non-overlapping}\}.
+$$
+**Questions**:
+1. Does $\mathfrak{F}_t$ vary **continuously** with $W_t$ in a well-defined topological sense?
+2. Can the fruit-detection algorithm be viewed as a **functor** $\Phi$ from the category of weighted graphs to the category of simplicial complexes?
+3. What are the **continuity properties** of $\Phi$? For instance, does small perturbation of $W_t$ lead to small change in $\mathfrak{F}_t$?
+
+### Technical Context
+
+Theorem F (Chapter 8) guarantees **spectral stability**: small changes in $W_t$ lead to small changes in individual conductances $\phi_t(F)$. However, this does not immediately imply continuity of the fruit set:
+- A bifurcation at $\phi_t(F) = \theta$ is discontinuous (a fruit appears/disappears).
+- Two fruits may merge at $\phi_t(F_1 \cup F_2) = \theta$, creating a discontinuity.
+
+### Applications
+
+- **Stability of Axes**: If $\mathfrak{F}_t$ is continuous, then the cohomological Axes 1--3 (Chapter 12) vary continuously, and their persistence barcodes have well-defined limits.
+- **Persistence theory**: The fruit set can be organized into a **persistence diagram** showing the "lifespan" of each fruit as parameters vary.
+
+---
+
+## 16.14 Minimality and Sufficiency of State Variables
+
+### Problem
+
+The raw state $(V, w_t, g_t)$ (or quotient $(n,E, [p])$ where $[p] \in C(n,E)$) contains potentially redundant information.
+
+**Questions**:
+1. Is $(w_{ij}, g_{ij})$ per edge the **minimal sufficient statistic** for the world, or can the system be described more parsimoniously?
+2. Specifically, do the **existence triples** $\{\mathrm{Existence}(F,t)\}_{F \in \mathfrak{F}_t}$ fully determine the relational field, up to gauge equivalence?
+3. Can nodes be eliminated from the description, leaving only the fruits (higher-order structures) as primitives?
+
+### Evidence
+
+**For sufficiency of $(w, g)$**: The world $\mathfrak{W}_t = (\mathcal{W}_t, \mathfrak{F}_t, \Sigma_t)$ is fully determined by the relational field $\mathcal{W}_t$, which in turn is determined by the gauge class $[p]$ of $(w, g)$ (Theorem 8.4).
+
+**Against minimality of $(w, g)$**: The existence triples contain the "essential" information about each fruit's internal structure and boundary conditions. In a coarse-grained (multi-scale) description, specifying only the existence triples per fruit might suffice, with inter-fruit couplings captured by the inter-fruit weights and transits.
+
+### Research Directions
+
+1. **Coarse-graining**: Develop a formal procedure to "integrate out" nodes within each fruit, leaving a reduced system of $|\mathfrak{F}_t|$ meta-nodes.
+2. **Emergence**: Investigate whether the world structure (fruits, doors, Axes) emerges from a lower-level description (e.g., algebraic structures on the universal cover).
+3. **Quantum analogue**: If a quantum analogue of RelationWorld is formulated (see Chapter 15), does the state space reduce to eigenspaces of certain operators?
+
+

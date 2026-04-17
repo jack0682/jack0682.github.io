@@ -1,0 +1,225 @@
+---
+title: "Chapter 14 — Time Evolution"
+slug: ch14-time-evolution
+part: 4
+chapter: 14
+section: "Chapter 14"
+kind: essay
+track: theory
+summary: "How the instantaneous world W_t evolves with t. Hybrid dynamics on the state space, event-driven transitions, and the emergence of coarse trajectories."
+tags: [dynamics, hybrid-systems, time-evolution, trajectories]
+---
+
+
+> **Prerequisites**: Chapter 13 (Yang--Mills flow), Chapter 8 (World).
+
+---
+
+## 14.1 World Snapshots
+
+The full world $\mathfrak{W}=\{\mathfrak{W}_t\}_{t\in\mathbb{T}}$ is a family of instantaneous worlds parametrised by time.
+
+At each $t$, the structure $\mathfrak{W}_t=(\mathcal{W}_t,\mathfrak{F}_t,\Sigma_t)$ is fully determined by the relational field. As the underlying weights $W_t$ and transits $g_t$ vary with $t$, the fruit set, door set, and existence may change.
+
+---
+
+## 14.2 Topological Phase Transitions
+
+### Definition 14.1 (Topological phase transition)
+
+A **topological phase transition** occurs at time $t^*$ if the combinatorial topology of the fruit structure changes discontinuously:
+
+$$
+\exists\,F\in\mathfrak{F}_{t^*-\epsilon}\setminus\mathfrak{F}_{t^*+\epsilon}\quad\text{or}\quad\exists\,F\in\mathfrak{F}_{t^*+\epsilon}\setminus\mathfrak{F}_{t^*-\epsilon}.
+$$
+### Types of transitions
+
+1. **Fruit birth**: a new fruit $F$ appears when $\phi_t(F)$ drops below $\theta$.
+2. **Fruit death**: a fruit disappears when $\phi_t(F)$ exceeds $\theta$.
+3. **Fruit splitting**: one fruit divides into two as internal connections weaken.
+4. **Fruit merging**: two fruits unite as inter-fruit connections strengthen.
+5. **Door creation/annihilation**: new doors appear or existing doors vanish as boundary couplings cross $\tau$.
+
+### Theorem 14.2 (Piecewise-constant topology)
+
+Between consecutive topological phase transitions, the fruit set $\mathfrak{F}_t$, door assignment $\Sigma_t$, and cohomological invariants (Axes 1--3) are constant.
+
+*Proof.* By Theorem F (spectral stability), if $\phi_t(F)<\theta-\epsilon$ for some $\epsilon>0$, then a small perturbation of $W_t$ preserves $F\in\mathfrak{F}_t$. By Theorem G (door stability), doors with $b_{F,t}(i)$ bounded away from $\tau$ are stable. Since $W_t$ varies continuously in $t$, the discrete structure (which fruits exist, which nodes are doors) can only change at isolated times when some $\phi_t(F)=\theta$ or some $b_{F,t}(i)=\tau$. Between such times, the combinatorial data is constant. $\square$
+
+---
+
+## 14.3 Fruit Continuity
+
+### Definition 14.3 (Fruit tracking)
+
+Two fruits $F_{t_1}\in\mathfrak{F}_{t_1}$ and $F_{t_2}\in\mathfrak{F}_{t_2}$ represent "the same existence evolving" if:
+
+**(C1)** Small symmetric difference: $|F_{t_1}\triangle F_{t_2}|/|F_{t_1}|\le\epsilon$.
+
+**(C2)** Close existence: $d_{\mathcal{M}}(\mathrm{Ex}_{t_1}(F_{t_1}),\mathrm{Ex}_{t_2}(F_{t_2}))\le\delta$
+
+for a suitable metric $d_{\mathcal{M}}$ on the moduli space combining $[A_\infty]$, $\Sigma$, and $\mathbf{e}$.
+
+### Definition 14.4 (Lifespan)
+
+$$
+\mathrm{Lifespan}(F):=\sup\{T:F\text{ can be continuously tracked over }[t_0,t_0+T]\}.
+$$
+---
+
+## 14.4 Evolution of Cohomological Invariants
+
+Between phase transitions, the Betti numbers $\beta_k(K_{F})$, $\beta_k(K_F,L)$, $\beta_k(L)$ are constant (Theorem 14.2). At a phase transition:
+
+- **Fruit birth/death**: Betti numbers jump as a simplicial complex appears/disappears.
+- **Door creation**: $L_\alpha$ gains a vertex; $\beta_0(L)$ increases by 1; the exact sequence redistributes changes to Axis 2.
+- **Door annihilation**: $L_\alpha$ loses a vertex; reverse effect.
+
+The exact sequence (Theorem 12.8) constrains how Betti numbers can change:
+$$
+\Delta\beta_k(\text{Axis 2})-\Delta\beta_k(\text{Axis 1})+\Delta\beta_k(\text{Axis 3})=\Delta(\text{connecting map rank}).
+$$
+---
+
+## 14.5 Topology-Tracked Algorithm
+
+```plaintext
+function TrackWorldEvolution(W_t, g_t, t_range, theta, tau):
+    t = t_range[0]
+    fruits = FindFruits(W_t, theta)
+    doors = {F: FindDoors(F, W_t, tau) for F in fruits}
+    axes = {F: ComputeWorldAxes(F, doors[F], ...) for F in fruits}
+
+    events = []
+
+    for t_next in t_range[1:]:
+        // Check for phase transitions
+        fruits_new = FindFruits(W_{t_next}, theta)
+        doors_new = {F: FindDoors(F, W_{t_next}, tau) for F in fruits_new}
+
+        // Detect changes
+        born = fruits_new - fruits
+        died = fruits - fruits_new
+        door_changes = DetectDoorChanges(doors, doors_new)
+
+        if born or died or door_changes:
+            events.append((t_next, born, died, door_changes))
+            axes = Recompute(fruits_new, doors_new)
+
+        fruits, doors = fruits_new, doors_new
+        t = t_next
+
+    return events, axes
+```plaintext
+---
+
+## 14.6 Summary
+
+The time evolution of the world is governed by:
+
+1. **Continuous variation** of the relational field $\mathcal{W}_t$.
+2. **Piecewise-constant topology**: discrete invariants (fruits, doors, Betti numbers) change only at isolated phase-transition times.
+3. **Yang--Mills flow** (Chapter 13) drives the gauge connection toward a stable equilibrium within each topological phase.
+4. **Phase transitions** create, destroy, split, or merge fruits, and create or annihilate doors.
+
+The overall picture: **smooth dynamics punctuated by discrete topological events**.
+
+---
+
+## 14.7 Hybrid Dynamical Systems Formulation
+
+### Motivation
+
+The description above ("smooth + discrete") is intuitive but informal. To make it rigorous, we employ the **hybrid dynamical systems** framework (see Appendix D for background). A hybrid system naturally captures:
+- **Continuous state** within each topological phase.
+- **Discrete transitions** between topologies.
+- **Guards and resets** specifying when and how transitions occur.
+
+### Definition 14.5 (World evolution as hybrid system)
+
+The **world evolution** is a hybrid dynamical system $(Q, X, f, G_e, R_e)_{e \in E_{\mathrm{events}}}$ defined as:
+
+| Component | Definition |
+|-----------|-----------|
+| **Discrete state** $Q$ | $Q := \{(n, E) : \text{admissible topologies}\}$ (Definition 0.1 of Ch. 0) |
+| **Continuous state fiber** $X(q)$ | For $q = (n, E)$: $X(q) := P(n,E) = \mathbb{R}_{\ge 0}^{|E|} \times G^{|E|}$ (raw parameter space) |
+| **Continuous dynamics** $\dot{x} = f_q(x)$ | Yang--Mills gradient flow + exogenous DEFORM forces: $\dot{h} = -\nabla_h \mathcal{E}_{F^\circ}(h)$ within each topological phase |
+| **Guards** $G_e$ | Threshold conditions triggering events: $G_{\mathrm{SPLIT}} := \{x : \exists F, \phi(F) = \theta\}$, etc. |
+| **Resets** $R_e$ | After event $e$, transition $q \to q'$ and initialize new parameters |
+
+### Discrete Topology Transitions
+
+The six events from Definition 0.7 (Chapter 0) induce transitions:
+
+| Event | Transition | Trigger |
+|-------|-----------|---------|
+| **DEFORM** | $(n,E) \to (n,E)$ | Continuous flow; operator-commanded |
+| **CONTACT** | $(n,E) \to (n,E \cup \{(i,j),(j,i)\})$ | Commanded; new edge initialized |
+| **BIRTH** | $(n,E) \to (n+1, E')$ | Commanded; new node + initial edges |
+| **DEATH** | $(n,E) \to (n-1, E\setminus E_v)$ | Commanded; incident edges removed |
+| **SPLIT/MERGE** | $(n,E) \to (n,E)$ | Guard: $\phi(F)=\theta$ crossing; detected |
+
+### Guard Conditions (Formally)
+
+For each event type:
+
+**$G_{\mathrm{DEFORM}}$** (continuous): Always active within a topology. The continuous flow $\dot{x} = f_q(x)$ evolves parameters.
+
+**$G_{\mathrm{CONTACT}}$** (discrete): Triggered by external command. When activated, the system resets to $(n, E \cup \{(i,j),(j,i)\})$ with new edges initialized.
+
+**$G_{\mathrm{BIRTH}}$, $G_{\mathrm{DEATH}}$** (discrete): Triggered by external command.
+
+**$G_{\mathrm{SPLIT/MERGE}}$** (threshold crossing): The system monitors $\phi_t(F)$ for each fruit $F$. When:
+$$
+\phi_t(F) \text{ crosses } \theta \text{ from below} \Rightarrow \text{SPLIT event (fruit born)}
+$$
+$$
+\phi_t(F) \text{ crosses } \theta \text{ from above} \Rightarrow \text{MERGE event (fruit dies)}
+$$
+The topology index $(n, E)$ remains unchanged, but $\mathfrak{F}_t$ is recomputed.
+
+### Reset Maps (Formally)
+
+After event $e$ transitions the discrete state from $q$ to $q'$:
+
+**Reset $R_{\mathrm{DEFORM}}$** (identity): parameters continue; no reinitialization.
+
+**Reset $R_{\mathrm{CONTACT}}$** (partial):
+- Existing edges $(i,j) \in E$ retain their parameters.
+- New edges: $w_{ij} := \varepsilon > 0$ (small), $g_{ij} := e$ (identity).
+
+**Reset $R_{\mathrm{BIRTH}}$**, $R_{\mathrm{DEATH}}$** (structural):
+- BIRTH: new node $v$ is added; edges to/from $v$ are initialized.
+- DEATH: node $v$ is removed; all its incident edges are deleted.
+
+**Reset $R_{\mathrm{SPLIT/MERGE}}$** (none): The discrete topology does not change; only the fruit set $\mathfrak{F}_t$ is recomputed.
+
+### Theorem 14.5 (Piecewise-Constant Topology Revisited)
+
+Within each hybrid stratum (fixed discrete state $(n, E)$), the world evolves continuously under the Yang--Mills flow and any applied DEFORM forces. The discrete state $(n, E)$ remains constant between guard-crossings. When a guard is crossed (e.g., $\phi(F) = \theta$ or a discrete event is commanded), a transition occurs and the world jumps to a new stratum (or remains in the same stratum with recomputed fruit/door structure).
+
+---
+
+### Example: SPLIT Event in Detail
+
+**Setup:** A single fruit $F$ exists at time $t$ with $\phi_t(F) = \theta - \epsilon$ (just above the threshold, about to vanish).
+
+**Evolution:**
+1. Continuous DEFORM forces reduce inter-community weights, slowly increasing $\phi_t(F)$.
+2. When $\phi_t(F)$ crosses $\theta$ from below, guard $G_{\mathrm{SPLIT}}$ triggers.
+3. The fruit set $\mathfrak{F}_t$ is recomputed: now $F \notin \mathfrak{F}_t$, and possibly two new fruits $F_1, F_2$ appear.
+4. The discrete topology $(n,E)$ is unchanged, but the derived structure (fruits, doors, Existence triples) changes.
+5. The evidence log records the SPLIT event with $\Delta \mathfrak{F} = \{F\} \to \{F_1, F_2\}$.
+
+---
+
+### Continuous--Discrete Coupling
+
+The hybrid system captures the essential interplay:
+- **Continuous layer** (Yang--Mills flow, weight evolution) is governed by the relational field $\mathcal{W}_t$ within fixed topology.
+- **Discrete layer** (topology changes, fruit structure changes) is governed by threshold-crossings and external commands.
+- **Coupling** occurs through the observables $\phi(F)$, $b_{F}(i)$, which depend continuously on the parameters but are monitored for discrete transitions.
+
+This is formalized rigorously in Appendix D using the theory of hybrid automata.
+
+

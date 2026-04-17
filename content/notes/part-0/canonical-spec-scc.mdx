@@ -978,13 +978,17 @@ At the critical parameter $\beta_{\mathrm{crit}} = 4\alpha\lambda_2/|W''(c)|$, a
 
 **T-Beyond-Weyl. Structured Spectral Perturbation Bound for Multi-Formations.**
 The joint K-formation Hessian spectral gap tightens from the standard Weyl bound $\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}}$ to a formation-aware bound exploiting soft-mode localization:
-$$\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}} \cdot \omega_{\mathrm{soft}}, \qquad \omega_{\mathrm{soft}} := \max_{j \neq k} \|\mathcal{P}_{O_{jk}} \psi_k^{\mathrm{soft}}\|^2.$$
+$$
+\mu_{\mathrm{joint}} \geq \min_k \mu_k - (K-1)\lambda_{\mathrm{rep}} \cdot \omega_{\mathrm{soft}}, \qquad \omega_{\mathrm{soft}} := \max_{j \neq k} \|\mathcal{P}_{O_{jk}} \psi_k^{\mathrm{soft}}\|^2.
+$$
 The mathematical structured perturbation bound (Davis-Kahan + variational, under the relevant second-gap/localization hypotheses) is rigorous. The previously quoted **33× improvement** is the special case $1/\omega_{\mathrm{soft}} \approx 33$ measured on a limited 12×12 well-separated configuration, not a universal constant. *(Erratum 2026-04-10: The improvement factor should be reported as $1/\omega_{\mathrm{soft}}(B,O)$ or as a branch/geometric interval.)*
 *Status:* *(Erratum 2026-04-07: Downgraded to Category B. The mathematical bound formula is rigorous, but the "33× improvement" quantification is configuration-specific. See Category B section.)* **Moved to Category B.**
 
 **T-d_min-Formula. Analytical Formula for Critical Inter-Formation Distance.**
 The branch-conditioned minimum inter-formation distance enabling metastable coexistence should be written $d_{\min}^*(B,\mathrm{rule},\mathrm{params},G)$. The earlier scalar fit
-$$d_{\min}^* = 4.8 + 0.31 \cdot \sqrt{\beta/\alpha} - 0.018 \cdot \beta/\alpha$$
+$$
+d_{\min}^* = 4.8 + 0.31 \cdot \sqrt{\beta/\alpha} - 0.018 \cdot \beta/\alpha
+$$
 has empirical support on the tested branch-selection protocol, but its coefficients are not analytically derived and are branch/graph/protocol dependent. With closure (SCC), tested protocols give $d_{\min}^* \approx 5$ nodes at $\beta=30,\alpha=1$; without closure (Allen-Cahn), $d_{\min}^* \approx 7$ nodes. *(Erratum 2026-04-10: $d_{\min}^*$ is not a universal branch-free scalar. The qualitative closure-driven reduction is retained; coefficient-level formulas remain Category B.)*
 *Status:* *(Erratum 2026-04-07: Downgraded to Category B. The formula is a least-squares regression fit, not an analytical derivation.)* **Moved to Category B.**
 

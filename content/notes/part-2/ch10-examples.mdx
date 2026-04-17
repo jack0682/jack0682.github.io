@@ -1,0 +1,295 @@
+---
+title: "Chapter 10 — Worked Examples"
+slug: ch10-examples
+part: 2
+chapter: 10
+section: "Chapter 10"
+kind: essay
+track: theory
+summary: "Fully worked examples of RelationWorld on the U(1), SU(2), and Z_2 theories. Explicit calculations of holonomies, cohomological invariants, and the three-axis readout on concrete small graphs."
+tags: [examples, u1-theory, su2-theory, holonomy, concrete-computations]
+---
+
+
+> **Prerequisites**: Chapters 2--8 (Part I).
+
+---
+
+## 10.1 The $U(1)$ Theory in Full
+
+### Setup
+
+- Gauge group: $G=U(1)=\{e^{i\alpha}:\alpha\in[0,2\pi)\}$.
+- Relation transit: $g_t(i,j)=e^{i\alpha_t(i,j)}$.
+- Gauge transformation: $h(i)=e^{i\varphi_i}$.
+
+### Gauge action
+
+$$
+g_t^h(i,j)=e^{i(\alpha_t(i,j)+\varphi_i-\varphi_j)}.
+$$
+### Holonomy and curvature
+
+For triangle $(i,j,k)$:
+$$
+\Omega_t(i,j,k)=e^{i(\alpha_{ij}+\alpha_{jk}+\alpha_{ki})}.
+$$
+Discrete curvature:
+$$
+\omega_t(i,j,k)=2\bigl(1-\cos(\alpha_{ij}+\alpha_{jk}+\alpha_{ki})\bigr).
+$$
+Since $U(1)$ is abelian, the holonomy itself (not just its conjugacy class) is gauge-invariant.
+
+### Flattening energy
+
+$$
+\mathcal{E}_{F^\circ}(\varphi)=\sum_{\substack{i,j\in F^\circ\\W_t(i,j)>0}}W_t(i,j)\cdot 2\bigl(1-\cos(\alpha_{ij}+\varphi_i-\varphi_j)\bigr).
+$$
+### Optimal gauge
+
+Critical-point equation: $\sum_{j\sim i}W_t(i,j)\sin(\alpha_{ij}+\varphi_i-\varphi_j)=0$ for all $i\in F^\circ$.
+
+At a global minimum with small residual curvature ($|\tilde\alpha_{ij}|<\pi$ for all edges), the Hessian is a weighted graph Laplacian with positive weights (Theorem 7.11), so the minimum is unique up to a constant shift $\varphi\mapsto\varphi+c$.
+
+In the small-curvature regime, the normal equations give:
+$$
+L\,\varphi^*=-B\,\mathrm{diag}(W)\,\alpha,\qquad\varphi^*=-L^\dagger B\,\mathrm{diag}(W)\,\alpha+c\cdot\mathbf{1}
+$$
+where $L=B\,\mathrm{diag}(W)B^T$ is the weighted graph Laplacian and $L^\dagger$ its pseudoinverse.
+
+### Canonical connection and residual curvature
+
+$$
+\tilde\alpha_{ij}=\alpha_{ij}+\varphi_i^*-\varphi_j^*,\qquad\rho(i)=\sum_{j\sim i}W_t(i,j)\,\tilde\alpha_{ij}^2.
+$$
+The constant $c$ cancels in $\tilde\alpha_{ij}$, confirming Conjecture 7.10 for $U(1)$.
+
+---
+
+## 10.2 Five-Node Example ($G=U(1)$)
+
+### Graph
+
+```
+  1 ─── 2
+  │ ╲ ╱ │
+  │  3   │
+  │ ╱ ╲ │
+  4 ─── 5
+```
+
+$V=\{1,2,3,4,5\}$, $G=U(1)$, $\theta=0.15$, $\tau=0.8$.
+
+Weights:
+- Internal to $\{1,2,3\}$: $W(1,2)=W(1,3)=W(2,3)=10$.
+- Internal to $\{4,5\}$: $W(4,5)=8$.
+- Bridge: $W(3,4)=1$, $W(2,5)=0.5$.
+- All others: $0$.
+
+### Step 1: Degrees
+
+| $i$ | $d(i)$ | Description |
+|-----|--------|-------------|
+| 1 | $10+10=20$ | Deep interior of $\{1,2,3\}$ |
+| 2 | $10+10+0.5=20.5$ | Boundary (connected to 5) |
+| 3 | $10+10+1=21$ | Boundary (connected to 4) |
+| 4 | $8+1=9$ | Boundary of $\{4,5\}$ |
+| 5 | $8+0.5=8.5$ | Boundary of $\{4,5\}$ |
+
+### Step 2: Fruit identification
+
+**Candidate $F=\{4,5\}$**:
+- $\mathrm{vol}(\{4,5\})=9+8.5=17.5$.
+- $\mathrm{vol}(V)=20+20.5+21+9+8.5=79$.
+- (F1): $17.5\le 39.5=\frac{1}{2}\cdot 79$. Yes.
+- $\mathrm{cut}(\{4,5\},\{1,2,3\})=W(4,3)+W(5,2)=1+0.5=1.5$.
+- $\phi(\{4,5\})=1.5/17.5\approx 0.086\le 0.15$. Yes.
+
+$\{4,5\}\in\mathfrak{F}_t$.
+
+**Candidate $F=\{1,2,3\}$**: $\mathrm{vol}(\{1,2,3\})=61.5>39.5$. Violates (F1). Not a fruit.
+
+### Step 3: Door detection
+
+For $F=\{4,5\}$:
+
+| $i$ | $d(i)$ | $\sum_{j\in F}W(i,j)$ | $b_{F,t}(i)$ | Door? |
+|-----|--------|------------------------|---------------|-------|
+| 4 | 9 | 8 | 1 | $1\ge 0.8$: **Yes** |
+| 5 | 8.5 | 8 | 0.5 | $0.5<0.8$: No |
+
+$\Sigma=\{4\}$, $e_4=1$.
+
+### Step 4: Existence
+
+$F^\circ=\{4,5\}\setminus\{4\}=\{5\}$. Single node, no internal edges.
+
+$[A_\infty]$ is trivial (empty connection). $\mathrm{Existence}(\{4,5\},t)=([\emptyset],\{4\},\{1\})$.
+
+### Verification of theorems
+
+- **Theorem A**: Internal energy $=2\cdot 8=16$; $\mathrm{vol}=17.5$; ratio $=16/17.5\approx 0.914\ge 1-0.15=0.85$. Satisfied.
+- **Theorem B**: $|\Sigma|=1\le 0.15\cdot 17.5/0.8\approx 3.28$. Satisfied.
+- **Theorem D**: Expected escape time $\ge 1/(2\cdot 0.15)\approx 3.3$ steps. Reasonable for a 2-node fruit.
+
+---
+
+## 10.3 Ten-Node Example ($G=U(1)$, Complete Calculation)
+
+### Graph structure
+
+```
+Fruit A: {1,2,3,4} — complete graph, internal weight 10
+Fruit B: {7,8,9,10} — complete graph, internal weight 8
+Stem: {5,6}
+
+Bridges:
+  3 -- 5 (weight 0.5)
+  4 -- 5 (weight 0.3)
+  5 -- 6 (weight 2.0)
+  6 -- 7 (weight 0.4)
+  6 -- 8 (weight 0.6)
+```
+
+Parameters: $\theta=0.1$, $\tau=0.5$.
+
+### Step 1: Degrees
+
+**Fruit A internal edges** (complete $K_4$, weight 10): each node has 3 internal edges, so internal degree $=3\times 10=30$.
+
+| Node | Internal deg | Bridge deg | $d(i)$ |
+|------|-------------|-----------|--------|
+| 1 | 30 | 0 | 30 |
+| 2 | 30 | 0 | 30 |
+| 3 | 30 | 0.5 | 30.5 |
+| 4 | 30 | 0.3 | 30.3 |
+| 5 | 0 | $0.5+0.3+2.0=2.8$ | 2.8 |
+| 6 | 0 | $2.0+0.4+0.6=3.0$ | 3.0 |
+| 7 | $3\times 8=24$ | 0.4 | 24.4 |
+| 8 | 24 | 0.6 | 24.6 |
+| 9 | 24 | 0 | 24 |
+| 10 | 24 | 0 | 24 |
+
+$\mathrm{vol}(V)=30+30+30.5+30.3+2.8+3.0+24.4+24.6+24+24=223.6$.
+
+### Step 2: Fruit identification
+
+**Fruit A $=\{1,2,3,4\}$**:
+- $\mathrm{vol}(A)=30+30+30.5+30.3=120.8$.
+- (F1): $120.8>111.8=\frac{1}{2}\cdot 223.6$. **Violates (F1)**.
+
+So $\{1,2,3,4\}$ is too large (majority). Check complement:
+
+**Fruit B $=\{7,8,9,10\}$**:
+- $\mathrm{vol}(B)=24.4+24.6+24+24=97.0$.
+- (F1): $97.0\le 111.8$. Yes.
+- $\mathrm{cut}(B,\bar B)=W(7,6)+W(8,6)=0.4+0.6=1.0$.
+- $\phi(B)=1.0/97.0\approx 0.0103\le 0.1$. Yes.
+
+$\{7,8,9,10\}\in\mathfrak{F}_t$.
+
+**Checking smaller subsets**: $\{5,6\}$ has $\mathrm{vol}=5.8$, $\mathrm{cut}=0.5+0.3+0.4+0.6=1.8$, $\phi=1.8/5.8\approx 0.31>0.1$. Not a fruit.
+
+**Summary of fruits**: $\mathfrak{F}_t=\{\{7,8,9,10\}\}$ (only Fruit B qualifies under the strict (F1) condition).
+
+*Remark.* If we relax (F1) or embed this graph in a larger graph so that $\mathrm{vol}(A)\le\frac{1}{2}\mathrm{vol}(V)$, then $A$ would also be a fruit with $\phi\approx 0.007$.
+
+### Step 3: Door detection for Fruit B
+
+| Node | $d(i)$ | $\sum_{j\in B}W(i,j)$ | $b_{B,t}(i)$ | Door? |
+|------|--------|------------------------|---------------|-------|
+| 7 | 24.4 | 24 | 0.4 | $0.4<0.5$: No |
+| 8 | 24.6 | 24 | 0.6 | $0.6\ge 0.5$: **Yes** |
+| 9 | 24 | 24 | 0 | No |
+| 10 | 24 | 24 | 0 | No |
+
+$\Sigma=\{8\}$, $e_8=0.6$.
+
+### Step 4: Kernel and existence
+
+$B^\circ=\{7,9,10\}$.
+
+Internal edges of $B^\circ$: $(7,9),(7,10),(9,10)$, all with weight 8. This is a complete triangle $K_3$.
+
+**Transit angles** (assign): $\alpha_{79}=0.3$, $\alpha_{7,10}=0.1$, $\alpha_{9,10}=0.2$.
+
+Holonomy of triangle $(7,9,10)$: $\Omega=e^{i(0.3+0.2-0.1)}=e^{0.4i}$. Non-trivial curvature.
+
+**Optimal gauge** (small-curvature approximation):
+
+Incidence matrix for $K_3$ on $\{7,9,10\}$ (edges ordered as $e_1=(7,9),e_2=(7,10),e_3=(9,10)$):
+$$
+B=\begin{pmatrix}-1&1&0\\-1&0&1\\0&-1&1\end{pmatrix},\quad W=\mathrm{diag}(8,8,8)=8I.
+$$
+$L=BWB^T=8\begin{pmatrix}2&-1&-1\\-1&2&-1\\-1&-1&2\end{pmatrix}.$
+
+$\alpha=(0.3,0.1,0.2)^T$.
+
+$B\,\mathrm{diag}(W)\alpha=8B\alpha=8\begin{pmatrix}-0.3+0.1\\-0.3+0.2\\-0.1+0.2\end{pmatrix}=8\begin{pmatrix}-0.2\\-0.1\\0.1\end{pmatrix}=\begin{pmatrix}-1.6\\-0.8\\0.8\end{pmatrix}.$
+
+Normal equation: $L\varphi^*=\begin{pmatrix}1.6\\0.8\\-0.8\end{pmatrix}$ (note sign).
+
+$L$ has eigenvalues $0,24,24$ with $\ker L=\mathrm{span}((1,1,1)^T)$. Projecting out the kernel:
+
+$\varphi^*=L^\dagger\begin{pmatrix}1.6\\0.8\\-0.8\end{pmatrix}+c\begin{pmatrix}1\\1\\1\end{pmatrix}.$
+
+The RHS has zero mean already: $1.6+0.8-0.8=1.6\ne 0$. Project:
+$\bar v=1.6/3\approx 0.533$. Centered: $(1.067, 0.267, -1.333)$.
+
+$L^\dagger=\frac{1}{24}\begin{pmatrix}2/3&-1/3&-1/3\\-1/3&2/3&-1/3\\-1/3&-1/3&2/3\end{pmatrix}$ (pseudoinverse of $L$ on the orthogonal complement of $\mathbf{1}$).
+
+Actually, for a $3\times 3$ Laplacian $L=8\cdot 3(I-\frac{1}{3}\mathbf{1}\mathbf{1}^T)=24(I-\frac{1}{3}\mathbf{1}\mathbf{1}^T)$, the pseudoinverse is $L^\dagger=\frac{1}{24}(I-\frac{1}{3}\mathbf{1}\mathbf{1}^T)$.
+
+$\varphi^*=\frac{1}{24}(I-\frac{1}{3}\mathbf{1}\mathbf{1}^T)\begin{pmatrix}1.6\\0.8\\-0.8\end{pmatrix}=\frac{1}{24}\begin{pmatrix}1.6-0.533\\0.8-0.533\\-0.8-0.533\end{pmatrix}=\frac{1}{24}\begin{pmatrix}1.067\\0.267\\-1.333\end{pmatrix}\approx\begin{pmatrix}0.0444\\0.0111\\-0.0556\end{pmatrix}.$
+
+(Taking $c=0$.)
+
+**Residual angles**:
+- $\tilde\alpha_{79}=0.3+(0.0444-0.0111)=0.3+0.0333=0.333$.
+- $\tilde\alpha_{7,10}=0.1+(0.0444-(-0.0556))=0.1+0.1=0.2$.
+- $\tilde\alpha_{9,10}=0.2+(0.0111-(-0.0556))=0.2+0.0667=0.267$.
+
+**Check**: holonomy $=0.333+0.267-0.2=0.4$ (unchanged, as expected---gauge transformation preserves holonomy).
+
+**Residual curvature**:
+- $\rho(7)=8(0.333^2+0.2^2)=8(0.111+0.04)=1.208$.
+- $\rho(9)=8(0.333^2+0.267^2)=8(0.111+0.071)=1.456$.
+- $\rho(10)=8(0.2^2+0.267^2)=8(0.04+0.071)=0.888$.
+
+**Total energy**: $\mathcal{E}=8(0.333^2+0.2^2+0.267^2)=8(0.111+0.04+0.071)=1.776$.
+
+**Existence of Fruit B**:
+$$
+\mathrm{Existence}(\{7,8,9,10\},t)=\bigl([\tilde g|_{B^\circ}]_{\mathcal{G}_{\mathrm{const}}},\;\{8\},\;\{0.6\}\bigr)
+$$
+where $\tilde g$ encodes residual angles $(0.333, 0.2, 0.267)$ on the triangle $\{7,9,10\}$.
+
+### Verification
+
+- **Theorem A**: Internal energy $=6\times 2\times 8=96$ (6 directed pairs in $K_4$, each weight 8). $\mathrm{vol}(B)=97$. Ratio $=96/97\approx 0.990\ge 1-0.1=0.9$. Satisfied.
+- **Theorem B**: $|\Sigma|=1\le 0.1\times 97/0.5=19.4$. Satisfied.
+- **Theorem E**: Curvature is distributed over the $K_3$ kernel. Node 10 (farthest from door 8) has the smallest $\rho$, consistent with localisation.
+
+---
+
+## 10.4 $SU(2)$ Example (Sketch)
+
+### Setup
+
+$G=SU(2)$, with elements $g=\begin{pmatrix}a&-\bar b\\b&\bar a\end{pmatrix}$, $|a|^2+|b|^2=1$.
+
+### Non-abelian features
+
+- Holonomy conjugacy class $\ne$ holonomy itself (base-point dependence remains).
+- Scalar curvature $\omega_t(\triangle)=d_{SU(2)}(\Omega,I)^2$ is still gauge-invariant.
+- Energy landscape $\mathcal{E}_{F^\circ}(h)$ is non-convex: multiple local minima possible.
+
+### Triangle example
+
+$\{1,2,3\}$ with:
+$$
+g(1,2)=e^{i\pi\sigma_x/4},\quad g(2,3)=e^{i\pi\sigma_y/4},\quad g(3,1)=e^{i\pi\sigma_z/4}
+$$
+Holonomy: $\Omega=e^{i\pi\sigma_x/4}\cdot e^{i\pi\sigma_y/4}\cdot e^{i\pi\sigma_z/4}\ne I$. Non-zero curvature that cannot be removed by gauge transformation (topological obstruction from holonomy).
+
+This illustrates that for non-abelian $G$, complete flattening may be impossible, and the residual curvature reflects genuine topological content.

@@ -1,0 +1,127 @@
+---
+title: "Appendix A — Unified Notation Table"
+slug: appendix-a-notation
+part: 8
+chapter: 1
+section: "Appendix A"
+kind: essay
+track: theory
+summary: "A single comprehensive symbol reference for the entire theory."
+tags: [notation, reference, appendix]
+---
+
+
+This appendix provides a single, comprehensive symbol reference for the entire theory.
+
+---
+
+## A.1 Standing Assumptions (Axioms A0--A5)
+
+| Label | Axiom | Content |
+|-------|-------|---------|
+| **A0** | Gauge group | A compact Lie group $G$ with Lie algebra $\mathfrak{g}$, identity $e$, and bi-invariant metric $d_G$ |
+| **A1** | Node set | A finite set $V$ with $n := |V|$ |
+| **A2** | Time set | A totally ordered set $\mathbb{T}$ |
+| **A3** | Fruit threshold | $\theta \in (0,1)$ |
+| **A4** | Door threshold | $\tau > 0$ |
+| **A5** | Intrinsic data axiom | The degree $d_t(i)$ is included in a fruit's intrinsic data (Axiom 6.1) |
+
+---
+
+## A.2 Core Symbols
+
+### Relations and Fields (Chapters 2--3)
+
+| Symbol | Definition | Meaning |
+|--------|-----------|---------|
+| $(i,j,w_t(i,j),g_t(i,j))$ | Def 2.1 | A relation: source $i$, target $j$, scalar weight $w_t(i,j)\in\mathbb{R}_{\ge0}$, group transit $g_t(i,j)\in G$ |
+| $W_t(i,j)$ | Def 2.5 | Symmetrised weight: $\tfrac{1}{2}(w_t(i,j)+w_t(j,i))$ |
+| $d_t(i)$ | Def 2.6 | Degree: $\sum_{j\in V}W_t(i,j)$ |
+| $\mathcal{W}_t^{\mathrm{raw}}$ | Def 3.1 | Raw relational field $(V,w_t,g_t)$ |
+| $\mathcal{G}$ | Def 3.2 | Gauge group $G^V$ |
+| $g_t^h(i,j)$ | Def 3.3 | Gauge-transformed transit: $h(i)\,g_t(i,j)\,h(j)^{-1}$ |
+| $\mathcal{W}_t$ | Def 3.6 | Relational field (gauge equivalence class of $\mathcal{W}_t^{\mathrm{raw}}$) |
+| $\mathrm{Hol}_t(\gamma)$ | Prop 3.8 | Holonomy of a closed loop $\gamma$ |
+| $\Omega_t(\triangle)$ | Cor 3.9 | Discrete curvature: holonomy of triangle $(i,j,k)$ |
+| $\omega_t(\triangle)$ | Cor 3.9 | Scalar curvature: $d_G(\Omega_t(\triangle),e)^2$ |
+
+### Fruits and Stems (Chapters 4--5)
+
+| Symbol | Definition | Meaning |
+|--------|-----------|---------|
+| $\mathcal{G}_t$ | Def 4.1 | Induced weighted graph $(V,E_t,W_t)$ |
+| $\mathrm{vol}_t(S)$ | Def 4.2 | Volume: $\sum_{i\in S}d_t(i)$ |
+| $\mathrm{cut}_t(S,\bar S)$ | Def 4.2 | Cut: $\sum_{i\in S}\sum_{j\notin S}W_t(i,j)$ |
+| $\phi_t(S)$ | Def 4.2 | Conductance (Cheeger ratio): $\mathrm{cut}/\min\{\mathrm{vol}(S),\mathrm{vol}(\bar S)\}$ |
+| $\theta$ | Ax 4.4 | Fruit threshold |
+| $F$ | Def 4.5 | A fruit: $\mathrm{vol}_t(F)\le\tfrac12\mathrm{vol}_t(V)$ and $\phi_t(F)\le\theta$ |
+| $\mathfrak{F}_t$ | Def 4.6 | Set of all fruits at time $t$ |
+| $\mathcal{L}_t$ | Def 4.8 | Normalised graph Laplacian: $I - D_t^{-1/2}A_tD_t^{-1/2}$ |
+| $\lambda_k$ | -- | $k$-th eigenvalue of $\mathcal{L}_t$ |
+| $h_t$ | Thm 4.9 | Cheeger constant: $\min_S\phi_t(S)$ |
+| $P_t(i,j)$ | Def 4.13 | Transition matrix: $W_t(i,j)/d_t(i)$ |
+| $\tilde P_t$ | Def 4.13 | Lazy walk: $\tfrac12(I+P_t)$ |
+| $\mathcal{F}_t^{\cup}$ | Def 5.1 | Union of all fruits |
+| $\mathcal{S}_t$ | Def 5.2 | Stem region: $V\setminus\mathcal{F}_t^{\cup}$ |
+| $E_t^{\mathrm{bridge}}$ | Def 5.3 | Bridge edges |
+
+### Doors (Chapter 6)
+
+| Symbol | Definition | Meaning |
+|--------|-----------|---------|
+| $\mathcal{D}(F,t)$ | Ax 6.1 | Intrinsic data: $(\{W_t(i,j)\}_{i,j\in F},\{g_t(i,j)\}_{i,j\in F},\{d_t(i)\}_{i\in F})$ |
+| $b_{F,t}(i)$ | Lem 6.3 | Boundary coupling: $d_t(i)-\sum_{j\in F}W_t(i,j)$ |
+| $r_{F,t}(i)$ | Def 6.4 | Leakage rate: $b_{F,t}(i)/d_t(i)$ |
+| $\partial_V F$ | Def 6.6 | Fruit boundary: $\{i\in F:b_{F,t}(i)>0\}$ |
+| $\tau$ | Ax 6.5 | Door threshold |
+| $\Sigma_\tau(F,t)$ | Def 6.7 | Door set (energy-based): $\{i\in\partial_V F:b_{F,t}(i)\ge\tau\}$ |
+| $\varepsilon^{\mathrm{hol}}_{F,t}(i)$ | Def 6.11 | Holonomy door energy |
+| $\Sigma^{\mathrm{hol}}_\tau$ | -- | Holonomy-based door set |
+| $\mathbf{e}(F,t)$ | Def 6.15 | Door energy vector: $\{e_p\}_{p\in\Sigma}$ with $e_p=b_{F,t}(p)$ |
+
+### Existence (Chapter 7)
+
+| Symbol | Definition | Meaning |
+|--------|-----------|---------|
+| $F^\circ$ | Def 7.1 | Kernel of fruit: $F\setminus\Sigma$ |
+| $\mathcal{E}_{F^\circ}(h)$ | Def 7.2 | Flattening energy: $\sum W_t(i,j)\,d_G(g_t^h(i,j),e)^2$ |
+| $h^*$ | Thm 7.4 | Optimal gauge: $\arg\min_h\mathcal{E}_{F^\circ}(h)$ |
+| $\mathcal{G}_{\mathrm{const}}$ | Def 7.5 | Residual (constant) gauge: $\{h:h(i)=k\;\forall i\}\cong G$ |
+| $\rho_{F^\circ}(i)$ | Lem 7.6 | Residual curvature at node $i$ |
+| $[A_\infty(F,t)]$ | Const 7.10 | Canonical connection (gauge class on $F^\circ$) |
+| $\mathrm{Existence}(F,t)$ | Def 7.12 | $([A_\infty],\Sigma,\mathbf{e})$ |
+| $\mathcal{M}(F,\Sigma)$ | Def 7.14 | Moduli space of existence |
+
+### World (Chapter 8)
+
+| Symbol | Definition | Meaning |
+|--------|-----------|---------|
+| $\mathfrak{W}_t$ | Def 8.1 | Instantaneous world: $(\mathcal{W}_t,\mathfrak{F}_t,\Sigma_t)$ |
+| $\mathfrak{W}$ | Def 8.2 | Full world: $\{\mathfrak{W}_t\}_{t\in\mathbb{T}}$ |
+| $\mathrm{Ex}_t$ | Def 8.3 | Existence functor |
+
+---
+
+## A.3 Theorems at a Glance
+
+| Theorem | Name | Core Statement | Proof Status |
+|---------|------|----------------|--------------|
+| **A** | Energy isolation | Internal energy $\ge(1-\theta)\,\mathrm{vol}(F)$ | Complete |
+| **B** | Finiteness of doors | $|\Sigma|\le\theta\,\mathrm{vol}(F)/\tau$ | Complete |
+| **C** | Self-interpretation | $\Sigma,\mathbf{e}$ determined by intrinsic data | Complete |
+| **D** | Metastability | Escape time $\ge 1/(2\theta)$ | Complete |
+| **E** | Curvature localisation | Residual curvature concentrates near doors | Complete |
+| **F** | Spectral stability | Strong fruits persist under perturbation | Complete |
+| **G** | Door stability | Door structure stable under small perturbation | Complete |
+| **H** | Flow stability | $[A_\infty]$ is a stable fixed point of discrete YM flow | Complete |
+
+---
+
+## A.4 Conventions
+
+- Numbering: Definition/Theorem/Lemma X.Y means Chapter X, item Y.
+- Gauge action is a **right action**: $(g^{h_1})^{h_2}=g^{h_2 h_1}$.
+- $d_G$ always denotes the bi-invariant geodesic distance on $G$.
+- $\bar S := V\setminus S$ for any $S\subset V$.
+- All sums over edges are over ordered pairs unless stated otherwise.
+- "Sketch" proofs explicitly list unverified assumptions.

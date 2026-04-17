@@ -1,0 +1,276 @@
+---
+title: "Chapter 17 — End-to-End Mobile Manipulator"
+slug: ch17-mobile-manipulator
+part: 7
+chapter: 17
+section: "Chapter 17"
+kind: essay
+track: robotics
+summary: "Instantiates RelationWorld theory for a practical mobile manipulator: 4-wheel swerve base, 4-DOF arm, and the full control pipeline in the theory's language."
+tags: [robotics, mobile-manipulator, swerve-drive, control]
+---
+
+
+## 17.1 Purpose and Scope
+
+This chapter instantiates RelationWorld theory for a practical mobile manipulator architecture:
+
+- **Mobile base**: 4-wheel swerve drive on the plane
+- **Manipulator**: 4-DOF arm
+- **Sensors**: RGB/depth camera, 2D/3D LiDAR, IMU, odometry, joint states, optional force/contact
+
+The aim is not to replace Chapters 1--16, but to provide an embodiment-level map:
+
+46452
+\text\{raw sensor\} \to \mathfrak W_t \to r_t \to g_t^\{\mathrm\{task\}\} \to \xi_t \to u_t.
+$$
+
+## 17.2 Ontological Role of the Robot
+
+In this embodiment, the robot is specialised as:
+
+46452
+\text{mobile manipulator} = \text{stem traversal} + \text{door manipulation}.
+$$
+
+Hence, its operational priority is not arbitrary in-fruit dexterity, but reliable traversal over stem regions and intervention at door boundaries.
+
+## 17.3 State and Action Model
+
+### 17.3.1 Base state (swerve)
+
+46452
+x_t^b = (x_t, y_t, \theta_t), \qquad
+\nu_t = (v_\{x,t\}, v_\{y,t\}, \omega_t).
+$$
+
+Discrete-time kinematics (time step $\Delta t$):
+
+46452
+\begin{aligned}
+x_{t+1} &= x_t + (v_{x,t}\cos\theta_t - v_{y,t}\sin\theta_t)\Delta t, \\
+y_{t+1} &= y_t + (v_{x,t}\sin\theta_t + v_{y,t}\cos\theta_t)\Delta t, \\
+\theta_{t+1} &= \theta_t + \omega_t\Delta t.
+\end{aligned}
+$$
+
+### 17.3.2 Arm state
+
+46452
+q_t^a = (q_\{1,t\},q_\{2,t\},q_\{3,t\},q_\{4,t\}), \qquad
+\dot q_t^a = (\dot q_\{1,t\},\dot q_\{2,t\},\dot q_\{3,t\},\dot q_\{4,t\}).
+$$
+
+### 17.3.3 Combined robot state and action
+
+46452
+x_t^r = (x_t^b, q_t^a, \nu_t, \dot q_t^a).
+$$
+
+46452
+u_t^\{\mathrm\{mb\}\} = (v_\{x,t\}, v_\{y,t\}, \omega_t, \dot q_\{1,t\}, \dot q_\{2,t\}, \dot q_\{3,t\}, \dot q_\{4,t\}).
+$$
+
+## 17.4 Base-Arm Coupled Kinematics
+
+Let end-effector pose be
+
+46452
+p_t^e = f_{\mathrm{FK}}(x_t^b, q_t^a).
+$$
+
+Then velocity is
+
+46452
+\dot p_t^e = J_b(x_t^b,q_t^a)\nu_t + J_a(x_t^b,q_t^a)\dot q_t^a,
+$$
+
+or compactly
+
+46452
+\dot p_t^e = J_{\mathrm{whole}}(x_t^r)\,\nu_t^{\mathrm{mb}}.
+$$
+
+This coupling equation is the mechanical core of the end-to-end formulation.
+
+## 17.5 Sensor to Relational Field
+
+Sensor stream:
+
+46452
+y_t = (I_t, D_t, L_t, \mathrm\{odom\}_t, q_t^a, \dot q_t^a, \mathrm\{force\}_t, \ldots).
+$$
+
+History encoder:
+
+46452
+z_t = E_\phi(y_{0:t}).
+$$
+
+Node/edge construction:
+
+46452
+V_t = \mathcal N_\phi(z_t), \qquad
+r_t(i,j) = (i,j,w_t(i,j),g_t(i,j)).
+$$
+
+Embodiment-conditioned edge score (example):
+
+46452
+\begin{aligned}
+w_t(i,j) =
+&\;\alpha_1\,\mathrm{proximity}_{ij}
++ \alpha_2\,\mathrm{handover}_{ij}
++ \alpha_3\,\mathrm{cofunc}_{ij} \\
+&+ \alpha_4\,\mathrm{causal}_{ij}
++ \alpha_5\,\mathrm{manipulability}_{ij}.
+\end{aligned}
+$$
+
+## 17.6 World Decomposition
+
+Given thresholds $\theta \in (0,1)$ and $\tau > 0$:
+
+46452
+F \text\{ is fruit\} \iff \phi(F) = \frac\{|\partial F|_w\}\{\mathrm\{vol\}(F)\} \le \theta,
+$$
+
+46452
+S_t = V_t \setminus \bigcup_k F_k,
+$$
+
+46452
+\Sigma(F)=\{i\in F : b_F(i)\ge\tau\}, \quad b_F(i)=d(i)-d_F^\{\mathrm\{int\}\}(i).
+$$
+
+World summary:
+
+46452
+\mathfrak W_t = (\{F_k\}, S_t, \{\Sigma(F_k)\}).
+$$
+
+## 17.7 Role Inference and Task Generation
+
+Role family:
+
+46452
+\mathcal R = \{\text\{stem-transporter\},\; \text\{door-operator\},\; \text\{door-stabilizer\}\}.
+$$
+
+Role selection:
+
+46452
+r_t = \arg\max_{r\in\mathcal R}\Big[
+\beta_1\Delta\mathrm{Flow}(r) +
+\beta_2\Delta\mathrm{BoundaryStability}(r) +
+\beta_3\Delta\mathrm{ManipulationUtility}(r)
+-\beta_4\mathrm{Cost}(r)
+-\beta_5\mathrm{Risk}(r)
+\Big].
+$$
+
+World deficit:
+
+46452
+\Delta_t = \lambda_1\mathrm\{StemCongestion\}
++\lambda_2\mathrm\{DoorOverload\}
++\lambda_3\mathrm\{BufferMismatch\}
++\lambda_4\mathrm\{HumanBurden\}
++\lambda_5\mathrm\{IdleLoss\}.
+$$
+
+Task generation:
+
+46452
+g_t^{\mathrm{task}} = \pi_{\mathrm{task}}(r_t,\mathfrak W_t,\Delta_t).
+$$
+
+## 17.8 Navigation-Manipulation Pairing
+
+Each task is decomposed as
+
+46452
+g_t^\{\mathrm\{task\}\} \mapsto (g_t^\{\mathrm\{nav\}\}, g_t^\{\mathrm\{manip\}\}),
+$$
+
+with canonical execution phases:
+
+46452
+\text{approach} \to \text{align} \to \text{manipulate} \to \text{exit}.
+$$
+
+For the first benchmark family (door handle/tray), these phases are mandatory.
+
+## 17.9 Motion Latent and Hybrid End-to-End Objective
+
+Motion latent:
+
+46452
+\xi_t = \pi_\{\mathrm\{motion\}\}(y_\{0:t\},\mathfrak W_t,r_t,g_t^\{\mathrm\{task\}\}),
+\qquad
+\xi_t=(\xi_t^b,\xi_t^a).
+$$
+
+Coupled objective (horizon $H$):
+
+46452
+\min_{\mathbf x^b,\mathbf q^a,\mathbf u}
+\sum_{\tau=t}^{t+H}
+\Big(
+\ell_{\mathrm{task}} +
+\lambda_1\ell_{\mathrm{world}} +
+\lambda_2\ell_{\mathrm{reach}} +
+\lambda_3\ell_{\mathrm{safety}} +
+\lambda_4\ell_{\mathrm{energy}}
+\Big).
+$$
+
+where
+
+46452
+\ell_\{\mathrm\{task\}\} = \|f_\{\mathrm\{FK\}\}(x_\tau^b,q_\tau^a)-p_\tau^\star\|^2,
+$$
+
+46452
+\ell_{\mathrm{world}} =
+\gamma_1\,\mathrm{dist}(x_\tau^b,\mathcal C_{\mathrm{stem}})^2
++\gamma_2\,\mathrm{door\_alignment}(x_\tau^b,\Sigma)
++\gamma_3\,\mathrm{boundary\_respect},
+$$
+
+46452
+\ell_\{\mathrm\{reach\}\} = \mathrm\{IK\_residual\}(x_\tau^b,q_\tau^a,p_\tau^\star)^2.
+$$
+
+## 17.10 ROS 2 Interface Contract
+
+Implementation-facing message/action contracts are standardised in package
+`antbot_relational_e2e`:
+
+- `RelationalWorld.msg`
+- `RoleAssignment.msg`
+- `GeneratedTask.msg`
+- `DoorManip.action`
+
+This contract is the bridge between theory-level variables and executable ROS graphs.
+
+## 17.11 Traceability to Core Theory
+
+| Core theory (Ch.1--16) | Embodiment mapping (this chapter) |
+|---|---|
+| Relation tuple and weighted field | Sensor-conditioned graph features |
+| Fruit/stem/door decomposition | Workspace partition and door intervention points |
+| Theorems A--H (stability and structure) | Constraints and penalties in world-consistency objective |
+| Existence and world reading | Role assignment + task generation pipeline |
+| Dynamics (Ch.14) | Online update of world graph and role/task refresh |
+
+## 17.12 Validation Gates
+
+To move from specification to simulation:
+
+1. **Dimensional consistency** of state/action/kinematics equations.
+2. **Interface completeness** for world, role, task, and manipulation action.
+3. **Task closure**: door-handle/tray scenario must complete all four phases.
+4. **Objective traceability**: each objective term mapped to at least one theoretical primitive.
+
+These gates define readiness for the simulation implementation phase.

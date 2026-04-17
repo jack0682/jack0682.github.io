@@ -215,6 +215,19 @@ function deriveSection(
     };
   }
 
+  // ONN hub
+  if (pathname.startsWith("/onn")) {
+    const siblings = items.filter(
+      (i) => i.kind === "paper" && i.group.toLowerCase().includes("papers"),
+    );
+    return {
+      mark: "χ",
+      label: "ONN · Hub",
+      index: "/onn/",
+      siblings,
+    };
+  }
+
   // Other notes parts
   const partMatch = pathname.match(/^\/notes\/part-(\d+)/);
   if (partMatch) {

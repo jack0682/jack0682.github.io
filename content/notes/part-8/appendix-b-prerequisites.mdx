@@ -1,0 +1,130 @@
+---
+title: "Appendix B — Prerequisites"
+slug: appendix-b-prerequisites
+part: 8
+chapter: 2
+section: "Appendix B"
+kind: essay
+track: theory
+summary: "Mathematical prerequisites assumed by the main text."
+tags: [prerequisites, mathematics, background, appendix]
+---
+
+
+This appendix collects the background facts used throughout the theory. Readers familiar with compact Lie groups, spectral graph theory, and basic gauge theory may skip to the main text.
+
+---
+
+## B.1 Compact Lie Groups
+
+**Definition.** A *compact Lie group* $G$ is a group that is also a compact smooth manifold, with smooth group operations.
+
+**Examples.**
+- $U(1) = \{e^{i\varphi}:\varphi\in\mathbb{R}\}\cong S^1$ (abelian).
+- $SU(2) = \{A\in M_{2\times 2}(\mathbb{C}):A^\dagger A=I,\;\det A=1\}\cong S^3$ (non-abelian).
+- Finite groups (with discrete topology).
+
+**Fact B.1** (Bi-invariant metric).
+Every compact Lie group $G$ admits an $\mathrm{Ad}$-invariant inner product $\langle\cdot,\cdot\rangle$ on its Lie algebra $\mathfrak{g}$. The corresponding left-invariant Riemannian metric on $G$ is automatically bi-invariant. The geodesic distance $d_G$ satisfies:
+$$
+d_G(k\,g\,k',\;k\,h\,k') = d_G(g,h) \quad\forall\,g,h,k,k'\in G.
+$$
+*Reference*: Milnor, *Curvatures of left invariant metrics on Lie groups*, Adv. Math. 21 (1976), 293--329.
+
+**Fact B.2** (Tychonoff for finite products).
+If $G$ is compact and $S$ is a finite set, then $G^S=\prod_{i\in S}G$ is compact. Every continuous real-valued function on $G^S$ attains its minimum and maximum.
+
+---
+
+## B.2 Spectral Graph Theory
+
+**Setup.** Let $\mathcal{G}=(V,E,W)$ be a weighted graph with symmetric weights $W(i,j)=W(j,i)\ge0$. Set $d(i)=\sum_j W(i,j)$, $D=\mathrm{diag}(d(i))$, $A=(W(i,j))$.
+
+**Definition.** The *normalised Laplacian* is $\mathcal{L}=I-D^{-1/2}AD^{-1/2}$, with eigenvalues $0=\lambda_1\le\lambda_2\le\cdots\le\lambda_n$.
+
+**Fact B.3** (Discrete Cheeger inequality).
+For the Cheeger constant $h:=\min_{\emptyset\ne S\subsetneq V}\phi(S)$:
+$$
+\frac{\lambda_2}{2}\;\le\;h\;\le\;\sqrt{2\lambda_2}.
+$$
+The lower bound follows from the variational characterisation of $\lambda_2$; the upper bound uses the sweep-cut technique of Alon--Milman.
+
+*Reference*: Chung, *Spectral Graph Theory*, CBMS Regional Conference Series 92, AMS, 1997.
+
+**Fact B.4** (Davis--Kahan $\sin\Theta$ theorem).
+Let $\mathcal{L}$ have eigenvalues $\lambda_1\le\cdots\le\lambda_n$ and let $U_k$ be the span of the first $k$ eigenvectors. If $f$ satisfies $R_{\mathcal{L}}(f)\le\mu$ with $\mu<\lambda_{k+1}$, then the angle between $f$ and $U_k$ is $O(\mu/(\lambda_{k+1}-\mu))$.
+
+---
+
+## B.3 Cheeger Constants and Conductance
+
+**Definition.** For $\emptyset\ne S\subsetneq V$:
+$$
+\phi(S)=\frac{\mathrm{cut}(S,\bar S)}{\min\{\mathrm{vol}(S),\mathrm{vol}(\bar S)\}}.
+$$
+A set $S$ with $\phi(S)\le\theta$ is called a *low-conductance set* or (in our theory) a *fruit*.
+
+**Fact B.5** (Conductance and mixing time).
+For the lazy random walk $\tilde P=\frac{1}{2}(I+D^{-1}A)$, the mixing time satisfies:
+$$
+t_{\mathrm{mix}}(\epsilon)\;\ge\;\frac{1}{2\phi}\ln\frac{1}{2\epsilon}
+$$
+where $\phi$ is the graph conductance.
+
+*Reference*: Levin, Peres, Wilmer, *Markov Chains and Mixing Times*, AMS, 2009.
+
+**Fact B.6** (Sinclair--Jerrum conductance bound).
+For a reversible Markov chain with conductance $\Phi$, the spectral gap $\gamma$ satisfies:
+$$
+\frac{\Phi^2}{2}\;\le\;\gamma\;\le\;2\Phi.
+$$
+*Reference*: Sinclair and Jerrum, *Approximate counting, uniform generation and rapidly mixing Markov chains*, Inform. Comput. 82 (1989), 93--133.
+
+---
+
+## B.4 Uhlenbeck Compactness
+
+The theory's treatment of doors and existence parallels Uhlenbeck's compactness theorem in continuous gauge theory.
+
+**Fact B.7** (Uhlenbeck compactness, informal).
+Let $\{A_k\}$ be a sequence of connections on a principal $G$-bundle over a closed Riemannian 4-manifold $M$ with $\int_M|F_{A_k}|^2\le E$. Then, after passing to a subsequence and applying gauge transformations, $A_k$ converges smoothly on $M\setminus\{p_1,\ldots,p_L\}$ to a smooth connection $A_\infty$, where $L\le E/\epsilon_0$ for a universal constant $\epsilon_0>0$. The *bubble energies* $e_l=\lim_{r\to0}\lim_{k\to\infty}\int_{B_r(p_l)}|F_{A_k}|^2$ satisfy $\sum_l e_l\le E$.
+
+The discrete analogue:
+- Bounded cut energy $\mathrm{cut}(F,\bar F)\le\theta\cdot\mathrm{vol}(F)$ replaces the energy bound.
+- The door threshold $\tau$ plays the role of $\epsilon_0$.
+- Door count $|\Sigma|\le\theta\cdot\mathrm{vol}(F)/\tau$ parallels $L\le E/\epsilon_0$.
+
+*Reference*: Uhlenbeck, *Connections with $L^p$ bounds on curvature*, Comm. Math. Phys. 83 (1982), 31--42.
+
+---
+
+## B.5 Lojasiewicz--Simon Gradient Inequality
+
+**Fact B.8** (Lojasiewicz inequality, finite-dimensional).
+Let $f:M\to\mathbb{R}$ be a real-analytic function on a compact Riemannian manifold $M$. For every critical value $c$ of $f$, there exist $C>0$ and $\alpha\in[\frac{1}{2},1)$ such that in a neighbourhood of $f^{-1}(c)$:
+$$
+\|\mathrm{grad}\,f(x)\|\;\ge\;C\,|f(x)-c|^\alpha.
+$$
+**Consequence.** The negative gradient flow $\dot x=-\mathrm{grad}\,f(x)$ converges as $t\to\infty$, and the trajectory has finite length:
+$$
+\int_0^\infty\|\dot x(t)\|\,dt\;<\;\infty.
+$$
+This is used in Theorem H to guarantee convergence of the discrete Yang--Mills gradient flow on the compact space $G^{F^\circ}$.
+
+*Reference*: Lojasiewicz, *Sur les trajectoires du gradient d'une fonction analytique*, Seminari 1984, Univ. Bologna, 1984.
+
+---
+
+## B.6 Parallel Transport and Discrete Connections
+
+In continuous differential geometry, a *connection* on a principal $G$-bundle assigns to each path in the base manifold a parallel transport map in $G$. The *curvature* $F_A$ measures the failure of parallel transport around infinitesimal loops to be trivial.
+
+In the discrete setting:
+- An edge $G$-label $g_t(i,j)\in G$ is the parallel transport from $i$ to $j$.
+- The holonomy around a triangle $(i,j,k)$ is $\Omega_t(i,j,k)=g_t(i,j)\,g_t(j,k)\,g_t(k,i)$.
+- $\Omega_t=e$ means the triangle is "flat" (transits are compatible).
+- A gauge transformation $h:V\to G$ changes the local frame at each node: $g_t^h(i,j)=h(i)\,g_t(i,j)\,h(j)^{-1}$.
+
+This is the standard framework of *lattice gauge theory*, originating in Wilson's formulation of lattice QCD.
+
+*Reference*: Wilson, *Confinement of quarks*, Phys. Rev. D 10 (1974), 2445--2459.

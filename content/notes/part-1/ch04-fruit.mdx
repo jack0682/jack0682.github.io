@@ -110,27 +110,43 @@ The scalar part $W_t$ of the relational field defines a weighted graph. The defi
 Suppose $F$ is a minimal fruit and $F=F_1\sqcup F_2$ is a non-trivial partition with no edges between $F_1$ and $F_2$ inside $F$. We derive a contradiction.
 
 **Step 1.** Since there are no internal edges between $F_1$ and $F_2$:
-$$\mathrm{cut}_t(F,\bar F) = \mathrm{cut}_t(F_1,\bar F) + \mathrm{cut}_t(F_2,\bar F)$$
+$$
+\mathrm{cut}_t(F,\bar F) = \mathrm{cut}_t(F_1,\bar F) + \mathrm{cut}_t(F_2,\bar F)
+$$
 and in particular, for each component $F_k$ ($k=1,2$):
-$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,V\setminus F_k) = \mathrm{cut}_t(F_k,\bar F) + 0$$
+$$
+\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,V\setminus F_k) = \mathrm{cut}_t(F_k,\bar F) + 0
+$$
 (the zero comes from no $F_1$--$F_2$ edges). So:
-$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,\bar F).$$
-
+$$
+\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{cut}_t(F_k,\bar F).
+$$
 **Step 2 (Both components satisfy (F2)).** We show that *both* $F_1$ and $F_2$ satisfy the energy ratio condition (F2). From Theorem A (energy isolation), the internal energy of $F$ satisfies:
-$$\sum_{i,j\in F}W_t(i,j)\ge(1-\theta)\,\mathrm{vol}_t(F).$$
+$$
+\sum_{i,j\in F}W_t(i,j)\ge(1-\theta)\,\mathrm{vol}_t(F).
+$$
 Since $F_1$ and $F_2$ are disconnected within $F$, the internal energy of $F$ decomposes exactly:
-$$\sum_{i,j\in F}W_t(i,j) = \sum_{i,j\in F_1}W_t(i,j) + \sum_{i,j\in F_2}W_t(i,j).$$
+$$
+\sum_{i,j\in F}W_t(i,j) = \sum_{i,j\in F_1}W_t(i,j) + \sum_{i,j\in F_2}W_t(i,j).
+$$
 The volume likewise decomposes: $\mathrm{vol}_t(F) = \mathrm{vol}_t(F_1) + \mathrm{vol}_t(F_2)$. We claim that for *each* $k\in\{1,2\}$:
-$$\frac{\sum_{i,j\in F_k}W_t(i,j)}{\mathrm{vol}_t(F_k)} \ge (1-\theta).$$
+$$
+\frac{\sum_{i,j\in F_k}W_t(i,j)}{\mathrm{vol}_t(F_k)} \ge (1-\theta).
+$$
 Indeed, suppose for contradiction that one component, say $F_1$, has ratio $<(1-\theta)$. Then:
-$$\sum_{i,j\in F}W_t(i,j) < (1-\theta)\,\mathrm{vol}_t(F_1) + \mathrm{vol}_t(F_2) \le (1-\theta)\,\mathrm{vol}_t(F),$$
+$$
+\sum_{i,j\in F}W_t(i,j) < (1-\theta)\,\mathrm{vol}_t(F_1) + \mathrm{vol}_t(F_2) \le (1-\theta)\,\mathrm{vol}_t(F),
+$$
 where the last inequality uses $\sum_{i,j\in F_2}W_t(i,j)\le\mathrm{vol}_t(F_2)$. This contradicts Theorem A. So both components satisfy (F2), giving for each $k$:
-$$\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{vol}_t(F_k)-\sum_{i,j\in F_k}W_t(i,j) \le \theta\cdot\mathrm{vol}_t(F_k).$$
-
+$$
+\mathrm{cut}_t(F_k,\bar{F_k}) = \mathrm{vol}_t(F_k)-\sum_{i,j\in F_k}W_t(i,j) \le \theta\cdot\mathrm{vol}_t(F_k).
+$$
 **Step 3 (At least one component satisfies (F1)).** Since $\mathrm{vol}_t(F)=\mathrm{vol}_t(F_1)+\mathrm{vol}_t(F_2)$ and both volumes are positive, at least one component---say $F_1$---satisfies $\mathrm{vol}_t(F_1)\le\frac{1}{2}\mathrm{vol}_t(F)\le\frac{1}{2}\mathrm{vol}_t(V)$, which is condition (F1).
 
 **Conclusion.** By Step 2, $F_1$ satisfies (F2). By Step 3, $F_1$ satisfies (F1). Therefore:
-$$\phi_t(F_1)=\frac{\mathrm{cut}_t(F_1,\bar{F_1})}{\mathrm{vol}_t(F_1)}\le\theta.$$
+$$
+\phi_t(F_1)=\frac{\mathrm{cut}_t(F_1,\bar{F_1})}{\mathrm{vol}_t(F_1)}\le\theta.
+$$
 So $F_1$ is a fruit---contradicting the minimality of $F$. $\square$
 
 > **Corollary 4.10** (Connectivity of general fruits).
@@ -156,7 +172,9 @@ So $F_1$ is a fruit---contradicting the minimality of $F$. $\square$
 *Proof sketch.*
 
 **Lower bound** ($\lambda_2\le 2h_t$). Use the variational characterisation of $\lambda_2$ and test with the normalised indicator of any set $S$:
-$$f_S(i)=\begin{cases}\sqrt{\mathrm{vol}_t(\bar S)/\mathrm{vol}_t(V)}&i\in S,\\-\sqrt{\mathrm{vol}_t(S)/\mathrm{vol}_t(V)}&i\notin S.\end{cases}$$
+$$
+f_S(i)=\begin{cases}\sqrt{\mathrm{vol}_t(\bar S)/\mathrm{vol}_t(V)}&i\in S,\\-\sqrt{\mathrm{vol}_t(S)/\mathrm{vol}_t(V)}&i\notin S.\end{cases}
+$$
 Then $f_S\perp D_t^{1/2}\mathbf{1}$ and the Rayleigh quotient satisfies $R(f_S)\le 2\phi_t(S)$.
 
 **Upper bound** ($h_t\le\sqrt{2\lambda_2}$). Sweep the level sets of the second eigenvector $f_2$ and apply the discrete coarea inequality (Alon--Milman). $\square$
@@ -179,11 +197,13 @@ Then $f_S\perp D_t^{1/2}\mathbf{1}$ and the Rayleigh quotient satisfies $R(f_S)\
 *Proof.*
 
 **Step 1.** Volume decomposition:
-$$\mathrm{vol}_t(F)=\sum_{i,j\in F}W_t(i,j)+\mathrm{cut}_t(F,\bar F).$$
-
+$$
+\mathrm{vol}_t(F)=\sum_{i,j\in F}W_t(i,j)+\mathrm{cut}_t(F,\bar F).
+$$
 **Step 2.** By (F2), $\phi_t(F)\le\theta$. By (F1), $\mathrm{vol}_t(F)=\min\{\mathrm{vol}_t(F),\mathrm{vol}_t(\bar F)\}$. Thus:
-$$\mathrm{cut}_t(F,\bar F)=\phi_t(F)\cdot\mathrm{vol}_t(F)\le\theta\cdot\mathrm{vol}_t(F).$$
-
+$$
+\mathrm{cut}_t(F,\bar F)=\phi_t(F)\cdot\mathrm{vol}_t(F)\le\theta\cdot\mathrm{vol}_t(F).
+$$
 **Step 3.** $\displaystyle\sum_{i,j\in F}W_t(i,j)=\mathrm{vol}_t(F)-\mathrm{cut}_t(F,\bar F)\ge(1-\theta)\,\mathrm{vol}_t(F)$. Divide by $\mathrm{vol}_t(F)>0$. $\square$
 
 **Sharpness.** Equality holds when $\phi_t(F)=\theta$ and $\mathrm{vol}_t(F)=\frac{1}{2}\mathrm{vol}_t(V)$.
@@ -211,6 +231,7 @@ $$\mathrm{cut}_t(F,\bar F)=\phi_t(F)\cdot\mathrm{vol}_t(F)\le\theta\cdot\mathrm{
 **Step 4.** For the lazy chain, the spectral gap is $\tilde\gamma_F=\gamma_F/2\le\theta$.
 
 **Step 5.** The expected absorption time (escape time) from the stationary distribution satisfies the standard bound (see Levin--Peres--Wilmer, Theorem 12.4):
-$$\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}]\;\ge\;\frac{1}{2\tilde\gamma_F}\;\ge\;\frac{1}{2\theta}.\qquad\square$$
-
+$$
+\mathbb{E}_{\pi_F}[T_{\mathrm{esc}}]\;\ge\;\frac{1}{2\tilde\gamma_F}\;\ge\;\frac{1}{2\theta}.\qquad\square
+$$
 **Interpretation.** A random walk starting inside a fruit remains trapped for $\Omega(1/\theta)$ steps. For $\theta=0.05$, the expected escape time is at least 10 steps.

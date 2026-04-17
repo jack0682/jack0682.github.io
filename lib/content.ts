@@ -4,6 +4,7 @@ import {
   posts as _posts,
   research as _research,
   notes as _notes,
+  onnDocs as _onnDocs,
 } from "#content";
 
 /* ──────────────────────────────────────────────────────────────
@@ -47,6 +48,11 @@ export const notesByPart = (() => {
 })();
 
 export const allNotes = published(_notes);
+
+export const onnAllDocs = published(_onnDocs).sort(
+  (a, b) =>
+    (a.chapter ?? 0) - (b.chapter ?? 0) || a.slug.localeCompare(b.slug),
+);
 
 /** Recent items across journal + posts for the homepage feed. */
 export const recentWriting = [
@@ -92,6 +98,14 @@ export const searchIndex: SearchItem[] = [
     permalink: n.permalink,
     group: `Part ${n.part}${n.section ? ` · ${n.section}` : ""}`,
     keywords: [...n.tags, n.kind ?? "", n.track ?? ""].filter(Boolean),
+  })),
+  ...onnAllDocs.map((d) => ({
+    kind: "note" as const,
+    title: d.title,
+    summary: d.summary,
+    permalink: d.permalink,
+    group: `ONN${d.section ? ` · ${d.section}` : ""}`,
+    keywords: [...d.tags, d.kind ?? "", "onn"].filter(Boolean),
   })),
   ...papers.map((p) => ({
     kind: "paper" as const,
@@ -172,4 +186,43 @@ export const sccHub = (() => {
   );
 
   return { canonical, roadmap, overview, theorems, relatedPapers };
+})();
+
+/* ──────────────────────────────────────────────────────────────
+   ONN hub — parallel to SCC hub but pivoted around the ONN
+   research track. Aggregates notes tagged `track: onn`, all ONN
+   papers, the ONN research-track overview, and exposes the
+   integrated architecture note as a cross-link. Placeholder slots
+   live in the page itself — the platform simply supplies the
+   real content it can find today.
+   ────────────────────────────────────────────────────────────── */
+export const onnHub = (() => {
+  const canonical = onnAllDocs.filter((n) => n.kind === "canonical");
+  const roadmap = onnAllDocs.filter((n) => n.kind === "roadmap");
+  const overview = onnAllDocs.filter((n) => n.kind === "overview");
+  const theorems = onnAllDocs.filter(
+    (n) => n.kind === "theorem" || n.kind === "proof",
+  );
+  const essays = onnAllDocs.filter(
+    (n) =>
+      n.kind === undefined ||
+      n.kind === "essay",
+  );
+
+  const relatedPapers = papers.filter((p) => p.track === "onn");
+
+  const trackOverview = researchTracks.find((t) => t.track === "onn") ?? null;
+  const integrationNote =
+    allNotes.find((n) => n.slug === "integrated-architecture") ?? null;
+
+  return {
+    canonical,
+    roadmap,
+    overview,
+    theorems,
+    essays,
+    relatedPapers,
+    trackOverview,
+    integrationNote,
+  };
 })();

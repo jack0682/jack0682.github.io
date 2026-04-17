@@ -1,0 +1,518 @@
+---
+title: "ONN vs Transformer — Experiment Plan"
+slug: experiment-plan-onn-vs-transformer
+chapter: 3
+section: "Experiment plan"
+kind: essay
+summary: "The full experimental protocol comparing ONN to Transformer baselines under matched compute and delay regimes."
+tags: [onn, experiments, transformer, baselines, methodology]
+---
+
+## Robotics-Relevant Relational Cognition Tasks
+
+**Date**: 2026-02-18
+**Status**: Phase 1 — Task Definition Complete
+**Duration**: Single dataset, locked baselines, end-to-end execution
+
+---
+
+## Executive Summary
+
+This experiment compares **ONN (constraint-based fixed-point solver)** against **Transformer baselines** on three robotics-relevant relational cognition tasks:
+1. **T1**: Relational consistency under noise
+2. **T2**: Relation → action policy robustness
+3. **T3** (optional): Temporal regime shift detection
+
+All experiments use a **single unified synthetic dataset**, **fixed baselines**, and identical preprocessing/evaluation protocols. Success is measured by **constraint satisfaction**, **action correctness**, and **robustness under perturbation**.
+
+---
+
+## Task Definitions
+
+### Task T1: Relational Consistency Under Noise (Constraint Satisfaction)
+
+**Motivation**: In robotics, maintaining a globally consistent model of object relations (despite noisy/missing observations) is critical for safe planning. This task tests whether a model can infer and enforce relational consistency.
+
+**Input**:
+- Object set: $O = \{o_1, \ldots, o_n\}$ with attributes (type, pose, color, etc.)
+- Partial/noisy relation graph: $G = (O, E)$ where $E \subseteq O \times O$
+- Constraint set: $C$ (type compatibility, role constraints, spatial exclusions, etc.)
+- Noise specification: missing edge probability, edge flips, attribute noise level
+
+**Output**:
+- Repaired/predicted relation graph $\hat{G}$ that satisfies all constraints in $C$
+
+**Example**:
+```
+Objects: robot (type=agent), cup (type=object), table (type=surface)
+Relations: robot.holds(cup), cup.on(table)
+Constraints:
+  - Only agents can "hold" objects
+  - Objects on surfaces must have spatial(object, surface) = true
+  - No self-relations
+Noise: 20% edge flip, 10% missing edges
+Task: Restore a consistent graph satisfying all constraints
+```
+
+**Metrics**:
+1. **Constraint Satisfaction Rate (CSR)**: $\text{CSR} = \frac{\text{# constraints satisfied in } \hat{G}}{\text{# total constraints}}$
+2. **Contradiction Count**: Number of constraints violated in $\hat{G}$ (should be 0)
+3. **Minimal Repair Cost**: \# edges that differ between $\hat{G}$ and true $G^*$
+4. **Global-Local Agreement**: Consistency between locally-predicted edges and global solution
+
+**Success Criteria**:
+- CSR ≥ 95% (≥3 seeds)
+- Contradiction count = 0 for ONN (hard constraint solver)
+- Repair cost < 10% of total edges for noise ≤ 20%
+
+---
+
+### Task T2: Relation → Action Policy Robustness (Semantic Grounding)
+
+**Motivation**: Robotic tasks require translating a relational model into actions. If relations are inconsistent or perturbed, downstream actions may fail. This task measures action policy robustness under relational uncertainty.
+
+**Input**:
+- Object/relation graph $G = (O, E)$ (clean or noisy)
+- Goal specification: $\text{Goal} = (o_{\text{target}}, \text{target\_state})$ (e.g., "grasp cup" or "place cup on table")
+- Action set: $\mathcal{A} = \{\text{pick}, \text{place}, \text{push}, \text{rotate}, \text{no\_op}\}$
+- Perturbed relations: relations have probability of being wrong
+
+**Output**:
+- Action $a \in \mathcal{A}$ or action sequence $[a_1, \ldots, a_k]$
+
+**Execution Model**:
+- For each action, check **preconditions** (must be satisfied in $G$)
+- Execute action, update $G$ (deterministically or stochastically)
+- Check if goal is reached or violated
+
+**Example**:
+```
+Goal: Pick up the cup on the table
+Graph: {robot, cup, table}
+Relations: cup.on(table), cup.reachable(robot), ...
+Precondition for "pick": reachable(robot, cup) ∧ ¬holding(robot, other)
+Action: pick(cup) → success if preconditions met in G
+Failure modes:
+  - Wrong relation inference → precondition fails → action fails
+  - Inconsistent goal (cup on table but also in hand) → contradiction
+```
+
+**Metrics**:
+1. **Action Success Rate (ASR)**: $\text{ASR} = \frac{\text{# episodes reaching goal without violation}}{\text{# total episodes}}$
+2. **Safety Violation Rate (SVR)**: $\text{SVR} = \frac{\text{# episodes with violated constraints}}{\text{# total episodes}}$
+3. **Recovery Rate**: % of episodes that recover after a perturbation mid-episode
+4. **Failure Mode Taxonomy**:
+   - Type A: Wrong relation inferred (relation F1 error)
+   - Type B: Inconsistent graph (constraint violation)
+   - Type C: Precondition not met (action precondition failure)
+   - Type D: Goal unreachable (dead-end)
+
+**Success Criteria**:
+- ASR ≥ 90% (clean graphs)
+- ASR ≥ 70% (20% relation noise)
+- SVR ≤ 5% (safety-critical)
+- Recovery rate ≥ 60% for mild perturbations
+
+---
+
+### Task T3: Temporal Regime Shift Detection (Drift Robustness) *(Optional)*
+
+**Motivation**: In long-horizon robotics tasks, the set of active relations or constraints may change (e.g., new objects appear, old ones disappear, semantics shift). Models must detect and adapt.
+
+**Input**:
+- Relation stream: sequence $[G_0, G_1, \ldots, G_T]$ where $G_t = (O_t, E_t, C_t)$
+- At time $t_{\text{shift}}$, distribution shift occurs:
+  - New object types appear
+  - Relation semantics change (e.g., "on" now means "near" instead of "touching")
+  - Constraint set expands
+- Output sequence: $[a_0, a_1, \ldots, a_T]$ (actions)
+
+**Output**:
+- Action sequence $[a_0, \ldots, a_T]$
+- Drift detection signal: $\hat{t}_{\text{shift}}$ (when to trigger adaptation)
+
+**Metrics**:
+1. **Drift Detection Delay**: $|\hat{t}_{\text{shift}} - t_{\text{shift}}|$ (steps to detect shift)
+2. **True Positive Rate (TPR)**: % of actual shifts detected
+3. **False Positive Rate (FPR)**: % of false drift alarms
+4. **Post-Shift ASR**: Action success rate after detected/undetected shift
+5. **Failure Recovery**: % recovery after undetected shift
+
+**Success Criteria**:
+- TPR ≥ 80%
+- FPR ≤ 5%
+- Detection delay ≤ 5 steps
+- Post-shift ASR ≥ 70% after recovery
+
+---
+
+## Dataset: Synthetic Robotics Scene Graphs
+
+### Dataset Design
+
+**Primary Dataset**: Procedurally generated scene graphs with deterministic constraints.
+
+#### Scene Generation
+```python
+# Pseudocode
+def generate_scene(n_objects, edge_density, constraint_complexity, seed):
+    # Sample object types: agent, container, object, surface
+    object_types = sample_types(n_objects)
+
+    # Sample ground-truth relation graph
+    G_true = sample_erdos_renyi_graph(n_objects, edge_density)
+
+    # Assign relation types to edges
+    for (i, j) in G_true.edges():
+        rel_type = sample_relation_type(object_types[i], object_types[j])
+        G_true[i, j]['type'] = rel_type
+
+    # Generate constraints based on graph structure
+    C = generate_constraints(object_types, G_true, complexity=constraint_complexity)
+
+    # Apply noise (for T1 & T2)
+    G_noisy = corrupt_edges(G_true, edge_flip_prob, missing_edge_prob)
+
+    return G_true, G_noisy, C
+```
+
+#### Constraint Types
+1. **Type Compatibility**: agent cannot "hold" surface
+2. **Cardinality**: each object can be "on" at most one surface
+3. **Transitivity**: if $A \text{ above } B$ and $B \text{ above } C$, then $A \text{ above } C$
+4. **Exclusivity**: object cannot be both "held" and "on table"
+5. **Reachability**: only reachable objects can be grasped
+
+#### Noise Specifications
+- **Edge Corruption**: flip edge type, remove edge, add spurious edge
+- **Attribute Noise**: change object type (10% prob)
+- **Missing Edges**: delete edges with probability $p_{\text{missing}} \in \{0, 0.1, 0.2, 0.3\}$
+- **Regime Shift** (T3): change constraint set at time $t_{\text{shift}}$
+
+### Data Splits
+
+**Train/Val/Test**:
+- Train: 80% of scenes, for any model learning (if applicable)
+- Val: 10% of scenes, hyperparameter tuning
+- Test: 10% of scenes, final evaluation
+
+**Fixed Seeds**: All experiments use seed ∈ {0, 1, 2} for reproducibility.
+
+**Scales** (sweeps):
+- Small: $n = 10, 20, 50$ nodes
+- Medium: $n = 100, 200, 500$ nodes
+- Large: $n = 1000, 5000, 10000$ nodes
+
+**Noise Levels** (robustness sweeps):
+- Clean: 0% corruption
+- Low: 10% edge flip + 5% missing
+- Medium: 20% edge flip + 10% missing
+- High: 30% edge flip + 15% missing
+
+### Dataset Access
+```python
+# Example usage
+from scripts.compare_onn_vs_transformer.data import SyntheticSceneGraphDataset
+
+dataset = SyntheticSceneGraphDataset(
+    n_objects=100,
+    edge_density=0.15,
+    constraint_complexity='medium',
+    noise_level=0.2,  # 20% corruption
+    split='test',
+    seed=0
+)
+
+for scene in dataset:
+    G_true, G_noisy, C, attributes = scene
+    # process
+```
+
+---
+
+## Models & Baselines
+
+### Baseline Set (Fixed)
+
+| ID | Model | Type | Purpose |
+|-----|--------|------|---------|
+| **B0** | Heuristic (Greedy Repair) | Rule-based | Sanity check baseline |
+| **B1** | Graph Transformer (Graphormer) | Neural | Relation-aware sequence model |
+| **B2** | Sequence Transformer | Neural | Serialize triples, attend globally |
+| **A0** | ONN/LOGOS (as-is) | Constraint solver | Reference solver, no learning |
+| **A1** | ONN Ablations | Constraint solver | Variants: no constraints, early stop |
+
+**Fairness**:
+- Parameter count: target ±20% (B1, B2 trainable; A0, A1 not)
+- Training budget: if trainable, 1000 steps or 10 epochs, whichever is reached
+- Inference: fixed batch size = 32, report per-sample latency + peak memory
+
+### Model Specifications
+
+#### B0: Heuristic Baseline
+```
+Algorithm: Greedy constraint repair
+- For each constraint C not satisfied in G_noisy:
+  - Find minimum-cost repair (add/remove/flip edge)
+  - Apply repair if cost < threshold
+- Repeat until converged or max_iterations=100
+Time Complexity: O(|E|² × |C|)
+Params: 0 (rule-based)
+```
+
+#### B1: Graph Transformer
+```
+Architecture: Graphormer (Li et al., 2021)
+- Node embedding: learnable + node features
+- Spatial encoding: graph distance as attention bias
+- Transformer layers: multi-head attention over node pairs
+- Output: edge logits for link prediction
+Params: ~10K (128 hidden, 4 heads, 3 layers)
+Training: Cross-entropy loss on edge prediction
+```
+
+#### B2: Sequence Transformer
+```
+Architecture: Standard Transformer over serialized triples
+- Tokenization: each edge (i, rel, j) → token
+- Sequence: flatten graph edges, add [CLS] + [SEP] tokens
+- Transformer: standard encoder-decoder
+- Output: next-token prediction as relation inference
+Params: ~10K (128 hidden, 4 heads, 3 layers)
+Training: Cross-entropy loss on relation type prediction
+```
+
+#### A0: ONN/LOGOS Solver
+```
+Implementation: src/onn/ops/logos_solver.py
+- Constraint representation: LOGOS DSL
+- Solver: energy-based fixed-point iteration
+- Config:
+    max_iterations: 100
+    tolerance: 1e-4
+    energy_threshold: 0.5
+- Output: constraint-satisfied graph (or best-effort if infeasible)
+Params: 0 (deterministic solver)
+```
+
+#### A1: ONN Ablations
+```
+Variant A1a: No constraint enforcement
+- Same solver, but ignore constraint violations
+
+Variant A1b: Early stopping
+- max_iterations: 10 (vs. 100)
+
+Variant A1c: Softened constraints
+- tolerance: 1e-2 (vs. 1e-4), allow soft violations
+```
+
+---
+
+## Metrics (Detailed)
+
+### (1) Semantic Consistency Metrics (Core)
+
+#### Constraint Satisfaction Rate (CSR)
+$$
+\text{CSR} = \frac{\text{# constraints satisfied in } \hat{G}}{\text{# total constraints}}
+$$
+- **Target**: ONN ≥ 95%, Transformers ≥ 80%
+- **Computation**: for each constraint $c \in C$, check truth value; count satisfied
+
+#### Contradiction Count
+$$
+\text{Contra} = \text{# constraints violated in } \hat{G}
+$$
+- **Target**: ONN = 0 (hard solver), Transformers ≤ 2 violations per sample
+- **Safety-critical**: SVR (from T2) is the main failure mode
+
+#### Minimal Repair Cost
+$$
+\text{RepairCost} = \text{Hamming distance}(\hat{G}, G^*) / |E^*|
+$$
+- **Target**: < 10% for ONN, < 20% for Transformers (noise ≤ 20%)
+- **Computation**: count edge disagreements, normalize by true edge count
+
+#### Global-Local Agreement
+$$
+\text{GA} = \frac{\text{# locally-predicted edges consistent with global solution}}{\text{# total edges}}
+$$
+- **Target**: ONN > 90%, Transformers > 75%
+- **Rationale**: consistency between local (per-node) and global (whole-graph) predictions
+
+---
+
+### (2) Action-Grounded Metrics (Robotics Relevance)
+
+#### Action Success Rate (ASR)
+$$
+\text{ASR} = \frac{\text{# episodes reaching goal without constraint violation}}{\text{# total episodes}}
+$$
+- **Target**: ONN ≥ 90% (clean), ≥ 70% (noisy)
+- **Computation**: simulate action preconditions, check goal; count successes
+
+#### Safety Violation Rate (SVR)
+$$
+\text{SVR} = \frac{\text{# episodes with violated constraints}}{\text{# total episodes}}
+$$
+- **Target**: ONN ≤ 1% (hard constraints), Transformers ≤ 5%
+- **Safety-critical**: must be low
+
+#### Recovery Rate
+$$
+\text{RecoveryRate} = \frac{\text{# episodes recovering after perturbation}}{\text{# perturbed episodes}}
+$$
+- **Target**: ≥ 60% for ONN, ≥ 40% for Transformers
+- **Rationale**: robustness to mid-episode noise
+
+#### Failure Mode Taxonomy
+```
+Type A: Relation Inference Error
+  - Missed edge (FN) or spurious edge (FP) in inferred graph
+  - Metric: Precision & Recall on edges
+
+Type B: Inconsistent Graph
+  - Constraint violation in inferred graph
+  - Metric: Count violations
+
+Type C: Precondition Failure
+  - Required relation not present in graph
+  - Metric: Precondition satisfaction rate per action
+
+Type D: Unreachable Goal
+  - Goal is impossible even with perfect relations
+  - Metric: Count infeasible goals
+```
+
+**Reporting**: Breakdown failure counts by type for each model.
+
+---
+
+### (3) Efficiency & Scaling Metrics
+
+#### Per-Sample Latency
+$$
+\text{Latency} = \text{time per forward pass (ms)}
+$$
+- **Target**: ONN < 100ms (CPU), Transformers < 50ms (batched)
+- **Computation**: wall-clock time for 1000 samples, average
+
+#### Peak Memory
+$$
+\text{PeakMem} = \text{max GPU/CPU memory (MB)}
+$$
+- **Target**: < 1000 MB for n ≤ 1000, < 5000 MB for n ≤ 10000
+- **Computation**: memory profiling during inference
+
+#### Convergence Iterations (ONN only)
+$$
+\text{IterCount} = \text{# iterations until tolerance threshold}
+$$
+- **Target**: ≤ 50 for most samples (out of max 100)
+- **Computation**: track iteration count from LOGOS solver
+
+#### Scaling Curve
+$$
+\text{ASR}(n) = f(n_{\text{objects}})
+$$
+- **Metric**: ASR as function of graph size
+- **Target**: ONN should maintain ASR ≥ 80% up to n=10000
+
+---
+
+### (4) Robustness & Generalization
+
+#### Noise Sensitivity
+$$
+\Delta \text{ASR} = \text{ASR}_{\text{clean}} - \text{ASR}_{\text{noisy}}
+$$
+- **Target**: ONN < 10% drop, Transformers < 20% drop (20% noise)
+- **Computation**: compare performance at noise levels 0%, 10%, 20%, 30%
+
+#### Out-of-Distribution Generalization
+$$
+\text{OOD ASR} = \text{ASR on unseen constraint types or object combinations}
+$$
+- **Target**: ONN ≥ 80%, Transformers ≥ 70%
+- **Computation**: test on constraint set $C'$ not seen in training
+
+---
+
+### (5) Temporal & Drift Metrics (T3 only)
+
+#### Drift Detection Metrics
+$$
+\text{TPR} = \frac{\text{# detected shifts}}{\text{# actual shifts}}
+$$
+$$
+\text{FPR} = \frac{\text{# false alarms}}{\text{# non-shift windows}}
+$$
+- **Target**: TPR ≥ 80%, FPR ≤ 5%
+
+#### Detection Delay
+$$
+\text{Delay} = |\hat{t}_{\text{shift}} - t_{\text{shift}}|
+$$
+- **Target**: ≤ 5 steps
+- **Computation**: measure steps from true shift to declared shift
+
+---
+
+## Statistical Reporting
+
+All metrics reported as **mean ± std** over ≥3 seeds.
+
+### Confidence Intervals
+- 95% CI for primary metrics (CSR, ASR, SVR)
+- Computed via bootstrap (1000 resamples)
+
+### Paired Tests
+- Same test instances across models → use paired t-test
+- Null hypothesis: models have equal means
+- Significance level: α = 0.05
+
+### Failure Analysis
+- Qualitative analysis: examples of each failure mode
+- Quantitative: histogram of failure counts by type
+- Ablation sensitivity: which components matter most?
+
+---
+
+## Success Criteria (Pre-Registered)
+
+| Criterion | Target | Evidence |
+|-----------|--------|----------|
+| **Task Coverage** | All 3 tasks (T1, T2, T3) | metrics/ JSON logs |
+| **Baseline Consistency** | Same 5 models (B0, B1, B2, A0, A1) for all tasks | configs/baseline_specs.yaml |
+| **Data Unification** | Single dataset, locked splits | Archive/02_BENCHMARKS/.../DATASET_MANIFEST.txt |
+| **Metric Completeness** | CSR, ASR, SVR, repair cost, drift metrics | scripts/compare_onn_vs_transformer/metrics.py |
+| **Reproducibility** | ≥3 seeds, mean±std reported | results/ JSON with all seeds |
+| **Fairness** | Param count ±20%, training budget matched | Archive/04_REPORTS/.../MODEL_FAIR_COMPARISON.md |
+| **Statistical Rigor** | Paired tests, 95% CI, failure taxonomy | Archive/04_REPORTS/ONN_VS_TRANSFORMER_FINAL_REPORT.md |
+| **Archival** | All artifacts saved with timestamp | Archive/02_BENCHMARKS/onn_vs_transformer/&#123;DATE&#125;/ |
+
+---
+
+## Roadmap: Execution Phases
+
+| Phase | Task | Deliverable | Deadline |
+|-------|------|-------------|----------|
+| **Phase 2** | Implement 5 models (B0, B1, B2, A0, A1) | scripts/compare_onn_vs_transformer/models/ | — |
+| **Phase 3** | Implement all metrics | scripts/compare_onn_vs_transformer/metrics/metrics.py | — |
+| **Phase 4** | Build run.py + sweep.py CLI | scripts/compare_onn_vs_transformer/runners/ | — |
+| **Phase 5** | Execute all experiments (T1, T2, T3, sweeps, robustness) | Archive/02_BENCHMARKS/onn_vs_transformer/&#123;DATE&#125;/ | — |
+| **Phase 6** | Final report + robotics bridge (optional) | Archive/04_REPORTS/ONN_VS_TRANSFORMER_FINAL_REPORT.md | — |
+
+---
+
+## References & Inspiration
+
+- **LOGOS Solver**: Internal; src/onn/ops/logos_solver.py
+- **Transformers**: Vaswani et al. (2017); Graphormer (Li et al., 2021)
+- **Scene Graphs**: Visual Genome; CLEVR (Johnson et al., 2016)
+- **Constraint Satisfaction**: CSP literature (Dechter, Meiri, Pearl)
+
+---
+
+**Status**: ✅ Phase 1 Complete. Proceeding to Phase 2 (Model Implementation).

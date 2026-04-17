@@ -11,14 +11,15 @@ export const metadata: Metadata = {
 };
 
 const partTitles: Record<number, string> = {
-  0: "Part 0 · Soft Cognitive Cohesion (canonical spec)",
+  0: "Part 0 · Soft Cognitive Cohesion",
   1: "Part I · Foundations of RelationWorld",
-  2: "Part II · Main theorems",
+  2: "Part II · Main Theorems & Examples",
   3: "Part III · Cohomology",
   4: "Part IV · Dynamics",
   5: "Part V · Applications",
-  6: "Part VI · Frontiers",
+  6: "Part VI · Frontiers & Open Problems",
   7: "Part VII · Robotics",
+  8: "Appendices",
 };
 
 export default function NotesPage() {

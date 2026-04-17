@@ -1,0 +1,121 @@
+---
+title: "Claim C-0002 — The K-Field Architecture is Necessary"
+slug: claim-c0002-k-field-architecture
+part: 0
+chapter: 4
+section: "Claim C-0002"
+kind: proof
+track: perception
+summary: "The claim that the K-field architecture is structurally necessary for a consistent theory."
+tags: [scc, claim, k-field, architecture, necessity]
+related: [canonical-spec-scc]
+---
+
+## Claim: C-0002 — K-Field Architecture is Necessary for Multi-Formation
+
+> **ID:** C-0002 · **Status:** conditional · **Confidence:** 65% · **Proposed:** 2026-04-10
+> **Evidence:** exp55, exp57, OP-0001, OP-0002 · **Depends on:** T-Kinetic-1, T-Kinetic-2, T-Kinetic-3
+
+## Statement
+
+To realize $K>1$ (multiple simultaneous formations) with independent control over each formation's dynamics, a K-field architecture is necessary: K coupled soft cohesion fields with inter-formation repulsion and spatial localization constraints.
+
+---
+
+## Rationale
+
+**Single-field limitation:** On a single field, K=1 is always energetically global minimum (exp51–exp65). K=2 can exist only as transient, kinetically-trapped metastable state.
+
+**K-field benefit:** K separate fields can each occupy its own K=1 minimum independently, achieving $K>1$ formation without energy catastrophe.
+
+**Control mechanism:** Repulsion between fields prevents unwanted coalescence; coupling parameter $\lambda_{\mathrm{rep}}$ controls formation distance.
+
+---
+
+## Evidence
+
+- **Empirical:** exp55 (well-separated K=2 formations stable under noise), exp57 (closure enhances multi-formation stability)
+- **Theoretical:** T-Persist-K-Sep (well-separated formations persist)
+- **Conditional:** All depends on kinetic framework validating single-formation K=2 metastability (exp81–exp84)
+
+---
+
+## Assumptions
+
+1. **Kinetic framework valid:** Exp82 must confirm Kramers law (if this fails, entire argument collapses)
+2. **Repulsion term well-defined:** Inter-formation distance metric and repulsion strength must be canonically specified
+3. **K is fixed:** Transitions between K values are assumed OUT OF SCOPE (not modeled by K-field)
+
+---
+
+## Limitations
+
+- **Does not explain K=2 emergence itself** — requires separate dynamical mechanism (Option C addresses this)
+- **Does not handle K transitions** — system committed to fixed K; how K changes remains open
+- **Artificial coupling required** — unlike single-field formations, multi-formation requires explicit inter-field terms
+- **Parameter tuning needed** — $\lambda_{\mathrm{rep}}$ must be chosen appropriately for each application
+
+---
+
+## Related Claims
+
+- C-0001: Soft cohesion field is primitive
+- C-0003: K=2 exists as kinetically-trapped metastable state (Option C)
+- C-0004: Repulsion prevents formation coalescence [TBD]
+
+---
+
+## Validation Status
+
+| Criterion | Status | Evidence |
+|-----------|--------|----------|
+| Multi-formation stability | ⚠️ Conditional | exp55: yes, if barriers exist |
+| Repulsion mechanism | ⚠️ Designed | exp57: closure interaction measured |
+| Energy behavior | ✅ Understood | Each field minimizes independently |
+| Temporal persistence | ⚠️ Conditional | T-Persist-K-Sep only for well-separated |
+| Empirical realization | ❌ Not yet | Would need biological/neural instantiation |
+
+**2026-04-16 Phase 3 note (Cycle 14):**
+Current `E-0082` implementation evidence is still proxy-level and scope-limited (no `tau`/`T`/`B`/cross-`K` outputs; reruns blocked by `No Type B base found`). This keeps C-0002 in conditional status and does not upgrade architecture claims into observed-`K` selection evidence.
+
+---
+
+## Confidence Assessment
+
+**Current confidence:** 65% (conditional on kinetic framework validation)
+
+**Factors increasing confidence:**
+- Well-separated formations DO persist (exp55, exp57)
+- Coupling mechanism tested (exp56)
+- Mathematical structure is sound
+
+**Factors decreasing confidence:**
+- Depends entirely on exp82 (Kramers law) — if fails, confidence drops to 0%
+- K-field is somewhat ad-hoc; feels engineered rather than emergent
+- No clear biological instantiation (how would brain implement K fields?)
+
+---
+
+## Blockers for Full Confidence
+
+🔴 **CRITICAL:** exp82 must succeed (Kramers law validation)
+- If $\tau_{\mathrm{empirical}} \approx \tau_{\mathrm{theory}}$: Claim upgrades to 85% confidence
+- If $\tau_{\mathrm{empirical}} \neq \tau_{\mathrm{theory}}$: Claim drops to 0% (framework fails)
+
+🟠 **HIGH:** Need to address K transitions
+- Current: K is fixed
+- Needed: How K changes (if at all)
+
+---
+
+## Next Steps
+
+1. Await exp82 results (May 3, 2026)
+2. If kinetic framework confirmed: upgrade to C-0002-A (well-founded claim)
+3. If kinetic framework fails: abandon C-0002; pursue alternative approaches (Option A or B)
+
+---
+
+**Proposed:** 2026-04-10 (PLAN_0403)  
+**Status Update:** 2026-04-13 (Option C chosen; now conditional)  
+**Critical Decision Point:** 2026-05-03 (exp82 results)

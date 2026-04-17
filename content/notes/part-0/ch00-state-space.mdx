@@ -1,0 +1,308 @@
+---
+title: "Chapter 0 — Formal State Space"
+slug: ch00-state-space
+part: 0
+chapter: 0
+section: "Chapter 0"
+kind: essay
+track: theory
+summary: "Formalises the state space of RelationWorld — the mathematical object describing all possible world configurations and the structure of transitions between them."
+tags: [foundations, state-space, hybrid-dynamics, stratification]
+---
+
+
+> **Motivation**: This chapter formalizes the *state space* of RelationWorld—the mathematical object describing all possible world configurations and the structure of the transitions between them. Chapter 8 defines the *instantaneous world* $\mathfrak{W}_t = (\mathcal{W}_t, \mathfrak{F}_t, \Sigma_t)$; this chapter defines the space in which $\mathfrak{W}_t$ lives as $t$ varies, and how events act on this space.
+
+---
+
+## 0.1 The Raw Parameter Space
+
+### Definition 0.1 (Graph topology)
+
+An **admissible graph topology** is a pair $(n, E)$ where:
+- $n = |V| \ge 1$ is the number of nodes.
+- $E \subseteq V \times V$ is a set of ordered edges, with no self-loops: $(i,i) \notin E$.
+
+The collection of all admissible topologies is denoted:
+$$
+\mathrm{Top} := \{(n, E) : n \in \mathbb{N}_{>0}, \, E \subseteq \{1,\ldots,n\}^2 \setminus \mathrm{diag}\}.
+$$
+### Definition 0.2 (Raw world configuration per topology)
+
+For fixed graph topology $(n,E)$ with $n \ge 1$ and $E \subseteq V_n \times V_n \setminus \{\text{diag}\}$:
+$$
+\boxed{P(n,E) := \mathbb{R}_{\geq 0}^{|E|} \times G^{|E|}}
+$$
+A point $p = (w, g) \in P(n,E)$ is a **raw world configuration**:
+- $w = (w_{ij})_{(i,j) \in E}$ — the edge weights (real numbers $\ge 0$).
+- $g = (g_{ij})_{(i,j) \in E}$ — the edge transits (group elements in $G$, a compact Lie group).
+
+### Notation
+
+For clarity:
+- $P(n,E)$ is the **raw parameter space** on topology $(n,E)$.
+- A point $p \in P(n,E)$ is a **raw configuration**.
+- The pair $(n,E)$ is the **discrete topology index**.
+
+---
+
+## 0.2 The Gauge Group and Its Action
+
+### Definition 0.3 (Gauge group action)
+
+The gauge group $G^n$ acts smoothly on $P(n,E)$ by:
+$$
+\boxed{(h_1, \ldots, h_n) \cdot (w_{ij}, g_{ij}) := \left(w_{ij}, \, h_i \, g_{ij} \, h_j^{-1}\right)}
+$$
+for all $(i,j) \in E$, where $(h_1, \ldots, h_n) \in G^n$.
+
+**Key properties:**
+- The action on weights is **trivial**: $w_{ij}$ is **gauge-invariant**.
+- The action on transits is the **conjugation action** (natural for principal bundles).
+- Two raw configurations $p, p' \in P(n,E)$ are **gauge-equivalent** if $p' = h \cdot p$ for some $h \in G^n$.
+
+---
+
+## 0.3 The Configuration Space (Gauge Quotient)
+
+### Definition 0.4 (Configuration space per topology)
+
+$$
+\boxed{C(n,E) := P(n,E) / G^n}
+$$
+A point $[p] \in C(n,E)$ is a **configuration** (or **world configuration**) on topology $(n,E)$.
+
+Equivalently: two raw configurations $p, p' \in P(n,E)$ represent the same configuration iff they lie in the same $G^n$-orbit.
+
+**Topology and structure:**
+- $C(n,E)$ inherits the quotient topology from $P(n,E)$.
+- For generic (non-degenerate) configurations, the $G^n$-action is free, and $C(n,E)$ is a smooth manifold.
+- For degenerate (flat/reducible) configurations (all $g_{ij} = e$), the stabilizer may be non-trivial, and $C(n,E)$ may have orbifold or stratified structure.
+
+---
+
+## 0.4 The Total State Space (Stratified)
+
+### Definition 0.5 (Total state space)
+
+$$
+\boxed{\mathcal{S} := \bigsqcup_{(n,E) \in \mathrm{Top}} C(n,E)}
+$$
+The **total world state space** is the disjoint union of configuration spaces across all admissible topologies.
+
+**Discrete topology index:** For any state $s \in \mathcal{S}$, there exists a unique topology $(n_s, E_s) \in \mathrm{Top}$ such that $s \in C(n_s, E_s)$. Define:
+$$
+\tau(s) := (n_s, E_s).
+$$
+**Stratification:** $\mathcal{S}$ is naturally stratified: each stratum is $C(n,E)$ for some $(n,E) \in \mathrm{Top}$.
+
+---
+
+## 0.5 Observable Map (Gauge-Invariant Content)
+
+### Definition 0.6 (Observable map)
+
+The **observable map** is:
+$$
+\boxed{\mathrm{Obs} : \mathcal{S} \to \mathrm{Obs-Space}}
+$$
+where:
+$$
+\mathrm{Obs}([p]) := \left( W_{ij}, \, \Omega(\triangle) \right)_{(i,j) \in E, \, \triangle \in T(E)}
+$$
+**Components:**
+- **Weights**: $W_{ij} = (w_{ij} + w_{ji})/2$ (symmetrized, gauge-invariant).
+- **Holonomies**: for each triangle $\triangle = (i,j,k)$ in the graph:
+  $$\Omega(\triangle) := g_{ij} \, g_{jk} \, g_{ki} \in G.$$
+  This is gauge-invariant: $(h_i g_{ij} h_j^{-1})(h_j g_{jk} h_k^{-1})(h_k g_{ki} h_i^{-1}) = g_{ij} g_{jk} g_{ki}$ (independent of $h$).
+
+**Injectivity:** Two configurations $[p], [p'] \in C(n,E)$ are equal iff they have the same observable content (weights and holonomies). Thus $\mathrm{Obs}$ is injective when restricted to a fixed topology.
+
+---
+
+## 0.6 Event Maps
+
+### Definition 0.7 (Primitive event maps)
+
+The six primary events (from Chapter 14) induce maps on the state space:
+
+#### Event 1: DEFORM(i,j, δ)
+Updates edge parameters within fixed topology:
+$$
+\mathrm{DEFORM}(i,j,\delta) : C(n,E) \to C(n,E)
+$$
+given by $(w_{ij}, g_{ij}) \mapsto (w_{ij} + \delta w, g_{ij} \cdot \exp(\delta \xi))$ for perturbation vectors $\delta w, \delta \xi$.
+
+**Constraint:** The perturbation must not drive $w_{ij}$ to zero (i.e., $(i,j)$ must remain in the edge support $E$).
+
+#### Event 2: CONTACT(i,j)
+Adds a new edge (activates dormant pair):
+$$
+\mathrm{CONTACT}(i,j) : C(n, E) \to C(n, E \cup \{(i,j), (j,i)\})
+$$
+given by: new edge $(i,j)$ is initialized with $w_{ij} = \varepsilon > 0$ (small) and $g_{ij} = e$ (identity).
+
+**Constraint:** $(i,j) \notin E$ initially (no duplicate edges).
+
+#### Event 3: BIRTH(v)
+Introduces a new node and initial edges:
+$$
+\mathrm{BIRTH}(v) : C(n, E) \to C(n+1, E')
+$$
+where $E' = E \cup \{(v, j) : j \in J\}$ for some $J \subseteq V_n$ (specified a priori or by initialization rule).
+
+**Initialization:** New edges from $v$ start with small weight and identity transit.
+
+#### Event 4: DEATH(v)
+Removes a node and all its incident edges:
+$$
+\mathrm{DEATH}(v) : C(n, E) \to C(n-1, E \setminus E_v)
+$$
+where $E_v := \{(i,j) \in E : i = v \text{ or } j = v\}$.
+
+**Constraint:** $v$ must be a node in the current configuration.
+
+#### Event 5: SPLIT(F)
+**Detected transition** (not a primitive operation): When the Cheeger conductance of a fruit $F$ equals the threshold $\phi_t(F) = \theta$, a fruit may split into two. This is a consequence of continuous DEFORM events and is logged in the evidence but does not correspond to a single map.
+
+#### Event 6: MERGE(F₁, F₂)
+**Detected transition** (not a primitive operation): When inter-fruit coupling weights exceed a threshold, two fruits unite. Again, this is a detected consequence of DEFORM.
+
+### Definition 0.8 (Discrete topology transitions)
+
+The events BIRTH, DEATH, and CONTACT induce transitions between strata:
+$$
+\tau(s_t) = (n_t, E_t) \xrightarrow{e_t} (n_{t+1}, E_{t+1}) = \tau(s_{t+1})
+$$
+for event $e_t \in \{\mathrm{BIRTH}, \mathrm{DEATH}, \mathrm{CONTACT}\}$.
+
+---
+
+## 0.7 The Existence Triple
+
+### Definition 0.9 (Existence per fruit)
+
+Recall from Chapter 7:
+$$
+\mathrm{Existence}(F, t) := ([A_{\infty}], \Sigma_t(F), \mathbf{e}_t(F))
+$$
+where:
+- $[A_\infty] \in \mathcal{M}(F, \Sigma_t(F))$ is the canonical (optimal-gauge) connection on the fruit interior.
+- $\Sigma_t(F)$ is the door set (Chapter 6).
+- $\mathbf{e}_t(F)$ is the door energy.
+
+**Gauge-invariance:** The existence triple is gauge-invariant by Theorem E (Chapter 7).
+
+---
+
+## 0.8 Hybrid Dynamical System Formulation
+
+### Definition 0.10 (World evolution as hybrid system)
+
+The **world evolution system** is a hybrid dynamical system $(Q, X, f, G_e, R_e)_{e \in E}$ where:
+
+| Component | Definition |
+|-----------|-----------|
+| **Discrete state space** $Q$ | $Q := \mathrm{Top}$ (all topologies) |
+| **Continuous state fiber** $X(q)$ | $X(q) := P(n_q, E_q)$ for $q = (n_q, E_q)$ |
+| **Continuous flow** $f_q$ | $f_q : X(q) \to T X(q)$ — governed by Yang--Mills gradient flow (Ch. 13) and exogenous DEFORM forces |
+| **Guard set** $G_e$ | For each event $e \in \{\mathrm{DEFORM}, \mathrm{CONTACT}, \mathrm{BIRTH}, \mathrm{DEATH}\}$, a subset of $X(q)$ triggering transition |
+| **Reset map** $R_e$ | $R_e : X(q) \to X(q')$ where $q'$ is the post-event topology |
+
+**Discrete events as guards:**
+- **Guard $G_{\mathrm{CONTACT}}$**: triggered by external command to activate edge $(i,j)$.
+- **Guard $G_{\mathrm{BIRTH}}$**: triggered by external command to introduce node $v$.
+- **Guard $G_{\mathrm{DEATH}}$**: triggered by external command to remove node $v$.
+- **Guard $G_{\mathrm{SPLIT/MERGE}}$**: crossing of $\{\phi(F) = \theta\}$ (detected threshold).
+
+**Reset semantics:**
+- After DEFORM, the topology $(n,E)$ is unchanged; only parameters update.
+- After CONTACT, BIRTH, DEATH, the topology changes; initial conditions for new edges/nodes are specified.
+
+---
+
+## 0.9 Evidence Extraction Functional
+
+### Definition 0.11 (Evidence/explanation map)
+
+Given a state transition from $s_t$ to $s_{t+1}$ triggered by event $e_t$, the **evidence extraction functional** is:
+$$
+\boxed{\mathrm{Ev}(s_t, s_{t+1}, e_t) := (e_t, \Delta W, \Delta \Omega, \Delta \mathfrak{F}, \Delta \Sigma)}
+$$
+where:
+- $e_t$ — the event type (DEFORM, CONTACT, BIRTH, DEATH, SPLIT, MERGE, or a combination).
+- $\Delta W := \{(i,j) : W_t(i,j) \ne W_{t+1}(i,j)\}$ — changed edge weights.
+- $\Delta \Omega := \{\triangle : \Omega_t(\triangle) \ne \Omega_{t+1}(\triangle)\}$ — changed holonomies.
+- $\Delta \mathfrak{F} := \mathfrak{F}_t \triangle \mathfrak{F}_{t+1}$ — birth/death of fruits (symmetric difference).
+- $\Delta \Sigma := \{(F, i) : i \in \Sigma_t(F) \triangle \Sigma_{t+1}(F)\}$ — doors created/removed per fruit.
+
+**Property:** The evidence is sufficient to reconstruct the transition (up to gauge): the state $s_{t+1}$ and the diff $\mathrm{Ev}(s_t, s_{t+1}, e_t)$ together determine the path taken.
+
+---
+
+## 0.10 Summary and Dependencies
+
+**Key definitions in order:**
+
+1. **Graph topology** $(n, E)$ — indexing the stratification.
+2. **Raw parameter space** $P(n,E) = \mathbb{R}_{\ge 0}^{|E|} \times G^{|E|}$ — the gauge-dependent data.
+3. **Gauge action** $G^n$ on $P(n,E)$ — conjugation on transits, trivial on weights.
+4. **Configuration space** $C(n,E) = P(n,E) / G^n$ — the gauge-invariant semantic space.
+5. **Total state space** $\mathcal{S} = \bigsqcup_{(n,E)} C(n,E)$ — all possible world states.
+6. **Observable map** $\mathrm{Obs} : \mathcal{S} \to \mathrm{Obs-Space}$ — extracting gauge-invariant weights and holonomies.
+7. **Event maps** — transitions within and between strata.
+8. **Hybrid dynamics** — continuous evolution punctuated by discrete topology transitions.
+9. **Evidence extraction** — explaining transitions.
+
+---
+
+## 0.11 Relationship to Chapter 8 (World)
+
+**Chapter 8** defines the instantaneous world:
+$$
+\mathfrak{W}_t = (\mathcal{W}_t, \mathfrak{F}_t, \Sigma_t)
+$$
+where $\mathcal{W}_t$ is the relational field (a gauge class) at time $t$.
+
+**This chapter** provides the global structure:
+- $\mathcal{W}_t$ is an element of $C(n_t, E_t)$ for the topology $(n_t, E_t)$ active at time $t$.
+- The world evolves through the stratified state space $\mathcal{S}$.
+- Fruits $\mathfrak{F}_t$ and doors $\Sigma_t$ are derived from $\mathcal{W}_t$ via the procedures in Chapters 4--6.
+
+---
+
+## 0.12 Open Questions
+
+Six foundational questions remain:
+
+**Q1 (YM Uniqueness for Non-Abelian G):**
+For $G = \mathrm{SU}(2)$, is the minimizer of the Yang--Mills energy $\mathcal{E}_{F^\circ}(h)$ unique? If not, how does the lack of uniqueness affect the existence triple definition?
+
+**Q2 (Event Completeness):**
+Are the six events \{DEFORM, CONTACT, BIRTH, DEATH, SPLIT, MERGE\} complete and minimal? Can every admissible trajectory be uniquely decomposed into a sequence of these events?
+
+**Q3 (Inter-Stratum Topology):**
+Is there a natural (e.g., metric or diffeological) structure on the disjoint union $\bigsqcup_{(n,E)} C(n,E)$ that makes BIRTH, DEATH, CONTACT continuous (or at least measurable in a meaningful sense)?
+
+**Q4 (Evidence Completeness):**
+Does the evidence functional $\mathrm{Ev}(\cdot, \cdot, \cdot)$ capture sufficient information to uniquely identify which event occurred and certify that alternative events were impossible?
+
+**Q5 (Fruit Structure as Functor):**
+Can the fruit set $\mathfrak{F}_t$ be viewed as a continuous functor on the category of weighted graphs? What are its continuity properties with respect to the topology on $C(n,E)$?
+
+**Q6 (Minimal Variables):**
+Is the pair $(w_{ij}, g_{ij})$ the minimal sufficient statistic for the world, or can the system be more parsimoniously described using the existence triples alone?
+
+---
+
+## 0.13 Reading Notes
+
+- This chapter is **logically prior** to Chapters 1--8 in that it provides the global stage. In practice, readers should:
+  1. Read Chapters 1--8 first (they develop intuition).
+  2. Return here to understand the formal state space.
+  3. Continue to Chapters 9--14 with the state space structure in mind.
+
+- The **hybrid dynamical system formulation** (Definition 0.10) makes precise the phrase "smooth dynamics punctuated by discrete topological events" from Chapter 14.
+
+- The **stratified structure** of $\mathcal{S}$ is the mathematical reason why the world evolves as a hybrid system, not as a single smooth flow.
+

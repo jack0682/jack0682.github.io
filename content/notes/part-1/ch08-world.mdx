@@ -77,18 +77,22 @@ The dependency is $\mathcal{W}_t\to\mathfrak{F}_t\to\Sigma_t$, with no backward 
 
 **(i)** Track the perturbation of numerator and denominator separately.
 
-$$|\Delta_{\mathrm{cut}}| = \Bigl|\sum_{i\in F}\sum_{j\notin F}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|\bar F|\cdot\|\delta W\|_\infty.$$
-
-$$|\Delta_{\mathrm{vol}}| = \Bigl|\sum_{i\in F}\sum_{j\in V}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|V|\cdot\|\delta W\|_\infty.$$
-
+$$
+|\Delta_{\mathrm{cut}}| = \Bigl|\sum_{i\in F}\sum_{j\notin F}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|\bar F|\cdot\|\delta W\|_\infty.
+$$
+$$
+|\Delta_{\mathrm{vol}}| = \Bigl|\sum_{i\in F}\sum_{j\in V}(W'_t(i,j)-W_t(i,j))\Bigr| \le |F|\cdot|V|\cdot\|\delta W\|_\infty.
+$$
 The fractional perturbation of $\phi_t(F)=\mathrm{cut}/\mathrm{vol}$:
-$$\phi'_t(F)-\phi_t(F) = \frac{\mathrm{cut}'\cdot\mathrm{vol}-\mathrm{cut}\cdot\mathrm{vol}'}{\mathrm{vol}'\cdot\mathrm{vol}}.$$
-
+$$
+\phi'_t(F)-\phi_t(F) = \frac{\mathrm{cut}'\cdot\mathrm{vol}-\mathrm{cut}\cdot\mathrm{vol}'}{\mathrm{vol}'\cdot\mathrm{vol}}.
+$$
 The numerator is bounded by $\|\delta W\|_\infty\cdot|V|^2\cdot C\cdot\mathrm{vol}_t(F)$. The denominator $\ge\mathrm{vol}_t(F)^2/2$ for small perturbations.
 
 Hence $|\phi'-\phi|\le C_1\cdot\|\delta W\|_\infty\cdot|V|^2/\mathrm{vol}_t(F)$, where:
-$$C_1 = \frac{2(1+\theta)}{1}\le 4.$$
-
+$$
+C_1 = \frac{2(1+\theta)}{1}\le 4.
+$$
 **(ii)** Set $\delta_0:=\epsilon\cdot\mathrm{vol}_t(F)/(C_1\cdot|V|^2)$. Then $|\phi'-\phi|<\epsilon$, so $\phi'_t(F)<\theta$. The volume condition $\mathrm{vol}_t(F)\le\frac{1}{2}\mathrm{vol}_t(V)$ is preserved similarly. $\square$
 
 **Explicit constant.** $C_1\le 4$ suffices in all cases. For fruits with $\phi_t(F)\ll\theta$, the stability margin $\epsilon=\theta-\phi_t(F)$ is large.
