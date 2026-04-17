@@ -1,104 +1,131 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { TeX } from "@/components/mdx/TeX";
-import { recentWriting, researchTracks } from "@/lib/content";
+import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { formatDate, toIsoDate } from "@/lib/format";
 
 export default function Home() {
   const recent = recentWriting.slice(0, 4);
   const tracks = researchTracks.slice(0, 3);
+  const latestAccepted = papers.find((p) => p.status === "published" || p.status === "accepted");
 
   return (
     <Container width="wide">
-      {/* hero */}
+      {/* ── hero: identity first ──────────────────────────── */}
       <section className="mt-20 max-w-[48rem] md:mt-32">
-        <p className="mb-6 sci-eyebrow text-xs text-[var(--color-accent)]">
-          <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
-            §
-          </span>
-          Research · 2026
-        </p>
-        <h1 className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-[-0.02em] text-[var(--color-ink)]">
-          A topology of
-          <br />
-          <em className="font-display italic text-[var(--color-accent)]">
-            perception.
-          </em>
+        <h1 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-[-0.02em] text-[var(--color-ink)]">
+          Jaehong Oh.
         </h1>
-        <p className="mt-10 max-w-[36rem] text-lg leading-relaxed text-[var(--color-muted)]">
-          Notes, proofs, and experiments from an ongoing program on{" "}
-          <span className="text-[var(--color-ink)]">
-            Ontology Neural Networks
-          </span>
-          , cohomological structure in learned representations, and the
-          mathematics of delay-robust embodied control.
+        <p className="mt-4 sci-eyebrow text-xs text-[var(--color-accent)]">
+          Robotics · AI · Mathematics
         </p>
-        <p className="mt-5 max-w-[36rem] text-base leading-relaxed text-[var(--color-muted)]">
-          The ultimate target is a single{" "}
-          <Link
-            href="/notes/part-0/integrated-architecture/"
-            className="text-[var(--color-ink)] underline decoration-[var(--color-accent)]/40 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
-          >
-            cognitive-reasoning architecture
-          </Link>{" "}
-          unifying Soft Cognitive Cohesion and Ontology Neural Networks.
+        <p className="mt-8 max-w-[38rem] text-lg leading-relaxed text-[var(--color-muted)]">
+          Robotics engineer and AI researcher working at the intersection of{" "}
+          <span className="text-[var(--color-ink)]">
+            topological reasoning
+          </span>
+          ,{" "}
+          <span className="text-[var(--color-ink)]">
+            cohomological structure
+          </span>
+          , and{" "}
+          <span className="text-[var(--color-ink)]">
+            delay-robust embodied control
+          </span>
+          . Building toward a unified cognitive-reasoning architecture for
+          autonomous systems.
         </p>
 
-        <div className="mt-10 flex flex-col gap-4 text-sm font-medium sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-5">
+        <div className="mt-8 flex flex-col gap-4 text-sm font-medium sm:flex-row sm:flex-wrap sm:gap-5">
           <Link
-            href="/research/"
+            href="/about/"
             className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            Enter the research →
+            About me →
           </Link>
           <Link
-            href="/journal/"
+            href="/research/"
             className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
           >
-            Read the journal
+            Research programme
+          </Link>
+          <Link
+            href="/papers/"
+            className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
+          >
+            Papers
           </Link>
         </div>
-
-        {/* decorative formula row — purely typographic, no content load.
-            Kept behind the muted colour and aria-hidden so screen readers
-            skip it. Axis-tick strip sits beneath as a notebook motif. */}
-        <div
-          aria-hidden
-          className="sci-formula-row mt-16 select-none text-xs text-[var(--color-subtle)]"
-        >
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <TeX expr="\int_{X} \omega \;=\; \langle [\omega], [X] \rangle" />
-            <span className="opacity-60">·</span>
-            <TeX expr="H^{n}(X;\mathbb{R}) \;\cong\; \mathrm{Hom}(H_{n},\mathbb{R})" />
-            <span className="opacity-60">·</span>
-            <TeX expr="\kappa \cdot u_{t} \longrightarrow \Phi_{t}" />
-          </div>
-          <div className="sci-axis-ticks mt-3 h-2 opacity-60" />
-        </div>
-
-        {/* accepted badge — quietly announces the latest acceptance */}
-        <Link
-          href="/papers/onn-ortsf-2026/"
-          className="group mt-16 flex max-w-[36rem] items-start gap-4 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
-        >
-          <span className="mt-[3px] font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
-            Recently accepted
-          </span>
-          <span className="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
-            <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-              Ontology Neural Network and ORTSF
-            </span>
-            {" — "}
-            <em className="text-[var(--color-muted)]">
-              Int. J. Topol.
-            </em>
-            , April 2026.
-          </span>
-        </Link>
       </section>
 
-      {/* recent writing */}
-      <section className="mt-32 border-t border-[var(--color-rule)] pt-10">
+      {/* ── highlights ────────────────────────────────────── */}
+      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
+        <p className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+          Highlights
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* latest paper badge */}
+          {latestAccepted && (
+            <Link
+              href={latestAccepted.permalink}
+              className="group flex flex-col gap-2 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+            >
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
+                {latestAccepted.status === "accepted" ? "Recently accepted" : "Latest paper"}
+              </span>
+              <span className="text-sm leading-relaxed text-[var(--color-muted)]">
+                <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                  {latestAccepted.title.length > 60
+                    ? latestAccepted.title.slice(0, 57) + "..."
+                    : latestAccepted.title}
+                </span>
+                {latestAccepted.venue && (
+                  <>
+                    {" — "}
+                    <em>{latestAccepted.venue}</em>
+                    {`, ${latestAccepted.year}`}
+                  </>
+                )}
+              </span>
+            </Link>
+          )}
+
+          {/* research milestone */}
+          <Link
+            href="/scc/"
+            className="group flex flex-col gap-2 border-l-2 border-[var(--color-rule)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+              Research programme
+            </span>
+            <span className="text-sm leading-relaxed text-[var(--color-muted)]">
+              <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                Soft Cognitive Cohesion
+              </span>
+              {" — 43 theorems proved, canonical spec at v2.1."}
+            </span>
+          </Link>
+
+          {/* ONN hub */}
+          <Link
+            href="/onn/"
+            className="group flex flex-col gap-2 border-l-2 border-[var(--color-rule)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+              Architecture
+            </span>
+            <span className="text-sm leading-relaxed text-[var(--color-muted)]">
+              <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                Ontology Neural Networks
+              </span>
+              {" — topology-preserving learned representations + ORTSF control."}
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ── recent writing ────────────────────────────────── */}
+      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
         <div className="mb-10 flex items-baseline justify-between">
           <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Recent writing
@@ -143,11 +170,11 @@ export default function Home() {
         )}
       </section>
 
-      {/* research tracks preview */}
+      {/* ── research programme ────────────────────────────── */}
       <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
-        <div className="mb-10 flex items-baseline justify-between">
+        <div className="mb-4 flex items-baseline justify-between">
           <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-            Threads
+            Research programme
           </p>
           <Link
             href="/research/"
@@ -156,6 +183,27 @@ export default function Home() {
             All threads →
           </Link>
         </div>
+        <p className="mb-10 max-w-[38rem] text-sm leading-relaxed text-[var(--color-muted)]">
+          An ongoing programme on the{" "}
+          <em className="text-[var(--color-ink)]">topology of perception</em>
+          {" — "}from cohomological field theory to embodied robotic control.
+        </p>
+
+        {/* decorative formula row */}
+        <div
+          aria-hidden
+          className="mb-10 select-none text-xs text-[var(--color-subtle)]"
+        >
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <TeX expr="\int_{X} \omega \;=\; \langle [\omega], [X] \rangle" />
+            <span className="opacity-60">·</span>
+            <TeX expr="H^{n}(X;\mathbb{R}) \;\cong\; \mathrm{Hom}(H_{n},\mathbb{R})" />
+            <span className="opacity-60">·</span>
+            <TeX expr="\kappa \cdot u_{t} \longrightarrow \Phi_{t}" />
+          </div>
+          <div className="sci-axis-ticks mt-3 h-2 opacity-60" />
+        </div>
+
         <ul className="grid gap-6 md:grid-cols-3">
           {tracks.map((track) => (
             <li key={track.slug}>
