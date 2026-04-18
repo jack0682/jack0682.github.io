@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { TeX } from "@/components/mdx/TeX";
 import { HeroReveal } from "@/components/motion/HeroReveal";
+import { LivingOntology } from "@/components/motion/LivingOntology";
 import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { toIsoDate } from "@/lib/format";
 
@@ -13,7 +14,8 @@ export default function Home() {
   return (
     <Container width="wide">
       {/* ── hero: identity first ──────────────────────────── */}
-      <section className="relative mt-20 max-w-[48rem] md:mt-32">
+      <section className="relative mt-20 md:mt-32 lg:grid lg:grid-cols-[minmax(0,48rem)_minmax(0,1fr)] lg:gap-12 lg:items-start">
+      <div className="relative max-w-[48rem]">
         {/* marginal χ — visible only on wide viewports, quiet */}
         <span
           aria-hidden
@@ -93,6 +95,12 @@ export default function Home() {
             </div>,
           ]}
         </HeroReveal>
+      </div>
+
+        {/* right column: living ontology graph (lg+ only) */}
+        <div className="mt-16 hidden lg:mt-0 lg:block">
+          <LivingOntology className="w-full max-w-[34rem]" />
+        </div>
       </section>
 
       {/* ── highlights ────────────────────────────────────── */}
