@@ -27,8 +27,10 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
     <>
       {/* track tabs */}
       {tracks.length > 0 && (
-        <div className="mb-8 flex flex-wrap gap-2">
+        <div role="tablist" aria-label="Filter by research track" className="mb-8 flex flex-wrap gap-2">
           <button
+            role="tab"
+            aria-selected={active === null}
             onClick={() => setActive(null)}
             className={`px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
               active === null
@@ -41,6 +43,8 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
           {tracks.map((t) => (
             <button
               key={t}
+              role="tab"
+              aria-selected={active === t}
               onClick={() => setActive(t)}
               className={`px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
                 active === t
@@ -60,7 +64,7 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
           No entries for this track.
         </p>
       ) : (
-        <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+        <ul role="tabpanel" className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
           {filtered.map((entry) => (
             <li key={entry.slug}>
               <Link

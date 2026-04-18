@@ -5,6 +5,8 @@ import { Sidenote, SidenoteRef } from "./Sidenote";
 import { Figure } from "./Figure";
 import { Callout } from "./Callout";
 import { Equation } from "./Equation";
+import { Remark } from "./Remark";
+import { Example } from "./Example";
 
 /**
  * Components exposed into the MDX scope. MDX authors can reference
@@ -21,4 +23,6 @@ export const mdxComponents: Record<
   Figure: Figure as ComponentType<Record<string, unknown>>,
   Callout: Callout as ComponentType<Record<string, unknown>>,
   Equation: Equation as ComponentType<Record<string, unknown>>,
+  Remark: Remark as ComponentType<Record<string, unknown>>,
+  Example: Example as ComponentType<Record<string, unknown>>,
 };

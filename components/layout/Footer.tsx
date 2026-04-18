@@ -20,12 +20,14 @@ const cols = [
       { href: "/papers/", label: "Papers" },
       { href: "/journal/", label: "Journal" },
       { href: "/notes/", label: "Notes" },
+      { href: "/tags/", label: "Tags" },
     ],
   },
   {
     heading: "Elsewhere",
     links: [
       { href: "https://github.com/jack0682", label: "GitHub" },
+      { href: "/feed.xml", label: "RSS Feed" },
       { href: "/about/", label: "About & CV" },
     ],
   },

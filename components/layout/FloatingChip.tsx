@@ -37,6 +37,16 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
     setOpen(false);
   }, [pathname]);
 
+  // Close on ESC
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const section = useMemo<Section | null>(
     () => deriveSection(pathname, items),
     [pathname, items],

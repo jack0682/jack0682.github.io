@@ -60,9 +60,9 @@ export default function Home() {
 
       {/* ── highlights ────────────────────────────────────── */}
       <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
-        <p className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+        <h2 className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Highlights
-        </p>
+        </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* latest paper badge */}
           {latestAccepted && (
@@ -127,9 +127,9 @@ export default function Home() {
       {/* ── recent writing ────────────────────────────────── */}
       <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
         <div className="mb-10 flex items-baseline justify-between">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+          <h2 className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Recent writing
-          </p>
+          </h2>
           <Link
             href="/journal/"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
@@ -173,9 +173,9 @@ export default function Home() {
       {/* ── research programme ────────────────────────────── */}
       <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
         <div className="mb-4 flex items-baseline justify-between">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+          <h2 className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Research programme
-          </p>
+          </h2>
           <Link
             href="/research/"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"

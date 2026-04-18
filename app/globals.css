@@ -140,6 +140,10 @@ html {
   padding: 0.25rem 0;
 }
 
+.prose :where(.katex-display) {
+  padding-right: 1rem;
+}
+
 /* inline math should never force horizontal scroll on the page */
 .katex { white-space: nowrap; }
 
@@ -255,6 +259,13 @@ body {
 .prose :where(code):not(pre code) {
   font-feature-settings: "tnum", "lnum";
   font-variant-numeric: tabular-nums;
+}
+
+/* ── blockquote styling ──────────────────────────────────────── */
+.prose :where(blockquote) {
+  background: var(--color-surface);
+  border-radius: 0.25rem;
+  padding: 1rem 1.25rem;
 }
 
 /* ── reduced-motion: quiet the animations ─────────────────────── */

@@ -110,8 +110,9 @@ export function TOC({ toc }: { toc: TocItem[] }) {
         <button
           onClick={() => setDrawerOpen((v) => !v)}
           aria-label="Toggle table of contents"
+          aria-expanded={drawerOpen}
           className={cn(
-            "fixed bottom-6 left-6 z-40 flex h-10 items-center gap-2 rounded-full border px-4 text-xs font-medium shadow-md transition-colors",
+            "fixed bottom-6 left-6 z-50 flex h-10 items-center gap-2 rounded-full border px-4 text-xs font-medium shadow-md transition-colors",
             drawerOpen
               ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-white"
               : "border-[var(--color-rule)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:text-[var(--color-ink)]",

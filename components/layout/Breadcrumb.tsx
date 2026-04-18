@@ -30,39 +30,41 @@ export function Breadcrumb({
     <nav
       aria-label="Breadcrumb"
       className={cn(
-        "-mt-4 mb-6 flex flex-wrap items-center gap-x-1.5 gap-y-1",
+        "-mt-4 mb-6",
         "font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--color-subtle)]",
         className,
       )}
     >
-      {items.map((c, i) => {
-        const last = i === items.length - 1;
-        const content = c.href && !last ? (
-          <Link
-            href={c.href}
-            className="transition-colors hover:text-[var(--color-accent)]"
-          >
-            {c.label}
-          </Link>
-        ) : (
-          <span className={last ? "text-[var(--color-muted)]" : ""}>
-            {c.label}
-          </span>
-        );
-        return (
-          <span key={`${c.label}-${i}`} className="inline-flex items-center">
-            {content}
-            {!last && (
-              <ChevronRight
-                size={12}
-                strokeWidth={1.5}
-                aria-hidden
-                className="mx-1.5 opacity-60"
-              />
-            )}
-          </span>
-        );
-      })}
+      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+        {items.map((c, i) => {
+          const last = i === items.length - 1;
+          const content = c.href && !last ? (
+            <Link
+              href={c.href}
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              {c.label}
+            </Link>
+          ) : (
+            <span className={last ? "text-[var(--color-muted)]" : ""}>
+              {c.label}
+            </span>
+          );
+          return (
+            <li key={`${c.label}-${i}`} className="inline-flex items-center">
+              {content}
+              {!last && (
+                <ChevronRight
+                  size={12}
+                  strokeWidth={1.5}
+                  aria-hidden
+                  className="mx-1.5 opacity-60"
+                />
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }

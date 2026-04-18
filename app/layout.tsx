@@ -41,9 +41,15 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Jaehong Oh — Research",
     locale: "en_US",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh — Research" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: ["/og-default.png"] },
   robots: { index: true, follow: true },
+  alternates: {
+    types: {
+      "application/atom+xml": "/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -56,11 +62,17 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <RouteProgress />
           <ScrollProgress />
           <Masthead />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <CommandPalette items={searchIndex} />
           <FloatingChip items={searchIndex} />

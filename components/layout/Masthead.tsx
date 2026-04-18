@@ -11,6 +11,7 @@ const nav = [
   { href: "/papers/", label: "Papers" },
   { href: "/journal/", label: "Journal" },
   { href: "/notes/", label: "Notes" },
+  { href: "/tags/", label: "Tags" },
   { href: "/about/", label: "About" },
 ];
 

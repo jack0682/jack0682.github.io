@@ -79,7 +79,7 @@ export function RelatedDocs({
       aria-label="Related documents"
       className={cn(
         "mt-16 border-t border-[var(--color-rule)] pt-10",
-        "grid gap-10 md:grid-cols-3 md:gap-8",
+        "grid gap-10 md:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] md:gap-8",
         className,
       )}
     >

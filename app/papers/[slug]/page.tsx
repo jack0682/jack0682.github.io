@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
+import { CopyBibtexButton } from "@/components/layout/CopyBibtexButton";
 import { TOC } from "@/components/layout/TOC";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
@@ -24,6 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: paper.title,
     description: paper.abstract.slice(0, 200),
+    openGraph: {
+      title: paper.title,
+      description: paper.abstract.slice(0, 200),
+      type: "article",
+      authors: paper.authors,
+    },
   };
 }
 
@@ -131,7 +138,7 @@ export default async function PaperPage({ params }: Props) {
           )}
         </header>
 
-        <section className="border-t border-[var(--color-rule)] pt-10">
+        <section className="border-t border-[var(--color-rule)] pt-10 pb-10 -mx-4 px-4 bg-[var(--color-surface)]/50 rounded">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Abstract
           </p>
@@ -148,6 +155,20 @@ export default async function PaperPage({ params }: Props) {
           relatedNotes={relatedNotes}
           citingJournal={citingJournal}
         />
+
+        {paper.bibtex && (
+          <section className="mt-12 border-t border-[var(--color-rule)] pt-8">
+            <div className="flex items-baseline justify-between">
+              <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+                BibTeX
+              </p>
+              <CopyBibtexButton bibtex={paper.bibtex} />
+            </div>
+            <pre className="mt-4 overflow-x-auto rounded border border-[var(--color-rule)] bg-[var(--color-surface)] p-4 font-mono text-xs leading-relaxed text-[var(--color-muted)]">
+              {paper.bibtex}
+            </pre>
+          </section>
+        )}
       </Container>
     </>
   );

@@ -250,28 +250,3 @@ function Placeholder({ text }: { text: string }) {
   );
 }
 
-function FuturePlaceholder({
-  label,
-  note,
-}: {
-  label: string;
-  note: string;
-}) {
-  return (
-    <li className="py-5 opacity-70">
-      <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-48 md:shrink-0">
-          Draft
-        </span>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-display text-lg leading-snug tracking-tight text-[var(--color-subtle)] sm:text-xl">
-            {label}
-          </h3>
-          <p className="mt-1 text-sm italic text-[var(--color-subtle)]">
-            {note}
-          </p>
-        </div>
-      </div>
-    </li>
-  );
-}
