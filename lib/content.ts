@@ -143,6 +143,18 @@ export function notesForPart(part: number) {
     );
 }
 
+/** Previous and next notes within the same part. */
+export function prevNextInPart(slug: string) {
+  const note = allNotes.find((n) => n.slug === slug);
+  if (!note) return { prev: null, next: null };
+  const siblings = notesForPart(note.part);
+  const idx = siblings.findIndex((n) => n.slug === slug);
+  return {
+    prev: idx > 0 ? siblings[idx - 1] : null,
+    next: idx < siblings.length - 1 ? siblings[idx + 1] : null,
+  };
+}
+
 /**
  * Look up cross-references for a given note/paper/journal slug.
  *
@@ -226,3 +238,52 @@ export const onnHub = (() => {
     integrationNote,
   };
 })();
+
+/* ──────────────────────────────────────────────────────────────
+   Tag index.
+   Collects every tag used across notes, papers, journal, and ONN
+   docs into a sorted array of { tag, count, items }.
+   ────────────────────────────────────────────────────────────── */
+
+export type TaggedItem = {
+  kind: "note" | "paper" | "journal" | "onn";
+  title: string;
+  permalink: string;
+  date?: string;
+  summary?: string;
+};
+
+export const tagIndex = (() => {
+  const map = new Map<string, TaggedItem[]>();
+
+  const push = (tag: string, item: TaggedItem) => {
+    const bucket = map.get(tag) ?? [];
+    bucket.push(item);
+    map.set(tag, bucket);
+  };
+
+  for (const n of allNotes) {
+    for (const t of n.tags) push(t, { kind: "note", title: n.title, permalink: n.permalink, summary: n.summary });
+  }
+  for (const p of papers) {
+    for (const t of p.tags) push(t, { kind: "paper", title: p.title, permalink: p.permalink, date: p.date, summary: p.abstract.slice(0, 160) });
+  }
+  for (const j of journalEntries) {
+    for (const t of j.tags) push(t, { kind: "journal", title: j.title, permalink: j.permalink, date: j.date, summary: j.summary });
+  }
+  for (const d of onnAllDocs) {
+    for (const t of d.tags) push(t, { kind: "onn", title: d.title, permalink: d.permalink, summary: d.summary });
+  }
+
+  return [...map.entries()]
+    .map(([tag, items]) => ({ tag, count: items.length, items }))
+    .sort((a, b) => b.count - a.count);
+})();
+
+/** All unique tags sorted by count descending. */
+export const allTags = tagIndex.map((t) => t.tag);
+
+/** Items for a specific tag. */
+export function itemsForTag(tag: string) {
+  return tagIndex.find((t) => t.tag === tag)?.items ?? [];
+}

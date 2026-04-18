@@ -53,8 +53,26 @@ export default async function PaperPage({ params }: Props) {
     j.refs?.includes(paper.slug),
   );
 
+  /* ── JSON-LD structured data (schema.org/ScholarlyArticle) ────── */
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: paper.title,
+    author: paper.authors.map((a) => ({ "@type": "Person", name: a })),
+    datePublished: paper.date,
+    abstract: paper.abstract,
+    ...(paper.doi && { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: paper.doi } }),
+    ...(paper.arxiv && { url: paper.arxiv }),
+    ...(paper.venue && { isPartOf: { "@type": "Periodical", name: paper.venue } }),
+    publisher: { "@type": "Organization", name: paper.venue ?? "Self-published" },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TOC toc={paper.toc} />
       <Container width="prose">
         <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
