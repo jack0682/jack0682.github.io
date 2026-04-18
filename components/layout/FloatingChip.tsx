@@ -80,11 +80,10 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
         onClick={() => setOpen((v) => !v)}
         aria-label={`${section.label} — open section menu`}
         className={cn(
+          "liquid-glass",
           "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40",
-          "group inline-flex items-stretch border border-[var(--color-rule)]",
-          "bg-[var(--color-surface)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.28)]",
+          "group inline-flex items-stretch",
           "text-[var(--color-ink)] transition-colors",
-          "hover:border-[var(--color-accent)]",
         )}
       >
         <span
@@ -122,12 +121,12 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
               />
               <motion.div
                 className={cn(
+                  "liquid-glass",
                   "absolute bottom-0 left-0 right-0 max-h-[70vh] overflow-y-auto",
                   "sm:bottom-auto sm:left-auto sm:right-6 sm:top-auto",
                   "sm:bottom-[max(4.5rem,env(safe-area-inset-bottom))]",
-                  "sm:w-[22rem] sm:rounded-sm sm:border sm:border-[var(--color-rule)]",
-                  "bg-[#ffffff] text-[#1a1814] dark:bg-[#171411] dark:text-[#ede7db]",
-                  "shadow-[0_24px_48px_-12px_rgba(0,0,0,0.3)]",
+                  "sm:w-[22rem]",
+                  "text-[var(--color-ink)]",
                   "px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]",
                 )}
                 initial={{ opacity: 0, y: 12 }}

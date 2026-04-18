@@ -87,9 +87,9 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
           />
           <motion.div
             className={cn(
+              "liquid-glass",
               "absolute left-1/2 top-[12vh] w-[min(40rem,92vw)] -translate-x-1/2",
-              "bg-[#ffffff] text-[#1a1814] dark:bg-[#171411] dark:text-[#ede7db]",
-              "border border-[var(--color-rule)] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.35)]",
+              "text-[var(--color-ink)]",
               "overflow-hidden rounded-sm",
             )}
             initial={{ opacity: 0, y: -8 }}

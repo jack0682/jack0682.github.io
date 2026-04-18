@@ -31,7 +31,7 @@ const mobileNav = [...nav.slice(0, -1), { href: "/tags/", label: "Tags" }, nav[n
  */
 export function Masthead() {
   return (
-    <header className="sticky top-0 z-30 border-b border-[var(--color-rule)] bg-[var(--color-bg)] pt-[env(safe-area-inset-top)]">
+    <header className="liquid-glass--bar sticky top-0 z-30 pt-[env(safe-area-inset-top)]">
       <Container>
         <div className="flex h-14 items-center justify-between sm:h-16">
           <Link
