@@ -279,10 +279,11 @@ function DocCard({
         className="group block py-6 transition-colors sm:py-7"
       >
         <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-6">
-          <span className="flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-56 md:shrink-0">
+          <span className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-56 md:shrink-0">
+            {/* ONN hub — outlined accent chip (dynamic, architectural) */}
             <span
               aria-hidden
-              className="sci-section-mark text-[13px] italic leading-none text-[var(--color-accent)]"
+              className="inline-flex h-[18px] w-[18px] items-center justify-center border border-[var(--color-accent)] font-display text-[12px] italic leading-none text-[var(--color-accent)]"
             >
               {ONN_MARK}
             </span>

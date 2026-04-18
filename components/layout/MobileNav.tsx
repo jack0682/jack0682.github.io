@@ -47,7 +47,7 @@ export function MobileNav({ items }: { items: Item[] }) {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-label="Open navigation menu"

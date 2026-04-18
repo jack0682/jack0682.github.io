@@ -41,10 +41,11 @@ export function Masthead() {
             Jaehong&nbsp;Oh
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — inline only on lg+; md still uses hamburger
+              to avoid a cramped 7-item bar between 768–1023px. */}
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-1 sm:gap-2 md:flex"
+            className="hidden items-center gap-1 sm:gap-2 lg:flex"
           >
             <ul className="flex items-center gap-6 text-sm font-medium text-[var(--color-muted)]">
               {nav.map((item) => (

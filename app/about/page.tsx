@@ -59,8 +59,8 @@ export default function AboutPage() {
         >
           Affiliations
         </p>
-        <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
-          <li>
+        <ul className="flex flex-wrap items-center gap-y-4">
+          <li className="pr-8">
             <Logo
               src="/logos/soongsil.jpg"
               alt="Soongsil University"
@@ -69,7 +69,13 @@ export default function AboutPage() {
               renderHeight={LOGO_H}
             />
           </li>
-          <li>
+          <li
+            aria-hidden
+            className="pr-8 font-mono text-[10px] text-[var(--color-subtle)]"
+          >
+            ·
+          </li>
+          <li className="pr-8">
             <Logo
               src="/logos/robotis_new.png"
               alt="ROBOTIS"
@@ -77,6 +83,12 @@ export default function AboutPage() {
               height={320}
               renderHeight={LOGO_H}
             />
+          </li>
+          <li
+            aria-hidden
+            className="pr-8 font-mono text-[10px] text-[var(--color-subtle)]"
+          >
+            ·
           </li>
           <li>
             <Logo
@@ -88,6 +100,23 @@ export default function AboutPage() {
             />
           </li>
         </ul>
+
+        {/* multilingual bio pointer */}
+        <p className="mt-8 text-sm text-[var(--color-muted)]">
+          Also available in other languages —{" "}
+          <Link
+            href="/bio/"
+            className="group inline-flex items-center gap-1 border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          >
+            한국어 · 日本語 · Deutsch · 中文
+            <span
+              aria-hidden
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
+          </Link>
+        </p>
       </div>
 
       {/* ── what I'm working on ───────────────────────────── */}

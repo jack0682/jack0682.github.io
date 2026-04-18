@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <Container width="wide">
       {/* ── hero: identity first ──────────────────────────── */}
-      <section className="relative mt-20 md:mt-32 lg:grid lg:grid-cols-[minmax(0,48rem)_minmax(0,1fr)] lg:gap-12 lg:items-start">
-      <div className="relative max-w-[48rem]">
+      <section className="relative mt-12 sm:mt-20 md:mt-32 lg:grid lg:grid-cols-[minmax(0,44rem)_minmax(0,32rem)] lg:items-center lg:gap-14 xl:gap-20">
+      <div className="relative max-w-[44rem]">
         {/* marginal χ — visible only on wide viewports, quiet */}
         <span
           aria-hidden
@@ -35,7 +35,7 @@ export default function Home() {
             </div>,
             <h1
               key="h1"
-              className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-[-0.02em] text-[var(--color-ink)]"
+              className="font-display text-[clamp(2rem,8vw,5rem)] leading-[0.98] tracking-[-0.02em] text-[var(--color-ink)]"
             >
               Jaehong Oh.
             </h1>,
@@ -47,7 +47,7 @@ export default function Home() {
             </p>,
             <p
               key="body"
-              className="mt-8 max-w-[38rem] text-lg leading-relaxed text-[var(--color-muted)]"
+              className="mt-6 max-w-[38rem] text-base leading-relaxed text-[var(--color-muted)] sm:mt-8 sm:text-lg"
             >
               Robotics engineer and AI researcher working at the intersection of{" "}
               <span className="text-[var(--color-ink)]">
@@ -92,6 +92,15 @@ export default function Home() {
               >
                 Papers
               </Link>
+              <Link
+                href="/bio/"
+                className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
+              >
+                Bio{" "}
+                <span className="font-mono text-[10px] tracking-[0.18em] text-[var(--color-subtle)]">
+                  EN · KO · JA · DE · ZH
+                </span>
+              </Link>
             </div>,
           ]}
         </HeroReveal>
@@ -99,75 +108,55 @@ export default function Home() {
 
         {/* right column: living ontology graph (lg+ only) */}
         <div className="mt-16 hidden lg:mt-0 lg:block">
-          <LivingOntology className="w-full max-w-[34rem]" />
+          <LivingOntology className="w-full" />
         </div>
       </section>
 
       {/* ── highlights ────────────────────────────────────── */}
-      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
-        <h2 className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+      <section className="mt-16 border-t border-[var(--color-rule)] pt-8 sm:mt-24 sm:pt-10">
+        <h2 className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Highlights
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/* latest paper badge */}
-          {latestAccepted && (
-            <Link
-              href={latestAccepted.permalink}
-              className="group flex flex-col gap-2 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
-                {latestAccepted.status === "accepted" ? "Recently accepted" : "Latest paper"}
-              </span>
-              <span className="text-sm leading-relaxed text-[var(--color-muted)]">
-                <span className="line-clamp-1 text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-                  {latestAccepted.title}
-                </span>
-                {latestAccepted.venue && (
-                  <span className="mt-1 block">
-                    <em>{latestAccepted.venue}</em>
-                    {`, ${latestAccepted.year}`}
-                  </span>
-                )}
-              </span>
-            </Link>
-          )}
-
-          {/* research milestone */}
+        <p className="max-w-[44rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+          Current focus:{" "}
           <Link
             href="/scc/"
-            className="group flex flex-col gap-2 border-l-2 border-[var(--color-rule)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+            className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-              Research programme
-            </span>
-            <span className="text-sm leading-relaxed text-[var(--color-muted)]">
-              <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-                Soft Cognitive Cohesion
-              </span>
-              {" — 43 theorems proved, canonical spec at v2.1."}
-            </span>
-          </Link>
-
-          {/* ONN hub */}
+            Soft Cognitive Cohesion
+          </Link>{" "}
+          — <span className="sci-data text-[var(--color-ink)]">43</span>{" "}
+          theorems and a canonical specification at v2.1. The companion
+          architecture,{" "}
           <Link
             href="/onn/"
-            className="group flex flex-col gap-2 border-l-2 border-[var(--color-rule)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
+            className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-              Architecture
-            </span>
-            <span className="text-sm leading-relaxed text-[var(--color-muted)]">
-              <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-                Ontology Neural Networks
-              </span>
-              {" — topology-preserving learned representations + ORTSF control."}
-            </span>
+            Ontology Neural Networks
           </Link>
-        </div>
+          , was formalised in{" "}
+          {latestAccepted ? (
+            <Link
+              href={latestAccepted.permalink}
+              className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            >
+              the {latestAccepted.year} paper
+            </Link>
+          ) : (
+            <span className="text-[var(--color-ink)]">the 2026 paper</span>
+          )}
+          {latestAccepted?.venue && (
+            <>
+              , accepted at <em>{latestAccepted.venue}</em>
+            </>
+          )}
+          . Both threads converge on a single cognitive-reasoning architecture
+          for autonomous systems.
+        </p>
       </section>
 
       {/* ── recent writing ────────────────────────────────── */}
-      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
+      <section className="mt-16 border-t border-[var(--color-rule)] pt-8 sm:mt-24 sm:pt-10">
         <div className="mb-10 flex items-baseline justify-between">
           <h2 className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Recent writing
@@ -213,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* ── research programme ────────────────────────────── */}
-      <section className="mt-24 border-t border-[var(--color-rule)] pt-10">
+      <section className="mt-16 border-t border-[var(--color-rule)] pt-8 sm:mt-24 sm:pt-10">
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
             Research programme

@@ -58,7 +58,7 @@ export default async function OnnDocPage({ params }: Props) {
     <>
       <TOC toc={doc.toc} />
       <Container width="prose">
-        <header className="pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-28">
+        <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
             <span className="sci-section-mark mr-2 not-italic text-[0.95em]">
@@ -71,7 +71,7 @@ export default async function OnnDocPage({ params }: Props) {
               </span>
             )}
           </p>
-          <h1 className="font-display text-[clamp(1.75rem,5.5vw,3.25rem)] leading-[1.12] tracking-[-0.01em] text-[var(--color-ink)]">
+          <h1 className="font-display text-[clamp(1.5rem,6.5vw,3.25rem)] leading-[1.12] tracking-[-0.01em] text-[var(--color-ink)]">
             {doc.title}
           </h1>
           {doc.summary && (

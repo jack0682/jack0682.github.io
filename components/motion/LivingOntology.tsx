@@ -16,6 +16,7 @@
 
 import { Pause, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { TeX } from "@/components/mdx/TeX";
 
 /* ───────── tuning ───────── */
 
@@ -713,8 +714,13 @@ export function LivingOntology({ className, seed = 7 }: Props) {
         )}
       </div>
 
-      <figcaption className="mt-2 text-right font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-        fig. · ontology, in evolution
+      <figcaption className="mt-2 flex items-baseline justify-end gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+        <span>fig. ·</span>
+        <TeX
+          expr="\mathcal{R}"
+          className="[&_.katex]:text-[11px] [&_.katex]:text-[var(--color-accent)] [&_.katex]:opacity-80"
+        />
+        <span>, in evolution</span>
       </figcaption>
     </figure>
   );
