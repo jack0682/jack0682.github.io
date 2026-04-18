@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const paper = papers.find((p) => p.slug === slug);
   if (!paper) return {};
+  const ogImage = `/og/papers/${paper.slug}.png`;
   return {
     title: paper.title,
     description: paper.abstract.slice(0, 200),
@@ -30,6 +31,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: paper.abstract.slice(0, 200),
       type: "article",
       authors: paper.authors,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: paper.title }],
+    },
+    twitter: { card: "summary_large_image", images: [ogImage] },
+    other: {
+      "citation_title": paper.title,
+      "citation_author": paper.authors.join("; "),
+      "citation_publication_date": paper.date.slice(0, 10),
+      ...(paper.doi && { "citation_doi": paper.doi }),
+      ...(paper.pdf && { "citation_pdf_url": `https://jack0682.github.io${paper.pdf}` }),
     },
   };
 }

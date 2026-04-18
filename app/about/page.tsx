@@ -9,6 +9,34 @@ export const metadata: Metadata = {
     "About Jaehong Oh — robotics engineer, AI researcher, and mechanical engineer at Soongsil University, currently working on the unification of Soft Cognitive Cohesion and Ontology Neural Networks.",
 };
 
+function TimelineItem({
+  when,
+  heading,
+  children,
+}: {
+  when: string;
+  heading: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="relative">
+      <span
+        aria-hidden
+        className="absolute -left-[calc(2rem+4px)] top-1.5 block h-2 w-2 bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]"
+      />
+      <time className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
+        {when}
+      </time>
+      <h3 className="mt-2 font-display text-xl leading-snug text-[var(--color-ink)]">
+        {heading}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">
+        {children}
+      </p>
+    </li>
+  );
+}
+
 export default function AboutPage() {
   return (
     <Container width="prose">
@@ -77,77 +105,46 @@ export default function AboutPage() {
 
       {/* ── research experience ───────────────────────────── */}
       <section className="mt-16 border-t border-[var(--color-rule)] pt-10">
-        <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+        <p className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Research experience
         </p>
-        <ol className="space-y-10">
-          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
-            <time className="font-mono text-xs text-[var(--color-subtle)]">
-              2026 – present
-            </time>
-            <div>
-              <h3 className="font-display text-xl text-[var(--color-ink)]">
-                Research Intern · ROBOTIS (Perception Team)
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-                End-to-end autonomous-driving research. Developing and
-                evaluating perception pipelines for autonomous navigation
-                systems.
-              </p>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
-            <time className="font-mono text-xs text-[var(--color-subtle)]">
-              2024 – 2026
-            </time>
-            <div>
-              <h3 className="font-display text-xl text-[var(--color-ink)]">
-                Research Team Leader · Intelligent Robotics Lab, Soongsil
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-                Led a reinforcement-learning-based *Hidden Object Finding*
-                project on a robot manipulator — novel algorithms for
-                object discovery in occluded environments, integrating
-                vision, tactile feedback, and predictive reasoning under
-                PyTorch and ROS 2.
-              </p>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
-            <time className="font-mono text-xs text-[var(--color-subtle)]">
-              2022 – 2023
-            </time>
-            <div>
-              <h3 className="font-display text-xl text-[var(--color-ink)]">
-                Project Team Leader · Fluid Mechanics Lab, Soongsil
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-                Led a Janus-particle synthesis project for
-                bio-pharmaceutical applications. Electrohydrodynamics (EHD)
-                research with 3D-printed Y-shaped microfluidic channels,
-                combined with CFD simulation and experimental validation.
-              </p>
-            </div>
-          </li>
-
-          <li className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
-            <time className="font-mono text-xs text-[var(--color-subtle)]">
-              2022 – 2023
-            </time>
-            <div>
-              <h3 className="font-display text-xl text-[var(--color-ink)]">
-                Development Team Leader · Aviation Society Cheonggeumbi
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-                End-to-end development of a 4-axis autonomous flight drone —
-                custom CAD frame (AutoCAD, SolidWorks), PID control, sensor
-                fusion, and a cross-functional mechanical / electrical /
-                software team.
-              </p>
-            </div>
-          </li>
+        <ol className="relative ml-3 space-y-10 border-l border-[var(--color-rule)] pl-8">
+          <TimelineItem
+            when="2026 – present"
+            heading="Research Intern · ROBOTIS (Perception Team)"
+          >
+            End-to-end autonomous-driving research. Developing and
+            evaluating perception pipelines for autonomous navigation
+            systems.
+          </TimelineItem>
+          <TimelineItem
+            when="2024 – 2026"
+            heading="Research Team Leader · Intelligent Robotics Lab, Soongsil"
+          >
+            Led a reinforcement-learning-based <em>Hidden Object Finding</em>{" "}
+            project on a robot manipulator — novel algorithms for object
+            discovery in occluded environments, integrating vision,
+            tactile feedback, and predictive reasoning under PyTorch and
+            ROS 2.
+          </TimelineItem>
+          <TimelineItem
+            when="2022 – 2023"
+            heading="Project Team Leader · Fluid Mechanics Lab, Soongsil"
+          >
+            Led a Janus-particle synthesis project for bio-pharmaceutical
+            applications. Electrohydrodynamics (EHD) research with
+            3D-printed Y-shaped microfluidic channels, combined with CFD
+            simulation and experimental validation.
+          </TimelineItem>
+          <TimelineItem
+            when="2022 – 2023"
+            heading="Development Team Leader · Aviation Society Cheonggeumbi"
+          >
+            End-to-end development of a 4-axis autonomous flight drone —
+            custom CAD frame (AutoCAD, SolidWorks), PID control, sensor
+            fusion, and a cross-functional mechanical / electrical /
+            software team.
+          </TimelineItem>
         </ol>
       </section>
 

@@ -20,9 +20,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const entry = journalEntries.find((e) => e.slug === slug);
   if (!entry) return {};
+  const ogImage = `/og/journal/${entry.slug}.png`;
   return {
     title: entry.title,
     description: entry.summary,
+    openGraph: {
+      title: entry.title,
+      description: entry.summary,
+      type: "article",
+      publishedTime: entry.date,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: entry.title }],
+    },
+    twitter: { card: "summary_large_image", images: [ogImage] },
   };
 }
 

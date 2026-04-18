@@ -68,11 +68,20 @@ html {
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 250ms ease, color 250ms ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Hash-link navigation eases rather than jumps. The reduced-motion
+     media query below overrides this to `auto` for accessibility. */
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* account for sticky masthead */
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-ink);
+  font-feature-settings: "onum", "ss01", "cv11", "liga";
 }
 
 /* ── Utility classes for display typography ───────────────────── */
@@ -101,22 +110,6 @@ hr {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
-}
-
-/* prevent layout shift on theme switch */
-html {
-  transition: background-color 250ms ease, color 250ms ease;
-}
-
-/* ── mobile / touch niceties ──────────────────────────────────── */
-html {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  /* Hash-link navigation eases rather than jumps. The reduced-motion
-     media query below overrides this to `auto` for accessibility. */
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* account for sticky masthead */
 }
 
 /* ── overflow protection for MDX body content ─────────────────── */
@@ -167,9 +160,6 @@ html {
 
 /* Old-style figures + ligatures in body copy for a manuscript feel.
    KaTeX is explicitly opted OUT so math glyphs keep their own metrics. */
-body {
-  font-feature-settings: "onum", "ss01", "cv11", "liga";
-}
 .katex,
 .katex * {
   font-feature-settings: normal;

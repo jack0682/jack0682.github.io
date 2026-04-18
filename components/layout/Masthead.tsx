@@ -4,6 +4,11 @@ import { MobileNav } from "./MobileNav";
 import { PaletteTrigger } from "./PaletteTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
+/**
+ * Primary nav. Tags is intentionally excluded here and kept in the
+ * Footer only — the top bar is for the main reading surfaces, not
+ * for every index. Notes sits in Writing alongside Papers/Journal.
+ */
 const nav = [
   { href: "/research/", label: "Research" },
   { href: "/scc/", label: "SCC" },
@@ -11,9 +16,11 @@ const nav = [
   { href: "/papers/", label: "Papers" },
   { href: "/journal/", label: "Journal" },
   { href: "/notes/", label: "Notes" },
-  { href: "/tags/", label: "Tags" },
   { href: "/about/", label: "About" },
 ];
+
+/** Full list for the mobile drawer — includes Tags. */
+const mobileNav = [...nav.slice(0, -1), { href: "/tags/", label: "Tags" }, nav[nav.length - 1]];
 
 /**
  * Site-wide top bar. Deliberately unornamented — the design language
@@ -60,7 +67,7 @@ export function Masthead() {
           </nav>
 
           {/* Mobile nav */}
-          <MobileNav items={nav} />
+          <MobileNav items={mobileNav} />
         </div>
       </Container>
     </header>

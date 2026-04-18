@@ -54,10 +54,15 @@ export default function PapersPage() {
                   <p className="mt-2 text-sm text-[var(--color-muted)] sm:mt-3">
                     {paper.authors.join(", ")}
                   </p>
+                  {paper.abstract && (
+                    <p className="mt-3 line-clamp-2 max-w-[52rem] text-sm leading-relaxed text-[var(--color-subtle)] sm:mt-4">
+                      {paper.abstract}
+                    </p>
+                  )}
                 </div>
                 <span
                   aria-hidden
-                  className="hidden font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] sm:inline sm:pt-2"
+                  className="hidden font-mono text-xs text-[var(--color-subtle)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] sm:inline sm:pt-2"
                 >
                   →
                 </span>

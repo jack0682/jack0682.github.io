@@ -2,8 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TeX } from "@/components/mdx/TeX";
 import { onnHub } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+
+const ONN_MARK = "χ";
+const READING_ORDER = [
+  "Track overview",
+  "ONN + ORTSF framework paper",
+  "Integrated architecture",
+  "Extensions & theorems as needed",
+];
 
 export const metadata: Metadata = {
   title: "ONN · Hub",
@@ -34,22 +43,39 @@ export default function OnnHubPage() {
   return (
     <Container>
       <PageHeader
-        mark="χ"
+        mark={ONN_MARK}
         eyebrow="ONN · Hub"
         title="Ontology Neural Network."
         lead="ONN learns a latent state carrying explicit ontology structure; ORTSF closes the loop with delay-robust control on top of that topology. This hub collects the working definitions, the mathematical commitments, and every manuscript in the thread."
       />
 
-      {/* ── reading-order callout ──────────────────────────────── */}
-      <div className="-mt-4 mb-14 border-l-2 border-[var(--color-accent)] py-3 pl-5 max-w-[44rem]">
+      {/* identity stripe — topology map of the latent state */}
+      <div
+        aria-hidden
+        className="-mt-6 mb-14 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--color-subtle)]"
+      >
+        <span className="h-px w-10 bg-[var(--color-accent)]" />
+        <TeX expr="\chi : \mathcal{R} \longrightarrow H^{\ast}(\mathcal{R};\mathbb{R})" />
+      </div>
+
+      {/* ── reading-order callout — numbered ─────────────────── */}
+      <div className="mb-14 max-w-[44rem] border-l-2 border-[var(--color-accent)] py-3 pl-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
           Suggested reading order
         </p>
-        <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-          Track overview{"  →  "}ONN + ORTSF framework paper{"  →  "}
-          integrated architecture{"  →  "}extensions &amp; theorems as
-          needed.
-        </p>
+        <ol className="mt-3 space-y-1.5">
+          {READING_ORDER.map((step, i) => (
+            <li
+              key={step}
+              className="flex items-baseline gap-4 text-sm leading-snug text-[var(--color-muted)]"
+            >
+              <span className="font-mono text-[11px] tabular-nums text-[var(--color-subtle)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* ── Track overview (always present) ───────────────────── */}
@@ -253,11 +279,15 @@ function DocCard({
         className="group block py-6 transition-colors sm:py-7"
       >
         <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-6">
-          {meta && (
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-48 md:shrink-0">
-              {meta}
+          <span className="flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-56 md:shrink-0">
+            <span
+              aria-hidden
+              className="sci-section-mark text-[13px] italic leading-none text-[var(--color-accent)]"
+            >
+              {ONN_MARK}
             </span>
-          )}
+            {meta ?? "ONN"}
+          </span>
           <div className="flex-1 min-w-0">
             <h3 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
               {title}
@@ -270,7 +300,7 @@ function DocCard({
           </div>
           <span
             aria-hidden
-            className="hidden font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] md:inline"
+            className="hidden font-mono text-xs text-[var(--color-subtle)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] md:inline"
           >
             →
           </span>

@@ -31,9 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (partNum === null) return {};
   const note = allNotes.find((n) => n.part === partNum && n.slug === slug);
   if (!note) return {};
+  const ogImage = `/og/notes/${note.slug}.png`;
   return {
     title: note.title,
     description: note.summary,
+    openGraph: {
+      title: note.title,
+      description: note.summary,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: note.title }],
+    },
+    twitter: { card: "summary_large_image", images: [ogImage] },
   };
 }
 

@@ -17,8 +17,13 @@ export function Prose({
       className={cn(
         "prose prose-stone max-w-none",
         // remap core tokens to design system
-        "prose-headings:font-display prose-headings:tracking-tight",
-        "prose-headings:text-[var(--color-ink)]",
+        // h1/h2 keep Fraunces (display); h3+ use the sans stack with
+        // heavier weight so hierarchy reads clearly on long essays.
+        "prose-headings:tracking-tight prose-headings:text-[var(--color-ink)]",
+        "prose-h1:font-display prose-h2:font-display",
+        "[&_h3]:font-[var(--font-sans)] [&_h4]:font-[var(--font-sans)] [&_h5]:font-[var(--font-sans)] [&_h6]:font-[var(--font-sans)]",
+        "[&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold",
+        "[&_h3]:tracking-[-0.005em]",
         "prose-p:text-[var(--color-ink)]/90 prose-p:leading-relaxed",
         "prose-strong:text-[var(--color-ink)]",
         "prose-a:text-[var(--color-accent)] prose-a:decoration-[var(--color-accent)]/30 hover:prose-a:decoration-[var(--color-accent)]",

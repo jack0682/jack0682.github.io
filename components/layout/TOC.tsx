@@ -106,19 +106,41 @@ export function TOC({ toc }: { toc: TocItem[] }) {
 
       {/* ── Mobile/Tablet: floating button + drawer (< xl) ──── */}
       <div className="xl:hidden">
-        {/* floating trigger */}
+        {/* floating trigger — flat rectangle with left accent tick,
+            matching the FloatingChip geometry. */}
         <button
           onClick={() => setDrawerOpen((v) => !v)}
           aria-label="Toggle table of contents"
           aria-expanded={drawerOpen}
           className={cn(
-            "fixed bottom-6 left-6 z-50 flex h-10 items-center gap-2 rounded-full border px-4 text-xs font-medium shadow-md transition-colors",
+            "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-[max(1rem,env(safe-area-inset-left))] z-50",
+            "group inline-flex items-stretch border shadow-[0_8px_24px_-12px_rgba(0,0,0,0.28)] transition-colors",
             drawerOpen
-              ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-white"
-              : "border-[var(--color-rule)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:text-[var(--color-ink)]",
+              ? "border-[var(--color-accent)]"
+              : "border-[var(--color-rule)] hover:border-[var(--color-accent)]",
           )}
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.15em]">
+          <span
+            aria-hidden
+            className={cn(
+              "flex w-8 items-center justify-center transition-colors",
+              drawerOpen
+                ? "bg-[var(--color-accent)] text-[var(--color-surface)]"
+                : "bg-[var(--color-accent)] text-[var(--color-surface)]",
+            )}
+          >
+            <span className="sci-section-mark text-base italic leading-none">
+              ☰
+            </span>
+          </span>
+          <span
+            className={cn(
+              "flex items-center bg-[var(--color-surface)] px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
+              drawerOpen
+                ? "text-[var(--color-accent)]"
+                : "text-[var(--color-muted)] group-hover:text-[var(--color-accent)]",
+            )}
+          >
             Contents
           </span>
         </button>
@@ -135,7 +157,7 @@ export function TOC({ toc }: { toc: TocItem[] }) {
         <nav
           aria-label="Table of contents"
           className={cn(
-            "fixed bottom-0 left-0 right-0 z-40 max-h-[60vh] overflow-y-auto rounded-t-2xl border-t bg-[var(--color-bg)] px-6 pb-8 pt-6 text-sm shadow-xl transition-transform duration-300 ease-out",
+            "fixed bottom-0 left-0 right-0 z-40 max-h-[60vh] overflow-y-auto border-t bg-[var(--color-bg)] px-6 pb-8 pt-6 text-sm shadow-xl transition-transform duration-300 ease-out",
             "border-[var(--color-rule)]",
             drawerOpen ? "translate-y-0" : "translate-y-full",
           )}

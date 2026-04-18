@@ -20,7 +20,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = onnAllDocs.find((d) => d.slug === slug);
   if (!doc) return {};
-  return { title: doc.title, description: doc.summary };
+  const ogImage = `/og/onn/${doc.slug}.png`;
+  return {
+    title: doc.title,
+    description: doc.summary,
+    openGraph: {
+      title: doc.title,
+      description: doc.summary,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: doc.title }],
+    },
+    twitter: { card: "summary_large_image", images: [ogImage] },
+  };
 }
 
 export default async function OnnDocPage({ params }: Props) {

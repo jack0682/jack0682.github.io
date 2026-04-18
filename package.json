@@ -5,7 +5,8 @@
   "description": "Jaehong Oh — academic research blog",
   "scripts": {
     "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
-    "build": "velite && next build",
+    "build": "velite && node scripts/generate-og.mjs && next build",
+    "og": "node scripts/generate-og.mjs",
     "start": "next start",
     "lint": "eslint",
     "content": "velite",
@@ -24,6 +25,9 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/inter": "^5.2.8",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
@@ -37,6 +41,7 @@
     "rehype-pretty-code": "^0.14.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
+    "satori": "^0.26.0",
     "shiki": "^1.26.1",
     "tailwindcss": "^4",
     "typescript": "^5",

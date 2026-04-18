@@ -2,8 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TeX } from "@/components/mdx/TeX";
 import { sccHub } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+
+const SCC_MARK = "§";
+const READING_ORDER = [
+  "Canonical specification",
+  "Research status",
+  "Integrated architecture",
+  "Theorem references as needed",
+];
 
 export const metadata: Metadata = {
   title: "SCC · Hub",
@@ -25,21 +34,39 @@ export default function SccHubPage() {
   return (
     <Container>
       <PageHeader
-        mark="§"
+        mark={SCC_MARK}
         eyebrow="SCC · Hub"
         title="Soft Cognitive Cohesion."
         lead="One entry point for the SCC programme — the canonical specification, the current research status, the unification plan with Ontology Neural Networks, and the mathematical results. A living hub rather than a chapter list."
       />
 
-      {/* reading-order callout */}
-      <div className="-mt-4 mb-14 border-l-2 border-[var(--color-accent)] py-3 pl-5 max-w-[44rem]">
+      {/* identity stripe — mirrors the home hero's formula row */}
+      <div
+        aria-hidden
+        className="-mt-6 mb-14 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--color-subtle)]"
+      >
+        <span className="h-px w-10 bg-[var(--color-accent)]" />
+        <TeX expr="E_{\mathcal{S}} : \mathrm{Conf}(\mathcal{S}) \longrightarrow \mathbb{R}_{\geq 0}" />
+      </div>
+
+      {/* reading-order callout — numbered sequence, not prose */}
+      <div className="mb-14 max-w-[44rem] border-l-2 border-[var(--color-accent)] py-3 pl-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
           Suggested reading order
         </p>
-        <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">
-          Canonical specification{"  →  "}Research status{"  →  "}
-          Integrated architecture{"  →  "}theorem references as needed.
-        </p>
+        <ol className="mt-3 space-y-1.5">
+          {READING_ORDER.map((step, i) => (
+            <li
+              key={step}
+              className="flex items-baseline gap-4 text-sm leading-snug text-[var(--color-muted)]"
+            >
+              <span className="font-mono text-[11px] tabular-nums text-[var(--color-subtle)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       {/* ── Canonical ───────────────────────────────── */}
@@ -215,11 +242,15 @@ function DocCard({
         className="group block py-6 transition-colors sm:py-7"
       >
         <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-6">
-          {meta && (
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-48 md:shrink-0">
-              {meta}
+          <span className="flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] md:w-56 md:shrink-0">
+            <span
+              aria-hidden
+              className="sci-section-mark text-[13px] italic leading-none text-[var(--color-accent)]"
+            >
+              {SCC_MARK}
             </span>
-          )}
+            {meta ?? "SCC"}
+          </span>
           <div className="flex-1 min-w-0">
             <h3 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
               {title}
@@ -232,7 +263,7 @@ function DocCard({
           </div>
           <span
             aria-hidden
-            className="hidden font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] md:inline"
+            className="hidden font-mono text-xs text-[var(--color-subtle)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] md:inline"
           >
             →
           </span>

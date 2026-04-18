@@ -73,26 +73,29 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
 
   return (
     <>
-      {/* the chip itself */}
+      {/* the chip itself — flat rectangle with a left accent tick,
+          matching the site's sharp geometry (rounded-full removed). */}
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={`${section.label} — open section menu`}
         className={cn(
           "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40",
-          "inline-flex items-center gap-2 rounded-full border border-[var(--color-rule)]",
-          "bg-[var(--color-surface)] px-4 py-2 shadow-[0_6px_16px_-8px_rgba(0,0,0,0.25)]",
-          "text-[var(--color-ink)] transition-all",
-          "hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
+          "group inline-flex items-stretch border border-[var(--color-rule)]",
+          "bg-[var(--color-surface)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.28)]",
+          "text-[var(--color-ink)] transition-colors",
+          "hover:border-[var(--color-accent)]",
         )}
       >
         <span
           aria-hidden
-          className="sci-section-mark text-base italic leading-none text-[var(--color-accent)]"
+          className="flex w-8 items-center justify-center bg-[var(--color-accent)] text-[var(--color-surface)] transition-colors"
         >
-          {section.mark}
+          <span className="sci-section-mark text-base italic leading-none">
+            {section.mark}
+          </span>
         </span>
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
+        <span className="flex items-center px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors group-hover:text-[var(--color-accent)]">
           {section.label}
         </span>
       </button>
