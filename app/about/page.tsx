@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { Logo } from "@/components/media/Logo";
+
+/** Uniform render height for every affiliation logo. */
+const LOGO_H = 26;
 
 export const metadata: Metadata = {
   title: "About",
@@ -46,6 +50,45 @@ export default function AboutPage() {
         title="Jaehong Oh."
         lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently a Research Intern on the Perception Team at ROBOTIS, and a Mechanical Engineering undergraduate at Soongsil University, Seoul."
       />
+
+      {/* ── affiliations strip ────────────────────────────── */}
+      <div className="-mt-6 mb-14">
+        <p
+          aria-hidden
+          className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]"
+        >
+          Affiliations
+        </p>
+        <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
+          <li>
+            <Logo
+              src="/logos/soongsil.jpg"
+              alt="Soongsil University"
+              width={1000}
+              height={133}
+              renderHeight={LOGO_H}
+            />
+          </li>
+          <li>
+            <Logo
+              src="/logos/robotis_new.png"
+              alt="ROBOTIS"
+              width={1554}
+              height={320}
+              renderHeight={LOGO_H}
+            />
+          </li>
+          <li>
+            <Logo
+              src="/logos/doosan-robotics.svg"
+              alt="Doosan Robotics"
+              width={127}
+              height={18}
+              renderHeight={LOGO_H}
+            />
+          </li>
+        </ul>
+      </div>
 
       {/* ── what I'm working on ───────────────────────────── */}
       <section className="border-t border-[var(--color-rule)] pt-10">
