@@ -41,34 +41,66 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
 
   return (
     <section aria-label="Bio in selected language">
-      {/* ── language selector ──────────────────────────────── */}
-      <div
-        role="tablist"
-        aria-label="Language"
-        className="mb-10 flex flex-wrap gap-2 border-b border-[var(--color-rule)] pb-5 sm:mb-12 sm:gap-3 sm:pb-6"
-      >
-        {BIO_LOCALES.map((code) => {
-          const active = code === locale;
-          return (
-            <button
-              key={code}
-              role="tab"
-              aria-selected={active}
-              aria-controls="bio-panel"
-              lang={BIO[code].langTag}
-              onClick={() => setLocale(code)}
-              className={cn(
-                "inline-flex items-center px-3 py-1.5 text-[13px] transition-colors",
-                "border",
-                active
-                  ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-surface)]"
-                  : "border-[var(--color-rule)] text-[var(--color-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
-              )}
-            >
-              {BIO[code].label}
-            </button>
-          );
-        })}
+      {/* ── language selector — glass puck slides BENEATH labels ─── */}
+      <div className="mb-10 flex border-b border-[var(--color-rule)] pb-5 sm:mb-12 sm:pb-6">
+        <div
+          role="tablist"
+          aria-label="Language"
+          className="relative inline-flex border border-[var(--color-rule)] bg-[var(--color-surface)]/25 p-1"
+        >
+          {BIO_LOCALES.map((code) => {
+            const active = code === locale;
+            return (
+              <button
+                key={code}
+                role="tab"
+                aria-selected={active}
+                aria-controls="bio-panel"
+                lang={BIO[code].langTag}
+                onClick={() => setLocale(code)}
+                className="relative inline-flex items-center justify-center px-3 py-1.5 text-[13px] outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] sm:px-4 sm:py-2"
+              >
+                {/* Glass puck — z-1, slides UNDERNEATH the label. Its
+                    backdrop-filter refracts the page content behind the
+                    tablist, not the label, so the label stays crisp. */}
+                {active && (
+                  <motion.span
+                    layoutId="bio-active-indicator"
+                    aria-hidden
+                    className="liquid-glass-puck pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+                    transition={{
+                      type: "spring",
+                      stiffness: 320,
+                      damping: 26,
+                    }}
+                  >
+                    {/* dome highlight — light caught on the meniscus */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-white/45 via-white/12 to-transparent dark:from-white/15 dark:via-white/5"
+                    />
+                    {/* warm accent kiss — marks the active tab subtly */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-[var(--color-accent)] opacity-[0.10] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.18]"
+                    />
+                  </motion.span>
+                )}
+                {/* Label — z-2, always on top, always sharp */}
+                <span
+                  className={cn(
+                    "relative z-[2] transition-colors duration-200",
+                    active
+                      ? "font-medium text-[var(--color-ink)]"
+                      : "text-[var(--color-muted)] hover:text-[var(--color-accent)]",
+                  )}
+                >
+                  {BIO[code].label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* ── panel ──────────────────────────────────────────── */}

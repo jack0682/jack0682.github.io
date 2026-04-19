@@ -324,10 +324,44 @@ hr {
   }
 }
 
+/* Small "puck" variant — far more transparent, lighter blur, stronger
+   meniscus. Used as a sliding indicator where the user should still
+   read the label through the glass (segmented controls etc.). The
+   brightness() pass makes it act like a convex lens patch. */
+.liquid-glass-puck {
+  background: color-mix(in oklab, var(--color-surface) 22%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, #ffffff 60%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, var(--color-ink) 6%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, var(--color-ink) 5%, transparent),
+    0 6px 16px -8px color-mix(in oklab, var(--color-ink) 28%, transparent),
+    0 1px 2px -1px color-mix(in oklab, var(--color-ink) 16%, transparent);
+}
+:root.dark .liquid-glass-puck {
+  background: color-mix(in oklab, var(--color-surface) 18%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, #ffffff 12%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, #ffffff 3%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, #ffffff 6%, transparent),
+    0 6px 16px -8px rgba(0, 0, 0, 0.5),
+    0 1px 2px -1px rgba(0, 0, 0, 0.35);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .liquid-glass-puck {
+    backdrop-filter: blur(5px) saturate(150%) brightness(1.05);
+    -webkit-backdrop-filter: blur(5px) saturate(150%) brightness(1.05);
+  }
+  :root.dark .liquid-glass-puck {
+    backdrop-filter: blur(7px) saturate(140%) brightness(1.12);
+    -webkit-backdrop-filter: blur(7px) saturate(140%) brightness(1.12);
+  }
+}
+
 /* Respect accessibility preference — snap to opaque surface. */
 @media (prefers-reduced-transparency: reduce) {
   .liquid-glass,
-  .liquid-glass--bar {
+  .liquid-glass--bar,
+  .liquid-glass-puck {
     background: var(--color-surface);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;

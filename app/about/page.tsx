@@ -60,7 +60,7 @@ export default function AboutPage() {
           Affiliations
         </p>
         <ul className="flex flex-wrap items-center gap-y-4">
-          <li className="pr-8">
+          <li className="pr-6">
             <Logo
               src="/logos/soongsil.jpg"
               alt="Soongsil University"
@@ -71,11 +71,11 @@ export default function AboutPage() {
           </li>
           <li
             aria-hidden
-            className="pr-8 font-mono text-[10px] text-[var(--color-subtle)]"
+            className="pr-6 font-mono text-[10px] text-[var(--color-subtle)]"
           >
             ·
           </li>
-          <li className="pr-8">
+          <li className="pr-6">
             <Logo
               src="/logos/robotis_new.png"
               alt="ROBOTIS"
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </li>
           <li
             aria-hidden
-            className="pr-8 font-mono text-[10px] text-[var(--color-subtle)]"
+            className="pr-6 font-mono text-[10px] text-[var(--color-subtle)]"
           >
             ·
           </li>
