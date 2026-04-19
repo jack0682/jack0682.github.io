@@ -84,6 +84,15 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
                       aria-hidden
                       className="absolute inset-0 bg-[var(--color-accent)] opacity-[0.10] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.18]"
                     />
+                    {/* specular sheen — periodic light sweep across the lens */}
+                    <span
+                      aria-hidden
+                      className="puck-sheen absolute inset-y-0 left-0 block h-full w-[38%] bg-gradient-to-r from-transparent via-white/55 to-transparent dark:via-white/25"
+                      style={{
+                        animation: "puck-sheen 5.5s ease-in-out infinite",
+                        animationDelay: "1.2s",
+                      }}
+                    />
                   </motion.span>
                 )}
                 {/* Label — z-2, always on top, always sharp */}
