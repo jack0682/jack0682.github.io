@@ -370,34 +370,6 @@ hr {
   }
 }
 
-/* Periodic specular sweep — like light catching on a real lens.
-   The stripe sits just outside the left edge, drifts across with a
-   slight skew, and fades before returning to start. Subtle by design:
-   the highlight is only briefly visible per cycle. */
-@keyframes puck-sheen {
-  0% {
-    transform: translateX(-220%) skewX(-18deg);
-    opacity: 0;
-  }
-  8% {
-    opacity: 0.9;
-  }
-  35% {
-    transform: translateX(320%) skewX(-18deg);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(320%) skewX(-18deg);
-    opacity: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .puck-sheen {
-    animation: none !important;
-    opacity: 0 !important;
-  }
-}
-
 /* ── reduced-motion: quiet the animations ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
