@@ -46,7 +46,7 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
         <div
           role="tablist"
           aria-label="Language"
-          className="relative inline-flex border border-[var(--color-rule)] bg-[var(--color-surface)]/25 p-1"
+          className="sci-dot-grid relative inline-flex border border-[var(--color-rule)] bg-[var(--color-surface)]/25 p-1"
         >
           {BIO_LOCALES.map((code) => {
             const active = code === locale;
