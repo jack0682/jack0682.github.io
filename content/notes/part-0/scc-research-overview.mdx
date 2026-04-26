@@ -4,12 +4,13 @@ slug: scc-research-overview
 part: 0
 kind: overview
 track: perception
-summary: "A narrative overview of Soft Cognitive Cohesion — what the theory does, the core thesis, the key conceptual inversion, and the mathematical problem it addresses."
+updated: 2026-04-26
+summary: "A narrative overview of Soft Cognitive Cohesion — what the theory does, the core thesis, the key conceptual inversion, and the mathematical problem it addresses. Aligned with canonical CV-1.4 (W4-extended close, 2026-04-26): 38 Cat A theorems, Critical-3 OPs all resolved."
 tags: [scc, overview, perception]
 draft: false
 ---
 
-**Date**: 2026-04-05 | **Phase**: 15 (교재 개발) | **Theory**: 100% Complete (48/48 Category A)
+**Date**: 2026-04-26 (W4-extended close) | **Canonical version**: v2.3 / Perception_theory CV-1.4 | **Theorem status**: 38 Category A + 4 Category B + 5 Category C + 5 Retracted (52 claims, 73% fully proved)
 
 ---
 
@@ -184,17 +185,19 @@ Above this threshold, uniform field (u ≡ m/n) becomes unstable → non-trivial
 
 ---
 
-## 5. THEORETICAL COMPLETENESS
+## 5. THEOREM REGISTRY (current)
 
 ### Proof Registry
 
-**Total: 48 Category A theorems (100% complete)**
+**Aligned with Perception_theory canonical CV-1.4 (2026-04-26):**
 
 | Category | Count | Status |
 |----------|-------|--------|
-| **Category A** (fully proved) | 48 | COMPLETE |
-| **Category B** (proved with caveats) | 0 | None |
-| **Category C** (conditional/open) | 0 | None |
+| **Category A** (fully proved) | **38** | Canonical |
+| **Category B** (proved with structural parameter) | 4 | Conditional on stated parameters |
+| **Category C** (very conditional) | 5 (+1 new finding V5b-F) | Regime/branch-conditioned |
+| **Retracted** | 5 | Documented inline |
+| **Total claims** | **52** | 73% fully proved |
 
 ### Key Theorem Groups
 
@@ -231,23 +234,30 @@ Above this threshold, uniform field (u ≡ m/n) becomes unstable → non-trivial
 - MK-3: Barrier scaling ∝ β^0.89
 - MK-4: Closure-enhanced metastability (30% barrier reduction)
 
+**Group 7: W4 Pre-Objective Mechanism (3, all Cat A, 2026-04-24)**
+- T-PreObj-1: F=1 single-disk minimizer non-critical under full SCC; gradient flow attracts to multi-peak F≥2; IC-protocol dichotomy
+- T-PreObj-1G: T-PreObj-1 graph-class independent (any finite connected graph under (G1)–(G4))
+- Lemma 4: $M \in \mathbb{R}^{2 \times 2}$ positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$
+- F-1 Resolution Corollary: F-1 SPLIT-RESOLVED via T-Merge(b) + T-PreObj-1 (i)
+
+**Group 8: W4-extended Pre-Objective Goldstone (1 Cat A + 1 Cat C finding, 2026-04-26)**
+- T-V5b-T: Pre-Objective Goldstone on Translation-Invariant Graphs (sub/super-lattice spectral dichotomy on torus T^d / cycle C_n; 2D commensurability split; 1D 1-fold Goldstone; nodal count = 2 universal)
+- V5b-F (Cat C): Partial Goldstone on Boundary-Modified Graphs (NQ-173 carry)
+
 **Plus auxiliary results** (symmetries, consistency conditions, numerical verifications).
 
 ---
 
 ## 6. WHAT REMAINS OPEN (Explicitly Marked)
 
-**Resolved non-core open problems:**
-- Formation birth (Phase 14 upgrade to Cat A)
-- T-Bind-Proj for general τ (Phase 13 upgrade to Cat A)
-- T-Persist-1(b) unconditional (Phase 12 upgrade to Cat A)
+**W4 close (2026-04-24): Critical 3 → 0.** F-1 (K=2 vacuity) **SPLIT-RESOLVED** via T-Merge(b) + T-PreObj-1; M-1 (K=1 preference) **LAYER-CLARIFIED** (proved theorem misframed as problem); MO-1 (Morse inapplicability) **SIDESTEPPED** by σ-framework on Σ_m. v2.0 release path unblocked. CN15 Static/Dynamic Separation is the conceptual key.
 
-**Remaining research extensions (not core theory gaps):**
-1. **Near-bifurcation dynamics** (μ → 0): Center manifold reduction for barrier-collapse behavior
-2. **Strong-regime merge dynamics** (deeply overlapping formations): Kramers escape rates, noise-driven coalescence
-3. **Crisp recovery protocol**: Explicit algorithm for object extraction from soft field
-
-These are *research directions*, not theory gaps.
+**Remaining open problems (post-W4):**
+1. **OP-0005 K-Selection mechanism (High)** — partially addressed by σ-framework + CN15; full mechanism still open
+2. **Near-bifurcation dynamics** (μ → 0): Center manifold reduction for barrier-collapse behavior
+3. **Strong-regime merge dynamics** (deeply overlapping formations): Kramers escape rates, noise-driven coalescence
+4. **Crisp recovery protocol**: Explicit algorithm for object extraction from soft field
+5. **W5+ NQ carry**: NQ-173 (V5b-F partial Goldstone), NQ-174 (ζ_*(graph) precise dependence), NQ-175 (3D extension), σ supporting lemmas, multi-formation σ Phase 5 (would re-engage MO-1)
 
 ---
 
@@ -291,7 +301,7 @@ scc/
 
 ### Testing
 
-- **174 passing tests** (all core components)
+- **175 passing tests** (all core components)
 - Gradient verification to FD ~1e-9
 - Axiom satisfaction proofs computational
 - Phase transition predictions numerically validated
@@ -388,7 +398,7 @@ From Agent Instructions (binding protocol):
 
 ### Immediate (Phase 15: Textbook + Papers)
 
-- Finalize paper1_math.tex with Phase 12-14 updates (48 Cat A, unified theorem narratives)
+- Finalize paper1_math.tex with W4 + W4-extended updates (38 Cat A including T-PreObj-1 family + T-V5b-T, unified theorem narratives, CN15 Static/Dynamic Separation)
 - Complete textbook (600pp, all chapters)
 - Validate all 174 tests against final Canonical Spec v2.1
 

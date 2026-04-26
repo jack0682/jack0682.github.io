@@ -1,0 +1,202 @@
+---
+title: "Perception · Week 4 Extended (2026-04-19 ~ 2026-04-26) — Critical-3 Resolved"
+slug: 2026-04-26-perception-week-4-extended
+date: 2026-04-26
+kind: weekly
+track: perception
+canonicalImpact: bumped
+canonicalVersion: v2.3
+tags: [perception, scc, weekly, w4, w4-extended, critical-resolution]
+related: [canonical-spec-scc, scc-status-2026-04, scc-theorem-registry]
+summary: "F-1 / M-1 / MO-1 1년 묵은 Critical 3건 모두 해소 (split-resolved / layer-clarified / sidestepped), Pre-Objective Mechanism Cat A 도입, Goldstone dichotomy 정착. 카운트 35 Category A → 38 Category A."
+---
+
+> **Week 4 — 2026-04-19 ~ 2026-04-26 (extended).** Canonical bump: **v2.1 → v2.3** (CV-1.4).
+> Critical 3건 → **0건**. Pre-Objective Mechanism cluster Cat A 도입. v2.0 release path unblocked.
+
+---
+
+## TL;DR
+
+- **F-1, M-1, MO-1 — 모두 해소** (2026-04-24). 1년간 v2.0 release를 막던 Critical blocker 가 0건이 됐다. SPLIT-RESOLVED / LAYER-CLARIFIED / SIDESTEPPED.
+- **신규 Cat A 4건**: T-PreObj-1 (Pre-Objective Multi-Peak Formation Mechanism), T-PreObj-1G (graph-class independent), Lemma 4 (M PD), T-V5b-T (Pre-Objective Goldstone on Translation-Invariant Graphs).
+- **개념적 commitment 신설**: σ-framework (Hessian eigenvalue/irrep/nodal-count signature on $\Sigma_m$), CN15 Static/Dynamic Separation. 1년 묵은 paradox는 framing 오류였음이 드러났다.
+
+---
+
+## The 8-day arc
+
+W4의 한 줄 narrative:
+
+> 1년간 갇혀있던 F/M/MO 언어를 **N-1 reframing**으로 깨고, **K_soft + thermal framework**로 architecture 정착, **Orbital Discovery**로 empirical pivot, **σ-framework + Theorem 2 family + V5b**로 정점 도달. **V5b 8 iterations** 후 verification cycle이 V5b-T (Cat A) + V5b-F (Cat C) 로 split, σ-framework가 multi-graph empirical Cat A로 강화되며 마무리.
+
+총 8일 (1일 extended) — N-1 reframe → 후보 평가 → K_soft thermal framework → SF (symmetry/moduli) deepening → Stage 2 axiom audit + Orbital empirical pivot → σ-framework + C2 conquest + V5b → close → V5b verification extended close.
+
+---
+
+## What's new — Cat A 승급 (4)
+
+### W4 close (2026-04-24): Pre-Objective Mechanism cluster
+
+| T-ID | Statement (요약) | Source |
+|------|------------------|--------|
+| **T-PreObj-1** | 전체 SCC 파라미터 하에서 F=1 single-disk minimizer는 **critical point가 아니다**. Gradient flow는 multi-peak F≥2 attractor로 흘러간다. IC-protocol dichotomy: adaptive bounded vs random ~ $L^{2.8}$. | C-0700 / P-0700 |
+| **T-PreObj-1G** | T-PreObj-1의 결론 (i),(ii)가 (G1)–(G4) 가설 하에서 **임의의 finite connected graph**에서 성립 (graph-class independent). | C-0701 / P-0701 |
+| **Lemma 4** | $g_{cl}, g_{sep}$ gradient의 inner product matrix $M \in \mathbb{R}^{2 \times 2}$가 linear independence 하에서 PD. Destabilization magnitude $\Lambda^T M \Lambda > 0$ for $\Lambda \neq 0$. | C-0702 / P-0702 |
+| **F-1 Resolution Corollary** | F-1은 두 layer로 split. Pure $\mathcal{E}_{bd}$ portion: T-Merge(b) (pre-existing canonical). Full SCC portion: T-PreObj-1 (i). 양쪽 모두 Cat A. | (corollary) |
+
+**검증**: E-0090 (L=12 numerical, 3-digit 이론-실험 일치), E-0091 (L=32 dichotomy).
+
+### W4-extended close (2026-04-26): Pre-Objective Goldstone
+
+| T-ID | Statement (요약) | Source |
+|------|------------------|--------|
+| **T-V5b-T** | Translation-invariant graph (torus $T^d$, cycle $C_n$)에서 sub/super-lattice spectral dichotomy. 2D 에서 Goldstone modes는 **2-fold doublet with commensurability splitting**. 1D 에서 1-fold Goldstone branch. **Goldstone nodal count = 2 universal**. 8 V5b iterations (V1 → V5b'') 끝에 도달. | C-0710 / P-0710 |
+
+**검증**: E-0095 ($\zeta$-scan), E-0096 (graph-class extension + nodal count), E-0097 (NQ-172 reproducibility re-check).
+
+---
+
+## What's clarified / resolved — Critical 3건 모두 해소
+
+W4 가장 큰 성과. 1년간 v2.0 release 를 gate 하던 OP-0001 / OP-0002 / OP-0003 이 모두 닫혔다.
+
+### F-1 (K=2 Vacuity) — ✅ SPLIT-RESOLVED
+
+**Was** *(pre-W4 framing)*: K=2 global stability은 per-formation mass $m_j$가 외부적으로 고정되어야만 의미가 있다; $m_j$가 자유롭게 변하면 energy는 항상 $m_j \to 0$를 선호하여 K=1로 collapse 한다.
+
+**Now (2026-04-24)**: F-1을 두 layer로 분해하면, **양쪽 모두 Cat A로 정착**된다.
+
+- **Pure $\mathcal{E}_{bd}$ portion**: 이것은 *옳은 정리* T-Merge (b) — connected graph에서의 isoperimetric ordering. open problem이 아니라 canonical theorem이었다. 원래 framing이 misclassification.
+- **Full SCC portion**: T-PreObj-1 (i)이 결정적. Full SCC parameter 하에서 F=1 single-disk minimizer는 **critical point가 아니다**. 따라서 "K=1 cheaper vs observed K>1" dichotomy는 **arise하지 않는다**. F=1 은 non-critical, F≥2 가 ground state default.
+
+**Net effect**: Paradox로 보였던 비교 ("global static minimum K=1 vs empirical K>1")는 dissolve. 기존의 Cat A 정리 + 신규 Cat A 정리 둘이 합쳐 dichotomy의 premise 자체가 사라졌다.
+
+### M-1 (K=1 Energetic Preference) — ✅ LAYER-CLARIFIED
+
+**Was**: K=2 energy landscape이 monotonically decreasing → K=1이 energetically 선호.
+
+**Now (2026-04-24)**: M-1은 **open problem이 아니다**. 그것은 *옳은 mathematical statement* (T-Merge (b)) — constraint manifold $\Sigma_m$에서의 isoperimetric ordering. 원래 framing이 두 distinct quantity를 conflate했다:
+
+- **Pure $\mathcal{E}_{bd}$ layer**: M-1 statement이 성립 — K=1이 K=2보다 perimeter minimization을 통해 lower energy. T-Merge (b)로 이미 canonical.
+- **Full SCC layer**: 비교 자체가 framed되지 않는다 — F=1 single-disk가 non-critical (T-PreObj-1)이므로 pure $\mathcal{E}_{bd}$의 "K=1 ground state"가 full SCC landscape으로 survive하지 않기 때문.
+
+**Conceptual key**: **CN15 Static/Dynamic Separation** — static global minimum on pure $\mathcal{E}_{bd}$ ≠ dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC. 두 quantity는 서로 다른 layer의 관측치이며 일치할 필요가 없다.
+
+### MO-1 (Morse Theory Inapplicability) — ⚪ SIDESTEPPED
+
+**Was**: K=2 constrained manifold $\Sigma^2_M$가 corners를 가짐 (smooth manifold가 아님) → smooth Morse theory inapplicable → 일부 정리의 global landscape 분석이 의문.
+
+**Now (2026-04-24)**: W4 작업이 도입한 **σ-framework** — Hessian eigenvalue / irrep / nodal-count signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — 가 **smooth single-formation manifold $\Sigma_m$ (no corners)** 위에서 작동한다. Theorem 2 family (Cat A graph-class independent)도 single-formation $\Sigma_m$에서. 따라서 W4 principal results는 $\Sigma^K_M$ 위 Morse 분석을 **요구하지 않는다**. MO-1은 현재 scope의 blocker가 아니다.
+
+**남은 작업**: Multi-formation extension (stratified Morse on $\Sigma^K_M$, multi-formation σ Phase 5)은 W5+ genuine open work. 그 단계에서 MO-1은 active blocker로 다시 등장.
+
+### Resolution path: Option D (premise dissolution)
+
+원래 검토되던 옵션:
+- Option A — "fixed K is external constraint" (포기)
+- Option B — K-selection mechanism (BIC, free energy, birth-death)
+- Option C — kinetic/metastability reformulation
+
+W4에서 발견된 **Option D — premise dissolution**: 위 셋 중 어느 것도 아닌 4번째 경로. SCC-intrinsic re-framing 으로 dichotomy 자체를 dissolve. F-1/M-1의 premise였던 "K=1 vs K>1 비교"가 framed되지 않음을 보임으로써 problem 이 자기 자신의 framing에 의존했었음을 노출.
+
+---
+
+## What was tried and didn't work
+
+블로그의 가치는 음의 결과를 honest하게 기록하는 데 있다.
+
+- **V4 / V5a in-session retracted** — V5b iteration 도중 두 차례. Healthy iterative process. V5b'' 까지 8 iterations 끝에 V5b-T (Cat A) 로 정착.
+- **Candidate evaluation matrix (8 후보, A/B/C/D/E + 조합)**: A 와 A+C가 Pareto-dominated → 폐기. Pareto frontier {B, B+C, E, C+E} 산출됐으나 결국 Option D (premise dissolution) 로 routed — Pareto matrix는 *틀린 question* 에 대한 답이었던 셈. 그러나 candidate matrix 작업이 없었으면 Option D 자체에 도달하지 못했을 것.
+- **P-Unified-1 ($\mathsf{Persist}$ degradation monotone in $\Lambda_{\mathrm{coupling}}$)**: 이미 exp49-50 에서 falsification 된 결과 재확인. $\Lambda_{\mathrm{coupling}}$은 structural classifier일 뿐 dynamical predictor가 아니라는 점이 W4 σ-framework 도입으로 더 명확해졌다.
+
+---
+
+## Reproducibility / errata
+
+### NQ-172 — Mode-indexing artifact in Goldstone analysis script (2026-04-26 발견 + 해소)
+
+W4-extended close 의 가장 중요한 process-side 학습.
+
+**발견**: V5b 8th iteration ($\zeta$-scan, NQ-170) 도중, 분석 스크립트가 spectral mode 번호를 잘못 indexing 하던 것이 드러났다. 이 artifact 는 V1 ~ V5a 반복에서 spurious 결과를 만들 가능성이 있었다.
+
+**대응**: V5b'' 에서 **mode-agnostic detection** 으로 재검증. NQ-170c (graph-class extension + nodal count) 에서 보호.
+
+**결과**: Robustness 양쪽 모두 보존:
+- **Positive**: T-V5b-T (Cat A canonical-ready) — sub/super-lattice spectral dichotomy + 2D commensurability split + 1D Goldstone + universal nodal count = 2 — mode-agnostic 으로 확인.
+- **Negative (new finding)**: V5b-F (Cat C) — partial Goldstone on boundary-modified graphs. NQ-173 으로 carry.
+
+**의의**: 8 iterations 끝에 잡힌 artifact 는 verification process 가 healthy 하다는 증거. 만약 V5b 가 V1 에서 즉시 promote 되었다면 spurious 결과가 canonical 에 들어갈 수 있었다. Reproducibility-first reflex 의 가치.
+
+---
+
+## Carry to next week (W5+)
+
+| NQ | 내용 | Tier |
+|----|------|------|
+| **NQ-173** | V5b-F partial Goldstone characterization (boundary-modified graphs, free / mixed / Dirichlet BC) | T2 (further verification) |
+| **NQ-174** | $\zeta_*(G)$ precise dependence on graph class | T2 |
+| **NQ-175** | T-V5b-T 의 3D extension (torus $T^3$) | T2 |
+| σ supporting lemmas | Lemma 1/2/3, Theorem 3/4 §13 entries decision | T2 |
+| Multi-formation σ Phase 5 | 진행 시 MO-1 이 active blocker 로 재engage 됨 | T3 (long-term) |
+
+---
+
+## Canonical impact
+
+블로그 canonical pages 가 v2.1 (2026-04-12) → **v2.3** (2026-04-26) 으로 bump 되었다.
+
+| 지표 | Pre-W4 | W4 close (04-25, v2.2) | W4-extended close (04-26, v2.3) |
+|------|--------|------------------------|-------------------------------|
+| Category A | 35 | 37 | **38** |
+| Category B | 4 | 4 | 4 |
+| Category C | 5 | 5 | 5 (+1 new finding V5b-F) |
+| Retracted | 5 | 5 | 5 |
+| Total claims | 49 | 51 | **52** |
+| % fully proved | 71% | 73% | **73%** |
+| Critical OPs | 3 | 0 | 0 |
+
+변경된 canonical 페이지:
+- [Canonical Spec — Part 5 · Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — T-PreObj-1 family + T-V5b-T + V5b-F entries, CN15 추가, §15 closing summary 재작성
+- [Canonical Spec — Part 4 · Interpretation](/notes/part-0/canonical-spec-scc-4-interpretation/) — §11.1 commitments에 #14 CN15 + #15 σ-framework, §12 W4 Resolution Banner + Pre-Objective Mechanism / Goldstone 절
+- [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/) — CV-1.3 / CV-1.4 release notes, OP table 갱신
+- [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/) — Critical-3 해소 절, Repository structure 갱신
+- [SCC Glossary](/notes/part-0/scc-glossary/) — F-1/M-1/MO-1 entries 모두 RESOLVED status로 갱신
+
+---
+
+## Process notes
+
+### Pre-Objective Mechanism의 의미
+
+T-PreObj-1 + T-PreObj-1G의 결합은 W4의 conceptual capstone이다. SCC 가 1년간 주장해 온 *pre-objective* character — "objects는 derivative이고 graded cohesion field가 primitive" — 가 *modeling choice*가 아니라 **graph-class independent mathematical theorem** 임이 증명됐다. 임의의 finite connected graph 에서 (G1)–(G4) 가설 하에 F=1 single-disk가 non-critical이고 F≥2가 default attractor 라는 것은 단순한 경험적 관찰이 아니라 정리다.
+
+### Static/Dynamic Separation (CN15)의 conceptual key 역할
+
+F-1/M-1 paradox의 해소 메커니즘은 어떤 새로운 mechanism을 도입한 것이 아니라, 기존에 conflate되던 두 quantity가 *원래 같지 않다*는 것을 commitment level에서 명시한 것이다:
+
+- **Static**: pure $\mathcal{E}_{bd}$ 위 global minimum (T-Merge (b)에 의해 K=1)
+- **Dynamic**: full SCC gradient flow의 protocol-endpoint observables ($\widehat{K}, \mathcal{F}$)
+
+두 layer가 *서로 다른 quantity 의 두 layer*임을 명시하는 것이 CN15 — and once stated, the apparent paradox dissolves.
+
+### σ-framework의 도입
+
+Hessian eigenvalue / irrep / nodal-count signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ 는 single-formation $\Sigma_m$ 위에서 well-posed (no corners). 이것이 MO-1의 sidestep mechanism이고, 동시에 multi-formation Phase 5 에서 stratified Morse 로 자연스럽게 확장될 수 있는 candidate.
+
+### Verification reflex의 가치
+
+V5b 가 8 iterations 만에 V5b-T (Cat A) 로 정착한 것 — 그리고 그 과정에서 NQ-172 mode-indexing artifact 가 발견된 것 — 은 verification process 가 healthy 하다는 증거. 1-iteration premature promotion 이 canonical 에 spurious 결과를 넣을 위험을 회피했다.
+
+---
+
+## Pointers
+
+- 본 weekly post의 모든 정리는 [Canonical Spec v2.3 (Part 5 · Results Registry)](/notes/part-0/canonical-spec-scc-5-results-registry/) 에 등재되어 있다.
+- F-1/M-1/MO-1의 단계별 해소 메커니즘 상세: [Canonical Spec Part 4 · §12 W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/).
+- 관련 정리 cross-reference: [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/).
+- W4 narrative 를 한 단락으로 요약한 status overview: [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/).
+
+---
+
+*Aligned with Perception_theory canonical CV-1.4 (2026-04-26). v2.0 release path now unblocked after 1 year.*

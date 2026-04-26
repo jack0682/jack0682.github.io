@@ -6,24 +6,24 @@ chapter: 0
 section: "Canonical Specification · Part 5"
 kind: essay
 track: perception
-updated: 2026-04-12
-summary: "Sections 13–15 of the SCC v2.1 canonical specification: the proved results registry (49 formal claims, 35 Category A + 4 Category B + 5 Category C + 5 retracted), the consolidated commitment notes (CN1–CN14), and the closing summary."
+updated: 2026-04-26
+summary: "Sections 13–15 of the SCC v2.3 canonical specification: the proved results registry (52 formal claims, 38 Category A + 4 Category B + 5 Category C + 5 retracted), the consolidated commitment notes (CN1–CN15), and the closing summary."
 tags: [scc, canonical-spec, theorems, commitments, registry]
 related: [canonical-spec-scc, canonical-spec-scc-4-interpretation]
 ---
 
-> **Part 5 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> **Part 5 of 5** — Soft Cognitive Cohesion canonical specification v2.3 (aligned with Perception_theory canonical CV-1.4, 2026-04-26).
 > See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
 
 ---
 
 ## 13. Proved Results Registry
 
-*(Erratum 2026-04-07: §13 counts corrected to 35A/4B/5C/5R per honest recount of 04-06 deep audit. Previous counts (43A/2B/3C/0R) overcounted due to: empirical fits treated as proofs, merge path manifold error, quantitative claims bundled with qualitative theorems. See docs/04-06/HONEST-RECOUNT.md.)*
+*(Audit history: §13 counts were corrected from 43A/2B/3C/0R to 35A/4B/5C/5R on 2026-04-07 after the 04-06 deep audit, then upgraded to 38A/4B/5C/5R on the W4 + W4-extended close (2026-04-25 to 2026-04-26) with the addition of T-PreObj-1, T-PreObj-1G, Lemma 4, and T-V5b-T.)*
 
-The following theorems have been rigorously proved through Iterations 1–12 and audited 2026-04-06. They are listed with precise statements, proof methods, and known caveats. **Totals: 35 Category A, 4 Category B, 5 Category C, 5 Retracted (49 claims, 71% fully proved).**
+The following theorems have been rigorously proved and audited through the W4-extended close (2026-04-26). They are listed with precise statements, proof methods, and known caveats. **Totals: 38 Category A, 4 Category B, 5 Category C, 5 Retracted (52 claims, 73% fully proved).**
 
-### Category A: Fully Proved (35 theorems)
+### Category A: Fully Proved (38 theorems)
 
 **T1. Energy Minimizer Existence.**
 On the constraint manifold $\Sigma_m = \{u \in [0,1]^n : \sum u_i = m\}$, the energy $\mathcal{E}_t$ attains its minimum.
@@ -160,6 +160,36 @@ Exact formula: $\beta > \Gamma(a_{\mathrm{cl}}, \tau, \eta, \lambda_{\mathrm{cl}
 *Proof:* Rigorous derivation verified on 87 test cases with zero violations for $\varepsilon_1 \leq 0.1$. Analytically derived (not fitted).
 *Status:* **Proved**, Cat A.
 
+---
+
+#### W4 close additions (2026-04-24)
+
+**T-PreObj-1. Pre-Objective Multi-Peak Formation Mechanism.** *(New, W4 close, 2026-04-24.)*
+Under full SCC parameters on a finite connected graph satisfying (G1)–(G4) hypotheses: (i) the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point** of the full energy $\mathcal{E}$; (ii) gradient flow attracts to multi-peak F≥2 configurations; (iii) IC-protocol dichotomy — adaptive bounded protocols converge to bounded endpoints, random initialization scales as ~ $L^{2.8}$.
+*Proof:* Lemma 4 (M positive definite) + destabilization analysis $\Lambda^T M \Lambda > 0$ + gradient flow concavity argument. Numerical verification: E-0090 (L=12, 3-digit theory–experiment agreement), E-0091 (L=32 dichotomy).
+*Status:* **Proved**, Cat A. *(C-0700, P-0700.)*
+
+**T-PreObj-1G. Pre-Objective Mechanism — Graph-Class Independent.** *(New, W4 close, 2026-04-24.)*
+Conclusions (i) and (ii) of T-PreObj-1 hold on **any finite connected graph** under (G1)–(G4) hypotheses, not only on the test grid families.
+*Proof:* T-PreObj-1 argument upgraded to graph-class independence via abstract spectral / isoperimetric reasoning; theoretical and qualitative empirical confirmation.
+*Status:* **Proved**, Cat A. *(C-0701, P-0701.)*
+
+**Lemma 4. Quadratic Form Positive Definite (M matrix).** *(New, W4 close, 2026-04-24.)*
+Let $M \in \mathbb{R}^{2 \times 2}$ be the inner-product matrix of the gradients $g_{\mathrm{cl}}, g_{\mathrm{sep}}$ at the F=1 candidate. Under linear independence of $g_{\mathrm{cl}}$ and $g_{\mathrm{sep}}$, $M$ is positive definite, and the destabilization magnitude $\Lambda^T M \Lambda > 0$ for any nonzero direction $\Lambda$.
+*Proof:* Standard PD criterion ($\det M > 0$, $\mathrm{tr}\,M > 0$) under the linear independence hypothesis.
+*Status:* **Proved**, Cat A. *(C-0702, P-0702.)*
+
+**F-1 Resolution Corollary. F-1 SPLIT-RESOLVED via T-Merge (b) + T-PreObj-1.** *(New, W4 close, 2026-04-24.)*
+The F-1 problem (K=2 vacuity, OP-0001 in [Part 4 · §12](/notes/part-0/canonical-spec-scc-4-interpretation/)) decomposes into two layers, each Cat A: (i) the pure $\mathcal{E}_{\mathrm{bd}}$ portion is the *correct theorem* T-Merge (b) (isoperimetric ordering), not an open problem — original framing as "open problem" was a misclassification; (ii) the full SCC portion is resolved by T-PreObj-1 (i): under full SCC parameters, the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is non-critical, so the dichotomy "K=1 cheaper vs observed K>1" does not arise. The premise of F-1 collapses.
+*Status:* **Cat A corollary** of T-Merge (b) + T-PreObj-1. M-1 (OP-0002) is similarly LAYER-CLARIFIED (proved theorem misframed as problem); MO-1 (OP-0003) is SIDESTEPPED by the σ-framework operating on $\Sigma_m$. Critical blocker count: **3 → 0**.
+
+#### W4-extended addition (2026-04-26)
+
+**T-V5b-T. Pre-Objective Goldstone on Translation-Invariant Graphs.** *(New, W4-extended close, 2026-04-26.)*
+On graph classes with full translation symmetry (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy holds at the F=1 / F≥2 transition; in 2D the Goldstone modes form a **2-fold doublet with commensurability splitting**; in 1D a 1-fold Goldstone branch; the **Goldstone nodal count = 2 universal**. The crossover scale $\zeta_*(G)$ is graph-class dependent.
+*Proof:* Bloch-mode decomposition + symmetry argument + ζ-scan numerical verification. After 8 V5b iterations (V1 → V5b''). Numerical verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check after mode-indexing artifact identified+resolved).
+*Status:* **Proved**, Cat A. *(C-0710, P-0710.)*
+
 ### Category B: Proved with Explicit Structural Parameter (4 theorems)
 
 *(Erratum 2026-04-07: T-Bind-Proj/Full moved to Category A above. T-Persist-K-Sep moved to Category C — regime conditions are non-removable structural hypotheses, making it conditional. T-Beyond-Weyl, T-d_min-Formula, barrier exponent γ_eff, and general-graph birth moved here from former Category A.)*
@@ -266,6 +296,12 @@ Synthesizes all components of T-Persist-1 into a single conditional theorem. Und
 *Status:* **Category C** — composition whose weakest component is T-Persist-1(d) Cat C. Most components are Category A. End-to-end chain verified: exp27 (5/5 × 5/5 = 100% pass); exp28 stress test (84/100, all failures at $n < 64$ or $\beta < 20$).
 *(PERSIST-MORSE-ANALYSIS.md, PERSIST-SYNTHESIS.md, BASIN-ESCAPE-ANALYSIS.md, CORE-DEPTH-ISOPERIMETRIC.md, TRANSPORT-CONCENTRATION-STRENGTHENED.md.)*
 
+#### W4-extended new finding (2026-04-26)
+
+**V5b-F. Partial Goldstone on Boundary-Modified Graphs.** *(New finding, W4-extended close, 2026-04-26.)*
+On graphs whose translation symmetry is broken at the boundary (free / mixed / Dirichlet boundary conditions), a **partial Goldstone** mode survives: the boundary lifting mechanism qualitatively shifts and partially gaps the Goldstone branch, but a residual approximate Goldstone signature remains observable. Quantitative characterization is in progress (NQ-173 carry).
+*Status:* **Category C** — qualitative observation only; full mechanism and quantitative scaling carried as NQ-173 to W5+. Source: E-0096 (free BC partial). *(C-0711, P-0711.)*
+
 ### Retracted (5 claims)
 
 *(Erratum 2026-04-07: Added T-Merge (c)(d)(e) and K-Saddle Conjecture. Total 5 retracted claims.)*
@@ -321,21 +357,27 @@ The following Commitment Notes record foundational decisions that constrain inte
 
 **CN14. Closure Expands Multi-Formation Stability.** On a single soft cohesion field, K > 1 well-separated formations are metastable local minima when inter-formation distance exceeds $d_{\min}^*$. The self-referential closure operator reduces $d_{\min}^*$ compared to pure Allen-Cahn by approximately **30%** (from $\approx 7$ nodes without closure to $\approx 5$ nodes with SCC closure at $\beta=30$; exp57 final). This distance reduction enables formation coexistence at closer separations. The physical mechanism: closure's self-reinforcement structure creates larger attraction basins for each formation, strengthening internal cohesion and raising the merge-direction barrier height. This is the multi-formation realization of T7-Enhanced metastability, where closure participation in the energy landscape (beyond its role as a fixed-point operator) directly enhances formation stability through increased Hessian curvature perpendicular to formation axes. Without closure (pure Allen-Cahn): $d_{\min}^* \approx 7$ nodes, barrier height $O(\beta^{0.85})$. With closure (SCC, $a_{\mathrm{cl}}=3.0$): $d_{\min}^* \approx 5$ nodes, barrier height $O(\beta^{0.89})$ (exp38, exp57). **K-field architecture independence:** The $K$-field decomposition with per-field optimization and global inter-field repulsion ensures K>1 by construction, regardless of $d_{\min}^*$ thresholds. The two mechanisms are complementary: single-field SCC extends the metastability range; K-field architecture guarantees structural K>1 even at the merge bifurcation.
 
+**CN15. Static/Dynamic Separation.** *(New, W4 close, 2026-04-24.)* The **static** global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ (constraint $\Sigma_m$, isoperimetric ordering, T-Merge (b)) is K=1 — this is a proved theorem, not an open problem. The **dynamic** observables — what a protocol actually delivers under full SCC gradient flow — are protocol-endpoint quantities $\widehat{K}, \mathcal{F}$ that **need not equal** the static minimum, because under full SCC parameters the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is non-critical (T-PreObj-1). This separation dissolves the apparent paradox "K=1 cheaper static minimum vs empirically observed K>1": the two are quantities of different layers (static $\mathcal{E}_{\mathrm{bd}}$ vs dynamic full SCC) and there is no requirement that they match. CN15 is the conceptual key that resolved F-1 (OP-0001) and clarified M-1 (OP-0002) without requiring a K-selection mechanism, an external mass constraint, or a kinetic barrier argument. Source: T-Merge (b), T-PreObj-1, T-PreObj-1G, Lemma 4 (W4 cluster). [Part 4 · §11.1 item 14](/notes/part-0/canonical-spec-scc-4-interpretation/) and [§12 W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/) for the operational consequences.
+
 ---
 
 ## 15. Closing Summary
 
-This canonical specification (v2.1) establishes the formal structure of the theory of Soft Cognitive Cohesion in its current state. The theory is grounded in a single foundational commitment: that the structural properties of coherent formations — binding, separation, morphological articulation, and persistence — are decomposable into independently graded dimensions and evaluable through self-referential operators. This formation-level description is formally richer than and not reducible to discrete object-level description, though the theory's equilibrium formations may themselves be object-like.
+This canonical specification (v2.3) establishes the formal structure of the theory of Soft Cognitive Cohesion in its current state, aligned with the Perception_theory canonical CV-1.4 (W4-extended close, 2026-04-26). The theory is grounded in a single foundational commitment: that the structural properties of coherent formations — binding, separation, morphological articulation, and persistence — are decomposable into independently graded dimensions and evaluable through self-referential operators. This formation-level description is formally richer than and not reducible to discrete object-level description, though the theory's equilibrium formations may themselves be object-like.
 
 From this commitment, the theory develops a formal universe in which closure captures relational self-support (A1'–A4, with proved contraction at $a_{\mathrm{cl}} < 4$), distinction captures exterior asymmetry (D-Ax1–3), morphological structure captures the articulation of core, boundary, and exterior ($\mathcal{Q}_{\mathrm{morph}} = \frac{\ell_{\max} - c}{1 - c} \cdot \mathrm{Artic}$, with proved axiom satisfaction QM1–4), and temporal transport captures the structural inheritance that constitutes persistence through time (E1–E4, with E3 reclassified as a solution constraint). Co-belonging (C1–C4, with proved resolvent realization) serves as a derived diagnostic for non-local structural integration but does not enter any predicate or energy term.
 
-The proto-cohesion diagnostic vector $\mathbf{d} \in [0,1]^4$ unifies these four requirements into a graded formal assessment of formation quality, and the minimal energy principle — with mandatory volume constraint on the manifold $\Sigma_m$ — provides a variational characterization of formations. *(Erratum 2026-04-07: Counts corrected per honest recount.)* The theory has **35 fully proved theorems** (Category A), 4 with structural parameters (Category B), 5 conditional results (Category C), and 5 retracted claims — totaling **49 formal claims, 71% fully proved**. Key results include non-trivial minimizer existence under a computable phase transition (T8-Core, T8-Full), gradient flow convergence (T14), stability advantage for non-idempotent closure (T3/T6), exact predicate-energy bridge (Sep = 1 - E_sep/m), closure residual bound for all τ (T-Bind-Proj), formation-birth on D₄-symmetric graphs (T-Birth-Parametric), and the unified multi-formation persistence theorem (T-Persist-K-Unified) parametrized by the coupling measure $\Lambda_{\mathrm{coupling}}$. The overcounting in previous versions arose from empirical fits treated as proofs, the merge path manifold error (T-Merge (c)(d)(e) retracted), and quantitative claims bundled with qualitative theorems.
+The proto-cohesion diagnostic vector $\mathbf{d} \in [0,1]^4$ unifies these four requirements into a graded formal assessment of formation quality, and the minimal energy principle — with mandatory volume constraint on the manifold $\Sigma_m$ — provides a variational characterization of formations. The theory has **38 fully proved theorems** (Category A), 4 with structural parameters (Category B), 5 conditional results (Category C), and 5 retracted claims — totaling **52 formal claims, 73% fully proved**. Key results include non-trivial minimizer existence under a computable phase transition (T8-Core, T8-Full), gradient flow convergence (T14), stability advantage for non-idempotent closure (T3/T6), exact predicate-energy bridge (Sep = 1 - E_sep/m), closure residual bound for all τ (T-Bind-Proj), formation-birth on D₄-symmetric graphs (T-Birth-Parametric), the unified multi-formation persistence theorem (T-Persist-K-Unified) parametrized by the coupling measure $\Lambda_{\mathrm{coupling}}$, and the W4 Pre-Objective Mechanism cluster (T-PreObj-1, T-PreObj-1G, Lemma 4) plus the W4-extended Goldstone dichotomy on translation-invariant graphs (T-V5b-T).
 
-**Multi-formation paradigm (2026-04-02 audit):** The theory now recognizes that multi-formation dynamics are fundamentally **kinetic (barrier-based), not thermodynamic (energy-based)**. The global energy minimum is always K*=1 (single formation) on any connected graph due to isoperimetric ordering. Multiple formations coexist as **metastable local minima** maintained by kinetic barriers of height $O(\beta^{0.89})$. Well-separated formations ($d > d_{\min}^* \approx 5$ nodes) remain stable under noise (exp55: zero merges in 5000 iterations at $\sigma \leq 0.5$, $\beta=30$). The self-referential closure operator reduces the critical distance $d_{\min}^*$ by ~30% compared to pure Allen-Cahn, realizing T7-Enhanced metastability through self-reinforced attraction basins and increased barrier heights. Three kinetic pillars structure multi-formation understanding: (I) Nucleation from spectral modes, (II) Metastability across three regimes (well-separated via T-Persist-K-Sep proved; weakly-interacting via T-Persist-K-Weak conditionally proved; strongly-interacting above merge bifurcation), (III) Coarsening under noise and stochasticity. K emerges kinetically from initial conditions and spatial structure; the $K$-field architecture guarantees K>1 by construction. Early thermodynamic predictions (P-Unified-1/2) are falsified; kinetic predictions (MK-1–MK-4) replace them.
+**W4 Critical resolution (2026-04-24).** The three Critical open problems that gated v2.0 release for nearly a year — F-1 (K=2 vacuity), M-1 (K=1 preference), MO-1 (Morse inapplicability) — are all resolved. F-1 is **SPLIT-RESOLVED** (T-Merge (b) on pure $\mathcal{E}_{\mathrm{bd}}$, T-PreObj-1 (i) on full SCC). M-1 is **LAYER-CLARIFIED** as the proved theorem T-Merge (b) misframed as a problem. MO-1 is **SIDESTEPPED** by the σ-framework operating on the smooth single-formation manifold $\Sigma_m$ (no corners). The conceptual key is **CN15 Static/Dynamic Separation**: the static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ and the dynamic protocol-endpoint observables under full SCC are quantities of different layers that need not match. Critical blocker count: **3 → 0**.
 
-**Theory status: 35 Category A, 4 Category B, 5 Category C, 5 Retracted (71% fully proved).** *(Erratum 2026-04-07: corrected from 43/2/3/0 per 04-06 deep audit.)* *(Erratum 2026-04-10: counts unchanged; several items are now explicitly branch-, regime-, or path-conditioned rather than branch-free scalars.)* Category B items: γ_eff ≈ 0.89 barrier exponent (empirical and branch/path/manifold conditioned), general-graph birth supercriticality (narrow-gap/non-D4 cases), d_min formula (branch-conditioned regression fit), Beyond-Weyl 33× quantification (grid/branch-specific). Category C items: T-Persist-1(d) (β > 7α structural interior-gap condition), T-Persist-Full (chains through exact-threshold component), T-Persist-K-Sep (regime conditions WS/SR), T-Persist-K-Weak (WI + SR regime conditions), T-Persist-K-Unified (selected-branch + 5 structural hypotheses). Retracted: Thm 3.3 general τ, T-Merge (c)(d)(e) (merge path manifold error), K-Saddle Conjecture. Remaining research extensions: (1) **Near-bifurcation persistence (μ → 0)** — normal-form-specific shrinking-window persistence, branch selection, basin collapse dynamics; (2) **Multi-formation kinetic dynamics** — branch-state transition graph, coarsening cascades, stochastic birth/death; (3) **Merge barrier on relaxed manifold** — branch/path-conditioned barrier on an explicitly valid relaxed total-mass manifold such as $R_M^2$.
+**W4-extended addition (2026-04-26).** The Pre-Objective Goldstone theorem T-V5b-T establishes a sub/super-lattice spectral dichotomy on translation-invariant graphs (torus $T^d$, cycle $C_n$): in 2D the Goldstone modes form a 2-fold doublet with commensurability splitting; in 1D a 1-fold Goldstone branch; the Goldstone nodal count = 2 universal. The result emerged from 8 V5b iterations (V1 → V5b''), in the course of which a reproducibility crisis (NQ-172, mode-indexing artifact in the analysis script) was identified and resolved with mode-agnostic detection. A new Cat C finding, V5b-F (partial Goldstone on boundary-modified graphs), is registered and carried as NQ-173.
 
-The theory now stands as a mathematically structured ontology of pre-objective cohesion — with genuine theorems, honest gap accounting, and a clear distinction between what is proved, what is provisional, and what remains open — informed by a kinetic understanding of multi-formation coexistence that grounds the theory in barrier dynamics rather than energy minimization.
+**Theory status (2026-04-26): 38 Category A, 4 Category B, 5 Category C, 5 Retracted (52 claims, 73% fully proved).** Category B items: γ_eff ≈ 0.89 barrier exponent (empirical and branch/path/manifold conditioned), general-graph birth supercriticality (narrow-gap/non-D4 cases), d_min formula (branch-conditioned regression fit), Beyond-Weyl 33× quantification (grid/branch-specific). Category C items: T-Persist-1(d) (β > 7α structural interior-gap condition), T-Persist-Full (chains through exact-threshold component), T-Persist-K-Sep (regime conditions WS/SR), T-Persist-K-Weak (WI + SR regime conditions), T-Persist-K-Unified (selected-branch + 5 structural hypotheses); plus the new V5b-F finding (W4-extended). Retracted: Thm 3.3 general τ, T-Merge (c)(d)(e) (merge path manifold error), K-Saddle Conjecture.
+
+**Active open problems (post-W4):** Critical 0; High 1 — OP-0005 K-Selection mechanism (partially addressed by σ-framework + CN15 Static/Dynamic Separation; full mechanism still open); Medium 4 — boundary precision, Bind τ generalization, transport kernel uniqueness, persist composition, closure convergence rate; Low — dynamic topology, stochastic dynamics, continuous-time limit. Carry NQ for W5+: NQ-173 (V5b-F partial Goldstone), NQ-174 (ζ_*(graph) precise dependence), NQ-175 (3D extension), σ supporting lemmas (Lemma 1/2/3, Theorem 3/4) §13 entries decision, multi-formation σ Phase 5 (would re-engage MO-1 as blocker).
+
+The theory now stands as a mathematically structured ontology of pre-objective cohesion — with genuine theorems, honest gap accounting, and a clear distinction between what is proved, what is provisional, and what remains open. The W4 close moved the theory from "Critical-3-blocked" to "release-path-unblocked" via Option D (premise dissolution) rather than the originally-considered Options A/B/C (external constraint, K-selection mechanism, kinetic reformulation), and the W4-extended Goldstone result extends the Pre-Objective Mechanism cluster to translation-invariant graph classes.
 
 ---
 

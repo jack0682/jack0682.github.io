@@ -4,20 +4,52 @@ slug: scc-theorem-registry
 part: 0
 kind: registry
 track: perception
-summary: "The authoritative index of all proved SCC theorems — 30+ entries with status, category (A/B/C), proof IDs, and experiment cross-references."
+updated: 2026-04-26
+summary: "The authoritative index of all proved SCC theorems — 38 Category A + 4 Category B + 5 Category C + 5 retracted (52 claims, 73% fully proved). Aligned with Perception_theory canonical CV-1.4 (W4-extended close, 2026-04-26)."
 tags: [scc, theorems, registry, reference]
 draft: false
 ---
 
 **Purpose:** Register all claims (C-xxxx), proofs (P-xxxx), and canonical theorems (T-xxxx, CV-x.y). This is the authoritative index of what has been proved.
 
-**Structure:** Rows are organized by canonical version (CV-1.0, CV-1.1, CV-1.2) then status (active, challenged, deprecated).
+**Structure:** Rows are organized by canonical version (CV-1.0 → CV-1.4) then status (active, resolved, challenged, deprecated).
 
 ---
 
 ## Canonical Theorems (Accepted into Canonical Spec)
 
-### Canonical Spec v1.2 (2026-04-12) — Current Version
+### Canonical Spec v1.4 (2026-04-26) — Current Version (W4-extended close)
+
+**Additions over v1.3** (W4-extended close, 2026-04-26):
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-V5b-T** | Pre-Objective Goldstone on Translation-Invariant Graphs | accepted | A | C-0710 | P-0710 | E-0095, E-0096, E-0097 | Sub/super-lattice spectral dichotomy on torus T^d / cycle C_n; 2D commensurability split; 1D Goldstone; nodal count = 2 universal. After 8 V5b iterations (V1 → V5b''). |
+
+**v1.3 → v1.4 release notes (2026-04-26):**
+- Added: 1 Cat A theorem (T-V5b-T) — V5b verification cycle (8 iterations) result.
+- Counts: 37A → **38A**, 51 claims → **52 claims**, 73% → **73% fully proved**.
+- New finding registered: V5b-F (Partial Goldstone on Boundary-Modified Graphs) — Cat C, NQ-173 carry.
+- Reproducibility crisis identified+resolved: NQ-172 (mode-indexing artifact in NQ-170 analysis script).
+
+### Canonical Spec v1.3 (2026-04-25) — Previous Version (Frozen)
+
+**Additions over v1.2** (W4 merge, 2026-04-19 ~ 2026-04-25):
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-PreObj-1** | Pre-Objective Multi-Peak Formation Mechanism | accepted | A | C-0700 | P-0700 | E-0090, E-0091 | F=1 single-disk minimizer non-critical under full SCC; gradient flow attracts to multi-peak F≥2; IC-protocol dichotomy adaptive bounded vs random ~ $L^{2.8}$ |
+| **T-PreObj-1G** | Pre-Objective Mechanism Graph-Class Independent | accepted | A | C-0701 | P-0701 | (theoretical) | Conclusions (i),(ii) of T-PreObj-1 hold on any finite connected graph under (G1)–(G4) hypotheses |
+| **Lemma 4** | Quadratic Form Positive Definite (M matrix) | accepted | A | C-0702 | P-0702 | E-0090 | $M \in \mathbb{R}^{2 \times 2}$ of $(g_{cl}, g_{sep})$ gradients, PD under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$ |
+| **F-1 Resolution Corollary** | F-1 SPLIT-RESOLVED via T-Merge(b) + T-PreObj-1 | accepted | A | (corollary) | (corollary) | — | Pure $\mathcal{E}_{bd}$ portion via T-Merge(b); full SCC portion via T-PreObj-1 (i) |
+
+**v1.2 → v1.3 release notes (2026-04-25):**
+- Added: 2 Cat A theorems (T-PreObj-1, T-PreObj-1G), 1 Cat A lemma (Lemma 4), 1 Cat A corollary (F-1 split-resolution).
+- Status changes: C-0550 (F-1), C-0551 (M-1), C-0552 (MO-1) — challenged → resolved/clarified/sidestepped.
+- Counts: 35A → **37A**, 49 claims → **51 claims**, 71% → **73% fully proved**.
+- Critical blockers: 3 (F-1, M-1, MO-1) → **0** (all resolved/clarified/sidestepped).
+
+### Canonical Spec v1.2 (2026-04-12) — Previous Version (Frozen)
 
 | T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
 |------|------|--------|----------|--------|-------|-------------|-------|
@@ -52,15 +84,20 @@ draft: false
 
 ---
 
-## Active Claims (Not Yet Canonical)
+## Active Claims (Not Yet Canonical) / Resolved Claims
 
-| C-ID | Name | Status | Category (Intended) | Proof (P-ID) | Experiments | Notes |
-|------|------|--------|---------|----------|-------------|-------|
-| **C-0550** | F-1: K=2 Vacuity Problem | challenged | OP | X-0001 | none | K=2 global stability requires external m constraint; K=1 cheaper |
-| **C-0551** | M-1: K=1 Always Preferred | challenged | OP | X-0001 | none | M₂ landscape monotonically decreases toward K=1 |
-| **C-0552** | MO-1: Morse Theory Invalid | challenged | OP | none | none | M₂ is manifold with corners; smooth Morse theory inapplicable |
+| C-ID | Name | Status | Category | Proof (P-ID) | Experiments | Notes |
+|------|------|--------|----------|--------------|-------------|-------|
+| **C-0550** | F-1: K=2 Vacuity Problem | ✅ **SPLIT-RESOLVED (2026-04-24)** | A | P-0700 + T-Merge(b) | E-0090, E-0091 | Pure $\mathcal{E}_{bd}$ portion: T-Merge(b) Cat A pre-existing. Full SCC portion: T-PreObj-1 (i) Cat A. |
+| **C-0551** | M-1: K=1 Always Preferred | ✅ **LAYER-CLARIFIED (2026-04-24)** | A | T-Merge(b) | none | Proved theorem (T-Merge(b)) misframed as problem. Pure $\mathcal{E}_{bd}$: theorem holds. Full SCC: comparison not framed (T-PreObj-1 makes F=1 non-critical). |
+| **C-0552** | MO-1: Morse Theory Invalid | ⚪ **SIDESTEPPED (2026-04-24)** | A (single-formation) | (sidestep) | none | Single-formation σ-framework operates on Σ_m (no corners). Multi-formation extension to $\Sigma^K_M$ still open (Phase 5). |
 | **C-0553** | Type A/B Classification | challenged | OP | exp65 | E-0065 | exp65 invalidates; Type B never observed |
-| **C-0600** | K-field Model Selection | tentative | pending | none | exp66:exp73 | Propose BIC/free energy mechanism for K determination |
+| **C-0600** | K-field Model Selection | tentative (partially addressed) | pending | none | exp66:exp73 | W4 σ-framework + Static/Dynamic Separation (CN15) provides partial answer; full mechanism still open |
+| **C-0700** | T-PreObj-1 Pre-Objective Mechanism | ✅ **accepted Cat A** | A | P-0700 | E-0090, E-0091 | New 2026-04-24. F=1 disk non-criticality + multi-peak attractor + IC-protocol dichotomy |
+| **C-0701** | T-PreObj-1G Graph-Class Independent | ✅ **accepted Cat A** | A | P-0701 | (theoretical) | New 2026-04-24. Conclusions (i),(ii) hold on any finite connected graph under (G1)–(G4) |
+| **C-0702** | Lemma 4 Quadratic Form PD | ✅ **accepted Cat A** | A | P-0702 | E-0090 | New 2026-04-24. M positive definite under $g_{cl}, g_{sep}$ linear independence |
+| **C-0710** | T-V5b-T Pre-Objective Goldstone on Translation-Invariant Graphs | ✅ **accepted Cat A** | A | P-0710 | E-0095, E-0096, E-0097 | New 2026-04-26 (W4 extended). After 8 V5b iterations |
+| **C-0711** | V5b-F Partial Goldstone on Boundary-Modified Graphs | tentative | C | P-0711 | E-0096 (free BC partial) | New 2026-04-26 (W4 extended). Cat C new finding. NQ-173 carry. |
 
 ---
 
@@ -68,7 +105,7 @@ draft: false
 
 | X-ID | Refutes | Status | Description | Impact |
 |------|---------|--------|-------------|--------|
-| **X-0001** | C-0550 (F-1 Validity) | validated | K=2 energy 4.66 vs K=1 energy 2.25 (50% difference); empirical validation | K=2 definition requires external scaffolding |
+| **X-0001** | ~~C-0550 (F-1 Validity)~~ — **superseded 2026-04-24** | superseded | Originally: K=2 energy 4.66 vs K=1 energy 2.25. **W4 reframing**: this evidence is the *correct* T-Merge(b) statement, not a refutation. F-1 was misframed as problem. | F-1 SPLIT-RESOLVED via Option D (premise dissolution) |
 | **X-0002** | Type A/B Classification | validated | exp65: all configs Type A (0 Type B observed); breaks 04-07 interpretation | Type classification rejected as non-real phenomenon |
 
 ---
@@ -95,43 +132,46 @@ draft: false
 - **New:** T-Bind-Full (Category A, τ=1/2 only)
 - **Count:** 35 → 38 Category A (3 upgraded)
 
-### CV-1.2 (2026-04-12) — Current, with Audit Clarifications
+### CV-1.2 (2026-04-12) — Frozen, with Audit Clarifications
 
 - **Added:** T-Persist-K-Unified (Category B; parametric coverage of Sep/Weak/Strong regimes)
 - **Explicit Assumptions:** All K-field theorems now state "fixed K, fixed m" constraint
 - **Status Clarifications:**
-  - F-1, M-1, MO-1 documented as unresolved (not silently ignored)
+  - F-1, M-1, MO-1 documented as unresolved (not silently ignored) — *resolved in CV-1.3*
   - Type A/B classification retracted (exp65 invalidated)
-  - Morse theory MO-1 vulnerability flagged (mitigation: use existing results, defer full Morse)
-- **Count:** 38 + 1 (T-Persist-K-Unified) = 39 theorems
-- **Retracted:** K-Saddle Conjecture, r̄₀ general τ (kept in archive)
+  - Morse theory MO-1 vulnerability flagged — *sidestepped in CV-1.3*
+- **Count:** 35A/4B/5C/5R (49 claims, 71% fully proved)
+- **Retracted:** K-Saddle Conjecture, r̄₀ general τ, T-Merge (c)(d)(e)
 
 ---
 
-## Open Problems (OP-xxxx)
+## Open Problems (OP-xxxx) — Updated 2026-04-25 (W4 close)
 
 | OP-ID | Problem | Severity | Status | Blocker For |
 |-------|---------|----------|--------|-------------|
-| **OP-0001** | F-1: K=2 vacuous | 🔴 CRITICAL | unresolved | K-field theory foundation |
-| **OP-0002** | M-1: K=1 preferred | 🔴 CRITICAL | unresolved | K-selection mechanism |
-| **OP-0003** | MO-1: Morse fails | 🟠 HIGH | unresolved | M₂ full analysis |
+| **OP-0001** | F-1: K=2 vacuous | 🔴 ~~CRITICAL~~ → ✅ | **SPLIT-RESOLVED (2026-04-24)** | (no longer blocking) |
+| **OP-0002** | M-1: K=1 preferred | 🔴 ~~CRITICAL~~ → ✅ | **LAYER-CLARIFIED (2026-04-24)** — proved theorem misframed | (no longer blocking) |
+| **OP-0003** | MO-1: Morse fails | 🟠 ~~HIGH~~ → ⚪ | **SIDESTEPPED (2026-04-24)** for single-formation σ scope | Multi-formation σ Phase 5 (re-engages) |
 | **OP-0004** | Boundary definition precision | 🟡 MEDIUM | tentative (D-0004) | Morphology formalization |
-| **OP-0005** | Transport kernel exact form | 🟡 MEDIUM | tentative | Full persist theorem |
+| **OP-0005** | Transport kernel exact form / K-Selection mechanism | 🟠 HIGH | partially addressed via σ-framework + CN15 | Full mechanism still open |
 | **OP-0006** | Type A/B characterization | 🟠 HIGH | challenged (exp65) | Branch selection theory |
 | **OP-0007** | Dynamic topology | 🟢 LOW | seed | Future multi-scale extension |
 
+**W4 changes (2026-04-25):** Critical blockers 3 → **0**. F-1/M-1/MO-1 all resolved/clarified/sidestepped via Theorem 2 family + T-Merge(b) + σ-framework single-formation scope.
+
 ---
 
-## Proof Status Summary
+## Proof Status Summary (Updated 2026-04-26, post-W4-extended close)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| **Category A (Fully Proved)** | 35 | T-1, T-20, QM-1:4, C-Axioms, Predicate-Energy Bridge, etc. |
-| **Category B (Conditional)** | 4 | T-Bind-Proj (τ=1/2), T-Persist-K-Sep, T-Persist-K-Unified (new) |
-| **Category C (Very Conditional)** | 5 | T-Bind-Full (general τ), T-Persist-1(a), T-Persist-1(d), T-Persist-Full, T-Persist-K-Weak |
-| **Challenged** | 2 | C-0550 (F-1), C-0553 (Type A/B) |
-| **Retracted** | 2 | K-Saddle Conjecture, r̄₀ general τ |
-| **Open** | 7 | OP-0001:0007 |
+| **Category A (Fully Proved)** | **38** (was 37 post-v1.3, 35 pre-W4) | T-1, T-20, QM-1:4, C-Axioms, Predicate-Energy Bridge, T-PreObj-1, T-PreObj-1G, Lemma 4 (W4), **T-V5b-T (W4 extended)**, etc. |
+| **Category B (Conditional)** | 4 | T-Bind-Proj (τ=1/2), T-Persist-K-Sep, T-Persist-K-Unified |
+| **Category C (Very Conditional)** | 5 + 1 (new finding) | T-Bind-Full (general τ), T-Persist-1(a/d), T-Persist-Full, T-Persist-K-Weak; **V5b-F (new finding 2026-04-26, NQ-173 carry)** |
+| **Resolved/Clarified/Sidestepped (W4)** | 3 | C-0550 (F-1 split-resolved), C-0551 (M-1 layer-clarified), C-0552 (MO-1 sidestepped) |
+| **Challenged** | 1 | C-0553 (Type A/B) |
+| **Retracted** | 5 | K-Saddle Conjecture, r̄₀ general τ, T-Merge (c)(d)(e) |
+| **Open (active)** | 4 (was 7) | OP-0004, OP-0005, OP-0006, OP-0007 (Critical 3건은 W4에서 해소) |
 
 ---
 
@@ -163,7 +203,10 @@ draft: false
 
 ---
 
-**Last updated:** 2026-04-12  
-**Total canonical theorems:** 39 (35 Cat A, 4 Cat B, 5 Cat C, 2 retracted)  
-**Open problems:** 7 (2 critical)  
-**See also:** concept_registry.md, assumption_registry.md, promotion_rules.md
+**Last updated:** 2026-04-26 (W4-extended close + V5b-T canonical merge)  
+**Total canonical theorems:** 47 = **38 Cat A** + 4 Cat B + 5 Cat C — 5 retracted (52 claims, 73% fully proved)  
+**Open problems:** 4 active (was 7) — Critical 3건 (F-1, M-1, MO-1) 모두 해소  
+**Recent W4 additions (2026-04-25):** T-PreObj-1, T-PreObj-1G, Lemma 4 (Pre-Objective Mechanism graph-class independent)  
+**W4 extended addition (2026-04-26):** T-V5b-T (Pre-Objective Goldstone on Translation-Invariant Graphs)  
+**Pending W5+ (T2/T3 carry):** NQ-173 (V5b-F partial Goldstone), NQ-174 (ζ_*(graph)), NQ-175 (3D extension), σ supporting lemmas  
+**See also:** [Canonical Spec Part 5 (Results Registry)](/notes/part-0/canonical-spec-scc-5-results-registry/), [Open Problems (Part 4 §12)](/notes/part-0/canonical-spec-scc-4-interpretation/)

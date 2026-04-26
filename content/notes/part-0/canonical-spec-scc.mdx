@@ -1,20 +1,20 @@
 ---
-title: "Soft Cognitive Cohesion — Canonical Specification v2.1"
+title: "Soft Cognitive Cohesion — Canonical Specification v2.3"
 slug: canonical-spec-scc
 part: 0
 chapter: 0
 section: "Canonical Specification"
 kind: canonical
 track: perception
-updated: 2026-04-12
-summary: "The authoritative formal specification of Soft Cognitive Cohesion (SCC) — primitives, six axiomatic groups, the four-term energy, proto-cohesion diagnostics, and a register of 35 fully proved results with their dependencies and retractions. Index page linking to the five-part specification."
+updated: 2026-04-26
+summary: "The authoritative formal specification of Soft Cognitive Cohesion (SCC). Aligned with Perception_theory canonical CV-1.4 (2026-04-26): 38 Category A theorems, 4 Category B, 5 Category C, 5 retracted (52 claims, 73% fully proved). Index page linking to the five-part specification."
 tags: [scc, canonical-spec, axioms, theorems, foundational]
 related: [scc-status-2026-04, integrated-architecture]
 ---
 
 ## Overview
 
-This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion, version 2.1. It supersedes v2.0 and incorporates results from Iterations 1–12 plus the 2026-04-02 theory audit.
+This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion, version 2.3. It is aligned with the Perception_theory canonical specification CV-1.4 (2026-04-26, W4-extended close) and incorporates the W4 resolution of Critical open problems (F-1, M-1, MO-1) along with the Pre-Objective Mechanism theorems (T-PreObj-1 family) and the Goldstone dichotomy on translation-invariant graphs (T-V5b-T).
 
 The specification declares the primitive ontology, the formal universe, the axiomatic groups (A–E), the derived predicates, the minimal energy principle with volume constraint, and the proved results registry that jointly constitute the theory as it now stands. It separates stable theoretical commitments — those principles that define the identity of the theory and are not subject to routine revision — from open design choices that remain underdetermined but are constrained by the canonical commitments. Provisional concrete operator forms are presented explicitly as currently favored realizations, not as permanently fixed definitions.
 
@@ -40,15 +40,25 @@ Because the full specification is long, it is split across five linked parts. Re
 
 ### [Part 5 · Proved Results Registry & Closing Notes →](/notes/part-0/canonical-spec-scc-5-results-registry/)
 
-**§13–§15.** The 49-item results registry: **35 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, etc.), **4 Category B** (γ_eff ≈ 0.89 barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl quantification), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified), **5 Retracted** (Thm 3.3 for general τ, T-Merge (c)(d)(e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN14) and the closing summary.
+**§13–§15.** The 52-item results registry: **38 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, **T-PreObj-1 / T-PreObj-1G / Lemma 4** (W4 Pre-Objective Mechanism), **T-V5b-T** (W4-extended Goldstone), etc.), **4 Category B** (γ_eff ≈ 0.89 barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl quantification), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified) plus the new V5b-F finding, **5 Retracted** (Thm 3.3 for general τ, T-Merge (c)(d)(e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN15, with CN15 = Static/Dynamic Separation introduced in W4) and the closing summary.
 
-## Key Changes from v2.0
+## Key Changes from v2.1 (W4 + W4-extended close, 2026-04-19 ~ 04-26)
+
+- **Critical 3 open problems all resolved (2026-04-24).** F-1 (K=2 vacuity) **SPLIT-RESOLVED** via T-Merge (b) (pure $\mathcal{E}_{\mathrm{bd}}$ portion, pre-existing Cat A) plus the new T-PreObj-1 (full SCC portion). M-1 (K=1 preference) **LAYER-CLARIFIED** as a proved theorem (T-Merge (b)) misframed as a problem. MO-1 (Morse inapplicability) **SIDESTEPPED** — the σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Critical blocker count **3 → 0**, v2.0 release path unblocked.
+- **New Cat A (W4 close, 2026-04-24):** **T-PreObj-1** (Pre-Objective Multi-Peak Formation Mechanism — F=1 single-disk minimizer non-critical under full SCC; gradient flow attracts to multi-peak F≥2; IC-protocol dichotomy adaptive bounded vs random $\sim L^{2.8}$), **T-PreObj-1G** (graph-class independent — conclusions hold on any finite connected graph under (G1)–(G4)), **Lemma 4** ($M \in \mathbb{R}^{2 \times 2}$ positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$), **F-1 Resolution Corollary** (split-resolution).
+- **New Cat A (W4-extended close, 2026-04-26):** **T-V5b-T** (Pre-Objective Goldstone on Translation-Invariant Graphs) — sub/super-lattice spectral dichotomy on torus T^d / cycle C_n; 2D commensurability split; 1D Goldstone; nodal count = 2 universal. After 8 V5b iterations (V1 → V5b'').
+- **New Cat C finding (W4-extended):** **V5b-F** (Partial Goldstone on Boundary-Modified Graphs) — boundary lifting mechanism qualitative observation. NQ-173 carry.
+- **New commitment note:** **CN15** Static/Dynamic Separation — static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ need not equal dynamic protocol-endpoint observables ($\widehat{K}$, $\mathcal{F}$).
+- **σ-framework introduced (canonical-ready, Cat A definitional).** Hessian eigenvalue/irrep/nodal-count signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ on $\Sigma_m$.
+- **Reproducibility crisis identified+resolved (NQ-172, 2026-04-26).** Mode-indexing artifact in NQ-170 analysis script; mode-agnostic detection adopted.
+- **Proved results registry:** Now **38 Category A**, **4 Category B**, **5 Category C**, **5 retracted**; total **52 claims (73% fully proved)**.
+
+## Key Changes from v2.0 (preserved for history)
 
 - **Category upgrades (3 theorems B→A):** Deep Core Dominance 2b (isoperimetric inequality on $\mathbb{Z}^d$), T8-Full ($\mu_0(H_{\mathrm{bd}})$ at $\mathcal{E}_{\mathrm{bd}}$ minimizer $> 0$ in all tested configs), Predicate-Energy Bridge (Sep bidirectional exact; Bind reverse at minimizers).
 - **Retraction:** Theorem 3.3 ($\bar{r}_0 = O(n^{-1/d})$ for general $\tau$) — experimentally falsified; $\bar{r}_0$ is genuinely $O(1)$ for $\tau \neq 1/2$.
-- **T-Persist-K-Unified:** New parametric theorem unifying Sep/Weak/Strong persistence regimes via the coupling parameter $\Lambda_{\mathrm{coupling}} = \lambda_{\mathrm{rep}} \cdot \omega_{jk} / \min(\mu_j, \mu_k)$.
+- **T-Persist-K-Unified:** Parametric theorem unifying Sep/Weak/Strong persistence regimes via the coupling parameter $\Lambda_{\mathrm{coupling}} = \lambda_{\mathrm{rep}} \cdot \omega_{jk} / \min(\mu_j, \mu_k)$.
 - **Unified regime parametrization:** $\Lambda_{\mathrm{coupling}}$ adopted as canonical coupling measure with $\mu$-floor regularization $\mu_{\mathrm{floor}} = w_{\mathrm{cl}} \cdot 2(1 - a_{\mathrm{cl}}/4)^2$. Experimental validation: 100% geometric-Lambda agreement across 69 configurations (exp46-47).
-- **Proved results registry:** Now **35 Category A**, **4 Category B**, **5 Category C**, **5 retracted**; total 49 claims (71% fully proved). *(Erratum 2026-04-07: §13 counts corrected to 35A/4B/5C/5R per honest recount of 04-06 deep audit. See docs/04-06/HONEST-RECOUNT.md.)*
 
 ## Key Changes from 2026-04-02 Audit (Paradigm Shift: Kinetic Multi-Formation)
 

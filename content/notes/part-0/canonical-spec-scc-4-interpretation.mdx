@@ -6,13 +6,13 @@ chapter: 0
 section: "Canonical Specification · Part 4"
 kind: essay
 track: perception
-updated: 2026-04-12
-summary: "Sections 10–12 of the SCC v2.1 canonical specification: the structural interpretation of the theory, fixed commitments versus open design choices, and the open research problems organized by foundational, bridging, and extension layers."
+updated: 2026-04-26
+summary: "Sections 10–12 of the SCC v2.3 canonical specification: the structural interpretation of the theory, fixed commitments versus open design choices, and the open research problems organized by foundational, bridging, and extension layers. W4 close (2026-04-24) resolved the three Critical open problems (F-1, M-1, MO-1)."
 tags: [scc, canonical-spec, interpretation, open-problems, commitments]
 related: [canonical-spec-scc, canonical-spec-scc-3-energy, canonical-spec-scc-5-results-registry]
 ---
 
-> **Part 4 of 5** — Soft Cognitive Cohesion canonical specification v2.1.
+> **Part 4 of 5** — Soft Cognitive Cohesion canonical specification v2.3 (aligned with Perception_theory canonical CV-1.4, 2026-04-26).
 > See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
 
 ---
@@ -67,6 +67,10 @@ The following principles constitute the stable core of the theory and are not su
 
 13. **$b_D = 0$ for the distinction operator.** Energy analyticity (required for T14, Łojasiewicz convergence) takes precedence over the explicit gradient term.
 
+14. **Static/Dynamic Separation (CN15, W4 close).** The static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ is K=1 (T-Merge (b), isoperimetric ordering); the dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC need not equal the static minimum. F=1 is non-critical under full SCC (T-PreObj-1), so the apparent paradox "K=1 cheaper vs empirical K>1" is dissolved rather than being a problem.
+
+15. **σ-framework as canonical Hessian signature.** Single-formation critical points $u^* \in \Sigma_m$ carry the signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — formation count, irrep type, nodal-count, eigenvalue list. This signature is well-posed on the smooth simplex $\Sigma_m$ (no corners) and supersedes the Morse-on-$\Sigma^K_M$ approach for current scope.
+
 ### 11.2. Open Design Choices
 
 The following aspects of the theory are constrained by the canonical commitments but not yet uniquely determined:
@@ -95,9 +99,21 @@ The distinction between fixed and open is not the distinction between important 
 
 ## 12. Open Problems and Next Formalization Layers
 
-The following problems remain unresolved and constitute the primary agenda for the next stages of theoretical development, organized by layer.
+### W4 Resolution Banner (2026-04-24, W4 close)
+
+**The three Critical open problems (F-1, M-1, MO-1) are all resolved as of 2026-04-24.** Critical blocker count: **3 → 0**. v2.0 release path unblocked.
+
+- **F-1 (K=2 vacuity) — SPLIT-RESOLVED.** Two layers, both Cat A: pure $\mathcal{E}_{\mathrm{bd}}$ portion via **T-Merge (b)** (canonical, isoperimetric ordering — pre-existing Cat A); full SCC portion via **T-PreObj-1 (i)** (W4 Cat A, graph-class independent via T-PreObj-1G). Under full SCC parameters the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point**, so the dichotomy "K=1 cheaper vs observed K>1" does not arise.
+- **M-1 (K=1 preference) — LAYER-CLARIFIED.** M-1 is the *correct mathematical statement* (T-Merge (b)), not an open problem. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$ (where M-1 holds) with full SCC (where the comparison is not even framed because F=1 is non-critical). The apparent conflict is resolved by **CN15 Static/Dynamic Separation** (§11.1, item 14).
+- **MO-1 (Morse inapplicability) — SIDESTEPPED.** σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Theorem 2 family (Cat A) does not require Morse on $\Sigma^K_M$. Multi-formation extension to $\Sigma^K_M$ (stratified Morse, Phase 5) remains genuine open work for W5+.
+
+The remaining problems below constitute the primary agenda for the next stages of theoretical development, organized by layer.
 
 ### Foundational
+
+**Pre-Objective Mechanism (W4, Cat A).** *(New 2026-04-24.)* Under full SCC parameters on any finite connected graph satisfying (G1)–(G4) hypotheses, (i) the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point** of the full energy $\mathcal{E}$, and (ii) gradient flow attracts to multi-peak F≥2 configurations. The IC-protocol dichotomy distinguishes adaptive bounded protocols (well-posed) from random initialization (whose endpoint scales as $\sim L^{2.8}$). Source: T-PreObj-1, T-PreObj-1G (graph-class independent), Lemma 4 ($M \in \mathbb{R}^{2 \times 2}$ positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$). Numerical verification: E-0090 (L=12, 3-digit agreement), E-0091 (L=32 dichotomy).
+
+**Pre-Objective Goldstone on Translation-Invariant Graphs (W4-extended, Cat A).** *(New 2026-04-26.)* On graph classes with full translation symmetry (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy holds; in 2D the Goldstone modes form a **2-fold doublet with commensurability splitting**; in 1D a 1-fold Goldstone branch; the **Goldstone nodal count = 2 universal**. Source: T-V5b-T (after 8 V5b iterations V1 → V5b''). Numerical verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check). Open: V5b-F (Cat C) — partial Goldstone on boundary-modified graphs (NQ-173 carry); ζ_*(graph) precise dependence (NQ-174); 3D extension (NQ-175).
 
 **Self-referential transport.** *(Erratum 2026-04-01: Largely resolved.)* The transport kernel depends only on $u_t$, $u_s$, and $\mathbf{N}$ via the 3-component cohesion fingerprint $\varphi(x) = (u(x), \mathrm{Cl}(u)(x), D(x; 1{-}u))$. Fixed-point existence proved (Schauder, any $\varepsilon_{\mathrm{OT}} > 0$). Selection/uniqueness: transport confinement bound $C_{\mathrm{conf}} = O(\sigma\sqrt{\varepsilon_{\mathrm{OT}}\log n})$ proved, independent of $u_s$; exp29 confirms no multiplicity across $\lambda_{\mathrm{tr}} \in [0.01, 10]$. Remaining: tight confinement constants (current bound 25–10000× conservative, exp40/41).
 

@@ -1,14 +1,14 @@
 ---
-title: "SCC — Current Research Status (April 2026)"
+title: "SCC — Current Research Status (April 2026, W4-extended close)"
 slug: scc-status-2026-04
 part: 0
 chapter: 1
 section: "Status report"
 kind: roadmap
 track: perception
-updated: 2026-04-16
-summary: "An active research status for Soft Cognitive Cohesion as of April 2026 — the theorem ledger, implementation state, iteration history, organisational reboot into a Research OS, and the three open problems currently blocking consolidation."
-tags: [scc, status, theorems, research-os, open-problems]
+updated: 2026-04-26
+summary: "An active research status for Soft Cognitive Cohesion as of W4-extended close (2026-04-26) — the theorem ledger (38 Cat A / 52 claims / 73% fully proved), the W4 resolution of the three Critical open problems (F-1, M-1, MO-1), and remaining open work."
+tags: [scc, status, theorems, w4-resolution, open-problems]
 related: [canonical-spec-scc, integrated-architecture]
 ---
 
@@ -17,8 +17,8 @@ Cohesion** — the research thread I am currently most active on — at
 the level of granularity that lets a collaborator (or future me)
 pick up where things stand without re-reading a year of notes.*
 
-**Last updated:** 2026-04-16. &nbsp; **Canonical version:**
-v1.2 (2026-04-12, audit-driven). &nbsp; **Full specification:** see
+**Last updated:** 2026-04-26 (W4-extended close). &nbsp; **Canonical version:**
+v2.3 / Perception_theory CV-1.4. &nbsp; **Full specification:** see
 the [Canonical Spec note](/notes/part-0/canonical-spec-scc/).
 
 <Callout tone="idea" title="Why this work matters to the larger programme">
@@ -46,48 +46,51 @@ terms govern closure, separation, boundary, and transport; a
 diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist})$
 reads off formation state.
 
-## Theorem ledger (v2.1)
+## Theorem ledger (v2.3, aligned with CV-1.4)
 
-### ✓ Category A — Fully proved (43)
+### ✓ Category A — Fully proved (38)
 
 Existence (T1), closure fixed point (T6a/T6b), axiom monotonicity
 (T-A2), phase transition core (T8-Core), axiom consistency (T20),
 gradient flow (T14), stability duo (T3 / T6-Stability), enhanced
-metastability (T7, $p = 0.037$), $\Gamma$-convergence (T11), plus
-four quantum-mechanical results QM1–4, the Predicate–Energy Bridge
-(upgraded from B), Deep Core Dominance 2b (upgraded from B), and a
-handful of auxiliary results.
+metastability (T7, $p = 0.037$), $\Gamma$-convergence (T11), four
+quantum-mechanical results QM1–4, the Predicate–Energy Bridge,
+Deep Core Dominance 2b, T-Bind-Proj/Full (all τ), Propositions
+1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, plus the
+**W4 Pre-Objective Mechanism cluster** (T-PreObj-1, T-PreObj-1G,
+Lemma 4) and the **W4-extended Goldstone result** (T-V5b-T).
 
-### ◇ Category B — Proved with structural parameter (2)
+### ◇ Category B — Proved with structural parameter (4)
 
-- **T-Bind-Proj / T-Bind-Full** — proved for $\tau = 1/2$; general
-  $\tau$ remains Category B.
-- **T-Persist-K-Sep** — proved for the well-separated multi-formation
-  regime, conditional on per-formation T-Persist-1 plus WS / SR
-  conditions.
+- **Barrier exponent $\gamma_{\mathrm{eff}} \approx 0.89$** —
+  empirical fit, branch/path/manifold conditioned.
+- **T-Birth-Parametric (general non-D₄ graphs)** — supercriticality
+  on D₄-symmetric graphs is Cat A; general graphs remain Cat B.
+- **T-d_min-Formula** — branch-conditioned regression fit.
+- **T-Beyond-Weyl** — structured spectral perturbation bound;
+  quantitative 33× factor is config-specific.
 
-### ◯ Category C — Conditional (3)
+### ◯ Category C — Conditional (5 + 1 new finding)
 
-- **T-Persist-1** — subcomponents (a) and (c) proved; (b) corrected
-  to *away-from-bifurcation*; (e) proved via Schauder.
-- **T-Persist-Full** — conditional on T-Persist-1.
-- **T-Persist-K-Weak** — weakly-interacting regime.
-- **C3″** — conditional variant of C3.
-
-### ★ New in v2.1
-
-**T-Persist-K-Unified** — a parametric theorem covering Sep / Weak /
-Strong regimes via the coupling scale
-$\Lambda_{\mathrm{coupling}} = \lambda_{\mathrm{rep}} \omega_{jk} / \min(\mu_j, \mu_k)$,
-with five conditions (PS, ND, BC′-K, TC-K, SR-Λ) and 100 %
-validation across exp46–47.
+- **T-Persist-1(d)** — exact-threshold preservation under structural
+  condition $\beta > 7\alpha$.
+- **T-Persist-Full** — composition through (d).
+- **T-Persist-K-Sep** — well-separated regime conditions (WS, SR).
+- **T-Persist-K-Weak** — weakly-interacting regime conditions (WI,
+  SR, NB-K).
+- **T-Persist-K-Unified** — parametric (PS, ND, BC′-K, TC-K, SR-Λ),
+  100% geometric-Lambda agreement on exp46–47.
+- **V5b-F (W4-extended new finding)** — Partial Goldstone on
+  boundary-modified graphs (NQ-173 carry).
 
 ### ✗ Retracted (5)
 
-- **K-Saddle Conjecture**
-- **Theorem 3.3** (general $\tau$ form of $\bar r_0$)
+- **Theorem 3.3** (general $\tau$ form of $\bar r_0$) — falsified.
+- **T-Merge (c)(d)(e)** — merge path manifold error.
+- **K-Saddle Conjecture** — pre-v2.1 retraction.
 
-A 5/5 clean sweep on the five single-formation predictions:
+A 5/5 clean sweep on the five single-formation predictions
+(historical record):
 
 | # | Prediction | Outcome |
 |---|---|---|
@@ -97,28 +100,52 @@ A 5/5 clean sweep on the five single-formation predictions:
 | P4 | Path dependence | ✓ |
 | P5 | Sep-before-Inside | ✓ |
 
-## Open problems (as of 2026-04-12 audit)
+## Open problems — W4 close (2026-04-24): Critical 3 → 0
 
-Three unresolved items that currently gate consolidation toward the
-next canonical version:
+**The three Critical open problems that gated v2.0 release for
+nearly a year are all resolved as of W4 close (2026-04-24):**
 
-- **OP-0001 · F-1** — Foundational assumption unexplicated in the
-  theorem statements (fixed $K$ manifold). Needs promotion from
-  implicit to explicit in the canonical text.
-- **OP-0002 · M-1** — Measure-theoretic assumption on the transport
-  kernel that is currently carried silently through K-field results.
-- **OP-0003 · MO-1** — Modelling assumption about closure
-  idempotence vs. stabilisation tendency; the theory deliberately
-  omits primitive idempotence (A3 stabilisation only), but some
-  downstream arguments implicitly assume it.
+- **OP-0001 · F-1 (K=2 vacuity) — SPLIT-RESOLVED.** Two layers,
+  both Cat A: pure $\mathcal{E}_{\mathrm{bd}}$ portion via
+  **T-Merge (b)** (canonical, isoperimetric ordering — pre-existing
+  Cat A); full SCC portion via **T-PreObj-1 (i)** (W4 Cat A,
+  graph-class independent via T-PreObj-1G). Under full SCC
+  parameters the F=1 single-disk minimizer is **not a critical
+  point**, so the dichotomy "K=1 cheaper vs observed K>1" does
+  not arise.
+- **OP-0002 · M-1 (K=1 preference) — LAYER-CLARIFIED.** M-1 is the
+  *correct mathematical statement* (T-Merge (b)), not an open
+  problem. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$
+  (where M-1 holds) with full SCC (where the comparison is not
+  even framed because F=1 is non-critical). The apparent conflict
+  is resolved by **CN15 Static/Dynamic Separation**.
+- **OP-0003 · MO-1 (Morse inapplicability) — SIDESTEPPED.**
+  σ-framework operates on the smooth single-formation manifold
+  $\Sigma_m$ (no corners). Theorem 2 family does not require Morse
+  on $\Sigma^K_M$. Multi-formation extension (stratified Morse,
+  Phase 5) remains genuine open work for W5+.
 
-Separately, the **exp65 validation failure** (2026-04-12) has
-prompted the Type A / Type B classification to be retracted and
-replaced with a more careful taxonomy.
+**Net effect:** Critical blockers **3 → 0**, v2.0 release path
+unblocked. Resolution path: **Option D (premise dissolution)** via
+SCC-intrinsic re-framing — neither Option A (external constraint),
+B (K-selection), nor C (kinetic reformulation).
+
+Separately, the **exp65 validation failure** (2026-04-12) prompted
+the Type A / Type B classification to be retracted (X-0002).
+
+## Remaining open problems (post-W4)
+
+| OP-ID | Severity | Notes |
+|-------|----------|-------|
+| OP-0005 K-Selection mechanism | 🟠 HIGH | Partially addressed by σ-framework + CN15; full mechanism still open |
+| OP-0004 Boundary precision | 🟡 MEDIUM | tentative (D-0004) |
+| OP-0006 Branch selection theory | 🟠 HIGH | challenged by exp65 |
+| OP-0007 Dynamic topology | 🟢 LOW | future extension |
+| **W5+ NQ carry** | — | NQ-173 (V5b-F), NQ-174 (ζ_*(graph)), NQ-175 (3D extension), σ supporting lemmas |
 
 ## Implementation
 
-### `scc/` package — 174 tests passing
+### `scc/` package — 175 tests passing
 
 | module | responsibility |
 |---|---|
@@ -161,27 +188,33 @@ twelve distinct iterations:
 | I11 | Transport implementation | `transport.py`, T-Persist verified |
 | I12 | Multi-temporal | T-Persist-K-Sep/Weak, regime classification |
 
-## The Research OS reboot (2026-04-12)
+## Repository structure (2026-04-20 reorganisation, current)
 
-The project's organisational substrate was rebuilt into a **Research
-OS** — an 8-layer structure designed to prevent silent assumptions
-and make every claim traceable to its axioms and experiments.
+The 2026-04-12 "Research OS" reboot — an 8-layer structure with
+numbered `00_meta/` … `07_archive/` directories and 5-role daily
+logs — was tried for four days, collapsed under its own scaffolding
+on 2026-04-16, and was archived on 2026-04-18. The current
+repository structure (2026-04-20) is a clean **CODE/THEORY split**:
 
-- **Layer 0** — Project root (`RESEARCH_OS_MASTER_INDEX.md`, `CLAUDE.md`).
-- **Layer 1** — Constitutional foundation (`00_meta/`): ontology,
-  naming convention (`D-`, `S-`, `T-`, `A-`, `OP-`), status codes,
-  promotion rules, five agent roles.
-- **Layer 1b** — Immutable registries (`03_context_memory/`):
-  concept registry (29 entries), symbol registry (46), theorem
-  registry (48 total: 43 proved + 5 with caveats), assumption
-  registry (35, including F-1 / M-1 / MO-1 now explicit).
-- **Layers 2–7** — Canonical specs, roadmap, questions, claims,
-  proofs, counterexamples, experiments, results, papers,
-  discussions, archive, figures, scripts, templates.
+- **`CODE/`** — executable assets: the `scc/` package (12 modules),
+  pytest suite (175 passing), `experiments/` (exp1–exp97 plus
+  W4-extended E-0090–E-0097), `papers/`, and `scripts/`.
+- **`THEORY/`** — theory documents with strict three-way separation:
+  - `canonical/` (authoritative; `canonical.md` + `theorem_status.md`
+    + `open_problems.md`); promoted content only.
+  - `working/` (in-progress development; one file per topic).
+  - `logs/` (chronological journal; `daily/` + `weekly/` +
+    `monthly/`).
+- **Promotion pipeline (2026-04-23 weekly rotation):**
+  `working/<topic>.md → logs/weekly/YYYY-MM-W<n>/weekly_draft_storming.md
+  → weekly_summary.md → canonical.md` (one-way only, weekly merge
+  cadence).
 
-The net effect: every statement in the theory is now tagged with its
-dependency chain, and no claim can be promoted to canonical status
-without passing an audit pass through the registries.
+The Research OS approach is documented as an honest "tried and
+abandoned" record in `_archive/research_os_2026-04-12/` — no
+silent reversion to it; current `CLAUDE.md` policy explicitly
+forbids re-introducing the numbered-directory / 5-role / per-item
+registry structure.
 
 ## Papers on this track
 

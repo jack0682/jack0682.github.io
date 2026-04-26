@@ -4,7 +4,8 @@ slug: scc-glossary
 part: 0
 kind: essay
 track: perception
-summary: "Plain-language definitions of all formal SCC concepts — each entry includes the formal ID, intuitive description, why it matters, and a concrete analogy."
+updated: 2026-04-26
+summary: "Plain-language definitions of all formal SCC concepts — each entry includes the formal ID, intuitive description, why it matters, and a concrete analogy. Aligned with canonical CV-1.4 (W4-extended close, 2026-04-26)."
 tags: [scc, glossary, reference]
 draft: false
 ---
@@ -124,7 +125,7 @@ draft: false
 
 **Formula:** m_j = ∫ u^j_t dx
 
-**Constraint (problematic):** Usually externally imposed (e.g., m_1 = m_2 = 50 in a K=2 system). This is where the F-1 and M-1 problems arise: if you allow m_j to vary freely, the energy prefers m_j → 0, which means K collapses to 1.
+**Constraint (resolved by W4):** Per-formation mass is a structural assumption of the K-field architecture. The earlier "F-1 / M-1 problems" — that K=1 is energetically preferred when m_j varies — turn out to be the *correct theorem* T-Merge (b) on pure $\mathcal{E}_{\mathrm{bd}}$, not an open problem. Under full SCC, the F=1 single-disk is non-critical (T-PreObj-1), so the dichotomy "K=1 cheaper static minimum vs empirical K>1" is dissolved by **CN15 Static/Dynamic Separation**.
 
 ---
 
@@ -164,32 +165,32 @@ draft: false
 
 ---
 
-## Critical Open Problems
+## Critical Open Problems — All Resolved in W4 (2026-04-24)
 
-### F-1: "K=2 is Vacuous"
-**What it is:** K=2 global stability requires that per-formation mass m_j is held fixed externally. But if you allow m_j to vary freely, the energy *always* prefers m_j → 0, collapsing K to 1. So "K=2 is stable" is only true if you artificially constrain the masses.
+### F-1: "K=2 is Vacuous" — ✅ SPLIT-RESOLVED
+**What it was:** K=2 global stability requires per-formation mass m_j held fixed externally; if m_j varies freely, energy prefers m_j → 0 (K collapses to 1).
 
-**Why it matters:** It means K-field theory isn't self-contained; it depends on external scaffolding (fixed masses) to make sense.
+**W4 resolution (2026-04-24):** F-1 decomposes into two layers, each Cat A: (i) the pure $\mathcal{E}_{\mathrm{bd}}$ portion is the *correct theorem* **T-Merge (b)** (isoperimetric ordering, pre-existing Cat A) — not an open problem; (ii) the full SCC portion is resolved by **T-PreObj-1 (i)**: under full SCC parameters, the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point**, so the dichotomy "K=1 cheaper vs observed K>1" does not arise. The premise of F-1 collapses.
 
-**Current status:** Unresolved. No mechanism proposed yet for why K=2 would emerge naturally without external constraint.
-
----
-
-### M-1: "K=1 Always Wins"
-**What it is:** The K=2 energy landscape is monotonically decreasing as one formation mass m_1 decreases (and is absorbed into m_2 → M). So K=1 with total mass M is always energetically cheaper than K=2 with m_1 = m_2 = M/2.
-
-**Why it matters:** It's the root cause of F-1. K > 1 can never be naturally preferred.
-
-**Current status:** Unresolved. Would require a selection mechanism (BIC? free energy? birth-death process?) to explain K emergence.
+**Current status:** ✅ SPLIT-RESOLVED. Resolution path: Option D (premise dissolution).
 
 ---
 
-### MO-1: "Morse Theory Fails"
-**What it is:** The K=2 constrained manifold Σ²_M = \{(u¹, u²) : m_1 = m_2 = M/2\} is NOT a smooth manifold. It has corners (when one formation touches its boundary). Smooth Morse theory requires smoothness everywhere.
+### M-1: "K=1 Always Wins" — ✅ LAYER-CLARIFIED
+**What it was:** The K=2 energy landscape is monotonically decreasing as one formation mass shrinks; K=1 always energetically cheaper than balanced K=2.
 
-**Why it matters:** Theorems relying on Morse theory (like global phase transition analysis) may be invalid.
+**W4 clarification (2026-04-24):** M-1 is **not an open problem** — it is the *correct mathematical statement* (T-Merge (b)) about isoperimetric ordering on the constraint manifold. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$ (where M-1 holds) with full SCC (where the comparison is not even framed because F=1 is non-critical). The apparent paradox between this proved theorem and empirically observed K>1 is resolved by **CN15 Static/Dynamic Separation**: static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ ≠ dynamic protocol-endpoint observables under full SCC.
 
-**Current status:** Unresolved. Possible fix: use stratified Morse theory (more complex) or sidestep the issue by using existing stable results.
+**Current status:** ✅ LAYER-CLARIFIED. Proved theorem misframed as problem.
+
+---
+
+### MO-1: "Morse Theory Fails" — ⚪ SIDESTEPPED
+**What it was:** The K=2 constrained manifold $\Sigma^2_M$ has corners (smooth Morse theory inapplicable).
+
+**W4 sidestep (2026-04-24):** The W4 work introduced the **σ-framework** — Hessian eigenvalue/irrep/nodal-count signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — which operates on the **smooth single-formation manifold $\Sigma_m$ (no corners)**. The Theorem 2 family (Cat A, graph-class independent) does not require multi-formation Morse analysis. MO-1 is therefore not a blocker for current scope.
+
+**Current status:** ⚪ SIDESTEPPED for single-formation σ scope. Multi-formation extension to $\Sigma^K_M$ (stratified Morse, Phase 5) remains genuine open work for W5+.
 
 ---
 
@@ -199,9 +200,9 @@ draft: false
 **Formal:** A-0012  
 **What it means:** K (number of formations) is decided *beforehand* and held constant. Not derived from energy minimization.
 
-**Why stated:** Because all K-field theorems assume this. Without it, K collapses to 1 (M-1).
+**Why stated:** Because all K-field theorems assume this.
 
-**Problem:** How does K get decided "beforehand"? The theory doesn't say. This is the F-1/M-1 issue.
+**Status (post-W4):** The "How does K get decided beforehand?" question is now reframed via CN15 Static/Dynamic Separation: the static global minimum need not equal the dynamic protocol-endpoint observables. Full K-selection mechanism (OP-0005) remains partially open, but no longer a Critical blocker.
 
 ---
 
@@ -242,14 +243,14 @@ draft: false
 → Use K-field architecture: K fields on the same space, summing to 1 everywhere (simplex constraint).
 
 **"What's broken?"**  
-→ Three critical issues: F-1 (K=2 requires external mass constraint), M-1 (K=1 always energetically preferred), MO-1 (Morse theory inapplicable to constrained manifold).
+→ Critical-3 (F-1, M-1, MO-1) all resolved in W4 (2026-04-24): SPLIT-RESOLVED / LAYER-CLARIFIED / SIDESTEPPED via T-Merge(b) + T-PreObj-1 + σ-framework. Remaining: K-Selection mechanism (OP-0005, partially addressed by σ-framework + CN15 Static/Dynamic Separation), boundary precision (OP-0004), branch selection theory (OP-0006). v2.0 release path now unblocked.
 
 **"Are the theorems right?"**  
-→ 35 are fully proved (Category A); 4 are conditional (Category B); 5 are very conditional (Category C); 2 retracted. The single-formation results are solid. Multi-formation results depend on resolving F-1/M-1.
+→ 38 are fully proved (Category A); 4 are conditional (Category B); 5 are very conditional (Category C) plus 1 new finding V5b-F (Cat C); 5 retracted (52 claims, 73% fully proved). Single-formation results are solid. Multi-formation persistence regimes are conditional but the foundational F-1/M-1/MO-1 issues are resolved.
 
 ---
 
-**Last updated:** 2026-04-12  
+**Last updated:** 2026-04-26 (W4-extended close)  
 **Audience:** Non-specialists, students, reviewers
 
 ---
