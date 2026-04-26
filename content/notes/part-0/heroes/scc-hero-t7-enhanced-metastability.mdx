@@ -1,0 +1,62 @@
+---
+title: "T7-Enhanced — Non-Idempotent Metastability Advantage"
+slug: scc-hero-t7-enhanced-metastability
+part: 0
+chapter: 100
+section: "SCC Hero · T7-Enhanced"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "At a non-idempotent closure fixed point with operator norm < 1, the closure Hessian contribution is strictly positive definite (n/n positive eigenvalues). For idempotent closure, only n-k of n eigenvalues are positive. The mathematical payoff of SCC's deliberate non-idempotence commitment."
+tags: [scc, theorem, hero, metastability, non-idempotent, hessian]
+related: [scc-heroes, scc-hero-t6-closure-fp, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · Phase + Stability group · Cat A.**
+> Source: C-0007 / P-0007. Verification: E-0008, E-0009 (residence time, $p = 0.037$).
+> Canonical version: CV-1.0. Full proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+Let $\hat u$ be a fixed point of the closure operator $\mathrm{Cl}_t$, and let $J_{\mathrm{Cl}} = \nabla \mathrm{Cl}_t(\hat u)$ be its Jacobian.
+
+**Non-idempotent regime.** If $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$ (contraction regime), the closure-energy Hessian contribution at $\hat u$,
+
+$$
+H_{\mathrm{cl}} = 2\,(I - J_{\mathrm{Cl}})^T (I - J_{\mathrm{Cl}}),
+$$
+
+is **strictly positive definite** with $n$ positive eigenvalues out of $n$.
+
+**Idempotent comparison.** If $\mathrm{Cl}_t$ were idempotent ($\mathrm{Cl}_t^2 = \mathrm{Cl}_t$), $J_{\mathrm{Cl}}$ would be a projection of rank $k < n$, making $H_{\mathrm{cl}}$ semi-definite with at most $n - k$ positive eigenvalues.
+
+Therefore: non-idempotent closure has **strictly more** positive Hessian directions than any idempotent alternative.
+
+## Proof idea
+
+Gram matrix structure. Write $A = I - J_{\mathrm{Cl}}$. Then $H_{\mathrm{cl}} = 2 A^T A$ is the doubled Gram matrix of $A$. By standard linear algebra, $A^T A$ is positive definite iff $A$ has trivial kernel (full rank).
+
+**Non-idempotent case.** $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$ implies $J_{\mathrm{Cl}}$ has all eigenvalues strictly inside the unit disk, so $A = I - J_{\mathrm{Cl}}$ has all eigenvalues bounded away from 0 (real parts $\geq 1 - \|J_{\mathrm{Cl}}\|_{\mathrm{op}} > 0$). Hence $A$ is invertible, $A^T A$ is positive definite, and $H_{\mathrm{cl}}$ has $n$ positive eigenvalues.
+
+**Idempotent case.** If $J_{\mathrm{Cl}}^2 = J_{\mathrm{Cl}}$, then $J_{\mathrm{Cl}}$ is a projection of some rank $k$. $A = I - J_{\mathrm{Cl}}$ is also a projection (the complementary projection), with rank $n - k$. So $A^T A$ has rank $n - k$ and at most $n - k$ positive eigenvalues; the remaining $k$ eigenvalues are zero. $\square$
+
+## Why this is a hero
+
+T7-Enhanced is the **mathematical payoff** of SCC's signature commitment to non-idempotent closure. The theory deliberately avoids the classical topological closure axiom $\mathrm{Cl}^2 = \mathrm{Cl}$, framing closure as a *stabilization tendency* (A3) rather than a completed operation. This commitment is philosophical (closure is dynamic, not static; trajectory carries information) — but T7-Enhanced shows it is also *strictly stronger mathematically*.
+
+Concretely: at a closure fixed point, the energy landscape's Hessian receives a **strictly positive-definite** contribution from the closure term, which deepens the basin and raises the barrier to escape. Non-idempotent closure formations have *enhanced metastability* compared to any idempotent alternative — they are more stable, with longer residence times.
+
+The empirical signature in E-0008 / E-0009 (residence time exceeds the prediction from Hessian alone, $p = 0.037$) confirms that non-idempotent fixed points sit at locally curved minima with strictly fewer flat directions than idempotent counterparts.
+
+**Caveat (Hessian vs barrier).** T7-Enhanced is a *local curvature* result. The gap between minimum Hessian eigenvalue and actual energy barrier height (saddle energy minus minimizer energy) requires Morse-theoretic analysis that has not been carried out at the multi-formation level — see open problems on multi-formation σ-framework Phase 5. The single-formation case is uncontroversial.
+
+## Logical dependencies
+
+- **Builds on**: T6 (closure has unique fixed point at $a_{\mathrm{cl}} < 4$ with $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$).
+- **Builds into**: T-Persist-1(b) (basin radius via energy sublevel set uses Hessian eigenvalues), T-Persist-K-Sep (per-formation persistence inherits T7-Enhanced curvature), CN14 (closure expands multi-formation stability).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T7-Enhanced](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- A3 stabilization tendency commitment: [Canonical Spec Part 2 §6 Group A · Interpretive Remark](/notes/part-0/canonical-spec-scc-2-axioms/)
+- T6 closure fixed point (the prerequisite): [T6 hero page](/notes/scc-hero-t6-closure-fp/)

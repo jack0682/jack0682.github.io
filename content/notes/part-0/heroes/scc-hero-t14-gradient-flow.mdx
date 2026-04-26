@@ -1,0 +1,71 @@
+---
+title: "T14 — Gradient Flow Convergence (Łojasiewicz)"
+slug: scc-hero-t14-gradient-flow
+part: 0
+chapter: 100
+section: "SCC Hero · T14"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "The projected gradient flow on Σ_m converges to a critical point. With analytic energy (b_D = 0), convergence is exponential via the Łojasiewicz inequality. The dynamical existence theorem — variational minimizers are reachable by descent."
+tags: [scc, theorem, hero, gradient-flow, lojasiewicz, dynamics]
+related: [scc-heroes, scc-hero-t1-existence, scc-hero-t-preobj-1, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · W4 Capstone group · Cat A.**
+> Source: C-0014 / P-0014. Verification: E-0020:E-0022. Canonical version: CV-1.0.
+> Full proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+The **projected gradient flow** on the constraint manifold $\Sigma_m$,
+
+$$
+\dot u = -\Pi_{\Sigma_m} \nabla \mathcal{E}(u),
+$$
+
+starting from any $u_0 \in \Sigma_m$, converges to a critical point of $\mathcal{E}|_{\Sigma_m}$.
+
+When the energy is analytic — equivalently, when the distinction parameter $b_D = 0$ (or $\varepsilon$-smoothed) so that the absolute value $|\cdot|$ in the gradient indicator $g_t$ is replaced by an analytic surrogate — convergence is **exponential**, with rate determined by the **Łojasiewicz–Simon inequality**.
+
+## Proof idea
+
+**Convergence to critical point.** Three standard ingredients:
+
+1. **Bounded below.** $\mathcal{E}$ is bounded below on the compact manifold $\Sigma_m$ (by T1).
+2. **Monotone decrease.** Gradient flow decreases energy: $\frac{d}{dt}\mathcal{E}(u(t)) = -\|\Pi_{\Sigma_m}\nabla \mathcal{E}(u(t))\|^2 \leq 0$.
+3. **LaSalle / accumulation.** Compactness of $\Sigma_m$ ensures accumulation points; monotone decrease forces the gradient to vanish at any accumulation point; therefore accumulation points are critical points of $\mathcal{E}|_{\Sigma_m}$.
+
+**Exponential rate via Łojasiewicz.** For analytic functions on compact semi-algebraic sets (which includes $\Sigma_m$), the **Łojasiewicz–Simon inequality** holds: for some $\theta \in (0, 1/2]$ and $C > 0$,
+
+$$
+|\mathcal{E}(u) - \mathcal{E}(u^*)|^{1-\theta} \leq C \|\Pi_{\Sigma_m}\nabla \mathcal{E}(u)\|
+$$
+
+near any critical point $u^*$. Combined with the gradient flow equation, this gives:
+
+- If $\theta = 1/2$: **exponential convergence**, $|u(t) - u^*| \leq C e^{-\lambda t}$.
+- If $\theta < 1/2$: polynomial convergence $|u(t) - u^*| \leq C\, t^{-\theta/(1-2\theta)}$.
+
+The analyticity requirement is non-trivial: the absolute value in the original $g_t$ definition breaks analyticity. Setting $b_D = 0$ in the distinction operator (or smoothing) is required for the Łojasiewicz machinery, which is why $b_D = 0$ is a fixed commitment of the theory (CN13 / Part 4 §11.1 #13).
+
+$\square$
+
+## Why this is a hero
+
+T14 is the **dynamical existence theorem**. T1 secures static existence of minimizers; T14 secures that the minimizers are *reachable* by gradient descent. Without T14, the variational framework would be a description of fixed points without a constructive route — minimizers might exist but be inaccessible.
+
+The Łojasiewicz inequality is the workhorse: it guarantees that gradient flow on analytic energies on compact semi-algebraic sets does not get stuck in slow drifts or exhibit pathological convergence. This is far stronger than what generic smooth functions provide.
+
+The analyticity requirement is also load-bearing for SCC's design choices. The decision to set $b_D = 0$ (the gradient term in the distinction operator) was driven specifically by T14: keeping the explicit gradient term breaks analyticity, breaks Łojasiewicz, breaks T14, and breaks dynamic accessibility of minimizers. Boundary sensitivity (axiom D-Ax3) is preserved through the spatial structure of $P_t(1-u)$ instead — a clean architectural trade-off.
+
+## Logical dependencies
+
+- **Builds on**: T1 (energy bounded below on compact $\Sigma_m$), analyticity of energy ($b_D = 0$ commitment), Łojasiewicz–Simon for analytic functions on compact semi-algebraic sets.
+- **Builds into**: T-Persist-1(b) (basin escape uses gradient flow + Łojasiewicz), T-PreObj-1 (gradient flow attracts to multi-peak F≥2 — explicit dynamic statement requiring T14 to make sense), every implementation that runs `scc/optimizer.py find_formation` (relies on T14 guaranteeing convergence).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T14](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- $b_D = 0$ commitment and why analyticity matters: [Canonical Spec Part 4 §11.1 #13](/notes/part-0/canonical-spec-scc-4-interpretation/)
+- T-PreObj-1 (the W4 result that uses gradient flow attraction): [T-PreObj-1 hero page](/notes/scc-hero-t-preobj-1/)

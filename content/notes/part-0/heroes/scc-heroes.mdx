@@ -1,0 +1,126 @@
+---
+title: "SCC Hero Theorems — 9 Major Results"
+slug: scc-heroes
+part: 0
+chapter: 100
+section: "SCC Heroes · Index"
+kind: registry
+track: perception
+updated: 2026-04-26
+summary: "Curated index of the 9 hero theorems of Soft Cognitive Cohesion — the major proved results that define the theory's identity. Foundation, phase transition + stability, and W4 Pre-Objective Mechanism cluster. Full proofs live in the canonical spec."
+tags: [scc, theorems, heroes, index, foundational]
+related: [canonical-spec-scc, canonical-spec-scc-5-results-registry, scc-theorem-registry]
+---
+
+> **What this is.** SCC has **38 Category A theorems** in the [canonical specification](/notes/part-0/canonical-spec-scc-5-results-registry/). Most are technical, conditional, or auxiliary. This page curates the **9 hero theorems** — the results that define the theory's identity and would be cited first in any introduction.
+>
+> **Where the full proofs live.** This index and the 9 hero pages give *one-paragraph proof ideas* and *why-it-matters* notes. The full proofs are in [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/), and the most recent additions are narrated in the [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/).
+
+---
+
+## The 9 heroes
+
+| # | T-ID | Name | Group | Cat |
+|---|------|------|-------|-----|
+| 1 | **T1** | Existence of Minimizers | Foundation | A |
+| 2 | **T6** | Closure Fixed Point (Banach Contraction) | Foundation | A |
+| 3 | **T20** | Axiom Consistency (A1' resolves A1↔A3) | Foundation | A |
+| 4 | **T8-Core** | Phase Transition (spectral universality) | Phase + Stability | A |
+| 5 | **T7-Enhanced** | Non-Idempotent Metastability Advantage | Phase + Stability | A |
+| 6 | **T11** | Sharp-Interface Γ-Convergence | Phase + Stability | A |
+| 7 | **T14** | Gradient Flow Convergence (Łojasiewicz) | W4 Capstone | A |
+| 8 | **T-PreObj-1** | Pre-Objective Multi-Peak Formation Mechanism *(W4 close, 2026-04-24)* | W4 Capstone | A |
+| 9 | **T-V5b-T** | Pre-Objective Goldstone on Translation-Invariant Graphs *(W4-extended, 2026-04-26)* | W4 Capstone | A |
+
+---
+
+## Logical dependency
+
+```
+                 [T20 · Axiom Consistency]
+                          │
+            ┌─────────────┼──────────────┐
+            ▼             ▼              ▼
+        [T1]         [T6 Closure FP]  [Group D distinction]
+       Existence     Banach contraction
+            │             │
+            └────┬────────┘
+                 ▼
+         [T8-Core] Phase transition
+        spectral universality
+                 │
+        ┌────────┼─────────┐
+        ▼        ▼         ▼
+  [T7-Enh]   [T11]      [T14]
+  metastable Γ-conv    gradient flow
+        │
+        ▼
+  [T-PreObj-1] Pre-Objective Mechanism (W4)
+        │
+        ▼
+  [T-V5b-T] Goldstone dichotomy (W4-extended)
+```
+
+**Reading guide.** Foundation row (T1, T6, T20) is the well-posedness layer. Phase + Stability row (T8-Core, T7-Enhanced, T11) establishes that non-trivial minimizers exist universally and are stable. The Capstone row (T14, T-PreObj-1, T-V5b-T) connects variational + dynamic + symmetric layers: gradient flow converges (T14), pre-objective F≥2 attractor is graph-class-independent theorem (T-PreObj-1, the W4 capstone), and on translation-invariant graphs the Goldstone signature is universal (T-V5b-T).
+
+---
+
+## Group 1 — Foundation (well-posedness)
+
+**[T1 — Existence of Minimizers](/notes/scc-hero-t1-existence/)**
+The energy $\mathcal{E}$ attains its minimum on the constraint manifold $\Sigma_m$. Why hero: every other result is a refinement of "the minimizer exists."
+
+**[T6 — Closure Fixed Point](/notes/scc-hero-t6-closure-fp/)**
+When $a_{\mathrm{cl}} < 4$, the sigmoid closure operator has a unique fixed point with geometric convergence rate $a_{\mathrm{cl}}/4$. Why hero: closure is the central self-referential operator and this is its convergence guarantee.
+
+**[T20 — Axiom Consistency](/notes/scc-hero-t20-axiom-consistency/)**
+The axioms A1' / A2 / A3 / A4 are mutually consistent. The original A1 (weak extensivity) and A3 (contraction) are *incompatible*; A1' (conditional extensivity below the scalar fixed point $c^*$) resolves the tension. Why hero: this is the theory's foundational legitimacy — the axioms are not just stated, they're proved consistent.
+
+---
+
+## Group 2 — Phase Transition + Stability
+
+**[T8-Core — Phase Transition](/notes/scc-hero-t8-core-phase-transition/)**
+On any connected graph with Fiedler eigenvalue $\lambda_2 > 0$, when $\beta/\alpha > 4\lambda_2/|W''(c)|$, the uniform field becomes unstable and a non-uniform minimizer exists. Why hero: spectral universality — the phase transition condition depends *only* on the spectral gap, valid on any connected graph.
+
+**[T7-Enhanced — Non-Idempotent Metastability Advantage](/notes/scc-hero-t7-enhanced-metastability/)**
+At a non-idempotent closure fixed point with $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$, the closure Hessian is *strictly* positive definite ($n/n$ positive eigenvalues). For idempotent closure, only $\leq (n-k)/n$ are positive. Why hero: this is the *mathematical payoff* of the deliberate non-idempotence commitment — strictly stronger stability.
+
+**[T11 — Sharp-Interface Γ-Convergence](/notes/scc-hero-t11-gamma-convergence/)**
+As $\varepsilon = \alpha/\beta \to 0$, the boundary-morphology energy $\mathcal{E}_{\mathrm{bd}}$ Γ-converges to a perimeter functional. Minimizers converge to characteristic functions of minimal-perimeter sets. Why hero: this is the soft-to-crisp bridge — recovery of object-like sharp interfaces from the soft cohesion field.
+
+---
+
+## Group 3 — W4 Capstone
+
+**[T14 — Gradient Flow Convergence](/notes/scc-hero-t14-gradient-flow/)**
+The projected gradient flow $\dot u = -\Pi_{\Sigma_m}\nabla\mathcal{E}(u)$ converges to a critical point. With analytic energy ($b_D = 0$), convergence is exponential via the Łojasiewicz inequality. Why hero: this is the dynamical existence theorem — variational minimizers are reachable by descent.
+
+**[T-PreObj-1 — Pre-Objective Multi-Peak Formation Mechanism *(W4)*](/notes/scc-hero-t-preobj-1/)**
+Under full SCC parameters on any finite connected graph satisfying (G1)–(G4) hypotheses: (i) the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point** of full $\mathcal{E}$; (ii) gradient flow attracts to multi-peak F≥2 configurations; (iii) IC-protocol dichotomy. Why hero: this is the W4 capstone — SCC's *pre-objective character* is no longer a modeling choice but a graph-class-independent mathematical theorem. Resolves F-1 / M-1.
+
+**[T-V5b-T — Pre-Objective Goldstone on Translation-Invariant Graphs *(W4-extended)*](/notes/scc-hero-t-v5b-t/)**
+On translation-invariant graphs (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy holds; 2D Goldstone modes form a 2-fold doublet with commensurability splitting; 1D 1-fold Goldstone; nodal count = 2 universal. Why hero: the W4-extended capstone — symmetry-breaking signature of the pre-objective transition is universal across graph classes (8 V5b iterations to robust statement; mode-indexing artifact NQ-172 identified and resolved en route).
+
+---
+
+## What's deliberately *not* on this list
+
+The full registry has 38 Cat A + 4 Cat B + 5 Cat C. Excluded from heroes:
+
+- **T-Bind-Proj/Full, Predicate-Energy Bridge, Deep Core Dominance** — diagnostic-bridging results, important but technical.
+- **T-Persist-1(a/b/c/e), T-Persist-Full, T-Persist-K-Sep/Weak/Unified** — persistence machinery, mostly conditional.
+- **QM-1..4, T-Merge (a/b), Topological Lock, T-Birth-Parametric, Lemma 4, F-1 Resolution Corollary** — supporting / corollary results.
+
+If a result is missing here, it is **not unimportant** — it is just below the "굵직한 hero" cut. The full inventory is at [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/).
+
+---
+
+## See also
+
+- [Canonical Spec — Part 5 · §13 Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — full statements + full proofs of all 38 Cat A theorems
+- [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/) — flat index by canonical version
+- [SCC Status (April 2026, W4-extended)](/notes/part-0/scc-status-2026-04/) — current research state
+- [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/) — narrative of how T-PreObj-1 and T-V5b-T came to be
+
+*Aligned with Perception_theory canonical CV-1.4 (W4-extended close, 2026-04-26).*

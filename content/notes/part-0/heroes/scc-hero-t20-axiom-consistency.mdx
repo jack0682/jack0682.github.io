@@ -1,0 +1,57 @@
+---
+title: "T20 — Axiom Consistency (A1' resolves A1↔A3 incompatibility)"
+slug: scc-hero-t20-axiom-consistency
+part: 0
+chapter: 100
+section: "SCC Hero · T20"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "The axioms A1' / A2 / A3 / A4 of Group A (closure) are mutually consistent. The original A1 (weak extensivity) is incompatible with A3 (contraction) for the sigmoid closure realization; A1' (conditional extensivity) resolves the tension. The theory's foundational legitimacy."
+tags: [scc, theorem, foundation, hero, axiom-consistency, A1-prime]
+related: [scc-heroes, canonical-spec-scc-2-axioms, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · Foundation group · Cat A.**
+> Source: C-0020 / P-0020. Verification: E-0025. Canonical version: CV-1.0.
+> Full statement and proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+The sigmoid closure operator $\mathrm{Cl}_t(u)(x) = \sigma\!\big(a_{\mathrm{cl}}\,((1-\eta_{\mathrm{cl}})u(x) + \eta_{\mathrm{cl}}(P_t u)(x) - \tau_{\mathrm{cl}})\big)$ satisfies:
+
+- **A1' (conditional extensivity)**: $\mathrm{Cl}_t(u)(x) \geq u(x)$ whenever $u(x) \leq c^*$ and $(P_t u)(x) \geq u(x)$, where $c^*$ is the unique scalar fixed point of $\sigma(a_{\mathrm{cl}}(c - \tau_{\mathrm{cl}}))$ in $(0,1)$.
+- **A2 (monotonicity)**: $u \leq v$ pointwise $\Rightarrow$ $\mathrm{Cl}_t(u) \leq \mathrm{Cl}_t(v)$ pointwise — *unconditional*.
+- **A3 (contraction)**: iterates form a Cauchy sequence; geometric rate $a_{\mathrm{cl}}/4$ when $a_{\mathrm{cl}} < 4$.
+- **A4 (continuity)**: $\mathrm{Cl}_t$ is continuous in any $\ell^p$ topology — *unconditional*.
+
+The original axiom A1 (weak extensivity, $\mathrm{Cl}_t(u) \geq u$ unconditionally) and A3 (contraction, $a_{\mathrm{cl}} < 4$) are **incompatible**: A1 at $u(x) = 0.9$ requires $a_{\mathrm{cl}} \geq 5.49$, contradicting $a_{\mathrm{cl}} < 4$.
+
+A1' resolves the tension by restricting extensivity to sites below the self-support threshold $c^*$.
+
+## Proof idea
+
+**Direct computation.** Define $g(u) = \sigma(a_{\mathrm{cl}}(u - \tau_{\mathrm{cl}})) - u$. Then $g(0) = \sigma(-a_{\mathrm{cl}}\tau_{\mathrm{cl}}) > 0$ and $g(c^*) = 0$. Since $g'(c^*) = a_{\mathrm{cl}} \sigma'(a_{\mathrm{cl}}(c^* - \tau_{\mathrm{cl}})) - 1 < 0$ (because $a_{\mathrm{cl}}/4 < 1$), $g$ is positive on $[0, c^*)$. When $(P_t u)(x) \geq u(x)$ and $u(x) \leq c^*$, the pre-activation $z(x) \geq a_{\mathrm{cl}}(u(x) - \tau_{\mathrm{cl}})$, so $\mathrm{Cl}(u)(x) \geq u(x) + g(u(x)) \geq u(x)$. This proves A1'.
+
+A2 from monotonicity of $\sigma$ and $P_t$. A3 from $\max \sigma' = 1/4$ giving Lipschitz constant $\leq a_{\mathrm{cl}}/4 < 1$. A4 from composition of continuous functions.
+
+A1 fails: $\sigma^{-1}(0.9)/\!(0.9 - \tau_{\mathrm{cl}}) \approx 5.49 > 4$. $\square$
+
+## Why this is a hero
+
+T20 is the theory's foundational legitimacy. Without it, the axiom system is just a wishlist; with it, the wishlist is shown to be coherent.
+
+The substantive content of T20 is the **identification of A1↔A3 incompatibility** and the **resolution via A1'**. This is not a routine consistency check — it is a discovery that the original axiom system was inconsistent for the sigmoid realization, and a non-trivial refinement that captures the *correct* structural intent (closure builds up cohesion below the self-support threshold $c^*$, corrects above it) while preserving compatibility with contraction.
+
+The conditional form of A1' is also load-bearing for the theory's *interpretation*. SCC's closure is **self-regulating**, not merely extensive: it is bounded above by the scalar fixed point. This bounded-above property is what allows closure to coexist with the volume constraint $\Sigma_m$ (saturating $u \equiv 1$ everywhere is forbidden) and with the multi-formation regime (closure does not collapse formations to total dominance).
+
+## Logical dependencies
+
+- **Builds on**: nothing — this is the consistency theorem at the bottom of the stack.
+- **Builds into**: T6 (which uses A3 contraction at $a_{\mathrm{cl}} < 4$), every existence/stability result that invokes the closure operator.
+
+## See also
+
+- Full statement of Group A axioms with proofs: [Canonical Spec Part 2 §6 Group A](/notes/part-0/canonical-spec-scc-2-axioms/)
+- The scalar fixed point $c^*$ and self-regulation interpretation: same page, A1' commentary
+- T6 closure fixed point (uses A3): [T6 hero page](/notes/scc-hero-t6-closure-fp/)

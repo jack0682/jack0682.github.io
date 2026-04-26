@@ -1,0 +1,48 @@
+---
+title: "T1 — Existence of Minimizers"
+slug: scc-hero-t1-existence
+part: 0
+chapter: 100
+section: "SCC Hero · T1"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "The energy E attains its minimum on the constraint manifold Σ_m. The well-posedness foundation of SCC: every other result is a refinement of the bare existence statement."
+tags: [scc, theorem, foundation, hero, existence]
+related: [scc-heroes, canonical-spec-scc-5-results-registry, scc-hero-t6-closure-fp]
+---
+
+> **Hero · Foundation group · Cat A.**
+> Source: C-0001 / P-0001. Verification: E-0001, E-0002. Canonical version: CV-1.0.
+> Full statement and proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+On the constraint manifold
+
+$$
+\Sigma_m = \Big\{u \in [0,1]^n : \sum_{x \in X_t} u_t(x) = m\Big\},
+$$
+
+the energy functional $\mathcal{E}_t$ attains its minimum.
+
+## Proof idea
+
+Compactness + continuity. $\Sigma_m$ is compact (closed and bounded subset of $[0,1]^n$, the unit hypercube intersected with an affine hyperplane). The energy $\mathcal{E}_t = \lambda_{\mathrm{cl}} \mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}} \mathcal{E}_{\mathrm{sep}} + \lambda_{\mathrm{bd}} \mathcal{E}_{\mathrm{bd}} + \lambda_{\mathrm{tr}} \mathcal{E}_{\mathrm{tr}}$ is continuous in $u$ for the standard provisional operator forms (sigmoid closure, smooth distinction, polynomial double-well). The extreme value theorem gives the existence of a global minimizer. $\square$
+
+## Why this is a hero
+
+T1 is the well-posedness foundation. The entire variational framework of SCC — the four-term energy, the diagnostic vector $\mathbf{d}$, the soft-to-crisp recovery — assumes that *minimizers exist*. T1 secures that assumption unconditionally. Every subsequent theorem (uniqueness conditions in T6, non-triviality in T8-Core, stability in T7-Enhanced, asymptotic shape in T11) is a refinement of "the minimizer exists, and here is more about it."
+
+The volume constraint $\Sigma_m$ is doing real work. Without it, the trivial field $u \equiv 0$ globally minimizes (all energy terms are nonnegative and vanish at $u = 0$). T1 only makes sense given the volume constraint; the constraint is not a computational convenience but a structural axiom of the theory.
+
+## Logical dependencies
+
+- **Builds on**: compactness of $\Sigma_m$ (convex polytope structure, Proposition 1.1), continuity of provisional operator forms (Group A–E axioms).
+- **Builds into**: T8-Core (the minimizer is non-trivial under phase transition condition), T8-Full (extends to full energy), T-PreObj-1 (under full SCC, F=1 single-disk minimizer is non-critical — the existence theorem T1 still holds, but its location shifts to F≥2 configurations).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T1 entry](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- The volume constraint $\Sigma_m$: [Canonical Spec Part 3 §8.0](/notes/part-0/canonical-spec-scc-3-energy/)
+- Why "the minimizer exists" is not the end: [T-PreObj-1 hero page](/notes/scc-hero-t-preobj-1/) — under full SCC, the *location* of the minimizer turns out to be where pure-$\mathcal{E}_{\mathrm{bd}}$ critical points fail to be critical.

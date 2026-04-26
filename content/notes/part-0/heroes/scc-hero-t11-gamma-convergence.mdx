@@ -1,0 +1,68 @@
+---
+title: "T11 — Sharp-Interface Γ-Convergence"
+slug: scc-hero-t11-gamma-convergence
+part: 0
+chapter: 100
+section: "SCC Hero · T11"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "As ε = α/β → 0, the boundary-morphology energy E_bd Γ-converges to a perimeter functional. Minimizers converge to characteristic functions of minimal-perimeter sets. The soft-to-crisp bridge — recovery of object-like sharp interfaces from the soft cohesion field."
+tags: [scc, theorem, hero, gamma-convergence, sharp-interface, modica-mortola]
+related: [scc-heroes, scc-hero-t8-core-phase-transition, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · Phase + Stability group · Cat A.**
+> Source: C-0011 / P-0011. Verification: E-0014. Canonical version: CV-1.0.
+> Full proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+Let $\varepsilon = \alpha/\beta$ be the smoothness-to-double-well ratio. As $\varepsilon \to 0$, the rescaled boundary-morphology energy
+
+$$
+\mathcal{E}^\varepsilon_{\mathrm{bd}}(u) = \varepsilon \sum_{x,y} \mathbf{N}_t(x,y)(u(x) - u(y))^2 + \frac{1}{\varepsilon} \sum_x W(u(x))
+$$
+
+**Γ-converges** to a perimeter functional
+
+$$
+\mathcal{F}_0(\chi_E) = c_W \cdot \mathrm{Per}_G(E)
+$$
+
+defined on characteristic functions $\chi_E$ of subsets $E \subseteq X$, where $c_W = \int_0^1 \sqrt{2 W(s)}\,ds$ is the surface-tension constant and $\mathrm{Per}_G(E)$ is the graph perimeter (number of edges crossing $\partial E$).
+
+Minimizers of $\mathcal{E}^\varepsilon_{\mathrm{bd}}$ converge (up to subsequence) to characteristic functions of sets minimizing the graph perimeter subject to the volume constraint $|E| = m$. Self-referential correction terms (closure, separation) modify the effective surface tension at higher order in $\varepsilon$.
+
+## Proof idea
+
+**Standard Modica-Mortola structure.** The Allen-Cahn energy on a graph has the form $\varepsilon \cdot (\text{Dirichlet}) + \varepsilon^{-1} \cdot (\text{double-well})$. As $\varepsilon \to 0$, configurations are forced to either side of the double-well wells (i.e., $u \approx 0$ or $u \approx 1$ everywhere except on a thin transition layer); the energy concentrates on the transition layer with surface-tension density $c_W$.
+
+**Lim sup (recovery sequence).** For any $E \subseteq X$, construct $u^\varepsilon$ that approximates $\chi_E$ with smooth transition of width $O(\varepsilon)$ across $\partial E$; verify $\mathcal{E}^\varepsilon_{\mathrm{bd}}(u^\varepsilon) \to c_W \cdot \mathrm{Per}_G(E)$.
+
+**Lim inf (compactness + lower bound).** Sequences with bounded energy are pre-compact in $L^1$ via the standard equicoercivity argument; any limit is a characteristic function (the double-well term forces this); the lim inf inequality follows from the slicing lemma.
+
+**Self-referential corrections.** The closure ($\mathcal{E}_{\mathrm{cl}}$) and separation ($\mathcal{E}_{\mathrm{sep}}$) terms are perturbations of the Allen-Cahn substrate. Their effect on Γ-convergence is via modified surface tension $c_W \to c_W + O(\lambda_{\mathrm{cl}} + \lambda_{\mathrm{sep}})$ — handled by perturbation analysis. $\square$
+
+## Why this is a hero
+
+T11 is the **soft-to-crisp bridge**. SCC commits to the primacy of the soft cohesion field $u : X \to [0,1]$, but it must explain how object-like crisp entities are recovered. T11 provides the mathematical mechanism: in the sharp-interface limit, soft minimizers *automatically* approach characteristic functions of crisp sets minimizing perimeter.
+
+This connects SCC to:
+
+- **Geometric measure theory** — perimeter minimization is the classical problem; SCC inherits its tools (slicing, BV functions, isoperimetric inequalities).
+- **Allen-Cahn / Cahn-Hilliard theory** — the variational substrate is shared, but SCC adds self-referential corrections that *modify the effective surface tension*.
+- **Crisp recovery protocol** (open problem) — the asymptotic limit is rigorous, but the threshold rule for finite $\varepsilon$ remains under-specified. T11 establishes that *some* crisp recovery is mathematically inevitable; the *protocol* for any specific $\varepsilon$ is downstream work.
+
+The substantive content of T11 for SCC specifically is that **the four-term energy is consistent with a sharp-interface limit**. The deliberate non-Allen-Cahn structure of SCC (closure self-reference, distinction asymmetry) does not destroy the limit — it perturbs the surface tension. This is non-trivial: a more aggressive non-locality could have broken Γ-convergence entirely.
+
+## Logical dependencies
+
+- **Builds on**: T1 (minimizer existence), T8-Core (non-trivial minimizers exist for $\beta/\alpha$ above threshold), discrete isoperimetric structure of the graph.
+- **Builds into**: Deep Core Dominance 2b (uses isoperimetric inequality directly), T-Merge (b) (perimeter ordering on connected graphs is the limit of Γ-convergence), formation birth analysis at $\beta_{\mathrm{crit}}$.
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T11](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- Why crisp recovery is "the soft-to-crisp bridge, not the foundation": [Canonical Spec Part 1 §4](/notes/part-0/canonical-spec-scc-1-foundations/)
+- T-Merge (b) (the canonical perimeter-ordering theorem on connected graphs): [Canonical Spec §13 T-Merge entry](/notes/part-0/canonical-spec-scc-5-results-registry/)

@@ -1,0 +1,78 @@
+---
+title: "T8-Core — Phase Transition (Spectral Universality)"
+slug: scc-hero-t8-core-phase-transition
+part: 0
+chapter: 100
+section: "SCC Hero · T8-Core"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "On any connected graph with Fiedler eigenvalue λ_2 > 0, when β/α exceeds 4λ_2/|W''(c)|, the uniform field becomes unstable and a non-uniform minimizer exists. Formation birth is topologically universal — depending only on the spectral gap."
+tags: [scc, theorem, hero, phase-transition, spectral, universality]
+related: [scc-heroes, scc-hero-t1-existence, scc-hero-t11-gamma-convergence, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · Phase + Stability group · Cat A.**
+> Source: C-0008 / P-0008. Verification: E-0010, E-0011. Canonical version: CV-1.0.
+> Full statement and proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+Let $X_t$ be a finite connected graph with Fiedler eigenvalue $\lambda_2 > 0$ (algebraic connectivity). Let $m = cn$ with volume fraction
+
+$$
+c \in \left(\frac{3 - \sqrt{3}}{6},\; \frac{3 + \sqrt{3}}{6}\right) \approx (0.211,\, 0.789),
+$$
+
+and let $W(u) = u^2(1-u)^2$ be the double-well potential. If
+
+$$
+\boxed{\;\frac{\beta}{\alpha} \;>\; \frac{4\lambda_2}{|W''(c)|}\;}
+$$
+
+then the global minimizer of $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$ is **non-uniform** (i.e., not the constant field $u \equiv c$).
+
+## Proof idea
+
+Second variation analysis at the uniform state. The ordered-pair summation convention (Section 0 of the canonical spec) gives the smoothness functional $2\alpha\, v^T L v$ where $L$ is the graph Laplacian and $v = u_t - c\mathbf{1}$, contributing a Hessian term $4\alpha L$.
+
+The second variation of $\mathcal{E}_{\mathrm{bd}}$ at $u \equiv c$ along the Fiedler eigenvector $\psi_2$ (eigenvalue $\lambda_2$) has eigenvalue
+
+$$
+4\alpha\lambda_2 + \beta W''(c).
+$$
+
+The double-well derivative $W''(u) = 2 - 12u + 12u^2$ satisfies $W''(c) < 0$ on the spinodal interval $\big((3-\sqrt{3})/6,\, (3+\sqrt{3})/6\big)$. Therefore, when
+
+$$
+4\alpha\lambda_2 + \beta W''(c) < 0
+\quad\Longleftrightarrow\quad
+\beta/\alpha > 4\lambda_2/|W''(c)|,
+$$
+
+the uniform state is a **saddle point** of $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$. By T1, a global minimizer exists; since the uniform state is a saddle, the global minimizer must be non-uniform. $\square$
+
+## Why this is a hero
+
+T8-Core is **spectral universality**. The critical condition $\beta/\alpha > 4\lambda_2/|W''(c)|$ depends *only* on:
+
+- the spectral gap $\lambda_2$ of the graph (a topological invariant), and
+- the volume fraction $c$ (a structural parameter of the theory).
+
+It does **not** depend on the specific graph — it works on any connected graph with $\lambda_2 > 0$. Formation birth is therefore not an artifact of a particular geometry; it is a universal phenomenon determined by the graph's algebraic connectivity.
+
+This is the analogue of the classical phase transition condition in Allen-Cahn / Cahn-Hilliard theory, but reformulated for the graph setting and with the spectral gap as the universal control parameter. T8-Core is the SCC version of the statement "spinodal decomposition is topology-independent."
+
+**Caveat (scaling regime).** On graph families where $\lambda_2 \to 0$ as $n \to \infty$ (e.g., $k \times k$ grids with $\lambda_2 \sim \pi^2/k^2$), the threshold vanishes — the criterion is trivially satisfied for any $\beta > 0$. T8-Core then guarantees existence but not a meaningful selection criterion. On graphs with $\lambda_2 = \Omega(1)$ (expanders, bounded-diameter graphs, fixed-size applications), the criterion is genuinely informative. At scale, the diagnostic vector $\mathbf{d} = (\mathsf{Bind}, \mathsf{Sep}, \mathsf{Inside}, \mathsf{Persist})$ takes over — formation *quality*, not formation *existence*, becomes the meaningful question. See [T-PreObj-1](/notes/scc-hero-t-preobj-1/) for the W4 refinement: under full SCC parameters, the F=1 single-disk minimizer is non-critical, so existence shifts from "non-uniform" to "F≥2 multi-peak."
+
+## Logical dependencies
+
+- **Builds on**: T1 (existence of minimizers), spectral graph theory (Fiedler eigenvalue).
+- **Builds into**: T8-Full (extends to full energy via IFT), T-Birth-Parametric (supercritical pitchfork at $\beta_{\mathrm{crit}}$), T11 (sharp-interface limit of the same energy), T-PreObj-1 (full SCC version where F=1 disk is non-critical).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T8-Core entry](/notes/part-0/canonical-spec-scc-5-results-registry/) including scaling caveats and finite-element rescaling remark
+- Volume constraint and admissible $c$ range: [Canonical Spec Part 3 §8.0](/notes/part-0/canonical-spec-scc-3-energy/)
+- T8-Full extension to full energy: [Canonical Spec §13 T8-Full entry](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- W4 refinement: [T-PreObj-1 hero page](/notes/scc-hero-t-preobj-1/)

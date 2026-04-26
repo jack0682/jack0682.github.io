@@ -1,0 +1,76 @@
+---
+title: "T-V5b-T — Pre-Objective Goldstone on Translation-Invariant Graphs (W4-Extended Capstone)"
+slug: scc-hero-t-v5b-t
+part: 0
+chapter: 100
+section: "SCC Hero · T-V5b-T"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "On translation-invariant graphs (torus T^d, cycle C_n), a sub/super-lattice spectral dichotomy at the F=1/F≥2 transition. 2D: Goldstone doublet with commensurability split; 1D: 1-fold Goldstone; nodal count = 2 universal. W4-extended capstone (8 V5b iterations + NQ-172 reproducibility check)."
+tags: [scc, theorem, hero, w4-extended, goldstone, translation-invariant, symmetry-breaking]
+related: [scc-heroes, scc-hero-t-preobj-1, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · W4 Capstone group · Cat A.**
+> Source: C-0710 / P-0710. Verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check after mode-indexing artifact identified+resolved).
+> Canonical version: **CV-1.4 (W4-extended close, 2026-04-26)**.
+> Full proof: [Canonical Spec — Part 5 · §13 W4-extended addition](/notes/part-0/canonical-spec-scc-5-results-registry/).
+> Narrative: [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/).
+
+## Statement
+
+Let $G$ be a finite connected graph with full translation symmetry — concretely, the torus $T^d$ ($d$-dimensional periodic lattice) or the cycle $C_n$. At the F=1 / F≥2 transition (where T-PreObj-1 applies), the following spectral structure holds:
+
+**(a) Sub/super-lattice spectral dichotomy.** The spectrum of the second variation operator on $\Sigma_m$ splits into two regimes (sub-lattice and super-lattice modes) at a graph-class-dependent crossover scale $\zeta_*(G)$.
+
+**(b) 2D doublet with commensurability splitting.** On the 2D torus $T^2$ (and higher even $d$), the Goldstone modes (zero-modes of the broken translation symmetry) form a **2-fold doublet** that splits according to **commensurability** of the formation period with the lattice period. The splitting is generically non-zero; it vanishes at commensurate ratios.
+
+**(c) 1D 1-fold Goldstone branch.** On the cycle $C_n$, the Goldstone branch is **1-fold** (single soft mode).
+
+**(d) Universal nodal count = 2.** Across all translation-invariant graph classes tested (2D torus periodic, 2D torus free BC partially, 1D cycle), the nodal count of the Goldstone modes is **2 — universally**.
+
+**Crossover scale $\zeta_*(G)$.** The transition scale $\zeta_*$ between sub-lattice and super-lattice regimes is **graph-class dependent** (open NQ-174); for fixed graph it is well-defined.
+
+## Proof idea (sketch)
+
+**Bloch decomposition.** On a translation-invariant graph $G$, the Laplacian $L$ commutes with translation, so eigenvectors can be labeled by Bloch momenta $k$. The second variation of $\mathcal{E}|_{\Sigma_m}$ at the F=1 / F≥2 transition inherits this structure.
+
+**Goldstone modes from broken translation.** When the formation breaks translation symmetry (F≥2 generic case), the mode that "moves the formation rigidly" is a zero-mode of the second variation — the Goldstone mode. Symmetry counting gives:
+
+- 2D translation broken: 2 broken generators → **2-fold Goldstone doublet** (parts (b)).
+- 1D translation broken: 1 broken generator → **1-fold Goldstone** (part (c)).
+
+**Commensurability splitting.** When the formation period is commensurate with the lattice period (formation fits an integer number of times in the torus circumference), the Goldstone modes are degenerate. Generic incommensurability splits them — the splitting magnitude scales with the commensurability defect.
+
+**Nodal count = 2.** Direct calculation on each Bloch sector shows that the Goldstone eigenvectors have exactly two sign changes per period, regardless of dimension. This is the *universal* part of the result.
+
+**Verification.** Numerical $\zeta$-scan on torus $T^2$ (E-0095) confirms the dichotomy and doublet structure. Graph-class extension to $T^3$, free-BC variants, and cycle $C_n$ (E-0096) confirms the nodal count = 2 universality. A reproducibility crisis (**NQ-172**) was identified during V5b''iteration: an earlier analysis script had a mode-indexing artifact that indexed Bloch modes inconsistently, producing spurious dichotomy. Mode-agnostic detection (E-0097) reproduces the result without the artifact. $\square$
+
+## Why this is a hero
+
+T-V5b-T is the **W4-extended capstone**. It refines T-PreObj-1 from "F=1 is non-critical, F≥2 is the attractor" to a fully spectral statement about *what kind of zero modes* the F≥2 attractor inherits and *how those modes are organized* under translation symmetry.
+
+The substantive content:
+
+1. **Symmetry-breaking signature is universal.** On any translation-invariant graph, the Goldstone count and nodal structure follow the symmetry. This is the SCC version of Nambu-Goldstone counting in continuous symmetry breaking.
+
+2. **Commensurability is observable.** The 2D commensurability splitting is a *predicted* spectral signature distinguishing commensurate from incommensurate formation lattices. This is testable and gives an empirical grip on the F=1 / F≥2 transition geometry.
+
+3. **Nodal count = 2 is universal — across graph classes.** The simplest conclusion of the result is also the strongest: regardless of dimension, regardless of boundary condition, regardless of graph class within (G1)–(G4) and translation invariance, the Goldstone modes have nodal count 2. This is invariant under graph deformations that preserve translation.
+
+The path to T-V5b-T was non-trivial: **8 V5b iterations** (V1 through V5b'') over W4 + W4-extended, including in-session retractions of V4 and V5a. A reproducibility crisis (NQ-172, mode-indexing artifact in the analysis script) was identified during V5b'' and resolved with mode-agnostic detection. This iteration record is itself a hero of the result — premature promotion at V1 would have placed a spurious dichotomy in canonical, and only the verification reflex caught the artifact.
+
+A separate finding from the same iteration cycle, **V5b-F (Cat C, partial Goldstone on boundary-modified graphs)**, is registered as carry NQ-173 — the boundary condition lifts/gaps the Goldstone branch in a way that requires further characterization.
+
+## Logical dependencies
+
+- **Builds on**: T-PreObj-1 (the F=1 / F≥2 transition is the setting), T-PreObj-1G (graph-class independence sets up the framework), spectral graph theory for translation-invariant graphs (Bloch decomposition).
+- **Builds into**: V5b-F (Cat C carry, NQ-173), NQ-174 ($\zeta_*(G)$ precise dependence on graph class), NQ-175 (3D torus extension), σ-framework Goldstone signature contribution on $\Sigma_m$.
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T-V5b-T](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- The 8-iteration history and NQ-172 reproducibility crisis: [Week 4 Extended weekly post §6 Reproducibility / errata](/journal/2026-04-26-perception-week-4-extended/)
+- T-PreObj-1 (the prerequisite): [T-PreObj-1 hero page](/notes/scc-hero-t-preobj-1/)
+- V5b-F new finding (Cat C, partial Goldstone on boundary-modified graphs): [Canonical Spec §13 W4-extended new finding](/notes/part-0/canonical-spec-scc-5-results-registry/)

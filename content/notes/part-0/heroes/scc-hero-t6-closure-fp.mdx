@@ -1,0 +1,61 @@
+---
+title: "T6 — Closure Fixed Point (Banach Contraction)"
+slug: scc-hero-t6-closure-fp
+part: 0
+chapter: 100
+section: "SCC Hero · T6"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "When the closure steepness parameter a_cl < 4, the sigmoid closure operator has a unique fixed point on [0,1]^n with geometric convergence rate a_cl/4. The convergence guarantee for the central self-referential operator."
+tags: [scc, theorem, foundation, hero, closure, banach, contraction]
+related: [scc-heroes, canonical-spec-scc-5-results-registry, scc-hero-t7-enhanced-metastability]
+---
+
+> **Hero · Foundation group · Cat A.**
+> Source: C-0006a / P-0006a (existence) + C-0006b / P-0006b (uniqueness, contraction).
+> Verification: E-0005, E-0006. Canonical version: CV-1.0.
+> Full statement and proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
+
+## Statement
+
+Let $\mathrm{Cl}_t : [0,1]^n \to [0,1]^n$ be the sigmoid closure operator
+
+$$
+\mathrm{Cl}_t(u)(x) = \sigma\!\big(a_{\mathrm{cl}}\,((1-\eta_{\mathrm{cl}})\,u(x) + \eta_{\mathrm{cl}}\,(P_t u)(x) - \tau_{\mathrm{cl}})\big).
+$$
+
+**T6a (existence).** $\mathrm{Cl}_t$ has at least one fixed point on $[0,1]^n$.
+
+**T6b (uniqueness + contraction).** When $a_{\mathrm{cl}} < 4$, $\mathrm{Cl}_t$ has a *unique* fixed point, and iterates $\mathrm{Cl}_t^{(k)}(u)$ converge geometrically at rate $a_{\mathrm{cl}}/4$ for every initial $u$.
+
+## Proof idea
+
+**T6a.** Brouwer fixed-point theorem. $\mathrm{Cl}_t$ maps $[0,1]^n$ to itself (sigmoid output is in $(0,1)$) and is continuous. Brouwer gives at least one fixed point.
+
+**T6b.** Banach contraction mapping theorem. The Lipschitz constant of $\mathrm{Cl}_t$ is
+
+$$
+L \;\leq\; (\max \sigma') \cdot a_{\mathrm{cl}} \cdot \max(1 - \eta_{\mathrm{cl}}, \eta_{\mathrm{cl}}) \;\leq\; \frac{a_{\mathrm{cl}}}{4},
+$$
+
+since $\max \sigma' = 1/4$ for the logistic sigmoid. When $a_{\mathrm{cl}} < 4$, $L < 1$, so $\mathrm{Cl}_t$ is a strict contraction and Banach's theorem applies: unique fixed point, geometric convergence at rate $L \leq a_{\mathrm{cl}}/4$. The bound $a_{\mathrm{cl}} < 4$ is **tight**: at $a_{\mathrm{cl}} = 4$ the Lipschitz bound saturates and contraction fails. $\square$
+
+## Why this is a hero
+
+Closure is the central self-referential operator of SCC: it is the mechanism by which the cohesion field becomes self-supporting. T6 is the convergence guarantee for that operator. Without T6, "self-completion" is just a description; with T6, it is a well-defined mathematical operation with a unique destination and a known convergence rate.
+
+The parameter constraint $a_{\mathrm{cl}} < 4$ is a *signature commitment* of the theory. SCC operates in the contraction regime by design — the alternative ($a_{\mathrm{cl}} \geq 4$, multiple fixed points) is reserved for explicit multi-formation work via the K-field architecture, not for the single-formation core. T6 makes that design choice rigorous: contraction is provable below threshold, and the threshold is sharp.
+
+A subtle but important point: **the closure operator is a contraction, not a projection** (CN1 commitment). The trajectory carries structural information even though the destination is unique. Path-dependence in SCC arises at the energy landscape level (T8-Core multi-well, T7-Enhanced metastable basins), *not* at the closure-operator level. This two-landscape distinction (CN9) is essential and easily confused.
+
+## Logical dependencies
+
+- **Builds on**: T20 (axiom consistency — A3 contraction must be compatible with A1', the conditional extensivity, at $a_{\mathrm{cl}} < 4$).
+- **Builds into**: T7-Enhanced (the closure Hessian at a non-idempotent fixed point with $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$ is strictly PD), T-Bind-Proj/Full (residual bound exploits contraction inversion), every persistence theorem (basin radius depends on contraction rate).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T6a/T6b/T6-Stability](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- Why non-idempotence matters: [T7-Enhanced hero page](/notes/scc-hero-t7-enhanced-metastability/)
+- The two-landscape structure (closure FP vs energy minima): [Canonical Spec Part 2 §6 Group A · CN1, CN9](/notes/part-0/canonical-spec-scc-2-axioms/)

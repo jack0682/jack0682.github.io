@@ -1,0 +1,72 @@
+---
+title: "T-PreObj-1 — Pre-Objective Multi-Peak Formation Mechanism (W4 Capstone)"
+slug: scc-hero-t-preobj-1
+part: 0
+chapter: 100
+section: "SCC Hero · T-PreObj-1"
+kind: theorem
+track: perception
+updated: 2026-04-26
+summary: "Under full SCC on any (G1)-(G4) graph, the F=1 single-disk is not a critical point of full E, and gradient flow attracts to multi-peak F≥2 configurations. The W4 capstone — SCC's pre-objective character is theorem, not modeling choice. Resolves F-1."
+tags: [scc, theorem, hero, w4, pre-objective, multi-peak, capstone]
+related: [scc-heroes, scc-hero-t-v5b-t, scc-hero-t14-gradient-flow, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · W4 Capstone group · Cat A.**
+> Source: C-0700 / P-0700 (T-PreObj-1) + C-0701 / P-0701 (T-PreObj-1G graph-class independent) + C-0702 / P-0702 (Lemma 4 quadratic form PD).
+> Verification: E-0090 (L=12, 3-digit theory–experiment agreement), E-0091 (L=32 dichotomy).
+> Canonical version: **CV-1.3 (W4 close, 2026-04-24)**.
+> Full proof: [Canonical Spec — Part 5 · §13 W4 close additions](/notes/part-0/canonical-spec-scc-5-results-registry/).
+> Narrative: [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/).
+
+## Statement
+
+Let $G$ be a finite connected graph satisfying hypotheses **(G1)–(G4)** (graph-class regularity conditions; see canonical §12). Under full SCC parameters $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}, \lambda_{\mathrm{bd}} > 0$:
+
+**(i) F=1 non-criticality.** The F=1 single-disk minimizer of the pure boundary-morphology energy $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$ is **not a critical point** of the full SCC energy $\mathcal{E}|_{\Sigma_m}$. Equivalently: under full SCC, gradient flow leaves the F=1 disk.
+
+**(ii) Multi-peak attractor.** Gradient flow attracts to multi-peak F≥2 configurations.
+
+**(iii) IC-protocol dichotomy.** The asymptotic endpoint of gradient flow under different initialization protocols satisfies:
+
+- **Adaptive bounded protocol** → bounded F endpoint.
+- **Random initialization** → endpoint scales as $\sim L^{2.8}$ (where $L$ is the graph linear scale).
+
+**T-PreObj-1G (graph-class independent).** Conclusions (i) and (ii) hold on **any** finite connected graph satisfying (G1)–(G4) — not just on the test grid families.
+
+## Proof idea (sketch)
+
+**Lemma 4 (quadratic form PD).** Define $M \in \mathbb{R}^{2 \times 2}$ as the inner-product matrix of the gradients $g_{\mathrm{cl}} = \nabla \mathcal{E}_{\mathrm{cl}}|_{\hat u_F}$ and $g_{\mathrm{sep}} = \nabla \mathcal{E}_{\mathrm{sep}}|_{\hat u_F}$ at the F=1 candidate $\hat u_F$. Under linear independence of $g_{\mathrm{cl}}$ and $g_{\mathrm{sep}}$ (generic, holds in (G1)–(G4)), $M$ is positive definite, and the destabilization magnitude $\Lambda^T M \Lambda > 0$ for any $\Lambda \neq 0$.
+
+**(i) Non-criticality.** At the pure-$\mathcal{E}_{\mathrm{bd}}$ minimizer $\hat u_F$ with F=1, $\nabla \mathcal{E}_{\mathrm{bd}} = 0$ on the constraint surface. The full energy gradient is then $\lambda_{\mathrm{cl}} g_{\mathrm{cl}} + \lambda_{\mathrm{sep}} g_{\mathrm{sep}}$; by Lemma 4, this is non-zero on the constraint tangent unless $\lambda_{\mathrm{cl}} = \lambda_{\mathrm{sep}} = 0$. So $\hat u_F$ is non-critical.
+
+**(ii) Multi-peak attractor.** From non-criticality, gradient flow leaves $\hat u_F$ with destabilization magnitude $\geq \Lambda^T M \Lambda > 0$. The descent direction $-\nabla \mathcal{E}$ has positive overlap with the F=2 destabilization mode (verified via second-variation analysis). Compactness + monotone decrease (T14) + Łojasiewicz forces convergence to *some* critical point; phase-space analysis shows the attractor is multi-peak F≥2.
+
+**(iii) IC-protocol dichotomy.** Adaptive bounded protocols stabilize F by closing the iteration on a bounded scale; random initialization explores F space uniformly until energy minimization concentrates the field — this exploration phase scales with graph size, giving the empirical $\sim L^{2.8}$ scaling on tested grid families.
+
+**T-PreObj-1G.** The argument above uses only abstract spectral / isoperimetric properties guaranteed by (G1)–(G4); no specific graph features needed. Therefore the conclusion lifts to any such graph. $\square$
+
+## Why this is a hero
+
+T-PreObj-1 is **the W4 capstone** — the conceptual centerpiece of nearly a year of work. It establishes that **SCC's pre-objective character is a theorem, not a modeling choice**.
+
+The *pre-objective* claim is at the heart of SCC's identity: "objects are not the starting point; they are derivative; what is primitive is a graded cohesion field where multi-peak structure emerges." Before W4, this was a *design intent* — the theory was *organized* to express pre-objective character, but it was not *forced* to. T-PreObj-1 makes it forced: under full SCC parameters, the F=1 single-disk (the closest analog to "a single object") is *not even a critical point*, while F≥2 multi-peak configurations are the default attractor. Single-object thinking is energetically inconsistent with the full SCC framework.
+
+The graph-class independence (T-PreObj-1G) lifts this from "true on grids" to "true on any finite connected graph satisfying (G1)–(G4)." The pre-objective character is therefore **graph-class independent** — it is a property of the SCC framework itself, not of any particular spatial substrate.
+
+T-PreObj-1 also resolves **F-1** (the K=2 vacuity Critical open problem) via the F-1 Resolution Corollary: F-1 splits into a pure-$\mathcal{E}_{\mathrm{bd}}$ portion (the proved theorem T-Merge (b)) and a full-SCC portion (T-PreObj-1 (i) — F=1 is non-critical). The dichotomy "K=1 cheaper vs observed K>1" is **dissolved** because the static and dynamic layers refer to different objects (commitment **CN15 Static/Dynamic Separation**).
+
+The IC-protocol dichotomy (iii) is a separate result of independent interest: it identifies *which* initialization protocols are well-posed versus which produce arbitrarily-large endpoints. The $\sim L^{2.8}$ scaling under random initialization is a quantitative empirical signature awaiting a closed-form derivation (NQ-148 family).
+
+## Logical dependencies
+
+- **Builds on**: T1 (existence), T14 (gradient flow convergence), T-Merge (b) (isoperimetric ordering — the pure-$\mathcal{E}_{\mathrm{bd}}$ piece of F-1 split-resolution), spectral analysis of (G1)–(G4) graphs.
+- **Builds into**: F-1 Resolution Corollary, CN15 Static/Dynamic Separation, T-V5b-T (translation-invariant graphs are a special class within (G1)–(G4) and admit Goldstone-mode analysis on top of T-PreObj-1), σ-framework on $\Sigma_m$ (single-formation Hessian signature).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T-PreObj-1, T-PreObj-1G, Lemma 4](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- F-1 Resolution Corollary (the OP-0001 closure): [Canonical Spec Part 4 §12 W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/)
+- CN15 Static/Dynamic Separation (the conceptual key): [Canonical Spec Part 5 §14 CN15](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- W4-extended Goldstone refinement: [T-V5b-T hero page](/notes/scc-hero-t-v5b-t/)
+- Narrative of how this came together: [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/)
