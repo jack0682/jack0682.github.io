@@ -47,6 +47,20 @@ W4의 한 줄 narrative:
 
 **검증**: E-0090 (L=12 numerical, 3-digit 이론-실험 일치), E-0091 (L=32 dichotomy).
 
+<Figure
+  src="/content-assets/scc-figures/fig09-preobj-mechanism.png"
+  alt="Four-panel schematic of the Pre-Objective Mechanism (T-PreObj-1)."
+  caption={<>T-PreObj-1 mechanism (W4 close): F=1 disk on pure E_bd is critical, but under full SCC the same configuration is non-critical and gradient flow attracts to multi-peak F≥2 attractors. IC-protocol dichotomy in panel (d).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
+<Figure
+  src="/content-assets/scc-figures/fig10-lemma4-quadratic-form.png"
+  alt="Coordinate frame with an ellipse representing the level set of the quadratic form, principal semi-axes labeled, and a Lambda arrow extending past the ellipse."
+  caption={<>Lemma 4 — the inner-product matrix M of g_cl and g_sep at the F=1 candidate is positive definite under linear independence; destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### W4-extended close (2026-04-26): Pre-Objective Goldstone
 
 | T-ID | Statement (요약) | Source |
@@ -54,6 +68,20 @@ W4의 한 줄 narrative:
 | **T-V5b-T** | Translation-invariant graph (torus $T^d$, cycle $C_n$)에서 sub/super-lattice spectral dichotomy. 2D 에서 Goldstone modes는 **2-fold doublet with commensurability splitting**. 1D 에서 1-fold Goldstone branch. **Goldstone nodal count = 2 universal**. 8 V5b iterations (V1 → V5b'') 끝에 도달. | C-0710 / P-0710 |
 
 **검증**: E-0095 ($\zeta$-scan), E-0096 (graph-class extension + nodal count), E-0097 (NQ-172 reproducibility re-check).
+
+<Figure
+  src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
+  alt="Two-panel plot of Goldstone dispersion: 2D torus shows a doublet branch with commensurability splitting; 1D cycle shows a single Goldstone branch."
+  caption={<>Goldstone dispersion under T-V5b-T (W4-extended). 2D torus T^2: doublet with commensurability splitting near Γ. 1D cycle C_n: single Goldstone branch.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
+<Figure
+  src="/content-assets/scc-figures/fig12-goldstone-nodal-count.png"
+  alt="Two panels comparing Goldstone modes: 2D torus with 2-fold doublet, 1D cycle with 1-fold branch, and a central callout indicating nodal count = 2 universal."
+  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes. T-V5b-T (Cat A, all classes) vs V5b-F (Cat C, partial Goldstone on boundary-modified graphs — NQ-173 carry).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ---
 
@@ -70,7 +98,14 @@ W4 가장 큰 성과. 1년간 v2.0 release 를 gate 하던 OP-0001 / OP-0002 / O
 - **Pure $\mathcal{E}_{bd}$ portion**: 이것은 *옳은 정리* T-Merge (b) — connected graph에서의 isoperimetric ordering. open problem이 아니라 canonical theorem이었다. 원래 framing이 misclassification.
 - **Full SCC portion**: T-PreObj-1 (i)이 결정적. Full SCC parameter 하에서 F=1 single-disk minimizer는 **critical point가 아니다**. 따라서 "K=1 cheaper vs observed K>1" dichotomy는 **arise하지 않는다**. F=1 은 non-critical, F≥2 가 ground state default.
 
-**Net effect**: Paradox로 보였던 비교 ("global static minimum K=1 vs empirical K>1")는 dissolve. 기존의 Cat A 정리 + 신규 Cat A 정리 둘이 합쳐 dichotomy의 premise 자체가 사라졌다.
+**Net effect**: Paradox로 보였던 비교 ("global static minimum K=1 vs empirical K&gt;1")는 dissolve. 기존의 Cat A 정리 + 신규 Cat A 정리 둘이 합쳐 dichotomy의 premise 자체가 사라졌다.
+
+<Figure
+  src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
+  alt="Top-down split diagram: F-1 decomposes into pure E_bd (T-Merge b) and full SCC (T-PreObj-1) layers, both Cat A, with dichotomy dissolved at the bottom."
+  caption={<>F-1 split-resolution: two Cat A layers (T-Merge (b) for pure E_bd, T-PreObj-1 (i) for full SCC). The dichotomy itself dissolves under the W4 reframing.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ### M-1 (K=1 Energetic Preference) — ✅ LAYER-CLARIFIED
 
@@ -82,6 +117,13 @@ W4 가장 큰 성과. 1년간 v2.0 release 를 gate 하던 OP-0001 / OP-0002 / O
 - **Full SCC layer**: 비교 자체가 framed되지 않는다 — F=1 single-disk가 non-critical (T-PreObj-1)이므로 pure $\mathcal{E}_{bd}$의 "K=1 ground state"가 full SCC landscape으로 survive하지 않기 때문.
 
 **Conceptual key**: **CN15 Static/Dynamic Separation** — static global minimum on pure $\mathcal{E}_{bd}$ ≠ dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC. 두 quantity는 서로 다른 layer의 관측치이며 일치할 필요가 없다.
+
+<Figure
+  src="/content-assets/scc-figures/fig15-static-dynamic-separation.png"
+  alt="Two stacked layers — static minimum on E_bd vs dynamic protocol-endpoint on full SCC — separated by a not-equal symbol."
+  caption={<>CN15 — Static / Dynamic Separation. The conceptual key behind M-1 layer-clarification. The "F-1 paradox" arose from conflating two quantities that live on different layers.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ### MO-1 (Morse Theory Inapplicability) — ⚪ SIDESTEPPED
 
@@ -155,6 +197,13 @@ W4-extended close 의 가장 중요한 process-side 학습.
 | Total claims | 49 | 51 | **52** |
 | % fully proved | 71% | 73% | **73%** |
 | Critical OPs | 3 | 0 | 0 |
+
+<Figure
+  src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
+  alt="Directed graph of the 9 SCC hero theorems and their dependencies."
+  caption={<>The hero DAG after W4 / W4-extended bumps. T-PreObj-1 and T-V5b-T occupy the two capstone positions; the foundation and phase + stability layers are now end-to-end Cat A.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 변경된 canonical 페이지:
 - [Canonical Spec — Part 5 · Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — T-PreObj-1 family + T-V5b-T + V5b-F entries, CN15 추가, §15 closing summary 재작성

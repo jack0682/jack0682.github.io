@@ -65,6 +65,13 @@ This axiom replaces the classical requirement of idempotence ($\mathrm{Cl}_t^2 =
 
 **Interpretive Remark.** The deliberate omission of primitive idempotence is a signature commitment of the theory. Classical topological closure is idempotent by definition. But the present theory operates at a level prior to completed topological structure: at the level where closure is still a dynamic tendency, not yet an accomplished fact. Imposing idempotence at the primitive level would presuppose that the cohesive formation has already been fully completed, which would undermine the theory's foundational ambition to describe pre-objective emergence. The proved mathematical payoff of non-idempotence is strictly stronger stability: non-idempotent closure gives a strictly positive-definite Hessian contribution ($2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$ with $n/n$ positive eigenvalues), whereas idempotent closure gives a semidefinite Hessian ($\leq (n-k)/n$ positive eigenvalues).
 
+<Figure
+  src="/content-assets/scc-figures/fig03-closure-iteration.png"
+  alt="Two-panel plot: closure iteration profiles converging to a fixed point, and log-scale convergence rate."
+  caption={<>Closure iteration u, Cl(u), Cl²(u), … converges to a unique fixed point at geometric rate a_cl/4 in the contraction regime (a_cl below 4). The trajectory carries structural information; the destination is unique (CN1, CN9 — two-landscape structure).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### Group B. Soft Adjacency
 
 The soft adjacency kernel $\mathbf{N}_t : X_t \times X_t \to [0,\infty)$ is subject to the following properties.
@@ -243,6 +250,13 @@ $$
 $$
 
 A formation satisfies proto-cohesion to *degree* $\mathbf{d}$, not in a binary yes/no sense. The diagnostic vector preserves full information about which structural requirements are strongly versus weakly satisfied: a field with $\mathbf{d} = (0.95, 0.3, 0.8, 0.7)$ has strong binding but weak separation — diagnostic information that the Boolean conjunction would collapse to a featureless "not proto-cohesive."
+
+<Figure
+  src="/content-assets/scc-figures/fig05-diagnostic-vector.png"
+  alt="Two-panel diagram: graded diagnostic vector (4 horizontal bars) on the left, Boolean projection collapsed to a single FALSE box on the right."
+  caption={<>The proto-cohesion diagnostic d = (Bind, Sep, Inside, Persist) ∈ [0,1]^4. The graded vector preserves four-dimensional information about which conditions are weakly satisfied; the Boolean projection collapses this to a single bit, losing diagnostic discrimination.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 **Boolean recovery.** The Boolean proto-cohesion predicate is recoverable by thresholding each component:
 

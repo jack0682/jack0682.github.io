@@ -26,6 +26,13 @@ $$
 
 the energy functional $\mathcal{E}_t$ attains its minimum.
 
+<Figure
+  src="/content-assets/scc-figures/fig01-soft-cohesion-field.png"
+  alt="Soft cohesion field on a 2D grid: graded participation values from 0 to 1, with level contours."
+  caption={<>Soft cohesion field u_t : X_t → [0,1] on a 2D grid — the primitive entity whose existence on the constraint manifold Σ_m is secured by Theorem T1. Level contours at 0.1, 0.3, 0.5, 0.7, 0.9 show the graded transition from interior to exterior.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ## Proof idea
 
 Compactness + continuity. $\Sigma_m$ is compact (closed and bounded subset of $[0,1]^n$, the unit hypercube intersected with an affine hyperplane). The energy $\mathcal{E}_t = \lambda_{\mathrm{cl}} \mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}} \mathcal{E}_{\mathrm{sep}} + \lambda_{\mathrm{bd}} \mathcal{E}_{\mathrm{bd}} + \lambda_{\mathrm{tr}} \mathcal{E}_{\mathrm{tr}}$ is continuous in $u$ for the standard provisional operator forms (sigmoid closure, smooth distinction, polynomial double-well). The extreme value theorem gives the existence of a global minimizer. $\square$

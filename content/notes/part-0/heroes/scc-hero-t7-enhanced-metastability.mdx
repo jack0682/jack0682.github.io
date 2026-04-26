@@ -40,6 +40,13 @@ Gram matrix structure. Write $A = I - J_{\mathrm{Cl}}$. Then $H_{\mathrm{cl}} = 
 
 **Idempotent case.** If $J_{\mathrm{Cl}}^2 = J_{\mathrm{Cl}}$, then $J_{\mathrm{Cl}}$ is a projection of some rank $k$. $A = I - J_{\mathrm{Cl}}$ is also a projection (the complementary projection), with rank $n - k$. So $A^T A$ has rank $n - k$ and at most $n - k$ positive eigenvalues; the remaining $k$ eigenvalues are zero. $\square$
 
+<Figure
+  src="/content-assets/scc-figures/fig06-hessian-spectrum.png"
+  alt="Two horizontal bar plots comparing closure-Hessian eigenvalues: non-idempotent (all positive) vs idempotent (some zero)."
+  caption={<>Closure-Hessian eigenvalues at a fixed point. (a) Non-idempotent closure (operator norm of J_Cl below 1) yields all n strictly positive eigenvalues. (b) Idempotent closure has k zero eigenvalues — flat directions reducing the metastability advantage.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ## Why this is a hero
 
 T7-Enhanced is the **mathematical payoff** of SCC's signature commitment to non-idempotent closure. The theory deliberately avoids the classical topological closure axiom $\mathrm{Cl}^2 = \mathrm{Cl}$, framing closure as a *stabilization tendency* (A3) rather than a completed operation. This commitment is philosophical (closure is dynamic, not static; trajectory carries information) — but T7-Enhanced shows it is also *strictly stronger mathematically*.

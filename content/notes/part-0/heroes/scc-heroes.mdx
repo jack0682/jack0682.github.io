@@ -36,30 +36,12 @@ related: [canonical-spec-scc, canonical-spec-scc-5-results-registry, scc-theorem
 
 ## Logical dependency
 
-```
-                 [T20 · Axiom Consistency]
-                          │
-            ┌─────────────┼──────────────┐
-            ▼             ▼              ▼
-        [T1]         [T6 Closure FP]  [Group D distinction]
-       Existence     Banach contraction
-            │             │
-            └────┬────────┘
-                 ▼
-         [T8-Core] Phase transition
-        spectral universality
-                 │
-        ┌────────┼─────────┐
-        ▼        ▼         ▼
-  [T7-Enh]   [T11]      [T14]
-  metastable Γ-conv    gradient flow
-        │
-        ▼
-  [T-PreObj-1] Pre-Objective Mechanism (W4)
-        │
-        ▼
-  [T-V5b-T] Goldstone dichotomy (W4-extended)
-```
+<Figure
+  src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
+  alt="Directed graph showing the logical dependencies among the 9 SCC hero theorems."
+  caption={<>Logical dependencies among the 9 SCC hero theorems: foundation (T1, T6, T20) leads into phase transition + stability (T8-Core, T7-Enhanced, T11, T14), which lead into the W4 capstone (T-PreObj-1) and the W4-extended capstone (T-V5b-T).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 **Reading guide.** Foundation row (T1, T6, T20) is the well-posedness layer. Phase + Stability row (T8-Core, T7-Enhanced, T11) establishes that non-trivial minimizers exist universally and are stable. The Capstone row (T14, T-PreObj-1, T-V5b-T) connects variational + dynamic + symmetric layers: gradient flow converges (T14), pre-objective F≥2 attractor is graph-class-independent theorem (T-PreObj-1, the W4 capstone), and on translation-invariant graphs the Goldstone signature is universal (T-V5b-T).
 

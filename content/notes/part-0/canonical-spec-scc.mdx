@@ -16,6 +16,13 @@ related: [scc-status-2026-04, integrated-architecture]
 
 This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion, version 2.3. It is aligned with the Perception_theory canonical specification CV-1.4 (2026-04-26, W4-extended close) and incorporates the W4 resolution of Critical open problems (F-1, M-1, MO-1) along with the Pre-Objective Mechanism theorems (T-PreObj-1 family) and the Goldstone dichotomy on translation-invariant graphs (T-V5b-T).
 
+<Figure
+  src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
+  alt="Directed graph showing the logical dependencies among the 9 SCC hero theorems."
+  caption={<>The 9 SCC hero theorems organized by dependency: foundation (T1, T6, T20) — phase transition + stability (T8-Core, T7-Enhanced, T11, T14) — W4 capstone (T-PreObj-1) — W4-extended capstone (T-V5b-T). See the curated index at /notes/scc-heroes/.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 The specification declares the primitive ontology, the formal universe, the axiomatic groups (A–E), the derived predicates, the minimal energy principle with volume constraint, and the proved results registry that jointly constitute the theory as it now stands. It separates stable theoretical commitments — those principles that define the identity of the theory and are not subject to routine revision — from open design choices that remain underdetermined but are constrained by the canonical commitments. Provisional concrete operator forms are presented explicitly as currently favored realizations, not as permanently fixed definitions.
 
 Because the full specification is long, it is split across five linked parts. Read them in order for a full pass, or jump directly to the section you need.
@@ -26,6 +33,13 @@ Because the full specification is long, it is split across five linked parts. Re
 
 **§0, §2–§5.** The summation convention; the foundational orientation (why the theory does not begin from objects); the formal universe $\mathfrak{C}^{\mathrm{soft}} = (T, \{X_t\}, \{u_t\}, \{\mathrm{Cl}_t\}, \{\mathbf{N}_t, \mathbf{D}_t\}, \{\mathbf{M}_{t\to s}\})$ and primitive structure; the argument for the primacy of the soft form over the crisp system; the derived geometric and morphological notions (core, interior, boundary band, exterior, transition diagnostics).
 
+<Figure
+  src="/content-assets/scc-figures/fig01-soft-cohesion-field.png"
+  alt="Soft cohesion field on a 2D grid: graded participation values from 0 to 1, with level contours."
+  caption={<>Part 1 introduces u_t : X_t → [0,1] as the primitive entity — a graded field on a relational support space, illustrated here on a 2D grid with level contours at 0.1, 0.3, 0.5, 0.7, 0.9.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### [Part 2 · Axiomatic Groups & Proto-Cohesion →](/notes/part-0/canonical-spec-scc-2-axioms/)
 
 **§6–§7.** The five axiomatic groups: Group A (closure: A1' conditional extensivity, A2 monotonicity, A3 contraction, A4 continuity), Group B (adjacency), Group C (co-belonging — now a derived diagnostic, C1–C4), Group D (distinction, D-Ax1–3), Group E (temporal transport, E1–E4). The proto-cohesion diagnostic vector $\mathbf{d} = (\mathsf{Bind}, \mathsf{Sep}, \mathsf{Inside}, \mathsf{Persist}) \in [0,1]^4$ and its four component predicates, including the $\ell^2$-normed Bind, the $u$-weighted Sep, and the persistence-based morphological quality measure $\mathcal{Q}_{\mathrm{morph}}$.
@@ -33,6 +47,13 @@ Because the full specification is long, it is split across five linked parts. Re
 ### [Part 3 · Energy Principle & Provisional Operators →](/notes/part-0/canonical-spec-scc-3-energy/)
 
 **§8–§9.** The volume constraint $\Sigma_m$ and its ontological justification; the four-term canonical energy $\mathcal{E} = \lambda_{\mathrm{cl}} \mathcal{E}_{\mathrm{cl}} + \lambda_{\mathrm{sep}} \mathcal{E}_{\mathrm{sep}} + \lambda_{\mathrm{bd}} \mathcal{E}_{\mathrm{bd}} + \lambda_{\mathrm{tr}} \mathcal{E}_{\mathrm{tr}}$; why the four terms are conceptually independent; the information-geometric structure of $\Sigma_m$; currently favored provisional realizations of the local kernel, closure, distinction, co-belonging (resolvent), and temporal transport operators, with parameter-regime constraints.
+
+<Figure
+  src="/content-assets/scc-figures/fig02-energy-decomposition.png"
+  alt="Schematic showing the canonical energy E(u) decomposing into four boxed terms: closure, separation, boundary, transport."
+  caption={<>Part 3 organizes the canonical energy E(u) into four conceptually independent terms — closure, separation, boundary/morphology, transport — each addressing a logically separable structural requirement.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ### [Part 4 · Structural Interpretation, Commitments & Open Problems →](/notes/part-0/canonical-spec-scc-4-interpretation/)
 

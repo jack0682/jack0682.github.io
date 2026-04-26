@@ -23,6 +23,13 @@ related: [canonical-spec-scc, canonical-spec-scc-4-interpretation]
 
 The following theorems have been rigorously proved and audited through the W4-extended close (2026-04-26). They are listed with precise statements, proof methods, and known caveats. **Totals: 38 Category A, 4 Category B, 5 Category C, 5 Retracted (52 claims, 73% fully proved).**
 
+<Figure
+  src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
+  alt="Directed graph showing the logical dependencies among the 9 SCC hero theorems."
+  caption={<>The 9 SCC hero theorems among the 38 Cat A entries below: foundation (T1, T6, T20) — phase transition + stability (T8-Core, T7-Enhanced, T11, T14) — W4 capstone (T-PreObj-1) — W4-extended capstone (T-V5b-T). Curated index at /notes/scc-heroes/.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### Category A: Fully Proved (38 theorems)
 
 **T1. Energy Minimizer Existence.**
@@ -169,6 +176,13 @@ Under full SCC parameters on a finite connected graph satisfying (G1)–(G4) hyp
 *Proof:* Lemma 4 (M positive definite) + destabilization analysis $\Lambda^T M \Lambda > 0$ + gradient flow concavity argument. Numerical verification: E-0090 (L=12, 3-digit theory–experiment agreement), E-0091 (L=32 dichotomy).
 *Status:* **Proved**, Cat A. *(C-0700, P-0700.)*
 
+<Figure
+  src="/content-assets/scc-figures/fig09-preobj-mechanism.png"
+  alt="Four-panel schematic of the Pre-Objective Mechanism (T-PreObj-1)."
+  caption={<>T-PreObj-1 mechanism. (a) F=1 disk on pure E_bd is critical; (b) under full SCC, the same configuration is non-critical (gradient leak); (c) gradient flow attracts to multi-peak F≥2 configurations; (d) IC-protocol dichotomy distinguishes adaptive bounded vs random initialization scaling.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 **T-PreObj-1G. Pre-Objective Mechanism — Graph-Class Independent.** *(New, W4 close, 2026-04-24.)*
 Conclusions (i) and (ii) of T-PreObj-1 hold on **any finite connected graph** under (G1)–(G4) hypotheses, not only on the test grid families.
 *Proof:* T-PreObj-1 argument upgraded to graph-class independence via abstract spectral / isoperimetric reasoning; theoretical and qualitative empirical confirmation.
@@ -178,6 +192,13 @@ Conclusions (i) and (ii) of T-PreObj-1 hold on **any finite connected graph** un
 Let $M \in \mathbb{R}^{2 \times 2}$ be the inner-product matrix of the gradients $g_{\mathrm{cl}}, g_{\mathrm{sep}}$ at the F=1 candidate. Under linear independence of $g_{\mathrm{cl}}$ and $g_{\mathrm{sep}}$, $M$ is positive definite, and the destabilization magnitude $\Lambda^T M \Lambda > 0$ for any nonzero direction $\Lambda$.
 *Proof:* Standard PD criterion ($\det M > 0$, $\mathrm{tr}\,M > 0$) under the linear independence hypothesis.
 *Status:* **Proved**, Cat A. *(C-0702, P-0702.)*
+
+<Figure
+  src="/content-assets/scc-figures/fig10-lemma4-quadratic-form.png"
+  alt="Coordinate frame with an ellipse representing the level set of the quadratic form, principal semi-axes labeled, and a Lambda arrow extending past the ellipse."
+  caption={<>Lemma 4 — the inner-product matrix M of g_cl and g_sep at the F=1 candidate is positive definite under linear independence; destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 **F-1 Resolution Corollary. F-1 SPLIT-RESOLVED via T-Merge (b) + T-PreObj-1.** *(New, W4 close, 2026-04-24.)*
 The F-1 problem (K=2 vacuity, OP-0001 in [Part 4 · §12](/notes/part-0/canonical-spec-scc-4-interpretation/)) decomposes into two layers, each Cat A: (i) the pure $\mathcal{E}_{\mathrm{bd}}$ portion is the *correct theorem* T-Merge (b) (isoperimetric ordering), not an open problem — original framing as "open problem" was a misclassification; (ii) the full SCC portion is resolved by T-PreObj-1 (i): under full SCC parameters, the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is non-critical, so the dichotomy "K=1 cheaper vs observed K>1" does not arise. The premise of F-1 collapses.
@@ -189,6 +210,13 @@ The F-1 problem (K=2 vacuity, OP-0001 in [Part 4 · §12](/notes/part-0/canonica
 On graph classes with full translation symmetry (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy holds at the F=1 / F≥2 transition; in 2D the Goldstone modes form a **2-fold doublet with commensurability splitting**; in 1D a 1-fold Goldstone branch; the **Goldstone nodal count = 2 universal**. The crossover scale $\zeta_*(G)$ is graph-class dependent.
 *Proof:* Bloch-mode decomposition + symmetry argument + ζ-scan numerical verification. After 8 V5b iterations (V1 → V5b''). Numerical verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check after mode-indexing artifact identified+resolved).
 *Status:* **Proved**, Cat A. *(C-0710, P-0710.)*
+
+<Figure
+  src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
+  alt="Two-panel plot of Goldstone dispersion: 2D torus shows a doublet branch with commensurability splitting; 1D cycle shows a single Goldstone branch."
+  caption={<>Goldstone dispersion under T-V5b-T. 2D torus T^2: doublet with commensurability splitting near Γ. 1D cycle C_n: single Goldstone branch.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ### Category B: Proved with Explicit Structural Parameter (4 theorems)
 
@@ -302,6 +330,13 @@ Synthesizes all components of T-Persist-1 into a single conditional theorem. Und
 On graphs whose translation symmetry is broken at the boundary (free / mixed / Dirichlet boundary conditions), a **partial Goldstone** mode survives: the boundary lifting mechanism qualitatively shifts and partially gaps the Goldstone branch, but a residual approximate Goldstone signature remains observable. Quantitative characterization is in progress (NQ-173 carry).
 *Status:* **Category C** — qualitative observation only; full mechanism and quantitative scaling carried as NQ-173 to W5+. Source: E-0096 (free BC partial). *(C-0711, P-0711.)*
 
+<Figure
+  src="/content-assets/scc-figures/fig12-goldstone-nodal-count.png"
+  alt="Two panels comparing Goldstone modes: 2D torus with 2-fold doublet, 1D cycle with 1-fold branch, and a central callout indicating nodal count = 2 universal."
+  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes (2D torus periodic, 2D torus free BC, 1D cycle). The universal feature distinguishes T-V5b-T (Cat A, all classes) from V5b-F (Cat C, partial Goldstone on boundary-modified graphs — NQ-173 carry).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### Retracted (5 claims)
 
 *(Erratum 2026-04-07: Added T-Merge (c)(d)(e) and K-Saddle Conjecture. Total 5 retracted claims.)*
@@ -358,6 +393,13 @@ The following Commitment Notes record foundational decisions that constrain inte
 **CN14. Closure Expands Multi-Formation Stability.** On a single soft cohesion field, K > 1 well-separated formations are metastable local minima when inter-formation distance exceeds $d_{\min}^*$. The self-referential closure operator reduces $d_{\min}^*$ compared to pure Allen-Cahn by approximately **30%** (from $\approx 7$ nodes without closure to $\approx 5$ nodes with SCC closure at $\beta=30$; exp57 final). This distance reduction enables formation coexistence at closer separations. The physical mechanism: closure's self-reinforcement structure creates larger attraction basins for each formation, strengthening internal cohesion and raising the merge-direction barrier height. This is the multi-formation realization of T7-Enhanced metastability, where closure participation in the energy landscape (beyond its role as a fixed-point operator) directly enhances formation stability through increased Hessian curvature perpendicular to formation axes. Without closure (pure Allen-Cahn): $d_{\min}^* \approx 7$ nodes, barrier height $O(\beta^{0.85})$. With closure (SCC, $a_{\mathrm{cl}}=3.0$): $d_{\min}^* \approx 5$ nodes, barrier height $O(\beta^{0.89})$ (exp38, exp57). **K-field architecture independence:** The $K$-field decomposition with per-field optimization and global inter-field repulsion ensures K>1 by construction, regardless of $d_{\min}^*$ thresholds. The two mechanisms are complementary: single-field SCC extends the metastability range; K-field architecture guarantees structural K>1 even at the merge bifurcation.
 
 **CN15. Static/Dynamic Separation.** *(New, W4 close, 2026-04-24.)* The **static** global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ (constraint $\Sigma_m$, isoperimetric ordering, T-Merge (b)) is K=1 — this is a proved theorem, not an open problem. The **dynamic** observables — what a protocol actually delivers under full SCC gradient flow — are protocol-endpoint quantities $\widehat{K}, \mathcal{F}$ that **need not equal** the static minimum, because under full SCC parameters the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is non-critical (T-PreObj-1). This separation dissolves the apparent paradox "K=1 cheaper static minimum vs empirically observed K>1": the two are quantities of different layers (static $\mathcal{E}_{\mathrm{bd}}$ vs dynamic full SCC) and there is no requirement that they match. CN15 is the conceptual key that resolved F-1 (OP-0001) and clarified M-1 (OP-0002) without requiring a K-selection mechanism, an external mass constraint, or a kinetic barrier argument. Source: T-Merge (b), T-PreObj-1, T-PreObj-1G, Lemma 4 (W4 cluster). [Part 4 · §11.1 item 14](/notes/part-0/canonical-spec-scc-4-interpretation/) and [§12 W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/) for the operational consequences.
+
+<Figure
+  src="/content-assets/scc-figures/fig15-static-dynamic-separation.png"
+  alt="Two stacked layers — static minimum on E_bd vs dynamic protocol-endpoint on full SCC — separated by a not-equal symbol."
+  caption={<>CN15 — Static / Dynamic Separation. Two layers of different quantities: the static global minimum on pure E_bd (K=1, by T-Merge (b)) and the dynamic protocol-endpoint observables under full SCC. The "F-1 paradox" arose from conflating them.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ---
 

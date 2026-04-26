@@ -33,6 +33,13 @@ This section states, in disciplined theoretical prose, the core claims of the th
 
 **The theory's self-referentiality is dual-mode, not generic.** The operators of the theory depend on the field they evaluate in two structurally distinct ways that enter the energy and predicates: self-completion (closure $\mathrm{Cl}_t$ completes the field using its own values) and self-contrast (distinction $\mathbf{D}_t$ compares the field against its own complement). This dual-mode operator pair is the mathematically distinctive feature — not self-referentiality per se, which is routine in nonlinear variational problems (the Euler–Lagrange equation for any nonlinear functional has the solution appearing in the equation). What is distinctive is the specific structure: two independent modes of self-dependence operating simultaneously and entering the theory through different structural channels (closure through $\mathcal{E}_{\mathrm{cl}}$ and the Bind predicate; distinction through $\mathcal{E}_{\mathrm{sep}}$ and the Sep predicate). A third mode — self-integration via co-belonging $\mathbf{C}_t$ — is available as a derived diagnostic but does not currently enter any predicate or energy term.
 
+<Figure
+  src="/content-assets/scc-figures/fig18-scc-vs-clustering.png"
+  alt="Two parallel pipelines: clustering takes pre-given objects as input, SCC takes a soft cohesion field as input."
+  caption={<>Categorical inversion: clustering and segmentation start from pre-given objects (input = individuated entities); SCC starts from a graded soft cohesion field (input = pre-objective primitive). The methods may share machinery downstream, but the starting commitments differ at the input.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ---
 
 ## 11. Fixed Commitments and Open Degrees of Freedom
@@ -68,6 +75,13 @@ The following principles constitute the stable core of the theory and are not su
 13. **$b_D = 0$ for the distinction operator.** Energy analyticity (required for T14, Łojasiewicz convergence) takes precedence over the explicit gradient term.
 
 14. **Static/Dynamic Separation (CN15, W4 close).** The static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ is K=1 (T-Merge (b), isoperimetric ordering); the dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC need not equal the static minimum. F=1 is non-critical under full SCC (T-PreObj-1), so the apparent paradox "K=1 cheaper vs empirical K>1" is dissolved rather than being a problem.
+
+<Figure
+  src="/content-assets/scc-figures/fig15-static-dynamic-separation.png"
+  alt="Two stacked layers — static layer on E_bd with K=1 minimum vs dynamic layer on full SCC with multi-peak attractor — separated by a not-equal symbol."
+  caption={<>CN15 — Static / Dynamic Separation. The static global minimum on pure E_bd (K=1, by T-Merge (b)) and the dynamic protocol-endpoint observables under full SCC (K-hat, F) are quantities of different layers; they need not match. The "F-1 paradox" arose from conflating them.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 15. **σ-framework as canonical Hessian signature.** Single-formation critical points $u^* \in \Sigma_m$ carry the signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — formation count, irrep type, nodal-count, eigenvalue list. This signature is well-posed on the smooth simplex $\Sigma_m$ (no corners) and supersedes the Morse-on-$\Sigma^K_M$ approach for current scope.
 
@@ -107,13 +121,48 @@ The distinction between fixed and open is not the distinction between important 
 - **M-1 (K=1 preference) — LAYER-CLARIFIED.** M-1 is the *correct mathematical statement* (T-Merge (b)), not an open problem. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$ (where M-1 holds) with full SCC (where the comparison is not even framed because F=1 is non-critical). The apparent conflict is resolved by **CN15 Static/Dynamic Separation** (§11.1, item 14).
 - **MO-1 (Morse inapplicability) — SIDESTEPPED.** σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Theorem 2 family (Cat A) does not require Morse on $\Sigma^K_M$. Multi-formation extension to $\Sigma^K_M$ (stratified Morse, Phase 5) remains genuine open work for W5+.
 
+<Figure
+  src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
+  alt="Top-down split diagram showing F-1 decomposing into pure E_bd and full SCC layers, both Cat A, with the dichotomy dissolved at the bottom."
+  caption={<>F-1 (K=2 vacuity) split-resolved (W4, 2026-04-24): two layers, both Category A. Pure E_bd portion via T-Merge (b) (canonical, isoperimetric ordering — pre-existing). Full SCC portion via T-PreObj-1 (i) (W4 new). The dichotomy "K=1 cheaper static minimum vs empirically observed multi-formation" is dissolved (Option D — premise dissolution).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 The remaining problems below constitute the primary agenda for the next stages of theoretical development, organized by layer.
 
 ### Foundational
 
 **Pre-Objective Mechanism (W4, Cat A).** *(New 2026-04-24.)* Under full SCC parameters on any finite connected graph satisfying (G1)–(G4) hypotheses, (i) the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point** of the full energy $\mathcal{E}$, and (ii) gradient flow attracts to multi-peak F≥2 configurations. The IC-protocol dichotomy distinguishes adaptive bounded protocols (well-posed) from random initialization (whose endpoint scales as $\sim L^{2.8}$). Source: T-PreObj-1, T-PreObj-1G (graph-class independent), Lemma 4 ($M \in \mathbb{R}^{2 \times 2}$ positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$). Numerical verification: E-0090 (L=12, 3-digit agreement), E-0091 (L=32 dichotomy).
 
+<Figure
+  src="/content-assets/scc-figures/fig09-preobj-mechanism.png"
+  alt="Four-panel schematic of the Pre-Objective Mechanism: F=1 disk on E_bd as critical, F=1 under full SCC with gradient leak, F≥2 attractor, IC-protocol dichotomy plot."
+  caption={<>T-PreObj-1 mechanism. (a) F=1 disk is a critical point of pure E_bd; (b) under full SCC the same configuration is non-critical (gradient leak); (c) gradient flow attracts to multi-peak F≥2 configurations; (d) IC-protocol dichotomy — adaptive bounded protocol stays bounded, random initialization scales as L^2.8.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
+<Figure
+  src="/content-assets/scc-figures/fig10-lemma4-quadratic-form.png"
+  alt="Coordinate frame with an ellipse representing the level set of the quadratic form, principal semi-axes labeled, and a Lambda arrow extending past the ellipse."
+  caption={<>Lemma 4 — the inner-product matrix M of g_cl and g_sep at the F=1 candidate is positive definite under linear independence; destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction Λ.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 **Pre-Objective Goldstone on Translation-Invariant Graphs (W4-extended, Cat A).** *(New 2026-04-26.)* On graph classes with full translation symmetry (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy holds; in 2D the Goldstone modes form a **2-fold doublet with commensurability splitting**; in 1D a 1-fold Goldstone branch; the **Goldstone nodal count = 2 universal**. Source: T-V5b-T (after 8 V5b iterations V1 → V5b''). Numerical verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check). Open: V5b-F (Cat C) — partial Goldstone on boundary-modified graphs (NQ-173 carry); ζ_*(graph) precise dependence (NQ-174); 3D extension (NQ-175).
+
+<Figure
+  src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
+  alt="Two-panel plot of Goldstone dispersion: 2D torus shows a doublet branch with commensurability splitting; 1D cycle shows a single Goldstone branch."
+  caption={<>Goldstone dispersion under T-V5b-T. On the 2D torus T^2, two branches form a doublet with commensurability splitting near the Γ point. On the 1D cycle C_n, a single Goldstone branch.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
+<Figure
+  src="/content-assets/scc-figures/fig12-goldstone-nodal-count.png"
+  alt="Two panels comparing Goldstone modes: 2D torus with 2-fold doublet plus commensurability splitting, 1D cycle with 1-fold branch, and a central callout indicating nodal count = 2 universal."
+  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes (2D torus periodic, 2D torus free BC, 1D cycle). The universal feature distinguishes T-V5b-T (Cat A, all classes) from V5b-F (Cat C, partial Goldstone on boundary-modified graphs — NQ-173 carry).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 **Self-referential transport.** *(Erratum 2026-04-01: Largely resolved.)* The transport kernel depends only on $u_t$, $u_s$, and $\mathbf{N}$ via the 3-component cohesion fingerprint $\varphi(x) = (u(x), \mathrm{Cl}(u)(x), D(x; 1{-}u))$. Fixed-point existence proved (Schauder, any $\varepsilon_{\mathrm{OT}} > 0$). Selection/uniqueness: transport confinement bound $C_{\mathrm{conf}} = O(\sigma\sqrt{\varepsilon_{\mathrm{OT}}\log n})$ proved, independent of $u_s$; exp29 confirms no multiplicity across $\lambda_{\mathrm{tr}} \in [0.01, 10]$. Remaining: tight confinement constants (current bound 25–10000× conservative, exp40/41).
 

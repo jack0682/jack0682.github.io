@@ -47,6 +47,13 @@ $$
 
 where $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}, \lambda_{\mathrm{bd}}, \lambda_{\mathrm{tr}} > 0$ are weighting coefficients that control the relative importance of each structural requirement. The four terms are defined as follows.
 
+<Figure
+  src="/content-assets/scc-figures/fig02-energy-decomposition.png"
+  alt="Schematic showing the canonical energy E(u) decomposing into four boxed terms: closure, separation, boundary/morphology, transport."
+  caption={<>Four conceptually independent structural requirements assembled into the canonical energy E(u). Closure (self-support under relational completion), separation (asymmetry vs exterior field), boundary/morphology (smooth interface + double-well), and transport (temporal inheritance) — each penalty is structurally distinct, though they interact mathematically (CN5).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ### 8.2. Closure Term
 
 $$
@@ -103,6 +110,13 @@ These requirements are logically independent: a field may be closed but undistin
 ### 8.7. Natural Geometry
 
 The constraint manifold $\Sigma_m$ carries a natural information-geometric structure. The Shahshahani metric, defined by $g_{ij} = \delta_{ij}/u_i$, induces a Riemannian structure under which the natural gradient differs from the Euclidean gradient. The replicator dynamics connection — whereby the gradient flow of $\mathcal{E}_{\mathrm{bd}}$ under the Shahshahani metric yields a replicator equation — is noted as commentary. Whether the natural gradient improves convergence properties is an implementation question, not a theoretical commitment.
+
+<Figure
+  src="/content-assets/scc-figures/fig08-gradient-flow.png"
+  alt="Energy contours on a 2-simplex with five gradient flow trajectories descending to corner attractors."
+  caption={<>Projected gradient flow on the constraint manifold Σ_m (here n = 3 simplex with mass m = 1). Trajectories from various initial points (open circles) descend to critical points (filled squares). The uniform field u ≡ c at the centroid is a saddle (star); corner-region attractors are non-trivial minimizers.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ---
 

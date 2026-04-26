@@ -32,6 +32,13 @@ Let $G$ be a finite connected graph with full translation symmetry — concretel
 
 **Crossover scale $\zeta_*(G)$.** The transition scale $\zeta_*$ between sub-lattice and super-lattice regimes is **graph-class dependent** (open NQ-174); for fixed graph it is well-defined.
 
+<Figure
+  src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
+  alt="Two-panel plot of Goldstone dispersion: 2D torus shows a doublet branch with commensurability splitting; 1D cycle shows a single Goldstone branch."
+  caption={<>Goldstone dispersion under T-V5b-T (W4-extended close, 2026-04-26). On the 2D torus T^2, two branches form a doublet with commensurability splitting near the Γ point. On the 1D cycle C_n, a single Goldstone branch.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ## Proof idea (sketch)
 
 **Bloch decomposition.** On a translation-invariant graph $G$, the Laplacian $L$ commutes with translation, so eigenvectors can be labeled by Bloch momenta $k$. The second variation of $\mathcal{E}|_{\Sigma_m}$ at the F=1 / F≥2 transition inherits this structure.
@@ -46,6 +53,13 @@ Let $G$ be a finite connected graph with full translation symmetry — concretel
 **Nodal count = 2.** Direct calculation on each Bloch sector shows that the Goldstone eigenvectors have exactly two sign changes per period, regardless of dimension. This is the *universal* part of the result.
 
 **Verification.** Numerical $\zeta$-scan on torus $T^2$ (E-0095) confirms the dichotomy and doublet structure. Graph-class extension to $T^3$, free-BC variants, and cycle $C_n$ (E-0096) confirms the nodal count = 2 universality. A reproducibility crisis (**NQ-172**) was identified during V5b''iteration: an earlier analysis script had a mode-indexing artifact that indexed Bloch modes inconsistently, producing spurious dichotomy. Mode-agnostic detection (E-0097) reproduces the result without the artifact. $\square$
+
+<Figure
+  src="/content-assets/scc-figures/fig12-goldstone-nodal-count.png"
+  alt="Two panels comparing Goldstone modes: 2D torus with 2-fold doublet plus commensurability splitting, 1D cycle with 1-fold branch, and a central callout indicating nodal count = 2 universal."
+  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes (2D torus periodic, 2D torus free BC, 1D cycle). The universal feature distinguishes T-V5b-T (Cat A, all classes) from V5b-F (Cat C, partial Goldstone on boundary-modified graphs — NQ-173 carry).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ## Why this is a hero
 

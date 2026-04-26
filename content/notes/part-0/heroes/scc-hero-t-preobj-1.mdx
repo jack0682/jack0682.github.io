@@ -34,6 +34,13 @@ Let $G$ be a finite connected graph satisfying hypotheses **(G1)–(G4)** (graph
 
 **T-PreObj-1G (graph-class independent).** Conclusions (i) and (ii) hold on **any** finite connected graph satisfying (G1)–(G4) — not just on the test grid families.
 
+<Figure
+  src="/content-assets/scc-figures/fig09-preobj-mechanism.png"
+  alt="Four-panel schematic: F=1 disk on E_bd as critical point; F=1 under full SCC with non-zero gradient; F≥2 multi-peak attractor; IC-protocol dichotomy plot."
+  caption={<>Theorem T-PreObj-1 (W4 close, 2026-04-24). Under full SCC parameters on any (G1)–(G4) graph: (a) F=1 single-disk is a critical point of pure E_bd; (b) under full SCC the same configuration is non-critical (gradient leak); (c) gradient flow attracts to multi-peak F≥2 configurations; (d) IC-protocol dichotomy distinguishes adaptive bounded protocol from random initialization with empirical scaling around L^2.8.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ## Proof idea (sketch)
 
 **Lemma 4 (quadratic form PD).** Define $M \in \mathbb{R}^{2 \times 2}$ as the inner-product matrix of the gradients $g_{\mathrm{cl}} = \nabla \mathcal{E}_{\mathrm{cl}}|_{\hat u_F}$ and $g_{\mathrm{sep}} = \nabla \mathcal{E}_{\mathrm{sep}}|_{\hat u_F}$ at the F=1 candidate $\hat u_F$. Under linear independence of $g_{\mathrm{cl}}$ and $g_{\mathrm{sep}}$ (generic, holds in (G1)–(G4)), $M$ is positive definite, and the destabilization magnitude $\Lambda^T M \Lambda > 0$ for any $\Lambda \neq 0$.
@@ -46,6 +53,13 @@ Let $G$ be a finite connected graph satisfying hypotheses **(G1)–(G4)** (graph
 
 **T-PreObj-1G.** The argument above uses only abstract spectral / isoperimetric properties guaranteed by (G1)–(G4); no specific graph features needed. Therefore the conclusion lifts to any such graph. $\square$
 
+<Figure
+  src="/content-assets/scc-figures/fig10-lemma4-quadratic-form.png"
+  alt="Two-axis coordinate frame with an ellipse representing the level set of the quadratic form, principal semi-axes labeled, and a generic Lambda arrow extending outside the ellipse."
+  caption={<>Lemma 4 — the inner-product matrix M of g_cl and g_sep at the F=1 candidate is positive definite under linear independence; destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction Λ.</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
+
 ## Why this is a hero
 
 T-PreObj-1 is **the W4 capstone** — the conceptual centerpiece of nearly a year of work. It establishes that **SCC's pre-objective character is a theorem, not a modeling choice**.
@@ -57,6 +71,13 @@ The graph-class independence (T-PreObj-1G) lifts this from "true on grids" to "t
 T-PreObj-1 also resolves **F-1** (the K=2 vacuity Critical open problem) via the F-1 Resolution Corollary: F-1 splits into a pure-$\mathcal{E}_{\mathrm{bd}}$ portion (the proved theorem T-Merge (b)) and a full-SCC portion (T-PreObj-1 (i) — F=1 is non-critical). The dichotomy "K=1 cheaper vs observed K>1" is **dissolved** because the static and dynamic layers refer to different objects (commitment **CN15 Static/Dynamic Separation**).
 
 The IC-protocol dichotomy (iii) is a separate result of independent interest: it identifies *which* initialization protocols are well-posed versus which produce arbitrarily-large endpoints. The $\sim L^{2.8}$ scaling under random initialization is a quantitative empirical signature awaiting a closed-form derivation (NQ-148 family).
+
+<Figure
+  src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
+  alt="Top-down split diagram showing F-1 decomposing into pure E_bd and full SCC layers, both Cat A, with the dichotomy dissolved at the bottom."
+  caption={<>F-1 (K=2 vacuity) split-resolved: two layers, both Category A. Pure E_bd portion via T-Merge (b) (canonical, isoperimetric ordering — pre-existing). Full SCC portion via T-PreObj-1 (i) (W4 new). The dichotomy "K=1 cheaper static minimum vs observed K&gt;1" is dissolved (Option D — premise dissolution).</>}
+  className="mx-auto max-w-full sm:max-w-[85%] md:max-w-[80%] lg:max-w-[75%]"
+/>
 
 ## Logical dependencies
 
