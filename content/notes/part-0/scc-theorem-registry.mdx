@@ -4,20 +4,20 @@ slug: scc-theorem-registry
 part: 0
 kind: registry
 track: perception
-updated: 2026-04-26
-summary: "The authoritative index of all proved SCC theorems — 38 Category A + 4 Category B + 5 Category C + 5 retracted (52 claims, 73% fully proved). Aligned with Perception_theory canonical CV-1.4 (W4-extended close, 2026-04-26)."
+updated: 2026-04-27
+summary: "The authoritative index of all proved SCC theorems — 43 Category A + 4 Category B + 5 Category C + 5 retracted (57 claims, 75% fully proved). Aligned with Perception_theory canonical CV-1.5 (W5 Day 1 G0, 2026-04-27)."
 tags: [scc, theorems, registry, reference]
 draft: false
 ---
 
 **Purpose:** Register all claims (C-xxxx), proofs (P-xxxx), and canonical theorems (T-xxxx, CV-x.y). This is the authoritative index of what has been proved.
 
-**Structure:** Rows are organized by canonical version (CV-1.0 → CV-1.4) then status (active, resolved, challenged, deprecated).
+**Structure:** Rows are organized by canonical version (CV-1.0 → CV-1.5; **current = CV-1.5**) then status (active, resolved, challenged, deprecated).
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
   alt="Directed graph of the 9 SCC hero theorems and their dependencies."
-  caption={<>The 9 SCC hero theorems among the 38 Cat A entries below, organized by foundation, phase + stability, and W4 capstone. See /notes/scc-heroes/ for the curated index.</>}
+  caption={<>The 9 SCC hero theorems among the 43 Cat A entries below, organized by foundation, phase + stability, W4 capstone, and W5 Day 1 G0 σ-framework supporting structures. See /notes/scc-heroes/ for the curated index.</>}
   className="mx-auto max-w-full"
 />
 
@@ -25,7 +25,29 @@ draft: false
 
 ## Canonical Theorems (Accepted into Canonical Spec)
 
-### Canonical Spec v1.4 (2026-04-26) — Current Version (W4-extended close)
+### Canonical Spec v1.5 (2026-04-27) — Current Version (W5 Day 1 G0: σ-Framework Supporting Structures)
+
+**Additions over v1.4** (W5 Day 1 G0, 2026-04-27):
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-σ-Lemma-1** | σ-Framework Irrep Decomposition Well-Defined | accepted | A | C-0712 | P-0712 | (theoretical, finite-group rep theory) | Hessian commutes with $G_u$-action; isotypic decomposition via Maschke + Schur; finite-graph hypothesis essential; trivial-stabilizer case vacuous |
+| **T-σ-Lemma-2** | σ-Framework Nodal Count Properties | accepted | A (i,ii,iii,iv) + C (v,vi conditional) | C-0713 | P-0713 | NQ-141 (W4-04-25, R23 32×32 numerical) | Graph-intrinsic + Aut(G)-equivariance + lower bound $\mathcal{N} \geq 2$ + sign-flip Cat A; Courant upper bound + $G_u$-orbit divisibility Cat C riders |
+| **T-σ-Lemma-3** | Goldstone–ℓ=1 Angular Saturation | accepted | A (continuum, dimension-general) | C-0714 | P-0714 | NQ-170c (2D torus L=20 ζ=0.5 overlap 0.97) | IBP identity $\mathcal{P}_{\ell=1}[\delta u_x] = (-c_d \int u^*(r)\,dr,\ 0)$ with $c_1=2,\,c_2=\pi,\,c_3=4\pi$; Goldstone basis automatically ℓ=1; nodal count = 2 universal (anchors T-V5b-T-(e)) |
+| **T-σ-Theorem-3** | σ at Uniform on $D_4$ Free-BC Grid (Closed Form) | accepted | A | C-0715 | P-0715 | exp_hessian_uniform_v2 (NQ-141, $L = 4$ to $32$, $< 10^{-9}$ precision) | $\mu_k = 4\alpha\lambda_k^{\mathrm{Lap}} + \beta W''(c)$; full $D_4$ irrep table on cosine basis; $\mathcal{N}(\phi_{(p,q)}) = (p+1)(q+1)$ |
+| **T-σ-Theorem-4** | σ at First Pitchfork on $D_4$ Free-BC Grid (Leading Order) | accepted | A in $\epsilon$-small regime | C-0716 | P-0716 | (theoretical via T-Birth-Parametric + R22 axis-aligned) | $D_4 \to \mathbb{Z}_2$ symmetry breaking; Mode 0 trivial irrep / Mode 1 sign irrep split; $K_0 = K_1$ leading-order degeneracy ($A_2/A_1 = 4$); $\mathcal{F}$ tie-break NQ-184 |
+
+**v1.4 → v1.5 release notes (2026-04-27):**
+- Added: 5 Cat A theorems (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4) — σ-framework supporting structures grounding Commitment 14.
+- Decision: Option α (5 separate §13 entries) — mathematically independent statements deserve individual canonical visibility.
+- Counts: 38A → **43A**, 52 claims → **57 claims**, 73% → **75% fully proved**.
+- T1 explosion: 3 → **8** (Lemma 1/2/3 + Theorem 3/4 each individually T1).
+- Two erratum/refinement rounds (2026-04-27 evening + night) caught and fixed substantive math errors and structural refinements; theorem status unchanged (all 5 remain Cat A).
+- Sub-statement riders canonically registered: T-σ-Lemma-2 (v) Courant + (vi) orbit divisibility Cat C bundled within parent Cat A entry.
+- Carry: NQ-176..NQ-190 (15 spawn questions across the five structures + Round-2 audit spawns).
+- Pending user decision: Commitment 14 (O5') multi-irrep eigenspace convention, Commitment 14 (O7) tie-breaking convention.
+
+### Canonical Spec v1.4 (2026-04-26) — Previous Version (W4-extended close)
 
 **Additions over v1.3** (W4-extended close, 2026-04-26):
 

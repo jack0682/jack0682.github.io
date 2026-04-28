@@ -1,14 +1,14 @@
 ---
-title: "SCC — Current Research Status (April 2026, W4-extended close)"
+title: "SCC — Current Research Status (April 2026, W5 Day 1 G0 close)"
 slug: scc-status-2026-04
 part: 0
 chapter: 1
 section: "Status report"
 kind: roadmap
 track: perception
-updated: 2026-04-26
-summary: "An active research status for Soft Cognitive Cohesion as of W4-extended close (2026-04-26) — the theorem ledger (38 Cat A / 52 claims / 73% fully proved), the W4 resolution of the three Critical open problems (F-1, M-1, MO-1), and remaining open work."
-tags: [scc, status, theorems, w4-resolution, open-problems]
+updated: 2026-04-27
+summary: "An active research status for Soft Cognitive Cohesion as of W5 Day 1 G0 close (2026-04-27) — the theorem ledger (43 Cat A / 57 claims / 75% fully proved), the W4 resolution of the three Critical open problems (F-1, M-1, MO-1), the W5 Day 1 G0 σ-framework supporting structures canonical merge, and remaining open work."
+tags: [scc, status, theorems, w4-resolution, sigma-framework, open-problems]
 related: [canonical-spec-scc, integrated-architecture]
 ---
 
@@ -17,8 +17,8 @@ Cohesion** — the research thread I am currently most active on — at
 the level of granularity that lets a collaborator (or future me)
 pick up where things stand without re-reading a year of notes.*
 
-**Last updated:** 2026-04-26 (W4-extended close). &nbsp; **Canonical version:**
-v2.3 / Perception_theory CV-1.4. &nbsp; **Full specification:** see
+**Last updated:** 2026-04-27 (W5 Day 1 G0 close). &nbsp; **Canonical version:**
+**CV-1.5**. &nbsp; **Full specification:** see
 the [Canonical Spec note](/notes/part-0/canonical-spec-scc/).
 
 <Callout tone="idea" title="Why this work matters to the larger programme">
@@ -46,16 +46,16 @@ terms govern closure, separation, boundary, and transport; a
 diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist})$
 reads off formation state.
 
-## Theorem ledger (v2.3, aligned with CV-1.4)
+## Theorem ledger (CV-1.5)
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
   alt="Directed graph of the 9 SCC hero theorems and their dependencies."
-  caption={<>The 9 SCC hero theorems and their logical dependencies — a curated subset of the 38 Cat A entries. Foundation (T1, T6, T20), phase + stability (T8-Core, T7-Enhanced, T11, T14), W4 capstone (T-PreObj-1), W4-extended capstone (T-V5b-T).</>}
+  caption={<>The 9 SCC hero theorems and their logical dependencies — a curated subset of the 43 Cat A entries. Foundation (T1, T6, T20), phase + stability (T8-Core, T7-Enhanced, T11, T14), W4 capstone (T-PreObj-1), W4-extended capstone (T-V5b-T), W5 Day 1 G0 σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4).</>}
   className="mx-auto max-w-full"
 />
 
-### ✓ Category A — Fully proved (38)
+### ✓ Category A — Fully proved (43)
 
 Existence (T1), closure fixed point (T6a/T6b), axiom monotonicity
 (T-A2), phase transition core (T8-Core), axiom consistency (T20),
@@ -63,9 +63,13 @@ gradient flow (T14), stability duo (T3 / T6-Stability), enhanced
 metastability (T7, $p = 0.037$), $\Gamma$-convergence (T11), four
 quantum-mechanical results QM1–4, the Predicate–Energy Bridge,
 Deep Core Dominance 2b, T-Bind-Proj/Full (all τ), Propositions
-1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, plus the
+1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, the
 **W4 Pre-Objective Mechanism cluster** (T-PreObj-1, T-PreObj-1G,
-Lemma 4) and the **W4-extended Goldstone result** (T-V5b-T).
+Lemma 4), the **W4-extended Goldstone result** (T-V5b-T), and the
+**W5 Day 1 G0 σ-framework supporting structures** (T-σ-Lemma-1/2/3
++ T-σ-Theorem-3/4 — irrep decomposition, nodal count, Goldstone–ℓ=1
+saturation, closed-form spectrum at uniform on $D_4$ free-BC, leading-order
+σ at first pitchfork).
 
 ### ◇ Category B — Proved with structural parameter (4)
 
@@ -162,7 +166,7 @@ the Type A / Type B classification to be retracted (X-0002).
 | OP-0004 Boundary precision | 🟡 MEDIUM | tentative (D-0004) |
 | OP-0006 Branch selection theory | 🟠 HIGH | challenged by exp65 |
 | OP-0007 Dynamic topology | 🟢 LOW | future extension |
-| **W5+ NQ carry** | — | NQ-173 (V5b-F), NQ-174 (ζ_*(graph)), NQ-175 (3D extension), σ supporting lemmas |
+| **W5+ NQ carry** | — | NQ-173 (V5b-F), NQ-174 (ζ_*(graph)), NQ-175 (3D extension); σ supporting lemmas merged in W5 Day 1 G0 (CV-1.5); NQ-176..NQ-190 spawned (functoriality, multi-irrep ordering, frustration bound, orbit sharpening, discrete corrections, tie-breaking, higher pitchforks, σ-uniqueness, σ topological invariance); multi-formation σ Phase 5 active (G3, W5 Day 3-4) |
 
 ## Implementation
 
@@ -254,8 +258,8 @@ which establishes the relational substrate underpinning SCC.
 
 ## Related
 
-- [Canonical Specification v2.1](/notes/part-0/canonical-spec-scc/) —
-  the full 1,183-line formal text of SCC.
+- [Canonical Specification (CV-1.5)](/notes/part-0/canonical-spec-scc/) —
+  the full formal text of SCC.
 - [Part I · RelationWorld Foundations](/notes/) — the discrete-gauge
   substrate SCC operates over.
 - [Perception research track](/research/perception/) — the

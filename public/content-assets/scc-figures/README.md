@@ -120,6 +120,6 @@ The responsive `className` gives 75–80% width on desktop, full width on mobile
 
 ---
 
-## Aligned with canonical CV-1.4 (2026-04-26)
+## Aligned with canonical CV-1.5 (2026-04-27)
 
-These captions correspond to the canonical specification CV-1.4 (W4-extended close). When canonical bumps versions, captions referring to specific theorems may need light updates.
+These captions correspond to the canonical specification CV-1.5 (W5 Day 1 G0 close — σ-framework supporting structures canonical-merged: T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4). When canonical bumps versions, captions referring to specific theorems may need light updates. Figures dedicated to the W5 Day 1 σ-supporting structures (irrep decomposition, nodal count, Goldstone–ℓ=1 saturation, $D_4$ closed-form spectrum, first-pitchfork σ) are not yet committed; existing figures (fig01–fig17) cover the W4-and-earlier scope and remain accurate references.

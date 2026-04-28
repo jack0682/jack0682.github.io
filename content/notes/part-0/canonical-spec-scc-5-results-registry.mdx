@@ -6,31 +6,31 @@ chapter: 0
 section: "Canonical Specification · Part 5"
 kind: essay
 track: perception
-updated: 2026-04-26
-summary: "Sections 13–15 of the SCC v2.3 canonical specification: the proved results registry (52 formal claims, 38 Category A + 4 Category B + 5 Category C + 5 retracted), the consolidated commitment notes (CN1–CN15), and the closing summary."
+updated: 2026-04-27
+summary: "Sections 13–15 of the SCC canonical specification (CV-1.5): the proved results registry (57 formal claims, 43 Category A + 4 Category B + 5 Category C + 5 retracted, 75% fully proved), the consolidated commitment notes (CN1–CN15), and the closing summary."
 tags: [scc, canonical-spec, theorems, commitments, registry]
 related: [canonical-spec-scc, canonical-spec-scc-4-interpretation]
 ---
 
-> **Part 5 of 5** — Soft Cognitive Cohesion canonical specification v2.3 (aligned with Perception_theory canonical CV-1.4, 2026-04-26).
+> **Part 5 of 5** — Soft Cognitive Cohesion canonical specification, current release **CV-1.5** (2026-04-27).
 > See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
 
 ---
 
 ## 13. Proved Results Registry
 
-*(Audit history: §13 counts were corrected from 43A/2B/3C/0R to 35A/4B/5C/5R on 2026-04-07 after the 04-06 deep audit, then upgraded to 38A/4B/5C/5R on the W4 + W4-extended close (2026-04-25 to 2026-04-26) with the addition of T-PreObj-1, T-PreObj-1G, Lemma 4, and T-V5b-T.)*
+*(Audit history: §13 counts were corrected from 43A/2B/3C/0R to 35A/4B/5C/5R on 2026-04-07 after the 04-06 deep audit, then upgraded to 38A/4B/5C/5R on the W4 + W4-extended close (2026-04-25 to 2026-04-26) with the addition of T-PreObj-1, T-PreObj-1G, Lemma 4, and T-V5b-T. **Further upgraded to 43A/4B/5C/5R on W5 Day 1 G0 (2026-04-27)** with the σ-framework supporting structures T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4 — 57 claims total, 75% fully proved.)*
 
-The following theorems have been rigorously proved and audited through the W4-extended close (2026-04-26). They are listed with precise statements, proof methods, and known caveats. **Totals: 38 Category A, 4 Category B, 5 Category C, 5 Retracted (52 claims, 73% fully proved).**
+The following theorems have been rigorously proved and audited through the W5 Day 1 G0 close (2026-04-27). They are listed with precise statements, proof methods, and known caveats. **Totals: 43 Category A, 4 Category B, 5 Category C, 5 Retracted (57 claims, 75% fully proved).**
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
   alt="Directed graph showing the logical dependencies among the 9 SCC hero theorems."
-  caption={<>The 9 SCC hero theorems among the 38 Cat A entries below: foundation (T1, T6, T20) — phase transition + stability (T8-Core, T7-Enhanced, T11, T14) — W4 capstone (T-PreObj-1) — W4-extended capstone (T-V5b-T). Curated index at /notes/scc-heroes/.</>}
+  caption={<>The 9 SCC hero theorems among the 43 Cat A entries below: foundation (T1, T6, T20) — phase transition + stability (T8-Core, T7-Enhanced, T11, T14) — W4 capstone (T-PreObj-1) — W4-extended capstone (T-V5b-T) — W5 Day 1 σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4). Curated index at /notes/scc-heroes/.</>}
   className="mx-auto max-w-full"
 />
 
-### Category A: Fully Proved (38 theorems)
+### Category A: Fully Proved (43 theorems)
 
 **T1. Energy Minimizer Existence.**
 On the constraint manifold $\Sigma_m = \{u \in [0,1]^n : \sum u_i = m\}$, the energy $\mathcal{E}_t$ attains its minimum.
@@ -217,6 +217,35 @@ On graph classes with full translation symmetry (torus $T^d$, cycle $C_n$): a su
   caption={<>Goldstone dispersion under T-V5b-T. 2D torus T^2: doublet with commensurability splitting near Γ. 1D cycle C_n: single Goldstone branch.</>}
   className="mx-auto max-w-full"
 />
+
+#### W5 Day 1 G0 — σ-Framework Supporting Structures (CV-1.5, 2026-04-27)
+
+The σ-framework signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — declared in [Part 4 · §11.1 Commitment 14](/notes/part-0/canonical-spec-scc-4-interpretation/) as a Cat A definitional commitment in the W4 close — is grounded by **five Cat A supporting structures** canonical-merged on 2026-04-27 (W5 Day 1 G0). Each is individually canonical-visible (Option α decision: mathematically independent statements deserve separate §13 entries).
+
+**T-σ-Lemma-1. σ-Framework Irrep Decomposition Well-Defined.** *(New, W5 Day 1 G0, 2026-04-27.)*
+The Hessian $H(u^*)$ commutes with the stabilizer $G_u = \mathrm{Stab}_{\mathrm{Aut}(G)}(u^*)$ action on $T_{u^*} \Sigma_m$, so its spectral decomposition admits a canonical isotypic projector along irreducible representations of $G_u$. Each eigenspace splits into $G_u$-isotypic components. **Finite-graph hypothesis essential**: Maschke's theorem fails on infinite groups absent compact-Lie or amenable extension. Trivial-stabilizer case is vacuous (single irrep, the trivial one).
+*Proof:* Maschke's theorem + Schur orthogonality on the finite group $G_u$ acting unitarily on $T_{u^*} \Sigma_m$.
+*Status:* **Proved**, Cat A. *(C-0712, P-0712.)*
+
+**T-σ-Lemma-2. σ-Framework Nodal Count Properties.** *(New, W5 Day 1 G0, 2026-04-27.)*
+For $\phi_k \in \mathbf{1}^\perp$ a Hessian eigenvector, the nodal count $\mathcal{N}(\phi_k)$ satisfies: (i) graph-intrinsic (independent of basis choice); (ii) $\mathrm{Aut}(G)$-equivariant under $G_u$-orbit action; (iii) **lower bound $\mathcal{N}(\phi_k) \geq 2$** on $\mathbf{1}^\perp$ (from the constraint $\sum \phi_k = 0$ — corrected from the plan-template wording "$n_k = 1$ iff constant", which was incorrect: a constant in $\mathbf{1}^\perp$ requires $\phi_k = 0$); (iv) sign-flip invariance. Sub-statements (i)-(iv) Cat A. **Sub-statement riders Cat C**: (v) Courant nodal upper bound; (vi) $G_u$-orbit divisibility (vacuous for $G_u$-invariant $\phi_k$).
+*Proof:* (i)-(iv) graph-theoretic + variational; numerical confirmation E-NQ-141 (W4-04-25, R23 32×32). (v)-(vi) deferred Cat C riders within parent Cat A entry.
+*Status:* **Proved (i)-(iv) Cat A**; (v)-(vi) **Cat C riders bundled**. *(C-0713, P-0713.)*
+
+**T-σ-Lemma-3. Goldstone–ℓ=1 Angular Saturation.** *(New, W5 Day 1 G0, 2026-04-27.)*
+In the continuum limit, the IBP saturation identity $\mathcal{P}_{\ell=1}[\delta u_x] = (-c_d \int_0^\infty u^*(r)\, dr,\ 0)$ (with dimension constants $c_1 = 2$, $c_2 = \pi$, $c_3 = 4\pi$) shows the Goldstone basis automatically lies in the $\ell=1$ angular subspace and saturates Cauchy–Schwarz. Consequence: **Goldstone nodal count = 2 universal** on translation-invariant graph classes (anchors T-V5b-T-(e), removing a forward reference). Holds for general dimension $d$ (1D cycle, 2D/3D bulk, torus).
+*Proof:* IBP polar-Cartesian conversion on tanh-profile localized minimizer + rank/injectivity argument. *(Erratum 2026-04-27 evening: initial canonical merge stated $-m$ with mass; the correct identity has factor $\int u^*(r)\, dr \approx r_0$, differing from $m = c_d^{(\mathrm{vol})} r_0^d$ by a factor of $r_0$. W4-04-24 source had a Jacobian error in polar-Cartesian conversion.)*
+*Status:* **Proved Cat A in continuum**, discrete correction NQ-180 (W6+). *(C-0714, P-0714.)*
+
+**T-σ-Theorem-3. σ at Uniform on $D_4$ Free-BC Grid (Closed Form).** *(New, W5 Day 1 G0, 2026-04-27.)*
+At the uniform configuration $u^* \equiv c$ on a $D_4$-symmetric free-BC grid, the Hessian eigenvalues are $\mu_k = 4\alpha\lambda_k^{\mathrm{Lap}} + \beta W''(c)$ where $\lambda_k^{\mathrm{Lap}}$ are the Laplacian eigenvalues. Full $D_4$ irrep table on the cosine basis $\phi_{(p,q)} = \cos(p\pi i/L)\cos(q\pi j/L)$ with nodal count $\mathcal{N}(\phi_{(p,q)}) = (p+1)(q+1)$. Numerical verification: NQ-141 ($L = 4$ to $32$, $< 10^{-9}$ precision).
+*Proof:* Diagonalization in cosine basis + character-orthogonality calculation for $D_4$ irrep assignment. *(Erratum 2026-04-27 evening: initial irrep-table off-diagonal-pair entries replaced with rigorous Schur-orthogonality character calculation: both-odd → $A_2 \oplus B_2$; mixed parity → single $E$; even pair → $A_1 \oplus B_1$.)*
+*Status:* **Proved**, Cat A. *(C-0715, P-0715.)*
+
+**T-σ-Theorem-4. σ at First Pitchfork on $D_4$ Free-BC Grid (Leading Order).** *(New, W5 Day 1 G0, 2026-04-27.)*
+At the first pitchfork on a $D_4$-symmetric free-BC grid, the symmetry breaks $D_4 \to \mathbb{Z}_2$. Mode 0 lies in the trivial irrep $[+1]$ of the residual $\mathbb{Z}_2$; Mode 1 lies in the sign irrep $[-1]$. Cubic-coefficient ratio $A_2/A_1 = 4$ on $D_4$ gives **$K_0 = K_1$ degenerate at leading order** (modes irrep-distinct, eigenvalues equal). $\mathcal{F}$ tie-break convention requires Commitment 14 (O7) (NQ-184).
+*Proof:* R22 normal-form analysis on $D_4$ with reduced symmetry argument. *(Erratum 2026-04-27 evening: initial entry stated "$0 < K_1 < K_0$ would-be transverse Goldstone"; correct value is $K_1 = K_0$ at leading order. The "would-be Goldstone" framing was incorrect — discrete symmetry breaking has no Goldstone.)* *(Refinement 2026-04-27 night: well-definedness flag added — $K_0 = K_1$ degeneracy requires Commitment 14 (O7) tie-breaking convention, deferred to user decision.)*
+*Status:* **Proved Cat A in $\epsilon$-small regime**, higher-order $\epsilon$-splitting NQ-187 (W6+). *(C-0716, P-0716.)*
 
 ### Category B: Proved with Explicit Structural Parameter (4 theorems)
 
@@ -405,21 +434,23 @@ The following Commitment Notes record foundational decisions that constrain inte
 
 ## 15. Closing Summary
 
-This canonical specification (v2.3) establishes the formal structure of the theory of Soft Cognitive Cohesion in its current state, aligned with the Perception_theory canonical CV-1.4 (W4-extended close, 2026-04-26). The theory is grounded in a single foundational commitment: that the structural properties of coherent formations — binding, separation, morphological articulation, and persistence — are decomposable into independently graded dimensions and evaluable through self-referential operators. This formation-level description is formally richer than and not reducible to discrete object-level description, though the theory's equilibrium formations may themselves be object-like.
+This canonical specification (CV-1.5, W5 Day 1 G0 close, 2026-04-27) establishes the formal structure of the theory of Soft Cognitive Cohesion in its current state. The theory is grounded in a single foundational commitment: that the structural properties of coherent formations — binding, separation, morphological articulation, and persistence — are decomposable into independently graded dimensions and evaluable through self-referential operators. This formation-level description is formally richer than and not reducible to discrete object-level description, though the theory's equilibrium formations may themselves be object-like.
 
 From this commitment, the theory develops a formal universe in which closure captures relational self-support (A1'–A4, with proved contraction at $a_{\mathrm{cl}} < 4$), distinction captures exterior asymmetry (D-Ax1–3), morphological structure captures the articulation of core, boundary, and exterior ($\mathcal{Q}_{\mathrm{morph}} = \frac{\ell_{\max} - c}{1 - c} \cdot \mathrm{Artic}$, with proved axiom satisfaction QM1–4), and temporal transport captures the structural inheritance that constitutes persistence through time (E1–E4, with E3 reclassified as a solution constraint). Co-belonging (C1–C4, with proved resolvent realization) serves as a derived diagnostic for non-local structural integration but does not enter any predicate or energy term.
 
-The proto-cohesion diagnostic vector $\mathbf{d} \in [0,1]^4$ unifies these four requirements into a graded formal assessment of formation quality, and the minimal energy principle — with mandatory volume constraint on the manifold $\Sigma_m$ — provides a variational characterization of formations. The theory has **38 fully proved theorems** (Category A), 4 with structural parameters (Category B), 5 conditional results (Category C), and 5 retracted claims — totaling **52 formal claims, 73% fully proved**. Key results include non-trivial minimizer existence under a computable phase transition (T8-Core, T8-Full), gradient flow convergence (T14), stability advantage for non-idempotent closure (T3/T6), exact predicate-energy bridge (Sep = 1 - E_sep/m), closure residual bound for all τ (T-Bind-Proj), formation-birth on D₄-symmetric graphs (T-Birth-Parametric), the unified multi-formation persistence theorem (T-Persist-K-Unified) parametrized by the coupling measure $\Lambda_{\mathrm{coupling}}$, and the W4 Pre-Objective Mechanism cluster (T-PreObj-1, T-PreObj-1G, Lemma 4) plus the W4-extended Goldstone dichotomy on translation-invariant graphs (T-V5b-T).
+The proto-cohesion diagnostic vector $\mathbf{d} \in [0,1]^4$ unifies these four requirements into a graded formal assessment of formation quality, and the minimal energy principle — with mandatory volume constraint on the manifold $\Sigma_m$ — provides a variational characterization of formations. The theory has **43 fully proved theorems** (Category A), 4 with structural parameters (Category B), 5 conditional results (Category C), and 5 retracted claims — totaling **57 formal claims, 75% fully proved**. Key results include non-trivial minimizer existence under a computable phase transition (T8-Core, T8-Full), gradient flow convergence (T14), stability advantage for non-idempotent closure (T3/T6), exact predicate-energy bridge (Sep = 1 - E_sep/m), closure residual bound for all τ (T-Bind-Proj), formation-birth on D₄-symmetric graphs (T-Birth-Parametric), the unified multi-formation persistence theorem (T-Persist-K-Unified) parametrized by the coupling measure $\Lambda_{\mathrm{coupling}}$, the W4 Pre-Objective Mechanism cluster (T-PreObj-1, T-PreObj-1G, Lemma 4), the W4-extended Goldstone dichotomy on translation-invariant graphs (T-V5b-T), and the W5 Day 1 G0 σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4) that ground Commitment 14 with five Cat A entries.
 
 **W4 Critical resolution (2026-04-24).** The three Critical open problems that gated v2.0 release for nearly a year — F-1 (K=2 vacuity), M-1 (K=1 preference), MO-1 (Morse inapplicability) — are all resolved. F-1 is **SPLIT-RESOLVED** (T-Merge (b) on pure $\mathcal{E}_{\mathrm{bd}}$, T-PreObj-1 (i) on full SCC). M-1 is **LAYER-CLARIFIED** as the proved theorem T-Merge (b) misframed as a problem. MO-1 is **SIDESTEPPED** by the σ-framework operating on the smooth single-formation manifold $\Sigma_m$ (no corners). The conceptual key is **CN15 Static/Dynamic Separation**: the static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ and the dynamic protocol-endpoint observables under full SCC are quantities of different layers that need not match. Critical blocker count: **3 → 0**.
 
 **W4-extended addition (2026-04-26).** The Pre-Objective Goldstone theorem T-V5b-T establishes a sub/super-lattice spectral dichotomy on translation-invariant graphs (torus $T^d$, cycle $C_n$): in 2D the Goldstone modes form a 2-fold doublet with commensurability splitting; in 1D a 1-fold Goldstone branch; the Goldstone nodal count = 2 universal. The result emerged from 8 V5b iterations (V1 → V5b''), in the course of which a reproducibility crisis (NQ-172, mode-indexing artifact in the analysis script) was identified and resolved with mode-agnostic detection. A new Cat C finding, V5b-F (partial Goldstone on boundary-modified graphs), is registered and carried as NQ-173.
 
-**Theory status (2026-04-26): 38 Category A, 4 Category B, 5 Category C, 5 Retracted (52 claims, 73% fully proved).** Category B items: γ_eff ≈ 0.89 barrier exponent (empirical and branch/path/manifold conditioned), general-graph birth supercriticality (narrow-gap/non-D4 cases), d_min formula (branch-conditioned regression fit), Beyond-Weyl 33× quantification (grid/branch-specific). Category C items: T-Persist-1(d) (β > 7α structural interior-gap condition), T-Persist-Full (chains through exact-threshold component), T-Persist-K-Sep (regime conditions WS/SR), T-Persist-K-Weak (WI + SR regime conditions), T-Persist-K-Unified (selected-branch + 5 structural hypotheses); plus the new V5b-F finding (W4-extended). Retracted: Thm 3.3 general τ, T-Merge (c)(d)(e) (merge path manifold error), K-Saddle Conjecture.
+**W5 Day 1 G0 addition (2026-04-27).** The σ-framework signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — declared as a Cat A definitional commitment in W4 (Commitment 14) — receives **five Cat A supporting structures** canonically merged: T-σ-Lemma-1 (irrep decomposition well-defined via Maschke + Schur orthogonality), T-σ-Lemma-2 (nodal count properties — sub-statements (i)-(iv) Cat A; (v)-(vi) Cat C riders within the parent entry), T-σ-Lemma-3 (Goldstone–ℓ=1 angular saturation, anchoring T-V5b-T-(e) universal nodal count = 2), T-σ-Theorem-3 (closed-form spectrum at uniform on $D_4$ free-BC grid), T-σ-Theorem-4 ($D_4 \to \mathbb{Z}_2$ symmetry breaking at first pitchfork, $K_0 = K_1$ leading-order degeneracy). Decision: Option α (5 separate §13 entries). Two erratum/refinement rounds (2026-04-27 evening + night) caught and fixed substantive math errors (IBP factor, $K_1$-vs-$K_0$ degeneracy, irrep-table off-diagonal entries, dimension-general extension); theorem status unchanged (all five remain Cat A).
+
+**Theory status (2026-04-27): 43 Category A, 4 Category B, 5 Category C, 5 Retracted (57 claims, 75% fully proved).** Category B items: γ_eff ≈ 0.89 barrier exponent (empirical and branch/path/manifold conditioned), general-graph birth supercriticality (narrow-gap/non-D4 cases), d_min formula (branch-conditioned regression fit), Beyond-Weyl 33× quantification (grid/branch-specific). Category C items: T-Persist-1(d) (β > 7α structural interior-gap condition), T-Persist-Full (chains through exact-threshold component), T-Persist-K-Sep (regime conditions WS/SR), T-Persist-K-Weak (WI + SR regime conditions), T-Persist-K-Unified (selected-branch + 5 structural hypotheses); plus V5b-F (W4-extended) and T-σ-Lemma-2 sub-statement riders (v) Courant + (vi) orbit divisibility (W5 Day 1 G0, bundled within parent Cat A entry). Retracted: Thm 3.3 general τ, T-Merge (c)(d)(e) (merge path manifold error), K-Saddle Conjecture.
 
 **Active open problems (post-W4):** Critical 0; High 1 — OP-0005 K-Selection mechanism (partially addressed by σ-framework + CN15 Static/Dynamic Separation; full mechanism still open); Medium 4 — boundary precision, Bind τ generalization, transport kernel uniqueness, persist composition, closure convergence rate; Low — dynamic topology, stochastic dynamics, continuous-time limit. Carry NQ for W5+: NQ-173 (V5b-F partial Goldstone), NQ-174 (ζ_*(graph) precise dependence), NQ-175 (3D extension), σ supporting lemmas (Lemma 1/2/3, Theorem 3/4) §13 entries decision, multi-formation σ Phase 5 (would re-engage MO-1 as blocker).
 
-The theory now stands as a mathematically structured ontology of pre-objective cohesion — with genuine theorems, honest gap accounting, and a clear distinction between what is proved, what is provisional, and what remains open. The W4 close moved the theory from "Critical-3-blocked" to "release-path-unblocked" via Option D (premise dissolution) rather than the originally-considered Options A/B/C (external constraint, K-selection mechanism, kinetic reformulation), and the W4-extended Goldstone result extends the Pre-Objective Mechanism cluster to translation-invariant graph classes.
+The theory now stands as a mathematically structured ontology of pre-objective cohesion — with genuine theorems, honest gap accounting, and a clear distinction between what is proved, what is provisional, and what remains open. The W4 close moved the theory from "Critical-3-blocked" to "release-path-unblocked" via Option D (premise dissolution) rather than the originally-considered Options A/B/C (external constraint, K-selection mechanism, kinetic reformulation); the W4-extended Goldstone result extends the Pre-Objective Mechanism cluster to translation-invariant graph classes; and the W5 Day 1 G0 σ-framework supporting structures complete the canonical grounding of Commitment 14 — moving the theory from "single-formation closure under way" to **single-formation closure achieved**, with multi-formation σ Phase 5 (re-engaging MO-1 in the multi-formation scope) the active W5+ frontier.
 
 ---
 

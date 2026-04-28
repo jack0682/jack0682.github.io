@@ -1,20 +1,26 @@
 ---
-title: "Soft Cognitive Cohesion — Canonical Specification v2.3"
+title: "Soft Cognitive Cohesion — Canonical Specification (CV-1.5)"
 slug: canonical-spec-scc
 part: 0
 chapter: 0
 section: "Canonical Specification"
 kind: canonical
 track: perception
-updated: 2026-04-26
-summary: "The authoritative formal specification of Soft Cognitive Cohesion (SCC). Aligned with Perception_theory canonical CV-1.4 (2026-04-26): 38 Category A theorems, 4 Category B, 5 Category C, 5 retracted (52 claims, 73% fully proved). Index page linking to the five-part specification."
+updated: 2026-04-27
+summary: "The authoritative formal specification of Soft Cognitive Cohesion (SCC). Current release: CV-1.5 (2026-04-27). 43 Category A theorems, 4 Category B, 5 Category C, 5 retracted (57 claims, 75% fully proved). Index page linking to the five-part specification."
 tags: [scc, canonical-spec, axioms, theorems, foundational]
 related: [scc-status-2026-04, integrated-architecture]
 ---
 
 ## Overview
 
-This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion, version 2.3. It is aligned with the Perception_theory canonical specification CV-1.4 (2026-04-26, W4-extended close) and incorporates the W4 resolution of Critical open problems (F-1, M-1, MO-1) along with the Pre-Objective Mechanism theorems (T-PreObj-1 family) and the Goldstone dichotomy on translation-invariant graphs (T-V5b-T).
+This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion. The current release is **CV-1.5 (2026-04-27, W5 Day 1 G0 close)**, incorporating the W4 resolution of Critical open problems (F-1, M-1, MO-1), the Pre-Objective Mechanism theorems (T-PreObj-1 family), the Goldstone dichotomy on translation-invariant graphs (T-V5b-T), and the W5 Day 1 G0 canonical merge of the σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4) that ground Commitment 14.
+
+> **Version naming convention.** This site and the underlying Perception_theory both use a single release ladder, **CV-x.y**, incremented per merge:
+>
+> CV-1.0 (2026-04-01) → CV-1.1 (04-03) → CV-1.2 (04-12) → CV-1.3 (04-25) → CV-1.4 (04-26) → **CV-1.5 (04-27, current)**.
+>
+> Older site-document tags (v2.0/v2.1/v2.2/v2.3) and the Perception_theory internal *theory-revision* tag (v2.1, marking ontological shifts like T_t demoted, C_t demoted, A1' / σ-framework primary) are retained only as historical change-log markers within the body text below; they are **not** a separate active version system. Authoritative release index lives at `THEORY/canonical/theorem_status.md` §Canonical Spec Version History.
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
@@ -61,9 +67,18 @@ Because the full specification is long, it is split across five linked parts. Re
 
 ### [Part 5 · Proved Results Registry & Closing Notes →](/notes/part-0/canonical-spec-scc-5-results-registry/)
 
-**§13–§15.** The 52-item results registry: **38 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, **T-PreObj-1 / T-PreObj-1G / Lemma 4** (W4 Pre-Objective Mechanism), **T-V5b-T** (W4-extended Goldstone), etc.), **4 Category B** (γ_eff ≈ 0.89 barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl quantification), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified) plus the new V5b-F finding, **5 Retracted** (Thm 3.3 for general τ, T-Merge (c)(d)(e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN15, with CN15 = Static/Dynamic Separation introduced in W4) and the closing summary.
+**§13–§15.** The 57-item results registry: **43 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, **T-PreObj-1 / T-PreObj-1G / Lemma 4** (W4 Pre-Objective Mechanism), **T-V5b-T** (W4-extended Goldstone), **T-σ-Lemma-1 / T-σ-Lemma-2 / T-σ-Lemma-3 / T-σ-Theorem-3 / T-σ-Theorem-4** (W5 Day 1 G0 σ-framework supporting structures), etc.), **4 Category B** (γ_eff ≈ 0.89 barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl quantification), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified) plus the V5b-F finding (W4-extended) and T-σ-Lemma-2 (v)/(vi) Cat C riders bundled in parent Cat A entry, **5 Retracted** (Thm 3.3 for general τ, T-Merge (c)(d)(e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN15, with CN15 = Static/Dynamic Separation introduced in W4) and the closing summary.
 
-## Key Changes from v2.1 (W4 + W4-extended close, 2026-04-19 ~ 04-26)
+## Key Changes in CV-1.5 (W5 Day 1 G0, 2026-04-27)
+
+- **σ-framework supporting structures canonical-merged.** Five new Cat A entries grounding Commitment 14: **T-σ-Lemma-1** (irrep decomposition well-defined via Maschke + Schur orthogonality on finite stabilizer; finite-graph hypothesis essential), **T-σ-Lemma-2** (nodal count properties — sub-statements (i)–(iv) Cat A; (v) Courant + (vi) $G_u$-orbit divisibility Cat C riders within parent entry), **T-σ-Lemma-3** (Goldstone–ℓ=1 angular saturation, Cat A in continuum, anchors T-V5b-T-(e) universal nodal count = 2; dimension-general 1D/2D/3D), **T-σ-Theorem-3** (closed-form spectrum at uniform on $D_4$ free-BC grid: $\mu_k = 4\alpha\lambda_k^{\mathrm{Lap}} + \beta W''(c)$), **T-σ-Theorem-4** ($D_4 \to \mathbb{Z}_2$ symmetry breaking at first pitchfork; trivial vs sign irrep split; $K_0 = K_1$ leading-order degeneracy on $D_4$ with $A_2/A_1 = 4$).
+- **Decision: Option α** — five separate §13 entries (mathematically independent statements deserve individual canonical visibility for paper §4 σ-framework reference). T1 explosion: 3 → **8**.
+- **Two erratum/refinement rounds** (2026-04-27 evening + night). Caught 3 substantive math errors (IBP factor in Lemma 3, $K_1$-vs-$K_0$ degeneracy in Theorem 4, irrep-table off-diagonal entries in Theorem 3) plus 7 structural refinements (dimension-general extension, anchoring footer, spinodal hypothesis discussion, orbit-representative remark, well-definedness flag for $K_0 = K_1$). All five σ structures remain Cat A; theorem status unchanged.
+- **Pre-brainstorm corrections folded.** T-σ-Lemma-1 finite-graph hypothesis explicit; T-σ-Lemma-2 sub-statement (iii) reframed as lower-bound $\mathcal{N} \geq 2$ from $\mathbf{1}^\perp$ constraint (was incorrectly stated as "$n_k = 1$ iff constant" in plan templates); T-σ-Lemma-3 IBP interpretation B adopted.
+- **Proved results registry:** Now **43 Category A**, **4 Category B**, **5 Category C** (+ 2 sub-statement riders bundled), **5 retracted**; total **57 claims (75% fully proved)**.
+- **Commitment-level changes deferred to user decision** (not yet merged): Commitment 14 (O5') multi-irrep eigenspace convention, Commitment 14 (O7) tie-breaking convention by canonical irrep order. NQ-187..NQ-190 spawned as carry.
+
+## Key Changes in CV-1.3 + CV-1.4 (W4 + W4-extended close, 2026-04-19 ~ 04-26)
 
 - **Critical 3 open problems all resolved (2026-04-24).** F-1 (K=2 vacuity) **SPLIT-RESOLVED** via T-Merge (b) (pure $\mathcal{E}_{\mathrm{bd}}$ portion, pre-existing Cat A) plus the new T-PreObj-1 (full SCC portion). M-1 (K=1 preference) **LAYER-CLARIFIED** as a proved theorem (T-Merge (b)) misframed as a problem. MO-1 (Morse inapplicability) **SIDESTEPPED** — the σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Critical blocker count **3 → 0**, v2.0 release path unblocked.
 - **New Cat A (W4 close, 2026-04-24):** **T-PreObj-1** (Pre-Objective Multi-Peak Formation Mechanism — F=1 single-disk minimizer non-critical under full SCC; gradient flow attracts to multi-peak F≥2; IC-protocol dichotomy adaptive bounded vs random $\sim L^{2.8}$), **T-PreObj-1G** (graph-class independent — conclusions hold on any finite connected graph under (G1)–(G4)), **Lemma 4** ($M \in \mathbb{R}^{2 \times 2}$ positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$), **F-1 Resolution Corollary** (split-resolution).
@@ -72,9 +87,9 @@ Because the full specification is long, it is split across five linked parts. Re
 - **New commitment note:** **CN15** Static/Dynamic Separation — static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ need not equal dynamic protocol-endpoint observables ($\widehat{K}$, $\mathcal{F}$).
 - **σ-framework introduced (canonical-ready, Cat A definitional).** Hessian eigenvalue/irrep/nodal-count signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ on $\Sigma_m$.
 - **Reproducibility crisis identified+resolved (NQ-172, 2026-04-26).** Mode-indexing artifact in NQ-170 analysis script; mode-agnostic detection adopted.
-- **Proved results registry:** Now **38 Category A**, **4 Category B**, **5 Category C**, **5 retracted**; total **52 claims (73% fully proved)**.
+- **Proved results registry (CV-1.4 final):** **38 Category A**, **4 Category B**, **5 Category C**, **5 retracted**; total **52 claims (73% fully proved)**. *Subsequently upgraded to 43A/57/75% in CV-1.5 — see "Key Changes in CV-1.5" above.*
 
-## Key Changes from v2.0 (preserved for history)
+## Key Changes in CV-1.0 to CV-1.2 era (preserved for history)
 
 - **Category upgrades (3 theorems B→A):** Deep Core Dominance 2b (isoperimetric inequality on $\mathbb{Z}^d$), T8-Full ($\mu_0(H_{\mathrm{bd}})$ at $\mathcal{E}_{\mathrm{bd}}$ minimizer $> 0$ in all tested configs), Predicate-Energy Bridge (Sep bidirectional exact; Bind reverse at minimizers).
 - **Retraction:** Theorem 3.3 ($\bar{r}_0 = O(n^{-1/d})$ for general $\tau$) — experimentally falsified; $\bar{r}_0$ is genuinely $O(1)$ for $\tau \neq 1/2$.
@@ -89,7 +104,7 @@ Because the full specification is long, it is split across five linked parts. Re
 - **CN14 added: Closure expands multi-formation stability.** Closure reduces $d_{\min}^*$ by ~30% (from ≈7 to ≈5 nodes, $\beta=30$; exp57), enabling formation coexistence at closer distances. Barrier height increases ($\beta^{0.89}$ vs $\beta^{0.85}$ for Allen-Cahn). Multi-formation realization of T7-Enhanced metastability.
 - **§12 Multi-formation restructured:** Kinetic 3-pillar framework adopted as primary conceptual narrative. Replaced Erratum-bracketed patches with clean kinetic framing. T-Persist-K-Sep/Weak/Unified cover regimes below merge bifurcation; strongly-interacting merge dynamics remain open (Kramers rates, barrier crossing).
 
-## Key Changes from v1.0 (Retained from v2.0)
+## Foundational Changes — Pre-CV-1.0 Heritage (retained from theory-revision v1.0 → v2.0 transition)
 
 - A1 replaced by A1' (conditional extensivity) — original A1 proved incompatible with A3 for sigmoid closure.
 - A3 strengthened to Cauchy convergence of iterates with proved contraction rate.
