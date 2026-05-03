@@ -11,309 +11,276 @@ refs: [canonical-spec-scc, scc-status-2026-04, scc-theorem-registry]
 summary: "W4 closes the year-old Critical-3: F-1, M-1, and MO-1. The Pre-Objective Mechanism cluster and T-V5b-T enter Cat A, the σ-framework becomes the language for critical-point signatures, and the v2.0 release path unblocks."
 ---
 
-> **W4 (2026-04-19 ~ 04-26, 8 days extended).** Canonical bump: **v2.1 → v2.3** (CV-1.3 then CV-1.4).
-> Critical OPs 3 → **0**. Pre-Objective Mechanism cluster joins Cat A; Goldstone dichotomy on translation-invariant graphs settles after 8-iteration verification. The v2.0 release path is unblocked after nearly a year of being stuck on F-1/M-1/MO-1.
+> **W4, extended: 2026-04-19 to 2026-04-26.**  
+> Canonical bump: **v2.1 → v2.3**. Critical open problems: **3 → 0**.  
+> The short version: a problem that had looked like a missing mechanism turned out to be a category error between static energy, dynamic endpoints, and the layer where object-count is even defined.
 
 ---
 
-## TL;DR
+## Start here
 
-- **F-1, M-1, MO-1 — all resolved (2026-04-24).** The three Critical open problems that had been blocking the v2.0 release for nearly a year all closed in a single day. SPLIT-RESOLVED / LAYER-CLARIFIED / SIDESTEPPED, respectively. The lesson was unexpected: none of them was really an open question — each was a *framing error* in different disguise.
-- **Four new Category A theorems** join the canonical: T-PreObj-1 (Pre-Objective Multi-Peak Formation Mechanism), T-PreObj-1G (graph-class independent), Lemma 4 (a positive-definiteness lemma for the destabilization matrix), and T-V5b-T (Pre-Objective Goldstone on Translation-Invariant Graphs).
-- **Two new conceptual commitments** are added: the **σ-framework** — a Hessian-eigenvalue / irrep / nodal-count *signature* that lets us classify single-formation critical points; and **CN15 Static / Dynamic Separation** — the recognition that the static energy minimum and the dynamic protocol endpoint live on different layers and need not match. Stating CN15 explicitly is what dissolved the year-old paradox.
+This was the week SCC stopped being blocked by the old F-1 / M-1 / MO-1 knot.
 
----
+- **F-1, M-1, and MO-1 all closed on 2026-04-24.** Their final statuses are SPLIT-RESOLVED, LAYER-CLARIFIED, and SIDESTEPPED.
+- **Four Cat A entries joined canonical.** T-PreObj-1, T-PreObj-1G, Lemma 4, and T-V5b-T.
+- **The theory gained two organizing commitments.** CN15 Static / Dynamic Separation, and the σ-framework for Hessian / irrep / nodal-count signatures.
+- **The release path reopened.** The v2.0 blocker had been asking why a static K=1 minimum and a dynamic K greater than 1 endpoint disagree. W4 made explicit that they were never the same object.
 
-## The 8-day arc — what happened, day by day
+The week is best read as a resolution story, not as a theorem dump.
 
-Eight days total (one extended). The arc starts in confusion, passes through architecture-building, lands an empirical pivot, and ends with verification that catches its own bug.
+## What changed
 
-**Day 1 — Sun, 2026-04-19. The N-1 reframing.** A year of work on F-1 / M-1 / MO-1 was getting nowhere because it kept asking the same question: "How can K&gt;1 be energetically stable when isoperimetric ordering says K=1 is cheaper?" The first move of W4 was to refuse that vocabulary entirely. Five orthogonal probes — axiom stress, hidden-assumption excavation, top-down ontology critique, external-framework comparison, bottom-up rebuild — produced nine new candidate problem-statements (P-A through P-H). The single source underneath all of them turned out to be **N-1 (Soft–Hard Switching Asymmetry)**: the theory's ontology is continuous (a graded soft field) but the operational level switches to discrete entities (integer K, threshold rules, axiom branching). F, M, and MO are three faces of N-1.
+| Item | Before W4 | After W4-extended |
+|------|-----------|-------------------|
+| Critical open problems | F-1, M-1, MO-1 blocking release | All three closed or sidestepped for the current scope |
+| Cat A count | 35 | 38 |
+| Canonical version | v2.1 | v2.3 |
+| Core conceptual issue | "Why does SCC ever produce K greater than 1?" | Static minima and dynamic endpoints live on different layers |
+| New language | No compact critical-point signature | σ-framework: Hessian eigenvalue, irrep, nodal count |
+| Verification lesson | V5b looked plausible | Mode-indexing artifact found and fixed before canonical promotion |
 
-**Day 2 — Mon, 2026-04-20. Candidate evaluation.** Eight candidate frameworks (A through E plus combinations) were evaluated on two matrices: which open problems each candidate fully resolves (×16 OPs), and which Cat A theorems survive each candidate (×49 theorems). After three audit rounds, the Pareto frontier came out as B, B+C, E, and C+E — with E (Emergent-K) and C+E (kinetic + emergent) leading on coverage. This day was mostly bookkeeping — but it cleared the deck for the day-3 architecture decision.
-
-**Day 3 — Tue, 2026-04-21. K_soft + thermal framework.** A 14-round verification session settled the architectural choice: replace the implicit hard-K commitment with a *soft* K-counter $K_{\mathrm{soft}}$ (persistence-based, real-valued) and reformulate the energy as a thermal free-energy $\mathcal{F}_{C+E}[u] = \mathcal{E} - TS + \lambda_K \cdot K_{\mathrm{soft}}$. The three Critical OPs visibly *moved* under this reframing — they no longer pointed to a missing mechanism, but to a structural choice that could be made differently.
-
-**Day 4 — Wed, 2026-04-22. Symmetry / moduli (SF) deepening.** A 24-round session on the symmetry side: $\Phi_4$ on non-D₄ graphs, continuous automorphism groups + Morse-Bott, Proposition 1.3b (d) full spectrum, universal $c_0$, tree-saturation. Most of these are technical infill, but cumulatively they made the day-6 σ-framework possible.
-
-**Day 5 — Thu, 2026-04-23. Stage 2 axiom audit + Orbital empirical pivot.** Five Cat A results from Tier 1, including the **R23 Orbital Discovery**: 56 stable minimizers on the test grid, each cleanly classified by orbital type — and the closure operator visibly *removes* F=1 disks in this regime. The empirical evidence finally lined up with the W4 reframing: the F=1 single-disk wasn't even surviving as an attractor in practice.
-
-**Day 6 — Fri, 2026-04-24. The peak.** A 28-file day. **σ-framework** introduced (definitional Cat A). **Theorem 2 family** proved (Cat A graph-class independent via Theorem 2-G). **V5b** initial form. **F-1, M-1, MO-1 all resolved** — see the dedicated section below. **CN15 Static / Dynamic Separation** stated explicitly. The day that made W4 a Critical-resolution week.
-
-**Day 7 — Sat, 2026-04-25. Verify and close.** D₄ irreducible-representation classification (G3). σ-framework numerical verification (G2 — three NQs). NQ-168 commensurability splitting (G1). Weekly summary written. CV-1.3 prepared and merged.
-
-**Day 8 (extended) — Sun, 2026-04-26. V5b verification, mode-indexing artifact, and the split.** What was supposed to be a routine $\zeta$-scan to confirm V5b instead exposed a mode-indexing artifact in the analysis script (NQ-172). Re-verification with mode-agnostic detection split V5b cleanly into **V5b-T (Cat A canonical-ready)** — sub/super-lattice spectral dichotomy on torus / cycle, robust under mode reordering — and **V5b-F (Cat C)** — partial Goldstone on boundary-modified graphs, qualitative observation only. The σ-framework also strengthened from single-graph empirical to multi-graph empirical Cat A. CV-1.4 merged the same evening.
-
-The shape of the week, in one line: **a problem that had eight months of dead ends turned out to be a misunderstanding of which layer the question lived on**.
+The one-line takeaway: **SCC's pre-objective character is now theorem-backed, not just an ontological preference.**
 
 ---
 
-## What's new — four new Category A entries
+## The week as a narrative
 
-These four theorems together accomplish something the rest of the canonical had been edging toward without quite reaching: they make SCC's *pre-objective character* — the claim that objects are derivative and the cohesion field is primitive — into a proved theorem rather than a design intent.
+### 1. The old question broke
 
-### W4 close (2026-04-24): the Pre-Objective Mechanism cluster
+The week began with the same question that had stalled the project for months:
 
-| T-ID | Statement (summary) | Source |
-|------|---------------------|--------|
-| **T-PreObj-1** | Under full SCC parameters, the F=1 single-disk minimizer is **not a critical point**. Gradient flow attracts to multi-peak F≥2 configurations. IC-protocol dichotomy: adaptive bounded protocols stay bounded; random initialization scales as $\sim L^{2.8}$. | C-0700 / P-0700 |
-| **T-PreObj-1G** | Conclusions (i),(ii) of T-PreObj-1 hold on **any** finite connected graph satisfying (G1)–(G4). Graph-class independent. | C-0701 / P-0701 |
-| **Lemma 4** | The inner-product matrix $M \in \mathbb{R}^{2 \times 2}$ of the gradients $g_{cl}, g_{sep}$ is positive definite under linear independence. Destabilization magnitude $\Lambda^T M \Lambda > 0$ for any $\Lambda \neq 0$. | C-0702 / P-0702 |
-| **F-1 Resolution Corollary** | F-1 splits into two layers. Pure $\mathcal{E}_{bd}$ portion: T-Merge (b) (pre-existing canonical). Full SCC portion: T-PreObj-1 (i). Both Category A. | (corollary) |
+> If pure boundary morphology prefers K=1, how can SCC honestly explain K greater than 1?
 
-**What T-PreObj-1 actually says, in plain language.** Imagine a single round disk of cohesion sitting on a graph — the simplest "F=1" formation, like one isolated object. On the pure boundary-morphology energy $\mathcal{E}_{\mathrm{bd}}$ (closure and separation turned off), this disk is a critical point; perturbing it costs energy. Now turn closure and separation back on — that is, run the *full* SCC energy. The theorem says: this same disk is *no longer* a critical point. Gradient flow doesn't sit at it; gradient flow leaves it. And it leaves it for a multi-peak configuration with two or more separated formations. So the natural attractor of full SCC isn't a single object — it's multiple objects.
+W4's first move was not to answer that question. It was to notice that the question had been splicing together incompatible layers. The theory's ontology is continuous: the primitive is the graded cohesion field. But the operational language had repeatedly jumped to discrete counters: hard K, thresholded formations, axiom branches.
 
-This is exactly what the theory had been *claiming* about pre-objective character all along. T-PreObj-1 makes the claim into a theorem.
+That mismatch became **N-1: Soft-Hard Switching Asymmetry**.
 
-**What Lemma 4 contributes to the proof.** Lemma 4 is the technical heart. At the F=1 disk, the gradient of $\mathcal{E}_{\mathrm{bd}}$ vanishes (it's a critical point of *that* energy), but the gradients of the closure energy $\mathcal{E}_{\mathrm{cl}}$ and the separation energy $\mathcal{E}_{\mathrm{sep}}$ generically do not. Lemma 4 shows that these two non-vanishing gradients are linearly independent in a strong sense: the 2×2 matrix of their inner products is positive definite. That positive definiteness is what guarantees the F=1 configuration *cannot* be a critical point of full SCC, regardless of the relative weights $\lambda_{\mathrm{cl}}$ and $\lambda_{\mathrm{sep}}$. It's a small lemma with a load-bearing consequence.
+### 2. The search space got exhausted
 
-**What T-PreObj-1G adds.** The original T-PreObj-1 was proved on the test grid graphs. T-PreObj-1G shows that the proof never used grid-specific features — only abstract spectral and isoperimetric properties guaranteed by the (G1)–(G4) hypotheses (connectedness, regularity, finite diameter, mild spectral gap). So the conclusion lifts from "true on these grids" to "true on **any** finite connected graph in this class." That's why the pre-objective character of SCC is not an artifact of the substrate.
+Day 2 evaluated eight candidate framings against two matrices: which open problems they resolved, and which Cat A theorems survived. The Pareto frontier looked respectable: B, B+C, E, and C+E.
 
-**What the F-1 Resolution Corollary does.** F-1 was originally framed as "K=1 is cheaper than K=2 (T-Merge (b)) but we observe K&gt;1 — paradox." The Corollary makes this precise by splitting it: the K=1-cheaper claim is correct on pure $\mathcal{E}_{\mathrm{bd}}$ (already canonical as T-Merge (b)), and the K&gt;1 observation is correct on full SCC (newly canonical as T-PreObj-1). The two claims live on different energies. They never disagreed; the apparent paradox was a category error.
+It was still not the answer.
 
-**Verification**: E-0090 (numerical study at L=12, three-digit theory–experiment agreement on the destabilization magnitudes); E-0091 (L=32 study of the IC-protocol dichotomy).
+That was useful. The matrices made the hidden assumption visible: every candidate was still trying to reconcile a static energy statement with a dynamic protocol observation. W4's real route, later named Option D, was outside that candidate space.
+
+### 3. The layer split became explicit
+
+The K-soft and thermal-free-energy work on Day 3 moved the Critical-3 cluster. F-1, M-1, and MO-1 stopped looking like missing theorems and started looking like poorly separated layers:
+
+- pure boundary morphology,
+- full SCC energy,
+- dynamic protocol endpoints,
+- single-formation smooth manifolds,
+- multi-formation cornered manifolds.
+
+Once these were separated, the old contradiction weakened.
+
+### 4. The theorem arrived
+
+Day 6 was the pivot. The Pre-Objective Mechanism cluster established that the F=1 single-disk candidate is not a critical point under full SCC. In plain terms: once closure and separation are both active, the theory does not sit at the single-object analogue. It leaves toward a multi-peak configuration.
+
+This is the mathematical form of the pre-objective claim.
 
 <Figure
   src="/content-assets/scc-figures/fig09-preobj-mechanism.png"
   alt="Four-panel schematic of the Pre-Objective Mechanism (T-PreObj-1)."
-  caption={<>T-PreObj-1 mechanism (W4 close). (a) On pure E_bd, the F=1 single-disk is a critical point. (b) Under full SCC, the same configuration is no longer critical — the gradient leaks out radially. (c) Gradient flow attracts to multi-peak F≥2 configurations (the natural attractor of full SCC). (d) IC-protocol dichotomy: adaptive bounded protocols stay bounded, while random initialization produces endpoints scaling as L^2.8.</>}
+  caption={<>T-PreObj-1 mechanism. On pure E_bd, the F=1 disk is a critical point. Under full SCC, the same field is non-critical and gradient flow leaves toward multi-peak F≥2 configurations.</>}
   className="mx-auto max-w-full"
 />
+
+### 5. Verification changed the final theorem
+
+The extended day, 2026-04-26, was supposed to be routine V5b confirmation. It was not. A mode-indexing artifact appeared in the Goldstone analysis: near-degenerate modes could silently swap labels.
+
+The result was not thrown out. It was re-verified mode-agnostically.
+
+That split V5b into:
+
+- **T-V5b-T, Cat A**: translation-invariant graphs, sub/super-lattice spectral dichotomy, 2D Goldstone doublet, 1D Goldstone branch, universal nodal count 2.
+- **V5b-F, Cat C**: partial Goldstone behavior on boundary-modified graphs, carried forward as NQ-173.
+
+---
+
+## Compact daily log
+
+| Day | Focus | Result |
+|-----|-------|--------|
+| 1, Apr 19 | N-1 reframing | F/M/MO unified as Soft-Hard Switching Asymmetry |
+| 2, Apr 20 | Candidate evaluation | Pareto frontier found, but the candidate space was too narrow |
+| 3, Apr 21 | K-soft and thermal framing | Critical-3 moved from "missing mechanism" to "layer mismatch" |
+| 4, Apr 22 | Symmetry and moduli | Technical scaffolding for σ-framework |
+| 5, Apr 23 | Axiom audit and orbital evidence | R23 orbital discovery aligned empirics with the W4 reframing |
+| 6, Apr 24 | Resolution day | σ-framework introduced; F-1, M-1, MO-1 closed; CN15 stated |
+| 7, Apr 25 | Verification | D4 irrep classification, σ checks, commensurability split |
+| 8, Apr 26 | V5b re-check | Mode-indexing artifact found; V5b split into T and F branches |
+
+---
+
+## The new Cat A entries
+
+### Pre-Objective Mechanism cluster
+
+| Entry | What it says | Why it matters |
+|-------|--------------|----------------|
+| **T-PreObj-1** | Under full SCC parameters, the F=1 single-disk minimizer is not a critical point; gradient flow attracts to F≥2 configurations. | SCC's pre-objective character becomes a theorem. |
+| **T-PreObj-1G** | The same conclusion holds on any finite connected graph satisfying G1-G4. | The result is not grid-specific. |
+| **Lemma 4** | The inner-product matrix of the closure and separation gradients is positive definite under linear independence. | This is the load-bearing proof step forcing destabilization. |
+| **F-1 Resolution Corollary** | F-1 splits into pure E_bd and full SCC layers, both Cat A. | The supposed contradiction dissolves. |
+
+Lemma 4 is the technical hinge. At the F=1 disk, the pure boundary gradient vanishes. The closure and separation gradients do not. Their positive-definite inner-product matrix gives a strictly positive destabilization direction for every nonzero coupling vector.
 
 <Figure
   src="/content-assets/scc-figures/fig10-lemma4-quadratic-form.png"
   alt="Coordinate frame with an ellipse representing the level set of the quadratic form, principal semi-axes labeled, and a Lambda arrow extending past the ellipse."
-  caption={<>Lemma 4 — the inner-product matrix M of g_cl and g_sep at the F=1 candidate is positive definite under linear independence. The destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction, which is what forces F=1 to be non-critical under full SCC.</>}
+  caption={<>Lemma 4: the destabilization magnitude Λ^T M Λ is strictly positive in every nonzero direction, which forces the F=1 candidate to be non-critical under full SCC.</>}
   className="mx-auto max-w-full"
 />
 
-### W4-extended close (2026-04-26): the Pre-Objective Goldstone
+### Pre-Objective Goldstone
 
-T-PreObj-1 establishes *that* F≥2 is the attractor. T-V5b-T then asks: when symmetry is broken by selecting a particular multi-peak configuration, what *kind* of soft modes (zero-frequency excitations) does the broken symmetry generate?
+T-PreObj-1 says F≥2 is the attractor. T-V5b-T asks what soft modes appear once a multi-peak formation breaks translation symmetry.
 
-| T-ID | Statement (summary) | Source |
-|------|---------------------|--------|
-| **T-V5b-T** | On translation-invariant graphs (torus $T^d$, cycle $C_n$): a sub/super-lattice spectral dichotomy at the F=1 / F≥2 transition. In 2D, Goldstone modes form a **2-fold doublet with commensurability splitting**. In 1D, a **1-fold Goldstone branch**. **Goldstone nodal count = 2 universal**. After 8 V5b iterations (V1 → V5b''). | C-0710 / P-0710 |
+The answer:
 
-**What T-V5b-T says, in plain language.** When you pick a specific multi-peak formation, you've broken the translation symmetry of the underlying graph (the formation now has a particular position rather than being symmetric under shifts). Whenever a continuous symmetry is broken, the theory of Goldstone bosons says you get zero-frequency modes — one per broken generator of the symmetry group. T-V5b-T applies this to SCC on translation-invariant graphs:
-
-- On a 2D torus, translation has 2 generators (x and y), so there should be 2 Goldstone modes — and there are. They form a *doublet*. When the formation period and the lattice period are commensurate, the doublet is degenerate (the two modes have exactly the same frequency); incommensurate, they split.
-- On a 1D cycle, translation has 1 generator, so there should be 1 Goldstone mode — and there is. Single branch.
-- Across all tested cases — 2D torus periodic, 2D torus free boundary, 1D cycle — the Goldstone modes have *exactly two nodes per period*. Universal, regardless of dimension.
-
-The universal nodal count is the strongest part: it's a topological feature of the broken-symmetry signature on SCC, independent of graph class.
-
-**Why eight iterations were needed.** The first version V1 was too narrow (specific to one graph). V2 generalized but missed the commensurability structure. V3, V4 had bugs. V5a partially worked but had a subtle indexing problem in the analysis script — the eighth iteration (V5b'') re-verified using a mode-agnostic detection method and finally settled the result. The full story is in the Reproducibility section.
-
-**Verification**: E-0095 ($\zeta$-scan), E-0096 (graph-class extension + nodal count), E-0097 (mode-agnostic re-check after NQ-172).
+- On a 2D torus, there is a **2-fold Goldstone doublet** with commensurability splitting.
+- On a 1D cycle, there is a **1-fold Goldstone branch**.
+- Across tested translation-invariant graph classes, the Goldstone nodal count is **2 universal**.
 
 <Figure
   src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
   alt="Two-panel plot of Goldstone dispersion: 2D torus shows a doublet branch with commensurability splitting; 1D cycle shows a single Goldstone branch."
-  caption={<>Goldstone dispersion under T-V5b-T (W4-extended). 2D torus T^2: a 2-fold doublet, with commensurability splitting visible near the Γ point when the formation period is incommensurate with the lattice. 1D cycle C_n: a single Goldstone branch, no splitting.</>}
+  caption={<>Goldstone dispersion under T-V5b-T. 2D torus: a 2-fold doublet with commensurability splitting. 1D cycle: a single Goldstone branch.</>}
   className="mx-auto max-w-full"
 />
 
 <Figure
   src="/content-assets/scc-figures/fig12-goldstone-nodal-count.png"
   alt="Two panels comparing Goldstone modes: 2D torus with 2-fold doublet, 1D cycle with 1-fold branch, and a central callout indicating nodal count = 2 universal."
-  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes (2D torus periodic, 2D torus free BC, 1D cycle). T-V5b-T (Cat A, all classes) is distinguished from V5b-F (Cat C, partial Goldstone on boundary-modified graphs — NQ-173 carry to W5+).</>}
+  caption={<>Goldstone nodal count = 2 universal across translation-invariant graph classes. V5b-F remains Cat C for boundary-modified graphs.</>}
   className="mx-auto max-w-full"
 />
 
 ---
 
-## What's clarified / resolved — all three Critical entries closed
+## How the Critical-3 closed
 
-The single biggest result of W4. For nearly a year, every theorem touching multi-formation came with a footnote: "blocked by F-1 / M-1 / MO-1 until we resolve those." All three are now closed. Here is what each one was, why it had been blocking everything, and what the resolution actually is.
+### F-1: split-resolved
 
-### F-1 (K=2 Vacuity) — ✅ SPLIT-RESOLVED
+**Original worry.** K=2 looked vacuous because, without externally fixing each formation's mass, energy minimization squeezes one formation to zero.
 
-**What F-1 was.** The K=2 theorems (two formations existing simultaneously) were derived under an assumption that each formation's mass $m_j$ was held fixed externally. If you remove that assumption and allow $m_j$ to vary freely, energy minimization always prefers $m_j \to 0$ — the smaller formation gets squeezed to zero, and you collapse back to K=1. So K=2 was "vacuous" without external scaffolding.
+**Resolution.** F-1 splits into two correct statements:
 
-**Why this was a Critical blocker.** F-1 effectively meant the K-field theory was not self-contained — it required someone outside the theory to keep telling it "K=2, masses fixed." That undermined the theory's claim to explain how multi-formation arises.
+- On pure $\mathcal{E}_{\mathrm{bd}}$, K=1 really is cheaper. This is T-Merge (b), already Cat A.
+- Under full SCC, the F=1 single-disk is not a critical point. This is T-PreObj-1, new Cat A.
 
-**The resolution (2026-04-24).** F-1 splits into two layers, each of which turns out to be a *Category A theorem* rather than an open problem.
-
-- **Pure $\mathcal{E}_{\mathrm{bd}}$ portion.** On the boundary-morphology energy alone, "K=1 has lower energy than K=2" really is true. This is the isoperimetric ordering on connected graphs, already canonical as **T-Merge (b)**. It was always a theorem; calling it "F-1" had it shelved under the wrong filename.
-- **Full SCC portion.** Under full SCC parameters, the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point** (T-PreObj-1 (i)). So the comparison "K=1 minimum vs K=2 minimum" doesn't even survive into the full SCC landscape — F=1 is non-critical, F≥2 is the default.
-
-**Net effect**: the comparison that looked like a paradox ("K=1 cheaper static minimum vs empirically observed multi-formation") simply dissolves. A pre-existing Cat A theorem plus a new Cat A theorem together remove the dichotomy's premise. F-1 wasn't a problem to be solved; it was a misframing to be exposed.
+The two statements live on different energies. They do not contradict each other.
 
 <Figure
   src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
-  alt="Top-down split diagram: F-1 decomposes into pure E_bd (T-Merge b) and full SCC (T-PreObj-1) layers, both Cat A, with dichotomy dissolved at the bottom."
-  caption={<>F-1 split-resolution: two Cat A layers (T-Merge (b) for pure E_bd, T-PreObj-1 (i) for full SCC). The dichotomy itself dissolves under the W4 reframing — the two halves of the supposed paradox were never on the same energy.</>}
+  alt="Top-down split diagram: F-1 decomposes into pure E_bd and full SCC layers, both Cat A."
+  caption={<>F-1 split-resolution: pure E_bd and full SCC were being compared as if they were one layer. W4 separates them.</>}
   className="mx-auto max-w-full"
 />
 
-### M-1 (K=1 Energetic Preference) — ✅ LAYER-CLARIFIED
+### M-1: layer-clarified
 
-**What M-1 was.** A direct calculation showed that the K=2 energy landscape on $(m_1, m_2)$ with $m_1 + m_2 = M$ is monotonically decreasing as one of the formations shrinks. So K=1 with the entire mass $M$ is *always* energetically cheaper than any K=2 split. This was the root cause of F-1: even with masses constrained, energy still wants K=1.
+**Original worry.** K=1 is energetically preferred over K=2 on the fixed-mass boundary landscape.
 
-**Why this was a Critical blocker.** Together with F-1, M-1 said: SCC has no internal preference for K&gt;1, ever. Any observed multi-formation has to be either externally imposed (F-1) or kinetically trapped (which is what the kinetic-multi-formation literature had assumed). The theory had no in-built mechanism for genuine multi-formation.
+**Resolution.** That statement is true, but it belongs to the static pure-boundary layer. It does not determine the full-SCC dynamic endpoint.
 
-**The resolution (2026-04-24).** M-1 is **not an open problem at all**. It is the *correct mathematical statement* (T-Merge (b)) — isoperimetric ordering on the constraint manifold $\Sigma_m$. The original framing conflated two distinct quantities:
+This is **CN15 Static / Dynamic Separation**:
 
-- **Pure $\mathcal{E}_{\mathrm{bd}}$ layer.** M-1 holds — K=1 has lower energy than K=2 through perimeter minimization. Already canonical as T-Merge (b).
-- **Full SCC layer.** The comparison itself is not framed. Because the F=1 single-disk is non-critical (T-PreObj-1), the "K=1 ground state" of pure $\mathcal{E}_{\mathrm{bd}}$ does not survive into the full SCC landscape. The static minimum and the dynamic attractor refer to different objects.
+- **Static:** global minimum on pure $\mathcal{E}_{\mathrm{bd}}$.
+- **Dynamic:** protocol endpoint under full SCC gradient flow.
 
-**The conceptual key**: **CN15 Static / Dynamic Separation**. The static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ and the dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC live on different layers and need not match. Once that is stated explicitly, M-1's apparent contradiction with empirical observation dissolves: nothing said the static minimum has to equal the dynamic endpoint.
+The apparent paradox came from demanding that these two objects agree.
 
 <Figure
   src="/content-assets/scc-figures/fig15-static-dynamic-separation.png"
-  alt="Two stacked layers — static minimum on E_bd vs dynamic protocol-endpoint on full SCC — separated by a not-equal symbol."
-  caption={<>CN15 — Static / Dynamic Separation. The conceptual key behind the M-1 layer-clarification. The "F-1 / M-1 paradox" arose from comparing two quantities that live on different layers as if they were the same thing.</>}
+  alt="Two stacked layers: static minimum on E_bd vs dynamic protocol-endpoint on full SCC."
+  caption={<>CN15 Static / Dynamic Separation: the conceptual key behind M-1's closure.</>}
   className="mx-auto max-w-full"
 />
 
-### MO-1 (Morse Theory Inapplicability) — ⚪ SIDESTEPPED
+### MO-1: sidestepped
 
-**What MO-1 was.** The constrained manifold $\Sigma^2_M = \{(u^1, u^2) : m_1 + m_2 = M\}$ for K=2 is *not* a smooth manifold — it has corners where one of the formations' mass goes to zero. Smooth Morse theory requires manifolds without boundary and is therefore not directly applicable. Several theorems (T-8-Core, T-14, parts of the persistence machinery) had been stated under the implicit assumption of a smooth manifold, raising the question whether they survived the corner structure.
+**Original worry.** Multi-formation manifolds have corners, so smooth Morse theory does not apply directly.
 
-**Why this was a Critical blocker.** It cast doubt on global landscape analysis on $\Sigma^K_M$ for any $K \geq 2$. Either we needed stratified Morse theory (a much more complex framework), or the smooth-Morse statements had to be downgraded.
+**Resolution for W4.** The W4 results operate on the smooth single-formation manifold $\Sigma_m$, where the new σ-framework is well-posed. The current theorem path does not need Morse theory on $\Sigma_M^K$.
 
-**The resolution (2026-04-24).** SIDESTEPPED — for now. The W4 work introduced the **σ-framework**, a Hessian-eigenvalue / irrep / nodal-count signature
-$$\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$$
-that operates on the **smooth single-formation manifold $\Sigma_m$ (no corners)**. The Theorem 2 family (Cat A, graph-class independent) also operates on the single-formation $\Sigma_m$. The principal W4 results therefore **do not require** Morse analysis on $\Sigma^K_M$. MO-1 is not a blocker for the current scope.
-
-**Caveat**: this is genuinely a *sidestep*, not a resolution. Multi-formation extension (stratified Morse on $\Sigma^K_M$, multi-formation σ Phase 5) is genuine open work for W5+. MO-1 will become an active blocker again at that stage.
-
-### Resolution path: Option D (premise dissolution)
-
-When the F-1/M-1/MO-1 cluster was set up at the start of W4, three options were on the table:
-
-- **Option A** — accept "fixed K is an external constraint" and stop trying to derive K&gt;1 from inside. Abandoned: it makes the theory incomplete.
-- **Option B** — invent a K-selection mechanism (information criteria like BIC, free energy, or birth-death dynamics). This was the most-explored path historically; never converged.
-- **Option C** — reformulate the theory in kinetic / metastability terms (K&gt;1 as long-lived but not globally optimal). Explored in the previous-year audit; partially successful but didn't close F-1.
-
-**Option D, discovered in W4 — premise dissolution.** A fourth path that is none of the three above. The discovery is: F-1 / M-1 weren't asking *the right question*. They were asking how K=1 (the static minimum) could be reconciled with K&gt;1 (the dynamic observation), but those two quantities live on different layers. Once you state the layer separation explicitly (CN15), the original question stops needing an answer. The candidate-evaluation matrix from day 2 had been searching for an Option B/C answer and finding none — turns out the right path was outside the matrix.
-
-This is a kind of resolution that is hard to plan for: it doesn't show up as a candidate in any structured search because it asks us to *reframe what the question even means*. The Pareto matrix work wasn't wasted, though — without going through it, we wouldn't have seen that the matrix itself was answering a wrong question, and Option D wouldn't have emerged.
+This is not a permanent solution. Multi-formation σ work will re-open the stratified-Morse issue.
 
 ---
 
-## What was tried and didn't work
+## What did not work
 
-The point of recording negative results is honesty. Here are this week's:
+- **The first V5b variants were not stable enough.** V4 had a sign issue; V5a had the mode-indexing vulnerability later caught by NQ-172.
+- **The candidate matrix did not contain the final answer.** It helped expose the hidden premise, but Option D was not in the candidate list.
+- **P-Unified-1 stayed falsified.** $\Lambda_{\mathrm{coupling}}$ is useful as a structural classifier, but not as a monotone predictor of Persist degradation.
 
-- **V4 / V5a were retracted in-session twice** during the V5b iteration cycle. V4 had a sign error in the symmetry counting. V5a was correct but had the mode-indexing bug that NQ-172 later exposed. Healthy iterative process — the bug was caught before the result reached canonical.
-
-- **The candidate evaluation matrix was answering the wrong question.** Day 2's effort produced a Pareto frontier — B, B+C, E, C+E — and a clean decision tree. The actual route taken (Option D, premise dissolution) was not in the candidate space. The matrix wasn't useless — it forced the kind of close reading that exposed the framing assumption — but its direct output was discarded. This is a recurring pattern in this kind of work: structured search is good for finding the question, less good for finding the answer.
-
-- **P-Unified-1 was re-falsified.** The hypothesis "Persist degradation is monotone in $\Lambda_{\mathrm{coupling}}$" had been falsified earlier by exp49–50, but it kept reappearing as an implicit assumption in derivations. This week's σ-framework work re-confirmed the falsification: $\Lambda_{\mathrm{coupling}}$ is a *structural* classifier (it tells you whether two formations are well-separated, weakly interacting, or strongly interacting), but it is not a *dynamical* predictor (it doesn't determine the rate at which Persist degrades). This is now stated more sharply with the σ-framework's distinction between signature (structural) and trajectory (dynamical).
+These failures matter because they show what was *not* silently promoted.
 
 ---
 
-## Reproducibility / errata
+## Verification note: NQ-172
 
-### NQ-172 — Mode-indexing artifact in the Goldstone analysis script (identified + resolved 2026-04-26)
+The V5b result was almost accepted too early.
 
-The most important process-side learning of the W4-extended close. This is the sort of thing every numerical research project encounters and most don't catch in time.
+The artifact: mode labels were assigned by eigenvalue sort order. Near degeneracy, two modes could swap labels while the raw spectrum still looked correct. That creates a dangerous error: the numerical output is right, but the interpretation is wrong.
 
-**Discovery.** During the eighth V5b iteration, while running a $\zeta$-scan on the 2D torus to nail down the commensurability splitting, the result looked subtly off — the splitting magnitude wasn't following the expected scaling. Tracing back through the analysis script revealed that **spectral modes were being indexed inconsistently**: when the eigenvalues were computed, the mode labels were assigned by sort order, which meant that at parameter values where two modes were nearly degenerate, the labels could swap silently. The numerical result was correct in raw terms, but the *interpretation* — which mode was "the" Goldstone mode — was unstable.
+The repair was to stop identifying the Goldstone mode by label. V5b'' measures the low-frequency subspace and nodal invariants in a mode-agnostic way. This is what made T-V5b-T canonical-ready.
 
-**Why this matters.** If V5b had been promoted to canonical at V1, V2, or V5a (any of the iterations that occurred *before* the artifact was caught), the resulting "theorem" would have been **right in its quantitative output but wrong in its interpretation**. The kind of error that's hard to detect in review because the numbers all check out.
-
-**The fix.** V5b'' was re-verified using **mode-agnostic detection** — instead of identifying "the Goldstone mode" by label and then measuring its splitting, the new approach measures the dimension of the low-frequency subspace directly and counts nodes of basis-independent invariants. This is robust to mode reordering by construction. NQ-170c (graph-class extension + nodal count) provides the documented safeguard.
-
-**Result: robustness on both sides preserved.**
-- **Positive — T-V5b-T (Cat A canonical-ready)**: sub/super-lattice spectral dichotomy + 2D commensurability splitting + 1D Goldstone + universal nodal count = 2 — confirmed mode-agnostically.
-- **Negative — V5b-F (Cat C, new finding)**: partial Goldstone on boundary-modified graphs. The boundary breaks translation invariance, so the Goldstone branches partially gap. Carried as NQ-173 to W5+ for full characterization.
-
-**Significance**: catching the artifact after eight iterations is evidence that the verification process is healthy. The cost of doing a thorough $\zeta$-scan that exposed the bug was one extra day; the cost of having the bug ship to canonical would have been much higher. The general lesson: **verification is not a chore; it is a discovery channel**. NQ-172 was caught only because someone insisted on rerunning V5b properly even after V5a "looked fine."
+The lesson is straightforward: **verification is a discovery channel**. W4 spent two days on verification, and those two days changed the theorem.
 
 ---
 
-## Carry to next week (W5+)
+## Carry to W5+
 
-Five items carry to W5 or beyond. NQ-173, 174, 175 are direct continuations of the W4-extended Goldstone work; the remaining two are larger-scale.
-
-| NQ | Content | Tier |
-|----|---------|------|
-| **NQ-173** | V5b-F partial Goldstone characterization (boundary-modified graphs: free / mixed / Dirichlet boundary conditions). Quantify how the boundary's broken translation symmetry gaps the Goldstone branches. | T2 (further verification) |
-| **NQ-174** | $\zeta_*(G)$ — precise dependence of the sub/super-lattice crossover scale on graph class. Currently known to exist but not characterized analytically. | T2 |
-| **NQ-175** | 3D extension of T-V5b-T to torus $T^3$. Should give a 3-fold Goldstone triplet with two splitting parameters; the universal nodal-count claim should generalize but needs verification. | T2 |
-| σ supporting lemmas | Lemma 1, 2, 3 and Theorem 3, 4 of the σ-framework. Currently held in "weekly_summary" buffer; need to decide which become §13 entries. | T2 |
-| Multi-formation σ Phase 5 | Extend the σ-framework from single-formation $\Sigma_m$ to multi-formation $\Sigma^K_M$. **If pursued, MO-1 re-engages as an active blocker** because $\Sigma^K_M$ has corners and stratified Morse theory becomes necessary. | T3 (long-term) |
+| Item | Carry |
+|------|-------|
+| **NQ-173** | Characterize V5b-F partial Goldstone behavior under boundary-modified graphs. |
+| **NQ-174** | Determine the graph dependence of the crossover scale $\zeta_*(G)$. |
+| **NQ-175** | Extend T-V5b-T to 3D torus graphs. |
+| **σ supporting lemmas** | Decide which buffered σ entries become canonical §13 entries. |
+| **Multi-formation σ Phase 5** | Lift σ from $\Sigma_m$ to $\Sigma_M^K$; this re-engages MO-1. |
 
 ---
 
 ## Canonical impact
 
-The blog canonical pages were bumped from **v2.1** (2026-04-12) to **v2.3** (2026-04-26), with an intermediate **v2.2** at the W4 close on 04-25.
-
-| Metric | Pre-W4 | W4 close (04-25, v2.2) | W4-extended close (04-26, v2.3) |
-|--------|--------|------------------------|-------------------------------|
+| Metric | Pre-W4 | W4 close | W4-extended close |
+|--------|--------|----------|-------------------|
 | Category A | 35 | 37 | **38** |
 | Category B | 4 | 4 | 4 |
-| Category C | 5 | 5 | 5 (+1 new finding V5b-F) |
+| Category C | 5 | 5 | 5 plus V5b-F finding |
 | Retracted | 5 | 5 | 5 |
 | Total claims | 49 | 51 | **52** |
-| % fully proved | 71% | 73% | **73%** |
+| Fully proved | 71% | 73% | **73%** |
 | Critical OPs | 3 | 0 | 0 |
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
   alt="Directed graph of the 9 SCC hero theorems and their dependencies."
-  caption={<>The hero-theorem DAG after W4 / W4-extended bumps. T-PreObj-1 occupies the W4 capstone position; T-V5b-T is the W4-extended capstone. The foundation layer (T1, T6, T20) and the phase + stability layer (T8-Core, T7-Enhanced, T11, T14) are now end-to-end Cat A and feed cleanly into the capstones.</>}
+  caption={<>Hero-theorem DAG after W4. T-PreObj-1 is the W4 capstone; T-V5b-T is the W4-extended capstone.</>}
   className="mx-auto max-w-full"
 />
 
-**Canonical pages affected:**
+Canonical pages touched:
 
-- [Canonical Spec — Part 5 · Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — T-PreObj-1, T-PreObj-1G, Lemma 4, F-1 Resolution Corollary, T-V5b-T entries added; V5b-F registered as Cat C new finding; CN15 added to commitment notes; §15 closing summary rewritten to integrate the Critical-3 resolution.
-- [Canonical Spec — Part 4 · Interpretation](/notes/part-0/canonical-spec-scc-4-interpretation/) — §11.1 commitments items #14 (CN15 Static / Dynamic Separation) and #15 (σ-framework as canonical Hessian signature) added; §12 W4 Resolution Banner introduced before the Foundational subsection; Pre-Objective Mechanism and Pre-Objective Goldstone subsections added under Foundational.
-- [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/) — CV-1.3 and CV-1.4 release notes added; Open Problems table updated with the new resolved status; the X-0001 (counterexample originally cited against F-1) marked as superseded.
-- [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/) — full Critical-3 resolution section added; Repository structure section updated with the Research-OS-abandoned / CODE-THEORY-split history.
-- [SCC Glossary](/notes/part-0/scc-glossary/) — F-1, M-1, MO-1 entries all updated to reflect the resolved status; CN15 added; σ-framework added.
-
----
-
-## Process notes
-
-### What the Pre-Objective Mechanism actually means for the theory
-
-The combination of T-PreObj-1 and T-PreObj-1G is the W4 conceptual capstone. SCC has, for over a year, *claimed* a pre-objective character — "objects are derivative; the graded cohesion field is primitive." Before W4, this was a design intent expressed through axiom choices and ontological commitments, but it was not *forced* by any theorem. T-PreObj-1 makes it forced: under full SCC parameters, the F=1 single-disk (the closest analogue to "a single object") is *not even a critical point*, while F≥2 multi-peak configurations are the default attractor. **Single-object thinking is energetically inconsistent with the full SCC framework.**
-
-T-PreObj-1G upgrades this from "true on grids" to "true on any finite connected graph satisfying (G1)–(G4)." The pre-objective character is therefore **graph-class independent** — a property of the SCC framework itself, not of any particular spatial substrate. This is the difference between a mathematical theory and a phenomenological model: the theory's claim is robust to changes in the substrate, the phenomenology's claim is calibrated to a particular setup.
-
-### Static / Dynamic Separation (CN15) as the conceptual key
-
-The deepest lesson of W4 is that the F-1 / M-1 paradox was never a missing mechanism — it was a missing *commitment*. The two quantities being conflated were:
-
-- **Static**: the global minimum on pure $\mathcal{E}_{\mathrm{bd}}$. Definite, computable, K=1 by T-Merge (b).
-- **Dynamic**: the protocol-endpoint observables $\widehat{K}, \mathcal{F}$ produced by running full-SCC gradient flow under some specific protocol. Empirically multi-formation under broad conditions.
-
-For nearly a year, papers and notes had been comparing these two quantities as if they had to agree, and treating their disagreement as a paradox. **CN15 simply makes explicit that they refer to different things on different layers.** Once that's stated, the "paradox" dissolves — there's no rule saying static minima have to equal dynamic endpoints, and demanding such agreement was always an unstated premise rather than a derived requirement.
-
-This pattern — *the apparent open problem dissolves once you state explicitly an assumption that had been operating implicitly* — is the kind of thing that's hard to get to by direct attack, and is why Option D wasn't on the candidate list at the start of the week.
-
-### Introducing the σ-framework
-
-The Hessian eigenvalue / irreducible-representation / nodal-count signature
-$$\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$$
-classifies single-formation critical points by structural invariants that are robust to perturbation: the formation count $\mathcal{F}$, the irreducible-representation type $[\rho_k]$ of each Hessian-eigenspace, the number of nodes $n_k$, and the eigenvalues $\lambda_k$. The classification is well-posed on the smooth single-formation manifold $\Sigma_m$ (no corners) and serves three roles in W4:
-
-1. **It sidesteps MO-1.** Single-formation σ doesn't require Morse on $\Sigma^K_M$, so the corner structure of multi-formation manifolds isn't a blocker for the W4 results.
-2. **It provides a language for distinguishing critical points** that share gross features (same $\mathcal{F}$, same eigenvalues) but differ in fine structure (irrep type, nodal count). T-V5b-T's universal nodal-count = 2 result is a σ-statement about the Goldstone subspace.
-3. **It's a candidate for extension** — multi-formation Phase 5 (W5+) would lift σ from $\Sigma_m$ to $\Sigma^K_M$, where it naturally couples to stratified Morse theory.
-
-### The value of a verification reflex
-
-V5b reaching V5b-T (Cat A) only after eight iterations — and the NQ-172 mode-indexing artifact being identified along the way — is evidence that the verification process is healthy. Premature promotion at the first iteration (or the third, or even the fifth) would have risked introducing a spurious result into canonical. The eight-iteration cost was visible; the cost of *not* doing those iterations would have been invisible until much later. That kind of asymmetric cost is exactly what verification regimes are designed to catch.
-
-The general principle: the rate at which theorems are added to canonical is bounded *not* by how fast new derivations can be done, but by how fast verification can be completed without shortcuts. W4 spent a quarter of its days on verification (days 7 and 8). That ratio is sustainable and worth keeping.
+- [Canonical Spec — Part 5 · Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- [Canonical Spec — Part 4 · Interpretation](/notes/part-0/canonical-spec-scc-4-interpretation/)
+- [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/)
+- [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/)
+- [SCC Glossary](/notes/part-0/scc-glossary/)
 
 ---
 
 ## Pointers
 
-- All theorems referenced in this post are registered in [Canonical Spec v2.3 (Part 5 · Results Registry)](/notes/part-0/canonical-spec-scc-5-results-registry/).
-- For the layer-by-layer resolution mechanism of F-1 / M-1 / MO-1: [Canonical Spec Part 4 · §12 W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/).
-- Theorem cross-reference and version history: [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/).
-- One-paragraph status overview of the W4 narrative: [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/).
-- Curated walkthrough of the major theorems: [SCC Hero Theorems](/notes/scc-heroes/).
+- Full theorem registry: [Canonical Spec v2.3 · Part 5](/notes/part-0/canonical-spec-scc-5-results-registry/)
+- Resolution details: [Canonical Spec Part 4 · W4 Resolution Banner](/notes/part-0/canonical-spec-scc-4-interpretation/)
+- Status overview: [SCC Status (April 2026)](/notes/part-0/scc-status-2026-04/)
+- Curated theorem guide: [SCC Hero Theorems](/notes/scc-heroes/)
 
 ---
 
