@@ -1,0 +1,136 @@
+---
+title: "T-L1-F — Hard-Bar / Active-Count Bridge under L1-J Regime"
+slug: scc-hero-t-l1-f
+part: 0
+chapter: 100
+section: "SCC Hero · T-L1-F"
+kind: theorem
+track: perception
+updated: 2026-05-04
+summary: "First multi-formation canonical Cat A conditional theorem. Under hypothesis package (P0)-(P11) on shared-pool Σ̃_M^K_field, the hard-bar count from H_0 superlevel persistence equals the active-slot count, with labelled bijection."
+tags: [scc, theorem, hero, multi-formation, persistence, hard-bar, active-count, bridge, conditional, l1-j]
+related: [scc-heroes, scc-hero-t-preobj-1, scc-hero-t-v5b-t, canonical-spec-scc-5-results-registry]
+---
+
+> **Hero · Multi-Formation Flagship group · Cat A *conditional*.**
+> Source: T-L1-F canonical entry (canonical.md §13 line 1482). Verification: L1-I 439/1920 = 22.9% feasible on $T^2_{20}$ raw_gaussian; L1-H2 stress 5/5; L1-J PO-1 6/6; L1-K external audit + L1-K-REPAIR R-1..R-4.
+> Canonical version: introduced in **CV-1.5.2 (W5 Day 6, 2026-05-02)** — first multi-formation canonical Cat A theorem.
+> Full proof: [Canonical Spec — Part 5 · §13 T-L1-F](/notes/part-0/canonical-spec-scc-5-results-registry/).
+> Working chain: `THEORY/working/MF/` (L1-A through L1-L 13-step chain).
+
+## Statement
+
+Let $G=(X,E)$ be a finite graph and $\mathbf u \in \widetilde{\Sigma}^{K_{\mathrm{field}}}_M(G)$ a shared-pool multi-formation state. Let
+
+$$
+U(\mathbf u) = \sum_{j=1}^{K_{\mathrm{field}}} u^{(j)},\qquad A^\varepsilon(\mathbf u) = \{j : m_j(\mathbf u) > \varepsilon\},\qquad K_{\mathrm{act}}^\varepsilon = |A^\varepsilon|,
+$$
+
+and
+
+$$
+K_{\mathrm{bar}}^{\ell_{\min}}(U;G) = \#\{[d,b] \in \mathrm{Bars}_0^{\mathrm{term}}(U;G) : b - d \ge \ell_{\min}\}
+$$
+
+under terminal-death $H_0$ superlevel persistence on the aggregate field $U$.
+
+**Theorem (T-L1-F).** Under the L1-J regime hypothesis package $(P0)$–$(P11)$,
+
+$$
+\boxed{\;K_{\mathrm{bar}}^{\ell_{\min}}(U(\mathbf u);G) = K_{\mathrm{act}}^\varepsilon(\mathbf u),\;}
+$$
+
+and the map
+
+$$
+\mathcal A_{\mathrm{bar}} : A^\varepsilon(\mathbf u) \to \mathrm{Bars}_0^{\mathrm{term}}(U;G),
+\qquad
+\mathcal A_{\mathrm{bar}}(j) = \text{the unique dominant bar with birth in } N_j^r,
+$$
+
+equivalently the bar born at $q_j^U = \arg\max^\prec_{x \in N_j^r} U(x)$, is a **bijection** from active slots to dominant terminal $H_0$ bars.
+
+### Hypothesis package $(P0)$–$(P11)$ — abbreviated
+
+| Tag | Statement (abbreviated) |
+|-----|-------------------------|
+| P0 | Terminal-death convention for $H_0$ superlevel persistence. |
+| P1 | Deterministic tie convention $\prec$ on vertex orderings. |
+| P2 | Active mass + connected $\delta$-support per slot. |
+| P3 | LG-1 — disjoint active neighborhoods $N_j^r \cap N_k^r = \emptyset$. |
+| P4 | LG-2 — low boundary collar $\max_{\partial N_j^r} U \le b_j - \ell_{\min} - r_{\mathrm{assoc}}$. |
+| P5 | LG-4 — background suppression on $U$ (not just $R_{\mathrm{inact}}$). |
+| P6 | Birth height $b_j \ge h_{\min} \ge \ell_{\min}$. |
+| P7 | Decay-to-cut (heterogeneous): per-slot tail bound $u^{(\ell)}(x) \le \psi_\ell(d_G(x, S_\ell^\delta))$ + cut bridge bound. |
+| P8 | Tightened H6 second-bar bound on $G_j^r$: $\ell_{j,2}(u^{(j)}; G_j^r) \le \ell_{\min} - 3\rho_{\mathrm{pert}}$. |
+| P9 | NE-2 perturbation control $\|R_j\|_{\infty, N_j^r} \le \rho_{\mathrm{pert}}/2$. |
+| P10 | Inactive residual suppression $\|R_{\mathrm{inact}}\|_\infty \le \ell_{\min} - \rho_{\mathrm{res}}$. |
+| P11 | Margin ledger $h_{\min} - \max_{k \neq j} B_{jk} \ge \ell_{\min} + r_{\mathrm{assoc}} + r_{\mathrm{birth}}$. |
+
+The L1-J regime is **empirically non-vacuous** (L1-I 439/1920 = 22.9% feasible on $T^2_{20}$ with raw_gaussian initial states), but production WQ-1 trajectories — which use mass-projection initial states — typically exit the regime, so T-L1-F's reach in production dynamics is narrow and the conditional Cat A status should be read accordingly.
+
+## Proof idea
+
+**Lower bound $K_{\mathrm{bar}} \ge |A|$.** Each active slot $j \in A^\varepsilon$ contributes a dominant bar of length $\ge \ell_{\min}$:
+
+1. **LG-2 boundary collar (P4)** ensures the boundary $\partial N_j^r$ of the active neighborhood lies at $U$-height $\le b_j - \ell_{\min} - r_{\mathrm{assoc}}$, so each $N_j^r$ supports a sublevel-disconnection of depth $\ge \ell_{\min}$.
+2. **LG-3 inter-neighborhood bridge** (a structural consequence of P3 + P4) prevents premature mergers between distinct active neighborhoods at superlevel heights $\ge b_j - \ell_{\min}$.
+3. **$h_{\min} \ge \ell_{\min}$ (P6)** secures that each birth height clears the bar-length threshold.
+
+This is **L1-H §8 step 2** of the working chain.
+
+**Upper bound $K_{\mathrm{bar}} \le |A|$.** Two arguments:
+
+**(α) Coverage from background suppression.** **LG-7 coverage**, derived from **LG-4 (P5)** + terminal-death convention (P0), guarantees that every dominant bar's birth has $U \ge \ell_{\min}$, hence is **not in the background set $X_{\mathrm{bg}}$**. So all dominant bars are born inside $\bigcup_j N_j^r$.
+
+**(β) Per-neighborhood at-most-one-dominant-bar.** Combining:
+
+- **L1-H2 Lemma 1 (graph-inclusion).** $\ell_{\mathrm{glob}} \le \ell_{\mathrm{loc}}$ on $G_j^r \subseteq G$ — bar lengths can only shrink under the larger ambient graph.
+- **L1-H2 Lemma 2 (contradiction-based bottleneck-stability).** If two $U$-bars on $G_j^r$ both have length $\ge \ell_{\min}$, both must match a $u^{(j)}$-bar of length $\ge \ell_{\min} - \rho_{\mathrm{pert}}$ (under tightened H6 = P8), but P8 allows only the slot primary — contradiction.
+
+Combining (α) and (β): every dominant bar lives in some $N_j^r$, and each $N_j^r$ admits at most one dominant bar — so $K_{\mathrm{bar}} \le |A|$. The two bounds together give equality.
+
+**PO-1 decay-to-cut bridge bound.** P7 (decay-to-cut) bounds $\theta_{\mathrm{bridge}}^{jk}(U)$ via **L1-J §8.1** + **L1-B Cat-A cut lemma**, ensuring no anomalous topological mergers across the cut $C_{jk}$ between active neighborhoods. This handles the inter-neighborhood interface that LG-3 alone cannot fully discharge.
+
+**The bijection.** With equality $|A^\varepsilon| = K_{\mathrm{bar}}^{\ell_{\min}}$ established and each $N_j^r$ matched to exactly one dominant bar, the map $\mathcal A_{\mathrm{bar}}(j) = $ "the unique dominant bar born at $q_j^U$" is well-defined and bijective. P1 (deterministic tie convention) makes $q_j^U = \arg\max^\prec_{x \in N_j^r} U(x)$ unambiguous.
+
+The full chain L1-A through L1-L is recorded in `THEORY/working/MF/`, including the L1-K external audit and the L1-K-REPAIR cycle (R-1..R-4) that hardened the proof against the original audit findings.
+
+$\square$
+
+## Status
+
+**Cat A *conditional* under the L1-J regime hypothesis package $(P0)$–$(P11)$.**
+
+Read the conditionality strictly:
+
+- **NOT a global identity.** The equality $K_{\mathrm{bar}}^{\ell_{\min}} = K_{\mathrm{act}}^\varepsilon$ holds only on states satisfying every clause of $(P0)$–$(P11)$. Outside the L1-J regime, the bridge can fail.
+- **Does NOT establish $K_{\mathrm{soft}}^\phi = K_{\mathrm{act}}$.** The soft-count corollary additionally requires $\phi \in \Phi_{\mathrm{res}}$ per WQ-LAT-1.B. The L-M soft-count corollary working draft is sketched at Cat B and is the CV-1.6 promotion target; it is **not** part of T-L1-F.
+- **Does NOT solve OP-0005 (K-Selection).** T-L1-F is a count-bridge under a fixed state, not a mechanism that selects $K$.
+- **Does NOT solve OP-0008 ($\sigma^A$ K-jump non-determinism).** Independent open problem.
+- **P7 (decay-to-cut).** Adopted as a *safe technical regime hypothesis*. L1-L Combes-Thomas / discrete Agmon analysis provides backing under strong stationarity, but P7 is **not asserted for all SCC states** — it is a regime-defining assumption, not a derived fact.
+
+The first multi-formation canonical Cat A theorem in SCC theory therefore lives under explicit regime conditions, not as a universal identity. The conditional Cat A status is the canonical reading.
+
+## Why this is a hero
+
+T-L1-F is the **first multi-formation canonical Cat A theorem** in SCC theory. Three reasons it earns hero status:
+
+1. **It closes the W5 working chain.** L1-A through L1-L is a 13-step working chain that was the substantive content of W5. T-L1-F is the canonical promotion of the chain's terminal claim — passing through L1-K external audit and the L1-K-REPAIR R-1..R-4 cycle along the way.
+
+2. **It connects two count regimes.** Chart-level **active count** $K_{\mathrm{act}}^\varepsilon$ (per-slot mass above threshold) and aggregate-field **topological count** $K_{\mathrm{bar}}^{\ell_{\min}}$ (terminal-death $H_0$ bar count on $U = \sum_j u^{(j)}$) live at very different layers: the former is a slot-resolved indicator on the K-field architecture, the latter is a topological invariant of the aggregate scalar field. T-L1-F is the **bridge** between SCC's per-slot dynamics and field-level morphology — under explicit regime conditions.
+
+3. **It is the first canonical multi-formation theorem promoted via the working pipeline.** All earlier canonical multi-formation results (T-Persist-K-Sep / Weak / Unified) are Cat C *conditional*; the σ-multi-static entries (D-6a, CV-1.5.1) are Cat A definitional. T-L1-F is the first entry in the multi-formation block that is **theorem-grade Cat A** (conditional on a stated regime), promoted through the standard canonical path including external audit and repair.
+
+T-L1-F is deliberately *not* a K-selection mechanism. It is a count-bridge that *presupposes* a multi-formation state and tells you that, under explicit regime conditions, the chart-level and field-level counts agree. The K-selection problem (OP-0005) and the $\sigma^A$ K-jump non-determinism (OP-0008) remain open.
+
+## Logical dependencies
+
+- **Builds on**: L1-A through L1-L working chain (`THEORY/working/MF/`), L1-B Cat-A cut lemma, L1-H2 Lemmas 1 and 2 (graph-inclusion + bottleneck-stability), L1-J PO-1 (decay-to-cut), L1-K external audit + L1-K-REPAIR R-1..R-4, L1-L Combes-Thomas / discrete Agmon analysis (P7 backing under strong stationarity), terminal-death $H_0$ superlevel persistence machinery.
+- **Builds into**: L-M soft-count corollary working draft (Cat B sketch, CV-1.6 promotion target — additionally requires $\phi \in \Phi_{\mathrm{res}}$ per WQ-LAT-1.B); future K-Selection and $\sigma^A$ K-jump work (OP-0005, OP-0008 — T-L1-F is a count-bridge, not a selection mechanism).
+
+## See also
+
+- Full proof in canonical: [Canonical Spec §13 T-L1-F](/notes/part-0/canonical-spec-scc-5-results-registry/) (canonical.md line 1482)
+- Multi-formation prerequisites: [T-PreObj-1 hero page](/notes/scc-hero-t-preobj-1/), [T-V5b-T hero page](/notes/scc-hero-t-v5b-t/)
+- Hero index: [SCC Hero Theorems](/notes/scc-heroes/)

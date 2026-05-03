@@ -6,7 +6,7 @@ chapter: 100
 section: "SCC Hero · T-PreObj-1"
 kind: theorem
 track: perception
-updated: 2026-04-26
+updated: 2026-05-04
 summary: "Under full SCC on any (G1)-(G4) graph, the F=1 single-disk is not a critical point of full E, and gradient flow attracts to multi-peak F≥2 configurations. The W4 capstone — SCC's pre-objective character is theorem, not modeling choice. Resolves F-1."
 tags: [scc, theorem, hero, w4, pre-objective, multi-peak, capstone]
 related: [scc-heroes, scc-hero-t-v5b-t, scc-hero-t14-gradient-flow, canonical-spec-scc-5-results-registry]
@@ -21,18 +21,27 @@ related: [scc-heroes, scc-hero-t-v5b-t, scc-hero-t14-gradient-flow, canonical-sp
 
 ## Statement
 
-Let $G$ be a finite connected graph satisfying hypotheses **(G1)–(G4)** (graph-class regularity conditions; see canonical §12). Under full SCC parameters $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}, \lambda_{\mathrm{bd}} > 0$:
+Let $G$ be a finite connected graph satisfying hypotheses **(G1)–(G4)** (graph-class regularity conditions; see canonical §12). Let $u_0^*$ be the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$. Under full SCC parameters $\lambda_{\mathrm{cl}}, \lambda_{\mathrm{sep}}, \lambda_{\mathrm{bd}} > 0$, the canonical statement has **five sub-statements**:
 
-**(i) F=1 non-criticality.** The F=1 single-disk minimizer of the pure boundary-morphology energy $\mathcal{E}_{\mathrm{bd}}|_{\Sigma_m}$ is **not a critical point** of the full SCC energy $\mathcal{E}|_{\Sigma_m}$. Equivalently: under full SCC, gradient flow leaves the F=1 disk.
+**(i) Disk non-criticality.** $u_0^*$ is **NOT** a critical point of full $\mathcal{E}$ on $\Sigma_m$. Equivalently: under full SCC, gradient flow leaves the F=1 disk.
 
-**(ii) Multi-peak attractor.** Gradient flow attracts to multi-peak F≥2 configurations.
+**(ii) Multi-peak attractor.** Gradient flow from $u_0^*$ converges to $u^*_{\mathrm{end}}$ with $\mathcal{F}(u^*_{\mathrm{end}}) > \mathcal{F}(u_0^*)$, where $\mathcal{F}(u) = \#\{x \in X : u(x) > u(y)\;\forall y \sim x\}$ is the local-maxima count (threshold-independent topological invariant).
 
-**(iii) IC-protocol dichotomy.** The asymptotic endpoint of gradient flow under different initialization protocols satisfies:
+**(iii) Lemma 4 (Quadratic form positive definite).** The matrix $M \in \mathbb{R}^{2\times 2}$ defined by $M_{11} = \|g_{\mathrm{cl}}\|^2$, $M_{22} = \|g_{\mathrm{sep}}\|^2$, $M_{12} = \langle g_{\mathrm{cl}}, g_{\mathrm{sep}}\rangle$ is positive definite under linear independence of the gradients $g_{\mathrm{cl}} = \nabla \mathcal{E}_{\mathrm{cl}}|_{u_0^*}$ and $g_{\mathrm{sep}} = \nabla \mathcal{E}_{\mathrm{sep}}|_{u_0^*}$, with destabilization magnitude $\|\nabla\mathcal{E}(u_0^*)\|^2 = \lambda^\top M \lambda > 0$ for any $\lambda \in \mathbb{R}^2_{>0}$.
 
-- **Adaptive bounded protocol** → bounded F endpoint.
-- **Random initialization** → endpoint scales as $\sim L^{2.8}$ (where $L$ is the graph linear scale).
+**(iv) IC sensitivity.** Basin attraction from $u_0^*$ depends sensitively on initial-condition eigenmode alignment.
+
+**(v) IC-protocol dichotomy (thermodynamic limit).** The asymptotic endpoint of gradient flow under different initialization protocols satisfies:
+
+- **Adaptive bounded protocol** → bounded F endpoint, $\mathcal{F}_* \leq F^{\mathrm{first-pitchfork}} + O(1)$.
+- **Random initialization** → endpoint scales as $\mathcal{F}_*^{\mathrm{random}}(L) \sim L^{2.8}$ (where $L$ is the graph linear scale).
 
 **T-PreObj-1G (graph-class independent).** Conclusions (i) and (ii) hold on **any** finite connected graph satisfying (G1)–(G4) — not just on the test grid families.
+
+**Category breakdown (canonical lines 1120–1123).**
+- (i), (iii), (iv), (v) dichotomy form: **Category A** (rigorous proof + 3-digit numerical confirmation).
+- (ii) qualitative existence of multi-peak attractor: **Category A**; exact $\Delta\mathcal{F}$ magnitude: **Category B**.
+- (v) precise exponent $k \approx 2.8$ for random IC: **Category B** (empirical fit, theoretical derivation open).
 
 <Figure
   src="/content-assets/scc-figures/fig09-preobj-mechanism.png"

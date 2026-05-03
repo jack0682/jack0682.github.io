@@ -4,8 +4,8 @@ slug: scc-glossary
 part: 0
 kind: essay
 track: perception
-updated: 2026-04-27
-summary: "Plain-language definitions of all formal SCC concepts — each entry includes the formal ID, intuitive description, why it matters, and a concrete analogy. Aligned with canonical CV-1.5 (W5 Day 1 G0, 2026-04-27)."
+updated: 2026-05-04
+summary: "Plain-language definitions of all formal SCC concepts — each entry includes the formal ID, intuitive description, why it matters, and a concrete analogy. Aligned with canonical CV-1.5.2 (W5 Day 6, 2026-05-02): includes the multi-formation framework vocabulary introduced at CV-1.5.1 (Commitment 16 K-status decomposition, σ-tuple, OP-0008 / OP-0009) and the L1-J / T-L1-F Hard-Bar / Active-Count Bridge vocabulary introduced at CV-1.5.2."
 tags: [scc, glossary, reference]
 draft: false
 ---
@@ -167,6 +167,185 @@ draft: false
 
 ---
 
+## CV-1.5.1 / CV-1.5.2 Multi-Formation Vocabulary
+
+This section collects the multi-formation framework vocabulary introduced at CV-1.5.1 (Commitment 16 K-status decomposition, σ-tuple, OP-0008 and OP-0009) and at CV-1.5.2 (T-L1-F Hard-Bar / Active-Count Bridge under the L1-J regime). Entries are ordered alphabetically.
+
+---
+
+### Commitment 14 — Orbital character is constitutive
+**Formal:** Canonical §11.1 #14 (W4 04-24, CV-1.5)  
+**Plain English:** The σ-tuple — the canonical Hessian signature attached to a formation — is the constitutive identity of that formation, not an analogical decoration. Two single-formation minimizers with different σ-tuples are different formations as a matter of theory, not as a matter of interpretation.
+
+**Why it matters:** This commitment fixes σ as canonical formation identity, which then propagates into the multi-formation extension (T-Commitment-14-Multi-Static, CV-1.5.1) and into the OP-0008 question of how σ inheritance behaves at K-jump events.
+
+---
+
+### Commitment 15 — Pre-objective commitment is a mathematical theorem
+**Formal:** Canonical §11.1 #15 (W4 04-25, CV-1.3)  
+**Plain English:** "Formations exist before discrete objects" is not a stipulation or a modeling preference — it is grounded by T-PreObj-1 and T-PreObj-1G as a Cat A theorem (graph-class independent). Under full SCC parameters, the F=1 single-disk minimizer of pure E_bd is not a critical point, and gradient flow attracts to F ≥ 2 multi-peak configurations.
+
+**Why it matters:** This converts "pre-objective" from a methodological slogan into a load-bearing theorem and dissolves the F-1 paradox.
+
+---
+
+### Commitment 16 — K-status two-tier decomposition
+**Formal:** Canonical §11.1 #16 (W5 Day 3 EOD, CV-1.5.1, 2026-04-29)  
+**Plain English:** The integer K is not a primitive of the theory. K decomposes into two distinct quantities at different layers: K_field (architectural cap, set externally at instantiation) and K_act (dynamic stratum index, derived from u). This resolves the four-month K ontological ambiguity catalogued in OP-0009-K and reconciles the apparent conflict between the I9 architecture statement ("K-field architecture guarantees K > 1 by construction") and CN6 ("K is kinetically determined, not thermodynamically selected").
+
+**Why it matters:** Without Commitment 16, "K" was used in five conflicting senses across canonical and working files. The two-tier decomposition gives the K-field architecture, K-jump events, σ_multi^A multi-set treatment, and T-L1-F a single shared language.
+
+---
+
+### CN15 — Static / Dynamic Separation
+**Formal:** Canonical §14 CN15 (W4 04-24)  
+**Plain English:** The kinetic K (the K_act trajectory under gradient flow) is a separate quantity from the static energy minimum K. T-Merge (b) Cat A always gives K = 1 as the static minimum on pure E_bd, but this does not contradict empirically observed K > 1 because the dynamic protocol-endpoint observables live on a different layer.
+
+**Why it matters:** CN15 dissolves the apparent F-1 / M-1 paradox without retracting any theorem. T-Merge (b) is preserved as the correct static statement; the empirical multi-formation regime is the dynamic-layer answer.
+
+---
+
+### F (peak count)
+**Formal:** Canonical §13 inline in T-PreObj-1 + §14 CN17 (W4 04-25)  
+**Plain English:** A derived diagnostic counting the local maxima of u — threshold-free and upper-semicontinuous in u. Used in Theorem 2 / T-PreObj-1 to state that the F = 1 single-disk minimizer of pure E_bd is non-critical under full SCC.
+
+**Why it matters:** F is the single-formation count diagnostic that anchors Pre-Objective theorems. OP-0009-F flags F as a derived diagnostic awaiting full canonical §5 registration via OAT-2 (W6 promotion).
+
+---
+
+### K_act (active formation count)
+**Formal:** Canonical §11.1 Commitment 16 (ii) (CV-1.5.1)  
+**Plain English:** The number of formations currently "alive" in a K-field minimizer at time t, defined as the count of slots whose mass exceeds a support threshold:
+
+`K_act^ε(u) = #{j : ‖u^(j)‖_1 > ε}`
+
+K_act is a derived integer diagnostic, not an externally set parameter. It is right-continuous in t under gradient flow and decreases at K-jump events.
+
+**Why it matters:** K_act is what CN6 ("K is kinetically determined") actually refers to. It is distinguished from K_field (the architectural cap, external) by Commitment 16. K_act is also one of the two quantities bridged by T-L1-F at CV-1.5.2.
+
+---
+
+### K_bar (hard-bar count)
+**Formal:** Canonical §13 T-L1-F entry (CV-1.5.2, 2026-05-02)  
+**Plain English:** The number of "hard" topological bars surviving in the H_0 superlevel persistence diagram of the aggregate field U(u) = Σ_j u^(j) under the terminal-death convention:
+
+`K_bar^ℓ_min(U; G) = #{[d, b] : b - d ≥ ℓ_min}`
+
+T-L1-F (CV-1.5.2) establishes K_bar^ℓ_min = K_act^ε under the L1-J regime, with a labelled bijection between active slots and dominant terminal H_0 bars.
+
+**Why it matters:** K_bar is the topological / observable side of the K-count question. T-L1-F links K_bar (what you can read off the aggregate field via persistence) to K_act (the chart-level active-slot count) under explicit hypotheses.
+
+---
+
+### K_field (architectural cap)
+**Formal:** Canonical §11.1 Commitment 16 (i) (CV-1.5.1, 2026-04-29)  
+**Plain English:** The maximum number of formation slots the analytical framework will track. K_field is set externally by the modeler at instantiation, comparable to the choice of X_t structure — a modeling-layer commitment, not an ontological primitive. K_field derives the shared-pool space (see Shared-pool space below).
+
+**Why it matters:** K_field is what the I9 K-field architecture statement ("guarantees K > 1 by construction") actually refers to. It is the upper bound on K_act and is over-provisionable: K_field can be set larger than K_act will ever reach.
+
+---
+
+### K_soft (envelope-weighted smooth count)
+**Formal:** Working draft `THEORY/working/MF/ksoft_kact_bridge_L1M_soft_count_corollary.md` (CV-1.6 candidate via L-M corollary)  
+**Plain English:** A continuous-valued, envelope-weighted count of bars in the H_0 persistence diagram of U:
+
+`K_soft^φ(U) = Σ_i φ(ℓ_i)`
+
+where ℓ_i are the bar lengths and φ is a soft-step envelope. The L-M working draft bounds |K_soft^φ − K_act^ε| under φ in the Φ_res envelope class.
+
+**Why it matters:** K_soft is the smooth relaxation of K_bar — it replaces the hard threshold ℓ ≥ ℓ_min with a smooth envelope. T-L1-F gives K_bar = K_act; the L-M corollary extends this to K_soft = K_act under the additional Φ_res hypothesis, but this is currently working-grade Cat-B sketched (not canonical).
+
+---
+
+### L1-J regime (hypothesis package P0–P11)
+**Formal:** Canonical §13 T-L1-F entry (CV-1.5.2)  
+**Plain English:** The explicit hypothesis package under which T-L1-F is proved. Eleven conditions on a shared-pool multi-formation state are required:
+
+- **P0** terminal-death H_0 superlevel persistence convention.
+- **P1** deterministic tie convention (fixed total order on X; ties in descending-U broken by ascending order).
+- **P2** active mass + connected δ-support.
+- **P3** disjoint active neighborhoods (LG-1): N_j^r ∩ N_k^r = ∅.
+- **P4** low boundary collar (LG-2): max U on ∂N_j^r ≤ b_j − ℓ_min − r_assoc.
+- **P5** background suppression on U (not just on R_inact).
+- **P6** birth height: b_j ≥ h_min ≥ ℓ_min.
+- **P7** decay-to-cut (heterogeneous form): per-slot Combes-Thomas / discrete Agmon decay envelope.
+- **P8** tightened H6 second-bar bound on G_j^r.
+- **P9** NE-2 perturbation: ‖R_j‖_∞ on N_j^r ≤ ρ_pert / 2.
+- **P10** inactive residual suppression: ‖R_inact‖_∞ ≤ ℓ_min − ρ_res.
+- **P11** margin ledger: h_min − max_{k≠j} B_jk ≥ ℓ_min + r_assoc + r_birth.
+
+**Why it matters:** T-L1-F is Cat A *conditional* on (P0)–(P11). The L1-J regime is empirically non-vacuous (L1-I numerical: 439 / 1920 = 22.9% feasible on T^2_20 with raw_gaussian initial states) but production WQ-1 trajectories typically exit the regime. The conditional Cat A status should be read accordingly.
+
+---
+
+### OP-0008 — σ^A K-jump Inheritance Non-Determinism
+**Formal:** `theorem_status.md` Open Problems Catalog OP-0008 (HIGH; registered W5 Day 4, CV-1.5.1)  
+**Plain English:** Under K-field gradient flow on the shared-pool space, the post-merger σ^A signature is not deterministic in the pre-merger σ^A signature alone — it requires merger-geometry data (cluster centroid, orientation, Wigner-von Neumann data) beyond the eigenvalue tuple. This bifurcates the CV-1.6 release path: D-6b dynamic σ_multi^A(t) Cat A requires σ-rich augmentation.
+
+**Status:** OPEN. Path B (σ-rich + Φ-rich) is a Cat B target and a CV-1.7 Commitment 18 candidate.
+
+---
+
+### OP-0009 — Multi-Formation Ontological Foundations
+**Formal:** `theorem_status.md` Open Problems Catalog OP-0009 (HIGH; registered W5 Day 4, CV-1.5.1; 7 sub-items)  
+**Plain English:** A parent open problem covering the ontological status of every multi-formation primitive. Seven sub-items:
+
+- **OP-0009-K** (K-status). RESOLVED via Commitment 16.
+- **OP-0009-F** (F as derived diagnostic). PARTIALLY (OAT-2).
+- **OP-0009-λ** (λ_rep ontology). PARTIALLY (OAT-3).
+- **OP-0009-A** (Architecture: K-field vs Shared-pool). PARTIALLY (OAT-4).
+- **OP-0009-C** (C_t multi-formation status). PARTIALLY (OAT-5).
+- **OP-0009-Pre** (Pre-objective + K-field tension). PARTIALLY (OAT-6).
+- **OP-0009-Emp** (R23 empirical verification). PARTIALLY (OAT-7).
+
+**Status:** PARTIALLY ADDRESSED at CV-1.5.1 + W5 Day 4 OAT batch — 1 of 7 RESOLVED (OP-0009-K via Commitment 16), 6 of 7 PARTIALLY RESOLVED. Full OP-0009 closure deferred.
+
+---
+
+### Φ_res envelope class — Reservoir-admissible envelopes
+**Formal:** Working draft `THEORY/working/MF/ksoft_kact_bridge_L1M_soft_count_corollary.md` Definition L-M-D1 (CV-1.6 candidate)  
+**Plain English:** The class Φ_res(ℓ_min, τ) of soft-step envelopes φ : [0, 1] → [0, 1] used to define K_soft. Five axioms:
+
+- **F1** range bound: 0 ≤ φ(ℓ) ≤ 1 for all ℓ in [0, 1].
+- **F2** lower normalization: φ(0) = 0.
+- **F3** monotonicity: φ is non-decreasing on [0, 1].
+- **F4** sub-threshold suppression: φ(ℓ) ≤ ε_sub^φ on [0, ℓ_min − τ].
+- **F5** dominant retention: 1 − φ(ℓ) ≤ ε_dom^φ on [ℓ_min + τ, 1].
+
+The pair (ε_sub^φ, ε_dom^φ) is the structural-deviation pair; the class becomes meaningful when ε_sub^φ + ε_dom^φ ≪ 1.
+
+**Why it matters:** Φ_res isolates the envelope shapes for which the L-M soft-count corollary controls |K_soft^φ − K_act^ε|. The default rational envelope φ_0(ℓ) = ℓ / (ℓ + ℓ_min) is *excluded* by F4, predicting (and matching) its empirical sub-resolution drift.
+
+---
+
+### Shared-pool space `\widetilde{\Sigma}_M^{K_field}(G)`
+**Formal:** Architecture I9' (working proposal `THEORY/working/MF/shared_pool_canonical_proposal.md`; T-L1-F operates on this space at CV-1.5.2)  
+**Plain English:** The shared-pool multi-formation state space, an alternative architecture to I9. A state is u = (u^(1), …, u^(K_field)) with total mass Σ_j m_j = M shared across the K_field slots; per-slot masses m_j are not fixed externally, and K_act is derived from the state via the support threshold.
+
+**Why it matters:** Distinguished from K-field architecture I9 (the canonical Σ^K_M product manifold with fixed individual masses). Under I9' the K_act / K_field decomposition is intrinsic: K_act varies dynamically inside a fixed K_field budget. T-L1-F is stated and proved on the shared-pool space.
+
+---
+
+### σ-rich augmentation
+**Formal:** Working draft `THEORY/working/MF/sigma_rich_augmentation.md` (Path B candidate; CV-1.7 Commitment 18 candidate)  
+**Plain English:** An expansion of the canonical σ-tuple to include cluster centroid, orientation, and Wigner-von Neumann data — beyond the (frequency, irrep, eigenvalue) eigenvalue tuple of Commitment 14. Required by OP-0008 to make σ^A K-jump inheritance deterministic.
+
+**Status:** Path B Cat B target. Not canonical.
+
+---
+
+### σ-tuple (canonical Hessian signature)
+**Formal:** Canonical §11.1 Commitment 14 (W4 04-24, CV-1.5)  
+**Plain English:** The constitutive identity of a single-formation minimizer u*, defined as
+
+`σ(u*) = (F(u*); {(n_k, [ρ_k], λ_k)}_{k=1}^K)`
+
+a frequency × irrep × eigenvalue triple per relevant Hessian eigenmode. F(u*) is the peak count; n_k is the nodal count; [ρ_k] is the irrep label under the formation's stabilizer; λ_k is the eigenvalue.
+
+**Why it matters:** σ is the canonical formation identity per Commitment 14. The multi-formation extension T-Commitment-14-Multi-Static (CV-1.5.1) lifts σ to (σ^A, σ^D) on the shared-pool / K-field interior. OP-0008 asks whether σ^A is a complete dynamic invariant under K-jump.
+
+---
+
 ## Status & Category Concepts
 
 ### Category A (Unconditional)
@@ -181,7 +360,7 @@ draft: false
 **Formal:** D-0020  
 **Plain English:** A theorem proved, but only under stated conditions (e.g., "for generic parameters"). The conditions are assumed to hold, but they need to be checked in practice.
 
-**Example:** T-Persist-K-Sep — true provided formations are well-separated AND per-formation persistence holds individually.
+**Example:** T-σ-Theorem-4 — Cat B in the ε-small regime per the Critic 7-agent verdict at CV-1.5.1 (continuum-vs-discrete grid caveat added 2026-05-04 per NQ-187 audit). Note: T-Persist-K-Sep was previously listed here but was *reclassified Cat C per Erratum 2026-04-07*; T-Bind-Proj and T-Bind-Full are now Cat A per the Phase 13 erratum (W6 G2 audit reconfirmed 2026-05-04), not Cat B.
 
 ---
 
@@ -189,7 +368,7 @@ draft: false
 **Formal:** D-0021  
 **Plain English:** A theorem that holds in a very restricted regime. These are specialty results, not broadly applicable.
 
-**Example:** T-Persist-K-Weak — only applies in the "weakly-interacting regime," which is a narrow parameter range.
+**Examples (Cat C per Erratum 2026-04-07):** T-Persist-K-Sep, T-Persist-K-Weak, T-Persist-K-Unified — the K-field persistence family. T-Persist-K-Weak only applies in the weakly-interacting regime; T-Persist-K-Sep requires the well-separated regime AND per-formation persistence; T-Persist-K-Unified is parametric over the coupling measure but holds only in a restricted regime.
 
 ---
 
@@ -288,11 +467,11 @@ draft: false
 → Critical-3 (F-1, M-1, MO-1) all resolved in W4 (2026-04-24): SPLIT-RESOLVED / LAYER-CLARIFIED / SIDESTEPPED via T-Merge(b) + T-PreObj-1 + σ-framework. Remaining: K-Selection mechanism (OP-0005, partially addressed by σ-framework + CN15 Static/Dynamic Separation), boundary precision (OP-0004), branch selection theory (OP-0006). v2.0 release path now unblocked.
 
 **"Are the theorems right?"**  
-→ 38 are fully proved (Category A); 4 are conditional (Category B); 5 are very conditional (Category C) plus 1 new finding V5b-F (Cat C); 5 retracted (52 claims, 73% fully proved). Single-formation results are solid. Multi-formation persistence regimes are conditional but the foundational F-1/M-1/MO-1 issues are resolved.
+→ 46 Cat A / 5 Cat B / 5 Cat C / 5 Retracted = 61 claims / 75% fully proved (CV-1.5.2, 2026-05-02). Single-formation results are solid. Multi-formation persistence regimes are conditional, the foundational F-1 / M-1 / MO-1 issues are resolved (W4), and the first multi-formation Cat A theorem (T-L1-F Hard-Bar / Active-Count Bridge under the L1-J regime) was promoted at CV-1.5.2.
 
 ---
 
-**Last updated:** 2026-04-26 (W4-extended close)  
+**Last updated:** 2026-05-04 (CV-1.5.2 multi-formation vocabulary sync)  
 **Audience:** Non-specialists, students, reviewers
 
 ---

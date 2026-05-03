@@ -6,7 +6,7 @@ chapter: 100
 section: "SCC Hero · T-V5b-T"
 kind: theorem
 track: perception
-updated: 2026-04-26
+updated: 2026-05-04
 summary: "On translation-invariant graphs (torus T^d, cycle C_n), a sub/super-lattice spectral dichotomy at the F=1/F≥2 transition. 2D: Goldstone doublet with commensurability split; 1D: 1-fold Goldstone; nodal count = 2 universal. W4-extended capstone (8 V5b iterations + NQ-172 reproducibility check)."
 tags: [scc, theorem, hero, w4-extended, goldstone, translation-invariant, symmetry-breaking]
 related: [scc-heroes, scc-hero-t-preobj-1, canonical-spec-scc-5-results-registry]
@@ -14,7 +14,7 @@ related: [scc-heroes, scc-hero-t-preobj-1, canonical-spec-scc-5-results-registry
 
 > **Hero · W4 Capstone group · Cat A.**
 > Source: C-0710 / P-0710. Verification: E-0095 (NQ-170b ζ-scan), E-0096 (NQ-170c graph-class extension + nodal count), E-0097 (NQ-172 reproducibility check after mode-indexing artifact identified+resolved).
-> Canonical version: introduced in **CV-1.4 (W4-extended close, 2026-04-26)**; current canonical is CV-1.5 (W5 Day 1 G0, 2026-04-27).
+> Canonical version: introduced in **CV-1.4 (W4-extended close, 2026-04-26)**; current canonical is **CV-1.5.2 (W5 Day 6, 2026-05-02)**.
 > Full proof: [Canonical Spec — Part 5 · §13 W4-extended addition](/notes/part-0/canonical-spec-scc-5-results-registry/).
 > Narrative: [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/).
 
@@ -30,7 +30,29 @@ Let $G$ be a finite connected graph with full translation symmetry — concretel
 
 **(d) Universal nodal count = 2.** Across all translation-invariant graph classes tested (2D torus periodic, 2D torus free BC partially, 1D cycle), the nodal count of the Goldstone modes is **2 — universally**.
 
-**Crossover scale $\zeta_*(G)$.** The transition scale $\zeta_*$ between sub-lattice and super-lattice regimes is **graph-class dependent** (open NQ-174); for fixed graph it is well-defined.
+**Crossover scale $\zeta_*(G, c)$ — refined at CV-1.5.1.** The transition scale $\zeta_*$ between sub-lattice and super-lattice regimes is **graph-class dependent** and **$c$-dependent**; theoretical derivation as an analytic function of dimensionality and lattice topology remains open (NQ-174). On the 2D torus, the empirical refinement at CV-1.5.1 fits a linear-in-$c$ formula
+
+$$
+\zeta_*(2D \text{ torus}, c) \approx 0.40 + (c - 0.10) \cdot 0.30,\quad c \in [0.10, 0.30],
+$$
+
+so $\zeta_* \approx 0.40$ at $c = 0.10$, $\zeta_* \approx 0.43$ at $c = 0.20$, $\zeta_* \approx 0.46$ at $c = 0.30$ (NQ-174 measurement, supersedes the earlier bracket $[0.2, 0.5]$). On the 1D cycle, $\zeta_*(1D \text{ cycle}) < 0.2$.
+
+**(V5b-T-zero, Cat A definitional, CV-1.5.1.)** On the sub-spinodal interior of the regime, the Goldstone mass is **exact zero** by translation invariance:
+
+$$
+\mu_{\mathrm{Gold}} = 0\quad\text{exactly on the sub-spinodal interior.}
+$$
+
+This sub-statement replaces the **WITHDRAWN V5b-T'** entry (D-5 retraction at CV-1.5.1 per NQ-198f phantom on the torus — V5b-T' had asserted a non-zero gap that was a numerical artifact, not a physical mass). V5b-T-zero is the structurally correct definitional fact: translation-invariance forces an exact-zero Goldstone mode in the interior.
+
+**(V5b-F-empirical, Cat B target, CV-1.5.1.)** On boundary-modified / partially-lifted graphs, the Goldstone mass scales empirically with the boundary measure:
+
+$$
+\mu_{\mathrm{Gold}}^{\mathrm{V5b-F}} \approx C(\beta) \cdot \frac{\|\partial S\|}{n},
+$$
+
+where $\|\partial S\|$ is the boundary measure of the support and $n$ the system size (NQ-198a $1/n$ scaling). Cat B target — a quantitative scaling claim awaiting an analytic derivation of $C(\beta)$.
 
 <Figure
   src="/content-assets/scc-figures/fig11-goldstone-bloch.png"
@@ -39,7 +61,11 @@ Let $G$ be a finite connected graph with full translation symmetry — concretel
   className="mx-auto max-w-full"
 />
 
-## Proof idea (sketch)
+## Status reframing — Cat A empirical, not a closed-form derivation
+
+T-V5b-T is canonically classified as **"Cat A empirical"** (canonical line 1185: "Theoretical derivation of $\zeta_*(G)$ as analytic function of dimensionality and lattice topology: open NQ-174"). The Bloch decomposition / symmetry-counting framework summarized below is therefore best understood as the **empirical-confirmation framework** in which the dichotomy, doublet, 1-fold branch, and nodal count = 2 universality were measured — *not* as a closed-form analytic proof of Cat A status. The Cat A status rests on systematic numerical verification (E-0095 ζ-scan, E-0096 graph-class extension, E-0097 NQ-172 mode-agnostic reproduction) plus the symmetry-counting heuristic that organizes the data; closed-form derivation of $\zeta_*(G)$ is open NQ-174.
+
+## Empirical-confirmation framework (sketch)
 
 **Bloch decomposition.** On a translation-invariant graph $G$, the Laplacian $L$ commutes with translation, so eigenvectors can be labeled by Bloch momenta $k$. The second variation of $\mathcal{E}|_{\Sigma_m}$ at the F=1 / F≥2 transition inherits this structure.
 

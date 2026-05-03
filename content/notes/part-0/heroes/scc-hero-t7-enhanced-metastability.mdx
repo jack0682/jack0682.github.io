@@ -6,7 +6,7 @@ chapter: 100
 section: "SCC Hero · T7-Enhanced"
 kind: theorem
 track: perception
-updated: 2026-04-26
+updated: 2026-05-04
 summary: "At a non-idempotent closure fixed point with operator norm < 1, the closure Hessian contribution is strictly positive definite (n/n positive eigenvalues). For idempotent closure, only n-k of n eigenvalues are positive. The mathematical payoff of SCC's deliberate non-idempotence commitment."
 tags: [scc, theorem, hero, metastability, non-idempotent, hessian]
 related: [scc-heroes, scc-hero-t6-closure-fp, canonical-spec-scc-5-results-registry]
@@ -16,21 +16,21 @@ related: [scc-heroes, scc-hero-t6-closure-fp, canonical-spec-scc-5-results-regis
 > Source: C-0007 / P-0007. Verification: E-0008, E-0009 (residence time, $p = 0.037$).
 > Canonical version: CV-1.0. Full proof: [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/).
 
-## Statement
+## Statement (canonical T7-Enhanced)
 
-Let $\hat u$ be a fixed point of the closure operator $\mathrm{Cl}_t$, and let $J_{\mathrm{Cl}} = \nabla \mathrm{Cl}_t(\hat u)$ be its Jacobian.
+**T7-Enhanced (canonical line 1042).** Non-trivial constrained minimizers of the SCC energy have **strictly larger minimum Hessian eigenvalue** than corresponding Allen-Cahn minimizers, due to the self-referential closure correction. Concretely, the closure term $\lambda_{\mathrm{cl}}\mathcal{E}_{\mathrm{cl}}$ adds a positive-definite Hessian contribution at closure fixed points (Gram matrix $2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$), which raises the minimum eigenvalue of the constrained Hessian beyond the Allen-Cahn baseline.
 
-**Non-idempotent regime.** If $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$ (contraction regime), the closure-energy Hessian contribution at $\hat u$,
+This is a **local curvature** result; the gap between minimum Hessian eigenvalue and actual energy barrier height (saddle energy minus minimizer energy) requires Morse-theoretic analysis that has not been carried out at the multi-formation level (open).
 
-$$
-H_{\mathrm{cl}} = 2\,(I - J_{\mathrm{Cl}})^T (I - J_{\mathrm{Cl}}),
-$$
+### Distinction from T3/T6-Stability — eigenvalue COUNT vs eigenvalue MAGNITUDE
 
-is **strictly positive definite** with $n$ positive eigenvalues out of $n$.
+T7-Enhanced is often confused with **T3/T6-Stability** (a separate Cat A theorem). The two address different aspects of the same closure-Hessian:
 
-**Idempotent comparison.** If $\mathrm{Cl}_t$ were idempotent ($\mathrm{Cl}_t^2 = \mathrm{Cl}_t$), $J_{\mathrm{Cl}}$ would be a projection of rank $k < n$, making $H_{\mathrm{cl}}$ semi-definite with at most $n - k$ positive eigenvalues.
+- **T3/T6-Stability — eigenvalue count.** At a non-idempotent closure fixed point with $\|J_{\mathrm{Cl}}\|_{\mathrm{op}} < 1$, the closure Hessian $H_{\mathrm{cl}} = 2(I - J_{\mathrm{Cl}})^T(I - J_{\mathrm{Cl}})$ is strictly positive definite with **$n$ of $n$** positive eigenvalues. For idempotent closure, $J_{\mathrm{Cl}}$ is a projection of rank $k < n$, so $H_{\mathrm{cl}}$ is semi-definite with at most **$(n-k)/n$** positive eigenvalues. This is a *count* statement (no flat directions in the non-idempotent case).
 
-Therefore: non-idempotent closure has **strictly more** positive Hessian directions than any idempotent alternative.
+- **T7-Enhanced — eigenvalue magnitude.** Among non-trivial constrained minimizers, the **minimum** Hessian eigenvalue is strictly larger under SCC than under Allen-Cahn — the closure correction not only removes flat directions (T3/T6) but also raises the smallest curvature among all directions. This is a *magnitude* statement (deeper basin).
+
+The two are complementary: T3/T6 gives the count, T7-Enhanced gives the magnitude floor.
 
 ## Proof idea
 
@@ -51,9 +51,9 @@ Gram matrix structure. Write $A = I - J_{\mathrm{Cl}}$. Then $H_{\mathrm{cl}} = 
 
 T7-Enhanced is the **mathematical payoff** of SCC's signature commitment to non-idempotent closure. The theory deliberately avoids the classical topological closure axiom $\mathrm{Cl}^2 = \mathrm{Cl}$, framing closure as a *stabilization tendency* (A3) rather than a completed operation. This commitment is philosophical (closure is dynamic, not static; trajectory carries information) — but T7-Enhanced shows it is also *strictly stronger mathematically*.
 
-Concretely: at a closure fixed point, the energy landscape's Hessian receives a **strictly positive-definite** contribution from the closure term, which deepens the basin and raises the barrier to escape. Non-idempotent closure formations have *enhanced metastability* compared to any idempotent alternative — they are more stable, with longer residence times.
+Concretely: at a closure fixed point, the energy landscape's Hessian receives a **strictly positive-definite** contribution from the closure term, which deepens the basin (T7-Enhanced raises the *minimum* eigenvalue) and removes flat directions (T3/T6 secures the *count*). Together they give SCC formations a curvature floor strictly above the Allen-Cahn baseline.
 
-The empirical signature in E-0008 / E-0009 (residence time exceeds the prediction from Hessian alone, $p = 0.037$) confirms that non-idempotent fixed points sit at locally curved minima with strictly fewer flat directions than idempotent counterparts.
+**Corroborating empirical evidence (not part of the theorem statement).** Residence-time measurements in E-0008 / E-0009 ($p = 0.037$) exceed the prediction from Hessian curvature alone, consistent with the picture that non-idempotent fixed points sit at locally curved minima with strictly fewer flat directions than idempotent counterparts. The residence-time framing is *empirical corroboration* of the variational statement, not a re-statement of T7-Enhanced — the theorem itself is purely about the local Hessian eigenvalue floor.
 
 **Caveat (Hessian vs barrier).** T7-Enhanced is a *local curvature* result. The gap between minimum Hessian eigenvalue and actual energy barrier height (saddle energy minus minimizer energy) requires Morse-theoretic analysis that has not been carried out at the multi-formation level — see open problems on multi-formation σ-framework Phase 5. The single-formation case is uncontroversial.
 

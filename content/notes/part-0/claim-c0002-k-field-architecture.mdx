@@ -6,8 +6,8 @@ chapter: 4
 section: "Claim C-0002"
 kind: proof
 track: perception
-updated: 2026-04-26
-summary: "The claim that the K-field architecture provides structural multi-formation realisation. Reframed post-W4 (2026-04-24): no longer the sole mechanism — T-PreObj-1 (i) provides single-field F≥2 default attractor under full SCC. Confidence 65% → 80%."
+updated: 2026-05-04
+summary: "The claim that the K-field architecture provides structural multi-formation realisation. Reframed post-W4 (2026-04-24): no longer the sole mechanism — T-PreObj-1 (i) provides single-field F≥2 default attractor under full SCC. Further superseded by Commitment 16 (CV-1.5.1, 2026-04-29): the original 'necessity' framing is replaced by a two-tier K-status decomposition where K_field is the architectural cap (modeling-layer commitment, set externally at instantiation) and K_act is the dynamic stratum index (kinetically determined per CN6 refined). Direct OAT-1 outcome resolves OP-0009-K. Confidence 65% → 80%."
 tags: [scc, claim, k-field, architecture, necessity]
 related: [canonical-spec-scc]
 ---
@@ -28,7 +28,14 @@ related: [canonical-spec-scc]
 
 ## Statement
 
-To realize $K>1$ (multiple simultaneous formations) with independent control over each formation's dynamics, a K-field architecture is necessary: K coupled soft cohesion fields with inter-formation repulsion and spatial localization constraints.
+**Reframed per Commitment 16 (CV-1.5.1, 2026-04-29).** The K-field architecture is no longer cast as a "necessity" claim. Instead, K-status is formalized as a **two-tier decomposition**:
+
+- **K_field** — the **architectural cap**: a modeling-layer commitment set externally at instantiation. K_field bounds the number of available cohesion fields the architecture exposes; it is a configuration choice, not a dynamical quantity.
+- **K_act** — the **dynamic stratum index**: kinetically determined per CN6 (refined). K_act is how many fields are *actually* active under the current dynamics on the given graph at the given parameters; it can take any value in $\{0, 1, \dots, K_{\mathrm{field}}\}$ and is not fixed at instantiation.
+
+Under this two-tier reading, the original "K-field architecture is necessary for $K>1$" formulation is **superseded**: K_field is one of two complementary structural commitments (alongside the shared-pool architecture I9' alternative — see below); K_act is the kinetic content that the original claim was implicitly conflating with the architectural commitment.
+
+**Note (T-L1-F, CV-1.5.2, 2026-05-02).** **T-L1-F** (Hard-Bar / Active-Count Bridge under L1-J Regime (P0)–(P11)) — the first multi-formation Cat A conditional theorem — operates on the **shared-pool architecture I9' alternative** ($\widetilde\Sigma^{K_{\mathrm{field}}}_M$), not on the K-field I9 architecture. The choice between K-field I9 and shared-pool I9' (OP-0009-A architecture choice) is **PARTIALLY resolved**: both are now canonical alternatives, with active investigation into when each is preferred. The original "necessity" claim should not be read as ruling out shared-pool architectures.
 
 ---
 
@@ -108,12 +115,22 @@ The W4 work (T-PreObj-1 family Cat A) provides a *single-field* mechanism for F�
 
 ## Remaining Open Questions
 
-🟠 **HIGH:** OP-0005 K-Selection mechanism — how K-effective is dynamically determined
-- Partially addressed: σ-framework on $\Sigma_m$ + CN15 Static/Dynamic Separation
+🟠 **HIGH:** **OP-0005 K-Selection mechanism** — how K_act is dynamically determined within the K_field cap
+- Status: **OPEN**, partially addressed via the 4-layer composite (σ-framework on $\Sigma_m$ + CN15 Static/Dynamic Separation + Commitment 16 K_field/K_act decomposition + CN6 refined kinetic stratum)
 - Full mechanism (BIC? free energy? birth-death dynamics? σ-jump?) still open
+- **CV-1.7+ Commitment 19 candidate**
+
+🟠 **HIGH:** **OP-0008 σ^A K-jump non-determinism** — registered CV-1.5.1 (2026-04-29)
+- Status: **OPEN**
+- Concerns the non-determinism of K-jumps in the σ^A multi-formation static formulation
+- **CV-1.7 Commitment 18 candidate**
+
+🟠 **HIGH:** **OP-0009 Multi-Formation Foundations** — registered CV-1.5.1 (2026-04-29), 7 sub-items
+- Status: **OPEN overall; OP-0009-K RESOLVED via Commitment 16** (two-tier K_field/K_act decomposition — direct OAT-1 outcome, the most directly relevant resolution to this claim); 6/7 remaining sub-items **PARTIALLY** resolved
+- OP-0009-A architecture choice (K-field I9 vs shared-pool I9'): PARTIALLY resolved (both canonical alternatives; T-L1-F operates on I9')
 
 🟡 **MEDIUM:** K transitions and birth/death dynamics
-- Current: K is fixed; transitions out of scope
+- Current: K_field is fixed at instantiation; K_act dynamics partially formalized via Commitment 16 + CN6
 - Future: σ-jump formalisation (NQ-148 cluster, W5+)
 
 ---
@@ -127,4 +144,4 @@ The W4 work (T-PreObj-1 family Cat A) provides a *single-field* mechanism for F�
 ---
 
 **Proposed:** 2026-04-10 (PLAN_0403)  
-**Status Update:** 2026-04-26 (W4-extended close — reframed; Critical-3 OPs resolved; confidence 65% → 80%)
+**Status Update:** 2026-04-26 (W4-extended close — reframed; Critical-3 OPs resolved; confidence 65% → 80%); 2026-04-29 (CV-1.5.1 Commitment 16 promotion — OP-0009-K resolved via two-tier K_field/K_act decomposition); 2026-05-02 (CV-1.5.2 T-L1-F shared-pool architectural alternative I9' canonical); 2026-05-04 (W6 audit pass; updated CV/OP refs to current state)

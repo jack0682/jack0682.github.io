@@ -4,20 +4,20 @@ slug: scc-theorem-registry
 part: 0
 kind: registry
 track: perception
-updated: 2026-04-27
-summary: "The authoritative index of all proved SCC theorems — 43 Category A + 4 Category B + 5 Category C + 5 retracted (57 claims, 75% fully proved). Aligned with Perception_theory canonical CV-1.5 (W5 Day 1 G0, 2026-04-27)."
+updated: 2026-05-04
+summary: "46 Category A + 5 Category B + 5 Category C + 5 retracted (61 claims, 75% fully proved). Aligned with Perception_theory canonical CV-1.5.2 (2026-05-02) + 2026-05-04 audit pass merging Open Problems Catalog into theorem_status.md."
 tags: [scc, theorems, registry, reference]
 draft: false
 ---
 
 **Purpose:** Register all claims (C-xxxx), proofs (P-xxxx), and canonical theorems (T-xxxx, CV-x.y). This is the authoritative index of what has been proved.
 
-**Structure:** Rows are organized by canonical version (CV-1.0 → CV-1.5; **current = CV-1.5**) then status (active, resolved, challenged, deprecated).
+**Structure:** Rows are organized by canonical version (CV-1.0 → CV-1.5.2; current = CV-1.5.2).
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
   alt="Directed graph of the 9 SCC hero theorems and their dependencies."
-  caption={<>The 9 SCC hero theorems among the 43 Cat A entries below, organized by foundation, phase + stability, W4 capstone, and W5 Day 1 G0 σ-framework supporting structures. See /notes/scc-heroes/ for the curated index.</>}
+  caption={<>The 9 SCC hero theorems among the 46 Cat A entries below, organized by foundation, phase + stability, W4 capstone, and W5 Day 1 G0 σ-framework supporting structures. See /notes/scc-heroes/ for the curated index.</>}
   className="mx-auto max-w-full"
 />
 
@@ -25,7 +25,53 @@ draft: false
 
 ## Canonical Theorems (Accepted into Canonical Spec)
 
-### Canonical Spec v1.5 (2026-04-27) — Current Version (W5 Day 1 G0: σ-Framework Supporting Structures)
+### Canonical Spec v1.5.2 (2026-05-02) — Current Version (W6: L1-F Hard-Bar / Active-Count Bridge Conditional Cat-A)
+
+**Additions over v1.5.1** (W6, 2026-05-02):
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-L1-F** | Hard-Bar / Active-Count Bridge under L1-J Regime | accepted | A (conditional under L1-J package) | C-0721 | P-0721 | (theoretical via L1-A..L1-L chain; numerical L1-I 439/1920 FEASIBLE_WITH_BUDGET on $T^2_{20}$; L1-H2 stress tests 5/5; L1-J PO-1 decay-to-cut 6/6; L1-K external audit passed) | First multi-formation canonical Cat A theorem. Conditional theorem on finite shared-pool multi-formation states under hypothesis package $(P0)$–$(P11)$: $K_{\mathrm{bar}}^{\ell_{\min}}(U(\mathbf u);G) = K_{\mathrm{act}}^{\varepsilon}(\mathbf u)$ AND labeled bijection $\mathcal{A}_{\mathrm{bar}}: A^{\varepsilon} \to \mathrm{Bars}_0^{\mathrm{term}}(U;G)$ via primary representative $q_j^U = \arg\max_{x \in N_j^r}^{\prec} U(x)$. L1-A through L1-L 13-step working chain + L1-K external audit + L1-K-REPAIR (R-1, R-2, R-3, R-4 proof-hygiene repairs). **Explicit non-claims:** does NOT solve OP-0005 (K-Selection) or OP-0008 ($\sigma^A$ K-jump non-determinism); does NOT establish $K_{\mathrm{soft}}^\phi = K_{\mathrm{act}}$; reservoir theory not promoted to canonical; P7 not generally derived from all SCC states. |
+
+**v1.5.1 → v1.5.2 release notes (2026-05-02):**
+- Added: 1 Cat A conditional (T-L1-F) synthesizing the L1-A..L1-L chain.
+- Counts: 45A → **46A**, 60 → **61 claims**, 75% → **75% fully proved** (unchanged %).
+- T-L1-F is the first multi-formation canonical Cat A theorem.
+
+### Canonical Spec v1.5.1 (2026-04-29) — Previous Version (W5 Day 3 EOD: D-6a Multi-Static + Ontological Depth + Critic 보강)
+
+**Additions over v1.5** (W5 Day 3 EOD, 2026-04-29):
+
+| T-ID | Name | Status | Category | Source | Proof | Experiments | Notes |
+|------|------|--------|----------|--------|-------|-------------|-------|
+| **T-Commitment-14-Multi-Static** | Multi-Formation σ-Signature on K-field (Static) | accepted | A definitional | C-0717 | P-0717 | (theoretical extension of Commitment 14) | Defined on $\widetilde{\Sigma}^{K_{\mathrm{field}},\circ}_M$ interior (Option A pragmatic; corners deferred to NQ-248 W7+). $\sigma_{\mathrm{multi}} = (\sigma^A, \sigma^D)$ joint invariant under wreath-product $\mathrm{Aut}(G) \wr S_{K_{\mathrm{act}}}$. From D-6a Multi-Static. |
+| **T-σ-multi-A-Static** | Within-Formation σ-Tuple Multi-Set Invariance | accepted | A (well-separated regime) | C-0718 | P-0718 | (theoretical via Coupling Bound Lemma + T-σ-Lemma-1) | Multi-set $\{\sigma_j\}_{j=1}^{K_{\mathrm{act}}}$ under $S_{K_{\mathrm{act}}}$ permutation; reduces to Commitment 14 σ at $K_{\mathrm{act}} = 1$. From D-6a Multi-Static. |
+| **T-σ-multi-D-Static** | Between-Formation Cohomology Pull-Back | accepted | A definitional | C-0719 | P-0719 | (wreath-product representation theory, Specht 1935 + James-Kerber 1981) | Conjugacy-class label in $H^1(\mathrm{Aut}(G) \wr S_{K_{\mathrm{act}}}; \mathrm{Stab}(\mathbf{u}^*))$. From D-6a Multi-Static. |
+| **T-σ-Multi-1** | Multi-Formation Goldstone-Pair Instability (Phase 4 Static) | tentative | B target | C-0720 | (sketch) | (Phase 4 D-6a numerical, Phase 6 Q1 box-clipping) | Goldstone-pair separation $\Delta\lambda \approx O(\lambda_{\mathrm{rep}} e^{-c_0 D_{\mathrm{sep}}})$ under V5b-T per-formation regime. Cat A pending NQ-242 numerical anchor. |
+
+**Sub-statement additions to T-V5b-T:**
+
+| Sub-ID | Name | Status | Category | Notes |
+|--------|------|--------|----------|-------|
+| **(V5b-T-zero)** | Sub-Spinodal Translation-Invariant Regime | accepted | A definitional (sub-statement) | $\mu_{\mathrm{Gold}}^{\mathrm{V5b-T-zero}} = 0$ exactly (discrete translation orbit on $\mathbb{Z}_L^d$). **Replaces V5b-T' WITHDRAWN** (NQ-198f phantom on torus). Empirical anchor NQ-198f $T^2_{20}/T^2_{28}$ $|\mu| \le 0.028$ within FD numerical noise. |
+| **(V5b-F-empirical)** | V5b-F Goldstone Mass Scaling | accepted | B target (sub-statement) | $\mu_{\mathrm{Gold}}^{\mathrm{V5b-F}} \approx C(\beta) \cdot \|\partial S\|/n$, $C(\beta=4, \xi_0=0.5) \approx 13.2 \pm 0.4$ (NQ-198a 6 corner-sat, SNR 35). Refutes Phase 3 heuristic + Day 3 §4 derivation. |
+
+**Status changes to existing entries:**
+
+| C-ID | Name | Old Status | New Status | Reason |
+|------|------|-----------|-----------|--------|
+| **C-0716** | T-σ-Theorem-4 σ at First Pitchfork | Cat A in $\epsilon$-small regime | **Cat B in $\epsilon$-small regime** | Retroactive Critic 7-agent verdict 2026-04-29: Errata Round 1 caught Morse-index inconsistency at original merge time. Cat A re-promotion deferred to CV-1.7+. |
+
+**v1.5 → v1.5.1 release notes (2026-04-29):**
+- Added (4 new C-IDs): 3 Cat A definitional (Multi-Static + multi-A-Static + multi-D-Static) + 1 Cat B target (Multi-1).
+- Added (sub-statements within T-V5b-T entry): V5b-T-zero (Cat A def, replaces V5b-T' WITHDRAWN) + V5b-F-empirical (Cat B target, μ_Gold ≈ C(β)·‖∂S‖/n NQ-198a).
+- Status revision: T-σ-Theorem-4 retroactive Cat A → Cat B per Critic 7-agent verdict + Errata Round 1 Morse-index inconsistency.
+- Withdrawn: D-5 V5b-T' new entry candidate (NQ-198f phantom finding).
+- Counts: 43A → **45A** (net +2: +3 D-6a Cat A − 1 Theorem-4 격하), 4B → **5B** (+1 Theorem-4 + 1 Multi-1), 57 → **60 claims**, 75% → **75% fully proved**.
+- Commitment 16 K_field/K_act two-tier decomposition added (resolves OP-0009-K).
+- Open problems: OP-0008 σ^A K-jump non-determinism + OP-0009 Multi-Formation Ontological Foundations registered HIGH; OP-0003 MO-1 re-activation rider added.
+
+### Canonical Spec v1.5 (2026-04-27) — Previous Version (W5 Day 1 G0: σ-Framework Supporting Structures)
 
 **Additions over v1.4** (W5 Day 1 G0, 2026-04-27):
 
@@ -35,7 +81,7 @@ draft: false
 | **T-σ-Lemma-2** | σ-Framework Nodal Count Properties | accepted | A (i,ii,iii,iv) + C (v,vi conditional) | C-0713 | P-0713 | NQ-141 (W4-04-25, R23 32×32 numerical) | Graph-intrinsic + Aut(G)-equivariance + lower bound $\mathcal{N} \geq 2$ + sign-flip Cat A; Courant upper bound + $G_u$-orbit divisibility Cat C riders |
 | **T-σ-Lemma-3** | Goldstone–ℓ=1 Angular Saturation | accepted | A (continuum, dimension-general) | C-0714 | P-0714 | NQ-170c (2D torus L=20 ζ=0.5 overlap 0.97) | IBP identity $\mathcal{P}_{\ell=1}[\delta u_x] = (-c_d \int u^*(r)\,dr,\ 0)$ with $c_1=2,\,c_2=\pi,\,c_3=4\pi$; Goldstone basis automatically ℓ=1; nodal count = 2 universal (anchors T-V5b-T-(e)) |
 | **T-σ-Theorem-3** | σ at Uniform on $D_4$ Free-BC Grid (Closed Form) | accepted | A | C-0715 | P-0715 | exp_hessian_uniform_v2 (NQ-141, $L = 4$ to $32$, $< 10^{-9}$ precision) | $\mu_k = 4\alpha\lambda_k^{\mathrm{Lap}} + \beta W''(c)$; full $D_4$ irrep table on cosine basis; $\mathcal{N}(\phi_{(p,q)}) = (p+1)(q+1)$ |
-| **T-σ-Theorem-4** | σ at First Pitchfork on $D_4$ Free-BC Grid (Leading Order) | accepted | A in $\epsilon$-small regime | C-0716 | P-0716 | (theoretical via T-Birth-Parametric + R22 axis-aligned) | $D_4 \to \mathbb{Z}_2$ symmetry breaking; Mode 0 trivial irrep / Mode 1 sign irrep split; $K_0 = K_1$ leading-order degeneracy ($A_2/A_1 = 4$); $\mathcal{F}$ tie-break NQ-184 |
+| **T-σ-Theorem-4** | σ at First Pitchfork on $D_4$ Free-BC Grid (Leading Order, **continuum-limit claim**) | accepted | B (was A → B retroactive at CV-1.5.1, 2026-04-29) | C-0716 | P-0716 | (theoretical via T-Birth-Parametric + R22 axis-aligned, continuum-limit; numerical NQ-187 on discrete grid) | σ at First Pitchfork on $D_4$ Free-BC Grid (Leading Order, **continuum-limit claim**). Cat A → Cat B retroactive at CV-1.5.1 per Critic 7-agent verdict + Errata Round 1. **Continuum vs discrete grid caveat (W6 NQ-187 audit 2026-05-04):** canonical statement (ii) is a continuum-limit prediction (R22 §3.3 unit-square Lebesgue integral) NOT realized on finite discrete $L \le 16$ grids. NQ-187 measured $\mu_0/\epsilon \approx 1$, $\mu_1/\epsilon \approx 2$, ratio $\mu_1/\mu_0 \approx 2$ (not $1$ degeneracy), exponent $p \approx 1.03$ (not $p = 2$ predicted). Three reconciliation hypotheses (α continuum extrapolation, β R22 re-derivation, γ $\Sigma_m$-Hessian convention) under audit. Cat A re-promotion deferred to CV-1.7+. |
 
 **v1.4 → v1.5 release notes (2026-04-27):**
 - Added: 5 Cat A theorems (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4) — σ-framework supporting structures grounding Commitment 14.
@@ -98,8 +144,8 @@ draft: false
 | **QM-2** | QM-2 (Spectral Gap) | accepted | A | C-0111 | P-0111 | E-0041 | Spectral gap related to phase transition |
 | **QM-3** | QM-3 (Perturbation) | accepted | A | C-0112 | P-0112 | E-0042 | Perturbations stay confined |
 | **QM-4** | QM-4 (Commutation) | accepted | A | C-0113 | P-0113 | E-0043 | Operator commutation holds generically |
-| **T-Bind-Proj** | Bind Projection (for τ=1/2) | accepted | B | C-0200 | P-0200 | E-0050:E-0052 | Bind projects onto lower Σ_m layers (condition: τ=1/2) |
-| **T-Bind-Full** | Bind Projection (General τ) | accepted | C | C-0201 | P-0201 | E-0053 | Very conditional; full τ dependence unclear |
+| **T-Bind-Proj** | Tangential Residual Bound at Constrained Minimizers | accepted | A (for all τ_cl ∈ (0,1)) | C-0200 | P-0200 | E-0050:E-0052 | Tangential Residual Bound at Constrained Minimizers; KKT projection + Banach inversion of restricted operator with $\sigma_{\min} \ge 1 - a_{\mathrm{cl}}/4$; general τ via binary mass-balance formula $\Phi(\tau; a_{\mathrm{cl}}, c)$. Phase 13 upgrade applied 2026-04-07 (Erratum). Reconfirmed W6 G2 audit 2026-05-04. |
+| **T-Bind-Full** | Bind Lower Bound at Constrained Minimizers | accepted | A | C-0201 | P-0201 | E-0053 | Bind Lower Bound at Constrained Minimizers; $\mathsf{Bind}(\hat u) \ge 1 - f(\text{params})$, $n$-independent for $O(1)$ params. Follows from T-Bind-Proj + universal gradient bounds. Phase 13 upgrade applied 2026-04-07 (Erratum). |
 | **Predicate-Energy Bridge** | Energy ↔ Diagnostic Alignment | accepted | A | C-0300 | P-0300 | E-0060:E-0063 | Energy minimization ↔ diagonal optimization (upgraded 04-03) |
 | **Deep Core Dom. 2b** | Deep Core Dominance | accepted | A | C-0301 | P-0301 | E-0064, E-0065 | Core is always dominant in asymmetric regime (upgraded 04-03) |
 | **T-Persist-1(a)** | Transport Persistence (base) | accepted | C | C-0400 | P-0400 | E-0070 | Conditional: assumes generic parameters |
@@ -107,9 +153,9 @@ draft: false
 | **T-Persist-1(d)** | Transport Persistence (fixed stratum) | accepted | C | C-0402 | P-0402 | E-0073 | Conditional: on fixed active stratum |
 | **T-Persist-1(e)** | Transport Persistence (confinement) | accepted | A | C-0403 | P-0403 | E-0074 | Tight confinement bound (upgraded 04-03) |
 | **T-Persist-Full** | Transport Persistence (full composition) | accepted | C | C-0404 | P-0404 | E-0075 | Conditional on multiple regime conditions |
-| **T-Persist-K-Sep** | K-field Persistence (well-separated) | accepted | B | C-0500 | P-0500 | E-0076, E-0077 | Conditional: on well-separated regime + per-formation persist |
+| **T-Persist-K-Sep** | K-field Persistence (well-separated) | accepted | C | C-0500 | P-0500 | E-0076, E-0077 | Conditional: on well-separated regime + per-formation persist. Category C per canonical Erratum 2026-04-07 (regime-conditional WS/SR). |
 | **T-Persist-K-Weak** | K-field Persistence (weak coupling) | accepted | C | C-0501 | P-0501 | E-0078 | Conditional: on weakly-interacting regime |
-| **T-Persist-K-Unified** | K-field Persistence (parametric) | accepted | B | C-0502 | P-0502 | E-0046, E-0047 | Parametric family (Sep/Weak/Strong); 100% validation (new v1.2) |
+| **T-Persist-K-Unified** | K-field Persistence (parametric) | accepted | C | C-0502 | P-0502 | E-0046, E-0047 | Parametric family (Sep/Weak/Strong); 100% validation (new v1.2). Category C per canonical Erratum 2026-04-07 (selected-branch + 5 structural hypotheses). |
 
 ---
 
@@ -181,33 +227,43 @@ draft: false
   className="mx-auto max-w-full"
 />
 
-## Open Problems (OP-xxxx) — Updated 2026-04-25 (W4 close)
+## Open Problems (OP-xxxx) — Updated 2026-05-04 (post-W6 G2 audit; full set unified into theorem_status.md)
 
-| OP-ID | Problem | Severity | Status | Blocker For |
-|-------|---------|----------|--------|-------------|
-| **OP-0001** | F-1: K=2 vacuous | 🔴 ~~CRITICAL~~ → ✅ | **SPLIT-RESOLVED (2026-04-24)** | (no longer blocking) |
-| **OP-0002** | M-1: K=1 preferred | 🔴 ~~CRITICAL~~ → ✅ | **LAYER-CLARIFIED (2026-04-24)** — proved theorem misframed | (no longer blocking) |
-| **OP-0003** | MO-1: Morse fails | 🟠 ~~HIGH~~ → ⚪ | **SIDESTEPPED (2026-04-24)** for single-formation σ scope | Multi-formation σ Phase 5 (re-engages) |
-| **OP-0004** | Boundary definition precision | 🟡 MEDIUM | tentative (D-0004) | Morphology formalization |
-| **OP-0005** | Transport kernel exact form / K-Selection mechanism | 🟠 HIGH | partially addressed via σ-framework + CN15 | Full mechanism still open |
-| **OP-0006** | Type A/B characterization | 🟠 HIGH | challenged (exp65) | Branch selection theory |
-| **OP-0007** | Dynamic topology | 🟢 LOW | seed | Future multi-scale extension |
+| OP-ID | Problem | Severity | Status |
+|-------|---------|----------|--------|
+| **OP-0001** | F-1: K=2 vacuous | (was Critical) Resolved | SPLIT-RESOLVED (2026-04-24) via T-PreObj-1 (i) + T-Merge (b) |
+| **OP-0002** | M-1: K=1 preferred | (was Critical) Resolved | LAYER-CLARIFIED (2026-04-24) — proved theorem misframed |
+| **OP-0003** | MO-1: Morse fails | (was High) Sidestepped | SIDESTEPPED (2026-04-24) for single-formation σ scope; re-activation rider on D-6b approval or NQ-248 multi-formation Morse work (added CV-1.5.1, 2026-04-29) |
+| **OP-0004** | Type A/B Classification Invalidation | High | RETRACTED (empirically invalidated; exp65 0/4 Type B observed) |
+| **OP-0005** | K Selection Mechanism (Missing) | High | OPEN; partial via 4-layer composite (free-energy / Kramers / numerical anchor / Commitment 16); CV-1.7+ Commitment 19 candidate |
+| **OP-0006** | Boundary Definition Precision | High | TENTATIVE (D-0013 in development) |
+| **OP-0008** | σ^A K-jump Inheritance Non-Determinism | High | OPEN (CV-1.5.1, W5 Day 4); Path B σ-rich + Φ-rich Cat B target; CV-1.7 Commitment 18 candidate |
+| **OP-0009** | Multi-Formation Ontological Foundations | High | OPEN (CV-1.5.1, W5 Day 4; 7 sub-items); 1/7 RESOLVED via Commitment 16 (OP-0009-K), 6/7 PARTIALLY |
+| **OP-0010** | Bind Generalization | Medium | OPEN (T-Bind-Proj/Full now Cat A per Phase 13 — see W6 G2 audit; OP-0010 retains for any further generalization questions) |
+| **OP-0011** | Transport kernel exact form | Medium | TENTATIVE |
+| **OP-0012** | Persistence composition | Medium | OPEN |
+| **OP-0013** | Closure operator convergence rate | Medium | OPEN |
+| **OP-0020** | Dynamic Topology (Out of Scope) | Low | seed (formerly listed as OP-0007 in this file pre-2026-05-04 unification) |
+| **OP-0021** | Stochastic Dynamics | Low | UNDER INVESTIGATION (exp54–exp59 Kramers rate theory) |
+| **OP-0022** | Continuous-Time Limit | Low | seed |
 
-**W4 changes (2026-04-25):** Critical blockers 3 → **0**. F-1/M-1/MO-1 all resolved/clarified/sidestepped via Theorem 2 family + T-Merge(b) + σ-framework single-formation scope.
+**W4 changes (2026-04-25):** Critical blockers 3 → **0**. F-1/M-1/MO-1 all resolved/clarified/sidestepped via T-PreObj-1 family + T-Merge(b) + σ-framework single-formation scope.
+
+**W5 changes (2026-04-29 CV-1.5.1 + 2026-04-30 W5 Day 4):** OP-0008 σ^A K-jump non-determinism + OP-0009 Multi-Formation Ontological Foundations registered High. OP-0009-K resolved via Commitment 16. OP-0003 MO-1 re-activation rider added.
 
 ---
 
-## Proof Status Summary (Updated 2026-04-26, post-W4-extended close)
+## Proof Status Summary (Updated 2026-05-04 (W6 G2 audit + NQ-187 caveat))
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| **Category A (Fully Proved)** | **38** (was 37 post-v1.3, 35 pre-W4) | T-1, T-20, QM-1:4, C-Axioms, Predicate-Energy Bridge, T-PreObj-1, T-PreObj-1G, Lemma 4 (W4), **T-V5b-T (W4 extended)**, etc. |
-| **Category B (Conditional)** | 4 | T-Bind-Proj (τ=1/2), T-Persist-K-Sep, T-Persist-K-Unified |
-| **Category C (Very Conditional)** | 5 + 1 (new finding) | T-Bind-Full (general τ), T-Persist-1(a/d), T-Persist-Full, T-Persist-K-Weak; **V5b-F (new finding 2026-04-26, NQ-173 carry)** |
+| **Category A (Fully Proved)** | **46** (was 45 post-CV-1.5.1, 43 post-v1.5, 38 post-v1.4, 37 post-v1.3, 35 pre-W4) | T-1, T-20, QM-1:4, C-Axioms, Predicate-Energy Bridge, T-PreObj-1, T-PreObj-1G, Lemma 4 (W4), T-V5b-T (W4 extended), T-σ-Lemma-1/2/3, T-σ-Theorem-3 (W5 Day 1 G0); T-Commitment-14-Multi-Static, T-σ-multi-A-Static, T-σ-multi-D-Static (CV-1.5.1 D-6a Multi-Static); **T-L1-F (CV-1.5.2 first multi-formation Cat A)**, etc. |
+| **Category B (Conditional)** | 5 | 4 hard (γ_eff, T-Birth-Parametric General, T-d_min-Formula, T-Beyond-Weyl) + T-σ-Theorem-4 retroactive (Cat A → Cat B at CV-1.5.1, NQ-187 finding + Critic 7-agent verdict) + T-σ-Multi-1 target (Goldstone-pair instability under V5b-T per-formation regime) |
+| **Category C (Very Conditional)** | 5 + 1 (V5b-F) + 2 (T-σ-Lemma-2 sub-statement riders v Courant + vi G_u-orbit divisibility) | T-Persist-1(a/d), T-Persist-Full, T-Persist-K-Sep (per canonical Erratum 2026-04-07), T-Persist-K-Weak, T-Persist-K-Unified (per canonical Erratum 2026-04-07); V5b-F (new finding 2026-04-26, NQ-173 carry); T-σ-Lemma-2 (v) Courant upper bound + (vi) $G_u$-orbit divisibility (W5 Day 1 sub-statements bundled in single Cat A parent entry) |
 | **Resolved/Clarified/Sidestepped (W4)** | 3 | C-0550 (F-1 split-resolved), C-0551 (M-1 layer-clarified), C-0552 (MO-1 sidestepped) |
 | **Challenged** | 1 | C-0553 (Type A/B) |
 | **Retracted** | 5 | K-Saddle Conjecture, r̄₀ general τ, T-Merge (c)(d)(e) |
-| **Open (active)** | 4 (was 7) | OP-0004, OP-0005, OP-0006, OP-0007 (Critical 3건은 W4에서 해소) |
+| **Open (active)** | High: 4 (OP-0005, OP-0006, OP-0008, OP-0009) + Medium: 4 (OP-0010..OP-0013) + Low: 3 (OP-0020..OP-0022) | OP-0005 K-Selection partial via 4-layer composite (CV-1.7+ candidate); OP-0008 σ^A K-jump (CV-1.7 Commitment 18 candidate); OP-0009 7 sub-items (1/7 RESOLVED via Commitment 16, 6/7 PARTIALLY) |
 
 ---
 
@@ -239,10 +295,17 @@ draft: false
 
 ---
 
-**Last updated:** 2026-04-26 (W4-extended close + V5b-T canonical merge)  
-**Total canonical theorems:** 47 = **38 Cat A** + 4 Cat B + 5 Cat C — 5 retracted (52 claims, 73% fully proved)  
-**Open problems:** 4 active (was 7) — Critical 3건 (F-1, M-1, MO-1) 모두 해소  
+**Last updated:** 2026-05-04 (audit pass; Open Problems Catalog merged into theorem_status.md per canonical-side reorganization)  
+**Total canonical theorems:** 56 = 46 Cat A + 5 Cat B + 5 Cat C — 5 retracted (61 claims, 75% fully proved)  
+**Open problems:** see Open Problems table above (4 High + 4 Medium + 3 Low active; 3 Critical resolved in W4; 1 retracted)  
 **Recent W4 additions (2026-04-25):** T-PreObj-1, T-PreObj-1G, Lemma 4 (Pre-Objective Mechanism graph-class independent)  
 **W4 extended addition (2026-04-26):** T-V5b-T (Pre-Objective Goldstone on Translation-Invariant Graphs)  
-**Pending W5+ (T2/T3 carry):** NQ-173 (V5b-F partial Goldstone), NQ-174 (ζ_*(graph)), NQ-175 (3D extension), σ supporting lemmas  
+**W5 Day 1 G0 addition (CV-1.5, 2026-04-27):** T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4 σ-framework supporting structures  
+**CV-1.5.1 addition (2026-04-29):** T-Commitment-14-Multi-Static, T-σ-multi-A-Static, T-σ-multi-D-Static (Cat A def D-6a Multi-Static); T-σ-Multi-1 (Cat B target); V5b-T-zero (Cat A def sub-statement) + V5b-F-empirical (Cat B target sub-statement); T-σ-Theorem-4 retroactive Cat A → Cat B; Commitment 16 K_field/K_act two-tier decomposition  
+**CV-1.5.2 addition (2026-05-02 — current):** T-L1-F (Hard-Bar / Active-Count Bridge under L1-J Regime, Cat A conditional, first multi-formation canonical Cat A theorem)  
+**Pending items (current carry-forward, 2026-05-04):** NQ-187 γ/β/α audit for T-σ-Theorem-4 Cat A re-promotion (CV-1.7+); L1-M-AUDIT (W6 G1, R-1/R-2/R-3 closure); OP-0009 sub-items 2-7 PARTIAL → READY upgrades via OAT-2..OAT-7  
 **See also:** [Canonical Spec Part 5 (Results Registry)](/notes/part-0/canonical-spec-scc-5-results-registry/), [Open Problems (Part 4 §12)](/notes/part-0/canonical-spec-scc-4-interpretation/)
+
+---
+
+**Last updated 2026-05-04 (audit pass; Open Problems Catalog merged into theorem_status.md per canonical-side reorganization).**

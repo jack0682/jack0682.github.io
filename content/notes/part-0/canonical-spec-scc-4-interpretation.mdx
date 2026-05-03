@@ -6,13 +6,13 @@ chapter: 0
 section: "Canonical Specification · Part 4"
 kind: essay
 track: perception
-updated: 2026-04-27
-summary: "Sections 10–12 of the SCC canonical specification (CV-1.5): the structural interpretation of the theory, fixed commitments versus open design choices, and the open research problems organized by foundational, bridging, and extension layers. W4 close (2026-04-24) resolved the three Critical open problems (F-1, M-1, MO-1)."
+updated: 2026-05-04
+summary: "Sections 10–12 of the SCC canonical specification (CV-1.5.2): the structural interpretation of the theory, fixed commitments versus open design choices, and the open research problems organized by foundational, bridging, and extension layers. W4 close (2026-04-24) resolved the three Critical open problems (F-1, M-1, MO-1); CV-1.5.1 added MO-1 re-activation rider; CV-1.5.2 added T-L1-F as the first multi-formation canonical Cat A theorem."
 tags: [scc, canonical-spec, interpretation, open-problems, commitments]
 related: [canonical-spec-scc, canonical-spec-scc-3-energy, canonical-spec-scc-5-results-registry]
 ---
 
-> **Part 4 of 5** — Soft Cognitive Cohesion canonical specification, current release **CV-1.5** (2026-04-27).
+> **Part 4 of 5** — Soft Cognitive Cohesion canonical specification, current release **CV-1.5.2** (2026-05-02).
 > See the [index](/notes/part-0/canonical-spec-scc/) for the status note, change log, and links to the other parts.
 
 ---
@@ -74,16 +74,30 @@ The following principles constitute the stable core of the theory and are not su
 
 13. **$b_D = 0$ for the distinction operator.** Energy analyticity (required for T14, Łojasiewicz convergence) takes precedence over the explicit gradient term.
 
-14. **Static/Dynamic Separation (CN15, W4 close).** The static global minimum on pure $\mathcal{E}_{\mathrm{bd}}$ is K=1 (T-Merge (b), isoperimetric ordering); the dynamic protocol-endpoint observables ($\widehat{K}, \mathcal{F}$) on full SCC need not equal the static minimum. F=1 is non-critical under full SCC (T-PreObj-1), so the apparent paradox "K=1 cheaper vs empirical K>1" is dissolved rather than being a problem.
+14. **Orbital character is constitutive, not analogical (W4 added 2026-04-25).** Local minimizers of full $\mathcal{E}$ on $\Sigma_m$ admit a canonical signature
+$$\sigma(u^*) = \big(\mathcal{F}(u^*);\ \{(n_k, [\rho_k], \lambda_k)\}_{k=1}^{K}\big)$$
+where $\mathcal{F}$ is the local-maxima count (threshold-independent), $n_k$ is the $k$-th Hessian eigenvector's nodal-domain count (Courant), $[\rho_k] \in \mathrm{Irr}(\mathrm{Stab}_G(u^*))$ is its irrep label under the residual symmetry group, and $\lambda_k$ is its Hessian eigenvalue. Formation identity is specified by $\sigma$, not by $K_{\mathrm{step}}$ or single-observable $K$. The orbital structure encoded in $\sigma$ is **SCC-intrinsic mathematics** (Hessian spectral data + graph automorphism representation theory), not borrowed atomic analogy — see CN10 (contrastive vs reductive). Empirical anchor (W4 04-25, NQ-141 Cat A): R23 56-minimizer × 324 mode-ℓ pair dataset shows perfect (0-exception) correspondence between σ-irrep $[\rho_k]$ and orbital letter via $\ell \bmod 4 \to D_4$ irrep table. CV-1.5.1 added sub-conventions (O5') multi-irrep eigenspace ordering via Mulliken character order and (O7) tie-breaking via Mulliken character order. The static/dynamic separation principle (formerly listed here as CN15) is preserved as a Commitment Note; see [Part 5 · §14 CN15](/notes/part-0/canonical-spec-scc-5-results-registry/).
 
 <Figure
   src="/content-assets/scc-figures/fig15-static-dynamic-separation.png"
   alt="Two stacked layers — static layer on E_bd with K=1 minimum vs dynamic layer on full SCC with multi-peak attractor — separated by a not-equal symbol."
-  caption={<>CN15 — Static / Dynamic Separation. The static global minimum on pure E_bd (K=1, by T-Merge (b)) and the dynamic protocol-endpoint observables under full SCC (K-hat, F) are quantities of different layers; they need not match. The "F-1 paradox" arose from conflating them.</>}
+  caption={<>CN15 — Static / Dynamic Separation (now a Commitment Note, not a fixed Commitment). The static global minimum on pure E_bd (K=1, by T-Merge (b)) and the dynamic protocol-endpoint observables under full SCC (K-hat, F) are quantities of different layers; they need not match. The "F-1 paradox" arose from conflating them.</>}
   className="mx-auto max-w-full"
 />
 
-15. **σ-framework as canonical Hessian signature.** Single-formation critical points $u^* \in \Sigma_m$ carry the signature $\sigma(u^*) = (\mathcal{F}; \{(n_k, [\rho_k], \lambda_k)\})$ — formation count, irrep type, nodal-count, eigenvalue list. This signature is well-posed on the smooth simplex $\Sigma_m$ (no corners) and supersedes the Morse-on-$\Sigma^K_M$ approach for current scope.
+15. **Pre-objective commitment is mathematical theorem (W4 added 2026-04-25).** The pre-objective character of SCC — that the $\mathcal{F}=1$ single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is non-critical under full $\mathcal{E}$, with $\mathcal{F} \geq 2$ as the default ground state — is **mathematically grounded by T-PreObj-1 + T-PreObj-1G** (Cat A graph-class independent), not merely an ontological declaration. Pre-objectivity is therefore a *proved theorem* on any finite connected graph under (G1)–(G4) hypotheses, not a philosophical commitment subject to revision. The "single formation = single connected disk" reading is empirically refuted under full SCC (R23 90-run enumeration, W4 04-23). The σ-framework as canonical Hessian signature on the smooth simplex $\Sigma_m$ (well-posed, no corners) supersedes the Morse-on-$\Sigma^K_M$ approach for current single-formation scope. *(W4 04-24 Theorem 2-G generalization; see [Part 5 · §13 T-PreObj-1G + corollary](/notes/part-0/canonical-spec-scc-5-results-registry/).)*
+
+16. **K-status: Two-Tier Decomposition (W5+ added 2026-04-29, CV-1.5.1).** K (the integer count of formations) is **NOT a primitive** of the formal universe $\mathfrak{C}^{\mathrm{soft}}$. K decomposes into two distinct quantities operating at different layers:
+
+    (i) **K_field** — the **architectural cap**. An external modeling-layer commitment chosen by the modeler before instantiating the K-field architecture (I9). K_field specifies the maximum number of distinguishable formations the analytical framework will track. Integer-valued by convention. Comparable to the choice of $X_t$ structure (modeling-layer note): K_field is a *modeling-layer commitment*, not an ontological primitive.
+
+    (ii) **K_act(t)** — the **active stratum index**. A derived integer diagnostic computed from the K-field minimizer at time $t$:
+    $$K_{\mathrm{act}}(\mathbf{u}(t)) := \#\{j \in \{1, \ldots, K_{\mathrm{field}}\} : \|u^{(j)}(t)\|_1 > \epsilon\}$$
+    for support threshold $\epsilon$ (default $\epsilon = 0.01 \cdot \bar{m}$, $\bar{m}$ per-formation expected mass). K_act is dynamic: K-jump events are transitions $K_{\mathrm{act}}(t^{*-}) > K_{\mathrm{act}}(t^{*+})$.
+
+    Inequality: $K_{\mathrm{act}}(t) \leq K_{\mathrm{field}}$ at all $t$.
+
+    CN6 ("K is kinetically determined") refers to **K_act**: the active count emerges from gradient-flow dynamics. CN6 does NOT contradict I9: I9's "K-field architecture guarantees K>1 by construction" refers to **K_field** as modeling commitment (architectural cap), not to K_act as dynamic count. K_field can be over-provisioned (set larger than K_act will ever reach). Coarsening dynamics drive K_act → 1 monotonically (T-Merge (b)) under noiseless gradient flow; K-jump events register the transitions. CN10 (contrastive vs reductive) **forbids** the reverse identification: multi-object tracking K-slots and gestalt binding K-groups are downstream comparisons, not ontological inputs. The SCC ontological flow is one-way: $u_t$ (primitive) → ($K_{\mathrm{field}}$ modeling commit, $K_{\mathrm{act}}(t)$ dynamic diagnostic) → cog-sci comparisons. *(CV-1.5.1, 2026-04-29; resolves implicit K-status ambiguity in 4-month working trajectory; see OP-0009 Multi-Formation Ontological Foundations.)*
 
 ### 11.2. Open Design Choices
 
@@ -113,13 +127,26 @@ The distinction between fixed and open is not the distinction between important 
 
 ## 12. Open Problems and Next Formalization Layers
 
-### W4 Resolution Banner (2026-04-24, W4 close)
+### W4 Resolution Banner (2026-04-24, W4 close; CV-1.5.1 / CV-1.5.2 updates folded in)
 
-**The three Critical open problems (F-1, M-1, MO-1) are all resolved as of 2026-04-24.** Critical blocker count: **3 → 0**. v2.0 release path unblocked.
+**The three Critical open problems (F-1, M-1, MO-1) are all resolved as of 2026-04-24.** Critical blocker count: **3 → 0**. v2.0 release path unblocked. *(CV-1.5.1 adds MO-1 re-activation rider; CV-1.5.2 promotes the first multi-formation Cat A theorem T-L1-F under the L1-J regime — see notes below.)*
 
 - **F-1 (K=2 vacuity) — SPLIT-RESOLVED.** Two layers, both Cat A: pure $\mathcal{E}_{\mathrm{bd}}$ portion via **T-Merge (b)** (canonical, isoperimetric ordering — pre-existing Cat A); full SCC portion via **T-PreObj-1 (i)** (W4 Cat A, graph-class independent via T-PreObj-1G). Under full SCC parameters the F=1 single-disk minimizer of pure $\mathcal{E}_{\mathrm{bd}}$ is **not a critical point**, so the dichotomy "K=1 cheaper vs observed K>1" does not arise.
-- **M-1 (K=1 preference) — LAYER-CLARIFIED.** M-1 is the *correct mathematical statement* (T-Merge (b)), not an open problem. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$ (where M-1 holds) with full SCC (where the comparison is not even framed because F=1 is non-critical). The apparent conflict is resolved by **CN15 Static/Dynamic Separation** (§11.1, item 14).
-- **MO-1 (Morse inapplicability) — SIDESTEPPED.** σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Theorem 2 family (Cat A) does not require Morse on $\Sigma^K_M$. Multi-formation extension to $\Sigma^K_M$ (stratified Morse, Phase 5) remains genuine open work for W5+.
+- **M-1 (K=1 preference) — LAYER-CLARIFIED.** M-1 is the *correct mathematical statement* (T-Merge (b)), not an open problem. Original framing conflated pure $\mathcal{E}_{\mathrm{bd}}$ (where M-1 holds) with full SCC (where the comparison is not even framed because F=1 is non-critical). The apparent conflict is resolved by **CN15 Static/Dynamic Separation** (now a Commitment Note; see [Part 5 · §14 CN15](/notes/part-0/canonical-spec-scc-5-results-registry/)).
+- **MO-1 (Morse inapplicability) — SIDESTEPPED, with re-activation rider (CV-1.5.1).** σ-framework operates on the smooth single-formation manifold $\Sigma_m$ (no corners). Theorem 2 family (Cat A) does not require Morse on $\Sigma^K_M$. *(Re-activation rider added W5 Day 4 CV-1.5.1, 2026-04-29: MO-1 re-activates on D-6b approval or NQ-248 multi-formation Morse work. Multi-formation extension to $\Sigma^K_M$ — stratified Morse, Phase 5 — remains genuine open work.)*
+
+### CV-1.5.1 Open Problems registered (2026-04-29, HIGH)
+
+- **OP-0008 — σ^A K-jump non-determinism.** σ-rich + Φ-rich Path B Cat B target for K-jump non-determinism; CV-1.7 Commitment 18 candidate. NOT solved by T-L1-F.
+- **OP-0009 — Multi-Formation Ontological Foundations** (7 sub-items). Sub-item OP-0009-K **resolved via Commitment 16** (K-status two-tier decomposition, [§11.1 item 16](#111-fixed-commitments)); other sub-items are 6/7 PARTIALLY resolved. OP-0009-F (F bridge), OP-0009-λ (λ_rep), OP-0009-Architecture, OP-0009-C_t, OP-0009-Pre-objective, OP-0009-Empirical: PARTIAL → READY upgrades planned via OAT-2..7 short integrations (W6 G7).
+
+### CV-1.5.2 First multi-formation canonical Cat A theorem (2026-05-02)
+
+- **T-L1-F (Hard-Bar / Active-Count Bridge under L1-J Regime).** First multi-formation canonical Cat A theorem. Under the L1-J regime hypothesis package $(P0)$–$(P11)$ on shared-pool $\widetilde\Sigma_M^{K_{\mathrm{field}}}$, the hard-bar count $K_{\mathrm{bar}}^{\ell_{\min}}(U(\mathbf u);G)$ of the aggregate field $U(\mathbf u)=\sum_j u^{(j)}$ equals the active-slot count $K_{\mathrm{act}}^\varepsilon(\mathbf u)$, with a labelled bijection $\mathcal{A}_{\mathrm{bar}}: A^\varepsilon \to \mathrm{Bars}_0^{\mathrm{term}}$. **Bridge** between chart-level active slots and aggregate-field topological bars — does NOT solve OP-0005 (K-Selection) or OP-0008 ($\sigma^A$ K-jump). The L1-J regime is empirically non-vacuous (L1-I 439/1920 = 22.9% feasible on $T^2_{20}$ with raw_gaussian initial states) but production WQ-1 trajectories with mass-projection initial states typically exit the regime, so T-L1-F's reach in production dynamics is narrow. Conditional Cat A status should be read accordingly.
+
+### OP-0010 status update (CV-1.5.2 / W6 G2 audit, 2026-05-04)
+
+- **T-Bind-Proj** is **Cat A for all τ_cl ∈ (0,1)** per Phase 13 Erratum 2026-04-07 + W6 G2 audit reconciliation 2026-05-04. **T-Bind-Full** is **Cat A as a corollary of T-Bind-Proj**. Both entries were physically present in §13 Cat A but had not propagated into `theorem_status.md` until the W6 G2 audit; the headline 46 Cat A count now reflects this.
 
 <Figure
   src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
