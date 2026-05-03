@@ -83,6 +83,7 @@ const journal = defineCollection({
       title: s.string().max(160),
       slug: s.slug("journal"),
       date: s.isodate(),
+      kind: s.enum(["weekly"]).optional(),
       summary: s.string().max(320).optional(),
       tags: s.array(s.string()).default([]),
       track: s

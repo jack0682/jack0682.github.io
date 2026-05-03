@@ -16,16 +16,19 @@ import {
 const published = <T extends { draft?: boolean }>(items: readonly T[]) =>
   items.filter((x) => !x.draft);
 
+const byDateDesc = <T extends { date: string }>(a: T, b: T) =>
+  Date.parse(b.date) - Date.parse(a.date) || b.date.localeCompare(a.date);
+
 export const journalEntries = published(_journal).sort((a, b) =>
-  b.date.localeCompare(a.date),
+  byDateDesc(a, b),
 );
 
 export const papers = published(_papers).sort((a, b) =>
-  b.date.localeCompare(a.date),
+  byDateDesc(a, b),
 );
 
 export const posts = published(_posts).sort((a, b) =>
-  b.date.localeCompare(a.date),
+  byDateDesc(a, b),
 );
 
 export const researchTracks = [..._research].sort(
@@ -70,7 +73,7 @@ export const recentWriting = [
     permalink: p.permalink,
     summary: p.summary,
   })),
-].sort((a, b) => b.date.localeCompare(a.date));
+].sort((a, b) => byDateDesc(a, b));
 
 /* ──────────────────────────────────────────────────────────────
    Cross-reference indexes.
@@ -186,7 +189,17 @@ export function crossRefsFor(slug: string) {
 export const sccHub = (() => {
   const part0 = notesForPart(0);
   const canonical = part0.filter((n) => n.kind === "canonical");
-  const roadmap = part0.filter((n) => n.kind === "roadmap");
+  const roadmapNotes = part0
+    .filter((n) => n.kind === "roadmap")
+    .map((n) => ({ ...n, roadmapKind: "status" as const }));
+  const weeklyRoadmap = journalEntries
+    .filter((e) => e.track === "perception" && e.kind === "weekly")
+    .map((e) => ({ ...e, roadmapKind: "weekly" as const }));
+  const roadmap = [...roadmapNotes, ...weeklyRoadmap].sort((a, b) => {
+    const aDate = a.roadmapKind === "weekly" ? a.date : (a.updated ?? "");
+    const bDate = b.roadmapKind === "weekly" ? b.date : (b.updated ?? "");
+    return bDate.localeCompare(aDate);
+  });
   const overview = part0.filter((n) => n.kind === "overview");
   const theorems = allNotes.filter((n) => n.kind === "theorem");
 

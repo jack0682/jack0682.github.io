@@ -103,7 +103,13 @@ export default function SccHubPage() {
               href={n.permalink}
               title={n.title}
               summary={n.summary}
-              meta={n.updated ? `updated ${formatDate(n.updated)}` : undefined}
+              meta={
+                n.roadmapKind === "weekly"
+                  ? `weekly · ${formatDate(n.date)}`
+                  : n.updated
+                    ? `updated ${formatDate(n.updated)}`
+                    : undefined
+              }
             />
           ))
         )}
@@ -281,4 +287,3 @@ function Placeholder({ text }: { text: string }) {
     </li>
   );
 }
-
