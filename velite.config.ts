@@ -210,7 +210,9 @@ const notes = defineCollection({
 
 /* ── shared MDX plugin stack ──────────────────────────────── */
 const prettyCodeOptions: PrettyCodeOptions = {
-  theme: { light: "github-light", dark: "github-dark-dimmed" },
+  // Cool-toned dark theme (`slack-dark`) pairs with the new cool
+  // dark-mode palette; the warmer `github-dark-dimmed` clashed.
+  theme: { light: "github-light", dark: "slack-dark" },
   keepBackground: false,
   defaultLang: { block: "plaintext", inline: "plaintext" },
 };

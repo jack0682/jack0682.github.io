@@ -13,3 +13,5 @@
 {"t":0,"agent":"ac3038e","agent_type":"designer","event":"agent_stop","success":true,"duration_ms":106829}
 {"t":0,"agent":"ab7a79e","agent_type":"designer","event":"agent_stop","success":true,"duration_ms":85204}
 {"t":0,"agent":"a742bb0","agent_type":"architect","event":"agent_stop","success":true,"duration_ms":104595}
+{"t":0,"agent":"a8b2323","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"a045fff","agent_type":"unknown","event":"agent_stop","success":true}

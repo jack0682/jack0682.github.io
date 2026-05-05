@@ -30,16 +30,27 @@
   color-scheme: light;
 }
 
-/* ── Dark (manual via .dark class) ────────────────────────────── */
+/* ── Dark (manual via .dark class) ─────────────────────────────
+   Cool blue-tinted dark palette. The warm peach accent is kept
+   on purpose — it complements the cool background and preserves
+   brand continuity with light mode. The previous near-black warm
+   palette had two visibility issues this fixes:
+     • `--color-subtle` was 4.7:1 against bg, borderline for small
+       mono labels (dates, eyebrows, footer counts).
+     • `--color-rule` at 1.3:1 made hairlines and dividers nearly
+       invisible. New value lifts to ~1.7:1 — still subtle, no
+       longer ghostly.
+   The cool ink also reduces the warm cast that made figures and
+   KaTeX math read as slightly yellowed in the previous palette. */
 :root.dark {
-  --color-bg: #0e0c0a;
-  --color-surface: #171411;
-  --color-ink: #ede7db;
-  --color-muted: #8a8278;
-  --color-subtle: #5c564d;
-  --color-accent: #e8a07a;
-  --color-accent-soft: #c67a5c;
-  --color-rule: #2a241e;
+  --color-bg: #0d1421;
+  --color-surface: #19233b;
+  --color-ink: #e2e9f5;
+  --color-muted: #98a3bc;
+  --color-subtle: #6b7796;
+  --color-accent: #ee9c75;
+  --color-accent-soft: #d18162;
+  --color-rule: #2a3552;
 
   color-scheme: dark;
 }
