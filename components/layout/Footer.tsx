@@ -22,6 +22,7 @@ const cols = [
       { href: "/papers/", label: "Papers" },
       { href: "/journal/", label: "Journal" },
       { href: "/notes/", label: "Notes" },
+      { href: "/refs/", label: "Reference indexes" },
       { href: "/tags/", label: "Tags" },
       { href: "/bookmarks/", label: "Bookmarks" },
     ],
