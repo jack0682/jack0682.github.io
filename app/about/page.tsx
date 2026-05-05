@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Logo } from "@/components/media/Logo";
+import { IDENTITY_LINKS, EMAIL } from "@/lib/identity";
 
 /** Uniform render height for every affiliation logo. */
 const LOGO_H = 26;
@@ -409,21 +411,25 @@ export default function AboutPage() {
           <dt className="text-[var(--color-muted)]">Email</dt>
           <dd>
             <a
-              href="mailto:jack0682@naver.com"
+              href={`mailto:${EMAIL}`}
               className="font-mono text-[var(--color-ink)] hover:text-[var(--color-accent)]"
             >
-              jack0682@naver.com
+              {EMAIL}
             </a>
           </dd>
-          <dt className="text-[var(--color-muted)]">GitHub</dt>
-          <dd>
-            <a
-              href="https://github.com/jack0682"
-              className="font-mono text-[var(--color-ink)] hover:text-[var(--color-accent)]"
-            >
-              github.com/jack0682
-            </a>
-          </dd>
+          {IDENTITY_LINKS.map((link) => (
+            <Fragment key={link.href}>
+              <dt className="text-[var(--color-muted)]">{link.label}</dt>
+              <dd>
+                <a
+                  href={link.href}
+                  className="font-mono text-[var(--color-ink)] hover:text-[var(--color-accent)]"
+                >
+                  {link.display ?? link.href}
+                </a>
+              </dd>
+            </Fragment>
+          ))}
           <dt className="text-[var(--color-muted)]">Location</dt>
           <dd className="text-[var(--color-ink)]">Seoul, South Korea</dd>
         </dl>

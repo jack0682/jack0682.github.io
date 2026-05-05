@@ -5,10 +5,10 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
 import { CopyBibtexButton } from "@/components/layout/CopyBibtexButton";
 import { TOC } from "@/components/layout/TOC";
+import { DocMeta } from "@/components/layout/DocMeta";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
-import { formatDate } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -112,12 +112,13 @@ export default async function PaperPage({ params }: Props) {
           <p className="mt-6 text-base text-[var(--color-muted)]">
             {paper.authors.join(", ")}
           </p>
-          <time
-            dateTime={paper.date}
-            className="mt-2 block font-mono text-xs text-[var(--color-subtle)]"
-          >
-            {formatDate(paper.date)}
-          </time>
+          <DocMeta
+            published={paper.date}
+            updated={paper.updated}
+            readingTime={paper.metadata.readingTime}
+            wordCount={paper.metadata.wordCount}
+            className="mt-2"
+          />
 
           {(paper.pdf || paper.arxiv || paper.doi) && (
             <div className="mt-8 flex flex-wrap gap-4 text-sm">

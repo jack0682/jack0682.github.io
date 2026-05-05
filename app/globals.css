@@ -44,6 +44,51 @@
   color-scheme: dark;
 }
 
+/* ── Sepia (paper) — long-form reading mode. Triggered by the
+   `sepia` value on next-themes; mapped to `class="sepia"` on
+   <html>. Aged-paper background with deeper sepia ink. */
+:root.sepia {
+  --color-bg: #f4ecd8;
+  --color-surface: #fcf5e2;
+  --color-ink: #3b2f1a;
+  --color-muted: #715b3a;
+  --color-subtle: #a08b66;
+  --color-accent: #8b3a1f;
+  --color-accent-soft: #b46141;
+  --color-rule: #d9c9a3;
+
+  color-scheme: light;
+}
+
+/* ── Per-track accent shifts ──────────────────────────────────
+   Opted into by `data-track="..."` on track index pages and
+   research-track pages. Hue rotation only — keeps the sober
+   monochrome elsewhere. */
+[data-track="perception"] {
+  --color-accent: #8b2a1f;
+}
+[data-track="theory"] {
+  --color-accent: #6f4a1c;
+}
+[data-track="control"] {
+  --color-accent: #2f5b5c;
+}
+[data-track="robotics"] {
+  --color-accent: #2d4263;
+}
+:root.dark [data-track="perception"] {
+  --color-accent: #e88a72;
+}
+:root.dark [data-track="theory"] {
+  --color-accent: #d4ad6c;
+}
+:root.dark [data-track="control"] {
+  --color-accent: #6cbcbe;
+}
+:root.dark [data-track="robotics"] {
+  --color-accent: #95a8d6;
+}
+
 /* ── Tailwind v4 @theme bridge ─ exposes tokens as utilities ─── */
 @theme inline {
   --color-bg: var(--color-bg);
@@ -202,6 +247,26 @@ hr {
 .sci-formula-row .katex {
   font-size: 0.95em;
   color: var(--color-muted);
+}
+
+/* Drop cap on the first paragraph of essay-class prose. The Fraunces
+   variable optical-size is already loaded via the essay font swap;
+   the drop cap leans on its display-size cut for the engraved feel. */
+.prose-essay > p:first-of-type::first-letter {
+  font-family: var(--font-display, "Fraunces"), serif;
+  float: left;
+  font-size: 3.6em;
+  line-height: 0.9;
+  font-weight: 500;
+  padding-right: 0.12em;
+  padding-top: 0.06em;
+  color: var(--color-accent);
+  font-feature-settings: "ss01", "ss02";
+}
+@media (max-width: 640px) {
+  .prose-essay > p:first-of-type::first-letter {
+    font-size: 3em;
+  }
 }
 
 /* Monospaced data values — use inline in prose for metrics etc.
@@ -382,5 +447,137 @@ hr {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── Focus / cinema mode ───────────────────────────────────────
+   Activated by `<FocusToggle />` setting `data-focus="on"` on
+   <html>. Fades out nav, footer, TOC sidebar, route progress, and
+   the focus toggle's neighbour chrome — leaves prose alone.
+   ESC inside `FocusToggle` clears the attribute.
+   ────────────────────────────────────────────────────────────── */
+:root[data-focus="on"] header.liquid-glass--bar,
+:root[data-focus="on"] footer,
+:root[data-focus="on"] aside.fixed,
+:root[data-focus="on"] .xl\:hidden[class*="fixed"],
+:root[data-focus="on"] div[aria-hidden][class*="fixed"][class*="origin-left"] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+:root[data-focus="on"] header.liquid-glass--bar:hover,
+:root[data-focus="on"] aside.fixed:hover {
+  opacity: 1;
+}
+
+/* Prose left-gutter rhythm rule (xl+). A barely-visible hairline
+   that runs alongside long-form prose, picking up its accent only
+   over the active scroll position. Pure decoration; aria-hidden. */
+@media (min-width: 1280px) {
+  body[data-page-kind="essay"] main::before,
+  body[data-page-kind="canonical"] main::before {
+    content: "";
+    position: fixed;
+    left: max(1.5rem, env(safe-area-inset-left));
+    top: 8rem;
+    bottom: 6rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--color-rule) 12%,
+      var(--color-rule) 88%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+}
+
+/* ── Print stylesheet ─────────────────────────────────────────
+   Academic readers regularly print notes / canonical specs to
+   PDF for offline review. Goals:
+     1. Force light tokens regardless of class state.
+     2. Hide all chrome — sticky nav, command palette, progress
+        bars, TOC sidebar, RSS chip, footer.
+     3. Avoid awkward page breaks inside figures / theorems.
+     4. Spell out external link URLs after their anchor text.
+   The selectors here are intentionally conservative — most
+   chrome carries either `liquid-glass--bar`, a `fixed` class,
+   `role="dialog"`, or lives in `<footer>`.
+   ────────────────────────────────────────────────────────────── */
+@media print {
+  :root,
+  :root.dark,
+  :root.sepia {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-ink: #000000;
+    --color-muted: #2b2b2b;
+    --color-subtle: #555555;
+    --color-accent: #5a2a1e;
+    --color-rule: #cccccc;
+    color-scheme: light;
+  }
+
+  /* Hide all sticky / floating chrome. */
+  header.liquid-glass--bar,
+  footer,
+  [role="dialog"][aria-modal="true"],
+  aside.fixed,
+  /* Top progress bars are <motion.div aria-hidden class="fixed top-…"> */
+  div[aria-hidden][class*="fixed"][class*="origin-left"],
+  /* TOC mobile floating button wrapper */
+  .xl\:hidden[class*="fixed"] {
+    display: none !important;
+  }
+
+  /* Lift prose width and any Container constraints. */
+  main {
+    padding: 0 !important;
+  }
+  .prose {
+    max-width: none !important;
+  }
+
+  /* Pagination — keep visual blocks intact. */
+  figure,
+  table,
+  pre,
+  blockquote,
+  aside,
+  section.theorem,
+  section.proof {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  h1,
+  h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  h3,
+  h4 {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Don't clip wide KaTeX display math. */
+  .katex-display {
+    overflow: visible !important;
+  }
+
+  /* Spell out external URLs after their anchor text. Keep internal
+     anchors silent — they don't survive the print medium anyway. */
+  a[href^="http"]::after,
+  a[href^="//"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.78em;
+    color: var(--color-subtle);
+    word-break: break-all;
+  }
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: none;
   }
 }

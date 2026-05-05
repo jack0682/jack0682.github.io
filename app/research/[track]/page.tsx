@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { DocMeta } from "@/components/layout/DocMeta";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, papers, researchTracks } from "@/lib/content";
@@ -40,7 +41,7 @@ export default async function ResearchTrackPage({ params }: Props) {
   const trackPapers = papers.filter((p) => p.track === t.track);
 
   return (
-    <Container width="prose">
+    <Container width="prose" data-track={t.track}>
       <div className="pt-10 md:pt-20">
         <Breadcrumb items={crumbs} />
       </div>
@@ -50,6 +51,13 @@ export default async function ResearchTrackPage({ params }: Props) {
         title={t.title}
         lead={t.summary}
         className="pt-0 md:pt-0"
+      />
+      <DocMeta
+        published={t.date}
+        updated={t.updated}
+        readingTime={t.metadata.readingTime}
+        wordCount={t.metadata.wordCount}
+        className="-mt-4 mb-8"
       />
       <Prose>
         <MDXContent code={t.body} />

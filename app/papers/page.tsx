@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { papers } from "@/lib/content";
@@ -25,47 +26,47 @@ export default function PapersPage() {
         mark="χ"
         eyebrow="Papers"
         title="Manuscripts."
-        lead="Published, submitted, and in-progress manuscripts. Each entry links to the abstract page and, where available, to the preprint PDF and supporting artefacts."
+        lead="Published, submitted, and in-progress manuscripts. Each card opens the abstract page; status, year, and venue are surfaced inline."
       />
 
-      <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+      <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {papers.map((paper) => (
           <li key={paper.slug}>
             <Link
               href={paper.permalink}
-              className="group block py-8 transition-colors sm:py-10"
+              className="group block focus-visible:outline focus-visible:outline-1 focus-visible:outline-[var(--color-accent)]"
             >
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
-                <span className="order-1 font-mono text-xs text-[var(--color-subtle)] sm:order-none sm:pt-2">
-                  {paper.year}
+              <div className="relative aspect-[1200/630] overflow-hidden rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] transition-colors group-hover:border-[var(--color-accent)]">
+                <Image
+                  src={`/og/papers/${paper.slug}.png`}
+                  alt=""
+                  width={1200}
+                  height={630}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.015] motion-reduce:group-hover:scale-100"
+                />
+                {/* status chip — overlaid on the cover */}
+                <span className="absolute left-3 top-3 inline-flex items-center bg-[var(--color-bg)]/90 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-accent)] backdrop-blur-sm">
+                  {statusLabel[paper.status] ?? paper.status}
                 </span>
-                <div className="order-3 flex-1 sm:order-none">
-                  <p className="mb-2 text-xs uppercase tracking-[0.18em] text-[var(--color-accent)] sm:mb-3">
-                    {statusLabel[paper.status] ?? paper.status}
-                    {paper.venue && (
-                      <span className="ml-2 text-[var(--color-muted)] normal-case tracking-normal">
-                        · {paper.venue}
+              </div>
+              <div className="mt-4">
+                <p className="mb-1 flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+                  <span>{paper.year}</span>
+                  {paper.venue && (
+                    <>
+                      <span aria-hidden>·</span>
+                      <span className="text-[var(--color-muted)] normal-case tracking-normal">
+                        {paper.venue}
                       </span>
-                    )}
-                  </p>
-                  <h2 className="font-display text-xl leading-[1.15] tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
-                    {paper.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-[var(--color-muted)] sm:mt-3">
-                    {paper.authors.join(", ")}
-                  </p>
-                  {paper.abstract && (
-                    <p className="mt-3 line-clamp-2 max-w-[52rem] text-sm leading-relaxed text-[var(--color-subtle)] sm:mt-4">
-                      {paper.abstract}
-                    </p>
+                    </>
                   )}
-                </div>
-                <span
-                  aria-hidden
-                  className="hidden font-mono text-xs text-[var(--color-subtle)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] sm:inline sm:pt-2"
-                >
-                  →
-                </span>
+                </p>
+                <h2 className="font-display text-lg leading-[1.2] tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-xl">
+                  {paper.title}
+                </h2>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--color-subtle)]">
+                  {paper.authors.join(", ")}
+                </p>
               </div>
             </Link>
           </li>

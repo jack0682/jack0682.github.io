@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
+import { DocMeta } from "@/components/layout/DocMeta";
+import { GiscusComments } from "@/components/layout/GiscusComments";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
-import { formatDate, toIsoDate } from "@/lib/format";
 
 export function generateStaticParams() {
   return journalEntries.map((e) => ({ slug: e.slug }));
@@ -67,12 +68,13 @@ export default async function JournalEntryPage({ params }: Props) {
         <h1 className="font-display text-[clamp(1.5rem,6.5vw,3.25rem)] leading-[1.12] tracking-[-0.01em] text-[var(--color-ink)]">
           {entry.title}
         </h1>
-        <time
-          dateTime={toIsoDate(entry.date)}
-          className="mt-6 block font-mono text-xs text-[var(--color-subtle)]"
-        >
-          {formatDate(entry.date)}
-        </time>
+        <DocMeta
+          published={entry.date}
+          updated={entry.updated}
+          readingTime={entry.metadata.readingTime}
+          wordCount={entry.metadata.wordCount}
+          className="mt-6"
+        />
       </header>
 
       <Prose className="border-t border-[var(--color-rule)] pt-10">
@@ -83,6 +85,8 @@ export default async function JournalEntryPage({ params }: Props) {
         relatedNotes={referencedNotes}
         relatedPapers={referencedPapers}
       />
+
+      <GiscusComments />
     </Container>
   );
 }

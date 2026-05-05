@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { TOC } from "@/components/layout/TOC";
+import { DocMeta } from "@/components/layout/DocMeta";
+import { FocusToggle } from "@/components/layout/FocusToggle";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, crossRefsFor, prevNextInPart } from "@/lib/content";
@@ -65,8 +67,9 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <>
+      <FocusToggle />
       <TOC toc={note.toc} />
-      <Container width="prose">
+      <Container width="prose" data-track={note.track}>
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
@@ -83,6 +86,12 @@ export default async function NotePage({ params }: Props) {
           <h1 className="font-display text-[clamp(1.5rem,6.5vw,3.25rem)] leading-[1.12] tracking-[-0.01em] text-[var(--color-ink)]">
             {note.title}
           </h1>
+          <DocMeta
+            published={note.date}
+            updated={note.updated}
+            readingTime={note.metadata.readingTime}
+            wordCount={note.metadata.wordCount}
+          />
         </header>
 
         <Prose essay className="border-t border-[var(--color-rule)] pt-10">
@@ -129,6 +138,7 @@ export default async function NotePage({ params }: Props) {
           relatedNotes={refs.relatedNotes}
           relatedPapers={refs.relatedPapers}
           citingJournal={refs.citingJournal}
+          citedBy={refs.citedByNotes}
         />
       </Container>
     </>

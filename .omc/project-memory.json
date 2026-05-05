@@ -153,33 +153,87 @@
   },
   "hotPaths": [
     {
-      "path": "app/layout.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777905671299,
-      "type": "file"
-    },
-    {
       "path": "lib/content.ts",
-      "accessCount": 7,
-      "lastAccessed": 1777905797884,
+      "accessCount": 20,
+      "lastAccessed": 1777968886777,
       "type": "file"
     },
     {
-      "path": "app/notes/[part]/page.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1777905748217,
+      "path": "velite.config.ts",
+      "accessCount": 16,
+      "lastAccessed": 1777966988809,
       "type": "file"
     },
     {
-      "path": "package.json",
-      "accessCount": 5,
-      "lastAccessed": 1777905614700,
+      "path": "app/onn/[slug]/page.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1777968175264,
+      "type": "file"
+    },
+    {
+      "path": "app/globals.css",
+      "accessCount": 11,
+      "lastAccessed": 1777968849554,
       "type": "file"
     },
     {
       "path": "app/papers/[slug]/page.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1777905678868,
+      "accessCount": 10,
+      "lastAccessed": 1777965999169,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 10,
+      "lastAccessed": 1777967568151,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/[part]/[slug]/page.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1777968169987,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/[part]/page.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777965376005,
+      "type": "file"
+    },
+    {
+      "path": "app/layout.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777965390613,
+      "type": "file"
+    },
+    {
+      "path": "app/scc/page.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777967610041,
+      "type": "file"
+    },
+    {
+      "path": "app/journal/[slug]/page.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777967420645,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/CommandPalette.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777968532254,
+      "type": "file"
+    },
+    {
+      "path": "app/about/page.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1777965759619,
+      "type": "file"
+    },
+    {
+      "path": "app/research/[track]/page.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1777968014814,
       "type": "file"
     },
     {
@@ -189,9 +243,33 @@
       "type": "file"
     },
     {
-      "path": "velite.config.ts",
+      "path": "components/mdx/components.ts",
+      "accessCount": 5,
+      "lastAccessed": 1777966915688,
+      "type": "file"
+    },
+    {
+      "path": "components/mdx/Equation.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1777967296812,
+      "type": "file"
+    },
+    {
+      "path": "app/page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1777968044511,
+      "type": "file"
+    },
+    {
+      "path": "app/feed.xml/route.ts",
       "accessCount": 4,
-      "lastAccessed": 1777960601736,
+      "lastAccessed": 1777965390370,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/page.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1777968317074,
       "type": "file"
     },
     {
@@ -207,15 +285,27 @@
       "type": "file"
     },
     {
-      "path": "app/feed.xml/route.ts",
-      "accessCount": 3,
-      "lastAccessed": 1777905675835,
-      "type": "file"
-    },
-    {
       "path": "app/robots.ts",
       "accessCount": 3,
       "lastAccessed": 1777905683771,
+      "type": "file"
+    },
+    {
+      "path": "components/mdx/Prose.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777967847870,
+      "type": "file"
+    },
+    {
+      "path": "app/papers/page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777967901569,
+      "type": "file"
+    },
+    {
+      "path": "components/theme/ThemeToggle.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777967998932,
       "type": "file"
     },
     {
@@ -231,9 +321,33 @@
       "type": "file"
     },
     {
-      "path": "app/page.tsx",
+      "path": "components/motion/HeroReveal.tsx",
       "accessCount": 2,
-      "lastAccessed": 1777905396212,
+      "lastAccessed": 1777965395347,
+      "type": "file"
+    },
+    {
+      "path": "lib/bio.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777965633571,
+      "type": "file"
+    },
+    {
+      "path": "lib/format.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777965952339,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/Masthead.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1777967166736,
+      "type": "file"
+    },
+    {
+      "path": "app/tags/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1777967838507,
       "type": "file"
     },
     {
@@ -249,39 +363,9 @@
       "type": "file"
     },
     {
-      "path": "app/about/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905354565,
-      "type": "file"
-    },
-    {
       "path": "app/journal/page.tsx",
       "accessCount": 1,
       "lastAccessed": 1777905354730,
-      "type": "file"
-    },
-    {
-      "path": "app/journal/[slug]/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905354868,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905357675,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/[part]/[slug]/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905358432,
-      "type": "file"
-    },
-    {
-      "path": "app/tags/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905358641,
       "type": "file"
     },
     {
@@ -294,18 +378,6 @@
       "path": "app/research/page.tsx",
       "accessCount": 1,
       "lastAccessed": 1777905361434,
-      "type": "file"
-    },
-    {
-      "path": "app/research/[track]/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905362107,
-      "type": "file"
-    },
-    {
-      "path": "app/papers/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905362569,
       "type": "file"
     },
     {
@@ -333,12 +405,6 @@
       "type": "file"
     },
     {
-      "path": "app/scc/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905366702,
-      "type": "file"
-    },
-    {
       "path": "app/bio/page.tsx",
       "accessCount": 1,
       "lastAccessed": 1777905366809,
@@ -348,12 +414,6 @@
       "path": "lib/cn.ts",
       "accessCount": 1,
       "lastAccessed": 1777905366862,
-      "type": "file"
-    },
-    {
-      "path": "app/onn/[slug]/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905366980,
       "type": "file"
     },
     {
@@ -375,45 +435,9 @@
       "type": "file"
     },
     {
-      "path": "lib/format.ts",
-      "accessCount": 1,
-      "lastAccessed": 1777905370248,
-      "type": "file"
-    },
-    {
-      "path": "lib/bio.ts",
-      "accessCount": 1,
-      "lastAccessed": 1777905370284,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/components.ts",
-      "accessCount": 1,
-      "lastAccessed": 1777905370535,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/CommandPalette.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905374133,
-      "type": "file"
-    },
-    {
-      "path": "components/motion/HeroReveal.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905374317,
-      "type": "file"
-    },
-    {
       "path": "components/layout/Container.tsx",
       "accessCount": 1,
       "lastAccessed": 1777905374707,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/Equation.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905374897,
       "type": "file"
     },
     {
@@ -426,30 +450,6 @@
       "path": ".velite/index.d.ts",
       "accessCount": 1,
       "lastAccessed": 1777905376514,
-      "type": "file"
-    },
-    {
-      "path": "components/theme/ThemeToggle.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905377592,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/Masthead.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905377944,
-      "type": "file"
-    },
-    {
-      "path": "app/globals.css",
-      "accessCount": 1,
-      "lastAccessed": 1777905381539,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/Prose.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777905382718,
       "type": "file"
     }
   ],

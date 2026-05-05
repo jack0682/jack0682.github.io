@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "./Container";
 import { papers, allNotes, journalEntries, onnAllDocs } from "@/lib/content";
+import { IDENTITY_LINKS } from "@/lib/identity";
 
 const cols = [
   {
@@ -27,7 +28,7 @@ const cols = [
   {
     heading: "Elsewhere",
     links: [
-      { href: "https://github.com/jack0682", label: "GitHub" },
+      ...IDENTITY_LINKS.map((l) => ({ href: l.href, label: l.label })),
       { href: "/feed.xml", label: "RSS Feed" },
       { href: "/about/", label: "About & CV" },
     ],
@@ -88,7 +89,16 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 border-t border-[var(--color-rule)] py-6 text-xs text-[var(--color-subtle)] sm:flex-row sm:items-center sm:justify-between sm:gap-0">
           <span>© {year} Jaehong Oh.</span>
-          <span className="font-mono">jack0682.github.io</span>
+          <div className="flex items-center gap-5 font-mono">
+            <a
+              href="/feed.xml"
+              className="transition-colors hover:text-[var(--color-accent)]"
+              aria-label="Subscribe via Atom feed"
+            >
+              <span aria-hidden>∿</span> atom
+            </a>
+            <span>jack0682.github.io</span>
+          </div>
         </div>
       </Container>
     </footer>

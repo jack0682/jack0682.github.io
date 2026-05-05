@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun, Monitor, BookOpen } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
- * Three-state theme toggle: system → light → dark → system.
- * Icon reflects the resolved theme when in system mode so the user
- * still sees what's currently active.
+ * Four-state theme cycle: system → light → dark → sepia → system.
+ * The icon reflects the *resolved* theme so users in `system` mode
+ * still see a meaningful state cue. Sepia is a long-form reading
+ * mode (warm paper background, sepia ink) — independent of OS pref.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
@@ -16,7 +17,6 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => setMounted(true), []);
 
-  // Avoid hydration mismatch: render a neutral placeholder until mounted.
   if (!mounted) {
     return (
       <span
@@ -33,23 +33,33 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   const cycle = () => {
     const next =
-      theme === "system" ? "light" : theme === "light" ? "dark" : "system";
+      theme === "system"
+        ? "light"
+        : theme === "light"
+          ? "dark"
+          : theme === "dark"
+            ? "sepia"
+            : "system";
     setTheme(next);
   };
 
   const Icon =
     theme === "system"
       ? Monitor
-      : resolvedTheme === "dark"
-        ? Moon
-        : Sun;
+      : theme === "sepia"
+        ? BookOpen
+        : resolvedTheme === "dark"
+          ? Moon
+          : Sun;
 
   const label =
     theme === "system"
-      ? "Theme: system (click to switch to light)"
+      ? "Theme: system (click for light)"
       : theme === "light"
-        ? "Theme: light (click to switch to dark)"
-        : "Theme: dark (click to switch to system)";
+        ? "Theme: light (click for dark)"
+        : theme === "dark"
+          ? "Theme: dark (click for sepia)"
+          : "Theme: sepia (click for system)";
 
   return (
     <button

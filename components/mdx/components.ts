@@ -7,10 +7,19 @@ import { Callout } from "./Callout";
 import { Equation } from "./Equation";
 import { Remark } from "./Remark";
 import { Example } from "./Example";
+import { H2, H3, H4 } from "./AnchorHeading";
+import { Term } from "./Term";
 
 /**
  * Components exposed into the MDX scope. MDX authors can reference
  * these by name directly: `<Theorem number="2.1">…</Theorem>`.
+ *
+ * `h2`/`h3`/`h4` overrides surface a hover-revealed deep-link copy
+ * button next to each heading. `id` attrs come from rehype-slug
+ * (configured in `velite.config.ts`).
+ *
+ * `Term` renders glossary HoverCard popovers; auto-injected by
+ * `remark-term-links` for D-/S-/A- IDs that appear in body prose.
  */
 export const mdxComponents: Record<
   string,
@@ -25,4 +34,8 @@ export const mdxComponents: Record<
   Equation: Equation as ComponentType<Record<string, unknown>>,
   Remark: Remark as ComponentType<Record<string, unknown>>,
   Example: Example as ComponentType<Record<string, unknown>>,
+  Term: Term as ComponentType<Record<string, unknown>>,
+  h2: H2 as ComponentType<Record<string, unknown>>,
+  h3: H3 as ComponentType<Record<string, unknown>>,
+  h4: H4 as ComponentType<Record<string, unknown>>,
 };

@@ -1,10 +1,12 @@
 import { defineConfig, defineCollection, s } from "velite";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from "rehype-pretty-code";
+import { remarkTermLinks } from "./lib/remark/term-links";
 
 /* ──────────────────────────────────────────────────────────────
    jack0682.github.io — content layer
@@ -54,6 +56,7 @@ const papers = defineCollection({
         .enum(["published", "accepted", "submitted", "preprint", "in-progress"])
         .default("in-progress"),
       date: s.isodate(),
+      updated: s.isodate().optional(),
       pdf: s.string().optional(),
       arxiv: s.string().optional(),
       doi: s.string().optional(),
@@ -83,7 +86,20 @@ const journal = defineCollection({
       title: s.string().max(160),
       slug: s.slug("journal"),
       date: s.isodate(),
-      kind: s.enum(["weekly"]).optional(),
+      updated: s.isodate().optional(),
+      kind: s.enum(["weekly", "version"]).optional(),
+      /**
+       * Canonical version stamped at this entry — surfaces in
+       * `/scc/changelog/`. Form is project-specific (e.g. "v2.4",
+       * "CV-1.5.2"); validated only as a non-empty string.
+       */
+      canonicalVersion: s.string().optional(),
+      /** Whether this entry bumps the canonical version, patches it, or is a no-op. */
+      canonicalImpact: s
+        .enum(["bumped", "patch", "no-op"])
+        .optional(),
+      /** One-line summary used in the changelog timeline (~280 chars). */
+      canonicalNotes: s.string().max(280).optional(),
       summary: s.string().max(320).optional(),
       tags: s.array(s.string()).default([]),
       track: s
@@ -116,6 +132,7 @@ const research = defineCollection({
       status: s
         .enum(["active", "paused", "archived"])
         .default("active"),
+      date: s.isodate().optional(),
       updated: s.isodate().optional(),
       body: s.mdx(),
       toc: s.toc(),
@@ -139,6 +156,7 @@ const onnDocs = defineCollection({
         .optional(),
       chapter: s.number().int().gte(0).optional(),
       section: s.string().optional(),
+      date: s.isodate().optional(),
       updated: s.isodate().optional(),
       related: s.array(s.string()).default([]),
       draft: s.boolean().default(false),
@@ -178,6 +196,7 @@ const notes = defineCollection({
       track: s
         .enum(["onn", "perception", "theory", "control", "robotics"])
         .optional(),
+      date: s.isodate().optional(),
       updated: s.isodate().optional(),
       /** Sibling slugs referenced by this note (manual cross-refs). */
       related: s.array(s.string()).default([]),
@@ -207,8 +226,15 @@ export default defineConfig({
   },
   collections: { posts, papers, journal, research, notes, onnDocs },
   mdx: {
-    remarkPlugins: [remarkGfm, remarkMath],
+    // remarkTermLinks runs after gfm/math so it sees the full mdast
+    // (with code/inlineCode/math nodes already typed for skip).
+    remarkPlugins: [remarkGfm, remarkMath, remarkTermLinks],
     rehypePlugins: [
+      // rehype-slug must precede rehype-katex so heading slugs are
+      // computed before KaTeX rewrites mathy children into spans.
+      // The slug algorithm (github-slugger) matches what s.toc() uses,
+      // so TOC `#fragment` URLs line up with heading `id` attrs.
+      rehypeSlug,
       [rehypeKatex, { strict: false, trust: true, output: "html" }],
       [rehypePrettyCode, prettyCodeOptions],
     ],

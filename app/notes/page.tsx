@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { NotesConstellation } from "@/components/layout/NotesConstellation";
 import { notesByPart } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -29,7 +30,22 @@ export default function NotesPage() {
         mark="ℓ"
         eyebrow="Notes"
         title="Mousse-notes."
-        lead="A long, chapter-by-chapter book on the algebraic and topological foundations underlying the rest of the research. Chapters appear here as they are cleaned for public reading."
+        lead="A long, chapter-by-chapter book on the algebraic and topological foundations underlying the rest of the research. The constellation below is the structure at a glance — each dot a note, edges drawn from explicit cross-references."
+      />
+
+      <NotesConstellation
+        notesByPart={notesByPart.map(([p, items]) => [
+          p,
+          items.map((n) => ({
+            slug: n.slug,
+            title: n.title,
+            part: n.part,
+            chapter: n.chapter,
+            kind: n.kind,
+            related: n.related,
+          })),
+        ])}
+        className="mb-14"
       />
 
       <div className="space-y-14 border-t border-[var(--color-rule)] pt-12 sm:space-y-16 sm:pt-14">

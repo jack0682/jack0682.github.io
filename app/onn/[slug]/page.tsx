@@ -4,9 +4,11 @@ import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
 import { TOC } from "@/components/layout/TOC";
+import { DocMeta } from "@/components/layout/DocMeta";
+import { FocusToggle } from "@/components/layout/FocusToggle";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
-import { allNotes, journalEntries, onnAllDocs, papers } from "@/lib/content";
+import { allNotes, journalEntries, onnAllDocs, papers, citedBy } from "@/lib/content";
 
 export function generateStaticParams() {
   return onnAllDocs.map((d) => ({ slug: d.slug }));
@@ -54,10 +56,22 @@ export default async function OnnDocPage({ params }: Props) {
   );
   const citingJournal = journalEntries.filter((j) => j.refs?.includes(doc.slug));
 
+  // Inbound notes/onn that name this doc, deduped against forward rail.
+  const forwardSlugs = new Set([
+    ...relatedOnn.map((d) => d.slug),
+    ...relatedNotes.map((n) => n.slug),
+  ]);
+  const inbound = citedBy(doc.slug).filter(
+    (e) =>
+      (e.collection === "notes" || e.collection === "onn") &&
+      !forwardSlugs.has(e.from),
+  );
+
   return (
     <>
+      <FocusToggle />
       <TOC toc={doc.toc} />
-      <Container width="prose">
+      <Container width="prose" data-track="onn">
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
@@ -79,6 +93,12 @@ export default async function OnnDocPage({ params }: Props) {
               {doc.summary}
             </p>
           )}
+          <DocMeta
+            published={doc.date}
+            updated={doc.updated}
+            readingTime={doc.metadata.readingTime}
+            wordCount={doc.metadata.wordCount}
+          />
         </header>
 
         <Prose essay className="border-t border-[var(--color-rule)] pt-10">
@@ -89,6 +109,7 @@ export default async function OnnDocPage({ params }: Props) {
           relatedNotes={[...relatedOnn, ...relatedNotes]}
           relatedPapers={relatedPapers}
           citingJournal={citingJournal}
+          citedBy={inbound}
         />
       </Container>
     </>

@@ -93,6 +93,14 @@ export default function SccHubPage() {
       <HubSection
         label="Research roadmap & status"
         description="Dated status reports — theorem ledger, implementation state, iteration history, and the open problems currently blocking consolidation."
+        aside={
+          <Link
+            href="/scc/changelog/"
+            className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            Canonical changelog →
+          </Link>
+        }
       >
         {roadmap.length === 0 ? (
           <Placeholder text="No active status reports." />
@@ -139,6 +147,14 @@ export default function SccHubPage() {
       <HubSection
         label="Mathematical results"
         description="Theorems and proofs. The Part II summary lists the eight main theorems; individual theorem pages will be detached from it as they are cleaned for public reading."
+        aside={
+          <Link
+            href="/scc/dag/"
+            className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            Dependency DAG →
+          </Link>
+        }
       >
         {theorems.length === 0 ? (
           <Placeholder text="Individual theorem pages will appear here as they are split out of Part II." />
@@ -205,10 +221,12 @@ export default function SccHubPage() {
 function HubSection({
   label,
   description,
+  aside,
   children,
 }: {
   label: string;
   description?: string;
+  aside?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -222,6 +240,7 @@ function HubSection({
             {description}
           </p>
         )}
+        {aside && <div className="md:ml-auto md:shrink-0">{aside}</div>}
       </div>
       <ul className="space-y-0 divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
         {children}

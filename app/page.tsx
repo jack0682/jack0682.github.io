@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { TeX } from "@/components/mdx/TeX";
 import { HeroReveal } from "@/components/motion/HeroReveal";
+import { HeroChi } from "@/components/motion/HeroChi";
 import { LivingOntology } from "@/components/motion/LivingOntology";
 import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { toIsoDate } from "@/lib/format";
@@ -16,13 +17,10 @@ export default function Home() {
       {/* ── hero: identity first ──────────────────────────── */}
       <section className="relative mt-12 sm:mt-20 md:mt-32 lg:grid lg:grid-cols-[minmax(0,44rem)_minmax(0,32rem)] lg:items-center lg:gap-14 xl:gap-20">
       <div className="relative max-w-[44rem]">
-        {/* marginal χ — visible only on wide viewports, quiet */}
-        <span
-          aria-hidden
-          className="font-display pointer-events-none absolute -left-20 top-[-0.4em] hidden select-none text-[10rem] italic leading-none text-[var(--color-accent)]/10 lg:block"
-        >
-          χ
-        </span>
+        {/* marginal χ — visible only on wide viewports, quiet.
+            Tracks pointer position via HeroChi (suppressed under
+            prefers-reduced-motion). */}
+        <HeroChi />
         <HeroReveal>
           {[
             <div
