@@ -9,6 +9,7 @@ import {
   journalEntries,
   researchTracks,
   onnAllDocs,
+  equationsBySource,
 } from "@/lib/content";
 import { SITE_URL as BASE_URL } from "@/lib/site";
 
@@ -19,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
-    ...["/about/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/onn/"].map(
+    ...["/about/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/onn/", "/refs/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
       (path) => ({
         url: `${BASE_URL}${path}`,
         changeFrequency: "monthly" as const,
@@ -71,6 +72,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const equationPages: MetadataRoute.Sitemap = equationsBySource().map((g) => ({
+    url: `${BASE_URL}/refs/equations/${g.slug}/`,
+    priority: 0.5,
+  }));
+
   return [
     ...staticPages,
     ...notePages,
@@ -80,5 +86,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...journalPages,
     ...researchPages,
     ...onnPages,
+    ...equationPages,
   ];
 }

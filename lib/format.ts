@@ -4,7 +4,7 @@
  * server's default locale during static export.
  */
 export function formatDate(iso: string) {
-  const d = new Date(iso);
+  const d = new Date(iso.length === 10 ? iso + "T12:00:00Z" : iso);
   return d.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",

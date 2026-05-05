@@ -145,7 +145,7 @@ export default function OnnHubPage() {
 
       {/* ── Integration / north-star ──────────────────────────── */}
       <HubSection
-        label="Integration &amp; north-star"
+        label="Integration & north-star"
         description="ONN as one half of the unified cognitive-reasoning architecture. The integrated-architecture note sits in Part 0 because it binds SCC and ONN together."
       >
         {overview.length > 0 &&
@@ -173,7 +173,12 @@ export default function OnnHubPage() {
         label="Mathematical results"
         description="Theorems and proofs specific to ONN — topology preservation, cohomological stability, and the delay-robust feedback bound. Individual proof pages will appear here as they are written."
       >
-        {theorems.length === 0 ? null : (
+        {theorems.length === 0 ? (
+          <FuturePlaceholder
+            label="ONN · mathematical results"
+            note="Individual theorem pages will appear here as proofs are formalised."
+          />
+        ) : (
           theorems.map((n) => (
             <DocCard
               key={n.slug}

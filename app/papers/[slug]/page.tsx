@@ -72,49 +72,31 @@ export default async function PaperPage({ params }: Props) {
     j.refs?.includes(paper.slug),
   );
 
-  /* ── JSON-LD structured data (schema.org/ScholarlyArticle) ────── */
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    headline: paper.title,
-    author: paper.authors.map((a) => ({ "@type": "Person", name: a })),
-    datePublished: paper.date,
-    abstract: paper.abstract,
-    ...(paper.doi && { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: paper.doi } }),
-    ...(paper.arxiv && { url: paper.arxiv }),
-    ...(paper.venue && { isPartOf: { "@type": "Periodical", name: paper.venue } }),
-    publisher: { "@type": "Organization", name: paper.venue ?? "Self-published" },
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(
+            scholarlyArticleSchema({
+              title: paper.title,
+              permalink: paper.permalink,
+              abstract: paper.abstract,
+              authors: paper.authors,
+              datePublished: paper.date,
+              dateModified: paper.updated,
+              ogImage: `/og/papers/${paper.slug}.png`,
+              doi: paper.doi,
+              arxiv: paper.arxiv,
+              pdf: paper.pdf,
+              venue: paper.venue,
+              keywords: paper.tags,
+            }),
+          ),
+        }}
       />
       <TOC toc={paper.toc} />
       <Container width="prose">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: jsonLdScript(
-              scholarlyArticleSchema({
-                title: paper.title,
-                permalink: paper.permalink,
-                abstract: paper.abstract,
-                authors: paper.authors,
-                datePublished: paper.date,
-                dateModified: paper.updated,
-                ogImage: `/og/papers/${paper.slug}.png`,
-                doi: paper.doi,
-                arxiv: paper.arxiv,
-                pdf: paper.pdf,
-                venue: paper.venue,
-                keywords: paper.tags,
-              }),
-            ),
-          }}
-        />
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">

@@ -55,7 +55,7 @@ Task: Restore a consistent graph satisfying all constraints
 ```
 
 **Metrics**:
-1. **Constraint Satisfaction Rate (CSR)**: $\text{CSR} = \frac{\text{# constraints satisfied in } \hat{G}}{\text{# total constraints}}$
+1. **Constraint Satisfaction Rate (CSR)**: $\text{CSR} = \frac{\text{\# constraints satisfied in } \hat{G}}{\text{\# total constraints}}$
 2. **Contradiction Count**: Number of constraints violated in $\hat{G}$ (should be 0)
 3. **Minimal Repair Cost**: \# edges that differ between $\hat{G}$ and true $G^*$
 4. **Global-Local Agreement**: Consistency between locally-predicted edges and global solution
@@ -98,8 +98,8 @@ Failure modes:
 ```
 
 **Metrics**:
-1. **Action Success Rate (ASR)**: $\text{ASR} = \frac{\text{# episodes reaching goal without violation}}{\text{# total episodes}}$
-2. **Safety Violation Rate (SVR)**: $\text{SVR} = \frac{\text{# episodes with violated constraints}}{\text{# total episodes}}$
+1. **Action Success Rate (ASR)**: $\text{ASR} = \frac{\text{\# episodes reaching goal without violation}}{\text{\# total episodes}}$
+2. **Safety Violation Rate (SVR)**: $\text{SVR} = \frac{\text{\# episodes with violated constraints}}{\text{\# total episodes}}$
 3. **Recovery Rate**: % of episodes that recover after a perturbation mid-episode
 4. **Failure Mode Taxonomy**:
    - Type A: Wrong relation inferred (relation F1 error)
@@ -315,14 +315,14 @@ Variant A1c: Softened constraints
 
 #### Constraint Satisfaction Rate (CSR)
 $$
-\text{CSR} = \frac{\text{# constraints satisfied in } \hat{G}}{\text{# total constraints}}
+\text{CSR} = \frac{\text{\# constraints satisfied in } \hat{G}}{\text{\# total constraints}}
 $$
 - **Target**: ONN ≥ 95%, Transformers ≥ 80%
 - **Computation**: for each constraint $c \in C$, check truth value; count satisfied
 
 #### Contradiction Count
 $$
-\text{Contra} = \text{# constraints violated in } \hat{G}
+\text{Contra} = \text{\# constraints violated in } \hat{G}
 $$
 - **Target**: ONN = 0 (hard solver), Transformers ≤ 2 violations per sample
 - **Safety-critical**: SVR (from T2) is the main failure mode
@@ -336,7 +336,7 @@ $$
 
 #### Global-Local Agreement
 $$
-\text{GA} = \frac{\text{# locally-predicted edges consistent with global solution}}{\text{# total edges}}
+\text{GA} = \frac{\text{\# locally-predicted edges consistent with global solution}}{\text{\# total edges}}
 $$
 - **Target**: ONN > 90%, Transformers > 75%
 - **Rationale**: consistency between local (per-node) and global (whole-graph) predictions
@@ -347,21 +347,21 @@ $$
 
 #### Action Success Rate (ASR)
 $$
-\text{ASR} = \frac{\text{# episodes reaching goal without constraint violation}}{\text{# total episodes}}
+\text{ASR} = \frac{\text{\# episodes reaching goal without constraint violation}}{\text{\# total episodes}}
 $$
 - **Target**: ONN ≥ 90% (clean), ≥ 70% (noisy)
 - **Computation**: simulate action preconditions, check goal; count successes
 
 #### Safety Violation Rate (SVR)
 $$
-\text{SVR} = \frac{\text{# episodes with violated constraints}}{\text{# total episodes}}
+\text{SVR} = \frac{\text{\# episodes with violated constraints}}{\text{\# total episodes}}
 $$
 - **Target**: ONN ≤ 1% (hard constraints), Transformers ≤ 5%
 - **Safety-critical**: must be low
 
 #### Recovery Rate
 $$
-\text{RecoveryRate} = \frac{\text{# episodes recovering after perturbation}}{\text{# perturbed episodes}}
+\text{RecoveryRate} = \frac{\text{\# episodes recovering after perturbation}}{\text{\# perturbed episodes}}
 $$
 - **Target**: ≥ 60% for ONN, ≥ 40% for Transformers
 - **Rationale**: robustness to mid-episode noise
@@ -407,7 +407,7 @@ $$
 
 #### Convergence Iterations (ONN only)
 $$
-\text{IterCount} = \text{# iterations until tolerance threshold}
+\text{IterCount} = \text{\# iterations until tolerance threshold}
 $$
 - **Target**: ≤ 50 for most samples (out of max 100)
 - **Computation**: track iteration count from LOGOS solver
@@ -443,10 +443,10 @@ $$
 
 #### Drift Detection Metrics
 $$
-\text{TPR} = \frac{\text{# detected shifts}}{\text{# actual shifts}}
+\text{TPR} = \frac{\text{\# detected shifts}}{\text{\# actual shifts}}
 $$
 $$
-\text{FPR} = \frac{\text{# false alarms}}{\text{# non-shift windows}}
+\text{FPR} = \frac{\text{\# false alarms}}{\text{\# non-shift windows}}
 $$
 - **Target**: TPR ≥ 80%, FPR ≤ 5%
 
