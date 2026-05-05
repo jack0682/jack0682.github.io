@@ -201,6 +201,12 @@
       "type": "file"
     },
     {
+      "path": "lib/bio.ts",
+      "accessCount": 12,
+      "lastAccessed": 1777979723598,
+      "type": "file"
+    },
+    {
       "path": "components/layout/CommandPalette.tsx",
       "accessCount": 11,
       "lastAccessed": 1777975044339,
@@ -327,12 +333,6 @@
       "type": "file"
     },
     {
-      "path": "lib/bio.ts",
-      "accessCount": 3,
-      "lastAccessed": 1777974972344,
-      "type": "file"
-    },
-    {
       "path": "app/tags/page.tsx",
       "accessCount": 3,
       "lastAccessed": 1777975026047,
@@ -348,6 +348,12 @@
       "path": "next.config.ts",
       "accessCount": 3,
       "lastAccessed": 1777975058867,
+      "type": "file"
+    },
+    {
+      "path": "app/bio/page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777979233636,
       "type": "file"
     },
     {
@@ -372,12 +378,6 @@
       "path": "app/template.tsx",
       "accessCount": 2,
       "lastAccessed": 1777974992773,
-      "type": "file"
-    },
-    {
-      "path": "app/bio/page.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1777975000560,
       "type": "file"
     },
     {
