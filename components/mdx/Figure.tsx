@@ -10,6 +10,11 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
+import {
+  TransformWrapper,
+  TransformComponent,
+  type ReactZoomPanPinchRef,
+} from "react-zoom-pan-pinch";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -78,26 +83,24 @@ export function Figure({
           "focus-visible:outline focus-visible:outline-1 focus-visible:outline-[var(--color-accent)]",
         )}
       >
-        <motion.div layoutId={layoutId}>
-          {width && height ? (
-            <Image
-              src={src}
-              alt={alt}
-              width={width}
-              height={height}
-              className="h-auto w-full"
-            />
-          ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={src}
-              alt={alt}
-              loading="lazy"
-              decoding="async"
-              className="h-auto w-full"
-            />
-          )}
-        </motion.div>
+        {width && height ? (
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className="h-auto w-full"
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full"
+          />
+        )}
       </button>
       {caption && (
         <figcaption className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
@@ -107,13 +110,7 @@ export function Figure({
           {caption}
         </figcaption>
       )}
-      <Lightbox
-        open={open}
-        onClose={close}
-        src={src}
-        alt={alt}
-        layoutId={layoutId}
-      />
+      <Lightbox open={open} onClose={close} src={src} alt={alt} />
     </figure>
   );
 }
@@ -123,15 +120,14 @@ function Lightbox({
   onClose,
   src,
   alt,
-  layoutId,
 }: {
   open: boolean;
   onClose: () => void;
   src: string;
   alt: string;
-  layoutId: string;
 }) {
   const [mounted, setMounted] = useState(false);
+  const transformRef = useRef<ReactZoomPanPinchRef>(null);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
@@ -147,23 +143,98 @@ function Lightbox({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
+          // Background click closes; the image and controls stop
+          // propagation so they don't dismiss accidentally.
           onClick={onClose}
         >
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close fullscreen"
-            className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-[1] inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-black/30 text-white transition-colors hover:border-white/60 focus:outline focus:outline-2 focus:outline-white"
-          >
-            <X size={18} strokeWidth={1.5} />
-          </button>
-          <motion.img
-            layoutId={layoutId}
-            src={src}
-            alt={alt}
+          <div className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-[2] flex gap-2">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                transformRef.current?.zoomOut(0.4);
+              }}
+              aria-label="Zoom out"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-black/30 font-mono text-base leading-none text-white transition-colors hover:border-white/60 focus:outline focus:outline-2 focus:outline-white"
+            >
+              −
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                transformRef.current?.zoomIn(0.4);
+              }}
+              aria-label="Zoom in"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-black/30 font-mono text-base leading-none text-white transition-colors hover:border-white/60 focus:outline focus:outline-2 focus:outline-white"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                transformRef.current?.resetTransform();
+              }}
+              aria-label="Reset zoom"
+              className="inline-flex h-10 items-center justify-center rounded-sm border border-white/20 bg-black/30 px-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white transition-colors hover:border-white/60 focus:outline focus:outline-2 focus:outline-white"
+            >
+              fit
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onClose();
+              }}
+              aria-label="Close fullscreen"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/20 bg-black/30 text-white transition-colors hover:border-white/60 focus:outline focus:outline-2 focus:outline-white"
+            >
+              <X size={18} strokeWidth={1.5} />
+            </button>
+          </div>
+          <div
+            className="flex h-full w-full items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[92vh] max-w-[92vw] cursor-zoom-out object-contain"
-          />
+          >
+            <TransformWrapper
+              ref={transformRef}
+              initialScale={1}
+              minScale={0.5}
+              maxScale={6}
+              wheel={{ step: 0.18 }}
+              pinch={{ step: 5 }}
+              doubleClick={{ disabled: false, step: 0.7 }}
+              panning={{ velocityDisabled: true }}
+              limitToBounds={false}
+            >
+              <TransformComponent
+                wrapperStyle={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                contentStyle={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <motion.img
+                  src={src}
+                  alt={alt}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.18 }}
+                  className="max-h-[88vh] max-w-[92vw] select-none object-contain"
+                  draggable={false}
+                />
+              </TransformComponent>
+            </TransformWrapper>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>,

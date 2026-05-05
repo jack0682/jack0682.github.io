@@ -4,6 +4,7 @@ import { TeX } from "@/components/mdx/TeX";
 import { HeroReveal } from "@/components/motion/HeroReveal";
 import { HeroChi } from "@/components/motion/HeroChi";
 import { LivingOntology } from "@/components/motion/LivingOntology";
+import { ContinueChip } from "@/components/layout/ContinueChip";
 import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { toIsoDate } from "@/lib/format";
 
@@ -167,6 +168,7 @@ export default function Home() {
             All entries →
           </Link>
         </div>
+        <ContinueChip className="mb-8" />
         {recent.length === 0 ? (
           <p className="text-[var(--color-muted)]">No entries yet.</p>
         ) : (

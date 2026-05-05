@@ -2,6 +2,7 @@
 
 import * as HoverCard from "@radix-ui/react-hover-card";
 import Link from "next/link";
+import { useState } from "react";
 import { glossary } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
@@ -19,13 +20,15 @@ type Props = {
  * has no glossary entry — so this component is safe to use even on
  * IDs that have not yet been registered.
  *
- * Visually the trigger looks like a dotted underline; the popover
- * carries the entry name as a heading and the Plain-English blurb
- * as body, plus a "see full entry" link to the glossary anchor.
+ * Touch devices follow a tap-to-open / second-tap-to-navigate
+ * convention so the popup is actually reachable without a mouse.
+ * Inside the popup an explicit "View full entry" link gives a
+ * single-tap path to the glossary anchor regardless of mode.
  */
 export function Term({ id, children, className }: Props) {
   const entry = glossary[id];
   const label = children ?? id;
+  const [open, setOpen] = useState(false);
 
   // Lower-cased id used both as a fragment target (for cross-page
    // navigation back to the glossary) and as the anchor name on the
@@ -49,12 +52,32 @@ export function Term({ id, children, className }: Props) {
     );
   }
 
+  const onTriggerClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Touch devices: first tap opens the popup (no navigation);
+    // second tap on the same trigger (popup already open) is allowed
+    // to navigate to the full glossary entry.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none)").matches &&
+      !open
+    ) {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
+
   return (
-    <HoverCard.Root openDelay={200} closeDelay={120}>
+    <HoverCard.Root
+      open={open}
+      onOpenChange={setOpen}
+      openDelay={200}
+      closeDelay={120}
+    >
       <HoverCard.Trigger asChild>
         <Link
           id={anchor}
           href={`/notes/part-0/scc-glossary/#${anchor}`}
+          onClick={onTriggerClick}
           className={cn(
             "underline decoration-dotted decoration-[var(--color-accent)] underline-offset-[3px]",
             "transition-colors hover:text-[var(--color-accent)]",
@@ -84,6 +107,12 @@ export function Term({ id, children, className }: Props) {
             </span>
           </p>
           <p className="text-[13px] text-[var(--color-muted)]">{entry.plain}</p>
+          <Link
+            href={`/notes/part-0/scc-glossary/#${anchor}`}
+            className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-accent)] transition-colors hover:text-[var(--color-ink)]"
+          >
+            View full entry →
+          </Link>
         </HoverCard.Content>
       </HoverCard.Portal>
     </HoverCard.Root>

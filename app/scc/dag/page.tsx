@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { PanZoomBox } from "@/components/layout/PanZoomBox";
 import dagJson from "../../../.velite/dag.json";
 
 export const metadata: Metadata = {
@@ -68,7 +69,7 @@ export default function SccDagPage() {
           No theorem nodes yet — annotate a note with <code>kind: theorem</code> to opt in.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] p-4">
+        <PanZoomBox className="rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] p-4">
           <svg
             role="img"
             aria-label="Theorem dependency graph"
@@ -134,7 +135,7 @@ export default function SccDagPage() {
               </g>
             ))}
           </svg>
-        </div>
+        </PanZoomBox>
       )}
 
       <p className="mt-6 max-w-[44rem] text-sm leading-relaxed text-[var(--color-muted)]">

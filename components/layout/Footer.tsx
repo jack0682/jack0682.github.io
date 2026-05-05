@@ -23,6 +23,7 @@ const cols = [
       { href: "/journal/", label: "Journal" },
       { href: "/notes/", label: "Notes" },
       { href: "/tags/", label: "Tags" },
+      { href: "/bookmarks/", label: "Bookmarks" },
     ],
   },
   {

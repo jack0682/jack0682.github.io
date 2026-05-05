@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { VisitedMark } from "./VisitedMark";
 
 type NoteRef = {
   slug: string;
@@ -59,7 +60,7 @@ export function RelatedDocs({
     relatedNotes.length > 0 && (
       <Column key="notes" label="Adjacent notes">
         {relatedNotes.map((n) => (
-          <Row key={n.slug} href={n.permalink} title={n.title} meta={n.section} />
+          <Row key={n.slug} slug={n.slug} href={n.permalink} title={n.title} meta={n.section} />
         ))}
       </Column>
     ),
@@ -68,6 +69,7 @@ export function RelatedDocs({
         {relatedPapers.map((p) => (
           <Row
             key={p.slug}
+            slug={p.slug}
             href={p.permalink}
             title={p.title}
             meta={[p.status, p.year].filter(Boolean).join(" · ")}
@@ -80,6 +82,7 @@ export function RelatedDocs({
         {citingJournal.map((j) => (
           <Row
             key={j.slug}
+            slug={j.slug}
             href={j.permalink}
             title={j.title}
             meta={j.date}
@@ -92,6 +95,7 @@ export function RelatedDocs({
         {citedBy.map((e) => (
           <Row
             key={`${e.collection}:${e.from}`}
+            slug={e.from}
             href={e.permalink}
             title={e.title}
             meta={[collectionLabel[e.collection], e.date].filter(Boolean).join(" · ")}
@@ -138,10 +142,12 @@ function Row({
   href,
   title,
   meta,
+  slug,
 }: {
   href: string;
   title: string;
   meta?: string;
+  slug?: string;
 }) {
   return (
     <li>
@@ -157,6 +163,7 @@ function Row({
           <span className="block flex-1 text-sm leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
             {title}
           </span>
+          {slug && <VisitedMark slug={slug} />}
           <span
             aria-hidden
             className="font-mono text-[11px] text-[var(--color-subtle)] opacity-0 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] group-hover:opacity-100"

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { PanZoomBox } from "./PanZoomBox";
 
 type Note = {
   slug: string;
@@ -163,7 +164,7 @@ export function NotesConstellation({ notesByPart, className }: Props) {
         className,
       )}
     >
-      <div className="overflow-x-auto">
+      <PanZoomBox>
         <svg
           role="img"
           aria-label="Constellation of every note across all parts, with related edges"
@@ -296,7 +297,7 @@ export function NotesConstellation({ notesByPart, className }: Props) {
             );
           })}
         </svg>
-      </div>
+      </PanZoomBox>
 
       {/* Status bar — replaces the slow native SVG title tooltip. */}
       <div className="mt-3 flex min-h-[2.5em] items-baseline gap-3 border-t border-[var(--color-rule)] pt-3">

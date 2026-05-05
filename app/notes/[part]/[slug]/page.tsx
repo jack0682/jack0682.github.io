@@ -6,6 +6,8 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { TOC } from "@/components/layout/TOC";
 import { DocMeta } from "@/components/layout/DocMeta";
 import { FocusToggle } from "@/components/layout/FocusToggle";
+import { BookmarkToggle } from "@/components/layout/BookmarkToggle";
+import { ReadingTracker } from "@/components/layout/ReadingTracker";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, crossRefsFor, prevNextInPart } from "@/lib/content";
@@ -68,6 +70,15 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <>
+      <ReadingTracker
+        slug={note.slug}
+        permalink={note.permalink}
+        title={note.title}
+      />
+      <BookmarkToggle
+        slug={note.slug}
+        className="fixed right-[max(1rem,env(safe-area-inset-right))] top-[max(8rem,env(safe-area-inset-top))] z-30"
+      />
       <FocusToggle />
       <TOC toc={note.toc} />
       <Container width="prose" data-track={note.track}>
@@ -109,6 +120,7 @@ export default async function NotePage({ params }: Props) {
             updated={note.updated}
             readingTime={note.metadata.readingTime}
             wordCount={note.metadata.wordCount}
+            slug={note.slug}
           />
         </header>
 
