@@ -120,7 +120,7 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
           </h2>
           <div className="mt-6 space-y-5 text-[15px] leading-relaxed text-[var(--color-ink)]/90 sm:mt-8 sm:space-y-6 sm:text-base">
             {bio.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i} className="text-justify hyphens-auto">{p}</p>
             ))}
           </div>
         </motion.div>

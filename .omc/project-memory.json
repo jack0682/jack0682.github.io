@@ -177,15 +177,15 @@
       "type": "file"
     },
     {
-      "path": "app/papers/[slug]/page.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1777978054260,
+      "path": "lib/bio.ts",
+      "accessCount": 20,
+      "lastAccessed": 1777988633825,
       "type": "file"
     },
     {
-      "path": "lib/bio.ts",
+      "path": "app/papers/[slug]/page.tsx",
       "accessCount": 17,
-      "lastAccessed": 1777986275460,
+      "lastAccessed": 1777978054260,
       "type": "file"
     },
     {
