@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"python3 -c \\\"import yaml,sys; yaml.safe_load(open('.github/workflows/deploy.yml')); print('YAML OK')\\\"\",\"description\":\"Validate workflow YAML via python\"}",
+  "error": "Exit code 1\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'yaml'",
+  "timestamp": "2026-05-05T07:09:34.433Z",
+  "retry_count": 2
+}
