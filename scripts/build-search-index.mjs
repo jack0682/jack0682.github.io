@@ -188,6 +188,41 @@ function parseJsxProps(s) {
   return props;
 }
 
+/** Pull the most-recent prose paragraph immediately before the
+ *  equation block so we can show it as a description on the index.
+ *  Walks backward from `pos`, gathering whitespace-separated
+ *  sentences until we hit a hard break (blank line) or another
+ *  equation / heading / list marker. Stripped of inline markdown. */
+function contextBefore(body, pos, max = 280) {
+  // Walk back to the previous paragraph break.
+  let end = pos;
+  // Skip leading blank lines just before pos.
+  while (end > 0 && body[end - 1] === "\n") end--;
+  if (end === 0) return undefined;
+  let start = body.lastIndexOf("\n\n", end - 1);
+  if (start === -1) start = 0;
+  let chunk = body.slice(start, end).trim();
+  // Reject if the chunk itself starts with a marker that means it
+  // isn't a sentence (heading, bullet, fenced code).
+  if (/^(#{1,6}\s|>\s|-\s|\*\s|\d+\.\s|```)/.test(chunk)) return undefined;
+  // Strip inline math/code/jsx so the description is plain prose.
+  chunk = chunk
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/\$[^$\n]+\$/g, " ")
+    .replace(/`[^`\n]+`/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (chunk.length === 0) return undefined;
+  if (chunk.length <= max) return chunk;
+  // Prefer ending at a sentence boundary near `max`.
+  const slice = chunk.slice(0, max);
+  const lastPeriod = slice.lastIndexOf(". ");
+  return (lastPeriod > max * 0.5 ? slice.slice(0, lastPeriod + 1) : slice + "…");
+}
+
 function extractEquations() {
   const eqs = [];
   for (const c of collections) {
@@ -206,9 +241,27 @@ function extractEquations() {
       const permalink = `/${c}/${data.slug}/`;
       const fromTitle = data.title ?? data.slug;
 
-      // <Equation ... /> components, both self-closing and paired
+      // Track fenced-code regions once so each match check is O(1).
+      const fenceRanges = [];
+      {
+        const fenceRe = /```/g;
+        let prev = -1;
+        for (const m of body.matchAll(fenceRe)) {
+          if (prev === -1) prev = m.index;
+          else {
+            fenceRanges.push([prev, m.index + m[0].length]);
+            prev = -1;
+          }
+        }
+      }
+      const inFence = (i) =>
+        fenceRanges.some(([a, b]) => i >= a && i < b);
+
+      // <Equation ... /> components — self-closing JSX
       const eqRe = /<Equation\b([^/>]*?)\/>/g;
       for (const m of body.matchAll(eqRe)) {
+        const idx = m.index ?? 0;
+        if (inFence(idx)) continue;
         const props = parseJsxProps(m[1]);
         if (!props.expr) continue;
         eqs.push({
@@ -217,6 +270,7 @@ function extractEquations() {
           number: props.number,
           label: props.label,
           note: props.note,
+          description: props.note ? undefined : contextBefore(body, idx),
           fromSlug: data.slug,
           fromTitle,
           permalink,
@@ -224,19 +278,21 @@ function extractEquations() {
         });
       }
 
-      // $$ ... $$ display math
-      const ddRe = /\$\$([\s\S]+?)\$\$/g;
+      // $$ ... $$ display math — anchored to start-of-line so a
+      // stray inline `$$` in prose can't pair across paragraphs.
+      // Also requires the closing `$$` to be on its own line.
+      const ddRe = /(?:^|\n)\$\$\s*\n([\s\S]+?)\n\s*\$\$(?:\n|$)/g;
       for (const m of body.matchAll(ddRe)) {
+        const idx = m.index ?? 0;
+        if (inFence(idx)) continue;
         const expr = m[1].trim();
         if (!expr) continue;
-        // Skip display math that lives inside a fenced code block —
-        // those are illustrative, not real equations.
-        const before = body.slice(0, m.index ?? 0);
-        const fenceCount = (before.match(/```/g) ?? []).length;
-        if (fenceCount % 2 === 1) continue;
+        // Reject obvious junk: pure prose blocks accidentally caught.
+        if (!/[\\{}=+\-^_]/.test(expr)) continue;
         eqs.push({
           kind: "display",
           expr,
+          description: contextBefore(body, idx),
           fromSlug: data.slug,
           fromTitle,
           permalink,

@@ -547,6 +547,14 @@ export type Equation = {
   label?: string;
   /** Optional plain-language note from `<Equation note="..." />`. */
   note?: string;
+  /**
+   * Auto-extracted prose paragraph immediately preceding the
+   * equation in the source MDX. Used as a description on the index
+   * pages so each equation has surrounding context. Absent when no
+   * suitable paragraph could be found, or when `note` is set
+   * (the explicit author-written note takes precedence).
+   */
+  description?: string;
   /** Source doc slug. */
   fromSlug: string;
   /** Source doc title. */

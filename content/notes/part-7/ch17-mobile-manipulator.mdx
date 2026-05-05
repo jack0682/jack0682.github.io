@@ -21,7 +21,7 @@ This chapter instantiates RelationWorld theory for a practical mobile manipulato
 
 The aim is not to replace Chapters 1--16, but to provide an embodiment-level map:
 
-46452
+$$
 \text\{raw sensor\} \to \mathfrak W_t \to r_t \to g_t^\{\mathrm\{task\}\} \to \xi_t \to u_t.
 $$
 
@@ -29,7 +29,7 @@ $$
 
 In this embodiment, the robot is specialised as:
 
-46452
+$$
 \text{mobile manipulator} = \text{stem traversal} + \text{door manipulation}.
 $$
 
@@ -39,14 +39,14 @@ Hence, its operational priority is not arbitrary in-fruit dexterity, but reliabl
 
 ### 17.3.1 Base state (swerve)
 
-46452
+$$
 x_t^b = (x_t, y_t, \theta_t), \qquad
 \nu_t = (v_\{x,t\}, v_\{y,t\}, \omega_t).
 $$
 
 Discrete-time kinematics (time step $\Delta t$):
 
-46452
+$$
 \begin{aligned}
 x_{t+1} &= x_t + (v_{x,t}\cos\theta_t - v_{y,t}\sin\theta_t)\Delta t, \\
 y_{t+1} &= y_t + (v_{x,t}\sin\theta_t + v_{y,t}\cos\theta_t)\Delta t, \\
@@ -56,18 +56,18 @@ $$
 
 ### 17.3.2 Arm state
 
-46452
+$$
 q_t^a = (q_\{1,t\},q_\{2,t\},q_\{3,t\},q_\{4,t\}), \qquad
 \dot q_t^a = (\dot q_\{1,t\},\dot q_\{2,t\},\dot q_\{3,t\},\dot q_\{4,t\}).
 $$
 
 ### 17.3.3 Combined robot state and action
 
-46452
+$$
 x_t^r = (x_t^b, q_t^a, \nu_t, \dot q_t^a).
 $$
 
-46452
+$$
 u_t^\{\mathrm\{mb\}\} = (v_\{x,t\}, v_\{y,t\}, \omega_t, \dot q_\{1,t\}, \dot q_\{2,t\}, \dot q_\{3,t\}, \dot q_\{4,t\}).
 $$
 
@@ -75,19 +75,19 @@ $$
 
 Let end-effector pose be
 
-46452
+$$
 p_t^e = f_{\mathrm{FK}}(x_t^b, q_t^a).
 $$
 
 Then velocity is
 
-46452
+$$
 \dot p_t^e = J_b(x_t^b,q_t^a)\nu_t + J_a(x_t^b,q_t^a)\dot q_t^a,
 $$
 
 or compactly
 
-46452
+$$
 \dot p_t^e = J_{\mathrm{whole}}(x_t^r)\,\nu_t^{\mathrm{mb}}.
 $$
 
@@ -97,26 +97,26 @@ This coupling equation is the mechanical core of the end-to-end formulation.
 
 Sensor stream:
 
-46452
+$$
 y_t = (I_t, D_t, L_t, \mathrm\{odom\}_t, q_t^a, \dot q_t^a, \mathrm\{force\}_t, \ldots).
 $$
 
 History encoder:
 
-46452
+$$
 z_t = E_\phi(y_{0:t}).
 $$
 
 Node/edge construction:
 
-46452
+$$
 V_t = \mathcal N_\phi(z_t), \qquad
 r_t(i,j) = (i,j,w_t(i,j),g_t(i,j)).
 $$
 
 Embodiment-conditioned edge score (example):
 
-46452
+$$
 \begin{aligned}
 w_t(i,j) =
 &\;\alpha_1\,\mathrm{proximity}_{ij}
@@ -131,21 +131,21 @@ $$
 
 Given thresholds $\theta \in (0,1)$ and $\tau > 0$:
 
-46452
+$$
 F \text\{ is fruit\} \iff \phi(F) = \frac\{|\partial F|_w\}\{\mathrm\{vol\}(F)\} \le \theta,
 $$
 
-46452
+$$
 S_t = V_t \setminus \bigcup_k F_k,
 $$
 
-46452
+$$
 \Sigma(F)=\{i\in F : b_F(i)\ge\tau\}, \quad b_F(i)=d(i)-d_F^\{\mathrm\{int\}\}(i).
 $$
 
 World summary:
 
-46452
+$$
 \mathfrak W_t = (\{F_k\}, S_t, \{\Sigma(F_k)\}).
 $$
 
@@ -153,13 +153,13 @@ $$
 
 Role family:
 
-46452
+$$
 \mathcal R = \{\text\{stem-transporter\},\; \text\{door-operator\},\; \text\{door-stabilizer\}\}.
 $$
 
 Role selection:
 
-46452
+$$
 r_t = \arg\max_{r\in\mathcal R}\Big[
 \beta_1\Delta\mathrm{Flow}(r) +
 \beta_2\Delta\mathrm{BoundaryStability}(r) +
@@ -171,7 +171,7 @@ $$
 
 World deficit:
 
-46452
+$$
 \Delta_t = \lambda_1\mathrm\{StemCongestion\}
 +\lambda_2\mathrm\{DoorOverload\}
 +\lambda_3\mathrm\{BufferMismatch\}
@@ -181,7 +181,7 @@ $$
 
 Task generation:
 
-46452
+$$
 g_t^{\mathrm{task}} = \pi_{\mathrm{task}}(r_t,\mathfrak W_t,\Delta_t).
 $$
 
@@ -189,13 +189,13 @@ $$
 
 Each task is decomposed as
 
-46452
+$$
 g_t^\{\mathrm\{task\}\} \mapsto (g_t^\{\mathrm\{nav\}\}, g_t^\{\mathrm\{manip\}\}),
 $$
 
 with canonical execution phases:
 
-46452
+$$
 \text{approach} \to \text{align} \to \text{manipulate} \to \text{exit}.
 $$
 
@@ -205,7 +205,7 @@ For the first benchmark family (door handle/tray), these phases are mandatory.
 
 Motion latent:
 
-46452
+$$
 \xi_t = \pi_\{\mathrm\{motion\}\}(y_\{0:t\},\mathfrak W_t,r_t,g_t^\{\mathrm\{task\}\}),
 \qquad
 \xi_t=(\xi_t^b,\xi_t^a).
@@ -213,7 +213,7 @@ $$
 
 Coupled objective (horizon $H$):
 
-46452
+$$
 \min_{\mathbf x^b,\mathbf q^a,\mathbf u}
 \sum_{\tau=t}^{t+H}
 \Big(
@@ -227,18 +227,18 @@ $$
 
 where
 
-46452
+$$
 \ell_\{\mathrm\{task\}\} = \|f_\{\mathrm\{FK\}\}(x_\tau^b,q_\tau^a)-p_\tau^\star\|^2,
 $$
 
-46452
+$$
 \ell_{\mathrm{world}} =
 \gamma_1\,\mathrm{dist}(x_\tau^b,\mathcal C_{\mathrm{stem}})^2
 +\gamma_2\,\mathrm{door\_alignment}(x_\tau^b,\Sigma)
 +\gamma_3\,\mathrm{boundary\_respect},
 $$
 
-46452
+$$
 \ell_\{\mathrm\{reach\}\} = \mathrm\{IK\_residual\}(x_\tau^b,q_\tau^a,p_\tau^\star)^2.
 $$
 
