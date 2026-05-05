@@ -118,7 +118,6 @@ export default async function OnnDocPage({ params }: Props) {
             updated={doc.updated}
             readingTime={doc.metadata.readingTime}
             wordCount={doc.metadata.wordCount}
-            slug={doc.slug}
           />
         </header>
 

@@ -148,12 +148,32 @@ export default function SccHubPage() {
         label="Mathematical results"
         description="Theorems and proofs. The Part II summary lists the eight main theorems; individual theorem pages will be detached from it as they are cleaned for public reading."
         aside={
-          <Link
-            href="/scc/dag/"
-            className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)] transition-colors hover:text-[var(--color-accent)]"
-          >
-            Dependency DAG →
-          </Link>
+          <div className="flex flex-col gap-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+            <Link
+              href="/scc/dag/"
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              Dependency DAG →
+            </Link>
+            <Link
+              href="/refs/theorems/"
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              Theorem index →
+            </Link>
+            <Link
+              href="/refs/equations/"
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              Equation index →
+            </Link>
+            <Link
+              href="/refs/open-problems/"
+              className="transition-colors hover:text-[var(--color-accent)]"
+            >
+              Open problems →
+            </Link>
+          </div>
         }
       >
         {theorems.length === 0 ? (

@@ -153,21 +153,21 @@
   },
   "hotPaths": [
     {
+      "path": "lib/content.ts",
+      "accessCount": 24,
+      "lastAccessed": 1777974346839,
+      "type": "file"
+    },
+    {
       "path": "app/notes/[part]/[slug]/page.tsx",
-      "accessCount": 22,
-      "lastAccessed": 1777973700402,
+      "accessCount": 23,
+      "lastAccessed": 1777973956431,
       "type": "file"
     },
     {
       "path": "app/onn/[slug]/page.tsx",
-      "accessCount": 22,
-      "lastAccessed": 1777973703759,
-      "type": "file"
-    },
-    {
-      "path": "lib/content.ts",
-      "accessCount": 20,
-      "lastAccessed": 1777968886777,
+      "accessCount": 23,
+      "lastAccessed": 1777973959298,
       "type": "file"
     },
     {
@@ -219,15 +219,15 @@
       "type": "file"
     },
     {
-      "path": "app/notes/[part]/page.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1777965376005,
+      "path": "app/scc/page.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1777974352605,
       "type": "file"
     },
     {
-      "path": "app/scc/page.tsx",
+      "path": "app/notes/[part]/page.tsx",
       "accessCount": 8,
-      "lastAccessed": 1777967610041,
+      "lastAccessed": 1777965376005,
       "type": "file"
     },
     {

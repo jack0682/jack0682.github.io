@@ -13,7 +13,6 @@ type Resolved = {
   permalink: string;
   group: string;
   summary?: string;
-  progress?: number;
 };
 
 /**
@@ -23,7 +22,7 @@ type Resolved = {
  * bookmarked anything — first-time visitor sees an empty-state hint.
  */
 export default function BookmarksPage() {
-  const { bookmarks, progress } = useReadingState();
+  const { bookmarks } = useReadingState();
 
   const resolved: Resolved[] = bookmarks
     .map((slug): Resolved | null => {
@@ -35,7 +34,6 @@ export default function BookmarksPage() {
           permalink: n.permalink,
           group: `Note · Part ${n.part}`,
           summary: n.summary,
-          progress: progress[slug]?.percent,
         };
       }
       const d = onnAllDocs.find((x) => x.slug === slug);
@@ -46,7 +44,6 @@ export default function BookmarksPage() {
           permalink: d.permalink,
           group: "ONN",
           summary: d.summary,
-          progress: progress[slug]?.percent,
         };
       }
       const p = papers.find((x) => x.slug === slug);
@@ -57,7 +54,6 @@ export default function BookmarksPage() {
           permalink: p.permalink,
           group: `Paper · ${p.year}`,
           summary: p.abstract.slice(0, 160),
-          progress: progress[slug]?.percent,
         };
       }
       return null;
@@ -106,13 +102,8 @@ export default function BookmarksPage() {
                     {item.summary}
                   </p>
                 )}
-                <p className="mt-1 flex flex-wrap gap-x-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
-                  <span>{item.group}</span>
-                  {typeof item.progress === "number" && item.progress > 0 && (
-                    <span className="text-[var(--color-accent)]">
-                      {item.progress}% read
-                    </span>
-                  )}
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+                  {item.group}
                 </p>
               </div>
             </li>

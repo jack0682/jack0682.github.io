@@ -8,6 +8,7 @@ import {
 } from "#content";
 import idIndexJson from "../.velite/id-index.json";
 import glossaryJson from "../.velite/glossary.json";
+import equationsJson from "../.velite/equations.json";
 
 /* Body texts are intentionally NOT imported here.
    They are loaded directly by `components/layout/CommandPalette.tsx`
@@ -498,7 +499,7 @@ export function itemsForTag(tag: string) {
 
    Built at `pnpm build` time by `scripts/build-search-index.mjs`,
    which parses raw MDX and bins IDs by kind. Used by
-   `/index/theorems/` and `/index/open-problems/`.
+   `/refs/theorems/` and `/refs/open-problems/`.
    ────────────────────────────────────────────────────────────── */
 
 export type IdOccurrence = {
@@ -527,4 +528,62 @@ export function idsByKind(kind: IdIndexKind): { id: string; occurrences: IdOccur
     .sort((a, b) =>
       a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: "base" }),
     );
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Equation index — all `<Equation expr=...>` JSX blocks plus
+   `$$ ... $$` display math, surfaced together for the global
+   equations page at `/refs/equations/`.
+   ────────────────────────────────────────────────────────────── */
+
+export type Equation = {
+  /** Source: explicit `<Equation>` JSX vs raw `$$..$$` display math. */
+  kind: "Equation" | "display";
+  /** TeX source. */
+  expr: string;
+  /** Optional eq number from `<Equation number="2.1" />`. */
+  number?: string;
+  /** Optional left-rail label, e.g. "Def." */
+  label?: string;
+  /** Optional plain-language note from `<Equation note="..." />`. */
+  note?: string;
+  /** Source doc slug. */
+  fromSlug: string;
+  /** Source doc title. */
+  fromTitle: string;
+  /** Source doc permalink. */
+  permalink: string;
+  /** Source collection — drives grouping in the index page. */
+  collection: "notes" | "onn" | "papers" | "journal";
+};
+
+export const equations = equationsJson as Equation[];
+
+/** Group equations by source slug, sorted by frequency desc then by title asc. */
+export function equationsBySource(): {
+  slug: string;
+  title: string;
+  permalink: string;
+  collection: Equation["collection"];
+  items: Equation[];
+}[] {
+  const map = new Map<string, ReturnType<typeof equationsBySource>[number]>();
+  for (const eq of equations) {
+    const bucket = map.get(eq.fromSlug);
+    if (bucket) {
+      bucket.items.push(eq);
+    } else {
+      map.set(eq.fromSlug, {
+        slug: eq.fromSlug,
+        title: eq.fromTitle,
+        permalink: eq.permalink,
+        collection: eq.collection,
+        items: [eq],
+      });
+    }
+  }
+  return [...map.values()].sort(
+    (a, b) =>
+      b.items.length - a.items.length || a.title.localeCompare(b.title),
+  );
 }

@@ -116,7 +116,6 @@ export default async function NotePage({ params }: Props) {
             updated={note.updated}
             readingTime={note.metadata.readingTime}
             wordCount={note.metadata.wordCount}
-            slug={note.slug}
           />
         </header>
 

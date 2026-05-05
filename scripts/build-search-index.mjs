@@ -171,6 +171,83 @@ for (const c of collections) {
   }
 }
 
+/* ── equation extraction ──────────────────────────────────────
+   Pulls every `<Equation expr="..." />` JSX block + every
+   `$$ ... $$` display-math span out of the raw MDX. Inline `$..$`
+   is intentionally skipped — too noisy at index scale. Output:
+   `.velite/equations.json` consumed by `/index/equations/`. */
+
+function parseJsxProps(s) {
+  const props = {};
+  const re = /(\w+)\s*=\s*(?:"([^"]*)"|\{`([^`]*)`\}|\{"([^"]*)"\}|\{([^}]*)\})/g;
+  let m;
+  while ((m = re.exec(s)) !== null) {
+    const value = m[2] ?? m[3] ?? m[4] ?? m[5];
+    if (value !== undefined) props[m[1]] = value;
+  }
+  return props;
+}
+
+function extractEquations() {
+  const eqs = [];
+  for (const c of collections) {
+    const dir = resolve(root, "content", c);
+    let it;
+    try {
+      it = walk(dir);
+    } catch {
+      continue;
+    }
+    for (const file of it) {
+      const raw = readFileSync(file, "utf8");
+      const { data, body } = parseFrontmatter(raw);
+      if (!data.slug) continue;
+      if (data.draft === true || data.draft === "true") continue;
+      const permalink = `/${c}/${data.slug}/`;
+      const fromTitle = data.title ?? data.slug;
+
+      // <Equation ... /> components, both self-closing and paired
+      const eqRe = /<Equation\b([^/>]*?)\/>/g;
+      for (const m of body.matchAll(eqRe)) {
+        const props = parseJsxProps(m[1]);
+        if (!props.expr) continue;
+        eqs.push({
+          kind: "Equation",
+          expr: props.expr,
+          number: props.number,
+          label: props.label,
+          note: props.note,
+          fromSlug: data.slug,
+          fromTitle,
+          permalink,
+          collection: c,
+        });
+      }
+
+      // $$ ... $$ display math
+      const ddRe = /\$\$([\s\S]+?)\$\$/g;
+      for (const m of body.matchAll(ddRe)) {
+        const expr = m[1].trim();
+        if (!expr) continue;
+        // Skip display math that lives inside a fenced code block —
+        // those are illustrative, not real equations.
+        const before = body.slice(0, m.index ?? 0);
+        const fenceCount = (before.match(/```/g) ?? []).length;
+        if (fenceCount % 2 === 1) continue;
+        eqs.push({
+          kind: "display",
+          expr,
+          fromSlug: data.slug,
+          fromTitle,
+          permalink,
+          collection: c,
+        });
+      }
+    }
+  }
+  return eqs;
+}
+
 /* ── glossary extraction ──────────────────────────────────────
    Drives the `<Term id="D-0014">…</Term>` HoverCard popups.
    Reads `content/notes/part-0/scc-glossary.mdx` and bins each
@@ -228,14 +305,17 @@ function extractGlossary() {
 }
 
 const glossary = extractGlossary();
+const equations = extractEquations();
 
 const bodyOut = resolve(root, ".velite/body-index.json");
 const idOut = resolve(root, ".velite/id-index.json");
 const glossaryOut = resolve(root, ".velite/glossary.json");
+const equationsOut = resolve(root, ".velite/equations.json");
 mkdirSync(dirname(bodyOut), { recursive: true });
 writeFileSync(bodyOut, JSON.stringify(bodyIndex));
 writeFileSync(idOut, JSON.stringify(idIndex));
 writeFileSync(glossaryOut, JSON.stringify(glossary));
+writeFileSync(equationsOut, JSON.stringify(equations));
 
 const idCounts = Object.entries(idIndex)
   .map(([kind, ids]) => `${kind}=${Object.keys(ids).length}`)
@@ -245,5 +325,5 @@ console.log(
     Object.values(bodyIndex).reduce((s, v) => s + v.length, 0)
   } chars · ids: ${idCounts} (${totalIds} occurrences) · glossary: ${
     Object.keys(glossary).length
-  } entries`,
+  } entries · equations: ${equations.length}`,
 );
