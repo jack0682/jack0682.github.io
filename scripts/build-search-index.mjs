@@ -212,6 +212,7 @@ function contextBefore(body, pos, max = 280) {
     .replace(/`[^`\n]+`/g, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/^#{1,6}\s*/gm, "")
     .replace(/[*_~]/g, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -289,6 +290,9 @@ function extractEquations() {
         if (!expr) continue;
         // Reject obvious junk: pure prose blocks accidentally caught.
         if (!/[\\{}=+\-^_]/.test(expr)) continue;
+        // Reject Markdown-looking content (bullets, headings, bold) —
+        // signals a false match between two adjacent $$ blocks.
+        if (/(?:^|\n)#{1,6}\s|(?:^|\n)[-*]\s|\*\*/.test(expr)) continue;
         eqs.push({
           kind: "display",
           expr,

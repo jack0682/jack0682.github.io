@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"grep -n \\\"crossRefsFor\\\" lib/content.ts app/notes/\\\\*/\\\\*/page.tsx app/onn/\\\\*/page.tsx 2>/dev/null\",\"description\":\"Check crossRefsFor usage - ONN doc only searches allNotes not onnAllDocs...",
-  "error": "Exit code 2\n178:   `crossRefsFor`, `papers[].related`, and `journal[].refs` all\n190:          `crossRefsFor() cannot disambiguate — rename one before building.`,\n224:   `crossRefsFor` walks forward edges only. Inbound edges are\n232:   This block is intentionally declared BEFORE `crossRefsFor` so\n316:export function crossRefsFor(slug: string) {",
-  "timestamp": "2026-05-05T10:48:20.815Z",
-  "retry_count": 1
-}
