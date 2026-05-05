@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { cn } from "@/lib/cn";
@@ -127,7 +127,43 @@ export function MobileNav({ items }: { items: Item[] }) {
                 </button>
               </div>
 
-              <nav aria-label="Primary" className="mt-12 flex flex-col">
+              {/* Search trigger — first slot in the drawer because
+                   this is the only mobile path to ⌘K. Closes the
+                   drawer first, then dispatches the keyboard shortcut
+                   to open the palette. */}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  // Wait one frame for the drawer to start collapsing
+                  // so the palette mounts cleanly above the page.
+                  requestAnimationFrame(() => {
+                    const isMac = navigator.platform.toLowerCase().includes("mac");
+                    document.dispatchEvent(
+                      new KeyboardEvent("keydown", {
+                        key: "k",
+                        metaKey: isMac,
+                        ctrlKey: !isMac,
+                        bubbles: true,
+                      }),
+                    );
+                  });
+                }}
+                aria-label="Open search"
+                className={cn(
+                  "mt-10 flex items-center gap-3 rounded-sm border border-[var(--color-rule)] px-4 py-3",
+                  "text-left text-sm text-[var(--color-muted)] transition-colors",
+                  "hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
+                )}
+              >
+                <Search size={16} strokeWidth={1.5} className="shrink-0" />
+                <span className="flex-1">Search notes, papers, journal…</span>
+                <kbd className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+                  ⌘K
+                </kbd>
+              </button>
+
+              <nav aria-label="Primary" className="mt-8 flex flex-col">
                 <ul className="flex flex-col">
                   {items.map((item, i) => (
                     <li key={item.href}>

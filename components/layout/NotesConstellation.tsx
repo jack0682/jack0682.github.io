@@ -246,6 +246,20 @@ export function NotesConstellation({ notesByPart, className }: Props) {
                 key={n.slug}
                 href={n.permalink}
                 aria-label={n.title}
+                onClick={(e) => {
+                  // Touch devices: first tap on a node sets hover
+                  // (so the status bar reveals title + connections);
+                  // a second tap on the same node navigates. Desktop
+                  // hover devices skip this — click navigates immediately.
+                  if (
+                    typeof window !== "undefined" &&
+                    window.matchMedia("(hover: none)").matches &&
+                    hoveredSlug !== n.slug
+                  ) {
+                    e.preventDefault();
+                    setHoveredSlug(n.slug);
+                  }
+                }}
               >
                 <g
                   className="group cursor-pointer transition-opacity duration-150"

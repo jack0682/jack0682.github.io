@@ -5,9 +5,9 @@ import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { TOC } from "@/components/layout/TOC";
 import { DocMeta } from "@/components/layout/DocMeta";
-import { FocusToggle } from "@/components/layout/FocusToggle";
-import { BookmarkToggle } from "@/components/layout/BookmarkToggle";
-import { ReadingTracker } from "@/components/layout/ReadingTracker";
+import { DocActions } from "@/components/layout/DocActions";
+import { StickyDocTitle } from "@/components/layout/StickyDocTitle";
+import { MobileDocBar } from "@/components/layout/MobileDocBar";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, crossRefsFor, prevNextInPart } from "@/lib/content";
@@ -70,16 +70,12 @@ export default async function NotePage({ params }: Props) {
 
   return (
     <>
-      <ReadingTracker
-        slug={note.slug}
-        permalink={note.permalink}
-        title={note.title}
+      <DocActions slug={note.slug} />
+      <StickyDocTitle title={note.title} />
+      <MobileDocBar
+        prev={prev ? { permalink: prev.permalink, title: prev.title } : null}
+        next={next ? { permalink: next.permalink, title: next.title } : null}
       />
-      <BookmarkToggle
-        slug={note.slug}
-        className="fixed right-[max(1rem,env(safe-area-inset-right))] top-[max(8rem,env(safe-area-inset-top))] z-30"
-      />
-      <FocusToggle />
       <TOC toc={note.toc} />
       <Container width="prose" data-track={note.track}>
         <script

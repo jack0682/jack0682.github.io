@@ -153,6 +153,18 @@
   },
   "hotPaths": [
     {
+      "path": "app/notes/[part]/[slug]/page.tsx",
+      "accessCount": 22,
+      "lastAccessed": 1777973700402,
+      "type": "file"
+    },
+    {
+      "path": "app/onn/[slug]/page.tsx",
+      "accessCount": 22,
+      "lastAccessed": 1777973703759,
+      "type": "file"
+    },
+    {
       "path": "lib/content.ts",
       "accessCount": 20,
       "lastAccessed": 1777968886777,
@@ -162,18 +174,6 @@
       "path": "velite.config.ts",
       "accessCount": 17,
       "lastAccessed": 1777970693574,
-      "type": "file"
-    },
-    {
-      "path": "app/onn/[slug]/page.tsx",
-      "accessCount": 16,
-      "lastAccessed": 1777972898900,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/[part]/[slug]/page.tsx",
-      "accessCount": 15,
-      "lastAccessed": 1777972896746,
       "type": "file"
     },
     {
@@ -207,6 +207,18 @@
       "type": "file"
     },
     {
+      "path": "components/layout/CommandPalette.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1777973320289,
+      "type": "file"
+    },
+    {
+      "path": "app/page.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1777973710921,
+      "type": "file"
+    },
+    {
       "path": "app/notes/[part]/page.tsx",
       "accessCount": 8,
       "lastAccessed": 1777965376005,
@@ -216,18 +228,6 @@
       "path": "app/scc/page.tsx",
       "accessCount": 8,
       "lastAccessed": 1777967610041,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/CommandPalette.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777968532254,
-      "type": "file"
-    },
-    {
-      "path": "app/page.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777972932193,
       "type": "file"
     },
     {

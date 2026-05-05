@@ -38,13 +38,33 @@ const initial: ReadingState = {
   last: null,
 };
 
+// Snapshot cache. `useSyncExternalStore` requires the snapshot
+// reference to remain stable across calls when the underlying
+// store hasn't changed; otherwise React detects the diff every
+// render and falls into an infinite loop, which surfaces as the
+// "This page couldn't load" error boundary fallback. We compare
+// the raw localStorage string and only build a new object when
+// it actually changes.
+let cachedRaw: string | null | undefined = undefined;
+let cachedState: ReadingState = initial;
+
 function read(): ReadingState {
   if (typeof window === "undefined") return initial;
+  let raw: string | null;
   try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return initial;
+    raw = window.localStorage.getItem(KEY);
+  } catch {
+    return initial;
+  }
+  if (raw === cachedRaw) return cachedState;
+  cachedRaw = raw;
+  if (!raw) {
+    cachedState = initial;
+    return cachedState;
+  }
+  try {
     const parsed = JSON.parse(raw);
-    return {
+    cachedState = {
       bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks : [],
       visited: Array.isArray(parsed.visited) ? parsed.visited : [],
       progress:
@@ -53,8 +73,10 @@ function read(): ReadingState {
           : {},
       last: parsed.last ?? null,
     };
+    return cachedState;
   } catch {
-    return initial;
+    cachedState = initial;
+    return cachedState;
   }
 }
 

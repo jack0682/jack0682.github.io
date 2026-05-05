@@ -2,9 +2,12 @@
 
 import * as HoverCard from "@radix-ui/react-hover-card";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { glossary } from "@/lib/content";
 import { cn } from "@/lib/cn";
+
+/** Auto-dismiss popups after this many ms of inactivity on touch. */
+const TOUCH_AUTO_CLOSE_MS = 6000;
 
 type Props = {
   /** Formal ID — e.g. "D-0014", "S-0003", "A-0012". */
@@ -66,6 +69,30 @@ export function Term({ id, children, className }: Props) {
     }
   };
 
+  // Outside-click + auto-dismiss on touch. HoverCard's built-in
+  // close-on-leave behaviour doesn't fire on touch (no mouseleave),
+  // so the popup would otherwise linger until the next interaction.
+  useEffect(() => {
+    if (!open) return;
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as Element | null;
+      if (target?.closest(`[data-term-scope="${anchor}"]`)) return;
+      setOpen(false);
+    };
+    const timeout = window.setTimeout(
+      () => setOpen(false),
+      TOUCH_AUTO_CLOSE_MS,
+    );
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.clearTimeout(timeout);
+    };
+  }, [open, anchor]);
+
   return (
     <HoverCard.Root
       open={open}
@@ -76,6 +103,7 @@ export function Term({ id, children, className }: Props) {
       <HoverCard.Trigger asChild>
         <Link
           id={anchor}
+          data-term-scope={anchor}
           href={`/notes/part-0/scc-glossary/#${anchor}`}
           onClick={onTriggerClick}
           className={cn(
@@ -93,6 +121,7 @@ export function Term({ id, children, className }: Props) {
           align="start"
           sideOffset={6}
           collisionPadding={16}
+          data-term-scope={anchor}
           className={cn(
             "liquid-glass z-[1200] max-w-[22rem] rounded-sm",
             "px-4 py-3 text-sm leading-relaxed text-[var(--color-ink)]",

@@ -5,9 +5,8 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
 import { TOC } from "@/components/layout/TOC";
 import { DocMeta } from "@/components/layout/DocMeta";
-import { FocusToggle } from "@/components/layout/FocusToggle";
-import { BookmarkToggle } from "@/components/layout/BookmarkToggle";
-import { ReadingTracker } from "@/components/layout/ReadingTracker";
+import { DocActions } from "@/components/layout/DocActions";
+import { StickyDocTitle } from "@/components/layout/StickyDocTitle";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, onnAllDocs, papers, citedBy } from "@/lib/content";
@@ -72,16 +71,8 @@ export default async function OnnDocPage({ params }: Props) {
 
   return (
     <>
-      <ReadingTracker
-        slug={doc.slug}
-        permalink={doc.permalink}
-        title={doc.title}
-      />
-      <BookmarkToggle
-        slug={doc.slug}
-        className="fixed right-[max(1rem,env(safe-area-inset-right))] top-[max(8rem,env(safe-area-inset-top))] z-30"
-      />
-      <FocusToggle />
+      <DocActions slug={doc.slug} />
+      <StickyDocTitle title={doc.title} />
       <TOC toc={doc.toc} />
       <Container width="prose" data-track="onn">
         <script

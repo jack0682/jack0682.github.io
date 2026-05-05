@@ -128,6 +128,11 @@ function Lightbox({
 }) {
   const [mounted, setMounted] = useState(false);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
+  // Tracks a single-pointer touch on the backdrop for swipe-down-to-close.
+  // Pinch (2+ pointers) is captured by TransformWrapper inside the image
+  // area, so it won't fire these handlers. Mouse drags are also ignored —
+  // desktop has the explicit close button + ESC + backdrop click.
+  const swipeRef = useRef<{ y: number; t: number; id: number } | null>(null);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
@@ -146,6 +151,26 @@ function Lightbox({
           // Background click closes; the image and controls stop
           // propagation so they don't dismiss accidentally.
           onClick={onClose}
+          onPointerDown={(e) => {
+            if (e.pointerType !== "touch") return;
+            swipeRef.current = {
+              y: e.clientY,
+              t: Date.now(),
+              id: e.pointerId,
+            };
+          }}
+          onPointerUp={(e) => {
+            const s = swipeRef.current;
+            if (!s || s.id !== e.pointerId) return;
+            swipeRef.current = null;
+            const dy = e.clientY - s.y;
+            const dt = Date.now() - s.t;
+            // ≥110px downward fling within 600ms = close
+            if (dy > 110 && dt < 600) onClose();
+          }}
+          onPointerCancel={() => {
+            swipeRef.current = null;
+          }}
         >
           <div className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-[2] flex gap-2">
             <button

@@ -1,6 +1,5 @@
 import { formatDate, toIsoDate } from "@/lib/format";
 import { cn } from "@/lib/cn";
-import { DocProgress } from "./DocProgress";
 
 type Props = {
   /** First-publication ISO date. */
@@ -11,8 +10,6 @@ type Props = {
   readingTime?: number;
   /** Word count (Velite's `metadata.wordCount`). */
   wordCount?: number;
-  /** Slug — when set, surfaces "X% read" if the user has scroll progress. */
-  slug?: string;
   className?: string;
 };
 
@@ -30,7 +27,6 @@ export function DocMeta({
   updated,
   readingTime,
   wordCount,
-  slug,
   className,
 }: Props) {
   const showUpdated =
@@ -64,7 +60,6 @@ export function DocMeta({
       {typeof readingTime === "number" && readingTime > 0 && (
         <span className="font-mono tabular-nums">{readingTime} min read</span>
       )}
-      {slug && <DocProgress slug={slug} />}
     </p>
   );
 }

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
-import { VisitedMark } from "./VisitedMark";
 
 type NoteRef = {
   slug: string;
@@ -163,7 +162,6 @@ function Row({
           <span className="block flex-1 text-sm leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
             {title}
           </span>
-          {slug && <VisitedMark slug={slug} />}
           <span
             aria-hidden
             className="font-mono text-[11px] text-[var(--color-subtle)] opacity-0 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] group-hover:opacity-100"

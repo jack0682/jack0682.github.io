@@ -153,7 +153,12 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
           <motion.div
             className={cn(
               "liquid-glass",
-              "absolute left-1/2 top-[12vh] w-[min(40rem,92vw)] -translate-x-1/2",
+              // Mobile: panel anchors near the top so the input stays
+              //   above the on-screen keyboard. `dvh` accounts for the
+              //   browser chrome on iOS Safari.
+              // Desktop (sm+): centred ~12vh from the top.
+              "absolute left-1/2 top-[max(0.5rem,env(safe-area-inset-top))] sm:top-[12vh]",
+              "w-[min(40rem,96vw)] -translate-x-1/2",
               "text-[var(--color-ink)]",
               "overflow-hidden rounded-sm",
             )}
@@ -192,7 +197,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
                 </button>
               </div>
 
-              <Command.List className="max-h-[60vh] overflow-y-auto px-2 py-2">
+              <Command.List className="max-h-[55dvh] overflow-y-auto overscroll-contain px-2 py-2 sm:max-h-[60vh]">
                 {isSearching && ranked.length === 0 && (
                   <Command.Empty className="px-4 py-8 text-center text-sm italic text-[var(--color-subtle)]">
                     Nothing matches.
