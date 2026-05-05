@@ -322,7 +322,7 @@ export function crossRefsFor(slug: string) {
         .filter((n): n is (typeof allNotes)[number] => Boolean(n))
     : onnDoc
       ? onnDoc.related
-          .map((s) => allNotes.find((n) => n.slug === s))
+          .map((s) => allNotes.find((n) => n.slug === s) ?? onnAllDocs.find((d) => d.slug === s))
           .filter((n): n is (typeof allNotes)[number] => Boolean(n))
       : [];
 

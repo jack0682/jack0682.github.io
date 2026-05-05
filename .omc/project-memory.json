@@ -154,8 +154,8 @@
   "hotPaths": [
     {
       "path": "lib/content.ts",
-      "accessCount": 28,
-      "lastAccessed": 1777978053478,
+      "accessCount": 29,
+      "lastAccessed": 1777978182208,
       "type": "file"
     },
     {
@@ -237,6 +237,12 @@
       "type": "file"
     },
     {
+      "path": "app/onn/page.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777978210407,
+      "type": "file"
+    },
+    {
       "path": "app/about/page.tsx",
       "accessCount": 7,
       "lastAccessed": 1777975000363,
@@ -264,12 +270,6 @@
       "path": "components/mdx/components.ts",
       "accessCount": 6,
       "lastAccessed": 1777975045932,
-      "type": "file"
-    },
-    {
-      "path": "app/onn/page.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1777978053853,
       "type": "file"
     },
     {

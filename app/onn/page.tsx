@@ -35,6 +35,7 @@ export default function OnnHubPage() {
     roadmap,
     overview,
     theorems,
+    essays,
     relatedPapers,
     trackOverview,
     integrationNote,
@@ -190,6 +191,24 @@ export default function OnnHubPage() {
           ))
         )}
       </HubSection>
+
+      {/* ── Essays & working notes ───────────────────────────── */}
+      {essays.length > 0 && (
+        <HubSection
+          label="Essays & working notes"
+          description="Exploratory documents, working notes, and essay-form writing in the ONN thread."
+        >
+          {essays.map((n) => (
+            <DocCard
+              key={n.slug}
+              href={n.permalink}
+              title={n.title}
+              summary={n.summary}
+              meta={n.updated ? `updated ${formatDate(n.updated)}` : undefined}
+            />
+          ))}
+        </HubSection>
+      )}
 
       {/* ── Related papers ────────────────────────────────────── */}
       <HubSection

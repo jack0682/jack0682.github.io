@@ -14,8 +14,10 @@ const collectionLabel: Record<string, string> = {
   journal: "Journal",
 };
 
+const allEquationGroups = equationsBySource();
+
 export function generateStaticParams() {
-  return equationsBySource().map((g) => ({ slug: g.slug }));
+  return allEquationGroups.map((g) => ({ slug: g.slug }));
 }
 
 export const dynamicParams = false;
@@ -24,7 +26,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const group = equationsBySource().find((g) => g.slug === slug);
+  const group = allEquationGroups.find((g) => g.slug === slug);
   if (!group) return { title: "Equations · not found" };
   return {
     title: `Equations · ${group.title}`,
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function EquationsDetailPage({ params }: Props) {
   const { slug } = await params;
-  const group = equationsBySource().find((g) => g.slug === slug);
+  const group = allEquationGroups.find((g) => g.slug === slug);
   if (!group) notFound();
 
   return (

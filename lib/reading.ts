@@ -10,7 +10,7 @@ import { useSyncExternalStore } from "react";
  * Earlier iterations of this module also tracked `visited`, scroll
  * `progress`, and a "last read" pointer for auto-resume, but those
  * features were removed. The shape is kept narrow to whatever is
- * actually used by `BookmarkToggle`, `DocActions`, and `/bookmarks`.
+ * actually used by `DocActions` and `/bookmarks`.
  *
  * SSR-safe: the server snapshot is the empty initial state.
  */
