@@ -10,6 +10,7 @@ import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, crossRefsFor, prevNextInPart } from "@/lib/content";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
+import { articleSchema, jsonLdScript } from "@/lib/seo";
 
 export function generateStaticParams() {
   return allNotes.map((note) => ({
@@ -70,6 +71,23 @@ export default async function NotePage({ params }: Props) {
       <FocusToggle />
       <TOC toc={note.toc} />
       <Container width="prose" data-track={note.track}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(
+              articleSchema({
+                title: note.title,
+                permalink: note.permalink,
+                description: note.summary,
+                ogImage: `/og/notes/${note.slug}.png`,
+                datePublished: note.date,
+                dateModified: note.updated,
+                wordCount: note.metadata.wordCount,
+                keywords: note.tags,
+              }),
+            ),
+          }}
+        />
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">

@@ -10,6 +10,7 @@ import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site";
+import { scholarlyArticleSchema, jsonLdScript } from "@/lib/seo";
 
 export function generateStaticParams() {
   return papers.map((p) => ({ slug: p.slug }));
@@ -93,6 +94,27 @@ export default async function PaperPage({ params }: Props) {
       />
       <TOC toc={paper.toc} />
       <Container width="prose">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(
+              scholarlyArticleSchema({
+                title: paper.title,
+                permalink: paper.permalink,
+                abstract: paper.abstract,
+                authors: paper.authors,
+                datePublished: paper.date,
+                dateModified: paper.updated,
+                ogImage: `/og/papers/${paper.slug}.png`,
+                doi: paper.doi,
+                arxiv: paper.arxiv,
+                pdf: paper.pdf,
+                venue: paper.venue,
+                keywords: paper.tags,
+              }),
+            ),
+          }}
+        />
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">

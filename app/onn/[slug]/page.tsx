@@ -9,6 +9,7 @@ import { FocusToggle } from "@/components/layout/FocusToggle";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, onnAllDocs, papers, citedBy } from "@/lib/content";
+import { articleSchema, jsonLdScript } from "@/lib/seo";
 
 export function generateStaticParams() {
   return onnAllDocs.map((d) => ({ slug: d.slug }));
@@ -72,6 +73,23 @@ export default async function OnnDocPage({ params }: Props) {
       <FocusToggle />
       <TOC toc={doc.toc} />
       <Container width="prose" data-track="onn">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(
+              articleSchema({
+                title: doc.title,
+                permalink: doc.permalink,
+                description: doc.summary,
+                ogImage: `/og/onn/${doc.slug}.png`,
+                datePublished: doc.date,
+                dateModified: doc.updated,
+                wordCount: doc.metadata.wordCount,
+                keywords: doc.tags,
+              }),
+            ),
+          }}
+        />
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={crumbs} />
           <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">

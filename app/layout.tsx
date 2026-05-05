@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
@@ -11,7 +12,13 @@ import { RouteProgress } from "@/components/motion/RouteProgress";
 import { CommandPalette } from "@/components/layout/CommandPalette";
 import { FloatingChip } from "@/components/layout/FloatingChip";
 import { searchIndex } from "@/lib/content";
-import { SITE_URL } from "@/lib/site";
+import {
+  SITE_URL,
+  GOOGLE_SITE_VERIFICATION,
+  BING_SITE_VERIFICATION,
+  GTM_ID,
+} from "@/lib/site";
+import { rootSchema, jsonLdScript } from "@/lib/seo";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -49,6 +56,19 @@ export const metadata: Metadata = {
       "application/atom+xml": "/feed.xml",
     },
   },
+  // Search-engine verification tokens — opt-in via build-time env vars.
+  // Both `verification.google` and `verification.other` emit the
+  // appropriate `<meta name="...">` tag in the document head.
+  ...(GOOGLE_SITE_VERIFICATION || BING_SITE_VERIFICATION
+    ? {
+        verification: {
+          ...(GOOGLE_SITE_VERIFICATION && { google: GOOGLE_SITE_VERIFICATION }),
+          ...(BING_SITE_VERIFICATION && {
+            other: { "msvalidate.01": BING_SITE_VERIFICATION },
+          }),
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({
@@ -60,13 +80,37 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      {GTM_ID && (
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+      )}
       <body className="flex min-h-full flex-col bg-[var(--color-bg)] text-[var(--color-ink)]">
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to main content
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(rootSchema()) }}
+        />
         <ThemeProvider>
           <RouteProgress />
           <ScrollProgress />

@@ -8,6 +8,7 @@ import { GiscusComments } from "@/components/layout/GiscusComments";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
+import { articleSchema, jsonLdScript } from "@/lib/seo";
 
 export function generateStaticParams() {
   return journalEntries.map((e) => ({ slug: e.slug }));
@@ -52,6 +53,24 @@ export default async function JournalEntryPage({ params }: Props) {
 
   return (
     <Container width="prose">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(
+            articleSchema({
+              type: "BlogPosting",
+              title: entry.title,
+              permalink: entry.permalink,
+              description: entry.summary,
+              ogImage: `/og/journal/${entry.slug}.png`,
+              datePublished: entry.date,
+              dateModified: entry.updated,
+              wordCount: entry.metadata.wordCount,
+              keywords: entry.tags,
+            }),
+          ),
+        }}
+      />
       <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
         <Breadcrumb items={crumbs} />
         <p className="mb-4 sci-eyebrow text-xs text-[var(--color-accent)] sm:mb-5">
