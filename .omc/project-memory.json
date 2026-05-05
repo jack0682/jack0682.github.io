@@ -183,6 +183,12 @@
       "type": "file"
     },
     {
+      "path": "lib/bio.ts",
+      "accessCount": 17,
+      "lastAccessed": 1777986275460,
+      "type": "file"
+    },
+    {
       "path": "app/layout.tsx",
       "accessCount": 16,
       "lastAccessed": 1777975031811,
@@ -198,12 +204,6 @@
       "path": "app/journal/[slug]/page.tsx",
       "accessCount": 12,
       "lastAccessed": 1777978060059,
-      "type": "file"
-    },
-    {
-      "path": "lib/bio.ts",
-      "accessCount": 12,
-      "lastAccessed": 1777979723598,
       "type": "file"
     },
     {
@@ -327,6 +327,12 @@
       "type": "file"
     },
     {
+      "path": "app/bio/page.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1777980613371,
+      "type": "file"
+    },
+    {
       "path": "tsconfig.json",
       "accessCount": 3,
       "lastAccessed": 1777905389853,
@@ -348,12 +354,6 @@
       "path": "next.config.ts",
       "accessCount": 3,
       "lastAccessed": 1777975058867,
-      "type": "file"
-    },
-    {
-      "path": "app/bio/page.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1777979233636,
       "type": "file"
     },
     {
