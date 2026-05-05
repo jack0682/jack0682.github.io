@@ -1,8 +1,7 @@
 import { recentWriting, papers } from "@/lib/content";
+import { SITE_URL as BASE } from "@/lib/site";
 
 export const dynamic = "force-static";
-
-const BASE = "https://jack0682.github.io";
 
 /* ── XML helpers ──────────────────────────────────────────────── */
 

@@ -1,0 +1,457 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1777905283887,
+  "projectRoot": "/Users/ojaehong/Perception/jack0682.github.io",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "16.2.4",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "19.2.4",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.4",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "pnpm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "pnpm build",
+    "testCommand": null,
+    "lintCommand": "pnpm lint",
+    "devCommand": "pnpm dev",
+    "scripts": {
+      "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
+      "build": "velite && node scripts/generate-og.mjs && next build",
+      "og": "node scripts/generate-og.mjs",
+      "start": "next start",
+      "lint": "eslint",
+      "content": "velite",
+      "content:watch": "velite --watch"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": true,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "components",
+      "lib",
+      "public",
+      "scripts"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 8,
+      "lastAccessed": 1777905283870,
+      "keyFiles": [
+        "favicon.ico",
+        "globals.css",
+        "layout.tsx",
+        "loading.tsx",
+        "page.tsx"
+      ]
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1777905283870,
+      "keyFiles": []
+    },
+    "content": {
+      "path": "content",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1777905283876,
+      "keyFiles": []
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 4,
+      "lastAccessed": 1777905283879,
+      "keyFiles": [
+        "bio.ts",
+        "cn.ts",
+        "content.ts",
+        "format.ts"
+      ]
+    },
+    "out": {
+      "path": "out",
+      "purpose": "Build output",
+      "fileCount": 14,
+      "lastAccessed": 1777905283879,
+      "keyFiles": [
+        "404.html",
+        "__next.__PAGE__.txt",
+        "__next._full.txt",
+        "__next._head.txt",
+        "__next._index.txt"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1777905283879,
+      "keyFiles": [
+        "og-default.png"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 2,
+      "lastAccessed": 1777905283879,
+      "keyFiles": [
+        "generate-og.mjs",
+        "generate_fig24_l1m_softcount_envelope.py"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "app/layout.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777905671299,
+      "type": "file"
+    },
+    {
+      "path": "lib/content.ts",
+      "accessCount": 7,
+      "lastAccessed": 1777905797884,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/[part]/page.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1777905748217,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 5,
+      "lastAccessed": 1777905614700,
+      "type": "file"
+    },
+    {
+      "path": "app/papers/[slug]/page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1777905678868,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate-og.mjs",
+      "accessCount": 5,
+      "lastAccessed": 1777905832041,
+      "type": "file"
+    },
+    {
+      "path": "velite.config.ts",
+      "accessCount": 4,
+      "lastAccessed": 1777960601736,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 3,
+      "lastAccessed": 1777905389853,
+      "type": "file"
+    },
+    {
+      "path": "app/sitemap.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777905673934,
+      "type": "file"
+    },
+    {
+      "path": "app/feed.xml/route.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777905675835,
+      "type": "file"
+    },
+    {
+      "path": "app/robots.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777905683771,
+      "type": "file"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "accessCount": 2,
+      "lastAccessed": 1777905376271,
+      "type": "file"
+    },
+    {
+      "path": "next.config.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777905389174,
+      "type": "file"
+    },
+    {
+      "path": "app/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1777905396212,
+      "type": "file"
+    },
+    {
+      "path": "app/template.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905353694,
+      "type": "file"
+    },
+    {
+      "path": "app/loading.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905354042,
+      "type": "file"
+    },
+    {
+      "path": "app/about/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905354565,
+      "type": "file"
+    },
+    {
+      "path": "app/journal/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905354730,
+      "type": "file"
+    },
+    {
+      "path": "app/journal/[slug]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905354868,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905357675,
+      "type": "file"
+    },
+    {
+      "path": "app/notes/[part]/[slug]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905358432,
+      "type": "file"
+    },
+    {
+      "path": "app/tags/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905358641,
+      "type": "file"
+    },
+    {
+      "path": "app/tags/[tag]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905358698,
+      "type": "file"
+    },
+    {
+      "path": "app/research/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905361434,
+      "type": "file"
+    },
+    {
+      "path": "app/research/[track]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905362107,
+      "type": "file"
+    },
+    {
+      "path": "app/papers/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905362569,
+      "type": "file"
+    },
+    {
+      "path": "app/onn/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905362887,
+      "type": "file"
+    },
+    {
+      "path": "content/papers/onn-constraint-satisfaction.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1777905365287,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-04-26-perception-week-4-extended.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1777905365904,
+      "type": "file"
+    },
+    {
+      "path": "content/research/onn.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1777905366213,
+      "type": "file"
+    },
+    {
+      "path": "app/scc/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905366702,
+      "type": "file"
+    },
+    {
+      "path": "app/bio/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905366809,
+      "type": "file"
+    },
+    {
+      "path": "lib/cn.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777905366862,
+      "type": "file"
+    },
+    {
+      "path": "app/onn/[slug]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905366980,
+      "type": "file"
+    },
+    {
+      "path": "content/notes/part-3/ch12-three-axes.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1777905367034,
+      "type": "file"
+    },
+    {
+      "path": "content/onn/claim-ledger-ral.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1777905367202,
+      "type": "file"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "accessCount": 1,
+      "lastAccessed": 1777905369064,
+      "type": "file"
+    },
+    {
+      "path": "lib/format.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777905370248,
+      "type": "file"
+    },
+    {
+      "path": "lib/bio.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777905370284,
+      "type": "file"
+    },
+    {
+      "path": "components/mdx/components.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777905370535,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/CommandPalette.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905374133,
+      "type": "file"
+    },
+    {
+      "path": "components/motion/HeroReveal.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905374317,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/Container.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905374707,
+      "type": "file"
+    },
+    {
+      "path": "components/mdx/Equation.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905374897,
+      "type": "file"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "accessCount": 1,
+      "lastAccessed": 1777905376343,
+      "type": "file"
+    },
+    {
+      "path": ".velite/index.d.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777905376514,
+      "type": "file"
+    },
+    {
+      "path": "components/theme/ThemeToggle.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905377592,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/Masthead.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905377944,
+      "type": "file"
+    },
+    {
+      "path": "app/globals.css",
+      "accessCount": 1,
+      "lastAccessed": 1777905381539,
+      "type": "file"
+    },
+    {
+      "path": "components/mdx/Prose.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777905382718,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

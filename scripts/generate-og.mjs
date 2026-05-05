@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 
@@ -299,6 +300,59 @@ function loadJson(rel) {
   return JSON.parse(readFileSync(p, "utf8"));
 }
 
+/* ── content-addressed cache ─────────────────────────────────
+   Bake the layout tree (already a plain JSON-ish object) plus the
+   font + template version into a SHA-256 hash. If the cache says
+   the destination PNG was last rendered from the same hash, skip.
+   Cache file lives in .velite/ (already gitignored). */
+const CACHE_VERSION = "v1"; // bump to force a full re-render
+const CACHE_PATH = resolve(root, ".velite/og-cache.json");
+const FONT_FINGERPRINT = createHash("sha256")
+  .update(interRegular)
+  .update(interSemi)
+  .update(frauncesBold)
+  .digest("hex")
+  .slice(0, 16);
+
+function jobHash(tree) {
+  return createHash("sha256")
+    .update(CACHE_VERSION)
+    .update(FONT_FINGERPRINT)
+    .update(JSON.stringify(tree))
+    .digest("hex");
+}
+
+function loadCache() {
+  if (!existsSync(CACHE_PATH)) return {};
+  try {
+    return JSON.parse(readFileSync(CACHE_PATH, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+function saveCache(cache) {
+  mkdirSync(dirname(CACHE_PATH), { recursive: true });
+  writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
+}
+
+/* ── concurrency-limited Promise.all ─────────────────────────
+   resvg is CPU-bound; satori is JS-bound. A small pool keeps the
+   event loop responsive without thrashing. */
+async function pmap(items, limit, fn) {
+  const out = new Array(items.length);
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (true) {
+      const i = cursor++;
+      if (i >= items.length) return;
+      out[i] = await fn(items[i], i);
+    }
+  });
+  await Promise.all(workers);
+  return out;
+}
+
 async function main() {
   const papers = loadJson(".velite/papers.json").filter((p) => !p.draft);
   const notes = loadJson(".velite/notes.json").filter((n) => !n.draft);
@@ -325,11 +379,29 @@ async function main() {
     })),
   ];
 
-  console.log(`[og] rendering ${jobs.length} images…`);
-  const started = Date.now();
+  const cache = loadCache();
+  const nextCache = {};
+  const work = [];
+  let cached = 0;
+
   for (const job of jobs) {
-    await render(job.tree, resolve(root, job.out));
+    const hash = jobHash(job.tree);
+    const absOut = resolve(root, job.out);
+    nextCache[job.out] = hash;
+    if (cache[job.out] === hash && existsSync(absOut)) {
+      cached++;
+      continue;
+    }
+    work.push({ ...job, hash, absOut });
   }
+
+  const concurrency = Math.max(1, Math.min(8, work.length));
+  console.log(
+    `[og] ${jobs.length} jobs · ${cached} cached · rendering ${work.length} (concurrency=${concurrency})`,
+  );
+  const started = Date.now();
+  await pmap(work, concurrency, (job) => render(job.tree, job.absOut));
+  saveCache(nextCache);
   console.log(`[og] done in ${((Date.now() - started) / 1000).toFixed(1)}s`);
 }
 

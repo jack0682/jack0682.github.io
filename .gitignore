@@ -70,3 +70,12 @@ __pycache__/
 # ── Zone.Identifier (Windows-origin artifacts) ──
 *:Zone.Identifier
 PLAN_reference_integration.md
+
+# ── Package manager: pnpm-only (npm/yarn lockfiles forbidden) ──
+package-lock.json
+yarn.lock
+
+# ── Generated OG images (rebuilt by scripts/generate-og.mjs) ──
+public/og/
+public/og-default.png
+

@@ -10,8 +10,7 @@ import {
   researchTracks,
   onnAllDocs,
 } from "@/lib/content";
-
-const BASE_URL = "https://jack0682.github.io";
+import { SITE_URL as BASE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

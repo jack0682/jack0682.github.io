@@ -9,6 +9,7 @@ import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return papers.map((p) => ({ slug: p.slug }));
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "citation_author": paper.authors.join("; "),
       "citation_publication_date": paper.date.slice(0, 10),
       ...(paper.doi && { "citation_doi": paper.doi }),
-      ...(paper.pdf && { "citation_pdf_url": `https://jack0682.github.io${paper.pdf}` }),
+      ...(paper.pdf && { "citation_pdf_url": absoluteUrl(paper.pdf) }),
     },
   };
 }

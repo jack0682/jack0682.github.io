@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "description": "Jaehong Oh — academic research blog",
+  "packageManager": "pnpm@10.24.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
     "build": "velite && node scripts/generate-og.mjs && next build",

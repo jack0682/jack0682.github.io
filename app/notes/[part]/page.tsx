@@ -52,14 +52,22 @@ const partMeta: Record<
 
 /* ── Static params ─────────────────────────────────────────────── */
 
+const PART_RE = /^part-(\d+)$/;
+
 export function generateStaticParams() {
-  // Slug aliases (for /notes/<slug>/ → /notes/part-N/<slug>/ redirect)
-  const slugParams = allNotes.map((n) => ({ part: n.slug }));
-  // Part index pages
+  // Part index pages — canonical
   const parts = Array.from(new Set(allNotes.map((n) => n.part))).map((p) => ({
     part: `part-${p}`,
   }));
-  return [...slugParams, ...parts];
+  // Slug aliases (legacy `/notes/<slug>/` → `/notes/part-N/<slug>/`).
+  // Drop any slug that collides with the `part-N` index pattern, otherwise
+  // generateStaticParams emits duplicate route entries and the build fails
+  // (or, worse, the alias silently shadows the index page).
+  const reserved = new Set(parts.map((p) => p.part));
+  const slugParams = allNotes
+    .filter((n) => !PART_RE.test(n.slug) && !reserved.has(n.slug))
+    .map((n) => ({ part: n.slug }));
+  return [...parts, ...slugParams];
 }
 
 export const dynamicParams = false;
@@ -67,7 +75,7 @@ export const dynamicParams = false;
 type Props = { params: Promise<{ part: string }> };
 
 function parsePart(seg: string): number | null {
-  const m = seg.match(/^part-(\d+)$/);
+  const m = seg.match(PART_RE);
   return m ? Number(m[1]) : null;
 }
 
@@ -93,17 +101,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PartIndexOrAlias({ params }: Props) {
   const { part } = await params;
+  const partNum = parsePart(part);
 
-  /* ── slug alias: redirect /notes/<slug>/ → /notes/part-N/<slug>/ ── */
-  if (!/^part-\d+$/.test(part)) {
+  /* ── slug alias: redirect /notes/<slug>/ → /notes/part-N/<slug>/ ──
+   * Under output: 'export' the redirect() call materialises as a static
+   * HTML page with a meta-refresh tag at build time — fine for legacy
+   * inbound links but the canonical URL is always /notes/part-N/<slug>/. */
+  if (partNum === null) {
     const note = allNotes.find((n) => n.slug === part);
-    if (!note) redirect("/notes/");
+    if (!note) notFound();
     redirect(`/notes/part-${note.part}/${note.slug}/`);
   }
-
-  /* ── part index page ────────────────────────────────────────────── */
-  const partNum = parsePart(part);
-  if (partNum === null) notFound();
 
   const items = notesForPart(partNum);
   const meta = partMeta[partNum] ?? {

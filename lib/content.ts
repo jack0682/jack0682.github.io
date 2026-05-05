@@ -136,6 +136,30 @@ export const searchIndex: SearchItem[] = [
   })),
 ];
 
+/* ──────────────────────────────────────────────────────────────
+   Slug-uniqueness assertion across keyable collections.
+
+   `crossRefsFor`, `papers[].related`, and `journal[].refs` all
+   look up references by raw slug. A slug shared between `notes`
+   and `onnDocs` would silently conflate references at runtime —
+   refuse to build instead of emitting a wrong cross-link.
+   ────────────────────────────────────────────────────────────── */
+{
+  const seen = new Map<string, string>();
+  const register = (collection: string, slug: string) => {
+    const prev = seen.get(slug);
+    if (prev && prev !== collection) {
+      throw new Error(
+        `[lib/content] Slug collision: "${slug}" exists in both "${prev}" and "${collection}". ` +
+          `crossRefsFor() cannot disambiguate — rename one before building.`,
+      );
+    }
+    seen.set(slug, collection);
+  };
+  for (const n of allNotes) register("notes", n.slug);
+  for (const d of onnAllDocs) register("onnDocs", d.slug);
+}
+
 /** Notes belonging to a given part (already sorted). */
 export function notesForPart(part: number) {
   return allNotes

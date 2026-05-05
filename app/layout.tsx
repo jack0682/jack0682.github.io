@@ -11,6 +11,7 @@ import { RouteProgress } from "@/components/motion/RouteProgress";
 import { CommandPalette } from "@/components/layout/CommandPalette";
 import { FloatingChip } from "@/components/layout/FloatingChip";
 import { searchIndex } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -25,10 +26,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://jack0682.github.io";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Jaehong Oh — Research",
     template: "%s · Jaehong Oh",
@@ -38,7 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Jaehong Oh" }],
   openGraph: {
     type: "website",
-    url: siteUrl,
+    url: SITE_URL,
     siteName: "Jaehong Oh — Research",
     locale: "en_US",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh — Research" }],
