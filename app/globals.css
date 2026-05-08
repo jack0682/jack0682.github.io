@@ -16,7 +16,7 @@
   --color-surface: #ffffff;
   --color-ink: #1a1814;
   --color-muted: #6b655c;
-  --color-subtle: #a59f95;
+  --color-subtle: #837d74;
   --color-accent: #7a3b2e; /* burnt sienna */
   --color-accent-soft: #c67a5c;
   --color-rule: #e8e2d6;
@@ -55,21 +55,6 @@
   color-scheme: dark;
 }
 
-/* ── Sepia (paper) — long-form reading mode. Triggered by the
-   `sepia` value on next-themes; mapped to `class="sepia"` on
-   <html>. Aged-paper background with deeper sepia ink. */
-:root.sepia {
-  --color-bg: #f4ecd8;
-  --color-surface: #fcf5e2;
-  --color-ink: #3b2f1a;
-  --color-muted: #715b3a;
-  --color-subtle: #a08b66;
-  --color-accent: #8b3a1f;
-  --color-accent-soft: #b46141;
-  --color-rule: #d9c9a3;
-
-  color-scheme: light;
-}
 
 /* ── Per-track accent shifts ──────────────────────────────────
    Opted into by `data-track="..."` on track index pages and
@@ -131,7 +116,7 @@ html {
   /* Hash-link navigation eases rather than jumps. The reduced-motion
      media query below overrides this to `auto` for accessibility. */
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* account for sticky masthead */
+  scroll-padding-top: 4.5rem; /* account for sticky masthead (h-14/h-16 = 3.5/4rem) */
 }
 
 body {
@@ -519,8 +504,7 @@ hr {
    ────────────────────────────────────────────────────────────── */
 @media print {
   :root,
-  :root.dark,
-  :root.sepia {
+  :root.dark {
     --color-bg: #ffffff;
     --color-surface: #ffffff;
     --color-ink: #000000;

@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"ls /Users/ojaehong/Perception/jack0682.github.io/lib/liquid-glass/shaders/ 2>/dev/null; echo \\\"---\\\"; ls /Users/ojaehong/Perception/jack0682.github.io/hooks/ 2>/dev/null; echo \\\"---\\\"; ls ...",
+  "error": "Exit code 1\n---\n---",
+  "timestamp": "2026-05-08T14:20:30.204Z",
+  "retry_count": 1
+}

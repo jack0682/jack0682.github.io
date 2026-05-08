@@ -89,15 +89,12 @@ export function MobileNav({ items }: { items: Item[] }) {
                   transition={{ duration: 0.2 }}
                 />
 
-                {/* sliding panel — hard-coded hex backgrounds so it cannot
-                    accidentally inherit transparency from anywhere.
-                    Tailwind's `dark:` variant handles theme switching. */}
+                {/* sliding panel */}
                 <motion.aside
                   key="mobile-nav-panel"
                   className={cn(
                     "absolute right-0 top-0 z-[1] flex h-full w-[min(22rem,85vw)] flex-col",
-                    "bg-[#ffffff] text-[#1a1814]",
-                    "dark:bg-[#171411] dark:text-[#ede7db]",
+                    "bg-[var(--color-surface)] text-[var(--color-ink)]",
                     "border-l border-[var(--color-rule)]",
                     "shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.25)]",
                     "pt-[max(1.25rem,env(safe-area-inset-top))]",

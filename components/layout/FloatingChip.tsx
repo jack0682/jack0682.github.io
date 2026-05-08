@@ -229,9 +229,7 @@ function deriveSection(
 
   // ONN hub
   if (pathname.startsWith("/onn")) {
-    const siblings = items.filter(
-      (i) => i.kind === "paper" && i.group.toLowerCase().includes("papers"),
-    );
+    const siblings = items.filter((i) => i.permalink.startsWith("/onn/"));
     return {
       mark: "χ",
       label: "ONN · Hub",

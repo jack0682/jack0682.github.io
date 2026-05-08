@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777905283887,
+  "lastScanned": 1778246410898,
   "projectRoot": "/Users/ojaehong/Perception/jack0682.github.io",
   "techStack": {
     "languages": [
       {
         "name": "JavaScript/TypeScript",
-        "version": null,
+        "version": ">=22",
         "confidence": "high",
         "markers": [
           "package.json"
@@ -39,7 +39,7 @@
       }
     ],
     "packageManager": "pnpm",
-    "runtime": null
+    "runtime": "Node.js 22"
   },
   "build": {
     "buildCommand": "pnpm build",
@@ -48,7 +48,7 @@
     "devCommand": "pnpm dev",
     "scripts": {
       "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
-      "build": "velite && node scripts/generate-og.mjs && next build",
+      "build": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build",
       "og": "node scripts/generate-og.mjs",
       "start": "next start",
       "lint": "eslint",
@@ -82,47 +82,48 @@
     "app": {
       "path": "app",
       "purpose": "Application code",
-      "fileCount": 8,
-      "lastAccessed": 1777905283870,
+      "fileCount": 9,
+      "lastAccessed": 1778246410861,
       "keyFiles": [
         "favicon.ico",
         "globals.css",
         "layout.tsx",
         "loading.tsx",
-        "page.tsx"
+        "not-found.tsx"
       ]
     },
     "components": {
       "path": "components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1777905283870,
+      "lastAccessed": 1778246410863,
       "keyFiles": []
     },
     "content": {
       "path": "content",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777905283876,
+      "lastAccessed": 1778246410888,
       "keyFiles": []
     },
     "lib": {
       "path": "lib",
       "purpose": "Library code",
-      "fileCount": 4,
-      "lastAccessed": 1777905283879,
+      "fileCount": 9,
+      "lastAccessed": 1778246410891,
       "keyFiles": [
         "bio.ts",
         "cn.ts",
         "content.ts",
-        "format.ts"
+        "format.ts",
+        "giscus.ts"
       ]
     },
     "out": {
       "path": "out",
       "purpose": "Build output",
-      "fileCount": 14,
-      "lastAccessed": 1777905283879,
+      "fileCount": 15,
+      "lastAccessed": 1778246410893,
       "keyFiles": [
         "404.html",
         "__next.__PAGE__.txt",
@@ -134,18 +135,21 @@
     "public": {
       "path": "public",
       "purpose": "Public files",
-      "fileCount": 2,
-      "lastAccessed": 1777905283879,
+      "fileCount": 3,
+      "lastAccessed": 1778246410894,
       "keyFiles": [
+        "google94240e5ed6b482ae.html",
         "og-default.png"
       ]
     },
     "scripts": {
       "path": "scripts",
       "purpose": "Build/utility scripts",
-      "fileCount": 2,
-      "lastAccessed": 1777905283879,
+      "fileCount": 4,
+      "lastAccessed": 1778246410895,
       "keyFiles": [
+        "build-dag.mjs",
+        "build-search-index.mjs",
         "generate-og.mjs",
         "generate_fig24_l1m_softcount_envelope.py"
       ]
@@ -153,303 +157,207 @@
   },
   "hotPaths": [
     {
-      "path": "lib/content.ts",
-      "accessCount": 29,
-      "lastAccessed": 1777978182208,
-      "type": "file"
-    },
-    {
-      "path": "app/onn/[slug]/page.tsx",
-      "accessCount": 26,
-      "lastAccessed": 1777978058959,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/[part]/[slug]/page.tsx",
-      "accessCount": 26,
-      "lastAccessed": 1777978059251,
-      "type": "file"
-    },
-    {
-      "path": "velite.config.ts",
-      "accessCount": 20,
-      "lastAccessed": 1777978099441,
-      "type": "file"
-    },
-    {
-      "path": "lib/bio.ts",
-      "accessCount": 20,
-      "lastAccessed": 1777988633825,
-      "type": "file"
-    },
-    {
-      "path": "app/papers/[slug]/page.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1777978054260,
-      "type": "file"
-    },
-    {
-      "path": "app/layout.tsx",
-      "accessCount": 16,
-      "lastAccessed": 1777975031811,
+      "path": "components/layout/Masthead.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1778251716608,
       "type": "file"
     },
     {
       "path": "app/globals.css",
-      "accessCount": 12,
-      "lastAccessed": 1777970485746,
-      "type": "file"
-    },
-    {
-      "path": "app/journal/[slug]/page.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1777978060059,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/CommandPalette.tsx",
       "accessCount": 11,
-      "lastAccessed": 1777975044339,
+      "lastAccessed": 1778250006415,
       "type": "file"
     },
     {
-      "path": "package.json",
-      "accessCount": 11,
-      "lastAccessed": 1777975057606,
-      "type": "file"
-    },
-    {
-      "path": "app/page.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1777974991690,
-      "type": "file"
-    },
-    {
-      "path": "app/scc/page.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1777975002073,
-      "type": "file"
-    },
-    {
-      "path": "app/sitemap.ts",
-      "accessCount": 10,
-      "lastAccessed": 1777978054573,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/[part]/page.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1777978059759,
-      "type": "file"
-    },
-    {
-      "path": "app/onn/page.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1777978210407,
-      "type": "file"
-    },
-    {
-      "path": "app/about/page.tsx",
+      "path": "components/layout/NavLensRail.tsx",
       "accessCount": 7,
-      "lastAccessed": 1777975000363,
+      "lastAccessed": 1778251537263,
       "type": "file"
     },
     {
-      "path": "app/research/[track]/page.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777975001762,
-      "type": "file"
-    },
-    {
-      "path": "scripts/generate-og.mjs",
-      "accessCount": 6,
-      "lastAccessed": 1777974979105,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/Equation.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1777975034684,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/components.ts",
-      "accessCount": 6,
-      "lastAccessed": 1777975045932,
-      "type": "file"
-    },
-    {
-      "path": "lib/format.ts",
-      "accessCount": 6,
-      "lastAccessed": 1777978054804,
-      "type": "file"
-    },
-    {
-      "path": "app/feed.xml/route.ts",
-      "accessCount": 6,
-      "lastAccessed": 1777978131835,
-      "type": "file"
-    },
-    {
-      "path": "app/notes/page.tsx",
+      "path": "hooks/useNavLensMeasurement.ts",
       "accessCount": 5,
-      "lastAccessed": 1777975019737,
-      "type": "file"
-    },
-    {
-      "path": "app/robots.ts",
-      "accessCount": 4,
-      "lastAccessed": 1777974994192,
-      "type": "file"
-    },
-    {
-      "path": "app/papers/page.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1777975017925,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/Masthead.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1777975026917,
+      "lastAccessed": 1778251545788,
       "type": "file"
     },
     {
       "path": "components/theme/ThemeToggle.tsx",
       "accessCount": 4,
-      "lastAccessed": 1777975044417,
+      "lastAccessed": 1778247021343,
       "type": "file"
     },
     {
-      "path": "components/mdx/Prose.tsx",
+      "path": "components/layout/MobileNav.tsx",
       "accessCount": 4,
-      "lastAccessed": 1777975045467,
+      "lastAccessed": 1778247374223,
       "type": "file"
     },
     {
-      "path": "app/bio/page.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1777980613371,
-      "type": "file"
-    },
-    {
-      "path": "tsconfig.json",
+      "path": "components/layout/FloatingChip.tsx",
       "accessCount": 3,
-      "lastAccessed": 1777905389853,
+      "lastAccessed": 1778247360986,
       "type": "file"
     },
     {
-      "path": "app/tags/page.tsx",
+      "path": "components/ui/NavLiquidGlassCanvas.tsx",
       "accessCount": 3,
-      "lastAccessed": 1777975026047,
+      "lastAccessed": 1778251571668,
       "type": "file"
     },
     {
-      "path": "components/motion/HeroReveal.tsx",
+      "path": "components/layout/NavLinks.tsx",
       "accessCount": 3,
-      "lastAccessed": 1777975040947,
+      "lastAccessed": 1778251769452,
       "type": "file"
     },
     {
-      "path": "next.config.ts",
-      "accessCount": 3,
-      "lastAccessed": 1777975058867,
-      "type": "file"
-    },
-    {
-      "path": "postcss.config.mjs",
+      "path": "components/theme/ThemeProvider.tsx",
       "accessCount": 2,
-      "lastAccessed": 1777905376271,
+      "lastAccessed": 1778246993966,
       "type": "file"
     },
     {
-      "path": "lib/cn.ts",
+      "path": "components/mdx/Figure.tsx",
       "accessCount": 2,
-      "lastAccessed": 1777974972049,
+      "lastAccessed": 1778246996093,
       "type": "file"
     },
     {
-      "path": "app/loading.tsx",
+      "path": "app/page.tsx",
       "accessCount": 2,
-      "lastAccessed": 1777974992339,
+      "lastAccessed": 1778247029454,
       "type": "file"
     },
     {
-      "path": "app/template.tsx",
+      "path": "content/research/perception.mdx",
       "accessCount": 2,
-      "lastAccessed": 1777974992773,
+      "lastAccessed": 1778247083457,
       "type": "file"
     },
     {
-      "path": "app/research/page.tsx",
+      "path": "lib/liquid-glass/createRenderer.ts",
       "accessCount": 2,
-      "lastAccessed": 1777975001391,
+      "lastAccessed": 1778250526321,
       "type": "file"
     },
     {
-      "path": "app/journal/page.tsx",
+      "path": "lib/liquid-glass/shaders/lens.frag.ts",
       "accessCount": 2,
-      "lastAccessed": 1777975018828,
+      "lastAccessed": 1778250526389,
       "type": "file"
     },
     {
-      "path": "app/tags/[tag]/page.tsx",
+      "path": "hooks/useNavActiveItem.ts",
       "accessCount": 2,
-      "lastAccessed": 1777975026417,
+      "lastAccessed": 1778250605600,
+      "type": "file"
+    },
+    {
+      "path": "components/ui/NavLensIndicator.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1778250622626,
+      "type": "file"
+    },
+    {
+      "path": "app/layout.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778246492186,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/Footer.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778246505674,
+      "type": "file"
+    },
+    {
+      "path": "components/motion/LivingOntology.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778246506402,
+      "type": "file"
+    },
+    {
+      "path": "components/layout/CommandPalette.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778246514362,
       "type": "file"
     },
     {
       "path": "components/layout/Container.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1777975053064,
+      "accessCount": 1,
+      "lastAccessed": 1778246514519,
       "type": "file"
     },
     {
-      "path": "content/papers/onn-constraint-satisfaction.mdx",
+      "path": "app/about/page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1777905365287,
+      "lastAccessed": 1778246514745,
       "type": "file"
     },
     {
-      "path": "content/journal/2026-04-26-perception-week-4-extended.mdx",
+      "path": "app/journal/page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1777905365904,
+      "lastAccessed": 1778246514787,
       "type": "file"
     },
     {
-      "path": "content/research/onn.mdx",
+      "path": "components/layout/PageHeader.tsx",
       "accessCount": 1,
-      "lastAccessed": 1777905366213,
+      "lastAccessed": 1778246521338,
       "type": "file"
     },
     {
-      "path": "content/notes/part-3/ch12-three-axes.mdx",
+      "path": "app/papers/page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1777905367034,
+      "lastAccessed": 1778246722201,
       "type": "file"
     },
     {
-      "path": "content/onn/claim-ledger-ral.mdx",
+      "path": "package.json",
       "accessCount": 1,
-      "lastAccessed": 1777905367202,
+      "lastAccessed": 1778248780307,
       "type": "file"
     },
     {
-      "path": "pnpm-workspace.yaml",
+      "path": "tsconfig.json",
       "accessCount": 1,
-      "lastAccessed": 1777905369064,
+      "lastAccessed": 1778250001872,
       "type": "file"
     },
     {
-      "path": "eslint.config.mjs",
+      "path": "lib/cn.ts",
       "accessCount": 1,
-      "lastAccessed": 1777905376343,
+      "lastAccessed": 1778250002171,
       "type": "file"
     },
     {
-      "path": ".velite/index.d.ts",
+      "path": "lib/liquid-glass/shaders/lens.vert.ts",
       "accessCount": 1,
-      "lastAccessed": 1777905376514,
+      "lastAccessed": 1778250047297,
+      "type": "file"
+    },
+    {
+      "path": "lib/liquid-glass/detectCapabilities.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778250107611,
+      "type": "file"
+    },
+    {
+      "path": "lib/liquid-glass/uniforms.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778250114682,
+      "type": "file"
+    },
+    {
+      "path": "lib/liquid-glass/bakeSubstrateTexture.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778250119921,
+      "type": "file"
+    },
+    {
+      "path": "lib/liquid-glass/bakeNavTextTexture.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778250128028,
       "type": "file"
     }
   ],

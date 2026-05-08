@@ -1,34 +1,30 @@
 import Link from "next/link";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
+import { NavLinks } from "./NavLinks";
 import { PaletteTrigger } from "./PaletteTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
-/**
- * Primary nav. Tags is intentionally excluded here and kept in the
- * Footer only — the top bar is for the main reading surfaces, not
- * for every index. Notes sits in Writing alongside Papers/Journal.
- */
-const nav = [
+/** Full list for the mobile drawer — includes Tags. */
+const mobileNav = [
   { href: "/research/", label: "Research" },
-  { href: "/scc/", label: "SCC" },
-  { href: "/onn/", label: "ONN" },
-  { href: "/papers/", label: "Papers" },
-  { href: "/journal/", label: "Journal" },
-  { href: "/notes/", label: "Notes" },
-  { href: "/refs/", label: "Refs" },
-  { href: "/about/", label: "About" },
+  { href: "/scc/",      label: "SCC" },
+  { href: "/onn/",      label: "ONN" },
+  { href: "/papers/",   label: "Papers" },
+  { href: "/journal/",  label: "Journal" },
+  { href: "/notes/",    label: "Notes" },
+  { href: "/refs/",     label: "Refs" },
+  { href: "/tags/",     label: "Tags" },
+  { href: "/about/",    label: "About" },
 ];
 
-/** Full list for the mobile drawer — includes Tags. */
-const mobileNav = [...nav.slice(0, -1), { href: "/tags/", label: "Tags" }, nav[nav.length - 1]];
 
 /**
  * Site-wide top bar. Deliberately unornamented — the design language
  * is carried by typography and the accent colour, not by surfaces.
  *
- * Below `md` the nav list is collapsed into a hamburger drawer
- * (`MobileNav`). At or above `md` the inline nav is shown.
+ * Below `lg` the nav list is collapsed into a hamburger drawer
+ * (`MobileNav`). At or above `lg` the inline nav is shown.
  */
 export function Masthead() {
   return (
@@ -48,18 +44,7 @@ export function Masthead() {
             aria-label="Primary"
             className="hidden items-center gap-1 sm:gap-2 lg:flex"
           >
-            <ul className="flex items-center gap-6 text-sm font-medium text-[var(--color-muted)]">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="transition-colors hover:text-[var(--color-accent)]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <NavLinks />
             <span
               aria-hidden
               className="mx-3 hidden h-4 w-px bg-[var(--color-rule)] sm:inline-block"

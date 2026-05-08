@@ -123,9 +123,9 @@ export default function Home() {
           >
             Soft Cognitive Cohesion
           </Link>{" "}
-          — <span className="sci-data text-[var(--color-ink)]">46</span>{" "}
-          Category A theorems (61 total claims) and a canonical specification
-          at CV-1.5.2. The companion
+          — <span className="sci-data text-[var(--color-ink)]">54</span>{" "}
+          Category A theorems (78 total claims) and a canonical specification
+          at CV-1.11. The companion
           architecture,{" "}
           <Link
             href="/onn/"

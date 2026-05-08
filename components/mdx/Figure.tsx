@@ -103,10 +103,7 @@ export function Figure({
         )}
       </button>
       {caption && (
-        <figcaption className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
-          <span className="mr-2 font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
-            Fig.
-          </span>
+        <figcaption className="mt-3 font-mono text-xs leading-relaxed tracking-[0.04em] text-[var(--color-muted)]">
           {caption}
         </figcaption>
       )}
