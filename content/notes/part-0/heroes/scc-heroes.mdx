@@ -1,20 +1,20 @@
 ---
-title: "SCC Hero Theorems — 10 Major Results"
+title: "SCC Hero Theorems — 16 Major Results"
 slug: scc-heroes
 part: 0
 chapter: 100
 section: "SCC Heroes · Index"
 kind: registry
 track: perception
-updated: 2026-05-04
-summary: "Curated index of the 10 hero theorems of Soft Cognitive Cohesion — the major proved results that define the theory's identity. Foundation, phase transition + stability, W4 Pre-Objective Mechanism cluster, and the W5 Day 6 multi-formation count-bridge T-L1-F. Full proofs live in the canonical spec."
-tags: [scc, theorems, heroes, index, foundational]
+updated: 2026-05-09
+summary: "Curated index of the 16 hero theorems of Soft Cognitive Cohesion (CV-1.11). Foundation, phase transition + stability, W4 Pre-Objective Mechanism, W5 multi-formation bridge (T-L1-F), W6 stereo + boundary (T-ST-5a, T-OP6-B), and W6 stochastic foundation (P-F-A1 Package I). Full proofs live in the canonical spec."
+tags: [scc, theorems, heroes, index, foundational, cv-1-11, w6]
 related: [canonical-spec-scc, canonical-spec-scc-5-results-registry, scc-theorem-registry]
 ---
 
-> **What this is.** SCC has **46 Category A theorems** (10 hero theorems among 46 Cat A theorems) in the [canonical specification](/notes/part-0/canonical-spec-scc-5-results-registry/). Most are technical, conditional, or auxiliary. This page curates the **10 hero theorems** — the results that define the theory's identity and would be cited first in any introduction.
+> **What this is.** SCC has **54 Category A theorems** (CV-1.11, 78 total claims). Most are technical, conditional, or auxiliary. This page curates the **16 hero theorems** — the results that define the theory's identity and would be cited first in any introduction.
 >
-> **Where the full proofs live.** This index and the 10 hero pages give *one-paragraph proof ideas* and *why-it-matters* notes. The full proofs are in [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/), and the most recent additions are narrated in the [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/).
+> **Where the full proofs live.** The full proofs are in [Canonical Spec — Part 5 · §13](/notes/part-0/canonical-spec-scc-5-results-registry/). W6 additions are narrated in the [Week 6 weekly post](/journal/2026-05-08-perception-week-6/).
 
 ---
 
@@ -32,6 +32,12 @@ related: [canonical-spec-scc, canonical-spec-scc-5-results-registry, scc-theorem
 | 8 | **T-PreObj-1** | Pre-Objective Multi-Peak Formation Mechanism *(W4 close, 2026-04-24)* | W4 Capstone | A |
 | 9 | **T-V5b-T** | Pre-Objective Goldstone on Translation-Invariant Graphs *(W4-extended, 2026-04-26)* | W4 Capstone | A |
 | 10 | **T-L1-F** | Hard-Bar / Active-Count Bridge under L1-J Regime *(W5 Day 6, 2026-05-02)* — first multi-formation canonical Cat A | Multi-Formation Flagship | A *conditional* |
+| 11 | **T-ST-5a** | Hard-Depth Topological Locking *(Stereo-SCC, W6 D4, 2026-05-06)* | W6 Stereo | A |
+| 12 | **T-OP6-B** | PersRidge Boundary Equivalence — **OP-0006 RESOLVED** *(W6 D4, 2026-05-06)* | W6 Boundary | A |
+| 13 | **T-PF-A1-AR** | Affine Reduction — bounded convex polytope *(P-F-A1 Package I, W6 D4)* | W6 Stochastic | A |
+| 14 | **T-PF-A1-SDE** | Lions-Sznitman Reflected SDE *(P-F-A1 Package I, W6 D4)* | W6 Stochastic | A |
+| 15 | **T-PF-A1-GI** | Unique Gibbs Invariant Measure $\pi_{T_*}$ *(P-F-A1 Package I, W6 D4)* | W6 Stochastic | A |
+| 16 | **T-PF-A1-PE** | Poincaré Inequality + Exponential Ergodicity *(P-F-A1 Package I, W6 D4)* | W6 Stochastic | A |
 
 ---
 
@@ -39,8 +45,8 @@ related: [canonical-spec-scc, canonical-spec-scc-5-results-registry, scc-theorem
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
-  alt="Directed graph showing the logical dependencies among the 9 SCC hero theorems."
-  caption={<>Logical dependencies among the 9 SCC hero theorems: foundation (T1, T6, T20) leads into phase transition + stability (T8-Core, T7-Enhanced, T11, T14), which lead into the W4 capstone (T-PreObj-1) and the W4-extended capstone (T-V5b-T).</>}
+  alt="Directed acyclic graph of 18 SCC hero theorems across 6 bands: Foundation, Phase+Stability, W4 Capstone, W5 Bridge, W6 Stochastic Foundation, W6 Boundary+Selection."
+  caption={<>Logical dependency DAG — 18 nodes updated to CV-1.11. Foundation (T1, T6, T20) → Phase + Stability (T8-Core, T7-Enhanced, T11, T14) → W4 capstone (T-PreObj-1, T-V5b-T) → W5 bridge (T-L1-F) → W6 stochastic foundation (T-PF-A1-AR/SDE/GI/PE) → W6 boundary + selection (T-OP6-B, T-K-Select-PF/OBS).</>}
   className="mx-auto max-w-full"
 />
 
@@ -94,13 +100,43 @@ Under the L1-J regime hypothesis package $(P0)$–$(P11)$ on the shared-pool mul
 
 ---
 
+---
+
+## Group 5 — W6 Stereo + Boundary
+
+**T-ST-5a — Hard-Depth Topological Locking *(Stereo-SCC, W6 D4, 2026-05-06)***
+On a depth-disconnected stereo graph (objects A and B at depths $z_1 \ll z_2$), the energy barrier between the two formation basins is $\Delta E = +\infty$ (state-space disconnection via the Goldstone mechanism). The system is forced to $K = 2$ stable formations — one per depth-connected component. Why hero: the first theorem connecting SCC to stereo geometry, and the mathematical proof that perceptual individuation can be forced by depth topology alone.
+
+**T-OP6-B — PersRidge Boundary Equivalence — OP-0006 RESOLVED *(W6 D4, 2026-05-06)***
+In the phase-separation regime (H1–H5), the PersRidge locus and the formation boundary $\partial\Omega^*$ satisfy $d_H(\mathrm{PersRidge}(u^*), \partial\Omega^*) \leq 2\sqrt{\alpha/\beta}$. Why hero: resolves OP-0006 (boundary definition precision) — the computationally accessible PersRidge is a provably faithful proxy for the theoretical boundary.
+
+---
+
+## Group 6 — W6 Stochastic Foundation (P-F-A1 Package I)
+
+**T-PF-A1-AR — Affine Reduction *(CV-1.8, 2026-05-06)***
+The feasibility polytope $\mathcal{F}_M(\mathcal{P})$ is a bounded compact convex polytope (Lions-Sznitman domain condition satisfied). Why hero: the geometric foundation that makes the reflected SDE well-posed.
+
+**T-PF-A1-SDE — Lions-Sznitman Reflected SDE *(CV-1.8, 2026-05-06)***
+The reflected Langevin SDE on $\widetilde{\Sigma}_M$ is well-posed: existence via Lions-Sznitman Theorem 1 (convex domain), uniqueness via Tanaka pathwise argument. Why hero: establishes that SCC energy has a well-defined stochastic dynamics — the formation can evolve under noise and stay in the constraint manifold.
+
+**T-PF-A1-GI — Unique Gibbs Invariant Measure *(CV-1.9, 2026-05-06)***
+The Gibbs measure $\pi_{T_*} \propto e^{-\tilde{\mathcal{E}}/T_*}$ is the unique invariant measure of the reflected SDE via zero-current + $L^2(\pi)$ kernel argument (Aronson 1968 heat kernel). Why hero: proves that temperature $T_*$ canonically selects a distribution over formation states.
+
+**T-PF-A1-PE — Poincaré Inequality + Exponential Ergodicity *(CV-1.9, 2026-05-06)***
+$\lambda_1 \geq (\pi^2/n)\exp(-\mathrm{osc}(\tilde{\mathcal{E}})/T_*)$ (Payne-Weinberger on bounded convex polytope + Holley-Stroock perturbation). Exponential TV convergence with explicit rate. Why hero: the dynamical completeness result — any initial condition converges to $\pi_{T_*}$ exponentially fast.
+
+---
+
 ## What's deliberately *not* on this list
 
-The full registry has 46 Cat A + 5 Cat B + 5 Cat C. Excluded from heroes:
+The full registry has 54 Cat A + 14 Cat B + 5 Cat C. Excluded from heroes:
 
 - **T-Bind-Proj/Full, Predicate-Energy Bridge, Deep Core Dominance** — diagnostic-bridging results, important but technical.
 - **T-Persist-1(a/b/c/e), T-Persist-Full, T-Persist-K-Sep/Weak/Unified** — persistence machinery, mostly conditional.
 - **QM-1..4, T-Merge (a/b), Topological Lock, T-Birth-Parametric, Lemma 4, F-1 Resolution Corollary** — supporting / corollary results.
+- **T-P-F-ε0, T-σ-Lemma-1/2/3, T-σ-Theorem-3** — foundations for the heroes above, but machinery rather than headline results.
+- **T-K-Select-PF/OBS** — Cat B (partial), not yet fully proved.
 
 If a result is missing here, it is **not unimportant** — it is just below the "굵직한 hero" cut. The full inventory is at [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/).
 
@@ -108,9 +144,10 @@ If a result is missing here, it is **not unimportant** — it is just below the 
 
 ## See also
 
-- [Canonical Spec — Part 5 · §13 Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — full statements + full proofs of all 46 Cat A theorems
+- [Canonical Spec — Part 5 · §13 Results Registry](/notes/part-0/canonical-spec-scc-5-results-registry/) — full statements + proofs of all 54 Cat A theorems
 - [SCC Theorem Registry](/notes/part-0/scc-theorem-registry/) — flat index by canonical version
-- [SCC Status (April 2026, W5 Day 1 G0)](/notes/part-0/scc-status-2026-04/) — current research state
-- [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/) — narrative of how T-PreObj-1 and T-V5b-T came to be
+- [SCC Status (May 2026, CV-1.11)](/notes/part-0/scc-status-2026-05/) — current research state
+- [Week 6 weekly post](/journal/2026-05-08-perception-week-6/) — narrative of W6 (T-ST-5a, T-OP6-B, P-F-A1 Package I, OMS-2.0)
+- [Week 4 Extended weekly post](/journal/2026-04-26-perception-week-4-extended/) — narrative of T-PreObj-1 and T-V5b-T
 
-*Aligned with Perception_theory canonical CV-1.5.2 (W5 Day 6, 2026-05-02). Subsequent canonical updates: σ-framework supporting structures merged at CV-1.5 (W5 Day 1 G0, T-σ-Lemma-1/2/3 + T-σ-Theorem-3 Cat A; T-σ-Theorem-4 was Cat A at merge but retroactively downgraded Cat A → Cat B at CV-1.5.1 per Critic 7-agent verdict + 2026-05-04 NQ-187 numerical refutation continuum-vs-discrete caveat). D-6a Multi-Static (3 Cat A: T-Commitment-14-Multi-Static, T-σ-multi-A-Static, T-σ-multi-D-Static) at CV-1.5.1. T-L1-F (Hard-Bar / Active-Count Bridge under L1-J Regime) Cat A conditional at CV-1.5.2 — first multi-formation canonical Cat A theorem.*
+*Aligned with Perception_theory canonical **CV-1.11** (2026-05-06). 54 Cat A / 14 Cat B / 5 Cat C / 5 Retracted = 78 claims, ~69% proved. W6 additions: T-ST-5a (CV-1.6), T-OP6-B (CV-1.7, OP-0006 RESOLVED), P-F-A1 Package I fully Cat A (CV-1.8–CV-1.9). Next: CV-1.12 via H-SINK.*

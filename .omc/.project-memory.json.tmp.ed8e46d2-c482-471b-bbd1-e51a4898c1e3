@@ -158,8 +158,8 @@
   "hotPaths": [
     {
       "path": "content/notes/part-0/scc-status-2026-05.mdx",
-      "accessCount": 28,
-      "lastAccessed": 1778259207459,
+      "accessCount": 21,
+      "lastAccessed": 1778256559036,
       "type": "file"
     },
     {
@@ -169,21 +169,21 @@
       "type": "file"
     },
     {
-      "path": "content/research/perception.mdx",
-      "accessCount": 12,
-      "lastAccessed": 1778257379732,
-      "type": "file"
-    },
-    {
       "path": "app/globals.css",
       "accessCount": 11,
       "lastAccessed": 1778250006415,
       "type": "file"
     },
     {
+      "path": "content/research/perception.mdx",
+      "accessCount": 11,
+      "lastAccessed": 1778256540189,
+      "type": "file"
+    },
+    {
       "path": "content/notes/part-0/canonical-spec-scc.mdx",
-      "accessCount": 9,
-      "lastAccessed": 1778257370945,
+      "accessCount": 8,
+      "lastAccessed": 1778253877059,
       "type": "file"
     },
     {
@@ -241,12 +241,6 @@
       "type": "file"
     },
     {
-      "path": "content/journal/2026-05-08-perception-week-6.mdx",
-      "accessCount": 3,
-      "lastAccessed": 1778257577078,
-      "type": "file"
-    },
-    {
       "path": "components/theme/ThemeProvider.tsx",
       "accessCount": 2,
       "lastAccessed": 1778246993966,
@@ -280,6 +274,12 @@
       "path": "components/ui/NavLensIndicator.tsx",
       "accessCount": 2,
       "lastAccessed": 1778250622626,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-05-08-perception-week-6.mdx",
+      "accessCount": 2,
+      "lastAccessed": 1778252864428,
       "type": "file"
     },
     {

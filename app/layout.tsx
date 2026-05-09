@@ -11,6 +11,9 @@ import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { RouteProgress } from "@/components/motion/RouteProgress";
 import { CommandPalette } from "@/components/layout/CommandPalette";
 import { FloatingChip } from "@/components/layout/FloatingChip";
+import { CursorSpotlight } from "@/components/ui/CursorSpotlight";
+import { FootnoteTooltip } from "@/components/ui/FootnoteTooltip";
+import { KaTeXZoom } from "@/components/ui/KaTeXZoom";
 import { searchIndex } from "@/lib/content";
 import {
   SITE_URL,
@@ -119,6 +122,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Footer />
           <CommandPalette items={searchIndex} />
           <FloatingChip items={searchIndex} />
+          <CursorSpotlight />
+          <FootnoteTooltip />
+          <KaTeXZoom />
         </ThemeProvider>
       </body>
     </html>

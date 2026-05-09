@@ -1,14 +1,14 @@
 ---
-title: "SCC — Current Research Status (May 2026, CV-1.5.2 + 2026-05-04 audit)"
+title: "SCC — Current Research Status (May 2026, CV-1.11)"
 slug: scc-status-2026-05
 part: 0
 chapter: 1
 section: "Status report"
 kind: roadmap
 track: perception
-updated: 2026-05-04
-summary: "Active SCC status as of CV-1.5.2 (2026-05-02 — T-L1-F first multi-formation Cat A) plus the 2026-05-04 audit (Open Problems Catalog unified; T-Bind / T-σ-Theorem-4 drift corrected). Ledger: 46 Cat A + 5 B + 5 C + 5 Retracted = 61 claims, 75% proved; 215 passed + 1 xfailed."
-tags: [scc, status, theorems, cv-1-5-2, t-l1-f, sigma-framework, multi-formation, open-problems]
+updated: 2026-05-08
+summary: "Active SCC status as of CV-1.11 (2026-05-06 — W6 close). Ledger: 54 Cat A + 14 B + 5 C + 5 Retracted = 78 claims, ~69% proved; 215 passed + 1 xfailed. OMS-2.0 Accepted — Full. OP-0006 RESOLVED. OP-0005 3-way split. P-F-A1 Package I complete."
+tags: [scc, status, theorems, cv-1-11, oms-2-0, pf-a1, multi-formation, open-problems]
 related: [canonical-spec-scc, scc-status-2026-04, integrated-architecture]
 ---
 
@@ -17,8 +17,8 @@ Cohesion** — the research thread I am currently most active on — at
 the level of granularity that lets a collaborator (or future me)
 pick up where things stand without re-reading a year of notes.*
 
-**Last updated:** 2026-05-04 (W6 Day 1 evening / late evening, post Pass 1 + Pass 2 audit + G2 + open_problems.md merge). &nbsp; **Canonical version:**
-**CV-1.5.2** (released 2026-05-02). &nbsp; **Full specification:** see
+**Last updated:** 2026-05-08 (W6 EOD close). &nbsp; **Canonical version:**
+**CV-1.11** (released 2026-05-06, W6 Day 4). &nbsp; **Full specification:** see
 the [Canonical Spec note](/notes/part-0/canonical-spec-scc/).
 
 <Callout tone="idea" title="Why this work matters to the larger programme">
@@ -31,12 +31,18 @@ describes that unification as a design target; everything on this
 page is in service of it.
 </Callout>
 
-<Callout tone="note" title="What changed since the W5 Day 1 G0 snapshot (CV-1.5)">
+<Callout tone="note" title="What changed: CV-1.5 → CV-1.11 (W5 Day 1 G0 → W6 EOD)">
 The previous status page — [SCC status, April 2026 (W5 Day 1 G0 close)](/notes/part-0/scc-status-2026-04/) — froze at CV-1.5 (2026-04-27) with 43 Cat A / 57 claims / 75% proved. Since then:
 
-- **CV-1.5.1 (2026-04-29)** added D-6a Multi-Static (3 Cat A definitional entries) + Commitment 16 (K_field / K_act decomposition) + V5b-T-zero sub-statement (Cat A def, μ = 0 exact on torus); withdrew the V5b-T' phantom; retroactively downgraded T-σ-Theorem-4 from Cat A to Cat B per the Critic 7-agent verdict (Errata Round 1 Morse-index inconsistency); registered OP-0008 (σ^A K-jump non-determinism) and OP-0009 (Multi-Formation Ontological Foundations, 7 sub-items); added an MO-1 re-activation rider on OP-0003.
-- **CV-1.5.2 (2026-05-02)** merged **T-L1-F (Hard-Bar / Active-Count Bridge under L1-J Regime)** as the **first multi-formation canonical Cat A theorem**, conditional under the explicit hypothesis package $(P0)$–$(P11)$. Closes the L1-A through L1-L 13-step working chain plus the L1-K external audit and L1-K-REPAIR cycle.
-- **2026-05-04 audit (Pass 1 + Pass 2 + G2 + open_problems.md merge)** corrected propagation drift: test count 175 / 196 → **215 passed + 1 xfailed**; T-Bind-Proj / T-Bind-Full confirmed Cat A per Phase 13 (theorem_status had been a stale shadow at Cat B / Cat C); T-σ-Theorem-4 NQ-187 continuum-vs-discrete caveat added; the previously-separate `THEORY/canonical/open_problems.md` was merged into `theorem_status.md` and deleted; the W6 strategic plan was rewritten and the parking-lot review plan was created.
+- **CV-1.5.1–CV-1.5.2 (W5)** added the Multi-Static cluster, Commitment 16 K_field/K_act decomposition, V5b-T-zero, T-L1-F (first multi-formation Cat A, conditional L1-J regime). See [April 2026 status](/notes/part-0/scc-status-2026-04/) for W5 detail.
+- **2026-05-04 audit** corrected test count → **215+1xfailed**; unified open_problems.md into theorem_status.md; confirmed T-Bind Cat A per Phase 13.
+- **CV-1.6 (2026-05-06)** added T-ST-5a (hard-depth topological locking, Cat A) and the Stereo-SCC extension definitions (D-ST-1/2/3/4/5).
+- **CV-1.7 (2026-05-06)** resolved **OP-0006** via T-OP6-B Cat A (PersRidge Boundary Equivalence, phase-separation regime) + added T-P-F-ε0 Cat A (Gibbs measure continuity) + T-P-F-ε0-K Cat B (Kramers exponent stability).
+- **CV-1.8–CV-1.9 (2026-05-06)** completed **P-F-A1 Package I** fully Cat A: T-PF-A1-AR (affine reduction) + T-PF-A1-SDE (Lions-Sznitman reflected SDE) + T-PF-A1-GI (unique Gibbs invariant measure) + T-PF-A1-PE (Poincaré + exponential ergodicity).
+- **CV-1.10 (2026-05-06)** promoted T-K-Select-PF Cat B (equilibrium K-selection, OP-0005-EQ partially resolved).
+- **CV-1.11 (2026-05-06)** promoted T-K-Select-OBS Cat B (observation-conditioned K-selection, OP-0005-OBS partially resolved). **OP-0005 is now 3-way split**: EQ (partial), OBS (partial), DYN (open).
+- **OMS-2.0 Accepted — Full (2026-05-08, W6 Day 6):** Static + temporal branch decomposition proved; Appendix OMS §A–§M in canonical.md.
+- **Net count: 46A/5B → 54A/14B, 61 → 78 claims, 75% → ~69% fully proved.**
 </Callout>
 
 ## What SCC is, in one breath
@@ -54,14 +60,14 @@ terms govern closure, separation, boundary, and transport; a
 diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist})$
 reads off formation state.
 
-## Theorem ledger (CV-1.5.2)
+## Theorem ledger (CV-1.11)
 
-**46 Category A + 5 Category B + 5 Category C + 5 Retracted = 61 claims, 75% fully proved.**
+**54 Category A + 14 Category B + 5 Category C + 5 Retracted = 78 claims, ~69% fully proved.**
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
-  alt="Directed graph of the SCC hero theorems and their dependencies."
-  caption={<>The SCC hero theorems and their logical dependencies — a curated subset of the 46 Cat A entries. Foundation (T1, T6, T20), phase + stability (T8-Core, T7-Enhanced, T11, T14), W4 capstone (T-PreObj-1), W4-extended capstone (T-V5b-T), W5 Day 1 G0 σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3), W5 Day 3 EOD multi-formation static (T-Commitment-14-Multi-Static + T-σ-multi-A/D-Static), W5 Day 6 first multi-formation Cat A bridge (T-L1-F). The hero DAG image is still rendered at the CV-1.5 cut and will be regenerated at CV-1.6.</>}
+  alt="Directed acyclic graph of 18 SCC hero theorems across 6 bands: Foundation, Phase+Stability, W4 Capstone, W5 Bridge, W6 Stochastic Foundation, W6 Boundary+Selection."
+  caption={<>The SCC hero theorems and their logical dependencies — 18-node DAG updated to CV-1.11. Foundation (T1, T6, T20), phase + stability (T8-Core, T7-Enhanced, T11, T14), W4 capstone (T-PreObj-1, T-V5b-T), W5 multi-formation bridge (T-L1-F), W6 stochastic foundation (T-P-F-ε₀, T-PF-A1-AR/SDE/GI/PE), W6 boundary + selection (T-OP6-B, T-K-Select-PF/OBS).</>}
   className="mx-auto max-w-full"
 />
 
@@ -83,17 +89,50 @@ and adds, since 2026-04-27:
 
 - **CV-1.5.1 D-6a Multi-Static (3 Cat A definitional)** — `T-Commitment-14-Multi-Static`, `T-σ-multi-A-Static`, `T-σ-multi-D-Static`. Defined on the multi-formation interior $\widetilde{\Sigma}^{K_{\mathrm{field}},\circ}_M$ (Option A pragmatic; corners deferred to NQ-248 W7+); $\sigma_{\mathrm{multi}} = (\sigma^A, \sigma^D)$ is a joint invariant under the wreath product $\mathrm{Aut}(G) \wr S_{K_{\mathrm{act}}}$. The within-formation σ-tuple multi-set is invariant under $S_{K_{\mathrm{act}}}$ permutation in the well-separated regime, and the between-formation cohomology pull-back is a conjugacy-class label in $H^1(\mathrm{Aut}(G) \wr S_{K_{\mathrm{act}}}; \mathrm{Stab}(\mathbf{u}^*))$.
 - **CV-1.5.1 V5b-T-zero (sub-statement, Cat A def)** — Sub-spinodal translation-invariant regime: $\mu_{\mathrm{Gold}}^{\mathrm{V5b-T-zero}} = 0$ exactly (discrete translation orbit on $\mathbb{Z}_L^d$). Replaces the V5b-T' WITHDRAWN entry. Empirical anchor NQ-198f $T^2_{20}/T^2_{28}$ with $|\mu| \le 0.028$ within FD numerical noise.
-- **CV-1.5.2 T-L1-F (Hard-Bar / Active-Count Bridge)** — Cat A *conditional under the L1-J regime hypothesis package $(P0)$–$(P11)$*. **First multi-formation canonical Cat A theorem.** On a finite graph $G = (X, E)$ and a shared-pool multi-formation state $\mathbf u \in \widetilde\Sigma_M^{K_{\mathrm{field}}}(G)$, $K_{\mathrm{bar}}^{\ell_{\min}}(U(\mathbf u); G) = K_{\mathrm{act}}^\varepsilon(\mathbf u)$, and the map $\mathcal A_{\mathrm{bar}} : A^\varepsilon \to \mathrm{Bars}_0^{\mathrm{term}}(U; G)$ defined by the primary representative $q_j^U = \arg\max^\prec_{x \in N_j^r} U(x)$ is a bijection from active slots to dominant terminal $H_0$ bars. **NOT a global identity** — the explicit hypothesis package is required, P7 decay-to-cut is adopted as a safe technical regime hypothesis (L1-L Combes–Thomas / discrete Agmon backing under strong stationarity, not asserted for all SCC states), and T-L1-F **does NOT solve OP-0005 (K-Selection)** or **OP-0008 (σ^A K-jump non-determinism)**, **does NOT establish $K_{\mathrm{soft}}^\phi = K_{\mathrm{act}}$** (additionally requires $\phi \in \Phi_{\mathrm{res}}$ per WQ-LAT-1.B), and **does NOT claim $\sigma_{\mathrm{rich}}$ sufficiency**. Reservoir theory is not promoted to canonical.
+- **CV-1.5.2 T-L1-F (Hard-Bar / Active-Count Bridge)** — Cat A *conditional under the L1-J regime hypothesis package $(P0)$–$(P11)$*. **First multi-formation canonical Cat A theorem.** On a finite graph $G = (X, E)$ and a shared-pool multi-formation state $\mathbf u \in \widetilde\Sigma_M^{K_{\mathrm{field}}}(G)$, $K_{\mathrm{bar}}^{\ell_{\min}}(U(\mathbf u); G) = K_{\mathrm{act}}^\varepsilon(\mathbf u)$, and the map $\mathcal A_{\mathrm{bar}} : A^\varepsilon \to \mathrm{Bars}_0^{\mathrm{term}}(U; G)$ is a bijection from active slots to dominant terminal $H_0$ bars. **NOT a global identity** — T-L1-F does NOT solve OP-0005 or OP-0008, and does NOT establish $K_{\mathrm{soft}}^\phi = K_{\mathrm{act}}$.
+- **CV-1.6 T-ST-5a (Hard-Depth Topological Locking)** — Cat A (W6 D4 Session E, 2026-05-06). A depth-disconnected stereo graph forces $K = 2$ topologically: $\Delta E = +\infty$ (state-space disconnection). No P-F flag. Gaps G1–G4 closed (Session E): graph topology alone suffices (Lemma 3 not required); merger/decay distinction, A-STRICT assumption, and threshold convention addressed.
+- **CV-1.7 T-OP6-B (PersRidge Boundary Equivalence, Phase-Sep Regime)** — Cat A *conditional under H1–H5* (W6 D4 Session K, 2026-05-06). **OP-0006 RESOLVED.** Under the phase-separation regime on a connected finite graph: $d_H(\mathrm{PersRidge}(u^*), \partial\Omega^*) \leq 2(\alpha/\beta)^{1/2}$. B1 topological separator, B2 curved Hausdorff ($C < 1.37$ under H4), B3 stereo conditioning (hard-cut D-ST-1), and B4 $\rho_{\mathrm{bd}} = 1/(4\xi)$ all closed. exp06: shadow 5/5 ratio 4.09, blur 5/5 ratio 50.8.
+- **CV-1.7 T-P-F-ε0 (Gibbs Measure Continuity at $\varepsilon = 0$)** — Cat A (Session I, 2026-05-06). $\mu_\varepsilon \Rightarrow \mu_0$ weakly as $\varepsilon \to 0$ under H1–H4. **NOT P-F-A1** — does not prove spectral gap, Eyring-Kramers, $T_*$ existence, or Lions-Sznitman construction.
+- **CV-1.8–CV-1.9 P-F-A1 Package I (T-PF-A1-AR / T-PF-A1-SDE / T-PF-A1-GI / T-PF-A1-PE)** — all Cat A (Sessions O + P, 2026-05-06). **P-F-A1 Package I fully Cat A.** (AR) Affine reduction proves $\widetilde{\Sigma}_M$ is a bounded convex polytope — polytope SDE well-posed. (SDE) Lions-Sznitman Theorem 1 (convex domain) + Tanaka uniqueness establishes the reflected Langevin SDE on $\widetilde{\Sigma}_M$. (GI) Unique Gibbs invariant measure $\pi_{T_*}$ via zero-current + L²(π) kernel argument. (PE) Poincaré inequality $\lambda_1 \geq (\pi^2/n)\exp(-\mathrm{osc}(\tilde{\mathcal{E}})/T_*)$ + exponential ergodicity via Payne-Weinberger + Holley-Stroock. **NOT Eyring-Kramers** — Package II (explicit rates) remains open (OP-0021, W9+).
 
-### Category B — Proved with structural parameter (5)
+<Figure
+  src="/content-assets/scc-figures/fig30-t-st5a-topological-locking.png"
+  alt="Stereo scene with two depth-separated objects A and B, two cameras L and R, formation space showing two disconnected clusters with infinite energy barrier, K=2 forced."
+  caption={<>T-ST-5a — Topological Locking in Phase-Separated Stereo Fields (Cat A, CV-1.6). A depth-disconnected stereo graph forces K = 2: the energy barrier ΔE = +∞ (Goldstone barrier) makes merger structurally impossible. Objects A and B appear close in the image plane but are depth-separated in 3D — each depth-connected component yields exactly one stable formation.</>}
+  className="mx-auto max-w-full"
+/>
 
+<Figure
+  src="/content-assets/scc-figures/fig29-t-op6b-boundary-precision.png"
+  alt="Left: 2D phase-separated field with boundary contour and PersRidge overlay. Right: 1D cross-section showing the two thresholds and Hausdorff distance bracket."
+  caption={<>T-OP6-B — PersRidge Boundary Equivalence, Phase-Separation Regime (Cat A, CV-1.7, OP-0006 RESOLVED). The PersRidge locus and the formation boundary ∂Ω* satisfy d_H(PersRidge(u*), ∂Ω*) ≤ 2√(α/β) under H1–H5. Left: 2D plan view with contours; right: 1D cross-section at y = 0 showing the measured separation d_H ≈ 3.06.</>}
+  className="mx-auto max-w-full"
+/>
+
+<Figure
+  src="/content-assets/scc-figures/fig28-pf-a1-package-i.png"
+  alt="Four-box flowchart: Affine Reduction to Reflected SDE to Unique Gibbs Invariant Measure to Poincaré + Exponential Ergodicity, with dashed T-P-F-ε₀ prerequisite box above."
+  caption={<>P-F-A1 Package I — Stochastic Foundation for T* on Σ̃_M (fully Cat A, CV-1.8–CV-1.9). The four-step canonical chain: AR (bounded convex polytope) → SDE (Lions-Sznitman reflected Langevin) → GI (unique Gibbs invariant measure π(T*)) → PE (Poincaré inequality + explicit TV convergence rate). Package II (Eyring-Kramers explicit rates) remains open (OP-0021, W9+).</>}
+  className="mx-auto max-w-full"
+/>
+
+### Category B — Proved with structural parameter (14)
+
+**Original 5 (pre-W6):**
 - **Barrier exponent $\gamma_{\mathrm{eff}} \approx 0.89$** — empirical fit, branch / path / manifold conditioned.
 - **T-Birth-Parametric (general non-$D_4$ graphs)** — supercriticality on $D_4$-symmetric graphs is Cat A; general graphs remain Cat B.
 - **T-d_min-Formula** — branch-conditioned regression fit.
 - **T-Beyond-Weyl** — structured spectral perturbation bound; the quantitative 33× factor is config-specific.
-- **T-σ-Theorem-4** — *Retroactive Cat A → Cat B at CV-1.5.1 (2026-04-29)* per the Critic 7-agent verdict (Errata Round 1 Morse-index inconsistency at original merge time). *Continuum-vs-discrete caveat added 2026-05-04 (W6 NQ-187 audit):* the canonical statement (ii) — leading-order degeneracy $\mu_0 = \mu_1 = 4\|W''(c)\|\epsilon$ from $A_2/A_1 = 4$ — is a **continuum-limit prediction** (R22 §3.3 Lebesgue integral on the unit square) not realised on finite discrete grids $L \le 16$. NQ-187 numerical (`logs/daily/2026-04-30/11_nq187_scaling_test_results.md`, $L \in \{4, 8, 16\}$, $\epsilon \in \{0.001..0.1\}$, analytic sparse $\Sigma_m$-Hessian + shift-invert Lanczos) measured $\mu_0/\epsilon \approx 1$, $\mu_1/\epsilon \approx 2$, ratio $\mu_1/\mu_0 \approx 2$ (not 1), exponent $p \approx 1.03$ (not the predicted $p = 2$). Three reconciliation hypotheses (γ $\Sigma_m$-Hessian convention, β R22 re-derivation, α continuum extrapolation $L \to \infty$) are under audit; Cat A re-promotion is deferred to CV-1.7+ post γ/β/α path closure.
+- **T-σ-Theorem-4** — *Retroactive Cat A → Cat B at CV-1.5.1* per Critic 7-agent verdict. Continuum-vs-discrete caveat: canonical statement (ii) ($\mu_0 = \mu_1$ from $A_2/A_1 = 4$) is a continuum-limit prediction not realised on finite discrete grids $L \le 16$ (NQ-187: $\mu_1/\mu_0 \approx 2$, $p \approx 1.03$). Cat A re-promotion deferred post γ/β/α path closure.
 
-In addition, **T-σ-Multi-1 (Multi-Formation Goldstone-Pair Instability, Phase 4 Static)** is a CV-1.5.1 Cat B *target* (sketch only; Cat A pending NQ-242 numerical anchor). Goldstone-pair separation $\Delta\lambda \approx O(\lambda_{\mathrm{rep}} e^{-c_0 D_{\mathrm{sep}}})$ under V5b-T per-formation regime; static instability iff $\lambda_{\mathrm{rep}} > c_{\mathrm{eff}} \mu_{\mathrm{Gold}}^{\mathrm{single}}$.
+**W6 additions (2026-05-06):**
+- **T-ST-5b (Smooth-Depth Barrier Raising)** — Cat B (Session G). Full SCC with $E_{\mathrm{cl}} + E_{\mathrm{sep}}$ active raises the merge barrier ~25% over GL-only in the intermediate-β regime (exp02e 6/6 SUPPORTED). GL alone: NULL. Monotone-in-Δz NOT confirmed. Cat A path: monotonicity proof + analytical lower bound on barrier gap.
+- **T-P-F-ε0-K (Kramers Exponent Stability under Bernoulli Regularization)** — Cat B (Session I). Conditional on H5 (Morse stability): $\Delta E_\varepsilon = \Delta E_0 + \varepsilon \cdot \Delta R$; $\Gamma_B / \Gamma_A = \exp(O(\delta))$ at phase-separated endpoints. **NOT P-F-A1.** Cat A path: H5 proof + spectral gap.
+- **T-K-Select-PF (Equilibrium K-Selection under P-F-A1 Package I)** — Cat B (CV-1.10, Session R). Pushforward of $\pi_{T_*}$ under $K_{\mathrm{act}}$ defines sector probabilities $\{p_K\}$; $K^* = \arg\max_K p_K$. **OP-0005-EQ partially resolved.** Does NOT resolve OP-0005-DYN (Kramers) or OP-0005-OBS.
+- **T-K-Select-OBS (Observation-Conditioned K-Selection)** — Cat B (CV-1.11, Session Y). Bayesian posterior $\pi_{T_*}(\cdot \mid \mathcal{O})$ over observation-compatible states selects $K^*_{\mathrm{obs}}$. exp85 ALL PASSED. **OP-0005-OBS partially resolved.**
+- **D-ST-1/2/3/4/5 (Stereo-SCC definitions)** — B candidates (CV-1.6, in canonical.md §3.9–§3.11, §16; formal canonical-row promotion pending). Stereo adjacency (hard/smooth), field space $\mathcal{F}_M(P)$, $K_{\mathrm{act}}$ as PersComp observable, topological sector / partition function / Kramers rate, backprojection / pullback / prior-likelihood separation.
+
+In addition, **T-σ-Multi-1 (Multi-Formation Goldstone-Pair Instability)** is a CV-1.5.1 Cat B *target* (sketch only; Cat A pending NQ-242 anchor). **V5b-F-empirical** is a Cat B sub-statement target (NQ-198a; quantified $C(\beta=4,\xi_0=0.5) \approx 13.2 \pm 0.4$).
 
 ### Category C — Conditional (5 + Cat C riders + new finding)
 
@@ -133,9 +172,9 @@ The W4 close (2026-04-24) reduced the **Critical** count from 3 to 0 by SPLIT-RE
 | OP-0002 | M-1: K=1 preferred | (was Critical) Resolved | LAYER-CLARIFIED (2026-04-24) — proved theorem misframed |
 | OP-0003 | MO-1: Morse fails | (was High) Sidestepped | SIDESTEPPED for single-formation σ scope; **re-activation rider** added at CV-1.5.1 on D-6b approval or NQ-248 multi-formation Morse work |
 | OP-0004 | Type A/B Classification | High | RETRACTED (empirically invalidated; exp65 0/4 Type B observed) |
-| OP-0005 | K-Selection mechanism | High | OPEN; partial via 4-layer composite (free-energy / Kramers / numerical anchor / Commitment 16); **CV-1.7+ Commitment 19 candidate** |
-| OP-0006 | Boundary precision | High | TENTATIVE (D-0013 in development) |
-| OP-0008 | σ^A K-jump inheritance non-determinism | High | OPEN (CV-1.5.1, W5 Day 4); **Path B σ-rich + Φ-rich Cat B target; CV-1.7 Commitment 18 candidate** |
+| OP-0005 | K-Selection mechanism | High | **3-WAY SPLIT** (W6): EQ **PARTIALLY RESOLVED** via T-K-Select-PF Cat B (CV-1.10); OBS **PARTIALLY RESOLVED** via T-K-Select-OBS Cat B (CV-1.11); DYN **OPEN** (Eyring-Kramers explicit rates, Package II, W9+) |
+| OP-0006 | Boundary precision | (was High) **RESOLVED** | **RESOLVED (W6 D4)** via T-OP6-B Cat A — PersRidge Boundary Equivalence under H1–H5 in the phase-separation regime |
+| OP-0008 | σ^A K-jump inheritance non-determinism | High | OPEN (CV-1.5.1, W5 Day 4); Path B σ-rich + Φ-rich Cat B target |
 | OP-0009 | Multi-Formation Ontological Foundations | High | OPEN (CV-1.5.1, W5 Day 4; **7 sub-items**); **1/7 RESOLVED via Commitment 16 (OP-0009-K)**; **6/7 PARTIALLY** (OP-0009-F marginal clarification via $\Phi_{\mathrm{res}}$ class restriction in W5 Day 7) |
 | OP-0010 | Bind generalization | Medium | OPEN (T-Bind-Proj/Full now Cat A per Phase 13 — see W6 G2 audit; OP-0010 retains for any further generalization questions) |
 | OP-0011 | Transport kernel exact form | Medium | TENTATIVE |
@@ -145,7 +184,14 @@ The W4 close (2026-04-24) reduced the **Critical** count from 3 to 0 by SPLIT-RE
 | OP-0021 | Stochastic dynamics | Low | UNDER INVESTIGATION (exp54–exp59 Kramers rate theory) |
 | OP-0022 | Continuous-time limit | Low | seed |
 
-Net post-W5 + 2026-05-04 active count: **4 High + 4 Medium + 3 Low = 11 active OPs** (plus the 4 closed entries OP-0001 / OP-0002 / OP-0003 / OP-0004 retained for traceability).
+Net post-W6 active count: **3 High + 4 Medium + 3 Low = 10 active OPs** (plus 5 closed/resolved entries OP-0001 / OP-0002 / OP-0003 / OP-0004 / OP-0006 retained for traceability). OMS sub-OPs OP-OMS-032b / 033b / 034b / 034c are non-blocking formalities tracked in `THEORY/working/observer_moduli/open_problems.md`.
+
+<Figure
+  src="/content-assets/scc-figures/fig31-op0005-k-selection-split.png"
+  alt="Three-branch diagram: OP-0005 K-Selection Problem splits into EQ branch (T-K-Select-PF, Cat B partial), OBS branch (T-K-Select-OBS, Cat B partial), and DYN branch (K-Select-DYN, open W9+)."
+  caption={<>OP-0005 — Three-Way Split of the K-Selection Problem (CV-1.10, 2026-05-06). The original single open problem is now decomposed into three independent branches: EQ (equilibrium K-selection via partition function, Cat B partial), OBS (observation-conditioned K-selection via OMS-2.0, Cat B partial), and DYN (dynamical K-selection via Eyring-Kramers, open — P-F-A1 Package II, W9+). Full resolution requires Package II (OP-0021).</>}
+  className="mx-auto max-w-full"
+/>
 
 <Figure
   src="/content-assets/scc-figures/fig14-f1-split-resolution.png"
@@ -161,13 +207,14 @@ Net post-W5 + 2026-05-04 active count: **4 High + 4 Medium + 3 Low = 11 active O
   className="mx-auto max-w-full"
 />
 
-## Most recent canonical edits (CV-1.5.2 + audit)
+## Most recent canonical edits (CV-1.5.2 → CV-1.11)
 
-- **2026-05-02 (W5 Day 6):** T-L1-F merged to canonical Cat A *conditional* under hypothesis package $(P0)$–$(P11)$. CV-1.5.1 → CV-1.5.2. 45A → 46A. 60 → 61 claims. 75% proved (unchanged).
-- **2026-05-04 (W6 Day 1 evening, G2 + NQ-187 caveat):** T-Bind-Proj / T-Bind-Full categorical decision closed (Cat A per Phase 13 — `theorem_status.md` had been a stale shadow at Cat B / Cat C). T-σ-Theorem-4 continuum-vs-discrete caveat added per NQ-187 numerical falsification on $L \le 16$ discrete grids. No theorem statements changed; documentation reconciliations only.
-- **2026-05-04 (W6 Day 1 late evening, open_problems.md merge):** `THEORY/canonical/open_problems.md` (~530 lines) absorbed into `theorem_status.md` §Open Problems Catalog; `open_problems.md` deleted. Bulk cross-reference update across ~30 working files. Test count 215 passed + 1 xfailed unchanged.
-
-The CV-1.6 release is in development (target W6 D7 EOD 2026-05-10) and is gated on closing G1 (L1-M-AUDIT), G2 (T-Bind decision — already DONE), and G3 (K_act ε-convention).
+- **2026-05-02 (W5 Day 6):** T-L1-F merged Cat A conditional. CV-1.5.1 → CV-1.5.2. 45A → 46A. 61 claims.
+- **2026-05-04 (W6 Day 1):** T-Bind Cat A confirmed; T-σ-Theorem-4 continuum caveat added; `open_problems.md` merged into `theorem_status.md` (deleted). Strategic plan redesigned.
+- **2026-05-06 (W6 Day 4, Sessions A–Y):** CV-1.5.2 → CV-1.6 → … → **CV-1.11** in a single work session. Net: +8A +9B = +17 claims. Key promotions: T-ST-5a Cat A (CV-1.6); T-OP6-B Cat A + T-P-F-ε0 Cat A (CV-1.7, OP-0006 RESOLVED); P-F-A1 Package I fully Cat A (CV-1.8–CV-1.9); T-K-Select-PF Cat B (CV-1.10, OP-0005-EQ partial); T-K-Select-OBS Cat B (CV-1.11, OP-0005-OBS partial).
+- **2026-05-07 (W6 Day 5):** `DECLARATION.md` DECL-1.0 (6 epistemological commitments) + `hypothesis_tree.md` HT-3.0 (dependency graph, critical path for CV-1.12) created.
+- **2026-05-08 (W6 Day 6, Sessions 7–8):** OMS-2.0 promoted from Conditional Accepted → **Accepted — Full**. OP-OMS-034 CLOSED (temporal $G_{\mathrm{cw}}^{\mathrm{temp}} = \{e\}$ confirmed; 19-branch Δ³ map). Appendix OMS §A–§M (Static + Temporal) added to `canonical.md`.
+- **2026-05-08 (W6 EOD):** `theorem_status.md` header + `canonical.md` DEVELOPMENT NOTICE updated to CV-1.11 state. Weekly summary written. **Next target: CV-1.12 via H-SINK** (T-Temporal-Identity a/b/d, +3A, Bigot-Cazelles-Papadakis route).
 
 ## Implementation
 
@@ -225,16 +272,34 @@ The current repository structure is a clean **CODE / THEORY split**:
 
 The 2026-04-12 "Research OS" reboot — an 8-layer structure with numbered `00_meta/` … `07_archive/` directories and 5-role daily logs — was tried for four days, collapsed under its own scaffolding on 2026-04-16, and was archived on 2026-04-18. The current `CLAUDE.md` policy explicitly forbids re-introducing the numbered-directory / 5-role / per-item registry structure. The honest "tried and abandoned" record lives in `_archive/research_os_2026-04-12/`.
 
-## W6 strategic plan (current, post-2026-05-04 redesign)
+## W6 outcomes + next session plan
 
-The original 1,691-line W6 strategic plan was deleted on 2026-05-04 and a redesigned plan was seeded. The current W6 plan (`THEORY/logs/weekly/2026-05-W1/W6_strategic_plan.md`) carries 4 goals:
+**W6 is closed (2026-05-04 → 2026-05-08).** The redesigned W6 plan carried 4 goals; all are resolved:
 
-- **G1 — L1-M-AUDIT** (external audit + repair cycle on the L1-M working draft, mirrors the L1-K external audit pattern). CV-1.6 promotion target.
-- **G2 — T-Bind decision** — DONE (2026-05-04 W6 Day 1 evening). T-Bind-Proj / T-Bind-Full = Cat A per Phase 13.
-- **G3 — K_act ε-convention** — convention-fixing round for the active-slot index ε.
-- **G4 — parking-lot inventory** — surface the 17 unaudited working files (~8,145 lines) introduced during the W5 Day 4 Wave 3 burst. Plan documented at `THEORY/working/CV-1.7_PARKING_LOT_REVIEW_PLAN.md` (4-stage: Inventory → per-file self-assessment → cluster-by-cluster critic dispatch → disposition; ~10 working days for the full pass).
+- **G1 — L1-M-AUDIT** — superseded: the stereo-SCC / P-F-A1 / OMS work took priority; L1-M-AUDIT deferred to W7+.
+- **G2 — T-Bind decision** — **DONE** (2026-05-04). T-Bind-Proj / T-Bind-Full = Cat A per Phase 13.
+- **G3 — K_act ε-convention** — **DONE** (subsumed into D-ST-3 + T-K-Select-PF/OBS canonical definitions in CV-1.10–CV-1.11).
+- **G4 — parking-lot inventory** — carried to W7 (`THEORY/working/CV-1.7_PARKING_LOT_REVIEW_PLAN.md`).
 
-CV-1.6 release is **deferred until G1 + G2 + G3 close** (G2 already closed). CV-1.7 dispatches the parking-lot.
+**Net W6 result (entry → exit):**
+
+| | Entry (05-04) | Exit (05-08) |
+|---|---|---|
+| Canonical version | CV-1.5.2 | **CV-1.11** |
+| Claims | 61 (46A/5B/5C/5R) | **78 (54A/14B/5C/5R)** |
+| OMS | — | **OMS-2.0 Accepted — Full** |
+| Theory navigation | HT-2.x | **HT-3.0 + DECLARATION.md** |
+| pytest | 215+1xfailed | **215+1xfailed (clean)** |
+
+<Figure
+  src="/content-assets/scc-figures/fig32-w6-canonical-timeline.png"
+  alt="Horizontal day-band timeline from D1 May 4 to D6 May 8, with theorem milestones, CV version bumps, and OP-0006 RESOLVED callout."
+  caption={<>W6 Canonical Timeline (2026-05-04 to 2026-05-08): CV-1.6 → CV-1.11, 78 claims (54A / 14B / 5C / 5R, ~69% proved). Key milestones: T-ST-5a Cat A (D1), T-OP6-B + OP-0006 RESOLVED (D3), P-F-A1 Package I Cat A (D4), T-K-Select-PF/OBS Cat B + OP-0005 3-way split (D4), DECL-1.0 + HT-3.0 (D5), OMS-2.0 Accepted — Full (D6).</>}
+  className="mx-auto max-w-full"
+/>
+
+**Next session — H-SINK (Phase 1, unblocked):**
+Bigot-Cazelles-Papadakis → $L_g \leq L_c$ in SCC cost class → T-Temporal-Identity (a, b, d) Cat A → **CV-1.12 (+3A)**. Dependency: P-F-A1 Package I (CV-1.9, complete). Blocking neither by OMS nor by Package II. Entry point: `THEORY/canonical/hypothesis_tree.md` (HT-3.0) §H-SINK node.
 
 ## Twelve iterations of method (historical)
 
@@ -264,6 +329,6 @@ Dedicated SCC manuscripts are currently **not** in the working tree — the two 
 ## Related
 
 - [SCC status, April 2026 (W5 Day 1 G0 close, CV-1.5)](/notes/part-0/scc-status-2026-04/) — historical snapshot.
-- [Canonical Specification (CV-1.5.2)](/notes/part-0/canonical-spec-scc/) — the full formal text of SCC.
+- [Canonical Specification (CV-1.11)](/notes/part-0/canonical-spec-scc/) — the full formal text of SCC (with Appendix OMS §A–§M).
 - [Part I — RelationWorld Foundations](/notes/) — the discrete-gauge substrate SCC operates over.
 - [Perception research track](/research/perception/) — the public-facing overview page.

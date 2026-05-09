@@ -1,24 +1,24 @@
 ---
-title: "Soft Cognitive Cohesion — Canonical Specification (CV-1.5.2)"
+title: "Soft Cognitive Cohesion — Canonical Specification (CV-1.11)"
 slug: canonical-spec-scc
 part: 0
 chapter: 0
 section: "Canonical Specification"
 kind: canonical
 track: perception
-updated: 2026-05-04
-summary: "Aligned with Perception_theory canonical CV-1.5.2 (2026-05-02). 46 Category A + 5 Category B + 5 Category C + 5 Retracted = 61 claims, 75% fully proved."
+updated: 2026-05-08
+summary: "Aligned with Perception_theory canonical CV-1.11 (2026-05-06). 54 Category A + 14 Category B + 5 Category C + 5 Retracted = 78 claims, ~69% fully proved. OMS-2.0 Accepted — Full."
 tags: [scc, canonical-spec, axioms, theorems, foundational]
-related: [scc-status-2026-04, integrated-architecture]
+related: [scc-status-2026-05, integrated-architecture]
 ---
 
 ## Overview
 
-This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion. The current release is **CV-1.5.2 (2026-05-02)**, incorporating the W4 resolution of Critical open problems (F-1, M-1, MO-1), the Pre-Objective Mechanism theorems (T-PreObj-1 family), the Goldstone dichotomy on translation-invariant graphs (T-V5b-T), the W5 Day 1 G0 canonical merge of the σ-framework supporting structures (T-σ-Lemma-1/2/3 + T-σ-Theorem-3/4) that ground Commitment 14, the W5 Day 3 EOD CV-1.5.1 D-6a Multi-Static cluster + Commitment 16 K-status decomposition, and the W5 Day 6 CV-1.5.2 promotion of T-L1-F (Hard-Bar / Active-Count Bridge under L1-J Regime) — the first multi-formation canonical Cat A theorem.
+This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion. The current release is **CV-1.11 (2026-05-06)**, incorporating all prior W4–W5 work plus the W6 additions: the Stereo-SCC extension (T-ST-5a hard-depth locking Cat A; T-ST-5b smooth barrier raising Cat B), boundary precision resolution OP-0006 via T-OP6-B (Cat A, phase-separation regime), P-F-A1 Package I fully Cat A (T-P-F-ε0 + T-PF-A1-AR/SDE/GI/PE — well-posed reflected SDE + unique Gibbs measure + exponential ergodicity on $\widetilde{\Sigma}_M$), equilibrium and observation-conditioned K-selection (T-K-Select-PF/OBS Cat B, OP-0005-EQ/OBS partially resolved), and the **Observer Moduli Space OMS-2.0 Accepted — Full** with Appendix OMS (§A–§M) added to the canonical specification.
 
 > **Version naming convention.** This site and the underlying Perception_theory both use a single release ladder, **CV-x.y[.z]**, incremented per merge:
 >
-> CV-1.0 (04-01) → CV-1.1 (04-03) → CV-1.2 (04-12) → CV-1.3 (04-25) → CV-1.4 (04-26) → CV-1.5 (04-27) → CV-1.5.1 (04-29) → **CV-1.5.2 (05-02, current)**.
+> CV-1.0 (04-01) → CV-1.1 (04-03) → CV-1.2 (04-12) → CV-1.3 (04-25) → CV-1.4 (04-26) → CV-1.5 (04-27) → CV-1.5.1 (04-29) → CV-1.5.2 (05-02) → CV-1.6 (05-06, Stereo-SCC + T-ST-5a Cat A) → CV-1.7 (05-06, T-OP6-B Cat A + T-P-F-ε0 Cat A + T-P-F-ε0-K Cat B) → CV-1.8 (05-06, T-PF-A1-AR/SDE Cat A + GI/PE Cat B) → CV-1.9 (05-06, T-PF-A1-GI/PE Cat B→A, Package I complete) → CV-1.10 (05-06, T-K-Select-PF Cat B) → **CV-1.11 (05-06, T-K-Select-OBS Cat B, current)**.
 >
 > Older site-document tags (v2.0/v2.1/v2.2/v2.3) and the Perception_theory internal *theory-revision* tag (v2.1, marking ontological shifts like T_t demoted, C_t demoted, A1' / σ-framework primary) are retained only as historical change-log markers within the body text below; they are **not** a separate active version system. Authoritative release index lives at `THEORY/canonical/theorem_status.md` §Canonical Spec Version History.
 
@@ -67,7 +67,7 @@ Because the full specification is long, it is split across five linked parts. Re
 
 ### [Part 5 · Proved Results Registry & Closing Notes →](/notes/part-0/canonical-spec-scc-5-results-registry/)
 
-**§13–§15.** The 61-item results registry: **46 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, **T-PreObj-1 / T-PreObj-1G / Lemma 4** (W4 Pre-Objective Mechanism), **T-V5b-T** (W4-extended Goldstone), **T-σ-Lemma-1 / T-σ-Lemma-2 / T-σ-Lemma-3 / T-σ-Theorem-3** (W5 Day 1 G0 σ-framework supporting structures), **T-Commitment-14-Multi-Static / T-σ-multi-A-Static / T-σ-multi-D-Static** (CV-1.5.1 D-6a Multi-Static cluster), **V5b-T-zero** (CV-1.5.1, sub-spinodal $\mu_{\mathrm{Gold}}=0$ exact, replaces WITHDRAWN V5b-T'), **T-L1-F** (CV-1.5.2, Hard-Bar / Active-Count Bridge under L1-J Regime — first multi-formation canonical Cat A theorem, conditional under hypothesis package $(P0)$–$(P11)$)), **5 Category B** (γ_eff ≈ 0.89 barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl quantification, **T-σ-Theorem-4** retroactive Cat A → Cat B at CV-1.5.1, plus T-σ-Multi-1 Cat B target and V5b-F-empirical Cat B target), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified) plus the V5b-F finding (W4-extended) and T-σ-Lemma-2 (v)/(vi) Cat C riders bundled in parent Cat A entry, **5 Retracted** (Thm 3.3 for general τ, T-Merge (c)(d)(e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN17, with CN15 = Static/Dynamic Separation introduced in W4, CN16 = Protocol-Parameterized Observables, CN17 = σ-Labeled Formation Quantization) and the closing summary.
+**§13–§15.** The 78-item results registry: **54 Category A** (fully proved — T1, T6a/b, T8-Core/Full, T14, T3/T6-Stability, T7-Enhanced, T11, T-Merge (a/b), Topological Lock, T-Birth-Parametric, T-Bind-Proj/Full, Propositions 1.1/1.2 and Theorem 3.1, Persistence Threshold Equation, Predicate-Energy Bridge, Deep Core Dominance 2b, **T-PreObj-1 / T-PreObj-1G / Lemma 4** (W4 Pre-Objective Mechanism), **T-V5b-T** (W4-extended Goldstone), **T-σ-Lemma-1/2/3 + T-σ-Theorem-3** (W5 σ-framework), **T-Commitment-14-Multi-Static / T-σ-multi-A/D-Static** (CV-1.5.1 Multi-Static cluster), **V5b-T-zero**, **T-L1-F** (CV-1.5.2, first multi-formation Cat A), **T-ST-5a** (CV-1.6, hard-depth topological locking), **T-OP6-B** (CV-1.7, boundary precision, OP-0006 resolved), **T-P-F-ε0** (CV-1.7, Gibbs measure continuity), **T-PF-A1-AR / T-PF-A1-SDE / T-PF-A1-GI / T-PF-A1-PE** (CV-1.8–CV-1.9, P-F-A1 Package I complete)), **14 Category B** (barrier exponent, general-graph birth, d_min formula, T-Beyond-Weyl, T-σ-Theorem-4, T-ST-5b, T-P-F-ε0-K, T-K-Select-PF (CV-1.10, OP-0005-EQ partial), T-K-Select-OBS (CV-1.11, OP-0005-OBS partial), plus targets T-σ-Multi-1 / V5b-F-empirical), **5 Category C** (T-Persist-1(d), T-Persist-Full, T-Persist-K-Sep/Weak/Unified), **5 Retracted** (Thm 3.3 general τ, T-Merge (c/d/e), K-Saddle Conjecture). The consolidated Commitment Notes (CN1–CN17) and the closing summary. **Appendix OMS (§A–§M):** Observer Moduli Space, OMS-2.0 Accepted — Full (static + temporal).
 
 ## Key Changes in CV-1.5.2 (W5 Day 6, 2026-05-02)
 
@@ -75,6 +75,28 @@ Because the full specification is long, it is split across five linked parts. Re
 - L1-A through L1-L 13-step chain + L1-K external audit + L1-K-REPAIR cycle (R-1..R-4).
 - **Counts**: 45A → **46A**, 60 → **61 claims**, 75% fully proved.
 - **Non-claims preserved (explicit)**: no global $K_{\mathrm{bar}}=K_{\mathrm{act}}$; no global $K_{\mathrm{soft}}^\phi=K_{\mathrm{act}}$; OP-0005 / OP-0008 NOT solved; reservoir theory NOT promoted; P7 NOT generally derived.
+
+## Key Changes in CV-1.6 through CV-1.11 (W6, 2026-05-06)
+
+All six releases occurred on 2026-05-06 (W6 Day 4, Sessions A–Y).
+
+- **CV-1.6 — Stereo-SCC extension + T-ST-5a Cat A.** Hard-depth topological locking (T-ST-5a): a depth-disconnected stereo graph forces $K = 2$ topologically — $\Delta E = +\infty$ (state-space disconnection; no P-F flag). Stereo field space $\mathcal{F}_M(P)$, stereo adjacency D-ST-1/2, and the backprojection/pullback/prior-likelihood separation (D-ST-5) added as canonical definitions.
+
+- **CV-1.7 — OP-0006 RESOLVED; stochastic measure continuity.** T-OP6-B (PersRidge Boundary Equivalence, phase-separation regime) promoted Cat B → **Cat A** conditional under H1–H5: $d_H(\mathrm{PersRidge}, \partial\Omega) \leq 2(\alpha/\beta)^{1/2}$. **OP-0006 (Boundary precision) is closed.** T-P-F-ε0 merged Cat A: $\mu_\varepsilon \Rightarrow \mu_0$ weakly (Gibbs continuity at $\varepsilon = 0$). T-P-F-ε0-K merged Cat B: Kramers exponent stability under Bernoulli regularization.
+
+- **CV-1.8 — P-F-A1 Package I (T-PF-A1-AR + T-PF-A1-SDE Cat A; T-PF-A1-GI + T-PF-A1-PE Cat B, promoted in CV-1.9).** Affine reduction proves $\widetilde{\Sigma}_M$ is a bounded convex polytope. Lions-Sznitman reflected SDE (T-PF-A1-SDE) establishes existence and uniqueness of the Langevin diffusion on $\widetilde{\Sigma}_M$. Gibbs invariant measure uniqueness (T-PF-A1-GI) and Poincaré inequality + exponential ergodicity (T-PF-A1-PE) round out the stochastic foundation for $T_*$.
+
+- **CV-1.9 — P-F-A1 Package I fully Cat A.** T-PF-A1-GI and T-PF-A1-PE promoted Cat B → Cat A. Uniqueness via Neumann heat kernel positivity + L²(π) semigroup argument; exponential ergodicity rate $\lambda_1 \geq (\pi^2/n)\exp(-\mathrm{osc}(\tilde{\mathcal{E}})/T_*)$ via Payne-Weinberger + Holley-Stroock. **P-F-A1 Package II** (Eyring-Kramers explicit rates) remains open (OP-0021, W9+).
+
+- **CV-1.10 — Equilibrium K-Selection Cat B (OP-0005-EQ partially resolved).** T-K-Select-PF: under Package I, the pushforward of $\pi_{T_*}$ under $K_{\mathrm{act}}$ defines sector probabilities $\{p_K\}$; $K^* = \arg\max_K p_K$. Does NOT resolve OP-0005-DYN (Kramers) or OP-0005-OBS.
+
+- **CV-1.11 — Observation-Conditioned K-Selection Cat B (OP-0005-OBS partially resolved).** T-K-Select-OBS: Bayesian posterior $\pi_{T_*}(\cdot \mid \mathcal{O})$ over observation-compatible states selects $K^*_{\mathrm{obs}}$. exp85 ALL PASSED (numerical anchor). **OP-0005 is now 3-way split:** EQ (partially resolved), OBS (partially resolved), DYN (open, W9+).
+
+**OMS-2.0 Accepted — Full (W6 Day 6, Sessions 7–8):** The Observer Moduli Space — the space of symmetry-inequivalent critical formations with stratification by $G_{\mathrm{cw}}$ conjugacy class — is proved finite and carries a codim-1 branch decomposition. Temporal extension ($G_{\mathrm{cw}}^{\mathrm{temp}} = \{e\}$, 19-branch Δ³ map with 7 λ_tr-unique branches) established via VP-11. Appendix OMS (§A–§M) added to `canonical.md`.
+
+**Navigational additions (W6 Day 5):** `DECLARATION.md` (DECL-1.0, 6 epistemological commitments) and `hypothesis_tree.md` (HT-3.0, dependency structure + critical path for H-SINK / CV-1.12) created.
+
+**Counts (CV-1.5.2 → CV-1.11):** 46A/5B/5C/5R = 61 → **54A/14B/5C/5R = 78 claims, ~69% fully proved.**
 
 ## Key Changes in CV-1.5.1 (W5 Day 3 EOD, 2026-04-29)
 

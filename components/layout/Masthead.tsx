@@ -4,6 +4,7 @@ import { MobileNav } from "./MobileNav";
 import { NavLinks } from "./NavLinks";
 import { PaletteTrigger } from "./PaletteTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 /** Full list for the mobile drawer — includes Tags. */
 const mobileNav = [
@@ -49,8 +50,12 @@ export function Masthead() {
               aria-hidden
               className="mx-3 hidden h-4 w-px bg-[var(--color-rule)] sm:inline-block"
             />
-            <PaletteTrigger />
-            <ThemeToggle />
+            <MagneticButton>
+              <PaletteTrigger />
+            </MagneticButton>
+            <MagneticButton>
+              <ThemeToggle />
+            </MagneticButton>
           </nav>
 
           {/* Mobile nav */}
