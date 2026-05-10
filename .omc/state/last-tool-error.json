@@ -1,7 +1,0 @@
-{
-  "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/ojaehong/Perception/jack0682.github.io/content/notes/part-0/canonical-spec-scc-5-results-registry.mdx\"}",
-  "error": "File content (29745 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.",
-  "timestamp": "2026-05-08T16:34:41.357Z",
-  "retry_count": 1
-}

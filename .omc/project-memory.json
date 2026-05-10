@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1778246410898,
+  "lastScanned": 1778337543247,
   "projectRoot": "/Users/ojaehong/Perception/jack0682.github.io",
   "techStack": {
     "languages": [
@@ -83,7 +83,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 9,
-      "lastAccessed": 1778246410861,
+      "lastAccessed": 1778337543222,
       "keyFiles": [
         "favicon.ico",
         "globals.css",
@@ -96,21 +96,28 @@
       "path": "components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1778246410863,
+      "lastAccessed": 1778337543222,
       "keyFiles": []
     },
     "content": {
       "path": "content",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1778246410888,
+      "lastAccessed": 1778337543231,
+      "keyFiles": []
+    },
+    "hooks": {
+      "path": "hooks",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1778337543242,
       "keyFiles": []
     },
     "lib": {
       "path": "lib",
       "purpose": "Library code",
       "fileCount": 9,
-      "lastAccessed": 1778246410891,
+      "lastAccessed": 1778337543243,
       "keyFiles": [
         "bio.ts",
         "cn.ts",
@@ -123,7 +130,7 @@
       "path": "out",
       "purpose": "Build output",
       "fileCount": 15,
-      "lastAccessed": 1778246410893,
+      "lastAccessed": 1778337543244,
       "keyFiles": [
         "404.html",
         "__next.__PAGE__.txt",
@@ -136,7 +143,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 3,
-      "lastAccessed": 1778246410894,
+      "lastAccessed": 1778337543244,
       "keyFiles": [
         "google94240e5ed6b482ae.html",
         "og-default.png"
@@ -146,7 +153,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 4,
-      "lastAccessed": 1778246410895,
+      "lastAccessed": 1778337543245,
       "keyFiles": [
         "build-dag.mjs",
         "build-search-index.mjs",
@@ -155,307 +162,6 @@
       ]
     }
   },
-  "hotPaths": [
-    {
-      "path": "content/notes/part-0/scc-status-2026-05.mdx",
-      "accessCount": 28,
-      "lastAccessed": 1778259207459,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/Masthead.tsx",
-      "accessCount": 18,
-      "lastAccessed": 1778252549637,
-      "type": "file"
-    },
-    {
-      "path": "content/research/perception.mdx",
-      "accessCount": 12,
-      "lastAccessed": 1778257379732,
-      "type": "file"
-    },
-    {
-      "path": "app/globals.css",
-      "accessCount": 11,
-      "lastAccessed": 1778250006415,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc.mdx",
-      "accessCount": 9,
-      "lastAccessed": 1778257370945,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/NavLensRail.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1778251537263,
-      "type": "file"
-    },
-    {
-      "path": "hooks/useNavLensMeasurement.ts",
-      "accessCount": 5,
-      "lastAccessed": 1778251545788,
-      "type": "file"
-    },
-    {
-      "path": "components/theme/ThemeToggle.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1778252495477,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/MobileNav.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1778247374223,
-      "type": "file"
-    },
-    {
-      "path": "app/layout.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1778252538077,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/FloatingChip.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1778247360986,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/NavLiquidGlassCanvas.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1778251571668,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/NavLinks.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1778251769452,
-      "type": "file"
-    },
-    {
-      "path": "app/page.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1778252866818,
-      "type": "file"
-    },
-    {
-      "path": "content/journal/2026-05-08-perception-week-6.mdx",
-      "accessCount": 3,
-      "lastAccessed": 1778257577078,
-      "type": "file"
-    },
-    {
-      "path": "components/theme/ThemeProvider.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1778246993966,
-      "type": "file"
-    },
-    {
-      "path": "components/mdx/Figure.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1778246996093,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/createRenderer.ts",
-      "accessCount": 2,
-      "lastAccessed": 1778250526321,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/shaders/lens.frag.ts",
-      "accessCount": 2,
-      "lastAccessed": 1778250526389,
-      "type": "file"
-    },
-    {
-      "path": "hooks/useNavActiveItem.ts",
-      "accessCount": 2,
-      "lastAccessed": 1778250605600,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/NavLensIndicator.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1778250622626,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig13-hero-dependency-dag.png",
-      "accessCount": 2,
-      "lastAccessed": 1778255652973,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/Footer.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246505674,
-      "type": "file"
-    },
-    {
-      "path": "components/motion/LivingOntology.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246506402,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/CommandPalette.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246514362,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/Container.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246514519,
-      "type": "file"
-    },
-    {
-      "path": "app/about/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246514745,
-      "type": "file"
-    },
-    {
-      "path": "app/journal/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246514787,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/PageHeader.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246521338,
-      "type": "file"
-    },
-    {
-      "path": "app/papers/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778246722201,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 1,
-      "lastAccessed": 1778248780307,
-      "type": "file"
-    },
-    {
-      "path": "tsconfig.json",
-      "accessCount": 1,
-      "lastAccessed": 1778250001872,
-      "type": "file"
-    },
-    {
-      "path": "lib/cn.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250002171,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/shaders/lens.vert.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250047297,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/detectCapabilities.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250107611,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/uniforms.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250114682,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/bakeSubstrateTexture.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250119921,
-      "type": "file"
-    },
-    {
-      "path": "lib/liquid-glass/bakeNavTextTexture.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778250128028,
-      "type": "file"
-    },
-    {
-      "path": "components/motion/ScrollProgress.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252495115,
-      "type": "file"
-    },
-    {
-      "path": "components/layout/PaletteTrigger.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252495700,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/CursorSpotlight.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252507518,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/MagneticButton.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252512567,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/FootnoteTooltip.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252521879,
-      "type": "file"
-    },
-    {
-      "path": "components/ui/KaTeXZoom.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778252525723,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/README.md",
-      "accessCount": 1,
-      "lastAccessed": 1778254657986,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig25-oms-branch-map.png",
-      "accessCount": 1,
-      "lastAccessed": 1778254673646,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig26-observer-basin-stratification.png",
-      "accessCount": 1,
-      "lastAccessed": 1778254674113,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig27-scc-epistemological-map.png",
-      "accessCount": 1,
-      "lastAccessed": 1778254674561,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig19-t-l1-f-bridge.png",
-      "accessCount": 1,
-      "lastAccessed": 1778254696343,
-      "type": "file"
-    },
-    {
-      "path": "public/content-assets/scc-figures/fig20-l1-j-regime-package.png",
-      "accessCount": 1,
-      "lastAccessed": 1778254696872,
-      "type": "file"
-    }
-  ],
+  "hotPaths": [],
   "userDirectives": []
 }
