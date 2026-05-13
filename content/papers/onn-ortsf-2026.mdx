@@ -2,23 +2,41 @@
 title: "Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control"
 slug: onn-ortsf-2026
 authors: ["Jaehong Oh"]
-venue: "International Journal of Topology (MDPI)"
+venue: "International Journal of Topology (MDPI), 3(2), 9"
 year: 2026
-status: accepted
-date: 2026-04-03
+status: published
+date: 2026-05-12
+updated: 2026-05-12
 pdf: "/papers/onn-ortsf-2026.pdf"
-abstract: "We introduce the Ontology Neural Network (ONN), a learning architecture whose latent state inherits the type structure of a target ontology, and accompany it with the ORTSF (Ontology-Resolved Topological State Feedback) framework — a family of predicate-binding operators that remain robust under communication delay. Together they suggest a tight coupling between the topology of learned representations and the stability of the closed-loop systems they drive, and we formalise that coupling with cohomological invariants that serve simultaneously as representational and control-theoretic quantities."
-tags: [onn, ortsf, control, cohomology, topology, delay-robust]
+doi: "https://doi.org/10.3390/ijt3020009"
+abstract: "The advancement of autonomous robotic systems has led to significant capabilities in perception, localization, mapping, and control, yet a critical challenge remains in representing and preserving relational semantics, contextual reasoning, and cognitive transparency essential for collaboration in dynamic, human-centric environments. This paper introduces a unified architecture comprising the Ontology Neural Network (ONN) and the Ontological Real-Time Semantic Fabric (ORTSF) to address this challenge. The ONN formalizes relational semantic reasoning as a dynamic topological process by embedding Forman–Ricci curvature, persistent homology, and semantic tensor structures within a unified loss formulation, aiming to maintain relational integrity as scenes evolve. Building upon ONN, the ORTSF transforms reasoning traces into actionable control commands while compensating for system delays through predictive operators designed to preserve phase margins. Theoretical analysis and extensive simulations demonstrate that ORTSF maintains designed phase margins, offering advantages over classical delay compensation methods. Empirical studies indicate the framework's effectiveness in unifying semantic cognition and robust control, providing a mathematically principled solution for cognitive robotics."
+tags: [onn, ortsf, control, cohomology, topology, delay-robust, cognitive-robotics, semantic-fabric]
 track: onn
 related: [canonical-spec-scc, integrated-architecture]
+bibtex: |
+  @article{oh2026ontology,
+    author    = {Oh, Jaehong},
+    title     = {Ontology Neural Network and {ORTSF}: A Framework for Topological Reasoning and Delay-Robust Control},
+    journal   = {International Journal of Topology},
+    volume    = {3},
+    number    = {2},
+    pages     = {9},
+    year      = {2026},
+    publisher = {MDPI},
+    doi       = {10.3390/ijt3020009},
+    url       = {https://www.mdpi.com/2813-9542/3/2/9}
+  }
 ---
 
-## Publication status
+## Publication
 
-The manuscript was accepted to the *International Journal of Topology*
-(MDPI, ISSN 2813-9542) on **3 April 2026** under submission ID
-`ijt-4083673`. The final camera-ready version is being prepared; the
-abstract above mirrors the submitted text.
+Published in the *International Journal of Topology* (MDPI, ISSN
+2813-9542), **3(2), 9** — open access under CC BY. Received 20 December
+2025; revised 9 February 2026; accepted 3 April 2026; **published 12 May
+2026**. Academic editors: Michel Planat and Edward A. Rietman.
+
+- **DOI**: [10.3390/ijt3020009](https://doi.org/10.3390/ijt3020009)
+- **Journal page**: [mdpi.com/2813-9542/3/2/9](https://www.mdpi.com/2813-9542/3/2/9)
 
 ## At a glance
 
@@ -32,18 +50,27 @@ operators — that exploit precisely that structure.
 
 ## Contributions
 
-- **ONN architecture.** A neural model whose internal state is a typed
-  object carrying the structure of a target ontology rather than a flat
-  vector. Training preserves the type algebra by construction.
-- **ORTSF operators.** A family of predicate-binding gates that compose
-  typed features under communication and sensing delay, with provable
-  stability bounds stated in cohomological terms.
-- **Representational cohomology.** A correspondence between the learned
-  ontology's cohomology and classical control-theoretic Lyapunov
-  certificates, making the two languages interoperable.
-- **Empirical validation.** Benchmarks against transformer baselines on
-  topologically-conditioned constraint-satisfaction tasks, and a
-  delay-robustness study on a manipulation platform.
+- **ONN architecture.** A neural model whose latent state inherits the
+  type structure of a target ontology rather than being a flat vector.
+  Forman–Ricci curvature, persistent homology, and semantic tensor
+  structures are folded into a unified loss so that relational
+  integrity is preserved as scenes evolve (Theorems 1, 2, 5, 7).
+- **ORTSF operators.** A composition of predictive and compensating
+  operators that transform the ONN's reasoning trace into delay-robust
+  control commands, preserving closed-loop phase margin (Theorems 3,
+  4, 6).
+- **Unified seven-theorem framework.** Convergence, uniqueness,
+  tracking, delay stability, constraint handling, and contextual
+  adaptation guarantees, tied together by Theorem 8.
+- **Empirical validation.** Theoretical analysis plus extensive
+  simulations confirming that ORTSF maintains designed phase margins
+  and outperforms classical delay-compensation baselines on
+  topologically-conditioned tasks.
+
+## Keywords
+
+ontology neural network · semantic fabric · topological reasoning ·
+delay-robust control · cognitive robotics
 
 ## Where this sits in the broader programme
 

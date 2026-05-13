@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1778337543247,
+  "lastScanned": 1778676506948,
   "projectRoot": "/Users/ojaehong/Perception/jack0682.github.io",
   "techStack": {
     "languages": [
@@ -83,7 +83,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 9,
-      "lastAccessed": 1778337543222,
+      "lastAccessed": 1778676506934,
       "keyFiles": [
         "favicon.ico",
         "globals.css",
@@ -96,28 +96,28 @@
       "path": "components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1778337543222,
+      "lastAccessed": 1778676506935,
       "keyFiles": []
     },
     "content": {
       "path": "content",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1778337543231,
+      "lastAccessed": 1778676506940,
       "keyFiles": []
     },
     "hooks": {
       "path": "hooks",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1778337543242,
+      "lastAccessed": 1778676506942,
       "keyFiles": []
     },
     "lib": {
       "path": "lib",
       "purpose": "Library code",
       "fileCount": 9,
-      "lastAccessed": 1778337543243,
+      "lastAccessed": 1778676506942,
       "keyFiles": [
         "bio.ts",
         "cn.ts",
@@ -130,7 +130,7 @@
       "path": "out",
       "purpose": "Build output",
       "fileCount": 15,
-      "lastAccessed": 1778337543244,
+      "lastAccessed": 1778676506942,
       "keyFiles": [
         "404.html",
         "__next.__PAGE__.txt",
@@ -143,7 +143,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 3,
-      "lastAccessed": 1778337543244,
+      "lastAccessed": 1778676506943,
       "keyFiles": [
         "google94240e5ed6b482ae.html",
         "og-default.png"
@@ -153,7 +153,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 4,
-      "lastAccessed": 1778337543245,
+      "lastAccessed": 1778676506943,
       "keyFiles": [
         "build-dag.mjs",
         "build-search-index.mjs",
@@ -164,75 +164,15 @@
   },
   "hotPaths": [
     {
-      "path": "content/notes/part-0/scc-status-2026-05.mdx",
+      "path": "content/papers/onn-ortsf-2026.mdx",
       "accessCount": 2,
-      "lastAccessed": 1778404191628,
+      "lastAccessed": 1778676607100,
       "type": "file"
     },
     {
-      "path": "content/notes/part-0/canonical-spec-scc.mdx",
+      "path": "velite.config.ts",
       "accessCount": 1,
-      "lastAccessed": 1778403888595,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc-1-foundations.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403896299,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc-2-axioms.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403897142,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc-3-energy.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403897242,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc-4-interpretation.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403906713,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/canonical-spec-scc-5-results-registry.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403914233,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/scc-research-overview.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403914453,
-      "type": "file"
-    },
-    {
-      "path": "content/journal/2026-05-08-perception-week-6.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403915445,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/scc-glossary.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403922026,
-      "type": "file"
-    },
-    {
-      "path": "content/notes/part-0/integrated-architecture.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403922952,
-      "type": "file"
-    },
-    {
-      "path": "content/journal/2026-04-26-perception-week-4-extended.mdx",
-      "accessCount": 1,
-      "lastAccessed": 1778403923978,
+      "lastAccessed": 1778676579063,
       "type": "file"
     }
   ],
