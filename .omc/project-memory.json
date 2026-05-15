@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1778676506948,
+  "lastScanned": 1778848123431,
   "projectRoot": "/Users/ojaehong/Perception/jack0682.github.io",
   "techStack": {
     "languages": [
@@ -83,7 +83,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 9,
-      "lastAccessed": 1778676506934,
+      "lastAccessed": 1778848123419,
       "keyFiles": [
         "favicon.ico",
         "globals.css",
@@ -96,28 +96,28 @@
       "path": "components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1778676506935,
+      "lastAccessed": 1778848123424,
       "keyFiles": []
     },
     "content": {
       "path": "content",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1778676506940,
+      "lastAccessed": 1778848123424,
       "keyFiles": []
     },
     "hooks": {
       "path": "hooks",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1778676506942,
+      "lastAccessed": 1778848123424,
       "keyFiles": []
     },
     "lib": {
       "path": "lib",
       "purpose": "Library code",
       "fileCount": 9,
-      "lastAccessed": 1778676506942,
+      "lastAccessed": 1778848123426,
       "keyFiles": [
         "bio.ts",
         "cn.ts",
@@ -130,7 +130,7 @@
       "path": "out",
       "purpose": "Build output",
       "fileCount": 15,
-      "lastAccessed": 1778676506942,
+      "lastAccessed": 1778848123427,
       "keyFiles": [
         "404.html",
         "__next.__PAGE__.txt",
@@ -143,7 +143,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 3,
-      "lastAccessed": 1778676506943,
+      "lastAccessed": 1778848123428,
       "keyFiles": [
         "google94240e5ed6b482ae.html",
         "og-default.png"
@@ -153,7 +153,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 4,
-      "lastAccessed": 1778676506943,
+      "lastAccessed": 1778848123428,
       "keyFiles": [
         "build-dag.mjs",
         "build-search-index.mjs",
@@ -164,6 +164,30 @@
   },
   "hotPaths": [
     {
+      "path": "content/notes/part-0/scc-status-2026-05.mdx",
+      "accessCount": 19,
+      "lastAccessed": 1778849137297,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-05-15-perception-week-7.mdx",
+      "accessCount": 6,
+      "lastAccessed": 1778849930874,
+      "type": "file"
+    },
+    {
+      "path": "content/research/perception.mdx",
+      "accessCount": 5,
+      "lastAccessed": 1778849198523,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate_fig33_w7_claim_progression.py",
+      "accessCount": 4,
+      "lastAccessed": 1778849768387,
+      "type": "file"
+    },
+    {
       "path": "content/papers/onn-ortsf-2026.mdx",
       "accessCount": 2,
       "lastAccessed": 1778676607100,
@@ -171,8 +195,50 @@
     },
     {
       "path": "velite.config.ts",
+      "accessCount": 2,
+      "lastAccessed": 1778848289602,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate_fig34_t_cc_stablek_kernel.py",
+      "accessCount": 2,
+      "lastAccessed": 1778849783021,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate_fig36_h_morse_broadness.py",
+      "accessCount": 2,
+      "lastAccessed": 1778849789435,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-05-08-perception-week-6.mdx",
       "accessCount": 1,
-      "lastAccessed": 1778676579063,
+      "lastAccessed": 1778848279985,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-05-03-perception-week-5.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1778848290249,
+      "type": "file"
+    },
+    {
+      "path": "content/journal/2026-04-26-perception-week-4-extended.mdx",
+      "accessCount": 1,
+      "lastAccessed": 1778848296387,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate_fig24_l1m_softcount_envelope.py",
+      "accessCount": 1,
+      "lastAccessed": 1778849375119,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate_fig35_h_sink_lipschitz.py",
+      "accessCount": 1,
+      "lastAccessed": 1778849669255,
       "type": "file"
     }
   ],

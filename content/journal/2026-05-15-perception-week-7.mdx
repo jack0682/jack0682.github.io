@@ -1,0 +1,211 @@
+---
+title: "Perception · W7 — Six Sealed Versions, Compositional Closure, First Archive"
+slug: 2026-05-15-perception-week-7
+date: 2026-05-15
+kind: weekly
+track: perception
+canonicalImpact: bumped
+canonicalVersion: CV-1.17
+canonicalNotes: "CV-1.12 → CV-1.17 across the week; H-COMP-KERNEL CLOSED Cat B via T-CC-StableK-Kernel; H-MORSE partially closed; working/parking/ 14 files moved into the first _archive cohort; +20 claims (78 → 98)."
+summary: "W7 sealed six canonical versions, closed H-COMP-KERNEL with the kernel-composed compositional consistency theorem, partially closed H-MORSE, archived 14 working/parking files into the first _archive cohort, and deliberately deferred the z_t / S_0 / K_read direction via Decision C."
+tags: [perception, scc, weekly, w7, cv-1-17, h-comp-kernel, h-morse, t-cc-stablek-kernel, archive, decision-c]
+refs: [2026-05-08-perception-week-6, scc-status-2026-05, canonical-spec-scc]
+---
+
+> **W7: 2026-05-11 to 2026-05-15.**  
+> Canonical: **CV-1.11 → CV-1.17** (+6 versions, +20 claims, 78 → 98 total).  
+> The week's center of gravity: if W6 asked *who is looking*, W7 asked *how do the things they see compose*.
+
+---
+
+## Start here
+
+W6 finished by stating that observer-dependence in SCC is a structural feature with a codim-1 geometry on $\Delta^3$. That answer settled Q6 but left Q3 (how do formations evolve) and Q4 (how does discrete count emerge) entangled with an open compositionality question: when two kernel-composed formations are read out together, is the resulting active-count diagnostic stable?
+
+W7 closed that question. The week's deep result, **T-CC-StableK-Kernel** (Cat B, CV-1.17), proves compositional consistency under kernel composition and activates the conditional lift T-ACT-KERNEL-COMP→REL that had been queued since CV-1.15. The forward-reference inside CV-1.15 is now retroactively discharged.
+
+Two other things happened that matter more than they look:
+
+- **`THEORY/working/parking/` was emptied.** Fourteen stale files moved into a new `_archive/working_parked_2026-05/` directory — the first instantiation of the `_archive/` root. From now on, "we tried this and parked it" is a separately readable layer, not a quiet file inside `working/`.
+- A user-proposed extension (introducing $z_t / S_0 / K_{\mathrm{read}}$ as new primitives) went through a six-stage epistemic audit and came back **Decision C — defer, archive proposal trace**. The week's most useful meta-result is that the audit machinery now runs end-to-end on a non-trivial proposal.
+
+## This week in five lines
+
+- **Six canonical versions in one week (CV-1.12 → CV-1.17).** Different cadence from W6 D4: W7 spread the increments across five days and added two **SEAL certificates** (CV-1.15, CV-1.16) plus the closing **CV-1.17_SEAL.md** (~470 lines).
+- **H-COMP-KERNEL CLOSED Cat B.** T-CC-StableK-Kernel proves that kernel-composed compositional consistency holds in the form needed to lift T-ACT-KERNEL-COMP→REL. The CV-1.14 working candidate is fully absorbed; the CV-1.15 forward-reference closes.
+- **H-MORSE partially closed.** OP-HMORSE-BROADNESS is RESOLVED (broadness dimension, kernel-side); six new OP-HMORSE-* sub-items remain. This is the first dependency of P-F-A1 Package II to actually loosen.
+- **First `_archive/` cohort instantiated.** `THEORY/working/parking/` (14 files) → `_archive/working_parked_2026-05/`. Establishes the archive pattern for future park / abandon events.
+- **Decision C on $z_t / S_0 / K_{\mathrm{read}}$.** A user-proposed primitive extension was audited (six stages) and deferred with $V = 0$, archive-pattern match 6 / 6. Proposal trace lives in `_archive/`. The point is not the verdict — the point is that the verdict was reachable.
+
+---
+
+## Scoreboard
+
+| Metric | Before W7 (CV-1.11) | After CV-1.17 |
+|--------|---------------------|---------------|
+| Category A | 54 | **68** |
+| Category B | 14 | **19** |
+| Category C | 5 | 6 |
+| Retracted | 5 | 5 |
+| Total claims | 78 | **98** |
+| Fully proved | ~69% | ~70% |
+| H-COMP-KERNEL | working candidate | **CLOSED — Cat B** |
+| H-MORSE | open | **partially closed** (broadness leg) |
+| `_archive/` cohorts | 0 | **1** (14 files, 2026-05) |
+| SEAL documents | CV-1.13 | + CV-1.15, CV-1.16, **CV-1.17** |
+| HT version | HT-3.7 (frontmatter HT-3.5) | **HT-3.8** |
+
+The denominator grew faster than the proved-share because five Cat B promotions sit alongside the fourteen Cat A: the percentage moves only a point, but every Cat B addition in W7 has an articulated Cat A path.
+
+<Figure
+  src="/content-assets/scc-figures/fig33-w7-claim-progression.png"
+  alt="Stacked bar chart of formal claims across twelve canonical versions from CV-1.5 to CV-1.17, with Cat A, Cat B, Cat C, and Retracted layers; total claims rise from 57 to 98 with a W7 jump from 78 to 98."
+  caption={<>Fig. 33. W7 claim progression — twelve canonical versions from CV-1.5 (W5 D1 G0, 57 claims) through CV-1.11 (W6 EOD, 78) to CV-1.17 (W7 EOD, 98). The Cat A / B / C / Retracted decomposition is stacked; totals are annotated at the bar tops. The W6–W7 boundary marker separates the two weekly cycles. W7 net delta: +14 A, +5 B, +1 C, 0 R = +20 claims over six canonical increments.</>}
+  className="mx-auto max-w-full"
+/>
+
+---
+
+## The week's arc
+
+### Day 1–2: CV-1.12 — H-SINK lifts T-Temporal-Identity (a)
+
+W6 ended naming H-SINK as the unblocked critical path. D1–D2 closed exactly part (a). The Bigot–Cazelles–Papadakis (2019) Sinkhorn Lipschitz framework applied in the SCC cost class gives $L_g \leq L_c$; combined with the W6 P-F-A1 Package I, this discharges the existence half of T-Temporal-Identity. Parts (b) and (d) remain — they need a margin-condition tightening that turned out to be a separate problem.
+
+<Figure
+  src="/content-assets/scc-figures/fig35-h-sink-lipschitz.png"
+  alt="Scatter plot of numerical Sinkhorn Lipschitz constant L_g versus the theoretical bound L_c across thirty configurations, all lying below the diagonal in the admissible region."
+  caption={<>Fig. 34. H-SINK Lipschitz validation across the SCC cost class (CV-1.12). Each of 30 sampled (τ, K, ε) configurations places a point in the (L_c, L_g) plane; color encodes τ on a log scale. The diagonal L_g = L_c marks saturation; the shaded region below the diagonal is the admissible side. All 30 points lie in the admissible region, certifying T-Temporal-Identity (a) Cat A. The unused margin (median L_g / L_c ≈ 0.55) is what CV-1.18 part (b) will tighten through the margin-condition closure.</>}
+  className="mx-auto max-w-full"
+/>
+
+The lesson from this day is process-shaped, not content-shaped: H-SINK was named on W6 D5 and closed two calendar days later. Naming the unblocked node *as* the critical path was load-bearing.
+
+### Day 3: CV-1.13 SEAL + H-MORSE broadness
+
+CV-1.13 was a SEAL increment — no new theorem rows, only the audit that the CV-1.12 promotion had been written consistently across `canonical.md`, `theorem_status.md`, and `hypothesis_tree.md`. SEAL increments do not change the ledger; they keep the three canonical files from drifting.
+
+The same day, work on H-MORSE produced OP-HMORSE-BROADNESS as a separable sub-problem and closed it. The kernel-side broadness obstruction had been folded into H-MORSE as a single open node; treating it as a sub-OP and resolving it independently gave H-MORSE its first concrete progress. Six remaining OP-HMORSE-* sub-items were registered — they are open, but no longer entangled with broadness.
+
+<Figure
+  src="/content-assets/scc-figures/fig36-h-morse-broadness.png"
+  alt="Log-x line plot of the kernel-side spectral broadness Δλ = λ₁ - λ₀ as a function of kernel scale η over the range 10⁻³ to 10⁰, with six numerical anchor points above the theoretical lower bound and a broadness threshold line at 0.10."
+  caption={<>Fig. 35. H-MORSE broadness leg (CV-1.13). The kernel-side spectral broadness Δλ(η) = λ₁ - λ₀ stays above the activation threshold Δλ_thr = 0.10 across η ∈ [10⁻³, 10⁰]. The theoretical lower bound Δλ_min(η) = 0.10 + 0.32 (1 - exp(-5η)) is the solid black curve; six numerical anchors (white dots) sit 5–25% above the bound. The white annotation box names the closed sub-item and the six residual OP-HMORSE-* items still open: index, spectral-gap, regularity, measure, parameter, quant.</>}
+  className="mx-auto max-w-full"
+/>
+
+### Day 4: CV-1.14 reserved → CV-1.15 / CV-1.16 SEAL
+
+CV-1.14 was reserved (no promotions) for a forward-reference: a working candidate for kernel-composed compositional consistency was placed in `THEORY/working/` with the intent that CV-1.17 would absorb it. CV-1.15 and CV-1.16 SEAL increments handled the cross-file audit for the intermediate state.
+
+This is the cleanest demonstration of the *reserved-version* pattern. A canonical version can be claimed without a theorem promotion, provided the audit certifies that the claim points at a specific working candidate and that the candidate's eventual absorption is feasible. The CV-1.17 SEAL retroactively closes this and certifies the absorption.
+
+### Day 5 (EOD): CV-1.17 SEAL — H-COMP-KERNEL closed + first archive
+
+The closing session ran two distinct stages:
+
+**Stage A — Hygiene (count-0 changes).** Six in-place edits that did not change any ledger number:
+
+- `canonical.md` frontmatter + title + version-naming-block + release-state heading (six locations) synchronised CV-1.13 / CV-1.11 → CV-1.16 (then bumped to CV-1.17 in Stage B).
+- `canonical.md` §13 Cat B: a forward-reference note added to T-ACT-KERNEL-COMP→REL, pointing at the conditional lift that Stage B would activate.
+- `theorem_status.md` OP Quick Index: OP-HMORSE-BROADNESS CLOSED + 6 new OP-HMORSE-* + OP-SB1-084 added (7 new rows + W7 changes block).
+- OP-0012-SINK cross-cited L-ACTION-DELTA-EFF-ZERO scope.
+- `THEORY/working/parking/` (14 files) moved into `_archive/working_parked_2026-05/`. **First `_archive/` instantiation.**
+- A `[HYGIENE]` entry was prepended to `CHANGELOG.md`.
+
+**Stage B — CV-1.17 SEAL (+1 B).** Three substantive moves:
+
+- `canonical.md` §13 Cat B: a new full theorem block for **T-CC-StableK-Kernel** (kernel-composed compositional consistency). The block absorbs the CV-1.14 working candidate.
+- `canonical.md` frontmatter / title / release-state lifted CV-1.16 → CV-1.17.
+- `hypothesis_tree.md` HT-3.7 → HT-3.8; the H-COMP-KERNEL sub-branch flipped from OPEN to CLOSED — Cat B.
+- T-ACT-KERNEL-COMP→REL conditional lift activated; the CV-1.15 forward-reference is now discharged.
+- **CV-1.17_SEAL.md** (~470 lines) was created with three sub-sections: (i) the audit of CV-1.14 reserved-version absorption, (ii) a non-overclaim check on the T-CC-StableK-Kernel statement, (iii) the CV-1.18 target list.
+
+A `[CV-1.17]` entry was prepended to `CHANGELOG.md`.
+
+---
+
+## Deep dive: T-CC-StableK-Kernel (H-COMP-KERNEL closed)
+
+The compositional consistency question is the following. Two formations $\mathbf{u}_1, \mathbf{u}_2$ are read out via the active-count diagnostic $K_{\mathrm{act}}^\varepsilon$. If we compose them through a kernel-side composition operator $\circ_K$ (the precise form is the W6 kernel convolution carried into the multi-formation interior), does
+
+$$
+K_{\mathrm{act}}^\varepsilon(\mathbf{u}_1 \circ_K \mathbf{u}_2) = f\big( K_{\mathrm{act}}^\varepsilon(\mathbf{u}_1),\ K_{\mathrm{act}}^\varepsilon(\mathbf{u}_2) \big)
+$$
+
+hold for an explicit, separator-stable $f$ (under the L1-J regime $(P_0)$–$(P_{11})$ inherited from T-L1-F)?
+
+T-CC-StableK-Kernel answers **yes**, in the form: under the kernel-composition regime (KC1–KC4, which mirror the multi-formation interior hypothesis package from CV-1.5.1 and add a separator-stability clause), $f$ is the explicit step-additive map on terminal $H_0$ bars, and the bijection between active slots and dominant bars composes correctly under $\circ_K$. **Cat B** rather than Cat A: the separator-stability clause KC3 is structural rather than universal — it holds on the multi-formation interior $\widetilde{\Sigma}^{K_{\mathrm{field}},\circ}_M$ that already supports T-L1-F, and a Cat A promotion would require either (i) closing it on a thicker stratum or (ii) absorbing the residual separator drift into the conditional lift on T-ACT-KERNEL-COMP→REL itself.
+
+<Figure
+  src="/content-assets/scc-figures/fig34-t-cc-stablek-kernel.png"
+  alt="Two-panel figure. Left panel: 6×6 grayscale grid of predicted K_act values for the kernel-composed formation with twelve white-dot numerical anchors matching the predicted cells exactly. Right panel: three stacked rows of horizontal bars showing five and four input bars composing to nine output bars under the kernel-composition operator."
+  caption={<>Fig. 36. T-CC-StableK-Kernel — kernel-composed active-count is step-additive on terminal H₀ bars (CV-1.17, Cat B). (a) Predicted K_act(u₁ ∘_K u₂) on the 6×6 grid of input active-counts; the twelve numerical anchors (white dots) all coincide with the predicted cell. (b) Worked single example at the level of dominant bars: u₁ contributes K_act = 5 bars (bottom row), u₂ contributes 4 bars (middle row); after ∘_K composition (top row) the dominant-bar set has cardinality 9, and the active-slot → dominant-bar bijection composes correctly.</>}
+  className="mx-auto max-w-full"
+/>
+
+What makes this result the closing piece of CV-1.15: T-ACT-KERNEL-COMP→REL was registered with an explicit forward-reference to "the eventual compositional consistency closure under the kernel-composition regime, expected CV-1.17". With T-CC-StableK-Kernel now in canonical, the lift activates as a conditional theorem and the CV-1.15 audit clause closes. The CV-1.14 working candidate is fully absorbed.
+
+The W6 result this depends on is T-K-Select-OBS (CV-1.11), which gave compositional consistency on the observation side via the Bayesian posterior on $\pi_{T_*}$. W7's T-CC-StableK-Kernel does the kernel side. The two together fold the compositional-consistency question into a single coordinate: read the field through a kernel (kernel side, T-CC-StableK-Kernel) or read the field through an observation (posterior side, T-K-Select-OBS).
+
+---
+
+## What the week did not prove
+
+- **P-F-A1 Package II (Eyring–Kramers rates).** Still W9+. H-MORSE broadness closure lifted one of the dependencies; the remaining six OP-HMORSE-* sub-items + OP-0021 ($T_*$ registration) are the next blockers.
+- **σ-inheritance (OP-0008).** Still open. Post-merger $\sigma^A$ at a K-jump remains underdetermined by pre-merger $\sigma^A$; the Wigner-projection computation is still W9+ work.
+- **T-Temporal-Identity (b)(d).** H-SINK closed part (a) (CV-1.12) but parts (b) (uniqueness under the margin condition) and (d) (reduction to $K = 1$) remain. They are the explicit CV-1.18 target.
+- **T-Temporal-Identity (c) interior persistence.** Cat C; depends on OP-0011 (transport kernel exact form). Unchanged.
+- **OP-HMORSE-* 6 residuals.** Broadness is closed; six sub-items remain (Morse-stability index, spectral-gap lower bound, kernel-side regularity, residual measure-theoretic conditions, structural-parameter dependence, and one quantification rider).
+- **T-CC-StableK-Kernel Cat A promotion.** Needs either thicker-stratum closure of KC3 or a residual-separator absorption into the conditional lift.
+
+---
+
+## Process notes — Decision C on $z_t / S_0 / K_{\mathrm{read}}$
+
+A separate strand of the week was a user-proposed extension: introduce a discrete "readout state" $z_t$, a structural baseline $S_0$, and a derived count $K_{\mathrm{read}}$ as new primitives orthogonal to $u_t$. The proposal was clean and well-motivated. It also did not survive contact with the existing scaffolding.
+
+The audit ran six stages:
+
+1. **Ontological coherence with the soft-field primitive.** $z_t$ would have introduced a second primitive operating on the same support. Allowed only if there is a precise functorial relation back to $u_t$; the proposal did not have one.
+2. **Compatibility with the five non-negotiables.** $z_t$ as a discrete primitive runs against "the soft field is primitive; crisp objects are derivative". A non-discrete relaxation would have been admissible but would have collapsed back into $u_t$.
+3. **Layer placement against CN15.** Static / dynamic separation. $z_t$ inherits dynamic semantics, $S_0$ inherits static semantics; the proposal mixed them at the primitive layer rather than at the diagnostic layer.
+4. **Degree-of-freedom accounting against Commitment 16.** $K_{\mathrm{read}}$ overlaps $K_{\mathrm{field}}$ and $K_{\mathrm{act}}$ in a way that the W5 Commitment 16 already settled.
+5. **Comparison against the H-axis catalogue.** Six existing H-* nodes touch the same conceptual ground; introducing $z_t$ would have re-opened three of them without adding distinctive resolving power.
+6. **Estimated academic value $V$.** With the above, the residual contribution beyond the existing canonical machinery rounded to $V = 0$.
+
+**Decision C — defer, archive proposal trace.** The archive-pattern match against the six anti-patterns for primitive-extension proposals came back 6 / 6 (CN15 violation risk, K-axis duplication, primitive layer mismatch, scoreboard inflation without proof depth, three H-nodes re-opened, no functorial reduction to $u_t$). The proposal is preserved in `_archive/proposals_2026-05/zt_S0_Kread.md` as a readable trace; nothing is silently dropped.
+
+The point of the audit is not the verdict. The point is that the verdict is a function of canonical state, not of taste. A future proposal that has $V > 0$ and pattern-match $< 6$ would land differently.
+
+---
+
+## Carry to W8
+
+CV-1.18 is the planned next consolidation. Three candidates are queued:
+
+1. **T-Temporal-Identity (b) and (d).** Margin-condition tightening on (b); reduction-to-$K = 1$ on (d). +2 A expected.
+2. **σ-inheritance OP-0008 partial.** A Cat B target on Path B (σ-rich + Φ-rich) is the most likely shape.
+3. **Eyring–Kramers Package II first sub-result.** With H-MORSE broadness closed, the next-easiest dependency is the spectral-gap lower bound (Cat B path). The full Package II is still W9+.
+
+Monitoring items: the H-SINK Lipschitz constant fine-tune (a quantitative tightening of $L_g \leq L_c$ that does not need a new theorem row), and OP-SB1-084 (a registration tracked through W7 hygiene but not yet substantively addressed).
+
+The next archive event is not scheduled; the first `_archive/` cohort is a reference, not a recurring cadence.
+
+---
+
+## Canonical impact
+
+W7 spans six canonical increments and three SEAL certificates:
+
+- **CV-1.12**: T-Temporal-Identity (a) Cat A via H-SINK (Bigot–Cazelles–Papadakis Lipschitz route).
+- **CV-1.13**: SEAL — cross-file audit of CV-1.12; OP-HMORSE-BROADNESS CLOSED.
+- **CV-1.14**: Reserved — forward-reference to kernel-composed compositional consistency working candidate.
+- **CV-1.15 (SEAL)**: T-ACT-KERNEL-COMP→REL registered with explicit forward-reference; conditional lift queued.
+- **CV-1.16 (SEAL)**: Intermediate audit of CV-1.14 reserved state.
+- **CV-1.17 (SEAL)**: T-CC-StableK-Kernel Cat B — H-COMP-KERNEL CLOSED; T-ACT-KERNEL-COMP→REL conditional lift activated; CV-1.17_SEAL.md certificate (~470 lines).
+- **First `_archive/` cohort**: `working/parking/` (14 files) → `_archive/working_parked_2026-05/`.
+
+---
+
+*Aligned with Perception_theory canonical CV-1.17 (sealed 2026-05-15) + Appendix OMS §A–§M (CV-1.11, 2026-05-08). The next milestone is CV-1.18, targeted for W8 via T-Temporal-Identity (b)(d) + σ-inheritance + Package II first sub-result.*

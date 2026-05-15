@@ -1,14 +1,14 @@
 ---
-title: "SCC — Current Research Status (May 2026, CV-1.11)"
+title: "SCC — Current Research Status (May 2026, CV-1.17)"
 slug: scc-status-2026-05
 part: 0
 chapter: 1
 section: "Status report"
 kind: roadmap
 track: perception
-updated: 2026-05-08
-summary: "Active SCC status as of CV-1.11 (2026-05-06 — W6 close). Ledger: 54 Cat A + 14 B + 5 C + 5 Retracted = 78 claims, ~69% proved; 215 passed + 1 xfailed. OMS-2.0 Accepted — Full. OP-0006 RESOLVED. OP-0005 3-way split. P-F-A1 Package I complete."
-tags: [scc, status, theorems, cv-1-11, oms-2-0, pf-a1, multi-formation, open-problems]
+updated: 2026-05-15
+summary: "Active SCC status as of CV-1.17 (sealed 2026-05-15 — W7 close). Ledger: 68 Cat A + 19 B + 6 C + 5 Retracted = 98 claims, ~70% proved; 215 passed + 1 xfailed. H-COMP-KERNEL CLOSED Cat B. H-MORSE partially closed. First _archive/ cohort instantiated."
+tags: [scc, status, theorems, cv-1-17, h-comp-kernel, h-morse, archive, oms-2-0, pf-a1, multi-formation, open-problems]
 related: [canonical-spec-scc, scc-status-2026-04, integrated-architecture]
 ---
 
@@ -17,8 +17,8 @@ Cohesion** — the research thread I am currently most active on — at
 the level of granularity that lets a collaborator (or future me)
 pick up where things stand without re-reading a year of notes.*
 
-**Last updated:** 2026-05-08 (W6 EOD close). &nbsp; **Canonical version:**
-**CV-1.11** (released 2026-05-06, W6 Day 4). &nbsp; **Full specification:** see
+**Last updated:** 2026-05-15 (W7 EOD close). &nbsp; **Canonical version:**
+**CV-1.17** (sealed 2026-05-15, W7 Day 5 EOD). &nbsp; **Full specification:** see
 the [Canonical Spec note](/notes/part-0/canonical-spec-scc/).
 
 <Callout tone="idea" title="Why this work matters to the larger programme">
@@ -31,7 +31,7 @@ describes that unification as a design target; everything on this
 page is in service of it.
 </Callout>
 
-<Callout tone="note" title="What changed: CV-1.5 → CV-1.11 (W5 Day 1 G0 → W6 EOD)">
+<Callout tone="note" title="What changed: CV-1.5 → CV-1.17 (W5 Day 1 G0 → W7 EOD)">
 The previous status page — [SCC status, April 2026 (W5 Day 1 G0 close)](/notes/part-0/scc-status-2026-04/) — froze at CV-1.5 (2026-04-27) with 43 Cat A / 57 claims / 75% proved. Since then:
 
 - **CV-1.5.1–CV-1.5.2 (W5)** added the Multi-Static cluster, Commitment 16 K_field/K_act decomposition, V5b-T-zero, T-L1-F (first multi-formation Cat A, conditional L1-J regime). See [April 2026 status](/notes/part-0/scc-status-2026-04/) for W5 detail.
@@ -42,7 +42,13 @@ The previous status page — [SCC status, April 2026 (W5 Day 1 G0 close)](/notes
 - **CV-1.10 (2026-05-06)** promoted T-K-Select-PF Cat B (equilibrium K-selection, OP-0005-EQ partially resolved).
 - **CV-1.11 (2026-05-06)** promoted T-K-Select-OBS Cat B (observation-conditioned K-selection, OP-0005-OBS partially resolved). **OP-0005 is now 3-way split**: EQ (partial), OBS (partial), DYN (open).
 - **OMS-2.0 Accepted — Full (2026-05-08, W6 Day 6):** Static + temporal branch decomposition proved; Appendix OMS §A–§M in canonical.md.
-- **Net count: 46A/5B → 54A/14B, 61 → 78 claims, 75% → ~69% fully proved.**
+- **CV-1.12 (2026-05-11/12, W7 D1–D2)** lifted **T-Temporal-Identity (a)** to Cat A via H-SINK (Bigot–Cazelles–Papadakis Sinkhorn Lipschitz route, $L_g \leq L_c$ in the SCC cost class). Parts (b), (d) remain.
+- **CV-1.13 (2026-05-12, W7 D3) — SEAL** cross-file audit of CV-1.12 + **OP-HMORSE-BROADNESS CLOSED** (H-MORSE *partially* closed; six new OP-HMORSE-* sub-items registered).
+- **CV-1.14 (2026-05-13, W7 D4) — Reserved.** Forward-reference to a kernel-composed compositional-consistency working candidate; no theorem promotion.
+- **CV-1.15 / CV-1.16 (2026-05-13/14, W7 D4) — SEAL** intermediate audits of CV-1.14 reserved state; T-ACT-KERNEL-COMP→REL registered with explicit forward-reference (conditional lift queued).
+- **CV-1.17 (2026-05-15, W7 D5 EOD) — SEAL** **T-CC-StableK-Kernel Cat B** (kernel-composed compositional consistency). **H-COMP-KERNEL CLOSED.** T-ACT-KERNEL-COMP→REL conditional lift activated; CV-1.15 forward-reference discharged. `CV-1.17_SEAL.md` (~470 lines) certifies the CV-1.14 reserved-version absorption + non-overclaim audit + CV-1.18 targets.
+- **First `_archive/` cohort (2026-05-15, W7 D5 EOD):** `THEORY/working/parking/` (14 files) → `_archive/working_parked_2026-05/`. First instantiation of the `_archive/` root; the archive pattern is now reference-able.
+- **Net count: 46A/5B → 68A/19B, 61 → 98 claims, 75% → ~70% fully proved.**
 </Callout>
 
 ## What SCC is, in one breath
@@ -60,9 +66,9 @@ terms govern closure, separation, boundary, and transport; a
 diagnostic vector $\mathbf{d} = (\mathrm{Bind}, \mathrm{Sep}, \mathrm{Inside}, \mathrm{Persist})$
 reads off formation state.
 
-## Theorem ledger (CV-1.11)
+## Theorem ledger (CV-1.17)
 
-**54 Category A + 14 Category B + 5 Category C + 5 Retracted = 78 claims, ~69% fully proved.**
+**68 Category A + 19 Category B + 6 Category C + 5 Retracted = 98 claims, ~70% fully proved.**
 
 <Figure
   src="/content-assets/scc-figures/fig13-hero-dependency-dag.png"
@@ -71,7 +77,7 @@ reads off formation state.
   className="mx-auto max-w-full"
 />
 
-### Category A — Fully proved (46)
+### Category A — Fully proved (68)
 
 The Cat A roster carries forward the CV-1.5 set (existence T1, closure
 fixed point T6a/T6b, axiom monotonicity T-A2, phase transition core
@@ -94,6 +100,8 @@ and adds, since 2026-04-27:
 - **CV-1.7 T-OP6-B (PersRidge Boundary Equivalence, Phase-Sep Regime)** — Cat A *conditional under H1–H5* (W6 D4 Session K, 2026-05-06). **OP-0006 RESOLVED.** Under the phase-separation regime on a connected finite graph: $d_H(\mathrm{PersRidge}(u^*), \partial\Omega^*) \leq 2(\alpha/\beta)^{1/2}$. B1 topological separator, B2 curved Hausdorff ($C < 1.37$ under H4), B3 stereo conditioning (hard-cut D-ST-1), and B4 $\rho_{\mathrm{bd}} = 1/(4\xi)$ all closed. exp06: shadow 5/5 ratio 4.09, blur 5/5 ratio 50.8.
 - **CV-1.7 T-P-F-ε0 (Gibbs Measure Continuity at $\varepsilon = 0$)** — Cat A (Session I, 2026-05-06). $\mu_\varepsilon \Rightarrow \mu_0$ weakly as $\varepsilon \to 0$ under H1–H4. **NOT P-F-A1** — does not prove spectral gap, Eyring-Kramers, $T_*$ existence, or Lions-Sznitman construction.
 - **CV-1.8–CV-1.9 P-F-A1 Package I (T-PF-A1-AR / T-PF-A1-SDE / T-PF-A1-GI / T-PF-A1-PE)** — all Cat A (Sessions O + P, 2026-05-06). **P-F-A1 Package I fully Cat A.** (AR) Affine reduction proves $\widetilde{\Sigma}_M$ is a bounded convex polytope — polytope SDE well-posed. (SDE) Lions-Sznitman Theorem 1 (convex domain) + Tanaka uniqueness establishes the reflected Langevin SDE on $\widetilde{\Sigma}_M$. (GI) Unique Gibbs invariant measure $\pi_{T_*}$ via zero-current + L²(π) kernel argument. (PE) Poincaré inequality $\lambda_1 \geq (\pi^2/n)\exp(-\mathrm{osc}(\tilde{\mathcal{E}})/T_*)$ + exponential ergodicity via Payne-Weinberger + Holley-Stroock. **NOT Eyring-Kramers** — Package II (explicit rates) remains open (OP-0021, W9+).
+- **CV-1.12 T-Temporal-Identity (a) — Existence** — Cat A (W7 D1–D2, 2026-05-11/12). Closed via H-SINK: the Bigot–Cazelles–Papadakis (2019) Sinkhorn Lipschitz framework applied in the SCC cost class gives $L_g \leq L_c$; combined with P-F-A1 Package I, this discharges the existence half of T-Temporal-Identity. Parts (b) (uniqueness under the margin condition) and (d) (reduction to $K = 1$) remain, planned for CV-1.18. Part (c) (interior persistence) remains Cat C (OP-0011).
+- **CV-1.13 through CV-1.17 — additional Cat A registrations** (W7, 2026-05-12 → 2026-05-15). Sub-theorem promotions accompanying the SEAL increments (H-MORSE broadness closure ancillary results, T-Temporal-Identity supporting lemmas, kernel-side regularity riders). Authoritative row-by-row list lives in **`CV-1.17_SEAL.md`** (~470 lines) §"Cat A increment audit"; the net W7 Cat A delta is +14.
 
 <Figure
   src="/content-assets/scc-figures/fig30-t-st5a-topological-locking.png"
@@ -116,7 +124,7 @@ and adds, since 2026-04-27:
   className="mx-auto max-w-full"
 />
 
-### Category B — Proved with structural parameter (14)
+### Category B — Proved with structural parameter (19)
 
 **Original 5 (pre-W6):**
 - **Barrier exponent $\gamma_{\mathrm{eff}} \approx 0.89$** — empirical fit, branch / path / manifold conditioned.
@@ -132,9 +140,14 @@ and adds, since 2026-04-27:
 - **T-K-Select-OBS (Observation-Conditioned K-Selection)** — Cat B (CV-1.11, Session Y). Bayesian posterior $\pi_{T_*}(\cdot \mid \mathcal{O})$ over observation-compatible states selects $K^*_{\mathrm{obs}}$. exp85 ALL PASSED. **OP-0005-OBS partially resolved.**
 - **D-ST-1/2/3/4/5 (Stereo-SCC definitions)** — B candidates (CV-1.6, in canonical.md §3.9–§3.11, §16; formal canonical-row promotion pending). Stereo adjacency (hard/smooth), field space $\mathcal{F}_M(P)$, $K_{\mathrm{act}}$ as PersComp observable, topological sector / partition function / Kramers rate, backprojection / pullback / prior-likelihood separation.
 
+**W7 additions (2026-05-11 → 2026-05-15):**
+- **T-ACT-KERNEL-COMP→REL (Kernel-Composed Active-Count → Relational Reading, conditional lift)** — Cat B (CV-1.15 registered; conditional lift activated at CV-1.17, 2026-05-15). The active-count diagnostic composed through the kernel-side composition operator $\circ_K$ lifts to a relational reading via the explicit step-additive bijection inherited from T-L1-F. Activated by T-CC-StableK-Kernel; the CV-1.15 forward-reference is now discharged. Cat A path: closing the conditional lift on a thicker stratum than the W7 separator-stability clause.
+- **T-CC-StableK-Kernel (Kernel-Composed Compositional Consistency)** — Cat B (CV-1.17 SEAL, W7 D5 EOD, 2026-05-15). **H-COMP-KERNEL CLOSED.** Under the kernel-composition regime (KC1–KC4, mirroring the L1-J multi-formation interior package plus a separator-stability clause), $K_{\mathrm{act}}^\varepsilon(\mathbf{u}_1 \circ_K \mathbf{u}_2)$ is given by the explicit step-additive map on terminal $H_0$ bars, and the active-slot → dominant-bar bijection composes correctly under $\circ_K$. Absorbs the CV-1.14 working candidate. Cat A path: thicker-stratum closure of KC3 or residual-separator absorption into the conditional lift on T-ACT-KERNEL-COMP→REL. Authoritative theorem block: `canonical.md` §13 Cat B (CV-1.17).
+- **CV-1.13 through CV-1.17 ancillary Cat B promotions** — three additional Cat B rows registered alongside the SEAL increments (H-MORSE broadness leg ancillary results + T-Temporal-Identity supporting Cat B target on the margin-condition direction + a kernel-side regularity rider). Row-by-row list lives in `CV-1.17_SEAL.md` §"Cat B increment audit". Net W7 Cat B delta: +5.
+
 In addition, **T-σ-Multi-1 (Multi-Formation Goldstone-Pair Instability)** is a CV-1.5.1 Cat B *target* (sketch only; Cat A pending NQ-242 anchor). **V5b-F-empirical** is a Cat B sub-statement target (NQ-198a; quantified $C(\beta=4,\xi_0=0.5) \approx 13.2 \pm 0.4$).
 
-### Category C — Conditional (5 + Cat C riders + new finding)
+### Category C — Conditional (6 + Cat C riders + new finding)
 
 - **T-Persist-1(d)** — exact-threshold preservation under structural condition $\beta > 7\alpha$.
 - **T-Persist-Full** — composition through (d).
@@ -143,6 +156,7 @@ In addition, **T-σ-Multi-1 (Multi-Formation Goldstone-Pair Instability)** is a 
 - **T-Persist-K-Unified** — parametric (PS, ND, BC′-K, TC-K, SR-Λ), 100% geometric-Lambda agreement on exp46–47.
 - **V5b-F (W4-extended new finding, 2026-04-26)** — Partial Goldstone on boundary-modified graphs; quantified at CV-1.5.1 as **(V5b-F-empirical) Cat B target** sub-statement: $\mu_{\mathrm{Gold}}^{\mathrm{V5b-F}} \approx C(\beta) \cdot \|\partial S\|/n$ with $C(\beta = 4, \xi_0 = 0.5) \approx 13.2 \pm 0.4$ (NQ-198a 6 corner-saturated, SNR 35). Refutes the Phase 3 heuristic and the Day 3 §4 derivation. Full $C(\beta, \xi_0)$ is open via NQ-198k W6+.
 - **T-σ-Lemma-2 sub-statement riders** — sub-statements (v) Courant upper bound and (vi) $G_u$-orbit divisibility are Cat C riders within the Cat A entry.
+- **T-Temporal-Identity (c) — Interior persistence** (W7 D1–D2, CV-1.12) — Cat C, conditional on OP-0011 (transport kernel exact form). Existence half (a) was lifted to Cat A at CV-1.12 via H-SINK; (c) remains the interior-persistence statement that needs an exact-form transport kernel before it can promote.
 
 ### Retracted (5)
 
@@ -183,8 +197,16 @@ The W4 close (2026-04-24) reduced the **Critical** count from 3 to 0 by SPLIT-RE
 | OP-0020 | Dynamic topology (out of scope) | Low | seed (formerly OP-0007 in the pre-2026-05-04 numbering) |
 | OP-0021 | Stochastic dynamics | Low | UNDER INVESTIGATION (exp54–exp59 Kramers rate theory) |
 | OP-0022 | Continuous-time limit | Low | seed |
+| OP-HMORSE-BROADNESS | H-MORSE broadness (kernel-side) | Medium | **CLOSED (W7 D3, 2026-05-12)** — H-MORSE *partially* closed; closure leg for the kernel-side broadness obstruction |
+| OP-HMORSE-IDX | Morse-stability index | Medium | OPEN (W7 D3) — H-MORSE residual sub-item |
+| OP-HMORSE-SGAP | Spectral-gap lower bound | Medium | OPEN (W7 D3) — H-MORSE residual; Cat B path on Package II first sub-result |
+| OP-HMORSE-KREG | Kernel-side regularity | Medium | OPEN (W7 D3) — H-MORSE residual |
+| OP-HMORSE-MEAS | Residual measure-theoretic conditions | Medium | OPEN (W7 D3) — H-MORSE residual |
+| OP-HMORSE-STRP | Structural-parameter dependence | Medium | OPEN (W7 D3) — H-MORSE residual |
+| OP-HMORSE-QUANT | Quantification rider | Low | OPEN (W7 D3) — H-MORSE residual; non-blocking |
+| OP-SB1-084 | Stereo-boundary registration (sub-item 084) | Low | OPEN (W7 hygiene, 2026-05-15) — tracked but not yet substantively addressed |
 
-Net post-W6 active count: **3 High + 4 Medium + 3 Low = 10 active OPs** (plus 5 closed/resolved entries OP-0001 / OP-0002 / OP-0003 / OP-0004 / OP-0006 retained for traceability). OMS sub-OPs OP-OMS-032b / 033b / 034b / 034c are non-blocking formalities tracked in `THEORY/working/observer_moduli/open_problems.md`.
+Net post-W7 active count: **3 High + 9 Medium + 4 Low = 16 active OPs** (plus 6 closed/resolved entries OP-0001 / OP-0002 / OP-0003 / OP-0004 / OP-0006 / OP-HMORSE-BROADNESS retained for traceability). The W7 medium count grew because the H-MORSE umbrella was deliberately decomposed into seven separable sub-items (1 closed, 5 medium open, 1 low open) — a finer registration that lets each sub-item move independently, at the cost of a higher catalog count. OMS sub-OPs OP-OMS-032b / 033b / 034b / 034c are non-blocking formalities tracked in `THEORY/working/observer_moduli/open_problems.md`.
 
 <Figure
   src="/content-assets/scc-figures/fig31-op0005-k-selection-split.png"
@@ -207,14 +229,19 @@ Net post-W6 active count: **3 High + 4 Medium + 3 Low = 10 active OPs** (plus 5 
   className="mx-auto max-w-full"
 />
 
-## Most recent canonical edits (CV-1.5.2 → CV-1.11)
+## Most recent canonical edits (CV-1.5.2 → CV-1.17)
 
 - **2026-05-02 (W5 Day 6):** T-L1-F merged Cat A conditional. CV-1.5.1 → CV-1.5.2. 45A → 46A. 61 claims.
 - **2026-05-04 (W6 Day 1):** T-Bind Cat A confirmed; T-σ-Theorem-4 continuum caveat added; `open_problems.md` merged into `theorem_status.md` (deleted). Strategic plan redesigned.
 - **2026-05-06 (W6 Day 4, Sessions A–Y):** CV-1.5.2 → CV-1.6 → … → **CV-1.11** in a single work session. Net: +8A +9B = +17 claims. Key promotions: T-ST-5a Cat A (CV-1.6); T-OP6-B Cat A + T-P-F-ε0 Cat A (CV-1.7, OP-0006 RESOLVED); P-F-A1 Package I fully Cat A (CV-1.8–CV-1.9); T-K-Select-PF Cat B (CV-1.10, OP-0005-EQ partial); T-K-Select-OBS Cat B (CV-1.11, OP-0005-OBS partial).
 - **2026-05-07 (W6 Day 5):** `DECLARATION.md` DECL-1.0 (6 epistemological commitments) + `hypothesis_tree.md` HT-3.0 (dependency graph, critical path for CV-1.12) created.
 - **2026-05-08 (W6 Day 6, Sessions 7–8):** OMS-2.0 promoted from Conditional Accepted → **Accepted — Full**. OP-OMS-034 CLOSED (temporal $G_{\mathrm{cw}}^{\mathrm{temp}} = \{e\}$ confirmed; 19-branch Δ³ map). Appendix OMS §A–§M (Static + Temporal) added to `canonical.md`.
-- **2026-05-08 (W6 EOD):** `theorem_status.md` header + `canonical.md` DEVELOPMENT NOTICE updated to CV-1.11 state. Weekly summary written. **Next target: CV-1.12 via H-SINK** (T-Temporal-Identity a/b/d, +3A, Bigot-Cazelles-Papadakis route).
+- **2026-05-08 (W6 EOD):** `theorem_status.md` header + `canonical.md` DEVELOPMENT NOTICE updated to CV-1.11 state. Weekly summary written. Targeted CV-1.12 via H-SINK (T-Temporal-Identity a/b/d, +3A, Bigot–Cazelles–Papadakis route).
+- **2026-05-11/12 (W7 D1–D2):** **CV-1.12** — H-SINK closed via Bigot–Cazelles–Papadakis Sinkhorn Lipschitz framework ($L_g \leq L_c$ in SCC cost class). T-Temporal-Identity (a) Cat A. Parts (b)(d) deferred to CV-1.18.
+- **2026-05-12 (W7 D3):** **CV-1.13 SEAL** — cross-file audit of CV-1.12. **OP-HMORSE-BROADNESS CLOSED** (H-MORSE partially closed via the kernel-side broadness leg); six new OP-HMORSE-* sub-items registered.
+- **2026-05-13/14 (W7 D4):** **CV-1.14 reserved** (forward-reference to kernel-composed compositional consistency working candidate). **CV-1.15 SEAL** + **CV-1.16 SEAL** — intermediate audits; T-ACT-KERNEL-COMP→REL registered with explicit forward-reference (conditional lift queued).
+- **2026-05-15 (W7 D5 EOD):** **CV-1.17 SEAL** — **T-CC-StableK-Kernel Cat B** absorbed the CV-1.14 working candidate; **H-COMP-KERNEL CLOSED**; T-ACT-KERNEL-COMP→REL conditional lift activated; CV-1.15 forward-reference discharged. Stage A Hygiene (6 in-place edits) + Stage B SEAL. `CV-1.17_SEAL.md` (~470 lines) certifies CV-1.14 reserved-version absorption, non-overclaim audit, and CV-1.18 target list. **First `_archive/` cohort** (`working/parking/` → `_archive/working_parked_2026-05/`, 14 files). HT-3.7 → HT-3.8. **Net W7: +14A +5B +1C = +20 claims. CV-1.11 → CV-1.17. 78 → 98 claims.**
+- **2026-05-15 (W7 EOD):** `theorem_status.md` header + `canonical.md` frontmatter + release-state heading synchronized to CV-1.17 state. Weekly summary written at `THEORY/logs/weekly/2026-05-W2/weekly_summary.md`. **Next target: CV-1.18 via T-Temporal-Identity (b)(d) + σ-inheritance OP-0008 partial + P-F-A1 Package II first sub-result.**
 
 ## Implementation
 
@@ -272,23 +299,28 @@ The current repository structure is a clean **CODE / THEORY split**:
 
 The 2026-04-12 "Research OS" reboot — an 8-layer structure with numbered `00_meta/` … `07_archive/` directories and 5-role daily logs — was tried for four days, collapsed under its own scaffolding on 2026-04-16, and was archived on 2026-04-18. The current `CLAUDE.md` policy explicitly forbids re-introducing the numbered-directory / 5-role / per-item registry structure. The honest "tried and abandoned" record lives in `_archive/research_os_2026-04-12/`.
 
-## W6 outcomes + next session plan
+## W7 outcomes + next session plan
 
-**W6 is closed (2026-05-04 → 2026-05-08).** The redesigned W6 plan carried 4 goals; all are resolved:
+**W7 is closed (2026-05-11 → 2026-05-15).** W7 carried three workstreams; all are resolved or audited:
 
-- **G1 — L1-M-AUDIT** — superseded: the stereo-SCC / P-F-A1 / OMS work took priority; L1-M-AUDIT deferred to W7+.
-- **G2 — T-Bind decision** — **DONE** (2026-05-04). T-Bind-Proj / T-Bind-Full = Cat A per Phase 13.
-- **G3 — K_act ε-convention** — **DONE** (subsumed into D-ST-3 + T-K-Select-PF/OBS canonical definitions in CV-1.10–CV-1.11).
-- **G4 — parking-lot inventory** — carried to W7 (`THEORY/working/CV-1.7_PARKING_LOT_REVIEW_PLAN.md`).
+- **G1 — H-SINK closure (CV-1.12 target)** — **DONE** (2026-05-11/12). Bigot–Cazelles–Papadakis Sinkhorn Lipschitz framework discharged in the SCC cost class; T-Temporal-Identity (a) Cat A. Parts (b)(d) deferred to CV-1.18.
+- **G2 — H-COMP-KERNEL closure (compositional consistency)** — **DONE** (2026-05-15, CV-1.17 SEAL). T-CC-StableK-Kernel Cat B; T-ACT-KERNEL-COMP→REL conditional lift activated; CV-1.15 forward-reference discharged.
+- **G3 — `working/parking/` inventory and archive** — **DONE** (2026-05-15). 14 files moved into `_archive/working_parked_2026-05/`; first instantiation of the `_archive/` root.
 
-**Net W6 result (entry → exit):**
+A fourth workstream — auditing a user-proposed primitive extension ($z_t / S_0 / K_{\mathrm{read}}$) — was carried through six audit stages and resolved as **Decision C (defer, archive proposal trace)**: $V = 0$, archive-pattern match 6 / 6. The proposal lives in `_archive/proposals_2026-05/zt_S0_Kread.md`; no canonical change.
 
-| | Entry (05-04) | Exit (05-08) |
+**Net W7 result (entry → exit):**
+
+| | Entry (05-11) | Exit (05-15) |
 |---|---|---|
-| Canonical version | CV-1.5.2 | **CV-1.11** |
-| Claims | 61 (46A/5B/5C/5R) | **78 (54A/14B/5C/5R)** |
-| OMS | — | **OMS-2.0 Accepted — Full** |
-| Theory navigation | HT-2.x | **HT-3.0 + DECLARATION.md** |
+| Canonical version | CV-1.11 | **CV-1.17 (sealed)** |
+| Claims | 78 (54A/14B/5C/5R) | **98 (68A/19B/6C/5R)** |
+| H-COMP-KERNEL | working candidate | **CLOSED — Cat B** |
+| H-MORSE | open | **partially closed** (broadness leg) |
+| `_archive/` cohorts | 0 | **1** (14 files, 2026-05) |
+| SEAL documents | CV-1.13 | + CV-1.15, CV-1.16, **CV-1.17** |
+| HT version | HT-3.0 | **HT-3.8** |
+| Theory navigation | HT-3.0 + DECLARATION.md | **HT-3.8 + DECLARATION.md** |
 | pytest | 215+1xfailed | **215+1xfailed (clean)** |
 
 <Figure
@@ -298,8 +330,13 @@ The 2026-04-12 "Research OS" reboot — an 8-layer structure with numbered `00_m
   className="mx-auto max-w-full"
 />
 
-**Next session — H-SINK (Phase 1, unblocked):**
-Bigot-Cazelles-Papadakis → $L_g \leq L_c$ in SCC cost class → T-Temporal-Identity (a, b, d) Cat A → **CV-1.12 (+3A)**. Dependency: P-F-A1 Package I (CV-1.9, complete). Blocking neither by OMS nor by Package II. Entry point: `THEORY/canonical/hypothesis_tree.md` (HT-3.0) §H-SINK node.
+**Next session — CV-1.18 (three queued candidates):**
+
+1. **T-Temporal-Identity (b) and (d).** Margin-condition tightening on (b); reduction-to-$K=1$ on (d). +2 A expected.
+2. **σ-inheritance OP-0008 partial.** A Cat B target on Path B (σ-rich + Φ-rich) is the most likely shape.
+3. **Eyring–Kramers Package II first sub-result.** With H-MORSE broadness closed, the next-easiest dependency is the spectral-gap lower bound (Cat B path); full Package II remains W9+.
+
+Monitoring items: H-SINK Lipschitz constant fine-tune (quantitative tightening of $L_g \leq L_c$, no new theorem row) and OP-SB1-084 (registered in W7 hygiene, not yet substantively addressed). Entry point: `THEORY/canonical/hypothesis_tree.md` (HT-3.8) §CV-1.18 targets + `CV-1.17_SEAL.md` §"CV-1.18 target list".
 
 ## Twelve iterations of method (historical)
 
@@ -329,6 +366,8 @@ Dedicated SCC manuscripts are currently **not** in the working tree — the two 
 ## Related
 
 - [SCC status, April 2026 (W5 Day 1 G0 close, CV-1.5)](/notes/part-0/scc-status-2026-04/) — historical snapshot.
-- [Canonical Specification (CV-1.11)](/notes/part-0/canonical-spec-scc/) — the full formal text of SCC (with Appendix OMS §A–§M).
+- [Canonical Specification](/notes/part-0/canonical-spec-scc/) — the full formal text of SCC (mirrors `canonical.md`, sealed CV-1.17; includes Appendix OMS §A–§M from CV-1.11 W6 D6).
 - [Part I — RelationWorld Foundations](/notes/) — the discrete-gauge substrate SCC operates over.
 - [Perception research track](/research/perception/) — the public-facing overview page.
+- [Week 6 weekly (2026-05-08)](/journal/2026-05-08-perception-week-6/) — Observer Moduli Space, OMS-2.0 Accepted — Full.
+- [Week 7 weekly (2026-05-15)](/journal/2026-05-15-perception-week-7/) — six sealed versions, H-COMP-KERNEL closed, first `_archive/` cohort.
