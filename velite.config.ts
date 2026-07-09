@@ -237,7 +237,9 @@ export default defineConfig({
       // The slug algorithm (github-slugger) matches what s.toc() uses,
       // so TOC `#fragment` URLs line up with heading `id` attrs.
       rehypeSlug,
-      [rehypeKatex, { strict: false, trust: true, output: "html" }],
+      // htmlAndMathml emits a visually-hidden MathML tree alongside the
+      // HTML render, so screen readers get real math semantics.
+      [rehypeKatex, { strict: false, trust: true, output: "htmlAndMathml" }],
       [rehypePrettyCode, prettyCodeOptions],
     ],
   },

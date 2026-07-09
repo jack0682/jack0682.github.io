@@ -93,6 +93,7 @@ export default async function JournalEntryPage({ params }: Props) {
           updated={entry.updated}
           readingTime={entry.metadata.readingTime}
           wordCount={entry.metadata.wordCount}
+          tags={entry.tags}
           className="mt-6"
         />
       </header>

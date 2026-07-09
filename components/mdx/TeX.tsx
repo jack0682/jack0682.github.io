@@ -18,7 +18,7 @@ export function TeX({ expr, display = false, className }: Props) {
   const html = katex.renderToString(expr, {
     displayMode: display,
     throwOnError: false,
-    output: "html",
+    output: "htmlAndMathml",
     strict: "ignore",
   });
 

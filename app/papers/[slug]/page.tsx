@@ -122,6 +122,7 @@ export default async function PaperPage({ params }: Props) {
             updated={paper.updated}
             readingTime={paper.metadata.readingTime}
             wordCount={paper.metadata.wordCount}
+            tags={paper.tags}
             className="mt-2"
           />
 
