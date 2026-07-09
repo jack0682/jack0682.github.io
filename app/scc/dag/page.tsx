@@ -72,8 +72,7 @@ export default function SccDagPage() {
       ) : (
         <PanZoomBox className="rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] p-4">
           <svg
-            role="img"
-            aria-label="Theorem dependency graph"
+            aria-hidden="true"
             viewBox={`0 0 ${dag.width} ${dag.height}`}
             width={dag.width}
             height={dag.height}
@@ -110,7 +109,7 @@ export default function SccDagPage() {
 
             {dag.nodes.map((n) => (
               <g key={n.id} transform={`translate(${n.x - n.w / 2}, ${n.y - n.h / 2})`}>
-                <Link href={n.permalink}>
+                <Link href={n.permalink} tabIndex={-1}>
                   <rect
                     width={n.w}
                     height={n.h}
@@ -148,6 +147,38 @@ export default function SccDagPage() {
         edge, list the target slug in the source note&rsquo;s{" "}
         <code className="font-mono text-xs">related:</code> array.
       </p>
+
+      {/* Accessible / mobile-legible text index — the graph above is a
+          visual aid (aria-hidden); this list is the keyboard + small-screen
+          path to every node. */}
+      {dag.nodes.length > 0 && (
+        <section className="mt-12 border-t border-[var(--color-rule)] pt-8">
+          <h2 className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+            All theorems · {dag.nodes.length}
+          </h2>
+          <ul className="grid gap-x-10 gap-y-2 sm:grid-cols-2">
+            {[...dag.nodes]
+              .sort((a, b) => a.label.localeCompare(b.label))
+              .map((n) => (
+                <li key={n.id}>
+                  <Link
+                    href={n.permalink}
+                    className="group flex items-baseline justify-between gap-3 text-sm"
+                  >
+                    <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+                      {n.label}
+                    </span>
+                    {n.section && (
+                      <span className="shrink-0 font-mono text-[10px] text-[var(--color-subtle)]">
+                        {n.section}
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </section>
+      )}
     </Container>
   );
 }

@@ -55,10 +55,42 @@ const statusLabel: Record<string, string> = {
   "in-progress": "In progress",
 };
 
+type PaperLike = {
+  title: string;
+  authors: string[];
+  year: number;
+  venue?: string;
+  doi?: string;
+  arxiv?: string;
+  slug: string;
+  permalink: string;
+};
+
+// Fallback BibTeX built from frontmatter when a paper has no hand-written
+// `bibtex`, so every paper page offers a citable entry.
+function buildBibtex(p: PaperLike): string {
+  const first = p.authors[0]?.split(/\s+/).pop()?.toLowerCase() ?? "oh";
+  const key = `${first}${p.year}${p.slug.split("-")[0]}`;
+  const type = p.venue ? "article" : "misc";
+  const rows: string[] = [
+    `  title   = {${p.title}}`,
+    `  author  = {${p.authors.join(" and ")}}`,
+    `  year    = {${p.year}}`,
+  ];
+  if (p.venue) rows.push(`  journal = {${p.venue}}`);
+  if (p.doi) rows.push(`  doi     = {${p.doi}}`);
+  if (p.arxiv) rows.push(`  eprint  = {${p.arxiv}},\n  archivePrefix = {arXiv}`);
+  rows.push(`  url     = {${absoluteUrl(p.permalink)}}`);
+  return `@${type}{${key},\n${rows.join(",\n")},\n}`;
+}
+
 export default async function PaperPage({ params }: Props) {
   const { slug } = await params;
   const paper = papers.find((p) => p.slug === slug);
   if (!paper) notFound();
+
+  const bibtex = paper.bibtex ?? buildBibtex(paper);
+  const bibtexGenerated = !paper.bibtex;
 
   const crumbs = [
     { href: "/papers/", label: "Papers" },
@@ -174,19 +206,22 @@ export default async function PaperPage({ params }: Props) {
           citingJournal={citingJournal}
         />
 
-        {paper.bibtex && (
-          <section className="mt-12 border-t border-[var(--color-rule)] pt-8">
-            <div className="flex items-baseline justify-between">
-              <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-                BibTeX
-              </p>
-              <CopyBibtexButton bibtex={paper.bibtex} />
-            </div>
-            <pre className="mt-4 overflow-x-auto rounded border border-[var(--color-rule)] bg-[var(--color-surface)] p-4 font-mono text-xs leading-relaxed text-[var(--color-muted)]">
-              {paper.bibtex}
-            </pre>
-          </section>
-        )}
+        <section className="mt-12 border-t border-[var(--color-rule)] pt-8">
+          <div className="flex items-baseline justify-between">
+            <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+              BibTeX
+              {bibtexGenerated && (
+                <span className="ml-2 lowercase text-[var(--color-subtle)]">
+                  · generated
+                </span>
+              )}
+            </p>
+            <CopyBibtexButton bibtex={bibtex} />
+          </div>
+          <pre className="mt-4 overflow-x-auto rounded border border-[var(--color-rule)] bg-[var(--color-surface)] p-4 font-mono text-xs leading-relaxed text-[var(--color-muted)]">
+            {bibtex}
+          </pre>
+        </section>
       </Container>
     </>
   );
