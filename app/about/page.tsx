@@ -10,6 +10,7 @@ import { IDENTITY_LINKS, EMAIL } from "@/lib/identity";
 const LOGO_H = 26;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about/" },
   title: "About",
   description:
     "About Jaehong Oh — robotics engineer, AI researcher, and mechanical engineer at Soongsil University, currently working on the unification of Soft Cognitive Cohesion and Ontology Neural Networks.",

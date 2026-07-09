@@ -87,6 +87,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: meta?.title ?? `Part ${partNum}`,
       description: meta?.lead,
+      alternates: { canonical: `/notes/part-${partNum}/` },
     };
   }
   // Slug alias

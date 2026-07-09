@@ -7,6 +7,7 @@ import { PanZoomBox } from "@/components/layout/PanZoomBox";
 import dagJson from "../../../.velite/dag.json";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/scc/dag/" },
   title: "SCC · Theorem dependency graph",
   description:
     "An auto-laid-out directed graph of every theorem-kind note and the explicit `related` edges between them. Each node links to the underlying note.",

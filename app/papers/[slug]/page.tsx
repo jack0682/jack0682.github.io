@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: paper.title,
     description: paper.abstract.slice(0, 200),
+    alternates: { canonical: paper.permalink },
     openGraph: {
       title: paper.title,
       description: paper.abstract.slice(0, 200),

@@ -5,6 +5,7 @@ import { JournalFilter } from "@/components/layout/JournalFilter";
 import { journalEntries } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/journal/" },
   title: "Journal",
   description:
     "A dated journal of research in progress — conjectures, intermediate results, and the things that did not work.",

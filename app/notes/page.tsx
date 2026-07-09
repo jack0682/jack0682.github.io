@@ -6,6 +6,7 @@ import { NotesConstellation } from "@/components/layout/NotesConstellation";
 import { notesByPart } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/notes/" },
   title: "Notes",
   description:
     "The Mousse-notes — a long book on the algebraic and topological foundations underlying the rest of the research.",

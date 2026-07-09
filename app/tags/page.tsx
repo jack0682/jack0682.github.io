@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { tagIndex } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tags/" },
   title: "Tags",
   description: "Browse all content by topic tag.",
 };

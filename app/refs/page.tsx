@@ -10,6 +10,7 @@ import {
 } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/refs/" },
   title: "Reference",
   description:
     "Cross-document indexes — every formal equation, theorem, open problem, glossary entry, and canonical version, extracted from the SCC and ONN notes and surfaced together.",

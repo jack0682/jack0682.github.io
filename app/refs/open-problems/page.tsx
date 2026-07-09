@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { idsByKind } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/refs/open-problems/" },
   title: "Open problems index",
   description:
     "Every OP-XXXX open-problem ID extracted from the SCC and ONN notes — sorted, deduplicated, linked to the first document that registers the problem.",

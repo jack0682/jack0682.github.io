@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `#${tag}`,
     description: `All content tagged "${tag}".`,
+    alternates: { canonical: `/tags/${tag}/` },
   };
 }
 

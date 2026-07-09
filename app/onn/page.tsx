@@ -15,6 +15,7 @@ const READING_ORDER = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/onn/" },
   title: "ONN · Hub",
   description:
     "Ontology Neural Network and ORTSF — a hub for the ONN research thread. Track overview, canonical specifications, mathematical results, published manuscripts, and the integration plan with Soft Cognitive Cohesion.",

@@ -8,6 +8,7 @@ import { formatDate, toIsoDate } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/scc/changelog/" },
   title: "SCC · Changelog",
   description:
     "Canonical version history for the Soft Cognitive Cohesion programme — every entry that bumps or patches the canonical specification, sourced from the journal.",

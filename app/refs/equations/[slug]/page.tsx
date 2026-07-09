@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Equations · ${group.title}`,
     description: `${group.items.length} equations extracted from ${group.title}, with the prose paragraph immediately before each as a description.`,
+    alternates: { canonical: `/refs/equations/${group.slug}/` },
   };
 }
 

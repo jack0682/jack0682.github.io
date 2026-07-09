@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
-    ...["/about/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/onn/", "/refs/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
+    ...["/about/", "/bio/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/scc/changelog/", "/onn/", "/refs/", "/refs/theorems/", "/refs/open-problems/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
       (path) => ({
         url: `${BASE_URL}${path}`,
         changeFrequency: "monthly" as const,
@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const notePages: MetadataRoute.Sitemap = allNotes.map((note) => ({
     url: `${BASE_URL}/notes/part-${note.part}/${note.slug}/`,
+    lastModified: note.updated,
     priority: 0.7,
   }));
 
@@ -54,21 +55,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const paperPages: MetadataRoute.Sitemap = papers.map((paper) => ({
     url: `${BASE_URL}${paper.permalink}`,
+    lastModified: paper.updated ?? paper.date,
     priority: 0.9,
   }));
 
   const journalPages: MetadataRoute.Sitemap = journalEntries.map((entry) => ({
     url: `${BASE_URL}${entry.permalink}`,
+    lastModified: entry.updated ?? entry.date,
     priority: 0.6,
   }));
 
   const researchPages: MetadataRoute.Sitemap = researchTracks.map((track) => ({
     url: `${BASE_URL}${track.permalink}`,
+    lastModified: track.updated ?? track.date,
     priority: 0.7,
   }));
 
   const onnPages: MetadataRoute.Sitemap = onnAllDocs.map((doc) => ({
     url: `${BASE_URL}${doc.permalink}`,
+    lastModified: doc.updated,
     priority: 0.7,
   }));
 

@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { papers } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/papers/" },
   title: "Papers",
   description:
     "Published and in-progress papers, with abstracts, status, and links to preprints and supporting artefacts.",

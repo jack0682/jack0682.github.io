@@ -7,6 +7,7 @@ import { TeX } from "@/components/mdx/TeX";
 import { equations, equationsBySource } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/refs/equations/" },
   title: "Equation index",
   description:
     "Every formal equation across the SCC, ONN, and ONN papers — extracted from `<Equation>` JSX blocks and `$$ ... $$` display math, indexed by source document. Click a source to see all of its equations with surrounding prose.",

@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { idsByKind } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/refs/theorems/" },
   title: "Theorem index",
   description:
     "Every theorem, lemma, proposition, and corollary ID extracted from the SCC and ONN notes — sorted alphabetically with the document each ID first appears in.",

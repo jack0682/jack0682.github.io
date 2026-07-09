@@ -15,6 +15,7 @@ const READING_ORDER = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/scc/" },
   title: "SCC · Hub",
   description:
     "A single access point for the Soft Cognitive Cohesion programme — the canonical specification, the current research status, the integrated architecture with Ontology Neural Networks, and the mathematical results underpinning them.",

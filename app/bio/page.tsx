@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "A short self-introduction in English, Korean, Japanese, German, and Chinese.",
   alternates: {
+    canonical: "/bio/",
     languages: {
       en: "/bio/",
       ko: "/bio/",

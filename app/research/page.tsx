@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { researchTracks } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research/" },
   title: "Research",
   description:
     "Research threads on Ontology Neural Networks, perception theory, mathematical foundations, delay-robust control, and robotics.",
