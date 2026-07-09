@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Fraunces, Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
@@ -72,6 +72,16 @@ export const metadata: Metadata = {
         },
       }
     : {}),
+};
+
+// Drives the mobile browser-chrome colour so it tracks the active theme
+// (Next emits media-scoped <meta name="theme-color"> tags from this).
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d1421" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({

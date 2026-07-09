@@ -8,6 +8,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "predev": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs",
     "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
     "build": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build",
     "og": "node scripts/generate-og.mjs",
