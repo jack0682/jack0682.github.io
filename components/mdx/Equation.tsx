@@ -30,7 +30,10 @@ type Props = {
  */
 export function Equation({ expr, number, label, note, className }: Props) {
   return (
-    <div className={cn("my-8", className)}>
+    <div
+      id={number ? `eq-${number}` : undefined}
+      className={cn("my-8 scroll-mt-24", className)}
+    >
       <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
         <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-subtle)]">
           {label ?? ""}
@@ -38,9 +41,17 @@ export function Equation({ expr, number, label, note, className }: Props) {
         <div className="min-w-0 overflow-x-auto text-center">
           <TeX expr={expr} display />
         </div>
-        <span className="font-mono text-xs tabular-nums text-[var(--color-subtle)]">
-          {number ? `(${number})` : ""}
-        </span>
+        {number ? (
+          <a
+            href={`#eq-${number}`}
+            aria-label={`Link to equation ${number}`}
+            className="font-mono text-xs tabular-nums text-[var(--color-subtle)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            ({number})
+          </a>
+        ) : (
+          <span className="font-mono text-xs tabular-nums text-[var(--color-subtle)]" />
+        )}
       </div>
       {note && (
         <p className="mt-2 px-4 text-center text-xs italic leading-relaxed text-[var(--color-muted)]">

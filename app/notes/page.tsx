@@ -3,25 +3,13 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { NotesConstellation } from "@/components/layout/NotesConstellation";
-import { notesByPart } from "@/lib/content";
+import { notesByPart, PART_META } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/notes/" },
   title: "Notes",
   description:
     "The Mousse-notes — a long book on the algebraic and topological foundations underlying the rest of the research.",
-};
-
-const partTitles: Record<number, string> = {
-  0: "Part 0 · Soft Cognitive Cohesion",
-  1: "Part I · Foundations of RelationWorld",
-  2: "Part II · Main Theorems & Examples",
-  3: "Part III · Cohomology",
-  4: "Part IV · Dynamics",
-  5: "Part V · Applications",
-  6: "Part VI · Frontiers & Open Problems",
-  7: "Part VII · Robotics",
-  8: "Appendices",
 };
 
 export default function NotesPage() {
@@ -53,7 +41,7 @@ export default function NotesPage() {
         {notesByPart.map(([part, items]) => (
           <section key={part}>
             <h2 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] sm:text-2xl">
-              {partTitles[part] ?? `Part ${part}`}
+              {PART_META[part]?.title ?? `Part ${part}`}
             </h2>
             <ul className="mt-5 divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)] sm:mt-6">
               {items.map((note) => (

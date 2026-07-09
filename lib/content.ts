@@ -66,6 +66,61 @@ export const notesByPart = (() => {
   return [...map.entries()].sort(([a], [b]) => a - b);
 })();
 
+export type PartMeta = { title: string; short: string; lead: string };
+
+/**
+ * Single source of truth for Notes "Part" headings: the full title
+ * (list pages), a short label (constellation), and a lead sentence
+ * (part index page). Previously duplicated across three files.
+ */
+export const PART_META: Record<number, PartMeta> = {
+  0: {
+    title: "Part 0 · Soft Cognitive Cohesion",
+    short: "Part 0 · SCC",
+    lead: "The canonical specification, research status, integrated architecture, and foundational claims of the SCC programme.",
+  },
+  1: {
+    title: "Part I · Foundations of RelationWorld",
+    short: "Part I · Foundations",
+    lead: "Eight chapters building the core formalism — relations, relational fields, fruits, stems, doors, existence, and the notion of a world.",
+  },
+  2: {
+    title: "Part II · Main Theorems & Examples",
+    short: "Part II · Theorems",
+    lead: "Complete proofs of Theorems A–H and worked examples in U(1) gauge theory.",
+  },
+  3: {
+    title: "Part III · Cohomology",
+    short: "Part III · Cohomology",
+    lead: "The Cech cohomology framework and three computational axes for topological readout.",
+  },
+  4: {
+    title: "Part IV · Dynamics",
+    short: "Part IV · Dynamics",
+    lead: "Yang–Mills gradient flow on the discrete gauge configuration and time evolution of world snapshots.",
+  },
+  5: {
+    title: "Part V · Applications",
+    short: "Part V · Applications",
+    lead: "Connections to physics (topological order, Chern–Simons), topology (graph classification), and combinatorics.",
+  },
+  6: {
+    title: "Part VI · Frontiers & Open Problems",
+    short: "Part VI · Frontiers",
+    lead: "Conjectures, remaining questions, and directions for future work.",
+  },
+  7: {
+    title: "Part VII · Robotics",
+    short: "Part VII · Robotics",
+    lead: "End-to-end mobile manipulator pipeline grounded in the RelationWorld formalism.",
+  },
+  8: {
+    title: "Appendices",
+    short: "Appendices",
+    lead: "Unified notation, mathematical prerequisites, the discrete–continuous correspondence dictionary, and hybrid dynamics.",
+  },
+};
+
 export const allNotes = published(_notes);
 
 export const onnAllDocs = published(_onnDocs).sort(

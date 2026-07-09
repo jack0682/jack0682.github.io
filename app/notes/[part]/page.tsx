@@ -4,51 +4,9 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
-import { allNotes, notesForPart } from "@/lib/content";
+import { allNotes, notesForPart, PART_META as partMeta } from "@/lib/content";
 
-/* ── Part metadata ─────────────────────────────────────────────── */
-
-const partMeta: Record<
-  number,
-  { title: string; lead: string }
-> = {
-  0: {
-    title: "Part 0 · Soft Cognitive Cohesion",
-    lead: "The canonical specification, research status, integrated architecture, and foundational claims of the SCC programme.",
-  },
-  1: {
-    title: "Part I · Foundations of RelationWorld",
-    lead: "Eight chapters building the core formalism — relations, relational fields, fruits, stems, doors, existence, and the notion of a world.",
-  },
-  2: {
-    title: "Part II · Main Theorems & Examples",
-    lead: "Complete proofs of Theorems A–H and worked examples in U(1) gauge theory.",
-  },
-  3: {
-    title: "Part III · Cohomology",
-    lead: "The Cech cohomology framework and three computational axes for topological readout.",
-  },
-  4: {
-    title: "Part IV · Dynamics",
-    lead: "Yang–Mills gradient flow on the discrete gauge configuration and time evolution of world snapshots.",
-  },
-  5: {
-    title: "Part V · Applications",
-    lead: "Connections to physics (topological order, Chern–Simons), topology (graph classification), and combinatorics.",
-  },
-  6: {
-    title: "Part VI · Frontiers & Open Problems",
-    lead: "Conjectures, remaining questions, and directions for future work.",
-  },
-  7: {
-    title: "Part VII · Robotics",
-    lead: "End-to-end mobile manipulator pipeline grounded in the RelationWorld formalism.",
-  },
-  8: {
-    title: "Appendices",
-    lead: "Unified notation, mathematical prerequisites, the discrete–continuous correspondence dictionary, and hybrid dynamics.",
-  },
-};
+/* ── Part metadata: single source is PART_META in lib/content.ts ─── */
 
 /* ── Static params ─────────────────────────────────────────────── */
 
