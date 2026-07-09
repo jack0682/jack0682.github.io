@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 const container = {
   hidden: {},
@@ -25,7 +26,7 @@ const item = {
  * the user prefers reduced motion so nothing is hidden from them.
  */
 export function HeroReveal({ children }: { children: ReactNode[] }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   if (reduce) {
     return (

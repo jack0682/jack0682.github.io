@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Route-change progress indicator.
@@ -17,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export function RouteProgress() {
   const pathname = usePathname();
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   const [progress, setProgress] = useState(0);
   const [active, setActive] = useState(false);

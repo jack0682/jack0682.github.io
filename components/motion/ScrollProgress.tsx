@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useSpring, useReducedMotion } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Thin accent-coloured bar at the very top of the viewport that fills
@@ -10,7 +11,7 @@ import { motion, useScroll, useSpring, useReducedMotion } from "motion/react";
  * pattern motion-sensitive users find disorienting.
  */
 export function ScrollProgress() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,

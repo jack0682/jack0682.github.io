@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Route-level transition. Next.js re-mounts `template.tsx` on every
@@ -13,7 +14,7 @@ import type { ReactNode } from "react";
  * transition (content still renders, just without motion).
  */
 export default function RouteTemplate({ children }: { children: ReactNode }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   return (
     <motion.div

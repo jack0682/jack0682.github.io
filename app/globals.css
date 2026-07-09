@@ -16,7 +16,7 @@
   --color-surface: #ffffff;
   --color-ink: #1a1814;
   --color-muted: #6b655c;
-  --color-subtle: #837d74;
+  --color-subtle: #767068; /* AA: 4.62:1 on bg (was #837d74 @ 3.85) */
   --color-accent: #7a3b2e; /* burnt sienna */
   --color-accent-soft: #c67a5c;
   --color-rule: #e8e2d6;
@@ -47,7 +47,7 @@
   --color-surface: #19233b;
   --color-ink: #e2e9f5;
   --color-muted: #98a3bc;
-  --color-subtle: #6b7796;
+  --color-subtle: #7c8aae; /* AA: 4.54:1 on surface (was #6b7796 @ 3.50) */
   --color-accent: #ee9c75;
   --color-accent-soft: #d18162;
   --color-rule: #2a3552;
@@ -161,6 +161,7 @@ hr {
 
 .prose :where(table) {
   display: block;
+  max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
@@ -180,6 +181,38 @@ hr {
 
 /* inline math should never force horizontal scroll on the page */
 .katex { white-space: nowrap; }
+
+/* Wide inline SVG figures/diagrams cap to the column on narrow screens. */
+.prose :where(svg) { max-width: 100%; height: auto; }
+
+/* An over-wide inline formula (e.g. a long tuple definition) must scroll
+   within the column rather than push the whole page horizontally on mobile.
+   Scoped to small screens (where the overflow occurs) and to inline math
+   inside text, so display math (.katex-display, handled above) and desktop
+   layout are untouched. */
+@media (max-width: 767px) {
+  .prose :where(p, li, td, th) > .katex,
+  .prose :where(p, li, td, th) :where(strong, em, a, span) > .katex {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+  }
+}
+
+/* rehype-pretty-code emits dual-theme token colours as CSS variables
+   (--shiki-light / --shiki-dark) but, because the theme is an object
+   (defaultColor:false), sets no `color`. Apply the variables here so code
+   is actually syntax-highlighted in both light and dark. */
+.prose :where(pre) code[data-theme],
+.prose :where(pre) code[data-theme] span {
+  color: var(--shiki-light);
+}
+:root.dark .prose :where(pre) code[data-theme],
+:root.dark .prose :where(pre) code[data-theme] span {
+  color: var(--shiki-dark);
+}
 
 /* ──────────────────────────────────────────────────────────────
    Science-paper micro-typography & decorative motifs
@@ -317,6 +350,29 @@ hr {
   background: var(--color-surface);
   border-radius: 0.25rem;
   padding: 1rem 1.25rem;
+}
+
+/* Remap Tailwind Typography's palette to the design tokens so ALL prose
+   text is theme-aware. Without this, prose-stone's light-mode colours
+   (e.g. body #44403b) leak into dark mode for any element not individually
+   overridden — tight <li> text and \mathrm{} text then render dark-on-dark
+   and fail contrast. Because the tokens are redefined under :root.dark,
+   this covers both themes with one declaration and needs no prose-invert. */
+.prose {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-lead: var(--color-muted);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-counters: var(--color-subtle);
+  --tw-prose-bullets: var(--color-accent);
+  --tw-prose-hr: var(--color-rule);
+  --tw-prose-quotes: var(--color-muted);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-subtle);
+  --tw-prose-code: var(--color-ink);
+  --tw-prose-th-borders: var(--color-rule);
+  --tw-prose-td-borders: var(--color-rule);
 }
 
 /* ──────────────────────────────────────────────────────────────

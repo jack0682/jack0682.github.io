@@ -6,8 +6,8 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  useReducedMotion,
 } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Animated marginal χ glyph for the home hero. Tracks pointer
@@ -18,7 +18,7 @@ import {
  * doesn't change reading order or semantics.
  */
 export function HeroChi() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
 
