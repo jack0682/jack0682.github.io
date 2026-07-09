@@ -63,7 +63,7 @@ export function PanZoomBox({
           onClick={() => ref.current?.zoomOut(0.4)}
           aria-label="Zoom out"
           title="Zoom out"
-          className="pointer-events-auto inline-flex h-7 w-7 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 font-mono text-sm leading-none text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 font-mono text-sm leading-none text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
         >
           −
         </button>
@@ -72,7 +72,7 @@ export function PanZoomBox({
           onClick={() => ref.current?.zoomIn(0.4)}
           aria-label="Zoom in"
           title="Zoom in"
-          className="pointer-events-auto inline-flex h-7 w-7 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 font-mono text-sm leading-none text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 font-mono text-sm leading-none text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
         >
           +
         </button>
@@ -81,7 +81,7 @@ export function PanZoomBox({
           onClick={() => ref.current?.resetTransform()}
           aria-label="Reset view"
           title="Reset view"
-          className="pointer-events-auto inline-flex h-7 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 px-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          className="pointer-events-auto inline-flex h-9 items-center justify-center rounded-sm border border-[var(--color-rule)] bg-[var(--color-bg)]/80 px-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-muted)] backdrop-blur-sm transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
         >
           fit
         </button>

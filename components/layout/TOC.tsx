@@ -96,7 +96,7 @@ export function TOC({ toc }: { toc: TocItem[] }) {
       {/* ── Desktop: fixed sidebar (xl+) ────────────────────── */}
       <nav
         aria-label="Table of contents"
-        className="hidden xl:block fixed right-10 top-32 w-[15rem] text-sm"
+        className="hidden xl:block fixed right-10 top-32 max-h-[calc(100vh-9rem)] w-[15rem] overflow-y-auto overscroll-contain pr-1 text-sm"
       >
         <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Contents

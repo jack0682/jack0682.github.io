@@ -1,6 +1,7 @@
 "use client";
 import { useRef, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/motion";
 
 interface Props {
   children: ReactNode;
@@ -9,11 +10,15 @@ interface Props {
 }
 
 export function MagneticButton({ children, strength = 0.25, className }: Props) {
+  const reduce = useReducedMotionSafe();
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 300, damping: 25, mass: 0.5 });
   const sy = useSpring(y, { stiffness: 300, damping: 25, mass: 0.5 });
+
+  // No cursor-follow spring for motion-sensitive users.
+  if (reduce) return <div className={className}>{children}</div>;
 
   const onMouseMove = (e: React.MouseEvent) => {
     const el = ref.current;

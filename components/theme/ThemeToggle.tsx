@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { useHydrated } from "@/lib/motion";
 
 /**
  * Three-state theme cycle: system → light → dark → system.
@@ -11,17 +11,15 @@ import { cn } from "@/lib/cn";
  * still see a meaningful state cue.
  */
 export function ThemeToggle({ className }: { className?: string }) {
-  const [mounted, setMounted] = useState(false);
+  const hydrated = useHydrated();
   const { theme, setTheme, resolvedTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
+  if (!hydrated) {
     return (
       <span
         aria-hidden
         className={cn(
-          "inline-flex h-8 w-8 items-center justify-center text-[var(--color-muted)]",
+          "inline-flex h-11 w-11 items-center justify-center text-[var(--color-muted)]",
           className,
         )}
       >
@@ -53,7 +51,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label={label}
       title={label}
       className={cn(
-        "inline-flex h-8 w-8 items-center justify-center rounded-full",
+        "inline-flex h-11 w-11 items-center justify-center rounded-full",
         "text-[var(--color-muted)] transition-colors",
         "hover:text-[var(--color-ink)] hover:bg-[var(--color-rule)]/40",
         className,

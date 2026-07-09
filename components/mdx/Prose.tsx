@@ -24,6 +24,9 @@ export function Prose({
         "[&_h3]:font-[var(--font-sans)] [&_h4]:font-[var(--font-sans)] [&_h5]:font-[var(--font-sans)] [&_h6]:font-[var(--font-sans)]",
         "[&_h3]:font-semibold [&_h4]:font-semibold [&_h5]:font-semibold [&_h6]:font-semibold",
         "[&_h3]:tracking-[-0.005em]",
+        // give h4 a real size step (plugin default is 1em = body size, so
+        // h4 previously read as bold body text) — restores a 4th level.
+        "[&_h4]:text-[1.125em]",
         "prose-p:text-[var(--color-ink)]/90 prose-p:leading-relaxed",
         "prose-strong:text-[var(--color-ink)]",
         "prose-a:text-[var(--color-accent)] prose-a:decoration-[var(--color-accent)]/30 hover:prose-a:decoration-[var(--color-accent)]",

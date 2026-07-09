@@ -167,6 +167,11 @@ hr {
   white-space: nowrap;
 }
 
+/* Subtle zebra striping for readability of data-heavy tables. */
+.prose :where(tbody tr:nth-child(even)) {
+  background: color-mix(in oklab, var(--color-ink) 3%, transparent);
+}
+
 /* KaTeX block math can be very wide on narrow viewports */
 .katex-display {
   overflow-x: auto;

@@ -1,15 +1,16 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import { useHydrated, useReducedMotionSafe } from "@/lib/motion";
 
 export function CursorSpotlight() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const hydrated = useHydrated();
+  const reduce = useReducedMotionSafe();
   const divRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setMounted(true); }, []);
-
   useEffect(() => {
+    if (reduce || resolvedTheme !== "dark") return;
     const el = divRef.current;
     if (!el) return;
     const move = (e: MouseEvent) => {
@@ -17,9 +18,11 @@ export function CursorSpotlight() {
     };
     window.addEventListener("mousemove", move, { passive: true });
     return () => window.removeEventListener("mousemove", move);
-  }, [mounted]);
+  }, [reduce, resolvedTheme]);
 
-  if (!mounted || resolvedTheme !== "dark") return null;
+  // Ambient, mouse-driven glow — pointless (and unwanted) for motion-sensitive
+  // users and on touch; only render for hydrated dark-theme, motion-OK sessions.
+  if (!hydrated || reduce || resolvedTheme !== "dark") return null;
 
   return (
     <div
