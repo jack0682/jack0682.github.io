@@ -26,10 +26,15 @@ function weightFor(count: number, max: number) {
 
 export default function TagsPage() {
   const max = tagIndex.reduce((m, t) => Math.max(m, t.count), 0);
-  // Largest first so the cloud reads as weighted, not alphabetical.
-  const ordered = [...tagIndex].sort(
-    (a, b) => b.count - a.count || a.tag.localeCompare(b.tag),
-  );
+  // Shared (count >= 2) tags form the weighted topic cloud; tags used
+  // exactly once are collapsed into a compact alphabetical list so the
+  // page stays browsable as the singleton tail grows.
+  const shared = [...tagIndex]
+    .filter((t) => t.count >= 2)
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+  const singletons = [...tagIndex]
+    .filter((t) => t.count === 1)
+    .sort((a, b) => a.tag.localeCompare(b.tag));
 
   return (
     <Container>
@@ -44,11 +49,13 @@ export default function TagsPage() {
       <div className="mb-10 flex items-baseline gap-3 border-t border-[var(--color-rule)] pt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
         <span>{tagIndex.length} tags</span>
         <span aria-hidden>·</span>
+        <span>{shared.length} shared</span>
+        <span aria-hidden>·</span>
         <span>max {max}</span>
       </div>
 
       <ul className="flex flex-wrap items-baseline gap-x-6 gap-y-4 leading-snug">
-        {ordered.map(({ tag, count }) => (
+        {shared.map(({ tag, count }) => (
           <li key={tag}>
             <Link
               href={`/tags/${tag}/`}
@@ -62,6 +69,26 @@ export default function TagsPage() {
           </li>
         ))}
       </ul>
+
+      {singletons.length > 0 && (
+        <section className="mt-16 border-t border-[var(--color-rule)] pt-8">
+          <h2 className="mb-6 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+            Used once · {singletons.length}
+          </h2>
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 leading-snug">
+            {singletons.map(({ tag }) => (
+              <li key={tag}>
+                <Link
+                  href={`/tags/${tag}/`}
+                  className="text-sm text-[var(--color-subtle)] transition-colors hover:text-[var(--color-accent)]"
+                >
+                  {tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </Container>
   );
 }

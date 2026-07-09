@@ -10,6 +10,7 @@ import { Example } from "./Example";
 import { H2, H3, H4 } from "./AnchorHeading";
 import { Term } from "./Term";
 import { CodeBlock } from "./CodeBlock";
+import { MdxImage } from "./MdxImage";
 
 /**
  * Components exposed into the MDX scope. MDX authors can reference
@@ -40,4 +41,5 @@ export const mdxComponents: Record<
   h3: H3 as ComponentType<Record<string, unknown>>,
   h4: H4 as ComponentType<Record<string, unknown>>,
   pre: CodeBlock as ComponentType<Record<string, unknown>>,
+  img: MdxImage as ComponentType<Record<string, unknown>>,
 };

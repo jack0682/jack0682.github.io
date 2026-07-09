@@ -39,6 +39,7 @@ function buildAtomFeed(entries: FeedEntry[]): string {
     <title>${esc(e.title)}</title>
     <link href="${esc(e.link)}" rel="alternate" />
     <updated>${e.updated}</updated>
+    <author><name>Jaehong Oh</name></author>
     <summary>${esc(e.summary)}</summary>
   </entry>`,
     )
