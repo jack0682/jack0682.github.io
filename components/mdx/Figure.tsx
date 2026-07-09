@@ -1,5 +1,8 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect -- lightbox open state is
+   driven by keyboard/pointer events wired up after mount. */
+
 import Image from "next/image";
 import {
   useCallback,
@@ -45,7 +48,6 @@ export function Figure({
 }: Props) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const layoutId = `fig-${src}`;
 
   const close = useCallback(() => setOpen(false), []);
 

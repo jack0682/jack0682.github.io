@@ -125,7 +125,7 @@ export default function AboutPage() {
       {/* ── what I'm working on ───────────────────────────── */}
       <section className="border-t border-[var(--color-rule)] pt-10">
         <p className="mb-3 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-          What I'm working on
+          What I&apos;m working on
         </p>
         <p className="text-lg leading-relaxed text-[var(--color-ink)]/90">
           The ultimate target of the work is a single{" "}

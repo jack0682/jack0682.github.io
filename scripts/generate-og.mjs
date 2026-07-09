@@ -24,7 +24,6 @@ const INK = "#1a1814";
 const MUTED = "#6b655c";
 const SUBTLE = "#a59f95";
 const ACCENT = "#7a3b2e";
-const ACCENT_SOFT = "#c67a5c";
 const RULE = "#e8e2d6";
 
 const SITE = "Jaehong Oh — Research";

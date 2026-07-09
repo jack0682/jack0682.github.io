@@ -1,5 +1,8 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect -- initialises locale from
+   localStorage / navigator.language on mount, both unavailable during SSR. */
+
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { BIO, BIO_LOCALES, type BioLocale } from "@/lib/bio";

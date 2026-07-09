@@ -141,11 +141,11 @@ function Row({
   href,
   title,
   meta,
-  slug,
 }: {
   href: string;
   title: string;
   meta?: string;
+  /** Accepted for call-site convenience; not rendered here. */
   slug?: string;
 }) {
   return (

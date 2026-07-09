@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/static-components -- runtime MDX: Velite emits each
+   document as a self-contained function string; we compile it to a component and
+   cache it by code so its identity is stable across renders. */
 import * as runtime from "react/jsx-runtime";
 import type { ComponentType } from "react";
 import { mdxComponents } from "./components";
@@ -14,22 +17,28 @@ type MdxFactoryArgs = {
   jsxs: typeof runtime.jsxs;
 };
 
-type MdxModule = {
-  default: ComponentType<{
-    components?: Record<string, ComponentType<Record<string, unknown>>>;
-  }>;
-};
-
-function compileMdx(code: string): ComponentType<{
+type MdxComponent = ComponentType<{
   components?: Record<string, ComponentType<Record<string, unknown>>>;
-}> {
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
+}>;
+
+type MdxModule = { default: MdxComponent };
+
+// Compile each MDX body once and reuse the component. Keeps the rendered
+// component identity stable (no remount per render) and avoids re-evaluating
+// the function string on every render.
+const compiledCache = new Map<string, MdxComponent>();
+
+function compileMdx(code: string): MdxComponent {
+  const cached = compiledCache.get(code);
+  if (cached) return cached;
   const fn = new Function(code) as (args: MdxFactoryArgs) => MdxModule;
-  return fn({
+  const Component = fn({
     Fragment: runtime.Fragment,
     jsx: runtime.jsx,
     jsxs: runtime.jsxs,
   }).default;
+  compiledCache.set(code, Component);
+  return Component;
 }
 
 export function MDXContent({

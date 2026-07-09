@@ -40,6 +40,31 @@ export function Term({ id, children, className }: Props) {
    // term's heading — exactly where readers should land.
   const anchor = id.toLowerCase();
 
+  // Outside-click + auto-dismiss on touch. HoverCard's built-in
+  // close-on-leave behaviour doesn't fire on touch (no mouseleave),
+  // so the popup would otherwise linger until the next interaction.
+  // (Declared before the `!entry` early return so hook order is stable.)
+  useEffect(() => {
+    if (!open) return;
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as Element | null;
+      if (target?.closest(`[data-term-scope="${anchor}"]`)) return;
+      setOpen(false);
+    };
+    const timeout = window.setTimeout(
+      () => setOpen(false),
+      TOUCH_AUTO_CLOSE_MS,
+    );
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.clearTimeout(timeout);
+    };
+  }, [open, anchor]);
+
   if (!entry) {
     return (
       <span
@@ -68,30 +93,6 @@ export function Term({ id, children, className }: Props) {
       setOpen(true);
     }
   };
-
-  // Outside-click + auto-dismiss on touch. HoverCard's built-in
-  // close-on-leave behaviour doesn't fire on touch (no mouseleave),
-  // so the popup would otherwise linger until the next interaction.
-  useEffect(() => {
-    if (!open) return;
-    if (typeof window === "undefined") return;
-    if (!window.matchMedia("(hover: none)").matches) return;
-
-    const onPointerDown = (e: PointerEvent) => {
-      const target = e.target as Element | null;
-      if (target?.closest(`[data-term-scope="${anchor}"]`)) return;
-      setOpen(false);
-    };
-    const timeout = window.setTimeout(
-      () => setOpen(false),
-      TOUCH_AUTO_CLOSE_MS,
-    );
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      window.clearTimeout(timeout);
-    };
-  }, [open, anchor]);
 
   return (
     <HoverCard.Root

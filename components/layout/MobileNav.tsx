@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useHydrated } from "@/lib/motion";
 import Link from "next/link";
 import { Menu, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,13 +18,8 @@ type Item = { href: string; label: string };
  */
 export function MobileNav({ items }: { items: Item[] }) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useHydrated();
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
-
-  // Portal target is `document.body` — only available after mount.
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Close on ESC; restore body scroll.
   useEffect(() => {

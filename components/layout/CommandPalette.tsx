@@ -1,5 +1,8 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect -- syncs palette open/query
+   state from keyboard shortcuts and custom open events registered on mount. */
+
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";

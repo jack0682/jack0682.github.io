@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
+import { useHydrated } from "@/lib/motion";
 
 interface TooltipState {
   content: string;
@@ -11,9 +12,7 @@ interface TooltipState {
 
 export function FootnoteTooltip() {
   const [tip, setTip] = useState<TooltipState | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useHydrated();
 
   useEffect(() => {
     const enter = (e: MouseEvent) => {

@@ -1,22 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useHydrated } from "@/lib/motion";
 
+/**
+ * Subtle hover affordance for math: a small scale-up on display
+ * equations and an accent wash behind inline math. No click-to-zoom
+ * (the previous `cursor: zoom-in` promised an interaction that did not
+ * exist), and the scale is disabled under prefers-reduced-motion.
+ */
 export function KaTeXZoom() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useHydrated();
 
   useEffect(() => {
     if (!mounted) return;
 
     const style = document.createElement("style");
     style.textContent = `
-      .katex-display {
-        transition: transform 0.2s ease, opacity 0.2s ease;
-        cursor: zoom-in;
-      }
-      .katex-display:hover {
-        transform: scale(1.06);
-        opacity: 0.9;
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        .katex-display {
+          transition: transform 0.2s ease;
+        }
+        .katex-display:hover {
+          transform: scale(1.04);
+        }
       }
       .katex:not(.katex-display .katex) {
         transition: background 0.15s ease;
@@ -28,7 +34,9 @@ export function KaTeXZoom() {
       }
     `;
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, [mounted]);
 
   return null;

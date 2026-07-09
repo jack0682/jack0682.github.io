@@ -1,5 +1,9 @@
 "use client";
 
+/* eslint-disable react-hooks/refs -- the render reads the mutable simulation
+   ref to paint the current requestAnimationFrame frame; the sim is deliberately
+   kept in a ref (not state) so the animation loop doesn't recreate it. */
+
 /**
  * LivingOntology — a self-organising relation field.
  *
@@ -135,8 +139,6 @@ const dist2 = (a: Vec, b: Vec) => {
   return dx * dx + dy * dy;
 };
 
-const clamp = (v: number, lo: number, hi: number) =>
-  v < lo ? lo : v > hi ? hi : v;
 
 /* ───────── simulation ───────── */
 
