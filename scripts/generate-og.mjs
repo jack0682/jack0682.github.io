@@ -279,6 +279,14 @@ const tplOnn = (d) =>
         : d.kind ?? "",
   });
 
+const tplResearch = (r) =>
+  card({
+    eyebrow: "Research",
+    title: r.title,
+    subtitle: r.summary,
+    footer: r.track ? `Track · ${r.track}` : "Research programme",
+  });
+
 /* ── render pipeline ────────────────────────────────────────── */
 async function render(tree, outPath) {
   const svg = await satori(tree, {
@@ -357,6 +365,7 @@ async function main() {
   const notes = loadJson(".velite/notes.json").filter((n) => !n.draft);
   const journal = loadJson(".velite/journal.json").filter((j) => !j.draft);
   const onn = loadJson(".velite/onnDocs.json").filter((d) => !d.draft);
+  const research = loadJson(".velite/research.json").filter((r) => !r.draft);
 
   const jobs = [
     { tree: tplDefault(), out: "public/og-default.png" },
@@ -375,6 +384,10 @@ async function main() {
     ...onn.map((d) => ({
       tree: tplOnn(d),
       out: `public/og/onn/${d.slug}.png`,
+    })),
+    ...research.map((r) => ({
+      tree: tplResearch(r),
+      out: `public/og/research/${r.slug}.png`,
     })),
   ];
 
