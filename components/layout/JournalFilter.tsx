@@ -23,6 +23,19 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
     ? entries.filter((e) => e.track === active)
     : entries;
 
+  // Group the (already date-descending) entries by year so the list reads
+  // as a browsable archive as it grows.
+  const byYear = (() => {
+    const map = new Map<string, Entry[]>();
+    for (const e of filtered) {
+      const year = toIsoDate(e.date).slice(0, 4);
+      const bucket = map.get(year) ?? [];
+      bucket.push(e);
+      map.set(year, bucket);
+    }
+    return [...map.entries()].sort((a, b) => b[0].localeCompare(a[0]));
+  })();
+
   return (
     <>
       {/* track tabs */}
@@ -58,46 +71,55 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
         </div>
       )}
 
-      {/* entry list */}
+      {/* entry list, grouped by year */}
       {filtered.length === 0 ? (
         <p className="py-8 text-sm text-[var(--color-muted)]">
           No entries for this track.
         </p>
       ) : (
-        <ul role="tabpanel" className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
-          {filtered.map((entry) => (
-            <li key={entry.slug}>
-              <Link
-                href={entry.permalink}
-                className="group block py-6 transition-colors sm:py-8"
-              >
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-6">
-                  <time
-                    dateTime={toIsoDate(entry.date)}
-                    className="font-mono text-xs text-[var(--color-subtle)] sm:w-24 sm:shrink-0"
-                  >
-                    {formatDate(entry.date)}
-                  </time>
-                  <div className="flex-1 min-w-0">
-                    <h2 className="font-display text-xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
-                      {entry.title}
-                    </h2>
-                    {entry.summary && (
-                      <p className="mt-2 max-w-[40rem] text-sm leading-relaxed text-[var(--color-muted)]">
-                        {entry.summary}
-                      </p>
-                    )}
-                    {entry.track && (
-                      <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-subtle)]">
-                        {entry.track}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            </li>
+        <div role="tabpanel" className="space-y-12">
+          {byYear.map(([year, yearEntries]) => (
+            <section key={year}>
+              <h2 className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+                {year}
+              </h2>
+              <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+                {yearEntries.map((entry) => (
+                  <li key={entry.slug}>
+                    <Link
+                      href={entry.permalink}
+                      className="group block py-6 transition-colors sm:py-8"
+                    >
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-6">
+                        <time
+                          dateTime={toIsoDate(entry.date)}
+                          className="font-mono text-xs text-[var(--color-subtle)] sm:w-24 sm:shrink-0"
+                        >
+                          {formatDate(entry.date)}
+                        </time>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-display text-xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
+                            {entry.title}
+                          </h3>
+                          {entry.summary && (
+                            <p className="mt-2 max-w-[40rem] text-sm leading-relaxed text-[var(--color-muted)]">
+                              {entry.summary}
+                            </p>
+                          )}
+                          {entry.track && (
+                            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-subtle)]">
+                              {entry.track}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       )}
     </>
   );
