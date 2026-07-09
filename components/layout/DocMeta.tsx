@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatDate, toIsoDate } from "@/lib/format";
+import { publicTags } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 type Props = {
@@ -42,7 +43,8 @@ export function DocMeta({
     showUpdated ||
     (typeof wordCount === "number" && wordCount > 0) ||
     (typeof readingTime === "number" && readingTime > 0);
-  const hasTags = Array.isArray(tags) && tags.length > 0;
+  const cleanTags = Array.isArray(tags) ? publicTags(tags) : [];
+  const hasTags = cleanTags.length > 0;
 
   if (!hasMeta && !hasTags) return null;
 
@@ -78,7 +80,7 @@ export function DocMeta({
       )}
       {hasTags && (
         <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-1.5">
-          {tags!.map((tag) => (
+          {cleanTags.map((tag) => (
             <li key={tag}>
               <Link
                 href={`/tags/${tag}/`}

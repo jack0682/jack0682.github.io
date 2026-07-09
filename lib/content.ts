@@ -514,6 +514,47 @@ export type TaggedItem = {
   summary?: string;
 };
 
+/* ── controlled tag vocabulary ─────────────────────────────────── */
+
+// Merge spelling / singular–plural variants into one canonical tag.
+const TAG_ALIASES: Record<string, string> = {
+  theorems: "theorem",
+  foundations: "foundation",
+  claims: "claim",
+  doors: "door",
+};
+
+// Presentational / process tags that shouldn't pollute the topic taxonomy.
+const TAG_BLOCKLIST = new Set([
+  "hero",
+  "capstone",
+  "snapshot",
+  "milestone",
+  "draft",
+  "ongoing",
+  "index",
+  "status",
+  "weekly",
+  "review",
+]);
+
+export function normalizeTag(tag: string): string {
+  return TAG_ALIASES[tag] ?? tag;
+}
+
+/** Canonical, de-noised, de-duplicated tags for display + indexing. */
+export function publicTags(tags: readonly string[]): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  for (const raw of tags) {
+    const t = normalizeTag(raw);
+    if (TAG_BLOCKLIST.has(t) || seen.has(t)) continue;
+    seen.add(t);
+    out.push(t);
+  }
+  return out;
+}
+
 export const tagIndex = (() => {
   const map = new Map<string, TaggedItem[]>();
 
@@ -524,16 +565,16 @@ export const tagIndex = (() => {
   };
 
   for (const n of allNotes) {
-    for (const t of n.tags) push(t, { kind: "note", title: n.title, permalink: n.permalink, summary: n.summary });
+    for (const t of publicTags(n.tags)) push(t, { kind: "note", title: n.title, permalink: n.permalink, summary: n.summary });
   }
   for (const p of papers) {
-    for (const t of p.tags) push(t, { kind: "paper", title: p.title, permalink: p.permalink, date: p.date, summary: p.abstract.slice(0, 160) });
+    for (const t of publicTags(p.tags)) push(t, { kind: "paper", title: p.title, permalink: p.permalink, date: p.date, summary: p.abstract.slice(0, 160) });
   }
   for (const j of journalEntries) {
-    for (const t of j.tags) push(t, { kind: "journal", title: j.title, permalink: j.permalink, date: j.date, summary: j.summary });
+    for (const t of publicTags(j.tags)) push(t, { kind: "journal", title: j.title, permalink: j.permalink, date: j.date, summary: j.summary });
   }
   for (const d of onnAllDocs) {
-    for (const t of d.tags) push(t, { kind: "onn", title: d.title, permalink: d.permalink, summary: d.summary });
+    for (const t of publicTags(d.tags)) push(t, { kind: "onn", title: d.title, permalink: d.permalink, summary: d.summary });
   }
 
   return [...map.entries()]
