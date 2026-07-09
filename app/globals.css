@@ -212,11 +212,14 @@ hr {
    is actually syntax-highlighted in both light and dark. */
 .prose :where(pre) code[data-theme],
 .prose :where(pre) code[data-theme] span {
-  color: var(--shiki-light);
+  /* Fallback to ink for spans without a token colour (line wrappers,
+     plaintext blocks) — otherwise they inherit the typography plugin's
+     light pre-code colour and vanish on the light surface. */
+  color: var(--shiki-light, var(--color-ink));
 }
 :root.dark .prose :where(pre) code[data-theme],
 :root.dark .prose :where(pre) code[data-theme] span {
-  color: var(--shiki-dark);
+  color: var(--shiki-dark, var(--color-ink));
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -376,6 +379,9 @@ hr {
   --tw-prose-quote-borders: var(--color-accent);
   --tw-prose-captions: var(--color-subtle);
   --tw-prose-code: var(--color-ink);
+  /* pre-code defaults to a light colour (for dark code backgrounds); this
+     site uses a light code surface, so pin it to ink for readability. */
+  --tw-prose-pre-code: var(--color-ink);
   --tw-prose-th-borders: var(--color-rule);
   --tw-prose-td-borders: var(--color-rule);
 }
