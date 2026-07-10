@@ -34,6 +34,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [query, setQuery] = useState("");
+  const [kind, setKind] = useState<SearchItem["kind"] | null>(null);
   const router = useRouter();
 
   useEffect(() => setMounted(true), []);
@@ -60,9 +61,12 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
     };
   }, [open]);
 
-  // Reset query when palette closes so reopening starts fresh.
+  // Reset query + filter when palette closes so reopening starts fresh.
   useEffect(() => {
-    if (!open) setQuery("");
+    if (!open) {
+      setQuery("");
+      setKind(null);
+    }
   }, [open]);
 
   // MiniSearch instance — built once per `items` reference.
@@ -95,16 +99,24 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
     [items],
   );
 
-  // Grouped browse view (empty query).
+  // Available kind filters, in a stable order.
+  const kinds = useMemo(() => {
+    const order: SearchItem["kind"][] = ["note", "paper", "journal", "track"];
+    const present = new Set(items.map((i) => i.kind));
+    return order.filter((k) => present.has(k));
+  }, [items]);
+
+  // Grouped browse view (empty query), respecting the kind filter.
   const groups = useMemo(() => {
     const map = new Map<string, SearchItem[]>();
     for (const it of items) {
+      if (kind && it.kind !== kind) continue;
       const bucket = map.get(it.group) ?? [];
       bucket.push(it);
       map.set(it.group, bucket);
     }
     return [...map.entries()].sort(([a], [b]) => a.localeCompare(b));
-  }, [items]);
+  }, [items, kind]);
 
   // Ranked search view (non-empty query). MiniSearch returns best-first.
   const ranked = useMemo<RankedMatch[]>(() => {
@@ -122,8 +134,9 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
         const body = it.slug ? (bodyIndex[it.slug] ?? "") : "";
         return { item: it, snippet: makeSnippet(body, tokens) };
       })
-      .filter((r): r is RankedMatch => r !== null);
-  }, [query, miniSearch, itemsById]);
+      .filter((r): r is RankedMatch => r !== null)
+      .filter((r) => !kind || r.item.kind === kind);
+  }, [query, miniSearch, itemsById, kind]);
 
   const navigate = (href: string) => {
     setOpen(false);
@@ -133,6 +146,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
   if (!mounted) return null;
 
   const isSearching = query.trim().length > 0;
+  const browseCount = groups.reduce((n, [, e]) => n + e.length, 0);
 
   return createPortal(
     <AnimatePresence>
@@ -200,6 +214,38 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
                 </button>
               </div>
 
+              {kinds.length > 1 && (
+                <div className="flex flex-wrap gap-1 border-b border-[var(--color-rule)] px-3 py-2">
+                  <button
+                    type="button"
+                    onClick={() => setKind(null)}
+                    className={cn(
+                      "rounded-sm px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors",
+                      kind === null
+                        ? "bg-[var(--color-rule)]/50 text-[var(--color-accent)]"
+                        : "text-[var(--color-subtle)] hover:text-[var(--color-ink)]",
+                    )}
+                  >
+                    All
+                  </button>
+                  {kinds.map((k) => (
+                    <button
+                      key={k}
+                      type="button"
+                      onClick={() => setKind(k)}
+                      className={cn(
+                        "rounded-sm px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors",
+                        kind === k
+                          ? "bg-[var(--color-rule)]/50 text-[var(--color-accent)]"
+                          : "text-[var(--color-subtle)] hover:text-[var(--color-ink)]",
+                      )}
+                    >
+                      {KIND_TAB_LABEL[k]}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               <Command.List className="max-h-[55dvh] overflow-y-auto overscroll-contain px-2 py-2 sm:max-h-[60vh]">
                 {isSearching && ranked.length === 0 && (
                   <Command.Empty className="px-4 py-8 text-center text-sm italic text-[var(--color-subtle)]">
@@ -247,7 +293,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
                   {isSearching
                     ? `${ranked.length} match${ranked.length === 1 ? "" : "es"}`
-                    : `${items.length} entries`}
+                    : `${browseCount} ${kind ? "in " + KIND_TAB_LABEL[kind].toLowerCase() : "entries"}`}
                 </p>
               </div>
             </Command>
@@ -323,6 +369,13 @@ function ItemRow({
     </Command.Item>
   );
 }
+
+const KIND_TAB_LABEL: Record<SearchItem["kind"], string> = {
+  note: "Notes",
+  paper: "Papers",
+  journal: "Journal",
+  track: "Tracks",
+};
 
 function KindBadge({ kind }: { kind: SearchItem["kind"] }) {
   const label = { note: "note", paper: "paper", journal: "journal", track: "track" }[kind];
