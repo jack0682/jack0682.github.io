@@ -151,7 +151,7 @@ export function TOC({ toc }: { toc: TocItem[] }) {
           aria-label="Table of contents"
           className={cn(
             "liquid-glass",
-            "fixed bottom-0 left-0 right-0 z-40 max-h-[60vh] overflow-y-auto px-6 pb-8 pt-6 text-sm transition-transform duration-300 ease-out",
+            "fixed bottom-0 left-0 right-0 z-40 max-h-[60vh] overflow-y-auto px-6 pb-8 pt-6 text-sm transition-transform duration-[var(--dur-slow)] ease-[var(--ease-out)]",
             drawerOpen ? "translate-y-0" : "translate-y-full",
           )}
         >
