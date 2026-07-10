@@ -7,6 +7,7 @@ import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from "rehype-pretty-code";
 import { remarkTermLinks } from "./lib/remark/term-links";
+import { codeThemeLight, codeThemeDark } from "./lib/code-themes";
 
 /* ──────────────────────────────────────────────────────────────
    jack0682.github.io — content layer
@@ -212,7 +213,8 @@ const notes = defineCollection({
 const prettyCodeOptions: PrettyCodeOptions = {
   // Cool-toned dark theme (`slack-dark`) pairs with the new cool
   // dark-mode palette; the warmer `github-dark-dimmed` clashed.
-  theme: { light: "github-light", dark: "slack-dark" },
+  // Custom AA-compliant themes (see lib/code-themes.ts).
+  theme: { light: codeThemeLight, dark: codeThemeDark },
   keepBackground: false,
   defaultLang: { block: "plaintext", inline: "plaintext" },
 };
