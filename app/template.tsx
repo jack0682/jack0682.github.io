@@ -18,6 +18,7 @@ export default function RouteTemplate({ children }: { children: ReactNode }) {
 
   return (
     <motion.div
+      data-reveal
       initial={reduce ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{

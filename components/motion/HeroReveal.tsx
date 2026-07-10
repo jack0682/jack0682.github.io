@@ -41,7 +41,7 @@ export function HeroReveal({ children }: { children: ReactNode[] }) {
   return (
     <motion.div variants={container} initial="hidden" animate="show">
       {children.map((child, i) => (
-        <motion.div key={i} variants={item}>
+        <motion.div key={i} data-reveal variants={item}>
           {child}
         </motion.div>
       ))}

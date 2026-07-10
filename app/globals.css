@@ -520,6 +520,21 @@ hr {
   }
 }
 
+/* ── No-JS fallback for framer reveals ────────────────────────
+   The home hero (HeroReveal) and the route wrapper (template.tsx)
+   render their initial state as inline `opacity:0` so framer can play
+   the entrance. If scripting is unavailable the animation never runs
+   and the content would stay invisible — so force any [data-reveal]
+   wrapper visible. Scoped to `scripting: none`, so the animated path
+   (JS present) is completely untouched. `!important` is required to
+   beat framer's inline style. */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ── reduced-motion: quiet the animations ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
