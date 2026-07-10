@@ -27,6 +27,19 @@
 
   --measure: 68ch;
 
+  /* ── Motion vocabulary (single source of truth) ──────────────
+     One signature easing (a gentle decelerate) + one symmetric
+     ease for reversible states, and a 4-step duration scale. Every
+     CSS transition and framer preset routes back to these so the
+     whole site moves with one hand. The JS mirror lives in
+     lib/motion.ts (same numbers). */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;   /* micro: colour / hover */
+  --dur-base: 220ms;   /* standard: scrims, small fades */
+  --dur-slow: 320ms;   /* larger: drawers, panels */
+  --dur-slower: 500ms; /* deliberate: hero reveal */
+
   color-scheme: light;
 }
 
@@ -101,6 +114,15 @@
   --font-mono: var(--font-mono);
 }
 
+/* Route Tailwind v4's default transition timing to the signature curve.
+   Every bare `transition` / `transition-colors` utility (≈90 hover/link
+   sites) inherits this, so the most-used motion on the site stops falling
+   back to Tailwind's generic cubic-bezier(0.4,0,0.2,1). Duration default
+   (150ms) is unchanged; explicit `duration-*` utilities still win. */
+@theme {
+  --default-transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
 /* ── Base ─────────────────────────────────────────────────────── */
 html {
   background: var(--color-bg);
@@ -109,7 +131,7 @@ html {
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  transition: background-color 250ms ease, color 250ms ease;
+  transition: background-color 250ms var(--ease-out), color 250ms var(--ease-out);
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -498,6 +520,21 @@ hr {
   }
 }
 
+/* ── No-JS fallback for framer reveals ────────────────────────
+   The home hero (HeroReveal) and the route wrapper (template.tsx)
+   render their initial state as inline `opacity:0` so framer can play
+   the entrance. If scripting is unavailable the animation never runs
+   and the content would stay invisible — so force any [data-reveal]
+   wrapper visible. Scoped to `scripting: none`, so the animated path
+   (JS present) is completely untouched. `!important` is required to
+   beat framer's inline style. */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ── reduced-motion: quiet the animations ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -526,7 +563,7 @@ hr {
 :root[data-focus="on"] div[aria-hidden][class*="fixed"][class*="origin-left"] {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms ease;
+  transition: opacity 250ms var(--ease-out);
 }
 :root[data-focus="on"] header.liquid-glass--bar:hover,
 :root[data-focus="on"] aside.fixed:hover {

@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { BIO, BIO_LOCALES, type BioLocale } from "@/lib/bio";
 import { cn } from "@/lib/cn";
+import { springSnappy, tween } from "@/lib/motion";
 
 const STORAGE_KEY = "bio-lang";
 
@@ -71,11 +72,7 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
                     layoutId="bio-active-indicator"
                     aria-hidden
                     className="liquid-glass-puck pointer-events-none absolute inset-0 z-[1] overflow-hidden"
-                    transition={{
-                      type: "spring",
-                      stiffness: 320,
-                      damping: 26,
-                    }}
+                    transition={springSnappy}
                   >
                     {/* dome highlight — light caught on the meniscus */}
                     <span
@@ -116,7 +113,7 @@ export function BioToggle({ initialLocale = "en" }: { initialLocale?: BioLocale 
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.22, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={tween.quick}
         >
           <h2 className="font-display text-[clamp(1.5rem,5vw,2.25rem)] leading-[1.15] tracking-[-0.01em] text-[var(--color-ink)]">
             {bio.heading}

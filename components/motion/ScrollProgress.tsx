@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "motion/react";
-import { useReducedMotionSafe } from "@/lib/motion";
+import { springSoft, useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Thin accent-coloured bar at the very top of the viewport that fills
@@ -13,11 +13,7 @@ import { useReducedMotionSafe } from "@/lib/motion";
 export function ScrollProgress() {
   const reduce = useReducedMotionSafe();
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 24,
-    mass: 0.3,
-  });
+  const scaleX = useSpring(scrollYProgress, springSoft);
 
   if (reduce) return null;
 

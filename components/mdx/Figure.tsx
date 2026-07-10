@@ -20,6 +20,7 @@ import {
 } from "react-zoom-pan-pinch";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { tween } from "@/lib/motion";
 
 type Props = {
   src: string;
@@ -146,7 +147,7 @@ function Lightbox({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={tween.quick}
           // Background click closes; the image and controls stop
           // propagation so they don't dismiss accidentally.
           onClick={onClose}
@@ -252,7 +253,7 @@ function Lightbox({
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.18 }}
+                  transition={tween.quick}
                   className="max-h-[88vh] max-w-[92vw] select-none object-contain"
                   draggable={false}
                 />

@@ -58,7 +58,7 @@ export default function ResearchPage() {
                 </div>
                 <span
                   aria-hidden
-                  className="hidden shrink-0 font-mono text-xs text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)] sm:inline"
+                  className="hidden shrink-0 font-mono text-xs text-[var(--color-subtle)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent)] sm:inline"
                 >
                   →
                 </span>

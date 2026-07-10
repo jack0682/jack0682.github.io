@@ -7,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { useReducedMotionSafe } from "@/lib/motion";
+import { springSoft, useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Animated marginal χ glyph for the home hero. Tracks pointer
@@ -23,8 +23,8 @@ export function HeroChi() {
   const my = useMotionValue(0.5);
 
   // Spring smoothing so the glyph trails the cursor instead of snapping.
-  const sx = useSpring(mx, { stiffness: 80, damping: 18, mass: 0.4 });
-  const sy = useSpring(my, { stiffness: 80, damping: 18, mass: 0.4 });
+  const sx = useSpring(mx, springSoft);
+  const sy = useSpring(my, springSoft);
 
   // Map normalised mouse position [0..1] → small offsets/rotation.
   const rotate = useTransform(sx, [0, 1], [-6, 6]);

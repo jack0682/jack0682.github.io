@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Search, X } from "lucide-react";
 import MiniSearch from "minisearch";
 import { cn } from "@/lib/cn";
+import { tween } from "@/lib/motion";
 import type { SearchItem } from "@/lib/content";
 import bodyIndexJson from "../../.velite/body-index.json";
 
@@ -165,7 +166,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={tween.quick}
           />
           <motion.div
             className={cn(
@@ -182,7 +183,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+            transition={tween.quick}
           >
             <Command label="Global search" loop shouldFilter={false}>
               <div className="flex items-center gap-3 border-b border-[var(--color-rule)] px-5 py-4">

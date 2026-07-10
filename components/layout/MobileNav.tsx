@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useHydrated } from "@/lib/motion";
+import { tween, useHydrated } from "@/lib/motion";
 import Link from "next/link";
 import { Menu, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -82,7 +82,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={tween.quick}
                 />
 
                 {/* sliding panel */}
@@ -100,7 +100,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                   initial={{ x: "100%" }}
                   animate={{ x: 0 }}
                   exit={{ x: "100%" }}
-                  transition={{ duration: 0.28, ease: [0.22, 0.61, 0.36, 1] }}
+                  transition={tween.panel}
                 >
               <div className="flex items-center justify-between">
                 <span className="font-display text-base text-[var(--color-ink)]">

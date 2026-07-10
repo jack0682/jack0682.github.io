@@ -179,7 +179,7 @@ export default function Home() {
                 >
                   <time
                     dateTime={toIsoDate(item.date)}
-                    className="font-mono text-[11px] tabular-nums tracking-[0.05em] text-[var(--color-subtle)]"
+                    className="font-mono text-[11px] tabular-nums tracking-[0.05em] text-[var(--color-subtle)] transition-colors group-hover:text-[var(--color-accent)]"
                   >
                     {toIsoDate(item.date)}
                   </time>

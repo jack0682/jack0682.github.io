@@ -10,6 +10,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
+import { tween } from "@/lib/motion";
 import type { SearchItem } from "@/lib/content";
 
 type Section = {
@@ -120,7 +121,7 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.18 }}
+                transition={tween.quick}
               />
               <motion.div
                 className={cn(
@@ -135,7 +136,7 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 8 }}
-                transition={{ duration: 0.22, ease: [0.22, 0.61, 0.36, 1] }}
+                transition={tween.quick}
               >
                 <div className="flex items-baseline justify-between">
                   <div className="flex items-baseline gap-2">
