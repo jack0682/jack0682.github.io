@@ -3,51 +3,65 @@ title: "ONN Research Status — 2026"
 slug: onn-research-status-2026
 kind: roadmap
 tags: [onn, status, roadmap]
-summary: "Current research status of the ONN programme — what is settled, what is under active development, and the open problems on the critical path."
+summary: "Current, audited status of the ONN / ORTSF programme: the central higher-order question resolved to a scoped No-Go boundary, one modest positive survived, ORTSF reduced to a standard control certificate, and the programme moved to ULR."
+updated: "2026-07-10"
 draft: true
 ---
 
-*AI-generated summary based on the published papers and the [current-state snapshot](/onn/current-state-snapshot-2026/).
-All uncertain items are flagged with inline TODO comments.*
+*Rewritten 2026-07-10 against the authoritative record in `onn_ws/ONN`. An
+earlier AI-generated version attributed settled results and numbers to the
+papers that are not present in the source; those are removed here.*
 
 ---
 
-## What Is Settled
+## Bottom line
 
-1. **Projection-consensus descent.** The operator $T = T_\text\{proj\} \circ T_\text\{consensus\}$ contracts in the semantic energy metric. Proved operator-theoretically (see [the framework paper](/papers/onn-ortsf-2026/)).
+The ONN / ORTSF programme's central question — *is measured higher-order
+relational structure a usable discriminative resource beyond pairwise?* —
+resolved to a **rigorous negative / boundary result**, not a positive
+framework. `onn_ws/ONN` is now archived; live work continues under **ULR**.
 
-2. **Constraint satisfaction at CSR = 1.0.** The LOGOS solver (Forman--Ricci curvature + Deep Delta Learning + CMA-ES) achieves topology-loss reduction from 11.68 to 1.15 and a 95% success rate, seed-independent across twenty random initialisations (see [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/)).
+## What is settled
 
-3. **Constructor determinism.** After the constructor-alias bug fix, 59/59 benchmark runs reproduce deterministically. CI gates P1--P3 (schema lock, determinism audit, semantic safety) enforce this going forward.
+1. **The Two Ceilings (No-Go), proven.** Under a *complete-pairwise observation
+   contract*, on consistent, complete, finite-$\pi_1$ scenes, every admissible
+   measured higher-order readout is pairwise-measurable, exact/zero,
+   label-injected, or noise — so a Bayes-optimal pairwise decoder gains **no
+   information** from it. Witness: the $\operatorname{coker}\delta_1$ area datum
+   is analytically reconstructible from pairwise positions to the noise floor
+   (residual $0.050 \approx \sigma$). Scope: does **not** broadly refute
+   higher-order/sheaf networks — each escape violates a named hypothesis
+   (incompleteness, dynamics, external sensor, infinite-cd topology, bounded
+   capacity).
+2. **A modest, non-higher-order positive.** The *direction* of the measured
+   curvature field carries signal beyond magnitude (E1b Q-weak $= +0.115/+0.120$
+   AUROC, pass-fraction $1.0$; selection-corrected single-arm $\approx +0.08$–$0.10$).
+3. **An ORTSF control certificate (standard, scoped).** A proved and
+   runtime-enforced delay margin $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$
+   plus a sufficient small-gain ($\rho + K_c < 1$) delay-independent certificate.
+   "Systems completion, not novelty." See
+   [the certificate page](/onn/theorem-delay-robust-bound/).
+4. **Methodology finding.** A learner is neither necessary nor sufficient to judge
+   an information / reconstructibility claim — decide analytically (false positive
+   $E_{w_2}$, false negative $P_{\mathrm{coker}}$).
 
-4. **Leakage inflation inequality (Lemma L1).** $\lVert M_\text\{off\} \rVert_2 \leq \mu_\text\{diag\} + \eta_\text\{off\} \cdot \lVert M_\text\{off\} \rVert_2$ is proved and forms the basis for the quantile gate.
+## What was refuted / did not survive audit
 
-5. **Cohomological framework (three-axis).** Intrinsic cohomology, relative cohomology (with rank formulas), and persistence barcodes are related by a long exact sequence and computable in polynomial time (see [cohomology paper](/papers/axiomatic-cohomology-relations/)).
+- The **higher-order loop advantage** (the once-headlined "loop beats edge $+0.165$")
+  does **not** survive (E1b Q-strong $+0.045/+0.073$, Holm $p = 0.22$, GRAY).
+- **"Topology preservation" as stated** (Betti preserved, a "CSR $\to 1.0$"
+  metric): the real result is conditional *harmonic-subspace* preservation only
+  (hard anchor); the soft-anchor version is refuted for $\dim H > 0$. See the
+  [audit](/onn/theorem-topology-preservation/).
+- A **cohomological Lyapunov certificate**: no such object exists. See the
+  [audit](/onn/theorem-cohomological-stability/).
+- The **original paper's 7–8 grand theorems**: 0 of 8 survive as written.
+- **Every legacy number** — `CSR = 1.0`, `τ_max = 177 μs`, "3M-node", `99.75%`,
+  topology-loss `11.68 → 1.15`, `c_J ≤ 0.7` — is **not present in the source**
+  and has been removed.
 
-## Active Development
+## Where it is going
 
-1. **Constructive Lyapunov certificate.** The ONN total loss $\mathcal\{L\}_\text\{total\}(S,A)$ is conjectured to serve as an explicit Lyapunov function with class-$\mathcal\{K\}_\infty$ bounds. Empirical validation on 3M-node networks shows 99.75% improvement over baselines, but formal peer review is pending (see [Lyapunov paper](/papers/constructive-lyapunov-onn/)).
-
-2. **Delay-robust bound ($\tau_\text\{max\}$).** The Lyapunov analysis yields $\tau_\text\{max\} = 177\;\mu\text\{s\}$ for 3M-node systems. The bound is derived but its tightness under real jitter distributions is under empirical audit (OP-019). {/* TODO: verify tightness claim against real-system logs */}
-
-3. **Regime-stratified quantile gates (A3', A4').** Drift guard (KL-divergence detector) and mixing-aware quantile estimation are implemented. Calibration on real deployment logs is the next step (Phase 6 tasks T-03, T-04, T-06).
-
-4. **Fiber Jacobian bounds (Lemmas L5--L6).** Spectral decomposition along the 64D fiber ($B_\{16\} \oplus F_\{32\} \oplus I_\{16\}$) confirms $c_J \leq 0.7$ on 59 benchmark scales, but large-scale (100K+) behaviour is still UNKNOWN. {/* TODO: verify at 100K+ scale */}
-
-## Open Problems
-
-| ID | Problem | Type | Status |
-|----|---------|------|--------|
-| OP-001 | Global (non-conditional) stability theorem | Theoretical | OPEN |
-| OP-018 | Monitor lag quantification on real systems | Empirical | ACTIVE |
-| OP-019 | Delay envelope conservativeness audit | Empirical | ACTIVE |
-| OP-020 | Finite-sample confidence correction formula (DKW mismatch) | Theoretical | NEW |
-
-{/* TODO: verify whether OP-001 has a candidate proof route beyond Route B (Lyapunov/ISS) */}
-
-## Next Steps
-
-1. **Empirical validation (Phase 6).** Run T-03 (fiber Jacobian at scale), T-04 (drift-detector threshold calibration), T-06 (block-bootstrap coverage), and M-04 (curvature-leakage correlation).
-2. **Proof-route selection.** Choose between Route A (small-gain + quantile envelope) and Route B (Lyapunov/ISS) for the main stability theorem based on Phase 6 results.
-3. **Deployment acceptance.** Complete the checklist in the [snapshot](/onn/current-state-snapshot-2026/) -- false-accept/reject audits, monitor-lag calibration, and operator manual.
-4. **Paper finalisation.** Camera-ready version of the [ONN + ORTSF paper](/papers/onn-ortsf-2026/) (accepted, *International Journal of Topology*); preprints for the Lyapunov and constraint-satisfaction papers.
+The live programme is **ULR** (Unified Latent Representation). The
+[published ONN + ORTSF paper](/papers/onn-ortsf-2026/) remains the paper of
+record for the original framing; this page is the current, audited status.

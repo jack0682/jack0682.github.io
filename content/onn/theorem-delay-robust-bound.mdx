@@ -1,60 +1,65 @@
 ---
-title: "Theorem — Delay-Robust Bound for ORTSF"
+title: "ORTSF Delay-Margin Certificate"
 slug: theorem-delay-robust-bound
 kind: theorem
 tags: [onn, theorem, delay, robust, ortsf, control]
-summary: "The maximum tolerable communication delay tau_max under which the ORTSF controller maintains stability — derived from the Lyapunov analysis."
+summary: "The one real, verified control result of the ORTSF side: a proved and runtime-enforced delay margin Δt_max = φ_PM / ω_c, plus a sufficient small-gain delay-independent certificate. Standard control theory, honestly scoped — no cohomology, no microsecond bound."
+updated: "2026-07-10"
 draft: true
 ---
 
-*AI-generated theorem statement drawn from the [framework paper](/papers/onn-ortsf-2026/) and the [Lyapunov paper](/papers/constructive-lyapunov-onn/).
-Gaps are marked with TODO comments.*
+*Rewritten 2026-07-10 against `onn_ws/ONN`. The earlier version stated
+$\tau_{\max} = 177\;\mu\text{s}$ "for 3M-node networks" and derived stability from
+a cohomological Lyapunov function — neither of which is in the source. The old
+published control numbers ($\text{dt}_{\max} = 52\text{ ms}$, phase margin
+$28°$) are not regenerable and are dropped. This is the certificate that is
+actually proved and enforced.*
 
----
+## Statement (delay margin)
 
-## Statement
-
-**Theorem (Delay-Robust Bound for ORTSF).**
-Consider the ORTSF (Ontology-Resolved Topological State Feedback) closed-loop system driven by an ONN whose total loss $\mathcal\{L\}_\text\{total\}(S, A)$ serves as a Lyapunov certificate. Let $\tau$ denote the one-way communication delay between the perception (ONN) subsystem and the controller.
-
-There exists a critical delay
-
-$$
-\tau_\text\{max\} = 177\;\mu\text\{s\}
-$$
-
-such that for all $\tau \leq \tau_\text\{max\}$ the closed-loop system satisfies:
-
-1. **Asymptotic stability.** The equilibrium of the delay-differential system is asymptotically stable with exponential convergence rate.
-2. **Topology preservation.** The Betti numbers of the latent representation remain invariant under the delayed feedback.
-3. **Input-to-State Stability (ISS).** For bounded disturbances $\lVert d(t) \rVert \leq \bar\{d\}$, the state deviation remains bounded by a class-$\mathcal\{KL\}$ function of the initial error plus a class-$\mathcal\{K\}$ function of $\bar\{d\}$.
-
-The bound $\tau_\text\{max\} = 177\;\mu\text\{s\}$ is established for a 3M-node semantic network. {/* TODO: state how tau_max scales with network size (conjectured inverse relationship with node count) */}
-
-## Derivation Outline
-
-The derivation, detailed in the [Lyapunov paper](/papers/constructive-lyapunov-onn/), proceeds in three steps:
-
-1. **Lyapunov candidate.** The ONN total loss $\mathcal\{L\}_\text\{total\}(S, A)$ -- combining semantic consensus loss, topological connection loss, and contextual constraint loss -- is shown to be positive definite and radially unbounded with class-$\mathcal\{K\}_\infty$ bounds:
+For the ORTSF closed loop over the proved plant
+$G(s) = C(sI + M)^{-1}B$ with $M = L_F + \mu\,\Pi_{H^\perp}$ (poles
+$-(\lambda_i + \mu)$, dominant pole $p = \lambda_2 + \mu$), the phase margin is
 
 $$
-\alpha_1(\lVert x \rVert) \leq \mathcal\{L\}_\text\{total\}(x) \leq \alpha_2(\lVert x \rVert)
+\varphi_{\mathrm{PM}} = \frac{\pi}{2} - \arctan\!\left(\frac{\omega_c}{p}\right),
 $$
 
-where $\alpha_1, \alpha_2 \in \mathcal\{K\}_\infty$ are explicitly constructed. {/* TODO: fill exact forms of alpha_1 and alpha_2 from the paper */}
-
-2. **Razumikhin / Krasovskii extension.** The delay-differential form of the closed loop is handled via a Razumikhin-type argument: if $\mathcal\{L\}_\text\{total\}(x(t+\theta)) \leq p \cdot \mathcal\{L\}_\text\{total\}(x(t))$ for $\theta \in [-\tau, 0]$ and some $p > 1$, then $\dot\{\mathcal\{L\}\}_\text\{total\} < 0$ along trajectories. {/* TODO: confirm whether Razumikhin or Krasovskii functional is used */}
-
-3. **Explicit bound computation.** The interplay between the contraction rate of $T = T_\text\{proj\} \circ T_\text\{consensus\}$ (governed by $\mu_\text\{diag\}$ and the off-diagonal coupling $\kappa_\text\{off\}$) and the delay amplification envelope $\hat\{\Gamma\}$ yields:
+and the closed loop tolerates any communication delay up to
 
 $$
-\tau_\text\{max\} = \frac\{1 - \mu_\text\{diag\}(1 + \kappa_\text\{off\})\}\{\lambda_\text\{max\}(J_\text\{ONN\}) \cdot \hat\{\Gamma\}\}
+\Delta t_{\max} = \frac{\varphi_{\mathrm{PM}}}{\omega_c}.
 $$
 
-where $\lambda_\text\{max\}(J_\text\{ONN\})$ is the largest eigenvalue of the ONN Jacobian and $\hat\{\Gamma\}$ is the empirically measured delay amplification factor. Substituting the benchmark values ($\mu_\text\{diag\} \approx 0.7$, $\kappa_\text\{off\}$ from quantile estimation, $\hat\{\Gamma\}$ from 3M-node runs) gives the reported $177\;\mu\text\{s\}$. {/* TODO: verify exact numerical substitution */}
+This is **proved and enforced at runtime**: the `GuardedORTSFPipeline` computes
+$\Delta t_{\max}$ from the (computed, not hand-built) spectrum, admits commands
+while $\text{delay} < \Delta t_{\max}$, and falls back to a zero-velocity command
+when $\text{delay} \geq \Delta t_{\max}$ (verified in the integration tests to
+$10^{-12}$).
 
-## Scope and Limitations
+## Nonlinear small-gain certificate (sufficient, conservative)
 
-- The delay bound feeds into the main stability theorem via Lemma L4 (delay-coupling via small gain), currently at CONJECTURE status. Route A (small-gain + quantile envelope) is the chosen proof path.
-- The $177\;\mu\text\{s\}$ figure is validated on a 3M-node network; generality across topologies is under investigation (OP-019). {/* TODO: report delay-envelope conservativeness audit results */}
-- Assumes A8 (jitter process bounded), marked NEEDS-EXPERIMENT. Real deployment validation is a Phase 6 task.
+If the ONN spine contraction $\rho_{\mathrm{ONN}} = \rho_{\mathrm{drift}} < 1$ and
+the ORTSF gain $\gamma_{\mathrm{ortsf}}$ satisfy
+
+$$
+\rho_{\mathrm{ONN}} \cdot \gamma_{\mathrm{ortsf}} < 1,
+$$
+
+the interconnected loop is stable for **arbitrary delay** — a *delay-independent*
+guarantee. It is **sufficient but not tight** (a conservative envelope), validated
+by simulation: sound where it holds, non-vacuous where it fails.
+
+## Honest scope
+
+- **This is systems completion, not novelty.** Delay-robust control is standard;
+  the margin above is a linearized-plant phase-margin result plus a conservative
+  small-gain envelope. The `[GAP-NL]` nonlinear case is only partially closed.
+- **The margin is *not* set by the graph spectrum $\lambda_2$.** A larger
+  $\lambda_2$ only moves the plant pole; the crossover $\omega_c$ (hence the
+  margin) is set independently and the controller can re-gain. The earlier
+  "delay margin governed by $\lambda_2$ / by cohomological invariants" coupling
+  was refuted.
+- **No numeric bound is claimed as a physical result.** The certificate is
+  symbolic and enforced; the only concrete figure in the source is an
+  *illustrative* $\Delta t_{\max} = 0.49\text{ s}$ in an end-to-end demo.

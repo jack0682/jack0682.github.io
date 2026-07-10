@@ -1,58 +1,46 @@
 ---
-title: "Theorem — Topology Preservation under Projection-Consensus"
+title: "Audit — Topology Preservation under Projection-Consensus"
 slug: theorem-topology-preservation
-kind: theorem
-tags: [onn, theorem, topology, preservation, projection]
-summary: "ONN's projection-consensus mechanism preserves the topological structure of the ontology graph in the latent space — the core structural guarantee."
+kind: essay
+tags: [onn, audit, topology, preservation, projection]
+summary: "What the ONN 'topology preservation' claim actually established once audited: not Betti-number preservation with CSR → 1.0, but a weaker, conditional harmonic-subspace preservation — with the soft-anchor version refuted."
+updated: "2026-07-10"
 draft: true
 ---
 
-*AI-generated theorem statement extracted from the [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/) and the [framework paper](/papers/onn-ortsf-2026/).
-Gaps are marked with TODO comments.*
+*Rewritten 2026-07-10 against `onn_ws/ONN`. This page previously stated a
+theorem (Betti numbers preserved, a "CSR $\to 1.0$" metric) that is **not
+present in the research source**. It is corrected here to the audited result.*
 
----
+## The claim as originally stated
 
-## Statement
+That the ONN operator $T = T_{\mathrm{proj}} \circ T_{\mathrm{consensus}}$ drives
+a "Constraint Satisfaction Rate" $\operatorname{CSR}(T^n(x_0)) \to 1.0$ and
+preserves the Betti numbers of the latent embedding,
+$\beta_k(\mathcal{R}(T^n(x_0))) = \beta_k(G)$.
 
-**Theorem (Topology Preservation under Projection-Consensus).**
-Let $G = (V, E, w)$ be a weighted ontology graph with Forman--Ricci curvature $\operatorname\{Ric\}_F$ computed on each edge. Let $T = T_\text\{proj\} \circ T_\text\{consensus\}$ be the ONN projection-consensus operator acting on the 64-dimensional fiber space $\mathcal\{F\} = B_\{16\} \oplus F_\{32\} \oplus I_\{16\}$.
+## What the audit found
 
-Then the LOGOS solver driven by $T$ satisfies:
+- **No `CSR` metric, and no `11.68 → 1.15` topology-loss trajectory, exists in
+  the source.** Neither the metric nor those numbers appear anywhere in the code
+  or theory docs; they are removed.
+- **The real, defensible result is weaker: harmonic-subspace preservation.** For
+  an H-shift-invariant update $g$ and a **hard** H-aligned anchor, the harmonic
+  component is preserved, $\Pi_H(T\xi) = \Pi_H \xi$. This is a genuine
+  proposition — but a conditional one.
+- **The soft-anchor version is refuted for $\dim H > 0$:** the soft Tikhonov pull
+  re-injects an H-component and breaks preservation. Only a hard, H-aligned
+  anchor preserves.
+- **Harmonic No-Go (locked):** even where the harmonic subspace *is* preserved,
+  it carries **zero information** through the spine channels ($I = 0$; the
+  consensus $\Pi_H \xi^\star$ is *specified by the anchor, not learned from
+  data*). So "preservation" here is not a learned representational property.
 
-$$
-\operatorname\{CSR\}(T^n(x_0),\; G) \;\xrightarrow\{n \to \infty\}\; 1.0
-$$
+## Takeaway
 
-for every admissible initial state $x_0$, where $\operatorname\{CSR\}$ denotes the Constraint Satisfaction Rate (fraction of ontological constraints satisfied). In particular, the Betti numbers of the persistent-homology filtration induced by the latent embedding are preserved:
-
-$$
-\beta_k\bigl(\mathcal\{R\}(T^n(x_0))\bigr) \;=\; \beta_k(G), \quad k = 0, 1, \ldots
-$$
-
-once $\operatorname\{CSR\} = 1.0$ is reached.
-
-{/* TODO: state the precise admissibility conditions on x_0 (bounded energy, compatible fiber decomposition) */}
-
-## Empirical Evidence
-
-The [constraint-satisfaction paper](/papers/onn-constraint-satisfaction/) reports:
-
-- **CSR = 1.0 +/- 0.0** across all tested conditions (55 records), verified in the [claim ledger](/onn/claim-ledger-ral/).
-- Topology loss reduced from 11.68 (baseline) to 1.15.
-- **Seed-independent** convergence across twenty random initialisations on graphs up to twenty nodes.
-- The [Lyapunov paper](/papers/constructive-lyapunov-onn/) extends this to 3M-node networks, confirming Betti-number preservation via persistent homology.
-
-## Proof Sketch
-
-1. **Contraction.** The operator $T$ is non-expansive with respect to the semantic energy metric. Lemma L1 (leakage inflation) bounds the off-diagonal coupling, ensuring that the diagonal contraction dominates when $\mu_\text\{diag\} < 1/(1 + \kappa_\text\{off\})$.
-
-2. **Curvature guidance.** Forman--Ricci curvature $\operatorname\{Ric\}_F(e)$ on each edge $e \in E$ steers gradient updates toward configurations that lower topology loss without violating constraint feasibility.
-
-3. **CMA-ES global search.** Covariance Matrix Adaptation provides a derivative-free outer loop that escapes local minima in the topology-loss landscape, achieving the 95% success rate.
-
-4. **Betti preservation.** Once $\operatorname\{CSR\} = 1.0$, the latent embedding's Rips complex has the same persistent homology as $G$ because every constraint edge is faithfully represented. The persistent-homology computation follows the algorithm in the [Lyapunov paper](/papers/constructive-lyapunov-onn/). {/* TODO: tighten the Rips-complex radius bound needed for exact Betti matching */}
-
-## Scope and Limitations
-
-- The result is demonstrated empirically up to 3M nodes but **formally proved only for the contraction step** (Lemma L1). The global convergence guarantee ($\operatorname\{CSR\} \to 1.0$ for arbitrary graphs) remains a **conjecture** at scales beyond 20 nodes. {/* TODO: verify formal proof status at large scale */}
-- Betti preservation assumes exact arithmetic; finite-precision effects are covered by Assumption A6 (plausible but not proved at 100K+).
+"Topology preservation" in the strong, headline sense (Betti preserved, CSR
+$\to 1.0$, validated to millions of nodes) is **not established**. The honest
+residue is a narrow, conditional harmonic-subspace identity whose preserved part
+is anchor-specified rather than learned. This sits alongside the broader
+[Two Ceilings No-Go](/onn/canonical-spec/) on the information content of
+higher-order structure.

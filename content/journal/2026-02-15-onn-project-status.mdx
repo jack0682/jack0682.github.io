@@ -9,6 +9,15 @@ refs: [onn-ortsf-2026, constructive-lyapunov-onn]
 draft: false
 ---
 
+> **Historical snapshot (2026-07-10).** This is a Feb-2026 engineering status
+> report on the ONN-ES codebase, kept as a dated record. Its dev-status figures
+> (line counts, test pass rate, figure progress) describe the repository at that
+> moment; they are **not** research results. The programme's central higher-order
+> thesis has since been audited to a scoped
+> [No-Go boundary](/onn/canonical-spec/), and any headline research numbers from
+> this era (`τ_max = 177 μs`, `99.75%`, `CSR = 1.0`) are not reproducible from
+> the current source — see the [ONN research status](/onn/onn-research-status-2026/).
+
 ## Project overview
 
 ONN-ES (Ontology Neural Networks with Evolution Strategy) is an **edge-centric graph neural network** framework combining topological constraints with evolution strategy (CMA-ES) for inference.
@@ -18,7 +27,7 @@ The core architecture follows a **Trinity of Operators** layout:
 - **SEGO** (Semantic Graph Observer) -- perception and feature extraction
 - **LOGOS** (Logical Ontology Graph Optimization Solver) -- correction and stabilisation
 - **IMAGO** (Intent Modeling via Graph Optimization) -- planning and path generation
-- **ORTSF** (Ontology Real-Time Stability Fabric) -- delay-compensated control
+- **ORTSF** (Ontological Real-Time Semantic Fabric) -- delay-compensated control
 
 Environment: Python 3.12.12, PyTorch 2.3.1, NumPy 1.26.4.
 

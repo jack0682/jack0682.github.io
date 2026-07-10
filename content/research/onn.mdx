@@ -4,54 +4,72 @@ title: "Ontology Neural Networks"
 slug: onn
 ordinal: 1
 status: active
-updated: 2026-04-16
-summary: "A learning architecture whose latent state carries the explicit type structure of a target ontology, enabling cohomological analysis of learned features and delay-robust embodied control through the companion ORTSF framework."
+updated: 2026-07-10
+summary: "A learning architecture whose latent state carries the explicit type structure of a target ontology. Its original higher-order/cohomological thesis was audited to a scoped No-Go boundary; what survives is a modest direction-channel signal, a standard delay-margin certificate, and the audit methodology itself."
 ---
 
 An **Ontology Neural Network** (ONN) is a neural model whose internal
 state is not a flat vector but a typed object carrying the structure
-of a target ontology. Training preserves the type algebra by
-construction; inference is a constraint-projection onto a topology-aware
-manifold. The companion **ORTSF** (Ontological Real-Time State
-Feedback) framework turns the output of that inference into a
-closed-loop controller whose stability margins are stated in
-cohomological terms.
+of a target ontology: inference is a constraint-projection onto a
+topology-aware manifold. The companion **ORTSF** (Ontological Real-Time
+Semantic Fabric) framework turns the output of that inference into a
+closed-loop controller.
 
-The programme begins with the observation that **the topology of a
-representation space is itself a control-theoretic object.** Once
-recognised, the usual separation between representation learning and
-controller synthesis dissolves: the same invariants that classify
-learned features also certify that the loop closed around them is
-stable under delay.
+The programme's organising bet was that **the topology of a
+representation space is itself a control-theoretic object** — that the
+same higher-order/cohomological invariants which classify learned
+features would also certify the loop closed around them. That bet was
+put under a formal audit, and **it did not survive in its strong form.**
+
+<Callout tone="warning" title="Current state — a scoped No-Go">
+The central higher-order thesis resolved to an **identifiability
+boundary** (the "Two Ceilings"): under a complete-pairwise contract on
+consistent, complete, finite scenes, measured higher-order /
+cohomological structure adds **no information beyond pairwise**. It is a
+*scoped* No-Go — it has named escapes (incomplete/partial pairwise
+observation, non-generic regimes) — not a blanket refutation. See the
+[canonical spec](/onn/canonical-spec/) and the
+[research status](/onn/onn-research-status-2026/) for what stands and
+what was withdrawn. Active work has moved to a successor line (ULR).
+</Callout>
 
 <Callout tone="note" title="Where this sits">
 ONN is Layer 3 of the larger cohesion-first architecture — downstream
 of the discovery of stable structure (Layer 2: [RelationWorld](/research/theory/))
 and upstream of embodied action (Layer 4: [Delay-robust control](/research/control/)).
-The ultimate design target — unifying ONN with Soft Cognitive Cohesion
-into a single cognitive-reasoning architecture — is spelled out in
-[Integrated Architecture](/notes/part-0/integrated-architecture/).
+The programme's design target — unifying ONN with Soft Cognitive Cohesion
+through a single cohomological certificate — is spelled out in
+[Integrated Architecture](/notes/part-0/integrated-architecture/), where
+the ONN/ORTSF side of that coupling is now marked *not established*.
 </Callout>
 
-## Three active threads
+## What survived the audit
 
-- **Representational cohomology.** How the invariants of a learned
-  ontology appear as cohomology classes, and what that implies about
-  generalisation. The formal scaffolding lives in
-  [*An Axiomatic Framework for Understanding Relations via Gauge-Invariant
-  Cohomology*](/papers/axiomatic-cohomology-relations/).
-- **Constraint projection and topological conditioning.** A series of
-  papers sharpening the projection step with Forman–Ricci curvature
-  and Deep Delta Learning. See
-  [*ONN for Topologically Conditioned Constraint Satisfaction*](/papers/onn-constraint-satisfaction/)
-  and the empirical follow-up
-  [*Advanced Topology-Preserving Neural Networks*](/papers/advanced-onn-ortsf-extension/),
-  which reaches 99.75 % of the theoretically predicted optimality.
-- **Lyapunov functions that fall out of the loss.** The ONN total loss
-  𝓛_total turns out to *be* a constructive Lyapunov function —
-  closing a sixty-year gap left open by Massera and Kurzweil. Treated
-  in full in [*Constructive Lyapunov Functions via Topology-Preserving
-  Neural Networks*](/papers/constructive-lyapunov-onn/).
+- **A modest, non-higher-order positive.** One signal held up under the
+  audit: a small direction-channel effect (a Q-weak improvement of
+  roughly +0.11–0.12 AUROC). It does **not** come from higher-order
+  structure — it is the honest positive result of the programme.
+- **A standard delay-margin certificate.** The ORTSF control result
+  reduces to a textbook delay margin ($\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$)
+  plus a sufficient small-gain condition — *decoupled* from the
+  ontology's cohomology. See
+  [the certificate](/onn/theorem-delay-robust-bound/).
+- **The audit methodology.** The pre-registered contract, the
+  consistent/complete/finite scene conditions, and the falsification
+  discipline that turned an appealing thesis into a checkable boundary.
+
+## Earlier manuscripts (superseded framing)
+
+These 2025 drafts state the *original* optimistic framing. Their
+headline empirical numbers (e.g. "99.75 % of predicted optimality", a
+constructive-Lyapunov "60-year gap" closure) are **not reproducible from
+the current research source** and are superseded by the audit above; they
+are retained as manuscripts of record with a status banner on each page.
+
+- [*ONN for Topologically Conditioned Constraint Satisfaction*](/papers/onn-constraint-satisfaction/) — the Forman–Ricci / Deep-Delta projection line.
+- [*Advanced Topology-Preserving Neural Networks*](/papers/advanced-onn-ortsf-extension/) — the empirical-optimality follow-up.
+- [*Constructive Lyapunov Functions via Topology-Preserving Neural Networks*](/papers/constructive-lyapunov-onn/) — the Lyapunov-from-loss claim.
+- [*An Axiomatic Framework for Understanding Relations via Gauge-Invariant Cohomology*](/papers/axiomatic-cohomology-relations/) — the formal cohomology scaffolding.
 
 ## Papers on this track
 
