@@ -7,18 +7,27 @@ section: "Canonical Specification"
 kind: canonical
 track: perception
 updated: 2026-05-08
-summary: "Aligned with Perception_theory canonical CV-1.11 (2026-05-06). 54 Category A + 14 Category B + 5 Category C + 5 Retracted = 78 claims, ~69% fully proved. OMS-2.0 Accepted — Full."
+summary: "The canonical formal text of SCC. The programme's canonical has since advanced to CV-1.17 (68 Cat A + 19 B + 6 C + 5 Retracted = 98 claims, ~70% proved, sealed 2026-05-15); this page is the CV-1.11 (W6, 2026-05-08) formal snapshot — the CV-1.12–1.17 additions are logged in the status page. OMS-2.0 Accepted — Full."
 tags: [scc, canonical-spec, axioms, theorems, foundational]
 related: [scc-status-2026-05, integrated-architecture]
 ---
 
+> **Version note (2026-07-10).** This formal text is the **CV-1.11 (W6,
+> 2026-05-06)** snapshot. The canonical has since advanced to **CV-1.17**
+> (sealed 2026-05-15): **68 Cat A / 19 B / 6 C / 5 Retracted = 98 claims,
+> ~70% proved**. The CV-1.12–1.17 additions (T-Temporal-Identity (a) Cat A via
+> H-SINK; T-CC-StableK-Kernel Cat B, H-COMP-KERNEL closed; H-MORSE partially
+> closed) are recorded in the
+> [current status page](/notes/part-0/scc-status-2026-05/); the full CV-1.17
+> formal text is pending its reseal here.
+
 ## Overview
 
-This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion. The current release is **CV-1.11 (2026-05-06)**, incorporating all prior W4–W5 work plus the W6 additions: the Stereo-SCC extension (T-ST-5a hard-depth locking Cat A; T-ST-5b smooth barrier raising Cat B), boundary precision resolution OP-0006 via T-OP6-B (Cat A, phase-separation regime), P-F-A1 Package I fully Cat A (T-P-F-ε0 + T-PF-A1-AR/SDE/GI/PE — well-posed reflected SDE + unique Gibbs measure + exponential ergodicity on $\widetilde{\Sigma}_M$), equilibrium and observation-conditioned K-selection (T-K-Select-PF/OBS Cat B, OP-0005-EQ/OBS partially resolved), and the **Observer Moduli Space OMS-2.0 Accepted — Full** with Appendix OMS (§A–§M) added to the canonical specification.
+This document is the canonical human-readable formal specification of the theory of Soft Cognitive Cohesion. This text corresponds to the **CV-1.11 (2026-05-06)** release, incorporating all prior W4–W5 work plus the W6 additions: the Stereo-SCC extension (T-ST-5a hard-depth locking Cat A; T-ST-5b smooth barrier raising Cat B), boundary precision resolution OP-0006 via T-OP6-B (Cat A, phase-separation regime), P-F-A1 Package I fully Cat A (T-P-F-ε0 + T-PF-A1-AR/SDE/GI/PE — well-posed reflected SDE + unique Gibbs measure + exponential ergodicity on $\widetilde{\Sigma}_M$), equilibrium and observation-conditioned K-selection (T-K-Select-PF/OBS Cat B, OP-0005-EQ/OBS partially resolved), and the **Observer Moduli Space OMS-2.0 Accepted — Full** with Appendix OMS (§A–§M) added to the canonical specification.
 
 > **Version naming convention.** This site and the underlying Perception_theory both use a single release ladder, **CV-x.y[.z]**, incremented per merge:
 >
-> CV-1.0 (04-01) → CV-1.1 (04-03) → CV-1.2 (04-12) → CV-1.3 (04-25) → CV-1.4 (04-26) → CV-1.5 (04-27) → CV-1.5.1 (04-29) → CV-1.5.2 (05-02) → CV-1.6 (05-06, Stereo-SCC + T-ST-5a Cat A) → CV-1.7 (05-06, T-OP6-B Cat A + T-P-F-ε0 Cat A + T-P-F-ε0-K Cat B) → CV-1.8 (05-06, T-PF-A1-AR/SDE Cat A + GI/PE Cat B) → CV-1.9 (05-06, T-PF-A1-GI/PE Cat B→A, Package I complete) → CV-1.10 (05-06, T-K-Select-PF Cat B) → **CV-1.11 (05-06, T-K-Select-OBS Cat B, current)**.
+> CV-1.0 (04-01) → CV-1.1 (04-03) → CV-1.2 (04-12) → CV-1.3 (04-25) → CV-1.4 (04-26) → CV-1.5 (04-27) → CV-1.5.1 (04-29) → CV-1.5.2 (05-02) → CV-1.6 (05-06, Stereo-SCC + T-ST-5a Cat A) → CV-1.7 (05-06, T-OP6-B Cat A + T-P-F-ε0 Cat A + T-P-F-ε0-K Cat B) → CV-1.8 (05-06, T-PF-A1-AR/SDE Cat A + GI/PE Cat B) → CV-1.9 (05-06, T-PF-A1-GI/PE Cat B→A, Package I complete) → CV-1.10 (05-06, T-K-Select-PF Cat B) → **CV-1.11 (05-06, T-K-Select-OBS Cat B — the release this text seals)** → CV-1.12 (05-11/12, T-Temporal-Identity (a) Cat A, H-SINK) → CV-1.13–1.16 (05-12/14, SEAL increments) → **CV-1.17 (05-15, T-CC-StableK-Kernel Cat B, H-COMP-KERNEL closed — current; W7 delta in the [status page](/notes/part-0/scc-status-2026-05/))**.
 >
 > Older site-document tags (v2.0/v2.1/v2.2/v2.3) and the Perception_theory internal *theory-revision* tag (v2.1, marking ontological shifts like T_t demoted, C_t demoted, A1' / σ-framework primary) are retained only as historical change-log markers within the body text below; they are **not** a separate active version system. Authoritative release index lives at `THEORY/canonical/theorem_status.md` §Canonical Spec Version History.
 
