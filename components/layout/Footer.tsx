@@ -90,7 +90,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-[var(--color-rule)] py-6 text-xs text-[var(--color-subtle)] sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+        <div className="flex flex-col gap-2 border-t border-[var(--color-rule)] pt-6 pb-20 text-xs text-[var(--color-subtle)] sm:flex-row sm:items-center sm:justify-between sm:gap-0 lg:pb-6">
           <span>© {year} Jaehong Oh.</span>
           <div className="flex items-center gap-5 font-mono">
             <a
