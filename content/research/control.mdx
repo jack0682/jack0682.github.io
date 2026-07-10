@@ -4,8 +4,8 @@ title: "Delay-robust control"
 slug: control
 ordinal: 4
 status: active
-updated: 2026-04-16
-summary: "Closed-loop control laws that remain stable under communication and sensing delay, stated in cohomological terms and built on top of an ontology-aware perceptual state. The ORTSF framework and its Lyapunov certificates."
+updated: 2026-07-10
+summary: "Closed-loop control laws that remain stable under communication and sensing delay, built on top of an ontology-aware perceptual state. The ORTSF framework, reduced to its honest, verified content: a standard delay-margin certificate — decoupled from the ontology's cohomology, not a cohomological Lyapunov bound."
 ---
 
 Perception and control meet in the presence of delay. Once you allow
@@ -20,33 +20,36 @@ them to the topology of the upstream perceptual representation.
 
 ## The ORTSF framework
 
-**ORTSF** (Ontological Real-Time State Feedback) is a family of
+**ORTSF** (Ontological Real-Time Semantic Fabric) is a family of
 predicate-binding operators whose job is to synthesise a control
-signal from an ONN latent state while preserving the meaning
-encoded in that state. The operators carry explicit delay budgets,
-and their composition obeys stability bounds stated in the language
-of the learned ontology's cohomology rather than raw state norms.
+signal from an ONN latent state while preserving the meaning encoded in
+that state. The operators carry explicit delay budgets.
 
-<Callout tone="note" title="Key identity">
-The ONN total loss $\mathcal{L}_{\mathrm{total}}$ is *simultaneously*
-a representation-learning loss and a constructive Lyapunov function
-for the closed loop. See
-[*Constructive Lyapunov Functions via Topology-Preserving Neural Networks*](/papers/constructive-lyapunov-onn/).
+<Callout tone="warning" title="What the certificate actually is">
+Earlier drafts stated ORTSF stability "in the language of the learned
+ontology's cohomology", and claimed the ONN total loss
+$\mathcal{L}_{\mathrm{total}}$ *is* a constructive Lyapunov function
+resolving the Massera–Kurzweil problem. **That coupling did not survive
+audit.** The verified result is a *standard* delay-margin certificate,
+driven by the plant pole and **decoupled** from the ontology's
+cohomology — no cohomological Lyapunov bound. See the
+[delay-margin certificate](/onn/theorem-delay-robust-bound/) and the
+[cohomological-stability audit](/onn/theorem-cohomological-stability/).
 </Callout>
 
 ## What has been shown
 
-- **A constructive resolution of the Massera–Kurzweil problem.** For
-  systems governed by an ONN, an explicit class-$\mathcal{K}_\infty$
-  Lyapunov function is available — no trajectory integrals, no
-  existence-only proofs.
-- **Explicit delay bounds.** For 3M-node semantic networks, the
-  framework admits delays up to $\tau_{\max} = 177\,\mu s$ while
-  maintaining exponential convergence.
-- **Four domains of applicability:** non-smooth dynamics via
-  Fejér-monotone topology surgery, global stability via persistent
-  homology (Betti-number preservation), delay-differential systems
-  via ORTSF, and Input-to-State Stability for bounded disturbances.
+- **A standard, verified delay margin.** For a linearized plant with
+  pole $p$, the closed loop tolerates delay up to
+  $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$, with a sufficient
+  small-gain condition ($\rho_{\mathrm{ONN}}\cdot\gamma_{\mathrm{ortsf}} < 1$)
+  for arbitrary delay. This is textbook control, honestly labelled as
+  systems completion rather than novelty.
+- **What was withdrawn.** The "constructive resolution of the
+  Massera–Kurzweil problem", the specific `τ_max = 177 μs` / 3M-node
+  bound, and the cohomological-Lyapunov reading are **not reproducible
+  from the current research source** and are retired — see the
+  [ONN research status](/onn/onn-research-status-2026/).
 
 ## The budget-first view
 
@@ -67,7 +70,7 @@ which is more actionable than a scalar bound.
 
 - [Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control](/papers/onn-ortsf-2026/) — the anchor paper, accepted at *Int. J. Topol.* in April 2026.
 - [Constructive Lyapunov Functions via Topology-Preserving Neural Networks](/papers/constructive-lyapunov-onn/)
-- [Advanced Topology-Preserving Neural Networks](/papers/advanced-onn-ortsf-extension/) — the empirical realisation of the above bounds.
+- [Advanced Topology-Preserving Neural Networks](/papers/advanced-onn-ortsf-extension/) — a 2025 draft that claimed the empirical realisation of these bounds; superseded by the audit (see its status banner).
 
 ## Related
 
