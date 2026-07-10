@@ -70,7 +70,10 @@ export default function SccDagPage() {
           No theorem nodes yet — annotate a note with <code>kind: theorem</code> to opt in.
         </p>
       ) : (
-        <PanZoomBox className="rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] p-4">
+        <PanZoomBox
+          maxScale={6}
+          className="rounded-sm border border-[var(--color-rule)] bg-[var(--color-surface)] p-4"
+        >
           <svg
             aria-hidden="true"
             viewBox={`0 0 ${dag.width} ${dag.height}`}
@@ -138,6 +141,10 @@ export default function SccDagPage() {
         </PanZoomBox>
       )}
 
+      <p className="mt-4 text-xs leading-relaxed text-[var(--color-subtle)] sm:hidden">
+        On a small screen the graph shrinks to fit — pinch to zoom and drag to
+        pan, or browse the full list below.
+      </p>
       <p className="mt-6 max-w-[44rem] text-sm leading-relaxed text-[var(--color-muted)]">
         Layout is computed at build time by{" "}
         <code className="font-mono text-xs">@dagrejs/dagre</code> — top-to-bottom, no
