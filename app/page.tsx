@@ -67,16 +67,22 @@ export default function Home() {
               className="mt-8 flex flex-col gap-4 text-sm font-medium sm:flex-row sm:flex-wrap sm:gap-5"
             >
               <Link
-                href="/about/"
+                href="/start/"
                 className="group inline-flex min-h-11 items-center gap-2 border-b border-[var(--color-ink)] pb-0.5 text-[var(--color-ink)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
               >
-                About me
+                New here? Start here
                 <span
                   aria-hidden
                   className="transition-transform duration-200 group-hover:translate-x-0.5"
                 >
                   →
                 </span>
+              </Link>
+              <Link
+                href="/about/"
+                className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
+              >
+                About me
               </Link>
               <Link
                 href="/research/"

@@ -17,6 +17,7 @@ const cols = [
   {
     heading: "Writing",
     links: [
+      { href: "/start/", label: "Start here" },
       { href: "/scc/", label: "SCC · hub" },
       { href: "/onn/", label: "ONN · hub" },
       { href: "/papers/", label: "Papers" },
