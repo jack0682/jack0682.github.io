@@ -118,8 +118,9 @@ output.
 **Process.** Meaning-preserving trajectory synthesis under stochastic
 communication, sensing, and compute delay.
 
-**Output.** A real-time embodied control signal whose stability
-margins are stated in cohomological terms, not raw state norms.
+**Output.** A real-time embodied control signal with a delay-robust
+stability margin — a standard plant-pole phase margin, *not* a
+cohomological bound (see the [ONN audit](/onn/canonical-spec/)).
 
 **Role in the architecture.** This is what closes the loop from
 *cognition* back to *the world*. [Deeper dive →](/research/control/)
@@ -148,7 +149,7 @@ Layer 3 — ONN
 Layer 4 — ORTSF
   "Semantic structure is defined. How do we preserve that meaning
    in real-time control under stochastic delay?"
-  → Delay-robust control, Lyapunov from loss, cohomology-stated bounds.
+  → Delay-robust control via a standard plant-pole delay margin.
 ```
 
 ---
@@ -203,12 +204,15 @@ which are in turn governed by the topological invariants of the
 fruit structure discovered from the soft cohesion field.
 </Theorem>
 
-Whether this proposition is provable in its strongest form is the
-open question the programme is organised around. The theorems of
-Part II (stability, localisation, flow convergence) and the ONN +
-ORTSF framework are the pieces already in place; what remains is
-the **composition theorem** that ties them together into one
-certificate.
+This was the programme's organising hope, but on the ONN + ORTSF side
+it has since been **audited and does not hold in its strong form**: the
+control margin is a standard delay margin driven by the plant pole and
+is *decoupled* from — not governed by — the learned ontology's
+cohomology, and measured higher-order structure adds no information
+beyond pairwise (the [Two Ceilings boundary](/onn/canonical-spec/)). The
+SCC / RelationWorld theorems of Parts I–II stand on their own; the
+"single certificate" coupling them through cohomology is **not**
+established.
 
 ---
 
@@ -231,12 +235,16 @@ certificate.
   shared-pool architecture I9'. See the [status page](/notes/part-0/scc-status-2026-04/).
 - **Layer 2 (RelationWorld)** — Theorems A–H proved. See
   [Part I](/notes/) and [Part II summary](/notes/part-2/summary/).
-- **Layer 3 (ONN)** — Framework paper **accepted at *Int. J. Topol.***
-  ([paper](/papers/onn-ortsf-2026/)); empirical follow-up reaching
-  99.75 % of theoretical optimality
-  ([paper](/papers/advanced-onn-ortsf-extension/)).
-- **Layer 4 (ORTSF)** — Constructive Lyapunov functions proved
-  ([paper](/papers/constructive-lyapunov-onn/)); $\tau_{\max} = 177\,\mu$s
-  for 3M-node systems.
+- **Layer 3 (ONN)** — The framework paper is
+  [published](/papers/onn-ortsf-2026/), but its central higher-order
+  thesis was subsequently **audited to a scoped No-Go boundary** (measured
+  higher-order/cohomological structure adds no information beyond
+  pairwise). See the [ONN status](/onn/onn-research-status-2026/); live
+  work moved to ULR.
+- **Layer 4 (ORTSF)** — Reduces to a **standard, verified delay-margin
+  certificate** ($\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$, plus a
+  sufficient small-gain condition); the earlier cohomological-Lyapunov and
+  `τ_max = 177 μs` claims are
+  [withdrawn](/onn/theorem-delay-robust-bound/).
 - **Integration theorem** — in progress. The piece that turns four
   separate results into one architecture.
