@@ -23,8 +23,7 @@ draft: true
 > Treat every claim below as **unverified, pending author reconciliation** — it
 > is kept only as a historical record. For the audited state, see the
 > [research status](/onn/onn-research-status-2026/) and the
-> [canonical spec](/onn/canonical-spec/). *(The garbled `p < 0.001` inline
-> markup below is a pre-existing rendering artifact in the source draft.)*
+> [canonical spec](/onn/canonical-spec/).
 
 ---
 
@@ -37,7 +36,7 @@ draft: true
 **Evidence**:
 - **Constraint Satisfaction (CSR)**: ONN achieves 1.0 +/- 0.0 across all 55 test conditions (2 tasks, 5 noise levels [0.0-0.3], 5 graph sizes [10-1000 nodes], 3 seeds). Graph Transformer achieves 0.8 +/- 0.0. Seq Transformer achieves 0.41 +/- 0.14. **Effect sizes**: Cohen's d = 0.6-1.2 (medium to very large).
 
-- **Ablation (Constraint Enforcement Matters)**: ONN_NoConstraints (returns input unchanged) achieves CSR = 0.46 +/- 0.14. ONN achieves CSR = 1.0. **Ablation delta = 0.54 +/- 0.14 (p p < 0.001lt; 0.001lt; 0.001)**. **Unit tests**: 6/6 pass, confirming mechanistic separation (backend provenance: ONN uses GREEDY_FALLBACK; ONN_NoConstraints uses NONE).
+- **Ablation (Constraint Enforcement Matters)**: ONN_NoConstraints (returns input unchanged) achieves CSR = 0.46 +/- 0.14. ONN achieves CSR = 1.0. **Ablation delta = 0.54 +/- 0.14 (p < 0.001)**. **Unit tests**: 6/6 pass, confirming mechanistic separation (backend provenance: ONN uses GREEDY_FALLBACK; ONN_NoConstraints uses NONE).
 
 - **Robustness and Scaling**: ONN CSR remains 1.0 across noise [0-30%] and scales [10-1000 nodes]. Graph Transformer degrades minimally; Seq Transformer degrades sharply.
 
@@ -72,7 +71,7 @@ draft: true
 | Field | Value |
 |-------|-------|
 | **Claim ID** | C2 |
-| **Precise Claim** | The difference in CSR between ONN (csr=1.0) and ONN_NoConstraints (csr=0.46) is statistically significant and attributable to constraint enforcement, not shared greedy repair fallback. Ablation delta = 0.5382 +/- 0.1372 (p p < 0.001lt; 0.001lt; 0.001). |
+| **Precise Claim** | The difference in CSR between ONN (csr=1.0) and ONN_NoConstraints (csr=0.46) is statistically significant and attributable to constraint enforcement, not shared greedy repair fallback. Ablation delta = 0.5382 +/- 0.1372 (p < 0.001). |
 | **Metrics** | Ablation delta: mean(CSR_ONN) - mean(CSR_NoConstraints). Statistical significance: permutation test p-value. Backend provenance: logged "GREEDY_FALLBACK" (ONN) vs "NONE" (ONN_NoConstraints). Mechanistic proof: 6 unit tests. |
 | **Scope** | Ablation tested across 11 conditions (same grid as C1). ONN_NoConstraints returns input unchanged (backend='NONE'); ONN applies constraint repair if violations detected (backend='GREEDY_FALLBACK' or 'CONSTRAINT_SOLVER'). |
 | **Status** | VERIFIED |
@@ -85,7 +84,7 @@ draft: true
 | Field | Value |
 |-------|-------|
 | **Claim ID** | C3 |
-| **Precise Claim** | On identical test conditions, ONN mean CSR = 1.0000 vs. Graph Transformer mean CSR = 0.8000 (Delta CSR = 0.20 or 20 percentage points). Effect size (Cohen's d) approx 0.6 (medium-large). 95% bootstrap CIs show zero overlap: ONN [1.0, 1.0], GT [0.8, 0.8]. Permutation test p p < 0.001lt; 0.001lt; 0.001. |
+| **Precise Claim** | On identical test conditions, ONN mean CSR = 1.0000 vs. Graph Transformer mean CSR = 0.8000 (Delta CSR = 0.20 or 20 percentage points). Effect size (Cohen's d) approx 0.6 (medium-large). 95% bootstrap CIs show zero overlap: ONN [1.0, 1.0], GT [0.8, 0.8]. Permutation test p < 0.001. |
 | **Metrics** | CSR (same as C1). Cohen's d = (mean_ONN - mean_GT) / pooled_std. Bootstrap 95% CI (10,000 resamples). Permutation test. |
 | **Scope** | 11 aggregated conditions; same grid as C1. Graph Transformer uses hidden_dim=128, num_layers=4 (default, not tuned). |
 | **Status** | SUPPORTED WITH CAVEAT |
@@ -98,7 +97,7 @@ draft: true
 | Field | Value |
 |-------|-------|
 | **Claim ID** | C4 |
-| **Precise Claim** | On identical test conditions, ONN mean CSR = 1.0000 vs. Seq Transformer mean CSR = 0.4133 (Delta CSR = 0.587 or 58.7 percentage points). Effect size (Cohen's d) approx 1.2 (very large). 95% bootstrap CIs: ONN [1.0, 1.0], ST [0.34, 0.51] (no overlap). Permutation test p p < 0.001lt; 0.001lt; 0.001. |
+| **Precise Claim** | On identical test conditions, ONN mean CSR = 1.0000 vs. Seq Transformer mean CSR = 0.4133 (Delta CSR = 0.587 or 58.7 percentage points). Effect size (Cohen's d) approx 1.2 (very large). 95% bootstrap CIs: ONN [1.0, 1.0], ST [0.34, 0.51] (no overlap). Permutation test p < 0.001. |
 | **Metrics** | CSR. Cohen's d. Bootstrap 95% CI. Permutation test. |
 | **Scope** | 11 aggregated conditions; same grid as C1. |
 | **Status** | VERIFIED |
@@ -187,7 +186,7 @@ draft: true
 
 4. **Key Result 1 -- Hard Correctness**: ONN achieves **CSR = 1.0 +/- 0.0** (n=11 conditions, zero variance). Graph Transformer = 0.8 +/- 0.0. Seq Transformer = 0.41 +/- 0.14. **Effect size**: Cohen's d approx 0.6-1.2 (medium to very large).
 
-5. **Key Result 2 -- Constraint Enforcement Ablation**: ONN_NoConstraints (constraint-free) achieves CSR = 0.46 +/- 0.14. ONN achieves CSR = 1.0. **Ablation delta = 0.54 +/- 0.14 (p p < 0.001lt; 0.001lt; 0.001)**. **Mechanistic proof**: 6/6 unit tests validate backend separation (ONN logs GREEDY_FALLBACK or CONSTRAINT_SOLVER; ONN_NoConstraints logs NONE). Conclusion: Constraint enforcement, not shared fallback, drives advantage.
+5. **Key Result 2 -- Constraint Enforcement Ablation**: ONN_NoConstraints (constraint-free) achieves CSR = 0.46 +/- 0.14. ONN achieves CSR = 1.0. **Ablation delta = 0.54 +/- 0.14 (p < 0.001)**. **Mechanistic proof**: 6/6 unit tests validate backend separation (ONN logs GREEDY_FALLBACK or CONSTRAINT_SOLVER; ONN_NoConstraints logs NONE). Conclusion: Constraint enforcement, not shared fallback, drives advantage.
 
 6. **Key Result 3 -- Robustness Under Noise**: ONN CSR stays 1.0 across noise [0.0-0.3]. Graph Transformer stable at 0.8 (lower ceiling). Seq Transformer variable [0.25-0.60] (degrades). Heuristic stable 0.83. **Implication**: Hard constraint enforcement confers noise robustness, not learned noise-robust features.
 
@@ -275,7 +274,7 @@ draft: true
 
 **Threat 1: Multiple Comparisons (5 models)**
 - **What**: 5 models x (ONN vs each) = 4 comparisons; risk of Type I error.
-- **How Addressed**: Permutation tests reported with p-values (all p p < 0.001lt; 0.001lt; 0.001, well below 0.05 even with Bonferroni alpha/4 = 0.0125). Bootstrap CIs show no overlap.
+- **How Addressed**: Permutation tests reported with p-values (all p < 0.001, well below 0.05 even with Bonferroni alpha/4 = 0.0125). Bootstrap CIs show no overlap.
 - **Residual Risk**: Holm-Bonferroni correction not explicitly applied in current reports; should be included in revision.
 - **Action**: Add Holm-Bonferroni-corrected p-values to final manuscript.
 
@@ -313,7 +312,7 @@ draft: true
 
 ### Abstract (150-200 words, no hype)
 
-> **Relational scene understanding** -- inferring object relations (spatial, functional) from noisy perceptual input -- is central to robotic manipulation and assembly. Learned transformer models have shown promise in graph-based reasoning, but offer no guarantees on constraint satisfaction. We evaluate **ONN**, a neuro-symbolic approach that combines relation-aware perception with hard constraint enforcement, against graph and sequence transformer baselines on synthetic relational graphs. We measure **semantic consistency** (constraint satisfaction rate, CSR) under noise (0-30% edge corruption) and scaling (10-1000 nodes). **Results**: ONN achieves CSR = 1.0 +/- 0.0; Graph Transformer 0.8 +/- 0.0; Seq Transformer 0.41 +/- 0.14. Ablation (ONN_NoConstraints) shows 54% CSR improvement from constraint enforcement (p p < 0.001lt; 0.001lt; 0.001, Cohen's d = 0.6-1.2). ONN maintains correctness under noise and scales to 1000-node graphs. **Limitations**: Benchmarks are synthetic; robot task success (action success rate, failure reduction) requires real-world validation. **Conclusion**: Hard constraint enforcement provides a necessary (but not sufficient) foundation for safety-critical relational reasoning in robotics.
+> **Relational scene understanding** -- inferring object relations (spatial, functional) from noisy perceptual input -- is central to robotic manipulation and assembly. Learned transformer models have shown promise in graph-based reasoning, but offer no guarantees on constraint satisfaction. We evaluate **ONN**, a neuro-symbolic approach that combines relation-aware perception with hard constraint enforcement, against graph and sequence transformer baselines on synthetic relational graphs. We measure **semantic consistency** (constraint satisfaction rate, CSR) under noise (0-30% edge corruption) and scaling (10-1000 nodes). **Results**: ONN achieves CSR = 1.0 +/- 0.0; Graph Transformer 0.8 +/- 0.0; Seq Transformer 0.41 +/- 0.14. Ablation (ONN_NoConstraints) shows 54% CSR improvement from constraint enforcement (p < 0.001, Cohen's d = 0.6-1.2). ONN maintains correctness under noise and scales to 1000-node graphs. **Limitations**: Benchmarks are synthetic; robot task success (action success rate, failure reduction) requires real-world validation. **Conclusion**: Hard constraint enforcement provides a necessary (but not sufficient) foundation for safety-critical relational reasoning in robotics.
 
 ### Section Outline and Page Allocation (Estimated 8-10 pages IEEE RA-L)
 
@@ -350,12 +349,12 @@ Relational reasoning has been addressed through multiple paradigms. **Graph neur
 - **Unit tests (6/6 passing)**: Mechanistic proof; can include in Appendix or cite in text.
 - **Bootstrap CIs and effect sizes**: Computed (10,000 resamples); zero overlap between ONN and baselines.
 - **Reproducibility**: Fixed seeds [0,1,2], locked dataset, exact commands documented.
-- **Statistical rigor**: Permutation tests (p p < 0.001lt; 0.001lt; 0.001), Cohen's d, bootstrap CIs.
+- **Statistical rigor**: Permutation tests (p < 0.001), Cohen's d, bootstrap CIs.
 
 ### OPTIONAL (Improves Fairness but Not Critical)
 
 - **Graph Transformer hyperparameter tuning (4-8 hours)**: Grid search over hidden_dim in `{64, 128, 256}`, num_layers in `{2, 4, 6}`. If gap narrows to &lt;10%, caveat. Recommended but optional for RA-L.
-- **Holm-Bonferroni correction (1-2 hours)**: Apply to 4 pairwise comparisons (ONN vs GT, ST, H, NC). Not strictly required if p-values already p p < 0.001lt; 0.001lt; 0.001.
+- **Holm-Bonferroni correction (1-2 hours)**: Apply to 4 pairwise comparisons (ONN vs GT, ST, H, NC). Not strictly required if p-values already p < 0.001.
 - **Code audit (2-4 hours)**: Review onn_baseline.py, onn_variants.py for correctness of backend provenance logging. Should be done before submission.
 
 ### MISSING (Blocks Robot Claims; Not Required for RA-L Submission)
