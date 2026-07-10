@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { useHydrated } from "@/lib/motion";
+import { tween, useHydrated } from "@/lib/motion";
 
 interface TooltipState {
   content: string;
@@ -52,7 +52,7 @@ export function FootnoteTooltip() {
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 4 }}
-          transition={{ duration: 0.15 }}
+          transition={tween.quick}
           className="pointer-events-none fixed z-[200] max-w-xs rounded-[3px] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 text-xs leading-relaxed text-[var(--color-ink)] shadow-lg"
           style={{
             left: tip.x,

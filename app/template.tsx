@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-import { useReducedMotionSafe } from "@/lib/motion";
+import { ease, durations, useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Route-level transition. Next.js re-mounts `template.tsx` on every
@@ -21,8 +21,8 @@ export default function RouteTemplate({ children }: { children: ReactNode }) {
       initial={reduce ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: reduce ? 0 : 0.32,
-        ease: [0.22, 0.61, 0.36, 1],
+        duration: reduce ? 0 : durations.slow,
+        ease,
       }}
     >
       {children}

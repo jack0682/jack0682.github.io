@@ -18,14 +18,14 @@ export function KaTeXZoom() {
     style.textContent = `
       @media (hover: hover) and (prefers-reduced-motion: no-preference) {
         .katex-display {
-          transition: transform 0.2s ease;
+          transition: transform 0.2s var(--ease-out);
         }
         .katex-display:hover {
           transform: scale(1.04);
         }
       }
       .katex:not(.katex-display .katex) {
-        transition: background 0.15s ease;
+        transition: background 0.15s var(--ease-out);
         border-radius: 3px;
         padding: 0 1px;
       }

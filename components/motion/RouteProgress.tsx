@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotionSafe } from "@/lib/motion";
+import { ease, durations, useReducedMotionSafe } from "@/lib/motion";
 
 /**
  * Route-change progress indicator.
@@ -92,8 +92,8 @@ export function RouteProgress() {
         opacity: active ? 1 : 0,
       }}
       transition={{
-        scaleX: { duration: progress === 1 ? 0.12 : 0.3, ease: "easeOut" },
-        opacity: { duration: 0.2, ease: "easeOut" },
+        scaleX: { duration: progress === 1 ? 0.12 : durations.slow, ease },
+        opacity: { duration: durations.base, ease },
       }}
     />
   );

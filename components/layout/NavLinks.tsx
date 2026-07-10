@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
+import { springSnappy } from "@/lib/motion";
 
 const NAV = [
   { href: "/research/", label: "Research" },
@@ -44,7 +45,7 @@ export function NavLinks() {
               <motion.span
                 layoutId="nav-underline"
                 className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-accent)]"
-                transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                transition={springSnappy}
               />
             )}
           </li>

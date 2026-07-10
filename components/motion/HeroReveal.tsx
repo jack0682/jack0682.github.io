@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { useReducedMotionSafe } from "@/lib/motion";
+import { tween, useReducedMotionSafe } from "@/lib/motion";
 
 const container = {
   hidden: {},
@@ -16,7 +16,7 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] as const },
+    transition: tween.enter,
   },
 };
 
