@@ -8,6 +8,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 /** Full list for the mobile drawer — includes Tags. */
 const mobileNav = [
+  { href: "/start/",    label: "Start here" },
   { href: "/research/", label: "Research" },
   { href: "/scc/",      label: "SCC" },
   { href: "/onn/",      label: "ONN" },

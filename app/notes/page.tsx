@@ -37,9 +37,29 @@ export default function NotesPage() {
         className="mb-14"
       />
 
+      {/* Part jump-nav — this index is long; let readers skip straight
+          to a part instead of scrolling the whole book. */}
+      <nav
+        aria-label="Jump to part"
+        className="mb-4 flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-[var(--color-rule)] pt-6"
+      >
+        <span className="mr-1 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
+          Parts
+        </span>
+        {notesByPart.map(([part]) => (
+          <a
+            key={part}
+            href={`#part-${part}`}
+            className="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            {PART_META[part]?.title ?? `Part ${part}`}
+          </a>
+        ))}
+      </nav>
+
       <div className="space-y-14 border-t border-[var(--color-rule)] pt-12 sm:space-y-16 sm:pt-14">
         {notesByPart.map(([part, items]) => (
-          <section key={part}>
+          <section key={part} id={`part-${part}`} className="scroll-mt-24">
             <h2 className="font-display text-xl leading-snug tracking-tight text-[var(--color-ink)] sm:text-2xl">
               {PART_META[part]?.title ?? `Part ${part}`}
             </h2>
