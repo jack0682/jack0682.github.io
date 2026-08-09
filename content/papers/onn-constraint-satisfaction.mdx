@@ -5,6 +5,11 @@ authors: ["Jaehong Oh"]
 year: 2025
 status: preprint
 date: 2025-05-01
+updated: 2026-07-10
+claimStatus: withdrawn
+auditedAt: 2026-07-10
+auditSummary: "The reported topology-loss and 95% constraint-satisfaction figures are not reproducible from the current authoritative research source. This manuscript is retained as a historical, unverified draft; its empirical claims are withdrawn."
+currentStatusHref: "/onn/onn-research-status-2026/"
 pdf: "/papers/onn-constraint-satisfaction.pdf"
 abstract: "Neuro-symbolic reasoning systems face fundamental challenges in maintaining semantic coherence while satisfying physical and logical constraints. Building upon our previous work on Ontology Neural Networks, we present an enhanced framework that integrates topological conditioning with gradient stabilization mechanisms. The approach employs Forman–Ricci curvature to capture graph topology, Deep Delta Learning for stable rank-one perturbations during constraint projection, and Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for parameter optimization. Experimental evaluation across multiple problem sizes demonstrates that the method achieves topology-loss reduction to 1.15 compared to baseline values of 11.68, with 95% success rate in constraint-satisfaction tasks. The framework exhibits seed-independent convergence and graceful scaling behavior up to twenty-node problems, suggesting that topological structure can inform gradient-based optimization without sacrificing interpretability or computational efficiency."
 tags: [onn, neuro-symbolic, constraint-satisfaction, forman-ricci, cma-es, topology]
@@ -16,33 +21,33 @@ related: [integrated-architecture]
 > record. Its reported results — topology-loss reduction `11.68 → 1.15` and a
 > `95%` constraint-satisfaction success rate for the LOGOS solver — **are not
 > reproducible from the current authoritative research source** (`onn_ws/ONN`).
-> The sibling benchmark drafts that assert these numbers are flagged as
-> unverified (see the [claim ledger](/onn/claim-ledger-ral/)), and the
+> The public [experiment plan](/onn/experiment-plan-onn-vs-transformer/) records
+> intended methodology, not results; sibling result drafts remain private and
+> unverified. The
 > programme's central higher-order question later resolved to a scoped
 > [No-Go boundary](/onn/canonical-spec/). See the current
 > [ONN research status](/onn/onn-research-status-2026/).
 
 ## Overview
 
-An enhanced ONN formulation targeting the specific failure modes
-that appeared when projecting learned states onto constraint
-manifolds in the original framework. The paper combines three
-ingredients — Forman–Ricci curvature, Deep Delta Learning, and
-CMA-ES — into a single solver called LOGOS.
+The manuscript described an enhanced ONN formulation aimed at failure modes in
+projecting learned states onto constraint manifolds. It combined Forman–Ricci
+curvature, Deep Delta Learning, and CMA-ES in a solver called LOGOS. Its reported
+outcomes were not reproduced by the later source audit.
 
-## What the paper shows
+## Claims as originally presented
 
-- **Topology-loss reduction** from baseline 11.68 → 1.15.
-- **95% success rate** across constraint-satisfaction benchmarks,
+- A reported **topology-loss reduction** from baseline 11.68 → 1.15.
+- A reported **95% success rate** across constraint-satisfaction benchmarks,
   **seed-independent** across twenty random initialisations.
-- **Graceful scaling** from 2 to 20 nodes.
-- Delivered as a full pipeline (Meta-LOGOS diagnostics, LOGOS solver,
-  CMA-ES optimiser) that can be embedded in downstream ontology
-  systems.
+- Claimed **graceful scaling** from 2 to 20 nodes.
+- A proposed full pipeline (Meta-LOGOS diagnostics, LOGOS solver, CMA-ES
+  optimiser) intended for downstream ontology systems. This is not presented as
+  a validated production capability.
 
 ## Where it sits
 
-The methodological bridge between the original ONN construction and
-the [ONN + ORTSF framework paper](/papers/onn-ortsf-2026/). It
-isolates and fixes the constraint-projection subsystem before it is
-composed with the delay-robust control layer.
+Historically, this was positioned as a methodological bridge between the
+original ONN construction and the
+[ONN + ORTSF framework paper](/papers/onn-ortsf-2026/). That bridge is not
+treated as validated without reproducible evidence for the withdrawn results.

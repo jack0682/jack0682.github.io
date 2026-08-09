@@ -5,7 +5,12 @@ import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useReadingState, toggleBookmark } from "@/lib/reading";
-import { allNotes, onnAllDocs, papers } from "@/lib/content";
+import type { SearchItem } from "@/lib/content";
+import searchMetaJson from "../../.velite/search-meta.json";
+
+const bookmarkIndex = (searchMetaJson as SearchItem[]).filter(
+  (item) => item.kind !== "track" && item.slug,
+);
 
 type Resolved = {
   slug: string;
@@ -26,37 +31,16 @@ export default function BookmarksPage() {
 
   const resolved: Resolved[] = bookmarks
     .map((slug): Resolved | null => {
-      const n = allNotes.find((x) => x.slug === slug);
-      if (n) {
-        return {
-          slug,
-          title: n.title,
-          permalink: n.permalink,
-          group: `Note · Part ${n.part}`,
-          summary: n.summary,
-        };
-      }
-      const d = onnAllDocs.find((x) => x.slug === slug);
-      if (d) {
-        return {
-          slug,
-          title: d.title,
-          permalink: d.permalink,
-          group: "ONN",
-          summary: d.summary,
-        };
-      }
-      const p = papers.find((x) => x.slug === slug);
-      if (p) {
-        return {
-          slug,
-          title: p.title,
-          permalink: p.permalink,
-          group: `Paper · ${p.year}`,
-          summary: p.abstract.slice(0, 160),
-        };
-      }
-      return null;
+      const item = bookmarkIndex.find((candidate) => candidate.slug === slug);
+      return item
+        ? {
+            slug,
+            title: item.title,
+            permalink: item.permalink,
+            group: item.group,
+            summary: item.summary,
+          }
+        : null;
     })
     .filter((r): r is Resolved => r !== null);
 

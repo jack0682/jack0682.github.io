@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -9,6 +10,7 @@ import { DocMeta } from "@/components/layout/DocMeta";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, papers } from "@/lib/content";
+import { formatDate } from "@/lib/format";
 import { absoluteUrl } from "@/lib/site";
 import { scholarlyArticleSchema, jsonLdScript } from "@/lib/seo";
 
@@ -25,13 +27,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const paper = papers.find((p) => p.slug === slug);
   if (!paper) return {};
   const ogImage = `/og/papers/${paper.slug}.png`;
+  const description =
+    paper.claimStatus !== "current" && paper.auditSummary
+      ? paper.auditSummary.slice(0, 200)
+      : paper.abstract.slice(0, 200);
   return {
     title: paper.title,
-    description: paper.abstract.slice(0, 200),
+    description,
     alternates: { canonical: paper.permalink },
     openGraph: {
       title: paper.title,
-      description: paper.abstract.slice(0, 200),
+      description,
       type: "article",
       authors: paper.authors,
       images: [{ url: ogImage, width: 1200, height: 630, alt: paper.title }],
@@ -53,6 +59,13 @@ const statusLabel: Record<string, string> = {
   submitted: "Submitted",
   preprint: "Preprint",
   "in-progress": "In progress",
+};
+
+const claimStatusLabel: Record<string, string> = {
+  current: "Current",
+  "partially-superseded": "Partially superseded",
+  withdrawn: "Withdrawn",
+  historical: "Historical record",
 };
 
 type PaperLike = {
@@ -91,6 +104,7 @@ export default async function PaperPage({ params }: Props) {
 
   const bibtex = paper.bibtex ?? buildBibtex(paper);
   const bibtexGenerated = !paper.bibtex;
+  const hasClaimAudit = paper.claimStatus !== "current";
 
   const crumbs = [
     { href: "/papers/", label: "Papers" },
@@ -137,6 +151,11 @@ export default async function PaperPage({ params }: Props) {
               χ
             </span>
             {statusLabel[paper.status]} · {paper.year}
+            {hasClaimAudit && (
+              <span className="ml-2 inline-block text-[var(--color-accent)] normal-case tracking-normal">
+                · Claims {claimStatusLabel[paper.claimStatus].toLowerCase()}
+              </span>
+            )}
             {paper.venue && (
               <span className="ml-2 inline-block break-words text-[var(--color-muted)] normal-case tracking-normal">
                 · {paper.venue}
@@ -188,9 +207,38 @@ export default async function PaperPage({ params }: Props) {
           )}
         </header>
 
+        {hasClaimAudit && (
+          <aside
+            aria-label="Current research claim status"
+            className="-mx-4 mb-10 border-y border-[var(--color-accent)]/40 bg-[var(--color-accent)]/[0.06] px-4 py-6 sm:px-6 sm:py-7"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+              <p className="sci-eyebrow text-xs text-[var(--color-accent)]">
+                Current claim status
+              </p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-subtle)]">
+                {claimStatusLabel[paper.claimStatus]}
+                {paper.auditedAt && ` · audited ${formatDate(paper.auditedAt)}`}
+              </p>
+            </div>
+            <p className="mt-4 max-w-[44rem] text-base leading-relaxed text-[var(--color-ink)]/90">
+              {paper.auditSummary ??
+                "This manuscript is retained for the scholarly record, but its claims are no longer presented as current research results."}
+            </p>
+            {paper.currentStatusHref && (
+              <Link
+                href={paper.currentStatusHref}
+                className="mt-4 inline-flex min-h-11 items-center border-b border-[var(--color-accent)]/50 text-sm text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              >
+                Read the current audited status →
+              </Link>
+            )}
+          </aside>
+        )}
+
         <section className="border-t border-[var(--color-rule)] pt-10 pb-10 -mx-4 px-4 bg-[var(--color-surface)]/50 rounded">
           <p className="mb-3 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-            Abstract
+            {hasClaimAudit ? "Historical abstract" : "Abstract"}
           </p>
           <p className="text-lg leading-relaxed text-[var(--color-ink)]/90">
             {paper.abstract}

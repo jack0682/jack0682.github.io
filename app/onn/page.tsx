@@ -3,22 +3,24 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { TeX } from "@/components/mdx/TeX";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
 import { onnHub } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+import { paperPublicSummary } from "@/lib/publication-status";
+import { ONN_STATUS } from "@/lib/research-status";
 
 const ONN_MARK = "χ";
 const READING_ORDER = [
-  "Track overview",
-  "ONN + ORTSF framework paper",
-  "Integrated architecture",
-  "Extensions & theorems as needed",
-];
+  ["Current audit & research status", "/onn/onn-research-status-2026/"],
+  ["Canonical audit boundary", "/onn/canonical-spec/"],
+  ["Paper of record · original framing", "/papers/onn-ortsf-2026/"],
+  ["Integrated architecture", "/notes/part-0/integrated-architecture/"],
+] as const;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/onn/" },
   title: "ONN · Hub",
-  description:
-    "Ontology Neural Network and ORTSF — a hub for the ONN research thread. Track overview, canonical specifications, mathematical results, published manuscripts, and the integration plan with Soft Cognitive Cohesion.",
+  description: ONN_STATUS.summary,
 };
 
 /**
@@ -48,7 +50,7 @@ export default function OnnHubPage() {
         mark={ONN_MARK}
         eyebrow="ONN · Hub"
         title="Ontology Neural Network."
-        lead="ONN learns a latent state carrying explicit ontology structure; ORTSF closes the loop with delay-robust control on top of that topology. This hub collects the working definitions, the mathematical commitments, and every manuscript in the thread."
+        lead={ONN_STATUS.summary}
       />
 
       {/* identity stripe — topology map of the latent state */}
@@ -60,13 +62,15 @@ export default function OnnHubPage() {
         <TeX expr="\chi : \mathcal{R} \longrightarrow H^{\ast}(\mathcal{R};\mathbb{R})" />
       </div>
 
+      <ResearchStatusBanner status={ONN_STATUS} className="-mt-6 mb-12" />
+
       {/* ── reading-order callout — numbered ─────────────────── */}
       <div className="mb-14 max-w-[44rem] border-l-2 border-[var(--color-accent)] py-3 pl-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
           Suggested reading order
         </p>
         <ol className="mt-3 space-y-1.5">
-          {READING_ORDER.map((step, i) => (
+          {READING_ORDER.map(([step, href], i) => (
             <li
               key={step}
               className="flex items-baseline gap-4 text-sm leading-snug text-[var(--color-muted)]"
@@ -74,7 +78,12 @@ export default function OnnHubPage() {
               <span className="font-mono text-[11px] tabular-nums text-[var(--color-subtle)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span>{step}</span>
+              <Link
+                href={href}
+                className="text-[var(--color-ink)] underline decoration-[var(--color-rule)] underline-offset-4 transition hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+              >
+                {step}
+              </Link>
             </li>
           ))}
         </ol>
@@ -84,7 +93,7 @@ export default function OnnHubPage() {
       {trackOverview && (
         <HubSection
           label="Track overview"
-          description="The high-level research-track page — what ONN is, why it matters, and where it sits in the broader programme."
+          description="The high-level research-track page — the original programme, the audit boundary, what survives, and the move to its successor line."
         >
           <DocCard
             href={trackOverview.permalink}
@@ -101,12 +110,12 @@ export default function OnnHubPage() {
 
       {/* ── Canonical ─────────────────────────────────────────── */}
       <HubSection
-        label="Canonical specifications"
-        description="The authoritative formal statement of the ONN architecture and the ORTSF operator family."
+        label="Canonical audit & status"
+        description="The authoritative audited boundary statement: original commitments, surviving scoped results, withdrawn claims, and named open gaps."
       >
         {canonical.length === 0 ? (
           <FuturePlaceholder
-            label="ONN canonical spec"
+            label="ONN canonical audit"
             note="A distilled spec of primitives, axioms, and loss functional — detaching from the framework paper into a citable reference document."
           />
         ) : (
@@ -125,7 +134,7 @@ export default function OnnHubPage() {
       {/* ── Research roadmap / status ─────────────────────────── */}
       <HubSection
         label="Research roadmap & status"
-        description="Dated notes tracking what is settled, what is under active development, and the open problems on the critical path."
+        description="Dated audits recording what is settled, what was withdrawn, what remains open, and what moved to the successor programme."
       >
         {roadmap.length === 0 ? (
           <FuturePlaceholder
@@ -148,7 +157,7 @@ export default function OnnHubPage() {
       {/* ── Integration / north-star ──────────────────────────── */}
       <HubSection
         label="Integration & north-star"
-        description="ONN as one half of the unified cognitive-reasoning architecture. The integrated-architecture note sits in Part 0 because it binds SCC and ONN together."
+        description="The proposed SCC–ONN coupling as an audited design target. The integration note records both the intended architecture and the links that are not established."
       >
         {overview.length > 0 &&
           overview.map((n) => (
@@ -165,7 +174,7 @@ export default function OnnHubPage() {
             href={integrationNote.permalink}
             title={integrationNote.title}
             summary={integrationNote.summary}
-            meta="Part 0 · north-star"
+            meta="Part 0 · audited design target"
           />
         )}
       </HubSection>
@@ -173,7 +182,7 @@ export default function OnnHubPage() {
       {/* ── Mathematical results ──────────────────────────────── */}
       <HubSection
         label="Mathematical results"
-        description="Theorems and proofs specific to ONN — topology preservation, cohomological stability, and the delay-robust feedback bound. Individual proof pages will appear here as they are written."
+        description="Audits and scoped results specific to ONN — withdrawn topology/cohomology claims and the surviving scalar delayed-recurrence stability condition."
       >
         {theorems.length === 0 ? (
           <FuturePlaceholder
@@ -224,8 +233,8 @@ export default function OnnHubPage() {
               key={p.slug}
               href={p.permalink}
               title={p.title}
-              summary={p.abstract.slice(0, 220)}
-              meta={`${p.status} · ${p.year}${p.venue ? ` · ${p.venue}` : ""}`}
+              summary={paperPublicSummary(p).slice(0, 220)}
+              meta={`${p.status} · ${p.year}${p.claimStatus !== "current" ? ` · ${p.claimStatus}` : ""}${p.venue ? ` · ${p.venue}` : ""}`}
             />
           ))
         )}

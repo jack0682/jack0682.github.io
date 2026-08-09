@@ -3,8 +3,11 @@
 import * as HoverCard from "@radix-ui/react-hover-card";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { glossary } from "@/lib/content";
 import { cn } from "@/lib/cn";
+import glossaryJson from "../../.velite/glossary.json";
+
+type GlossaryEntry = { name: string; plain: string };
+const glossary = glossaryJson as Record<string, GlossaryEntry>;
 
 /** Auto-dismiss popups after this many ms of inactivity on touch. */
 const TOUCH_AUTO_CLOSE_MS = 6000;

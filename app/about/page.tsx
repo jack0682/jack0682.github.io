@@ -4,7 +4,10 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Logo } from "@/components/media/Logo";
+import { papers } from "@/lib/content";
 import { IDENTITY_LINKS, EMAIL } from "@/lib/identity";
+import { paperStatusLabel } from "@/lib/publication-status";
+import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
 
 /** Uniform render height for every affiliation logo. */
 const LOGO_H = 26;
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about/" },
   title: "About",
   description:
-    "About Jaehong Oh — robotics engineer, AI researcher, and mechanical engineer at Soongsil University, currently working on the unification of Soft Cognitive Cohesion and Ontology Neural Networks.",
+    "About Jaehong Oh — robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
 };
 
 function TimelineItem({
@@ -45,6 +48,8 @@ function TimelineItem({
 }
 
 export default function AboutPage() {
+  const onnPaper = papers.find((paper) => paper.slug === "onn-ortsf-2026");
+
   return (
     <Container width="prose">
       <PageHeader
@@ -128,31 +133,46 @@ export default function AboutPage() {
           What I&apos;m working on
         </p>
         <p className="text-lg leading-relaxed text-[var(--color-ink)]/90">
-          The ultimate target of the work is a single{" "}
+          The long-term question is whether perception, representation, and
+          control can share one coherent{" "}
           <Link
             href="/notes/part-0/integrated-architecture/"
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
             cognitive-reasoning architecture
           </Link>{" "}
-          that unifies Soft Cognitive Cohesion (SCC) and Ontology Neural
-          Networks (ONN). The ONN + ORTSF framework paper — the first
-          formal statement of the ONN half — was{" "}
+          without hiding where a proposed coupling fails. Soft Cognitive
+          Cohesion is the current primary line —{" "}
           <Link
-            href="/papers/onn-ortsf-2026/"
+            href={SCC_STATUS.statusHref ?? "/scc/"}
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
-            accepted at <em>Int. J. Topol.</em>
+            {SCC_STATUS.label}
           </Link>{" "}
-          in April 2026. SCC is the thread I am currently most active on;
-          its current state is tracked in the{" "}
+          — while the original ONN + ORTSF programme is now{" "}
           <Link
-            href="/notes/part-0/scc-status-2026-04/"
+            href={ONN_STATUS.statusHref ?? "/onn/"}
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
-            SCC status page
+            {ONN_STATUS.label.toLowerCase()}
           </Link>
-          .
+          . Its strong higher-order thesis did not survive audit; the scoped
+          boundary, modest surviving signal, and scoped scalar stability
+          result remain public, while system-level certification is still
+          open. Active development has moved to{" "}
+          {ONN_STATUS.successorTitle ?? "a successor line"}.
+          {onnPaper && (
+            <>
+              {" "}The original framing remains the{" "}
+              <Link
+                href={onnPaper.permalink}
+                className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
+              >
+                {paperStatusLabel(onnPaper.status).toLowerCase()} paper of record
+              </Link>
+              .
+            </>
+          )}
         </p>
       </section>
 
@@ -243,7 +263,8 @@ export default function AboutPage() {
               className="group block"
             >
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
-                Accepted · <em>Int. J. Topol.</em> · 2026
+                {onnPaper ? paperStatusLabel(onnPaper.status) : "Published"} ·{" "}
+                <em>Int. J. Topol.</em> · 2026
               </p>
               <p className="mt-1.5 font-display text-lg leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
                 Ontology Neural Network and ORTSF: A Framework for

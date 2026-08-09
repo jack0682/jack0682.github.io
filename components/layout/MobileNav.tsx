@@ -11,6 +11,51 @@ import { cn } from "@/lib/cn";
 
 type Item = { href: string; label: string };
 
+const FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
+function getFocusableElements(container: HTMLElement) {
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+  ).filter(
+    (element) =>
+      element.getAttribute("aria-hidden") !== "true" &&
+      element.getClientRects().length > 0,
+  );
+}
+
+function trapTabKey(event: KeyboardEvent, container: HTMLElement) {
+  if (event.key !== "Tab") return;
+
+  const focusable = getFocusableElements(container);
+  if (focusable.length === 0) {
+    event.preventDefault();
+    container.focus();
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const current = document.activeElement;
+
+  if (!container.contains(current)) {
+    event.preventDefault();
+    (event.shiftKey ? last : first).focus();
+  } else if (event.shiftKey && current === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && current === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 /**
  * Mobile hamburger drawer — shown only below `md`. Handles ESC to
  * close, backdrop click to close, body-scroll lock while open, and
@@ -19,37 +64,68 @@ type Item = { href: string; label: string };
 export function MobileNav({ items }: { items: Item[] }) {
   const [open, setOpen] = useState(false);
   const mounted = useHydrated();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const restoreFocusRef = useRef(true);
 
-  // Close on ESC; restore body scroll.
+  // Keep keyboard focus inside the modal and restore it on close.
   useEffect(() => {
     if (!open) return;
 
+    const previouslyFocused =
+      triggerRef.current ??
+      (document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null);
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (panelRef.current) trapTabKey(e, panelRef.current);
     };
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKey);
 
-    // focus first link after open animation begins
-    const t = window.setTimeout(() => firstLinkRef.current?.focus(), 80);
+    const focusFrame = window.requestAnimationFrame(() => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      (firstLinkRef.current ?? getFocusableElements(panel)[0] ?? panel).focus();
+    });
 
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
-      window.clearTimeout(t);
+      window.cancelAnimationFrame(focusFrame);
+
+      const shouldRestoreFocus = restoreFocusRef.current;
+      restoreFocusRef.current = true;
+      if (shouldRestoreFocus) {
+        window.requestAnimationFrame(() => {
+          if (previouslyFocused?.isConnected) {
+            previouslyFocused.focus({ preventScroll: true });
+          }
+        });
+      }
     };
   }, [open]);
 
   return (
     <div className="lg:hidden">
       <button
+        ref={triggerRef}
         type="button"
         aria-label="Open navigation menu"
         aria-expanded={open}
         aria-controls="mobile-nav"
-        onClick={() => setOpen(true)}
+        aria-haspopup="dialog"
+        onClick={() => {
+          restoreFocusRef.current = true;
+          setOpen(true);
+        }}
         className={cn(
           "inline-flex h-11 w-11 items-center justify-center rounded-full",
           "text-[var(--color-muted)] transition-colors",
@@ -76,6 +152,8 @@ export function MobileNav({ items }: { items: Item[] }) {
                     and cause the panel to blend weirdly. */}
                 <motion.button
                   key="mobile-nav-backdrop"
+                  type="button"
+                  tabIndex={-1}
                   aria-label="Close navigation menu"
                   onClick={() => setOpen(false)}
                   className="absolute inset-0 bg-black/70"
@@ -87,9 +165,11 @@ export function MobileNav({ items }: { items: Item[] }) {
 
                 {/* sliding panel */}
                 <motion.aside
+                  ref={panelRef}
+                  tabIndex={-1}
                   key="mobile-nav-panel"
                   className={cn(
-                    "absolute right-0 top-0 z-[1] flex h-full w-[min(22rem,85vw)] flex-col",
+                    "absolute right-0 top-0 z-[1] flex h-[100dvh] max-h-[100dvh] w-[min(22rem,85vw)] flex-col overflow-y-auto overscroll-contain",
                     "bg-[var(--color-surface)] text-[var(--color-ink)]",
                     "border-l border-[var(--color-rule)]",
                     "shadow-[-24px_0_48px_-12px_rgba(0,0,0,0.25)]",
@@ -102,7 +182,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                   exit={{ x: "100%" }}
                   transition={tween.panel}
                 >
-              <div className="flex items-center justify-between">
+              <div className="flex shrink-0 items-center justify-between">
                 <span className="font-display text-base text-[var(--color-ink)]">
                   Jaehong&nbsp;Oh
                 </span>
@@ -127,6 +207,7 @@ export function MobileNav({ items }: { items: Item[] }) {
               <button
                 type="button"
                 onClick={() => {
+                  restoreFocusRef.current = false;
                   setOpen(false);
                   // Wait one frame for the drawer to start collapsing
                   // so the palette mounts cleanly above the page.
@@ -144,7 +225,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                 }}
                 aria-label="Open search"
                 className={cn(
-                  "mt-10 flex items-center gap-3 rounded-sm border border-[var(--color-rule)] px-4 py-3",
+                  "mt-10 flex shrink-0 items-center gap-3 rounded-sm border border-[var(--color-rule)] px-4 py-3",
                   "text-left text-sm text-[var(--color-muted)] transition-colors",
                   "hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
                 )}
@@ -156,14 +237,17 @@ export function MobileNav({ items }: { items: Item[] }) {
                 </kbd>
               </button>
 
-              <nav aria-label="Primary" className="mt-8 flex flex-col">
+              <nav aria-label="Primary" className="mt-8 flex shrink-0 flex-col">
                 <ul className="flex flex-col">
                   {items.map((item, i) => (
                     <li key={item.href}>
                       <Link
                         ref={i === 0 ? firstLinkRef : undefined}
                         href={item.href}
-                        onClick={() => setOpen(false)}
+                        onClick={() => {
+                          restoreFocusRef.current = false;
+                          setOpen(false);
+                        }}
                         className={cn(
                           "block border-b border-[var(--color-rule)]/50 py-4",
                           "font-display text-2xl tracking-tight text-[var(--color-ink)]",
@@ -177,7 +261,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                 </ul>
               </nav>
 
-              <div className="mt-auto flex items-center justify-between pt-8">
+              <div className="mt-auto flex shrink-0 items-center justify-between pt-8">
                 <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
                   Theme
                 </span>

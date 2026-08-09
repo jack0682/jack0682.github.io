@@ -9,15 +9,10 @@ import { createPortal } from "react-dom";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Search, X } from "lucide-react";
-import MiniSearch from "minisearch";
+import type MiniSearch from "minisearch";
 import { cn } from "@/lib/cn";
 import { tween } from "@/lib/motion";
 import type { SearchItem } from "@/lib/content";
-import bodyIndexJson from "../../.velite/body-index.json";
-
-/* Body text lives only in the palette's own client chunk — keeps
-   the per-page RSC payload small. Loaded once, cached forever. */
-const bodyIndex = bodyIndexJson as Record<string, string>;
 
 /**
  * Global command palette — opens with ⌘K / Ctrl+K from anywhere.
@@ -28,14 +23,17 @@ const bodyIndex = bodyIndexJson as Record<string, string>;
  *     keywords, summary, and stripped MDX body, with a snippet
  *     preview showing the first matching window.
  *
- * Items are precomputed at build time in `lib/content.ts`
- * (with `body` text from `.velite/body-index.json`).
+ * Metadata is generated at build time in `.velite/search-meta.json`.
+ * MiniSearch and stripped body text are fetched only after the palette
+ * opens, keeping both out of the root route bundle.
  */
 export function CommandPalette({ items }: { items: SearchItem[] }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState<SearchItem["kind"] | null>(null);
+  const [searchRuntime, setSearchRuntime] = useState<SearchRuntime | null>(null);
+  const [searchStatus, setSearchStatus] = useState<SearchStatus>("idle");
   const router = useRouter();
 
   useEffect(() => setMounted(true), []);
@@ -70,30 +68,26 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
     }
   }, [open]);
 
-  // MiniSearch instance — built once per `items` reference.
-  const miniSearch = useMemo(() => {
-    const ms = new MiniSearch<SearchableDoc>({
-      idField: "id",
-      fields: ["title", "keywords", "summary", "body"],
-      storeFields: ["id"],
-      searchOptions: {
-        boost: { title: 6, keywords: 3, summary: 2 },
-        prefix: true,
-        fuzzy: 0.15,
-        combineWith: "AND",
-      },
-    });
-    ms.addAll(
-      items.map((it) => ({
-        id: it.id,
-        title: it.title,
-        keywords: it.keywords.join(" "),
-        summary: it.summary ?? "",
-        body: it.slug ? (bodyIndex[it.slug] ?? "") : "",
-      })),
-    );
-    return ms;
-  }, [items]);
+  // The palette opens immediately in browse mode. Full-text machinery is
+  // then loaded in the background and cached for every later opening.
+  useEffect(() => {
+    if (!open || searchRuntime) return;
+    let active = true;
+    setSearchStatus("loading");
+    void loadSearchRuntime(items)
+      .then((runtime) => {
+        if (!active) return;
+        setSearchRuntime(runtime);
+        setSearchStatus("ready");
+      })
+      .catch(() => {
+        if (!active) return;
+        setSearchStatus("error");
+      });
+    return () => {
+      active = false;
+    };
+  }, [items, open, searchRuntime]);
 
   const itemsById = useMemo(
     () => new Map(items.map((it) => [it.id, it])),
@@ -122,8 +116,8 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
   // Ranked search view (non-empty query). MiniSearch returns best-first.
   const ranked = useMemo<RankedMatch[]>(() => {
     const trimmed = query.trim();
-    if (!trimmed) return [];
-    const results = miniSearch.search(trimmed);
+    if (!trimmed || !searchRuntime) return [];
+    const results = searchRuntime.miniSearch.search(trimmed);
     const tokens = trimmed
       .toLowerCase()
       .split(/\s+/)
@@ -132,12 +126,12 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
       .map((r) => {
         const it = itemsById.get(String(r.id));
         if (!it) return null;
-        const body = it.slug ? (bodyIndex[it.slug] ?? "") : "";
+        const body = searchRuntime.bodyIndex[it.id] ?? "";
         return { item: it, snippet: makeSnippet(body, tokens) };
       })
       .filter((r): r is RankedMatch => r !== null)
       .filter((r) => !kind || r.item.kind === kind);
-  }, [query, miniSearch, itemsById, kind]);
+  }, [query, searchRuntime, itemsById, kind]);
 
   const navigate = (href: string) => {
     setOpen(false);
@@ -147,6 +141,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
   if (!mounted) return null;
 
   const isSearching = query.trim().length > 0;
+  const isSearchLoading = isSearching && searchStatus !== "ready";
   const browseCount = groups.reduce((n, [, e]) => n + e.length, 0);
 
   return createPortal(
@@ -248,7 +243,19 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
               )}
 
               <Command.List className="max-h-[55dvh] overflow-y-auto overscroll-contain px-2 py-2 sm:max-h-[60vh]">
-                {isSearching && ranked.length === 0 && (
+                {isSearching && searchStatus === "loading" && (
+                  <Command.Empty className="px-4 py-8 text-center text-sm italic text-[var(--color-subtle)]">
+                    Loading full-text index…
+                  </Command.Empty>
+                )}
+
+                {isSearching && searchStatus === "error" && (
+                  <Command.Empty className="px-4 py-8 text-center text-sm italic text-[var(--color-subtle)]">
+                    Full-text search could not be loaded. Close and try again.
+                  </Command.Empty>
+                )}
+
+                {isSearching && searchStatus === "ready" && ranked.length === 0 && (
                   <Command.Empty className="px-4 py-8 text-center text-sm italic text-[var(--color-subtle)]">
                     Nothing matches.
                   </Command.Empty>
@@ -293,7 +300,11 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
                   {isSearching
-                    ? `${ranked.length} match${ranked.length === 1 ? "" : "es"}`
+                    ? isSearchLoading
+                      ? searchStatus === "error"
+                        ? "search unavailable"
+                        : "loading index…"
+                      : `${ranked.length} match${ranked.length === 1 ? "" : "es"}`
                     : `${browseCount} ${kind ? "in " + KIND_TAB_LABEL[kind].toLowerCase() : "entries"}`}
                 </p>
               </div>
@@ -313,6 +324,57 @@ type SearchableDoc = {
   summary: string;
   body: string;
 };
+
+type SearchRuntime = {
+  miniSearch: MiniSearch<SearchableDoc>;
+  bodyIndex: Record<string, string>;
+};
+
+type SearchStatus = "idle" | "loading" | "ready" | "error";
+
+let searchRuntimePromise: Promise<SearchRuntime> | null = null;
+
+/** Load and build the full-text runtime only after the first palette open.
+ *  The promise is module-cached so route changes and later openings reuse it. */
+function loadSearchRuntime(items: SearchItem[]): Promise<SearchRuntime> {
+  if (searchRuntimePromise) return searchRuntimePromise;
+
+  searchRuntimePromise = Promise.all([
+    import("minisearch"),
+    import("../../.velite/body-index.json"),
+  ])
+    .then(([miniSearchModule, bodyIndexModule]) => {
+      const MiniSearchConstructor = miniSearchModule.default;
+      const bodyIndex = bodyIndexModule.default as Record<string, string>;
+      const miniSearch = new MiniSearchConstructor<SearchableDoc>({
+        idField: "id",
+        fields: ["title", "keywords", "summary", "body"],
+        storeFields: ["id"],
+        searchOptions: {
+          boost: { title: 6, keywords: 3, summary: 2 },
+          prefix: true,
+          fuzzy: 0.15,
+          combineWith: "AND",
+        },
+      });
+      miniSearch.addAll(
+        items.map((item) => ({
+          id: item.id,
+          title: item.title,
+          keywords: item.keywords.join(" "),
+          summary: item.summary ?? "",
+          body: bodyIndex[item.id] ?? "",
+        })),
+      );
+      return { miniSearch, bodyIndex };
+    })
+    .catch((error) => {
+      searchRuntimePromise = null;
+      throw error;
+    });
+
+  return searchRuntimePromise;
+}
 
 type RankedMatch = { item: SearchItem; snippet: string | null };
 

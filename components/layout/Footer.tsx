@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "./Container";
+import { CollaborationCTA } from "./CollaborationCTA";
 import { papers, allNotes, journalEntries, onnAllDocs } from "@/lib/content";
 import { IDENTITY_LINKS } from "@/lib/identity";
 
@@ -7,33 +8,33 @@ const cols = [
   {
     heading: "Research",
     links: [
-      { href: "/research/onn/", label: "Ontology Neural Network" },
-      { href: "/research/perception/", label: "Perception" },
+      { href: "/research/", label: "Programme overview" },
+      { href: "/scc/", label: "SCC programme" },
+      { href: "/onn/", label: "ONN programme" },
       { href: "/research/theory/", label: "Mathematical theory" },
       { href: "/research/control/", label: "Delay-robust control" },
-      { href: "/research/robotics/", label: "Robotics" },
+      { href: "/research/robotics/", label: "Robotics applications" },
     ],
   },
   {
-    heading: "Writing",
+    heading: "Library",
     links: [
-      { href: "/start/", label: "Start here" },
-      { href: "/scc/", label: "SCC · hub" },
-      { href: "/onn/", label: "ONN · hub" },
       { href: "/papers/", label: "Papers" },
       { href: "/journal/", label: "Journal" },
       { href: "/notes/", label: "Notes" },
       { href: "/refs/", label: "Reference indexes" },
-      { href: "/tags/", label: "Tags" },
-      { href: "/bookmarks/", label: "Bookmarks" },
+      { href: "/tags/", label: "Topic index" },
+      { href: "/bookmarks/", label: "Reading list" },
     ],
   },
   {
-    heading: "Elsewhere",
+    heading: "Profile",
     links: [
+      { href: "/start/", label: "Start here" },
+      { href: "/about/", label: "About & CV" },
+      { href: "/bio/", label: "Bio · 5 languages" },
       ...IDENTITY_LINKS.map((l) => ({ href: l.href, label: l.label })),
       { href: "/feed.xml", label: "RSS Feed" },
-      { href: "/about/", label: "About & CV" },
     ],
   },
 ];
@@ -51,7 +52,9 @@ export function Footer() {
   return (
     <footer className="mt-40 border-t border-[var(--color-rule)]">
       <Container>
-        <div className="grid gap-10 py-14 sm:grid-cols-2 sm:py-16 lg:grid-cols-3">
+        <CollaborationCTA variant="footer" />
+
+        <div className="grid gap-10 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-3">
           {cols.map((col) => (
             <div key={col.heading}>
               <p className="mb-4 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">

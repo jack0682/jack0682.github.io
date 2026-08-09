@@ -149,7 +149,8 @@ Layer 3 — ONN
 Layer 4 — ORTSF
   "Semantic structure is defined. How do we preserve that meaning
    in real-time control under stochastic delay?"
-  → Delay-robust control via a standard plant-pole delay margin.
+  → Model-level delay analysis: a guarded integrator path and one
+    additive delayed scalar mode.
 ```
 
 ---
@@ -206,13 +207,14 @@ fruit structure discovered from the soft cohesion field.
 
 This was the programme's organising hope, but on the ONN + ORTSF side
 it has since been **audited and does not hold in its strong form**: the
-control margin is a standard delay margin driven by the plant pole and
-is *decoupled* from — not governed by — the learned ontology's
-cohomology, and measured higher-order structure adds no information
-beyond pairwise (the [Two Ceilings boundary](/onn/canonical-spec/)). The
-SCC / RelationWorld theorems of Parts I–II stand on their own; the
-"single certificate" coupling them through cohomology is **not**
-established.
+surviving control artifacts are a model-level phase-margin gate in a
+non-default guarded path and the single-mode additive recurrence condition
+$\rho+|K_c|<1$. Coupled multimode and deployed-controller stability remain
+open. Neither artifact is governed by the learned ontology's cohomology, and
+measured higher-order structure adds no information beyond pairwise (the
+[Two Ceilings boundary](/onn/canonical-spec/)). The SCC / RelationWorld
+theorems of Parts I–II stand on their own; the "single certificate" coupling
+them through cohomology is **not** established.
 
 ---
 
@@ -240,10 +242,11 @@ established.
   higher-order/cohomological structure adds no information beyond
   pairwise). See the [ONN status](/onn/onn-research-status-2026/); live
   work moved to ULR.
-- **Layer 4 (ORTSF)** — Reduces to a **standard, verified delay-margin
-  certificate** ($\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$, plus a
-  sufficient small-gain condition); the earlier cohomological-Lyapunov and
-  `τ_max = 177 μs` claims are
+- **Layer 4 (ORTSF)** — The implemented stability result is the
+  **single-mode additive scalar condition** $\rho+|K_c|<1$; coupled multimode,
+  physical-gain mapping, and system-level certification remain open. A separate
+  model-level phase-margin gate exists in a non-default guarded path. The
+  earlier cohomological-Lyapunov and `τ_max = 177 μs` claims are
   [withdrawn](/onn/theorem-delay-robust-bound/).
 - **Integration theorem** — in progress. The piece that turns four
   separate results into one architecture.

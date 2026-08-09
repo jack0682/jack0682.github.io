@@ -6,18 +6,15 @@ import { PaletteTrigger } from "./PaletteTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-/** Full list for the mobile drawer — includes Tags. */
+/** Same reader-facing information architecture as the desktop navigation. */
 const mobileNav = [
-  { href: "/start/",    label: "Start here" },
+  { href: "/start/", label: "Start" },
   { href: "/research/", label: "Research" },
-  { href: "/scc/",      label: "SCC" },
-  { href: "/onn/",      label: "ONN" },
-  { href: "/papers/",   label: "Papers" },
-  { href: "/journal/",  label: "Journal" },
-  { href: "/notes/",    label: "Notes" },
-  { href: "/refs/",     label: "Refs" },
-  { href: "/tags/",     label: "Tags" },
-  { href: "/about/",    label: "About" },
+  { href: "/papers/", label: "Papers" },
+  { href: "/journal/", label: "Journal" },
+  { href: "/notes/", label: "Notes" },
+  { href: "/refs/", label: "Reference" },
+  { href: "/about/", label: "About" },
 ];
 
 

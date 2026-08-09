@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/start/" },
@@ -91,11 +92,12 @@ export default function StartHerePage() {
               <span className="text-[var(--color-ink)]">audited to a boundary</span>{" "}
               (a scoped &ldquo;No-Go&rdquo; — higher-order structure adds no
               information beyond pairwise). What survived is a modest positive
-              signal and a standard, verified delay-robust control certificate.
+              signal and a scoped scalar Schur-stability result;
+              coupled system-level certification remains open.
               The framework paper is peer-reviewed and published; the story of
               what held up is on the{" "}
               <Link href="/onn/canonical-spec/" className={linkCls}>
-                ONN canonical spec
+                ONN canonical audit
               </Link>
               .
             </p>
@@ -128,7 +130,13 @@ export default function StartHerePage() {
             <em>Ontology Neural Network and ORTSF</em>
           </Link>{" "}
           (International Journal of Topology, MDPI, 2026) — then its{" "}
-          <span className="text-[var(--color-ink)]">2026 audit note</span>, which
+          <Link
+            href={ONN_STATUS.statusHref ?? "/onn/"}
+            className={linkCls}
+          >
+            2026 audit note
+          </Link>
+          {", which"}
           is the clearest example of how this site works: a published claim, put
           under its own rigorous scrutiny, and reported honestly whichever way it
           lands.
@@ -160,7 +168,7 @@ export default function StartHerePage() {
           {[
             [
               "CV-x.y",
-              "Canonical Version — the release number of the theory. Higher is newer; the current SCC canonical is CV-1.17.",
+              `Canonical Version — the release number of the theory. Higher is newer; the current SCC canonical is ${SCC_STATUS.version ?? "listed in the status ledger"}.`,
             ],
             [
               "Cat A / B / C",

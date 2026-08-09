@@ -176,9 +176,22 @@ hr {
 }
 
 /* ── overflow protection for MDX body content ─────────────────── */
+.prose {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .prose :where(pre) {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Long file paths, identifiers, and URLs should wrap inside prose instead of
+   widening the document. Preformatted code keeps its own horizontal scroller. */
+.prose :where(code:not(pre code)),
+.prose :where(a) {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .prose :where(table) {
@@ -329,7 +342,7 @@ hr {
 }
 
 /* Monospaced data values — use inline in prose for metrics etc.
-   e.g. <span class="sci-data">τ_max = 177 μs</span>.
+   e.g. <span class="sci-data">CV-1.17</span>.
    Tabular numerals keep digit columns aligned. */
 .sci-data {
   font-family: var(--font-mono);

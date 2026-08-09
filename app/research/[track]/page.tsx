@@ -7,7 +7,9 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { DocMeta } from "@/components/layout/DocMeta";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
 import { allNotes, papers, researchTracks } from "@/lib/content";
+import { getResearchStatus } from "@/lib/research-status";
 
 export function generateStaticParams() {
   return researchTracks.map((track) => ({ track: track.slug }));
@@ -23,11 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!t) return {};
   return {
     title: t.title,
-    description: t.summary,
+    description: t.statusSummary ?? t.summary,
     alternates: { canonical: t.permalink },
     openGraph: {
       title: t.title,
-      description: t.summary,
+      description: t.statusSummary ?? t.summary,
       type: "website",
       images: [
         { url: `/og/research/${t.slug}.png`, width: 1200, height: 630, alt: t.title },
@@ -52,6 +54,7 @@ export default async function ResearchTrackPage({ params }: Props) {
 
   const trackNotes = allNotes.filter((n) => n.track === t.track);
   const trackPapers = papers.filter((p) => p.track === t.track);
+  const status = getResearchStatus(t.track);
 
   return (
     <Container width="prose" data-track={t.track}>
@@ -65,6 +68,7 @@ export default async function ResearchTrackPage({ params }: Props) {
         lead={t.summary}
         className="pt-0 md:pt-0"
       />
+      <ResearchStatusBanner status={status} className="-mt-5 mb-8" />
       <DocMeta
         published={t.date}
         updated={t.updated}

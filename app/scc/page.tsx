@@ -3,22 +3,24 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { TeX } from "@/components/mdx/TeX";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
 import { sccHub } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+import { paperPublicSummary } from "@/lib/publication-status";
+import { SCC_STATUS } from "@/lib/research-status";
 
 const SCC_MARK = "§";
 const READING_ORDER = [
-  "Canonical specification",
-  "Research status",
-  "Integrated architecture",
-  "Theorem references as needed",
-];
+  ["Current research status", "/notes/part-0/scc-status-2026-05/"],
+  ["Canonical specification", "/notes/part-0/canonical-spec-scc/"],
+  ["Integrated architecture", "/notes/part-0/integrated-architecture/"],
+  ["Theorem registry", "/notes/part-0/scc-theorem-registry/"],
+] as const;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/scc/" },
   title: "SCC · Hub",
-  description:
-    "A single access point for the Soft Cognitive Cohesion programme — the canonical specification, the current research status, the integrated architecture with Ontology Neural Networks, and the mathematical results underpinning them.",
+  description: SCC_STATUS.summary,
 };
 
 /**
@@ -38,7 +40,7 @@ export default function SccHubPage() {
         mark={SCC_MARK}
         eyebrow="SCC · Hub"
         title="Soft Cognitive Cohesion."
-        lead="One entry point for the SCC programme — the canonical specification, the current research status, the unification plan with Ontology Neural Networks, and the mathematical results. A living hub rather than a chapter list."
+        lead={SCC_STATUS.summary}
       />
 
       {/* identity stripe — mirrors the home hero's formula row */}
@@ -50,13 +52,15 @@ export default function SccHubPage() {
         <TeX expr="E_{\mathcal{S}} : \mathrm{Conf}(\mathcal{S}) \longrightarrow \mathbb{R}_{\geq 0}" />
       </div>
 
+      <ResearchStatusBanner status={SCC_STATUS} className="-mt-6 mb-12" />
+
       {/* reading-order callout — numbered sequence, not prose */}
       <div className="mb-14 max-w-[44rem] border-l-2 border-[var(--color-accent)] py-3 pl-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
           Suggested reading order
         </p>
         <ol className="mt-3 space-y-1.5">
-          {READING_ORDER.map((step, i) => (
+          {READING_ORDER.map(([step, href], i) => (
             <li
               key={step}
               className="flex items-baseline gap-4 text-sm leading-snug text-[var(--color-muted)]"
@@ -64,7 +68,12 @@ export default function SccHubPage() {
               <span className="font-mono text-[11px] tabular-nums text-[var(--color-subtle)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span>{step}</span>
+              <Link
+                href={href}
+                className="text-[var(--color-ink)] underline decoration-[var(--color-rule)] underline-offset-4 transition hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+              >
+                {step}
+              </Link>
             </li>
           ))}
         </ol>
@@ -127,7 +136,7 @@ export default function SccHubPage() {
       {/* ── Overview / integration ───────────────────── */}
       <HubSection
         label="Integration & north-star"
-        description="How SCC is positioned relative to Ontology Neural Networks and the broader research programme."
+        description="How SCC sits in the broader programme, including the audited status of the proposed coupling to Ontology Neural Networks."
       >
         {overview.length === 0 ? (
           <Placeholder text="No overview documents yet." />
@@ -205,8 +214,8 @@ export default function SccHubPage() {
               key={p.slug}
               href={p.permalink}
               title={p.title}
-              summary={p.abstract.slice(0, 220)}
-              meta={`${p.status} · ${p.year}`}
+              summary={paperPublicSummary(p).slice(0, 220)}
+              meta={`${p.status} · ${p.year}${p.claimStatus !== "current" ? ` · ${p.claimStatus}` : ""}`}
             />
           ))
         )}

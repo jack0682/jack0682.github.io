@@ -34,7 +34,7 @@ export function MobileDocBar({
       className={cn(
         "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-40 lg:hidden",
         "liquid-glass",
-        "inline-flex items-stretch overflow-hidden rounded-sm",
+        "inline-flex h-11 items-stretch overflow-hidden rounded-sm",
       )}
     >
       {prev ? (
@@ -42,7 +42,7 @@ export function MobileDocBar({
           href={prev.permalink}
           aria-label={`Previous: ${prev.title}`}
           className={cn(
-            "group inline-flex items-center gap-2 px-3 py-2",
+            "group inline-flex min-w-11 items-center justify-center gap-2 px-3",
             "text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]",
           )}
         >
@@ -52,7 +52,7 @@ export function MobileDocBar({
           </span>
         </Link>
       ) : (
-        <span className="inline-flex items-center px-3 py-2 text-[var(--color-subtle)] opacity-40">
+        <span className="inline-flex min-w-11 items-center justify-center px-3 text-[var(--color-subtle)] opacity-40">
           <ChevronLeft size={14} strokeWidth={1.5} aria-hidden />
         </span>
       )}
@@ -62,7 +62,7 @@ export function MobileDocBar({
           href={next.permalink}
           aria-label={`Next: ${next.title}`}
           className={cn(
-            "group inline-flex items-center gap-2 px-3 py-2",
+            "group inline-flex min-w-11 items-center justify-center gap-2 px-3",
             "text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]",
           )}
         >
@@ -72,7 +72,7 @@ export function MobileDocBar({
           <ChevronRight size={14} strokeWidth={1.5} />
         </Link>
       ) : (
-        <span className="inline-flex items-center px-3 py-2 text-[var(--color-subtle)] opacity-40">
+        <span className="inline-flex min-w-11 items-center justify-center px-3 text-[var(--color-subtle)] opacity-40">
           <ChevronRight size={14} strokeWidth={1.5} aria-hidden />
         </span>
       )}

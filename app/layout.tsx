@@ -14,7 +14,7 @@ import { FloatingChip } from "@/components/layout/FloatingChip";
 import { CursorSpotlight } from "@/components/ui/CursorSpotlight";
 import { FootnoteTooltip } from "@/components/ui/FootnoteTooltip";
 import { KaTeXZoom } from "@/components/ui/KaTeXZoom";
-import { searchIndex } from "@/lib/content";
+import searchMetaJson from "../.velite/search-meta.json";
 import {
   SITE_URL,
   GOOGLE_SITE_VERIFICATION,
@@ -22,6 +22,11 @@ import {
   GTM_ID,
 } from "@/lib/site";
 import { rootSchema, jsonLdScript } from "@/lib/seo";
+
+/* Generated independently from Velite's compiled MDX collections.
+   Keeping this projection at the layout boundary prevents `#content`
+   (including every compiled body) from entering the root client graph. */
+const searchItems = searchMetaJson as Parameters<typeof CommandPalette>[0]["items"];
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -130,8 +135,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Masthead />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
-          <CommandPalette items={searchIndex} />
-          <FloatingChip items={searchIndex} />
+          <CommandPalette items={searchItems} />
+          <FloatingChip items={searchItems} />
           <CursorSpotlight />
           <FootnoteTooltip />
           <KaTeXZoom />

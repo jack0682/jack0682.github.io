@@ -4,8 +4,11 @@ title: "Delay-robust control"
 slug: control
 ordinal: 4
 status: active
+statusLabel: "Audited · scalar single-mode result"
+statusSummary: "For the scalar recurrence e[t+1] = ρe[t] − K_c e[t−d], ρ + |K_c| < 1 is sufficient for Schur stability for every integer delay d ≥ 1. This does not establish coupled multimode or deployed-controller stability; the B-operator bound and PD-gain mapping remain open."
+currentStatusHref: "/onn/theorem-delay-robust-bound/"
 updated: 2026-07-10
-summary: "Closed-loop control laws that remain stable under communication and sensing delay, built on top of an ontology-aware perceptual state. The ORTSF framework, reduced to its honest, verified content: a standard delay-margin certificate — decoupled from the ontology's cohomology, not a cohomological Lyapunov bound."
+summary: "Delay-aware control after audit: a scoped sufficient condition for one additive delayed scalar recurrence, explicitly decoupled from ontology cohomology. Coupled multimode dynamics, physical gain mapping, and system-level certification are not yet established."
 ---
 
 Perception and control meet in the presence of delay. Once you allow
@@ -14,9 +17,9 @@ non-negligible lag, the classical separation between "figure out what
 the world is" and "decide what to do about it" becomes untenable —
 the two problems interact through the delay.
 
-This track collects the stability analyses, the gates that implement
-predicate binding under delay, and the experimental evidence linking
-them to the topology of the upstream perceptual representation.
+This track collects the stability analyses and predicate-binding gates
+that remain after audit. No verified result currently links their
+closed-loop stability to the topology of the upstream representation.
 
 ## The ORTSF framework
 
@@ -30,21 +33,22 @@ Earlier drafts stated ORTSF stability "in the language of the learned
 ontology's cohomology", and claimed the ONN total loss
 $\mathcal{L}_{\mathrm{total}}$ *is* a constructive Lyapunov function
 resolving the Massera–Kurzweil problem. **That coupling did not survive
-audit.** The verified result is a *standard* delay-margin certificate,
-driven by the plant pole and **decoupled** from the ontology's
-cohomology — no cohomological Lyapunov bound. See the
+audit.** The implemented proof is much narrower: one additive delayed
+scalar recurrence in an $H^\perp$ mode, with a sufficient Schur-stability
+condition. It is **decoupled** from the ontology's cohomology and is not
+yet a coupled, system-level certificate. See the
 [delay-margin certificate](/onn/theorem-delay-robust-bound/) and the
 [cohomological-stability audit](/onn/theorem-cohomological-stability/).
 </Callout>
 
 ## What has been shown
 
-- **A standard, verified delay margin.** For a linearized plant with
-  pole $p$, the closed loop tolerates delay up to
-  $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$, with a sufficient
-  small-gain condition ($\rho_{\mathrm{ONN}}\cdot\gamma_{\mathrm{ortsf}} < 1$)
-  for arbitrary delay. This is textbook control, honestly labelled as
-  systems completion rather than novelty.
+- **A scoped sufficient condition.** For the scalar recurrence
+  $e[t+1] = \rho e[t] - K_c e[t-d]$, the condition
+  $\rho + |K_c| < 1$ is sufficient for Schur stability for every integer
+  delay $d \geq 1$. This does not establish coupled multimode or
+  deployed-controller stability; the $B$-operator bound, mapping $K_c$
+  to physical PD gains, and full-system lift remain open.
 - **What was withdrawn.** The "constructive resolution of the
   Massera–Kurzweil problem", the specific `τ_max = 177 μs` / 3M-node
   bound, and the cohomological-Lyapunov reading are **not reproducible
@@ -68,7 +72,7 @@ which is more actionable than a scalar bound.
 
 ## Papers on this track
 
-- [Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control](/papers/onn-ortsf-2026/) — the anchor paper, accepted at *Int. J. Topol.* in April 2026.
+- [Ontology Neural Network and ORTSF: A Framework for Topological Reasoning and Delay-Robust Control](/papers/onn-ortsf-2026/) — the published paper of record for the original framing; later audit narrows its control claim as described above.
 - [Constructive Lyapunov Functions via Topology-Preserving Neural Networks](/papers/constructive-lyapunov-onn/)
 - [Advanced Topology-Preserving Neural Networks](/papers/advanced-onn-ortsf-extension/) — a 2025 draft that claimed the empirical realisation of these bounds; superseded by the audit (see its status banner).
 

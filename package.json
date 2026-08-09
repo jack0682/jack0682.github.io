@@ -10,12 +10,13 @@
   "scripts": {
     "predev": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs",
     "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
-    "build": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build",
+    "build": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build && node scripts/check-internal-links.mjs",
     "og": "node scripts/generate-og.mjs",
     "start": "next start",
     "lint": "eslint",
     "content": "velite",
-    "content:watch": "velite --watch"
+    "content:watch": "velite --watch",
+    "check:links": "node scripts/check-internal-links.mjs"
   },
   "dependencies": {
     "@dagrejs/dagre": "^3.0.0",

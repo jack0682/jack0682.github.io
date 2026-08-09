@@ -3,63 +3,78 @@ title: "ORTSF Delay-Margin Certificate"
 slug: theorem-delay-robust-bound
 kind: theorem
 tags: [onn, theorem, delay, robust, ortsf, control]
-summary: "The one real, verified control result of the ORTSF side: a proved and runtime-enforced delay margin Δt_max = φ_PM / ω_c, plus a sufficient small-gain delay-independent certificate. Standard control theory, honestly scoped — no cohomology, no microsecond bound."
+summary: "An honestly scoped ORTSF control note: a model-level phase-margin gate implemented in a guarded pipeline, plus a single-mode scalar delay-independent certificate. Multimode and deployed-controller stability remain open."
 updated: "2026-07-10"
-draft: true
 ---
 
 *Rewritten 2026-07-10 against `onn_ws/ONN`. The earlier version stated
 $\tau_{\max} = 177\;\mu\text{s}$ "for 3M-node networks" and derived stability from
 a cohomological Lyapunov function — neither of which is in the source. The old
 published control numbers ($\text{dt}_{\max} = 52\text{ ms}$, phase margin
-$28°$) are not regenerable and are dropped. This is the certificate that is
-actually proved and enforced.*
+$28°$) are not regenerable and are dropped. The two results below are the
+narrower model-level statements supported by the current source.*
 
 ## Statement (delay margin)
 
-For the ORTSF closed loop over the proved plant
+For the constructed linear plant model
 $G(s) = C(sI + M)^{-1}B$ with $M = L_F + \mu\,\Pi_{H^\perp}$ (poles
-$-(\lambda_i + \mu)$, dominant pole $p = \lambda_2 + \mu$), the phase margin is
+$-(\lambda_i + \mu)$, dominant pole $p = \lambda_2 + \mu$), and the integrating
+controller model $C(s)=K/s$, the phase margin is
 
 $$
 \varphi_{\mathrm{PM}} = \frac{\pi}{2} - \arctan\!\left(\frac{\omega_c}{p}\right),
 $$
 
-and the closed loop tolerates any communication delay up to
+and that modeled loop has the delay margin
 
 $$
 \Delta t_{\max} = \frac{\varphi_{\mathrm{PM}}}{\omega_c}.
 $$
 
-This is **proved and enforced at runtime**: the `GuardedORTSFPipeline` computes
-$\Delta t_{\max}$ from the (computed, not hand-built) spectrum, admits commands
-while $\text{delay} < \Delta t_{\max}$, and falls back to a zero-velocity command
-when $\text{delay} \geq \Delta t_{\max}$ (verified in the integration tests to
-$10^{-12}$).
+This model-level gate is **implemented and tested** in the
+`GuardedORTSFPipeline`: it computes $\Delta t_{\max}$ from the spectrum, admits
+commands while $\text{delay} < \Delta t_{\max}$, and falls back to a
+zero-velocity command at or above the threshold. The guarded path is not the
+default deployed control path, so this is not evidence of physical-system or
+deployed-controller stability.
 
-## Nonlinear small-gain certificate (sufficient, conservative)
+## Single-mode delayed recurrence (sufficient, conservative)
 
-If the ONN spine contraction $\rho_{\mathrm{ONN}} = \rho_{\mathrm{drift}} < 1$ and
-the ORTSF gain $\gamma_{\mathrm{ortsf}}$ satisfy
+Separately, consider the scalar additive delayed-feedback reduction on one
+dominant inconsistent mode,
 
 $$
-\rho_{\mathrm{ONN}} \cdot \gamma_{\mathrm{ortsf}} < 1,
+e_{t+1} = \rho e_t - K_c e_{t-d}.
 $$
 
-the interconnected loop is stable for **arbitrary delay** — a *delay-independent*
-guarantee. It is **sufficient but not tight** (a conservative envelope), validated
-by simulation: sound where it holds, non-vacuous where it fails.
+For this recurrence, with
+$\rho = \max\{|1-\eta\lambda_2|,|1-\eta\lambda_{\max}|\}$, the condition
+
+$$
+\rho + |K_c| < 1
+$$
+
+is sufficient for all characteristic roots to remain inside the unit disk for
+every integer delay $d\geq1$. This is a delay-independent result for the stated
+**single-mode scalar model**. It is not the product-form general feedback
+small-gain condition, and it does not certify the full interconnected ORTSF loop.
 
 ## Honest scope
 
-- **This is systems completion, not novelty.** Delay-robust control is standard;
-  the margin above is a linearized-plant phase-margin result plus a conservative
-  small-gain envelope. The `[GAP-NL]` nonlinear case is only partially closed.
-- **The margin is *not* set by the graph spectrum $\lambda_2$.** A larger
-  $\lambda_2$ only moves the plant pole; the crossover $\omega_c$ (hence the
-  margin) is set independently and the controller can re-gain. The earlier
-  "delay margin governed by $\lambda_2$ / by cohomological invariants" coupling
-  was refuted.
+- **The two results use different models.** The first is a linearized plant with
+  an integrating controller; the second is an additive scalar delayed
+  recurrence. Neither is a general nonlinear closed-loop theorem.
+- **The scalar result does not cover coupled modes or the shipped controller.**
+  The multimode bound through the actuation operator $B$ is open, and the
+  abstract $K_c$ has not been mapped to the fabric's multi-joint PD gains and
+  interpolation law.
+- **The guarded path is not the deployed default.** Its threshold behavior is
+  tested, but end-to-end deployment and physical validation remain open.
+- **This is systems completion, not novelty.** Both statements use standard
+  control arguments and are presented as scoped engineering certificates.
+- **The phase-margin formula is not a $\lambda_2$-only bound.** The spectrum
+  enters the modeled pole $p$, while the crossover $\omega_c$ also depends on
+  the controller design. No cohomological invariant supplies the margin.
 - **No numeric bound is claimed as a physical result.** The certificate is
   symbolic and enforced; the only concrete figure in the source is an
   *illustrative* $\Delta t_{\max} = 0.49\text{ s}$ in an end-to-end demo.

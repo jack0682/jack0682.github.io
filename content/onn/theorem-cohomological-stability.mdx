@@ -3,9 +3,8 @@ title: "Audit — the 'Cohomological Stability Certificate'"
 slug: theorem-cohomological-stability
 kind: essay
 tags: [onn, audit, cohomology, stability, certificate]
-summary: "The claimed 'cohomology = Lyapunov certificate' does not exist in the research source. The stability that actually holds is a standard control-theoretic delay margin driven by the plant pole, not by cohomology."
+summary: "The claimed 'cohomology = Lyapunov certificate' does not exist in the research source. What remains is a model-level phase-margin gate and a separate single-mode scalar delay certificate, neither derived from cohomology."
 updated: "2026-07-10"
-draft: true
 ---
 
 *Rewritten 2026-07-10 against `onn_ws/ONN`. This page previously stated a
@@ -24,10 +23,12 @@ bridging Massera-type existence theorems to a constructive certificate.
 ## What the audit found
 
 - **There is no "cohomology $=$ Lyapunov" certificate in the source.** The
-  stability result that actually holds is **control-theoretic**: the ORTSF delay
-  margin $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$ and the small-gain
-  condition $\rho + K_c < 1$, both driven by the *plant pole*
-  $p = \lambda_2 + \mu$ — not by any cohomology class. See
+  results that remain are **control-theoretic and model-specific**: a phase-margin
+  gate $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$ for a constructed
+  linear plant with an integrating controller, and a separate single-mode scalar
+  recurrence certificate $\rho+|K_c|<1$. The latter does not cover coupled modes
+  or map $K_c$ to the deployed PD controller. Neither result follows from a
+  cohomology class. See
   [the delay-margin certificate](/onn/theorem-delay-robust-bound/).
 - **The curvature $\leftrightarrow$ persistent-homology bound "is proved by no
   theorem"** and was removed in the audit.
@@ -42,4 +43,5 @@ bridging Massera-type existence theorems to a constructive certificate.
 ## Takeaway
 
 The cohomological stability certificate, as claimed, is withdrawn. What remains
-is a standard delay-robust control certificate that owes nothing to cohomology.
+is narrower: model-level control analysis that owes nothing to cohomology and
+does not yet establish coupled multimode or deployed-system stability.

@@ -6,7 +6,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
@@ -22,6 +22,51 @@ type Section = {
   siblings: SearchItem[];
 };
 
+const FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
+function getFocusableElements(container: HTMLElement) {
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+  ).filter(
+    (element) =>
+      element.getAttribute("aria-hidden") !== "true" &&
+      element.getClientRects().length > 0,
+  );
+}
+
+function trapTabKey(event: KeyboardEvent, container: HTMLElement) {
+  if (event.key !== "Tab") return;
+
+  const focusable = getFocusableElements(container);
+  if (focusable.length === 0) {
+    event.preventDefault();
+    container.focus();
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const current = document.activeElement;
+
+  if (!container.contains(current)) {
+    event.preventDefault();
+    (event.shiftKey ? last : first).focus();
+  } else if (event.shiftKey && current === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && current === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 /**
  * Persistent, bottom-right anchor chip. Displays the current
  * section in a small-caps academic form ("§ Part 0 · SCC") and,
@@ -33,22 +78,60 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const restoreFocusRef = useRef(true);
 
   useEffect(() => setMounted(true), []);
 
   // Close on route change
   useEffect(() => {
+    restoreFocusRef.current = false;
     setOpen(false);
   }, [pathname]);
 
-  // Close on ESC
+  // Keep keyboard focus inside the modal and restore it on close.
   useEffect(() => {
     if (!open) return;
+
+    const previouslyFocused =
+      triggerRef.current ??
+      (document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null);
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (panelRef.current) trapTabKey(e, panelRef.current);
     };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+
+    const focusFrame = window.requestAnimationFrame(() => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      (getFocusableElements(panel)[0] ?? panel).focus();
+    });
+
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+      window.cancelAnimationFrame(focusFrame);
+
+      const shouldRestoreFocus = restoreFocusRef.current;
+      restoreFocusRef.current = true;
+      if (shouldRestoreFocus) {
+        window.requestAnimationFrame(() => {
+          if (previouslyFocused?.isConnected) {
+            previouslyFocused.focus({ preventScroll: true });
+          }
+        });
+      }
+    };
   }, [open]);
 
   const section = useMemo<Section | null>(
@@ -62,9 +145,10 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
 
   // Trigger ⌘K palette by dispatching the shortcut event.
   const openPalette = () => {
+    restoreFocusRef.current = false;
     setOpen(false);
-    // microtask so the sheet closes first
-    queueMicrotask(() => {
+    // Wait one frame so the sheet releases its focus trap first.
+    requestAnimationFrame(() => {
       const ev = new KeyboardEvent("keydown", {
         key: "k",
         metaKey: navigator.platform.toLowerCase().includes("mac"),
@@ -80,25 +164,32 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
       {/* the chip itself — flat rectangle with a left accent tick,
           matching the site's sharp geometry (rounded-full removed). */}
       <button
+        ref={triggerRef}
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          restoreFocusRef.current = true;
+          setOpen((v) => !v);
+        }}
         aria-label={`${section.label} — open section menu`}
+        aria-expanded={open}
+        aria-controls="section-menu-dialog"
+        aria-haspopup="dialog"
         className={cn(
           "liquid-glass",
           "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40",
-          "group inline-flex items-stretch",
+          "group inline-flex h-11 items-stretch overflow-hidden rounded-sm",
           "text-[var(--color-ink)] transition-colors",
         )}
       >
         <span
           aria-hidden
-          className="flex w-8 items-center justify-center bg-[var(--color-accent)] text-[var(--color-surface)] transition-colors"
+          className="flex w-11 shrink-0 items-center justify-center bg-[var(--color-accent)] text-[var(--color-surface)] transition-colors"
         >
           <span className="sci-section-mark text-base italic leading-none">
             {section.mark}
           </span>
         </span>
-        <span className="flex items-center px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors group-hover:text-[var(--color-accent)]">
+        <span className="hidden items-center px-3.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors group-hover:text-[var(--color-accent)] sm:flex">
           {section.label}
         </span>
       </button>
@@ -108,6 +199,7 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
         <AnimatePresence>
           {open && (
             <div
+              id="section-menu-dialog"
               role="dialog"
               aria-modal="true"
               aria-label="Section menu"
@@ -115,6 +207,8 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
               style={{ isolation: "isolate" }}
             >
               <motion.button
+                type="button"
+                tabIndex={-1}
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
                 className="absolute inset-0 bg-black/50"
@@ -124,9 +218,11 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                 transition={tween.quick}
               />
               <motion.div
+                ref={panelRef}
+                tabIndex={-1}
                 className={cn(
                   "liquid-glass",
-                  "absolute bottom-0 left-0 right-0 max-h-[70vh] overflow-y-auto",
+                  "absolute bottom-0 left-0 right-0 max-h-[70dvh] overflow-y-auto overscroll-contain",
                   "sm:bottom-auto sm:left-auto sm:right-6 sm:top-auto",
                   "sm:bottom-[max(4.5rem,env(safe-area-inset-bottom))]",
                   "sm:w-[22rem]",
@@ -154,7 +250,7 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                     type="button"
                     aria-label="Close"
                     onClick={() => setOpen(false)}
-                    className="text-[var(--color-subtle)] hover:text-[var(--color-ink)]"
+                    className="inline-flex h-11 w-11 items-center justify-center text-[var(--color-subtle)] hover:text-[var(--color-ink)]"
                   >
                     <X size={16} strokeWidth={1.5} />
                   </button>
@@ -163,6 +259,10 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                 {/* section index link */}
                 <Link
                   href={section.index}
+                  onClick={() => {
+                    restoreFocusRef.current = false;
+                    setOpen(false);
+                  }}
                   className="mt-4 block text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)]"
                 >
                   ← Index of {section.label}
@@ -175,6 +275,10 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                       <li key={s.permalink}>
                         <Link
                           href={s.permalink}
+                          onClick={() => {
+                            restoreFocusRef.current = false;
+                            setOpen(false);
+                          }}
                           className="block rounded-[2px] border-l border-[var(--color-rule)] pl-3 py-1.5 text-[13px] leading-snug text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                         >
                           {s.title}
@@ -195,7 +299,7 @@ export function FloatingChip({ items }: { items: SearchItem[] }) {
                     "hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
                   )}
                 >
-                  <span>Search everything</span>
+                  <span>Search research library</span>
                   <kbd className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
                     ⌘ K
                   </kbd>
