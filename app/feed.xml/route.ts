@@ -27,7 +27,6 @@ interface FeedEntry {
   link: string;
   updated: string;
   summary: string;
-  lang?: string;
 }
 
 function buildAtomFeed(entries: FeedEntry[]): string {
@@ -36,7 +35,7 @@ function buildAtomFeed(entries: FeedEntry[]): string {
 
   const entryXml = entries
     .map(
-      (e) => `  <entry${e.lang ? ` xml:lang="${esc(e.lang)}"` : ""}>
+      (e) => `  <entry>
     <id>${esc(e.id)}</id>
     <title>${esc(e.title)}</title>
     <link href="${esc(e.link)}" rel="alternate" />
@@ -48,7 +47,7 @@ function buildAtomFeed(entries: FeedEntry[]): string {
     .join("\n");
 
   return `<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Jaehong Oh</title>
   <subtitle>ULR research documents, papers, notes, and journal entries</subtitle>
   <link href="${BASE}/" rel="alternate" />
@@ -89,7 +88,6 @@ export function GET() {
         : w.kind === "journal" && w.track === "onn"
           ? `Historical ONN archive — ${w.summary ?? ""}`
           : w.summary ?? "",
-    lang: w.kind === "ulr" ? "ko" : undefined,
   }));
 
   // Merge, sort by date descending, take the 20 most recent

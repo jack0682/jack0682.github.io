@@ -128,7 +128,6 @@ export default async function TagPage({ params }: Props) {
                 {group.items.map((item) => (
                   <li
                     key={item.permalink}
-                    lang={group.kind === "ulr" ? "ko" : undefined}
                     data-track={group.kind === "ulr" ? "ulr" : undefined}
                   >
                     <Link

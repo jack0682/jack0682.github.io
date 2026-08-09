@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Fraunces, Inter } from "next/font/google";
-import localFont from "next/font/local";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
@@ -42,17 +41,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const notoSansKr = localFont({
-  src: [
-    { path: "../scripts/fonts/NotoSansKR-Regular.ttf", weight: "400", style: "normal" },
-    { path: "../scripts/fonts/NotoSansKR-Bold.ttf", weight: "700", style: "normal" },
-  ],
-  variable: "--font-noto-kr",
-  display: "swap",
-  preload: false,
-  fallback: ["Apple SD Gothic Neo", "Malgun Gothic", "sans-serif"],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -60,12 +48,12 @@ export const metadata: Metadata = {
     template: "%s · Jaehong Oh",
   },
   description:
-    "Unified Latent Representation (ULR) research on learned organization, representation identity, observer-relative role, formation, and embodied systems.",
+    "Unified Latent Representation (ULR) research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
   authors: [{ name: "Jaehong Oh" }],
   openGraph: {
     type: "website",
     siteName: "Jaehong Oh — Research",
-    locale: "en_US",
+    locale: "en_GB",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh — Research" }],
   },
   twitter: { card: "summary_large_image", images: ["/og-default.png"] },
@@ -106,7 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${notoSansKr.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       {GTM_ID && (

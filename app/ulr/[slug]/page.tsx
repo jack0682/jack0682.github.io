@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: doc.title,
     description: doc.summary ?? doc.description,
     alternates: { canonical: doc.permalink },
-    openGraph: { title: doc.title, description: doc.summary ?? doc.description, url: doc.permalink, locale: "ko_KR", images: [{ url: ogImage, width: 1200, height: 630, alt: doc.title }] },
+    openGraph: { title: doc.title, description: doc.summary ?? doc.description, url: doc.permalink, locale: "en_GB", images: [{ url: ogImage, width: 1200, height: 630, alt: doc.title }] },
     twitter: { card: "summary_large_image", images: [ogImage] },
   };
 }
@@ -44,7 +44,7 @@ export default async function UlrDocPage({ params }: Props) {
     .filter((item): item is (typeof ulrAllDocs)[number] => Boolean(item));
 
   return (
-    <div data-track="ulr" lang="ko">
+    <div data-track="ulr" lang="en">
         <DocActions slug={doc.slug} />
         <StickyDocTitle title={doc.title} />
         <TOC toc={doc.toc} />
@@ -58,7 +58,7 @@ export default async function UlrDocPage({ params }: Props) {
           dateModified: doc.updated,
           wordCount: doc.metadata.wordCount,
           keywords: doc.tags,
-          inLanguage: "ko",
+          inLanguage: "en",
         })) }} />
         <header className="pt-10 pb-6 sm:pt-20 sm:pb-10 md:pt-28">
           <Breadcrumb items={[{ href: "/ulr/", label: "ULR · Main" }, { label: doc.section ?? doc.title }]} />
@@ -74,8 +74,8 @@ export default async function UlrDocPage({ params }: Props) {
 
         {doc.status === "noncanonical" && (
           <aside className="mb-10 border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-5 py-4 text-sm leading-relaxed text-[var(--color-muted)]">
-            <strong className="font-medium text-[var(--color-ink)]">비정본 진행층.</strong>{" "}
-            이 문서는 Canon 24 이후의 연구를 기록하지만 Canon 25나 새 ontology의 확립을 선언하지 않습니다.
+            <strong className="font-medium text-[var(--color-ink)]">Non-canonical working layer.</strong>{" "}
+            This document records research conducted after Canon 24, but it does not declare Canon 25 or establish a new ontology.
           </aside>
         )}
 
@@ -85,7 +85,7 @@ export default async function UlrDocPage({ params }: Props) {
 
         {related.length > 0 && (
           <nav aria-label="Related ULR documents" className="mt-16 border-t border-[var(--color-rule)] pt-8">
-            <p className="sci-eyebrow text-xs text-[var(--color-accent)]">이어 읽기</p>
+            <p className="sci-eyebrow text-xs text-[var(--color-accent)]">Continue reading</p>
             <ul className="mt-4 space-y-2 text-sm">
               {related.map((item) => <li key={item.slug}><Link href={item.permalink} className="text-[var(--color-muted)] hover:text-[var(--color-accent)]">{item.title} →</Link></li>)}
             </ul>

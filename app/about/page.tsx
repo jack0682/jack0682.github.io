@@ -116,14 +116,14 @@ export default function AboutPage() {
           </li>
         </ul>
 
-        {/* multilingual bio pointer */}
+        {/* biography pointer */}
         <p className="mt-8 text-sm text-[var(--color-muted)]">
-          Also available in other languages —{" "}
+          Read the full biography —{" "}
           <Link
             href="/bio/"
             className="group inline-flex items-center gap-1 border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            한국어 · 日本語 · Deutsch · 中文
+            English
             <span
               aria-hidden
               className="transition-transform duration-200 group-hover:translate-x-0.5"

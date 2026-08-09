@@ -40,7 +40,7 @@ export function rootSchema() {
       name: PUBLISHER_NAME,
       url: SITE_URL,
       description:
-        "Unified Latent Representation research on learned organization, representation identity, observer-relative role, formation, and embodied systems.",
+        "Unified Latent Representation research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
       inLanguage: "en",
       author: { "@type": "Person", name: AUTHOR_NAME, url: SITE_URL },
     },

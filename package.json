@@ -8,12 +8,13 @@
     "node": ">=22"
   },
   "scripts": {
-    "predev": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs",
+    "predev": "node scripts/check-english-only.mjs && velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/check-english-only.mjs --generated",
     "dev": "concurrently -n velite,next -c dim,cyan \"velite --watch\" \"next dev --turbopack\"",
-    "build": "velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build && node scripts/check-internal-links.mjs",
+    "build": "node scripts/check-english-only.mjs && velite && node scripts/build-search-index.mjs && node scripts/build-dag.mjs && node scripts/generate-og.mjs && next build && node scripts/check-english-only.mjs --all && node scripts/check-internal-links.mjs",
     "og": "node scripts/generate-og.mjs",
     "start": "next start",
     "lint": "eslint",
+    "check:english": "node scripts/check-english-only.mjs",
     "content": "velite",
     "content:watch": "velite --watch",
     "check:links": "node scripts/check-internal-links.mjs"

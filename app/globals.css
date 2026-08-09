@@ -153,16 +153,6 @@ body {
   font-feature-settings: "onum", "ss01", "cv11", "liga";
 }
 
-/* ULR's public canon is written in Korean. Use an explicit Korean typeface
-   for both prose and display text instead of relying on platform fallback. */
-[lang="ko"] {
-  --font-display: var(--font-noto-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-sans: var(--font-noto-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-family: var(--font-sans);
-  word-break: keep-all;
-  overflow-wrap: break-word;
-}
-
 /* ── Utility classes for display typography ───────────────────── */
 .font-display {
   font-family: var(--font-display);

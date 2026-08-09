@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     url: "/",
     title: "Jaehong Oh — Research",
     description:
-      "Unified Latent Representation (ULR) research on learned organization, representation identity, observer-relative role, formation, and embodied systems.",
+      "Unified Latent Representation (ULR) research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
     siteName: "Jaehong Oh — Research",
-    locale: "en_US",
+    locale: "en_GB",
     images: [
       {
         url: "/og-default.png",
@@ -75,7 +75,7 @@ export default function Home() {
             >
               Robotics engineer and AI researcher working at the intersection of{" "}
               <span className="text-[var(--color-ink)]">
-                learned organization
+                learned organisation
               </span>
               ,{" "}
               <span className="text-[var(--color-ink)]">
@@ -86,7 +86,7 @@ export default function Home() {
                 delay-robust embodied control
               </span>
               . The current ULR programme tests what models genuinely share,
-              what makes representations identical, and which organizational
+              what makes representations identical, and which organisational
               claims survive typed baselines. Negative results and boundary
               conditions are published alongside what survives.
             </p>,
@@ -134,10 +134,7 @@ export default function Home() {
                 href="/bio/"
                 className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"
               >
-                Bio{" "}
-                <span className="font-mono text-[10px] tracking-[0.18em] text-[var(--color-subtle)]">
-                  EN · KO · JA · DE · ZH
-                </span>
+                Bio
               </Link>
             </div>,
           ]}
@@ -220,7 +217,6 @@ export default function Home() {
               <li key={item.permalink}>
                 <Link
                   href={item.permalink}
-                  lang={item.kind === "ulr" ? "ko" : undefined}
                   data-track={item.kind === "ulr" ? "ulr" : undefined}
                   className="group grid items-baseline gap-2 py-5 md:grid-cols-[6rem_1fr] md:gap-6 md:py-6"
                 >
@@ -261,7 +257,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="mb-10 max-w-[38rem] text-sm leading-relaxed text-[var(--color-muted)]">
-          An ongoing programme on learned organization, representation identity,
+          An ongoing programme on learned organisation, representation identity,
           observer-relative role, and embodied control — with canonical claims,
           retractions, and open gates kept visibly separate.
         </p>

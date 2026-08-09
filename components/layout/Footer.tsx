@@ -33,7 +33,7 @@ const cols = [
     links: [
       { href: "/start/", label: "Start here" },
       { href: "/about/", label: "About & CV" },
-      { href: "/bio/", label: "Bio · 5 languages" },
+      { href: "/bio/", label: "Bio" },
       ...IDENTITY_LINKS.map((l) => ({ href: l.href, label: l.label })),
       { href: "/feed.xml", label: "RSS Feed" },
     ],

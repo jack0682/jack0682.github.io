@@ -1,7 +1,7 @@
 ---
-title: "ULR 열린 문제와 재개 조건"
+title: "ULR Open Problems and Reopening Conditions"
 slug: open-problems
-description: "M1–M8 종료 이후 남은 선택적 수학·경험 문제, ontology 재개 gate, 반증 기준과 종료 규칙을 우선순위별로 정리한다."
+description: "A priority-ordered account of the optional mathematical and empirical questions left after M1–M8, together with ontology-reopening gates, falsification criteria, and termination rules."
 date: "2026-08-09"
 updated: "2026-08-09"
 order: 11
@@ -10,263 +10,271 @@ status: current
 canon: "24"
 tags: [ulr, open-problems, roadmap, falsification, preregistration]
 related: [current-status, post-canon-frontier, empirical-program]
-summary: "의무 ontology 전선은 종료됐다. 다음 연구는 Canon 24의 NO를 존중하면서 자연학습 neural family의 nonreducible residual, observer typing, cross-time formation과 assembly collision을 선택적으로 시험하고, 명시한 gate를 모두 통과할 때만 M8을 재개한다."
+summary: "The mandatory ontology workstream is closed. Subsequent work respects Canon 24's NO while selectively testing nonreducible residuals in naturally learned neural families, observer typing, cross-time formation, and assembly collision; M8 may reopen only when every declared gate is passed."
 ---
 
-## 현재 실행 상태
+## Current execution state
 
-M1–M8은 완료됐다. 따라서 “ULR ontology를 반드시 찾아야 한다”는 의무 전선은 없다. 열린 문제는 현재
-판정을 미완으로 만드는 빚이 아니라, 더 강한 candidate가 나타났을 때 선택적으로 여는 후속 연구다.
+M1–M8 are complete. There is therefore no mandatory ontology workstream committed to finding a ULR ontology. The open
+problems are not debts that leave the current verdict incomplete. They are optional follow-up programmes to be
+opened if a stronger candidate appears.
 
 $$
 \boxed{
-\text{mandatory ontology front}=\varnothing,
+\text{mandatory ontology workstream}=\varnothing,
 \qquad
 \text{optional research frontier}\neq\varnothing
 }
 $$
 
-## 1. 가장 큰 개념 문제 — 네 질문에 진짜 접합 잔여가 있는가
+## 1. The largest conceptual problem — Is there a genuine junction residual among the four questions?
 
-Sharing, Identity, Role, Formation은 서로 연결돼 보이지만 현재는 각각 다음 이론이 강하게 설명한다.
+Sharing, Identity, Role, and Formation appear connected, but each is currently explained strongly by the
+following theories.
 
-| ULR 문제 | 현재 strongest explanation |
+| ULR problem | Current strongest explanation |
 |---|---|
 | Sharing | RSA·CKA, data·task·architecture prior, external relation |
-| Identity | gauge quotient, function fiber, realization·testing equivalence |
+| Identity | gauge quotient, function fibre, realisation·testing equivalence |
 | Role | predictive state, causal testing, observer-relative response quotient |
 | Formation | system-family theory, transport, stratification |
 
-열린 핵심은 이 네 component theory의 단순 병렬 사용으로 나오지 않는 **neural-specific junction
-residual**이 있는가다. 다음 중 최소 하나가 필요하다.
+The central open question is whether there is a **neural-specific junction residual** that does not follow from
+using these four component theories side by side. At least one of the following is required.
 
-1. component theory의 적용만으로 나오지 않는 정리;
-2. 기존 equivalence 둘이 갈리는 neural-specific counterexample;
-3. strongest typed baseline과 다른 preregistered prediction;
-4. large-model held-out behavior·transfer의 점증적 가치;
-5. cross-time·cross-model transport obstruction의 직접 측정.
+1. A theorem not implied by applying the component theories;
+2. a neural-specific counterexample that separates two existing equivalences;
+3. a preregistered prediction distinct from the strongest typed baseline;
+4. incremental value for held-out large-model behaviour or transfer;
+5. direct measurement of an obstruction to cross-time or cross-model transport.
 
-현재 확립된 항목은 없다.
+No such item is currently established.
 
-## 2. U0 — Physical response가 standard testing을 넘어서는가
+## 2. U0 — Does physical response exceed standard testing?
 
-engineered matched pair에서는 passive-equivalent system이 reset/clone response로 갈렸다. 그러나 raw
-port-response B3와 declared routing B4가 결과를 흡수했다. homogeneous tanh seed-only version도 stable
-class를 만들지 못했다.
+In an engineered matched pair, passive-equivalent systems separated under reset/clone response. Raw
+port-response B3 and declared routing B4 nevertheless absorbed the result. The homogeneous tanh seed-only
+version also failed to produce a stable class.
 
-다음 U0 increment는 같은 endpoint를 더 크게 반복해서는 안 된다. 정보가치가 있는 후보는 다음 중 하나다.
+The next U0 increment must not simply repeat the same endpoint at a larger scale. Informative candidates include:
 
-- architecture label 없이 training에서 carrier split이 자연 발생;
-- recurrent Transformer, KV cache 또는 fast weight의 gauge-descended response quotient;
-- 동일 probe의 raw standard response를 넘어 disjoint held-out behavior family 예측;
-- train environment에서만 얻은 organization law가 unseen environment로 transport.
+- a carrier split that arises naturally during training without architecture labels;
+- a gauge-descended response quotient for a recurrent Transformer, KV cache, or fast weight;
+- prediction of disjoint held-out behaviour families beyond the same probe's raw standard response;
+- transport of an organisation law learned only in the training environment into an unseen environment.
 
-**종료 규칙:** Q가 B3·B4·B*를 넘지 못하거나 stable class가 사전등록 split에서 재현되지 않으면 해당
-candidate를 weakened/absorbed로 닫는다.
+**Termination rule:** if $Q$ does not exceed B3, B4, and B*, or if the stable class does not reproduce on the
+preregistered split, close that candidate as weakened or absorbed.
 
-## 3. U1 — External relation이 behavior와 internal mechanism으로 이어지는가
+## 3. U1 — Does an external relation connect to behaviour and internal mechanism?
 
-WordNet relation은 Caltech·CIFAR의 relation geometry를 cross-fit했지만 retrieval behavior bridge는
-실패했다. 다음 질문은 외부 taxonomy가 단지 observer의 비교 좌표인지, 모델 내부의 transportable causal
-structure를 예측하는지다.
+WordNet relations cross-fit the relation geometry of Caltech and CIFAR, but the retrieval behaviour bridge
+failed. The next question is whether an external taxonomy is merely an observer's comparison coordinate or
+predicts transportable causal structure inside the model.
 
-필수 gate는 다음과 같다.
+The required gates are:
 
-1. external relation을 train 전 동결;
-2. model·objective·dataset holdout;
-3. untrained·architecture prior와 B* 대조;
-4. geometry가 아닌 held-out behavior target;
-5. internal carrier claim과 external baseline을 분리.
+1. freeze the external relation before training;
+2. hold out model, objective, and dataset;
+3. compare with the untrained and architecture-prior baselines and B*;
+4. use a held-out behavioural target rather than geometry;
+5. separate an internal-carrier claim from the external baseline.
 
-**종료 규칙:** geometry만 맞고 behavior가 추가로 맞지 않으면 Z5는 external baseline으로 유지한다.
+**Termination rule:** if the relation does not improve held-out behavioural prediction, retain Z5 as an external
+baseline.
 
-## 4. U2 — Formation의 admissible neural target이 있는가
+## 4. U2 — Is there an admissible neural target for Formation?
 
-formation 정의는 준비됐지만 current carrier survivor가 없어 `NO_ADMISSIBLE_TARGET`이다. 새 target은
-최소 다음 package를 가져야 한다.
+The formation definition is ready, but with no current carrier survivor its status is `NO_ADMISSIBLE_TARGET`.
+A new target must minimally provide the following package:
 
 $$
 (\text{object},\ \text{identity},\ \text{transport},\ \text{structural type},
-\ \text{behavior bridge}).
+\ \text{behaviour bridge}).
 $$
 
-열린 세부 질문:
+Detailed open questions include:
 
-- pointwise quotient와 time-indexed family identity를 어떻게 구분할 것인가?
-- same stratum deformation과 structural boundary crossing을 어떤 invariant로 가를 것인가?
-- noisy training trajectory에서 transport가 gauge-independent하게 정의되는가?
-- metric co-onset이 structural event 뒤의 보조 indicator가 되는가?
-- intervention이 candidate structural type의 future causal role을 바꾸는가?
+- How should a pointwise quotient be distinguished from the identity of a time-indexed family?
+- Which invariant separates deformation within one stratum from crossing a structural boundary?
+- Can transport along a noisy training trajectory be defined independently of gauge?
+- Can metric co-onset serve as a secondary indicator after a structural event?
+- Does intervention change the future causal role of a candidate structural type?
 
-**시작 조건:** M3 reduction gate를 통과한 carrier가 먼저 있어야 한다. carrier 없이 defect·co-onset부터
-실행하지 않는다.
+**Start condition:** a carrier must first pass the M3 reduction gate. Do not begin with defects or co-onset in
+the absence of a carrier.
 
-## 5. U3 — Possibility field에 독립 signature가 있는가
+## 5. U3 — Does the possibility field have an independent signature?
 
-“학습이 가능한 trajectory의 field를 바꾸고 추론이 그 field를 읽어 경로를 만든다”는 직관은 유용하지만,
-현재는 ordinary dynamics와 predictive-state description의 재명명일 수 있다.
+The intuition that “learning changes the field of possible trajectories, while inference reads that field to
+produce a path” is useful, but it may currently be no more than a renaming of ordinary dynamics and
+predictive-state descriptions.
 
-필요한 것은 다음을 동시에 만족하는 signature다.
+An adequate signature must satisfy all of the following:
 
-- state space, norm, noise coupling과 admissible trajectory grammar가 명시됨;
-- full dynamics를 그대로 저장한 trivial code가 아님;
-- predictive state·control reachability와 다른 finite falsifier가 있음;
-- cross-model 또는 cross-context transport를 예측함;
-- B* 이후 held-out behavior를 개선함.
+- specify the state space, norm, noise coupling, and admissible trajectory grammar;
+- avoid a trivial code that simply stores the full dynamics;
+- provide a finite falsifier distinct from predictive state and control reachability;
+- predict cross-model or cross-context transport;
+- improve held-out behaviour after B*.
 
-독립 signature가 없으면 Z3은 exploratory metaphor로 남는다.
+Without an independent signature, Z3 remains an exploratory metaphor.
 
-## 6. F0 — UAR assembly injectivity를 올바른 source에서 다시 물을 수 있는가
+## 6. F0 — Can UAR assembly injectivity be reformulated over the correct source?
 
-기존 composite mono는 철회됐다. 다시 묻는다면 joint quotient
-$Q=\Theta^{\mathrm{adm}}/G_\Sigma$에 대해
+The former composite monomorphism was retracted. A renewed question must directly define the off-diagonal
+collision incidence of
 
 $$
 Q\times_{\mathcal J}Q
 $$
 
-의 off-diagonal collision incidence를 직접 정의해야 한다. channel source의 exclusion을 assembly source에
-옮겨 쓰지 않는다.
+for the joint quotient $Q=\Theta^{\mathrm{adm}}/G_\Sigma$. It must not transplant an exclusion from the channel
+source to the assembly source.
 
-열린 proof obligation:
+Open proof obligations:
 
-1. quotient source와 map을 먼저 고정;
-2. diagonal·off-diagonal을 같은 source에서 분리;
-3. injectivity와 unramifiedness를 각각 증명;
-4. fibre마다 한 good section이 아니라 모든 collision을 배제;
-5. generic open의 quantifier와 boundary를 명시.
+1. fix the quotient source and map first;
+2. separate diagonal and off-diagonal within the same source;
+3. prove injectivity and unramifiedness separately;
+4. exclude all collisions, rather than finding one good section in each fibre;
+5. state the quantifier and boundary of the generic open.
 
-이 문제는 선택 수학이며 M8을 막지 않는다.
+This is optional mathematics and does not block M8.
 
-## 7. F1 — Localization identity
+## 7. F1 — Localisation identity
 
-135 chart cover와 chart-free incidence ideal의 localization equality는 `SUPERSEDED-AS-GATE`다. sheaf와
-localization 관점에서 강화할 수 있지만 typed channel exclusion이나 current ontology verdict의 선결
-조건은 아니다.
+The localisation equality between the 135-chart cover and the chart-free incidence ideal is
+`SUPERSEDED-AS-GATE`. It may be strengthened using sheaf-theoretic and localisation methods, but it is not a
+prerequisite for typed channel exclusion or the current ontology verdict.
 
-열린 질문은 local certificate가 overlap에서 어떻게 glue되고, chart-free support·radical과 정확히
-일치하는지다. 증명이 없으면 optional strengthening으로 남긴다.
+The open question is how local certificates glue on overlaps and whether they agree exactly with chart-free
+support and radical. Without a proof, this remains an optional strengthening.
 
-## 8. F2 — Channel-CERT와 Assembly-CERT
+## 8. F2 — Channel-CERT and Assembly-CERT
 
-과거 CERT-B/C는 channel과 assembly source를 섞을 위험이 있었다. 후속은 두 certificate를 먼저
-분리해야 한다.
+The former CERT-B/C risked mixing channel and assembly sources. Follow-up work must first separate two
+certificates.
 
-- Channel-CERT: typed channel collision boundary.
-- Assembly-CERT: quotient assembly ramification·collision boundary.
+- Channel-CERT: typed channel-collision boundary.
+- Assembly-CERT: quotient-assembly ramification and collision boundary.
 
-그 뒤에야 bad boundary의 support 또는 radical을 복원하는 강화문을 물을 수 있다. 현재 증명·반증으로
-표기하지 않는다.
+Only then can one ask whether a stronger certificate reconstructs the support or radical of the bad boundary.
+It is not currently marked proved or refuted.
 
-## 9. Observer theorem의 적용 문제
+## 9. Application problems for the observer theorem
 
-Canon 24의 measurability·TV theorem은 일반적이지만 실제 model에 적용하려면 observer contract가 필요하다.
+Canon 24's measurability and TV theorem is general, but applying it to an actual model requires an observer
+contract.
 
-열린 항목:
+Open items:
 
-1. actual Transformer에서 role variable을 어떤 system boundary로 선언할 것인가?
-2. KV cache, fast weight, optimizer state, tool memory의 read/write/reset/clone port는 무엇인가?
-3. transcript law를 finite sample에서 어떤 rate로 추정할 수 있는가?
-4. composite role class의 minimax separation은 어떻게 계산하는가?
-5. finite test basis가 full response-profile factorization을 언제 보장하는가?
-6. nonstationary·online policy의 path-law singularity를 어떻게 검정하는가?
+1. Which system boundary declares the role variable in an actual Transformer?
+2. What are the read, write, reset, and clone ports of a KV cache, fast weight, optimiser state, or tool memory?
+3. At what finite-sample rate can the transcript law be estimated?
+4. How is minimax separation for a composite role class computed?
+5. When does a finite test basis guarantee full response-profile factorisation?
+6. How can path-law singularity be tested for a nonstationary online policy?
 
-이 응용이 성공해도 observer-relative result를 observer-independent ontology로 승격하지 않는다.
+Even a successful application must not promote an observer-relative result into observer-independent ontology.
 
-## 10. Set core의 일반화
+## 10. Generalising the Set core
 
-Post-Canon 119–120의 intrinsic dual organization은 Set 수준에서 증명·감사됐다. 열린 일반화는 다음과
-같다.
+The intrinsic dual organisation of Post-Canon 119–120 has been proved and audited at the Set level. Open
+generalisations include:
 
-- stochastic kernel과 measure-enriched category;
-- topology·metric을 가진 response quotient;
-- partial renewal과 multiple persistence timescale;
-- joint quotient의 functorial transport;
-- finite-sample identifiability와 robust perturbation;
-- 자연학습 neural family에서의 nontrivial realization.
+- stochastic kernels and measure-enriched categories;
+- response quotients with topology and metrics;
+- partial renewal and multiple persistence timescales;
+- functorial transport of the joint quotient;
+- finite-sample identifiability and robust perturbation;
+- nontrivial realisation in naturally learned neural families.
 
-Set core의 존재만으로 learning/inference ontology를 선언하지 않는다.
+The existence of the Set core alone does not establish a learning/inference ontology.
 
-## 11. Streaming·sheaf·constraint frontier
+## 11. Streaming, sheaf, and constraint frontier
 
-143–148은 local-to-global forcing, streaming memory, relation completion, portwise delivery, train-only
-organization을 exact finite model에서 조사했다. 다음 decisive question은 같은 problem family와 resource
-ledger를 가진 identity-closed baseline을 넘어서는 **uniform neural scaling law**가 있는가다.
+Items 143–148 investigated local-to-global forcing, streaming memory, relation completion, portwise delivery,
+and train-only organisation in exact finite models. The next decisive question is whether there exists a
+**uniform neural scaling law** that exceeds an identity-closed baseline with the same problem family and
+resource ledger.
 
-필수 비교축:
+Required comparison axes:
 
-- same raw stream과 query order;
-- same primitive와 precision;
-- storage port, fanout, replay, advice와 compiler cost의 계상;
-- train-only law acquisition과 sealed target;
-- approximation metric과 error amplification;
-- source·split·model-selection의 결과 전 동결.
+- the same raw stream and query order;
+- the same primitives and precision;
+- accounting for storage ports, fanout, replay, advice, and compiler cost;
+- train-only law acquisition and a sealed target;
+- an approximation metric and error amplification;
+- source, split, and model selection frozen before results.
 
-finite suite만으로는 tailored lookup compiler를 배제할 수 없으므로 uniform family와 scaling lower bound가
-필요하다.
+A finite suite cannot exclude a tailored lookup compiler. A uniform family and scaling lower bound are
+therefore required.
 
-## 12. Positive control 다음의 natural experiment
+## 12. Natural experiments after positive controls
 
-remote parity, Heisenberg, crossed module, Latin cube, octonion 설계는 protocol이 planted dependency를
-검출할 수 있다는 calibration이다. 다음 단계는 control을 더 복잡하게 만드는 것이 아니라 다음 차이를
-시험하는 것이다.
+The remote-parity, Heisenberg, crossed-module, Latin-cube, and octonion designs calibrate whether the protocol
+can detect a planted dependency. The next step is not to make the control more elaborate, but to test the
+following difference:
 
 $$
 \text{planted exact law}
 \quad\text{vs}\quad
-\text{naturally learned transferable organization}.
+\text{naturally learned transferable organisation}.
 $$
 
-확인해야 할 항목:
+Questions to verify:
 
-- candidate law가 target에서 사후 추출되지 않았는가?
-- baseline에게 같은 source access가 주어졌는가?
-- representation-specific residual이 same-type compiler에 흡수되지 않는가?
-- DEV와 CONFIRM dataset·manifest가 분리됐는가?
-- negative control과 positive control이 모두 protocol을 calibration하는가?
-- learned result가 multiple seed·architecture·environment에 transport되는가?
+- Was the candidate law specified independently rather than extracted post hoc from the target?
+- Was the baseline given the same source access?
+- Does a same-type compiler absorb the representation-specific residual?
+- Are the DEV and CONFIRM datasets and manifests separate?
+- Do both negative and positive controls calibrate the protocol?
+- Does the learned result transport across multiple seeds, architectures, and environments?
 
-## 13. M8 재개 gate
+## 13. The M8 reopening gate
 
-새 후보가 다음을 **결과 전에** 모두 등록할 때만 ontology 판정을 다시 연다.
+The ontology verdict may reopen only when a new candidate registers **all** of the following before seeing the
+result.
 
-| Gate | 요구사항 |
+| Gate | Requirement |
 |---|---|
-| Object | 무엇이 존재 후보인지, domain·codomain과 identity |
-| Gauge | 어떤 변환을 같은 대상으로 몫내는지 |
-| Port | observer가 읽고 쓰고 reset·clone할 수 있는 것 |
-| Baseline | B0–B4와 combined B* |
-| Nonreduction | strongest typed theory로 환원되지 않는 이유 |
-| Prediction | held-out behavior·transfer의 독립 예측 |
-| Boundary | external relation과 internal carrier의 구분 |
-| Rival | Z0를 포함한 strongest competing account |
-| Falsifier | finite counterexample과 실패 문턱 |
-| Termination | 언제 weakened, absorbed, refuted로 닫을지 |
-| Formation-only | cross-time transport와 causal manipulation |
-| Evidence | frozen source·split·hash, raw receipt, independent audit |
+| Object | The candidate entity, its domain and codomain, and its identity |
+| Gauge | Which transformations are quotiented as the same object |
+| Port | What the observer can read, write, reset, and clone |
+| Baseline | B0–B4 and combined B* |
+| Nonreduction | Why the candidate does not reduce to the strongest typed theory |
+| Prediction | An independent prediction of held-out behaviour or transfer |
+| Boundary | Separation of external relation from internal carrier |
+| Rival | The strongest competing account, including Z0 |
+| Falsifier | A finite counterexample and failure threshold |
+| Termination | When to close the candidate as weakened, absorbed, or refuted |
+| Formation-only | Cross-time transport and causal manipulation |
+| Evidence | Frozen source, split, and hash; raw receipt; independent audit |
 
-한 gate라도 결과 뒤에 추가하면 M8 evidence로 사용하지 않는다.
+If any gate is added after observing the result, the result cannot be used as M8 evidence.
 
-현재 post-canon 근거의 성숙도도 gate의 일부다. 119–142는 Git 추적 자료이고 143은 수정 중이며,
-144–159는 로컬 미커밋·미추적 작업물이다. 그 문서 안의 `PASS`나 `sealed`를 Canon 승격 또는 공개
-provenance로 읽지 않는다.
+The maturity of post-canon evidence is also part of the gate. Items 119–142 are Git-tracked materials; item 143
+is currently being revised; and items 144–159 are local, uncommitted, and untracked work products. `PASS` or
+`sealed` inside those documents must not be read as Canon promotion or public provenance.
 
-## 14. 하지 않을 일
+## 14. What will not be done
 
-- 같은 engineered endpoint를 크기만 키워 반복하지 않는다.
-- unexplained residual을 ULR의 양으로 이름 붙이지 않는다.
-- exact finite control을 natural emergence로 바꾸지 않는다.
-- finite benchmark에서 suite-tailored compiler를 빼고 efficiency를 주장하지 않는다.
-- metric onset만으로 formation을 선언하지 않는다.
-- Canon 24 이후 working artifact를 자동으로 Canon 25라고 부르지 않는다.
+- Do not repeat the same engineered endpoint merely at larger scale.
+- Do not treat an unexplained residual as a measure of ULR.
+- Do not relabel an exact finite control as natural emergence.
+- Do not claim efficiency on a finite benchmark while omitting a suite-tailored compiler.
+- Do not declare formation from metric onset alone.
+- Do not automatically call a working artefact after Canon 24 “Canon 25.”
 
-## 현재 우선순위의 압축
+## Compressed current priorities
 
-가장 높은 정보가치는 “ULR을 더 그럴듯하게 보이게 하는 예”가 아니라, 다음 둘 중 하나를 분명히 하는
-실험에 있다.
+The highest-information experiment is not an example that makes ULR look more plausible. It is an experiment
+that cleanly establishes one of the following:
 
-1. 자연학습 neural family에서 B* 이후에도 남는, transportable하고 gauge-descended한 residual을 찾는다.
-2. 그런 residual이 다시 absorption됨을 보여 Z0 typed pluralism의 범위를 더 정확히 닫는다.
+1. Find a transportable, gauge-descended residual in a naturally learned neural family that remains after B*.
+2. Show that such a residual is absorbed again, thereby closing the scope of Z0 typed pluralism more precisely.
 
-둘 다 Main 연구의 성공이다. ULR의 현재 목적은 특정 결론을 지키는 것이 아니라, 네 문제의 접합부에서
-새 이론이 정말 필요한지 끝까지 판별하는 것이다.
+Either outcome is a success for the Main research programme. ULR's current purpose is not to protect a
+particular conclusion, but to determine conclusively whether the junction among the four problems genuinely
+requires a new theory.

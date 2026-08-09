@@ -8,7 +8,7 @@ import { ULR_STATUS } from "@/lib/research-status";
 import { ulrCanonLabel, ulrDocStatusLabel } from "@/lib/ulr-labels";
 
 const ULR_HUB_DESCRIPTION =
-  "학습된 시스템의 공유·동일성·역할·형성을 묻는 현재 메인 연구 ULR의 Motivation, Canon 24, 수학, 증거와 열린 문제를 정리합니다.";
+  "ULR is the current Main research programme on sharing, identity, role, and formation in learned systems, organised around its motivation, Canon 24, mathematics, evidence, and open problems.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/ulr/" },
@@ -16,25 +16,25 @@ export const metadata: Metadata = {
   description: ULR_HUB_DESCRIPTION,
   openGraph: {
     url: "/ulr/",
-    locale: "ko_KR",
+    locale: "en_GB",
     images: [{ url: "/og/ulr/index.png", width: 1200, height: 630, alt: "Unified Latent Representation · Main research" }],
   },
   twitter: { card: "summary_large_image", images: ["/og/ulr/index.png"] },
 };
 
 const READING_ORDER = [
-  ["현재 정본과 증거 경계", "/ulr/current-status/"],
-  ["왜 ULR인가 — Motivation", "/ulr/motivation/"],
-  ["현재 Canon 24 정본", "/ulr/canonical-state/"],
-  ["SCC에서 ULR로의 전환", "/ulr/from-scc-to-ulr/"],
-  ["Canon 2–24 변천", "/ulr/canon-evolution/"],
-  ["전체 수학적 흐름", "/ulr/mathematical-flow/"],
-  ["결론과 claim ledger", "/ulr/claim-ledger/"],
+  ["Why ULR — Motivation", "/ulr/motivation/"],
+  ["Current canonical verdict and evidential boundary", "/ulr/current-status/"],
+  ["Canonical state — Canon 24", "/ulr/canonical-state/"],
+  ["From SCC to ULR", "/ulr/from-scc-to-ulr/"],
+  ["Canon 2–24 evolution", "/ulr/canon-evolution/"],
+  ["Complete mathematical flow", "/ulr/mathematical-flow/"],
+  ["Conclusions and claim ledger", "/ulr/claim-ledger/"],
 ] as const;
 
 export default function UlrHubPage() {
   return (
-    <Container lang="ko" data-track="ulr">
+    <Container lang="en" data-track="ulr">
       <PageHeader
         mark="Ω"
         eyebrow="Main research · ULR"
@@ -50,17 +50,18 @@ export default function UlrHubPage() {
       <ResearchStatusBanner status={ULR_STATUS} className="-mt-6 mb-12" />
 
       <div className="mb-14 max-w-[46rem] border-l-2 border-[var(--color-accent)] py-3 pl-5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">정본 해석</p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">Canonical interpretation</p>
         <p className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
-          Canon 24의 결론은 ULR이라는 보편 실체를 발견했다는 뜻이 아닙니다.
-          현재 registry에서 추가적인 neural-specific ontology가 필요하다는 증거가
-          없다는 <strong className="font-medium text-[var(--color-ink)]">M8 · NO</strong> 판정입니다.
-          음성 결과와 철회 이력도 연구의 정식 결과로 공개합니다.
+          Canon 24 does not claim that a universal entity called ULR has been discovered.
+          Its result is <strong className="font-medium text-[var(--color-ink)]">M8 · NO</strong>:
+          under the current registry, there is no evidence that an additional neural-specific
+          ontology is required. Negative results and the history of retractions are published
+          as formal research outcomes.
         </p>
       </div>
 
       <section className="mb-16">
-        <p className="sci-eyebrow text-xs text-[var(--color-accent)]">권장 읽기 순서</p>
+        <p className="sci-eyebrow text-xs text-[var(--color-accent)]">Recommended reading order</p>
         <ol className="mt-4 border-y border-[var(--color-rule)] divide-y divide-[var(--color-rule)]">
           {READING_ORDER.map(([label, href], index) => (
             <li key={href}>
@@ -74,14 +75,14 @@ export default function UlrHubPage() {
         </ol>
       </section>
 
-      <DocSection title="현재 상태" description="정본 판정, 권위 순서, 지금 말할 수 있는 것과 말할 수 없는 것." docs={ulrHub.status} />
-      <DocSection title="Motivation · 왜 ULR인가" description="창립 직관이 Sharing·Identity·Role·Formation의 검증 의무로 바뀌고, 자기교정과 음성 판정 뒤에도 남은 이유." docs={ulrHub.motivation} />
-      <DocSection title="SCC → ULR" description="SCC를 삭제하지 않고 역사층으로 동결한 이유와 보존·중단·재해석의 경계." docs={ulrHub.migration} />
-      <DocSection title="Canon과 변천" description="현재 canonical state와 Canon 2–24에서 채택·강등·철회된 주장들의 계보." docs={[...ulrHub.canonical, ...ulrHub.history]} />
-      <DocSection title="수학적 흐름" description="observable typing에서 gauge, fiber, assembly, observer role, formation으로 이어지는 전체 논리 spine." docs={ulrHub.mathematics} />
-      <DocSection title="실험·결론·ledger" description="M1–M8, empirical atoms, carrier 0/7, active claims와 철회된 composite를 한곳에서 추적합니다." docs={ulrHub.evidence} />
-      <DocSection title="Post-canon frontier" description="Canon 24 이후의 작업 증거. 이 층은 명시적으로 비정본이며 Canon 25로 승격되지 않았습니다." docs={ulrHub.frontier} />
-      <DocSection title="열린 문제와 재개 관문" description="어떤 결과가 나와야 ontology verdict를 다시 열 수 있는지 사전등록된 조건." docs={ulrHub.openProblems} />
+      <DocSection title="Motivation · Why ULR" description="How the founding intuition became testable obligations for Sharing, Identity, Role, and Formation—and why the programme remains after self-correction and a negative verdict." docs={ulrHub.motivation} />
+      <DocSection title="Current status" description="The canonical verdict, authority order, and the boundary between what can and cannot currently be claimed." docs={ulrHub.status} />
+      <DocSection title="SCC → ULR" description="Why SCC was frozen as a historical layer rather than deleted, with explicit boundaries between preservation, discontinuation, and reinterpretation." docs={ulrHub.migration} />
+      <DocSection title="Canon and evolution" description="The current canonical state and the genealogy of claims adopted, downgraded, or retracted across Canons 2–24." docs={[...ulrHub.canonical, ...ulrHub.history]} />
+      <DocSection title="Mathematical flow" description="The complete logical spine from observable typing through gauge, fibre, assembly, observer role, and formation." docs={ulrHub.mathematics} />
+      <DocSection title="Experiments, conclusions, and ledger" description="Trace M1–M8, empirical atoms, carrier 0/7, active claims, and the retracted composite in one place." docs={ulrHub.evidence} />
+      <DocSection title="Post-canon frontier" description="The post-Canon working record: theory, diagnostics, audits, preregistrations, and evidence produced after Canon 24. This layer is explicitly non-canonical and has not been promoted to Canon 25." docs={ulrHub.frontier} />
+      <DocSection title="Open problems and reopening gates" description="Preregistered conditions specifying what evidence would be required to reopen the ontology verdict." docs={ulrHub.openProblems} />
 
       <div className="mt-20 flex flex-wrap gap-6 border-t border-[var(--color-rule)] pt-8 text-sm">
         <Link href="/research/ulr/" className="text-[var(--color-muted)] hover:text-[var(--color-ink)]">Track overview →</Link>

@@ -70,12 +70,12 @@ The responsive `className` gives 75–80% width on desktop, full width on mobile
 
 ### F09 — T-PreObj-1 mechanism (W4 capstone)
 
-- **Used in**: `canonical-spec-scc-4-interpretation.mdx` (§12 Pre-Objective Mechanism), `canonical-spec-scc-5-results-registry.mdx` (§13 W4 close), `scc-research-overview.mdx` (§4 Multi-Formation Behavior), `claim-c0002-k-field-architecture.mdx` (Statement), `scc-hero-t-preobj-1.mdx` (Statement), `journal/2026-04-26-perception-week-4-extended.mdx` (Cat A 승급).
+- **Used in**: `canonical-spec-scc-4-interpretation.mdx` (§12 Pre-Objective Mechanism), `canonical-spec-scc-5-results-registry.mdx` (§13 W4 close), `scc-research-overview.mdx` (§4 Multi-Formation Behavior), `claim-c0002-k-field-architecture.mdx` (Statement), `scc-hero-t-preobj-1.mdx` (Statement), `journal/2026-04-26-perception-week-4-extended.mdx` (Cat A promotion).
 - **Caption**: Theorem T-PreObj-1 (W4 close, 2026-04-24): under full SCC parameters on any (G1)–(G4) graph, the F=1 single-disk minimizer is **not a critical point**, gradient flow attracts to multi-peak F≥2 configurations, and IC-protocol dichotomy distinguishes adaptive bounded vs random initialization scaling.
 
 ### F10 — Lemma 4 (quadratic form PD)
 
-- **Used in**: `canonical-spec-scc-4-interpretation.mdx` (§12 Pre-Objective Mechanism — proof note), `canonical-spec-scc-5-results-registry.mdx` (§13 Lemma 4 entry), `scc-hero-t-preobj-1.mdx` (Proof idea), `journal/2026-04-26-perception-week-4-extended.mdx` (Cat A 승급).
+- **Used in**: `canonical-spec-scc-4-interpretation.mdx` (§12 Pre-Objective Mechanism — proof note), `canonical-spec-scc-5-results-registry.mdx` (§13 Lemma 4 entry), `scc-hero-t-preobj-1.mdx` (Proof idea), `journal/2026-04-26-perception-week-4-extended.mdx` (Cat A promotion).
 - **Caption**: Lemma 4 — the inner-product matrix $M \in \mathbb{R}^{2 \times 2}$ of $g_{cl}, g_{sep}$ at the F=1 candidate is positive definite under linear independence; destabilization magnitude $\Lambda^T M \Lambda > 0$ for all nonzero $\Lambda$.
 
 ### F11 — Goldstone Bloch dispersion (T-V5b-T)

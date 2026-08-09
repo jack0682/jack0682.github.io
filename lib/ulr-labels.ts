@@ -1,8 +1,8 @@
 export const ULR_DOC_STATUS_LABEL = {
-  canonical: "정본",
-  current: "현재",
-  historical: "역사",
-  noncanonical: "비정본",
+  canonical: "Canonical",
+  current: "Current",
+  historical: "Historical",
+  noncanonical: "Non-canonical",
 } as const;
 
 export function ulrDocStatusLabel(status: keyof typeof ULR_DOC_STATUS_LABEL) {

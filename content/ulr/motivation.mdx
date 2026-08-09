@@ -1,7 +1,7 @@
 ---
-title: "왜 ULR인가 — Motivation과 자기교정"
+title: "Why ULR? — Motivation and Self-Correction"
 slug: motivation
-description: "한 순간의 latent만으로 학습된 조직을 설명할 수 있는가라는 창립 질문에서 출발해, Sharing·Identity·Role·Formation, 전수 수학 번역, Canon 24의 NO, 미관측 반응 최소효과 gate까지 ULR의 동기를 재구성한다."
+description: "Traces ULR's motivation from its founding question—whether a single momentary latent can explain learned organisation—through the four problems of Sharing, Identity, Role, and Formation to the complete mathematical translation, Canon 24's NO verdict, and the minimum-effect gate for unobserved responses."
 date: "2026-08-09"
 updated: "2026-08-09"
 order: 2
@@ -10,95 +10,101 @@ status: current
 canon: "24"
 tags: [ulr, motivation, research-program, formation, minimum-effect]
 related: [current-status, mathematical-flow, post-canon-frontier, open-problems]
-summary: "ULR의 Motivation은 숨은 거대한 latent 실체를 믿는 데 있지 않다. 한 local readout의 불충분성을 정확히 판정하고, 여러 조건의 반응을 묶는 organization이 미관측 반응을 실제로 제한하며, 그 효력이 최강 typed baseline 뒤에도 남는지 시험하는 데 있다."
+summary: "The motivation for ULR is not a belief in one immense hidden latent entity. It is to determine precisely whether and when a local readout is insufficient, whether organisation across conditions genuinely constrains unobserved responses, and whether that constraint survives the strongest typed baselines."
 ---
 
-## 먼저, 지금의 Motivation
+## The Motivation Today
 
-ULR은 “모델 안 어딘가에 거대한 통합 latent가 반드시 있다”는 신념에서 출발하는 연구가 아니다.
-현재의 더 정확한 동기는 다음 세 문장이다.
+ULR is not a research programme founded on the belief that an immense, unified latent must exist somewhere inside a model.
+Its more precise motivation today can be stated in three sentences.
 
 $$
 \boxed{
 \begin{aligned}
-&\text{한 local latent의 불충분성은 탐색의 이유이고,}\\
-&\text{미관측 반응에 대한 제약은 organization의 최소 효력이며,}\\
-&\text{기존 이론 뒤에 남는 추가 제약만이 ULR의 고유 가설이다.}
+&\text{The insufficiency of one local latent motivates investigation,}\\
+&\text{constraining unobserved responses is the minimum efficacy criterion for organisation, and}\\
+&\text{only an additional constraint beyond existing theory is a distinctively ULR hypothesis.}
 \end{aligned}
 }
 $$
 
-이 구분이 중요하다. 한 activation이 전체 학습 이력, 모든 후속 행동, 모든 개입 결과를 담지 못한다는
-사실은 충분히 그럴듯하다. 그러나 **한 관측이 불충분하다는 사실만으로 그것을 보완하는 하나의 새 실체가
-존재하지는 않는다.** full runtime state, predictive state, dynamical realization, causal abstraction,
-task structure 또는 단순한 architecture routing이 그 차이를 이미 설명할 수 있다.
+This distinction matters. It is entirely plausible that a single activation does not contain the complete training history,
+every subsequent behaviour, or the outcome of every intervention. But **the insufficiency of one observation does not by
+itself imply the existence of a single new entity that completes it.** Full runtime state, predictive state, dynamical
+realisation, causal abstraction, task structure, or even simple architecture routing may already explain the difference.
 
-그러므로 ULR의 질문은 “보이지 않으니 존재할 것이다”가 아니다.
+The ULR question is therefore not “it is invisible, so it must exist.”
 
-> 여러 history·context·intervention에서 가능한 반응들을 단순 나열보다 더 강하게 묶는 비자명한
-> 합성 법칙이 있는가? 있다면 그 법칙은 어떤 동일성 아래 보존되고, 관측하지 않은 반응을 무엇까지
-> 강제하며, 기존의 가장 강한 설명보다 실제로 무엇을 더 예측하는가?
+> Is there a nontrivial composition law that binds possible responses across histories, contexts, and interventions more
+> tightly than a mere enumeration? If so, under what notion of identity is that law preserved, what does it force about
+> unobserved responses, and what does it genuinely predict beyond the strongest existing explanation?
 
-현재 Main 연구가 유지되는 이유는 이 질문이 아직 가치 있기 때문이다. 현재 정본의 존재론 판정이
-`NO`인 이유도 같은 규율 때문이다.
+The current Main research programme remains active because this question is still valuable. The same discipline is why the
+current canonical ontology verdict is `NO`.
 
-## 1. 창립 직관 — 한 순간과 많은 경험 사이의 간극
+## 1. The Founding Intuition — The Gap Between One Moment and Many Experiences
 
-2026년 7월 6일의 창립 Motivation은 현대 신경망을 다음 장면에서 보았다. 언어, 이미지, 로봇 상태,
-센서 정보가 tokenization·embedding·encoding을 거쳐 attention과 residual flow 안에서 서로 영향을
-주고, 특정 layer와 시점에서 latent로 읽힌다. 여기서 최초의 간극이 생겼다.
+The founding Motivation of July 6, 2026 framed modern neural networks as follows. Language, images, robot states, and
+sensor data pass through tokenisation, embedding, and encoding; interact through attention and residual flows; and can be
+read out as latent representations at particular layers and moments. This is where the first gap appeared.
 
 $$
-\text{한 조건에서 읽은 latent 값}
+\text{a latent value read under one condition}
 \quad\neq\quad
-\text{많은 경험을 거쳐 형성됐을 수 있는 전체 반응 조직}
+\text{the entire response organisation that may have formed through many experiences}
 $$
 
-창립문은 한 latent를 “한 순간의 세계에 대한 내부 해석” 또는 “전체 구조가 순간에 드러낸 국소 단면”으로
-비유했다. 학습은 여러 시점의 관계·반복·차이·변형·성공·실패·보상·오차를 반영하지만, 그 모든 latent가
-하나의 명시적 저장소에 쌓이지는 않는다. 최종 weights만 바라봐도 그 경험들이 어떤 관계 질서로
-결합됐는지 투명하게 드러나지 않는다. 여기서 최초의 질문이 나왔다.
+The founding text described one latent as “an internal interpretation of the world at one moment” or “a local section
+through which the whole structure appears at an instant.” Learning reflects relations, repetitions, differences,
+transformations, successes, failures, rewards, and errors across many moments, yet those latents are not accumulated in
+one explicit repository. Looking only at the final weights does not transparently reveal how those experiences were
+combined into a relational structure. This led to the first question.
 
 $$
 \boxed{
-\text{“통합된 정보는 어디에 있고, 한 순간의 latent는 그 안에서 어떻게 의미를 갖는가?”}
+\text{“Where is integrated information, and how does a momentary latent acquire meaning within it?”}
 }
 $$
 
-`ULR`은 이 질문을 위해 붙인 이름이었다. 처음부터 특정 tensor의 이름은 아니었다. 후보 형식도 vector나
-matrix로 고정하지 않고 tensor, graph, manifold, bundle, sheaf, causal structure, topology까지 열어
-두었다. 특히 VLA에서는 의미가 단순한 사물 이름에 머물지 않고 visibility, reachability, grasp,
-trajectory, force, damage와 같은 행동 결과로 이어져야 한다는 직관이 강했다.
+`ULR` was the name given to the putative integrated structure at issue, not to a particular tensor. Its candidate form was
+not fixed to a vector or matrix; it remained open to tensors, graphs, manifolds, bundles, sheaves, causal structures, and
+topologies. The intuition was especially strong for VLA systems, where meaning must extend beyond object names to behavioural
+consequences such as visibility, reachability, grasp, trajectory, force, and damage.
 
-### 무정보 인간 사고실험
+### The Uninformed-Observer Thought Experiment
 
-창립문에는 방, 책상, 접시, 빨간 사과를 전혀 모르는 관찰자가 등장한다. 이 사고실험의 핵심은 정답 label
-이전에 차이, 경계, 반복, 위치 변화, 감각 분절이 먼저 감지될 수 있다는 것이었다. 즉 객체가 처음부터
-완성된 목록으로 주어지는 것이 아니라, 경험을 통해 구별과 관계가 조직될 수 있다는 발생론적 직관이다.
+The founding text introduces an observer who knows nothing about a room, a desk, a plate, or a red apple. The point of the
+thought experiment was that differences, boundaries, repetitions, changes of position, and sensory segmentation may be
+detected before a correct label is available. Objects need not be given as a completed inventory from the outset;
+distinctions and relations may instead become organised through experience.
 
-이 사고실험은 중요한 Motivation이지만 정리는 아니다. “차이가 객체보다 먼저다”, “모든 학습은 반복
-구조를 새긴다”, “그 결과 하나의 ULR이 생긴다” 사이에는 각각 별도의 학습모형, 동일성, 관측 protocol과
-반증조건이 필요하다. 현재 ULR은 바로 그 빈 화살표들을 연구한다.
+This thought experiment is an important part of the programme's motivation, but it is not a theorem. Separate learning
+models, notions of identity,
+observation protocols, and falsification conditions are needed for each transition from “difference precedes objects” to
+“all learning inscribes recurrent structure” and then to “a ULR therefore forms.” Present-day ULR investigates precisely
+those missing arrows.
 
-## 2. 창립 질문은 네 문제로 갈라졌다
+## 2. The Founding Question Split into Four Problems
 
-연구가 진행되면서 하나의 “통합표현”이라는 말 안에 서로 다른 네 질문이 섞여 있음이 드러났다.
+As the research progressed, it became clear that the phrase “unified representation” mixed together four distinct
+questions.
 
-| 문제 | 창립 직관에서 나온 질문 | 현재의 엄밀한 질문 |
+| Problem | Question inherited from the founding intuition | Present rigorous question |
 |---|---|---|
-| **Sharing** | 여러 경험·모달리티가 어떤 공통 질서를 남기는가 | 관측된 관계 정렬이 data, objective, architecture, metric, untrained prior 중 무엇에서 생기는가 |
-| **Identity** | 서로 다른 순간과 구현에서 무엇이 같은 구조인가 | 어떤 gauge·function·response·transport를 보존할 때 두 realization을 같다고 할 것인가 |
-| **Role** | 학습은 구조를 만들고 추론은 그것을 사용하는가 | 같은 계산 occurrence가 information source, write target, persistence, reset response, future causal role에서 어떻게 갈리는가 |
-| **Formation** | 많은 경험을 거치며 새로운 조직이 생기는가 | cross-time identity와 admissible transport 아래 structural type이 실제로 변하는가 |
+| **Sharing** | What common order do multiple experiences and modalities leave behind? | Does observed relational alignment arise from data, objective, architecture, metric, or an untrained prior? |
+| **Identity** | What remains the same across moments and implementations? | Which gauge, functional, response, or transport invariants must be preserved for two realisations to count as identical? |
+| **Role** | Does learning create structure while inference uses it? | How can occurrences of the same computation differ in information source, write target, persistence, reset response, and future causal role? |
+| **Formation** | Does new organisation emerge through many experiences? | Does structural type actually change under cross-time identity and admissible transport? |
 
-이 네 문제가 한 원리로 연결된다는 것은 현재의 정의가 아니다. **검증할 가설**이다. 네 component theory를
-각각 적용하는 것만으로 충분하다면 현재 채택인 Z0 typed pluralism이 맞다. 그 병렬 설명으로 나오지 않는
-junction residual이 있을 때에만 ULR-specific 이론이 시작된다.
+The programme does not currently define these four problems as manifestations of one principle. Their connection is a
+**hypothesis to be tested**. If applying the four component theories separately is sufficient, then the currently adopted
+Z0 typed pluralism is correct. A ULR-specific theory begins only if a junction residual remains that those theories, applied
+in parallel, cannot explain.
 
-## 3. 왜 한 latent만으로는 충분하지 않을 수 있는가
+## 3. Why One Latent May Not Be Enough
 
-모델 endpoint를 $P$, 완전한 준비상태를 $x\in X_P$라 하자. 입력, history, 시점, layer, extraction
-protocol을 모두 포함한 index를 $a$라 하면 local latent는
+Let a model endpoint be $P$ and its fully specified preparation state be $x\in X_P$. If $a$ indexes the input, history, time,
+layer, and extraction protocol, then a local latent is a **measurement**
 
 $$
 \lambda_a^P:X_P\longrightarrow Z_a,
@@ -106,13 +112,14 @@ $$
 z_a^P(x)=\lambda_a^P(x)
 $$
 
-라는 **측정값**이다. 이 정의는 “한 latent는 정확히 한 timestamp만 대표한다”는 강한 문장을 쓰지 않는다.
-recurrent state나 context summary는 이미 긴 history를 포함할 수 있기 때문이다.
+This definition does not make the stronger claim that “one latent represents exactly one timestamp.” A recurrent state or
+context summary may already contain a long history.
 
-한편 결과 전에 선언한 response query family를 $Q$라 하자. query에는 입력, continuation, horizon,
-reset·clone·overwrite·patch 같은 typed intervention, output·action·reward port가 들어갈 수 있다.
-아래 식과 뒤의 response quotient·shift는 현재 증명된 **결정론적 $\mathbf{Set}$ core** 범위다. 확률적
-endpoint에서는 각 성분이 값이 아니라 $\mathcal P(Y_q)$ 위의 law이고, Markov-kernel 판은 별도 의무다.
+Now let $Q$ be a response-query family declared before the result. A query may include an input, continuation, horizon,
+typed intervention such as reset, clone, overwrite, or patch, and an output, action, or reward port. The equation below,
+together with the later response quotient and shift, belongs to the currently proved **deterministic $\mathbf{Set}$ core**.
+For a probabilistic endpoint, each component is a probability law on $Y_q$, hence an element of $\mathcal P(Y_q)$, rather
+than a value in $Y_q$; the Markov-kernel version remains a separate obligation.
 
 $$
 \Psi_Q(P,x)
@@ -122,7 +129,7 @@ $$
 \prod_{q\in Q}Y_q.
 $$
 
-준비상태의 선언된 family에서 한 local latent가 이 전체 반응에 충분할 필요충분조건은
+A local latent is sufficient for this full response on the declared family of prepared states if and only if
 
 $$
 \operatorname{Eq}(\lambda_a)
@@ -130,8 +137,8 @@ $$
 \operatorname{Eq}(\Psi_Q)
 $$
 
-이다. 동치로 어떤 $G$가 있어 $\Psi_Q=G\circ\lambda_a$여야 한다. 따라서 local latent의
-불충분성은 다음 collision witness로 반증 가능하다.
+Equivalently, some $G$ must satisfy $\Psi_Q=G\circ\lambda_a$. The following collision witness therefore falsifies
+sufficiency and establishes the insufficiency of that local latent for the declared response family.
 
 $$
 \exists x,x':
@@ -141,39 +148,39 @@ $$
 \Psi_Q(x)\ne\Psi_Q(x').
 $$
 
-이 witness가 있다면 “지정한 local readout 하나만으로 지정한 반응 family를 복원할 수 없다”는 결론은
-정확하다. 하지만 아직 다음은 알 수 없다.
+Such a witness establishes precisely that “the specified local readout alone cannot determine the specified response
+family.” It does not yet tell us whether
 
-- 다른 layer나 full state가 충분한가;
-- 보완 구조가 유일한가;
-- 그 구조가 compact하거나 causal한가;
-- 기존 predictive-state 또는 state-space 이론이 이미 설명하는가;
-- neural-specific carrier가 필요한가.
+- another layer or the full state is sufficient;
+- the completing structure is unique;
+- that structure is compact or causal;
+- existing predictive-state or state-space theory already explains it; or
+- a neural-specific carrier is required.
 
-그래서 local insufficiency는 **Motivation gate**이지 ontology gate가 아니다.
+Local insufficiency is therefore a **Motivation gate**, not an ontology gate.
 
-## 4. “전역”은 저장 위치가 아니라 양화 범위다
+## 4. “Global” Describes a Quantification Scope, Not a Storage Location
 
-창립문의 “빙산 아래 거대한 구조”는 강력한 비유였지만, 문자 그대로 읽으면 숨은 저장물을 성급히
-실체화한다. 현재의 더 안전한 뜻은 다음이다.
+The founding metaphor of an “immense structure beneath the iceberg” was powerful, but a literal reading prematurely
+reifies a hidden store. The safer present meaning is
 
 $$
 \text{global}
 =
-\text{many reachable states, histories, continuations, tests를 한 package가 공동 규정하는 범위}.
+\text{the scope in which one package jointly specifies many reachable states, histories, continuations, and tests}.
 $$
 
-즉 전역성은 큰 dimension, 모델 전체에 분산된 복사본, 어느 위치에 숨은 tensor와 같지 않다. 별도의
-저장 component가 없어도 response quotient, composition law, constraint, grammar 또는 diagram의
-동형류로 organization이 구현될 수 있다.
+Global scope is therefore not the same as a large dimension, copies distributed throughout the model, or a tensor hidden at
+some location. Organisation may be realised as a response quotient, composition law, constraint, grammar, or isomorphism
+class of a diagram without any separate storage component.
 
-반대로 “저장된 ULR tensor를 찾지 못했다”는 사실도 부재 증명이 아니다. 정확한 문제는 위치 탐색이 아니라
-factorization, invariance, identifiability와 held-out consequence다.
+Conversely, failing to find a “stored ULR tensor” does not prove that no such organisation exists. The precise problem is
+not a search for location, but one of factorisation, invariance, identifiability, and held-out consequence.
 
-## 5. Motivation을 수학으로 옮긴 번역 spine
+## 5. The Translation Spine from Motivation to Mathematics
 
-후속 형식화는 처음부터 학습 함수와 추론 함수를 두지 않는다. role을 부여하지 않은 전체 과정을 먼저
-단위원 $1$을 가진 monoid $M$의 action으로 둔다.
+The later formalisation does not begin by positing separate learning and inference functions. It first represents the whole
+process without assigning roles, as the action of a monoid $M$ with identity $1$.
 
 $$
 \mathcal A=(X,M,\rho),
@@ -183,15 +190,16 @@ $$
 \rho_{mn}=\rho_m\circ\rho_n
 $$
 
-로 두고, physical port와 experiment doctrine을 나중에 붙인다. 그 위에서 선언한 continuation $m$과
-probe $e$에 대한 response law를
+Physical ports and an experimental doctrine are added afterward. Let $\mathfrak D$ be the declared family of terminal
+probes, let $S\le M$ be the admissible continuation submonoid, and let $o_e:X\to Y_e$ be the readout for
+$e\in\mathfrak D$. For $m\in S$, the response law is
 
 $$
 \Psi_{\mathfrak D,S}(x)_{m,e}
 =o_e(\rho_mx)
 $$
 
-로 정의한다. 같은 선언 시험에 같은 반응을 보이는 상태를 합치면
+Identifying states that produce the same response on the declared tests gives
 
 $$
 x\equiv_{\mathfrak D,S}x'
@@ -206,34 +214,34 @@ $$
 \operatorname{im}\Psi_{\mathfrak D,S}
 $$
 
-라는 최소 behavioral response quotient를 얻는다. 이것은 exact한 수학 object지만, 선언 doctrine에
-상대적이며 standard testing/predictive-state 이론의 범위 안에 있다. 따라서 존재 자체를 ULR의 신규성으로
-세지 않는다.
+This is the minimal behavioural response quotient. It is an exact mathematical object, but it is relative to the declared doctrine
+and remains within standard testing and predictive-state theory. Its existence alone therefore does not count as ULR
+novelty.
 
-전체 번역 순서는 다음과 같다.
+The full translation proceeds in this order.
 
 $$
 \boxed{
 \begin{aligned}
 &\text{role-free process}\\
-&\to\text{physical ports and experiment doctrines}\\
-&\to\text{response organization and identity}\\
-&\to\text{minimal realization and identifiability}\\
-&\to\text{formation and embodied grounding tests}\\
-&\to\text{그 뒤에만 ULR 명명 또는 철회}.
+&\to\text{physical ports and experimental doctrines}\\
+&\to\text{response organisation and identity}\\
+&\to\text{minimal realisation and identifiability}\\
+&\to\text{formation and embodied-grounding tests}\\
+&\to\text{only then, the attribution or withdrawal of the name ULR}.
 \end{aligned}
 }
 $$
 
-### local readout과 전체 organization은 다른 branch다
+### Local Readout and Whole Organisation Are Different Branches
 
-행동 사슬과 local 측정을 한 화살표로 뭉개지 않는다.
+The behavioural chain and the local measurement are represented as distinct branches.
 
 $$
 \mathsf{Hist}
 \xrightarrow{\eta}X
-\xrightarrow{q_{\mathfrak D}}\Omega_{\mathfrak D}
-\xrightarrow{\bar\rho_m}\Omega_{\mathfrak D}
+\xrightarrow{q_{\mathfrak D,S}}\Omega_{\mathfrak D,S}
+\xrightarrow{\bar\rho_m}\Omega_{\mathfrak D,S}
 \xrightarrow{\epsilon_e}Y_e,
 $$
 
@@ -241,22 +249,24 @@ $$
 X\xrightarrow{\lambda_{\ell,c,a}}Z_{\ell,c,a}.
 $$
 
-첫 사슬은 history, response identity, event action, output을 잇는다. 둘째는 특정 extraction protocol의
-측정이다. local latent가 전역 object의 projection인지, 충분통계인지, 기하학적 section인지는 각각 다른
-factorization 조건을 증명해야 한다. “국소 단면”과 “빙산”은 그 사상이 주어지기 전에는 은유다.
+The first chain connects history, response identity, event action, and output. The second measures a particular extraction
+protocol. Whether a local latent is a projection of a global object, a sufficient statistic, or a geometric section
+requires a different factorisation condition in each case. “Local section” and “iceberg” remain metaphors until those maps
+are supplied.
 
-## 6. 의미도 하나의 술어가 아니다
+## 6. Meaning Is Not a Single Predicate
 
-창립문은 latent가 “의미를 갖는다”고 말했다. 수학 번역은 이 말을 최소 네 층으로 나눴다.
+The founding text said that a latent “has meaning.” The mathematical translation divided that phrase into at least four
+levels.
 
-| 의미의 층 | 판정 대상 | 자동으로 따라오지 않는 것 |
+| Level of meaning | Object of evaluation | What does not follow automatically |
 |---|---|---|
-| statistical information | mutual information 또는 held-out decodability | causal use |
-| behavioral role | downstream continuation-response profile | 외부 지시 |
-| interventional role | typed intervention 아래 outcome law | 통합 ontology |
-| embodied grounding | sensor–action–environment closed loop의 결과 | 모델 내부 저장물 |
+| statistical information | mutual information or held-out decodability | causal use |
+| behavioural role | downstream continuation-response profile | external reference |
+| interventional role | outcome law under a typed intervention | unified ontology |
+| embodied grounding | consequences in the sensor–action–environment closed loop | a dedicated internal storage object |
 
-따라서
+Thus
 
 $$
 \text{decodable}
@@ -266,36 +276,36 @@ $$
 \text{externally grounded}.
 $$
 
-VLA가 특별히 중요한 이유는 이 마지막 층을 실제 행동 consequence로 시험할 interface를 제공하기 때문이다.
-“사과”를 잘 decode하는 것과 적절한 grasp trajectory와 force를 생성하는 것은 다른 주장이다. embodied ULR
-가설은 closed-loop intervention과 결과 law를 통과해야 한다.
+VLA systems are especially important because they provide an interface for testing the last level through real behavioural
+consequences. Decoding “apple” accurately and producing the appropriate grasp trajectory and force are different claims.
+An embodied ULR hypothesis must survive closed-loop intervention and the resulting outcome law.
 
-## 7. 초기 연구가 어떻게 자기교정됐는가
+## 7. How the Early Research Corrected Itself
 
-창립 직관은 폐기되지 않았지만, 여러 강한 문장은 그대로 유지되지 않았다.
+The founding intuition was not discarded, but several strong statements did not survive unchanged.
 
-| 초기 표현 또는 비유 | 발견된 문제 | 현재의 교정 |
+| Early expression or metaphor | Problem discovered | Present correction |
 |---|---|---|
-| 한 latent는 한 순간이다 | history를 요약하는 state도 있음 | 지정한 모델·history·시점·layer·protocol의 local readout |
-| 학습과 추론은 본질적으로 다른 두 과정이다 | 같은 extensional computation이 다른 역할을 맡을 수 있음 | information source, write target, persistence, reset·clone response, future causal role로 type |
-| 학습은 조직을 만들고 추론은 사용만 한다 | ICL·cache·CoT의 runtime state 변화도 후속 response를 바꿔 “변화가 없다”는 보편형을 반박함 | runtime organization-state change의 후보일 뿐 structural organization·formation은 여전히 `HYP/EMP`; role과 formation을 직교한 predicate로 분리 |
-| 최종 weights만 관측 가능하다 | activation, cache, optimizer state, external memory도 doctrine에 따라 관측 가능 | 무엇을 볼 수 있는지는 system boundary와 protocol에 상대적 |
-| 미래예측은 없다 | 현재 계산된 출력이 미래 결과를 지시할 수 있음 | 현재 정보에 measurable한 미래지향 conditional law로 교정 |
-| ULR은 빙산 아래 숨은 큰 저장물이다 | 비직접성은 존재증명이 아님 | 저장 위치가 아닌 response·composition organization의 동형류 후보 |
-| 내부 좌표라 학습과 추론을 구분할 수 없다 | 알려진 가역 좌표변환은 TV 판별력을 보존 | provenance와 typed port를 잊는 observer quotient가 비식별을 만듦 |
-| response quotient 값이 바뀌면 formation이다 | 같은 구조 안에서도 state는 계속 이동 | admissible transport 아래 structural change와 사전등록 type change를 함께 요구 |
-| topology·sheaf가 ULR의 자연 형식이다 | 어떤 유한 구조도 큰 vector로 encoding 가능 | 보존할 사상, gauge, gluing obstruction, 새 예측이 형식을 선택 |
+| One latent is one moment | A state can summarise history | A local readout from a specified model, history, time, layer, and protocol |
+| Learning and inference are essentially two different processes | The same extensional computation can serve different roles | Type by information source, write target, persistence, reset or clone response, and future causal role |
+| Learning creates organisation and inference only uses it | Runtime state can change through in-context learning, cache updates, and chain-of-thought, thereby altering later responses and refuting the universal claim that no change occurs | These are candidates for runtime organisation-state change; structural organisation and formation remain `HYP/EMP`, with role and formation separated as orthogonal predicates |
+| Only final weights are observable | Activations, cache, optimiser state, and external memory may also be observable under a doctrine | What can be seen is relative to the system boundary and protocol |
+| There is no prediction of the future | A presently computed output can indicate a future result | Reformulate as a future-directed conditional law measurable from present information |
+| ULR is a large store hidden beneath the iceberg | Indirectness is not evidence of existence | A candidate is an isomorphism class of response or composition organisation, not a storage location |
+| Learning and inference cannot be distinguished because both use internal coordinates | A known invertible coordinate transformation preserves TV discriminability | Non-identifiability is created by an observer quotient that forgets provenance and typed ports |
+| Formation occurs whenever the response-quotient value changes | State moves continuously even within one structure | Require both structural change under admissible transport and a preregistered type change |
+| Topology or sheaves are the natural form of ULR | Any finite structure can be encoded in a sufficiently large vector | Choose the form by preserved maps, gauge, gluing obstruction, and new predictions |
 
-학습과 추론의 차이도 내부 위치가 아니라 protocol role로 옮겨졌다. 같은 computation fiber에 서로 다른
-role occurrence가 함께 있으면 계산만으로 role을 복원할 수 없다. 반대로 선언된 observer transcript law가
-갈리면 구분할 수 있다. 정확한 observer 정리는 [학습–추론 식별 경계](/ulr/learning-inference-boundary/)에서
-다룬다.
+The learning–inference distinction likewise moved from internal location to protocol role. If different role occurrences
+share the same computation fibre, computation alone cannot recover the role. Conversely, they are distinguishable when
+their declared observer-transcript laws differ. The precise observer theorems appear in
+[Learning–Inference Identifiability Boundary](/ulr/learning-inference-boundary/).
 
-## 8. Formation은 “변했다”보다 강한 말이다
+## 8. Formation Is Stronger Than “Something Changed”
 
-시간 $s,t$의 organization 후보를 $\mathcal O_s,\mathcal O_t$라 하고, 결과 전에 정당화한 carrier
-transport family를 $G_{s,t}$, 구조형 분류를 $\tau$라 하자. 단순한 state 이동과 structural formation을
-구분하기 위한 강한 후보는
+Let the organisation candidates at times $s$ and $t$ be $\mathcal O_s$ and $\mathcal O_t$. Let $G_{s,t}$ be the
+carrier-transport family justified before results are observed, and let $\tau$ be the structural-type classifier. A strong
+candidate for separating ordinary state movement from structural formation is
 
 $$
 \operatorname{CandForm}_{\tau,G}(s,t)
@@ -305,42 +315,43 @@ $$
 \operatorname{Form}_{\tau}(s,t)
 $$
 
-다.
+- $\operatorname{Chg}_{G}$: an admissible carrier transport exists, but no transport lifts to an organisation
+  isomorphism.
+- $\operatorname{Form}_{\tau}$: the isomorphism class of the organisation crosses a preregistered structural stratum.
 
-- $\operatorname{Chg}_{G}$: admissible carrier transport는 있지만 organization isomorphism으로 lift되는
-  transport가 없다.
-- $\operatorname{Form}_{\tau}$: organization의 동형류가 사전등록한 structural stratum을 바꾼다.
+A path and a star on the same four vertices show that graph type can change without creating a new component. Conversely,
+a change of value within the same response quotient is not formation. A claim of actual neural formation also requires
+empirical certification with a preregistered held-out statistic, null law, and minimum effect size.
 
-같은 네 vertex 위의 path와 star처럼 새 성분을 만들지 않고도 graph type은 바뀔 수 있다. 반대로 같은
-response quotient 안에서 값만 달라지는 것은 formation이 아니다. 실제 neural formation을 주장하려면
-여기에 held-out statistic, null law, 최소 효과크기를 사전등록한 경험 인증이 더 필요하다.
+Canon 24 currently concludes that the **conditional definition of formation is complete**, but that there is
+`NO_ADMISSIBLE_TARGET` to which it can be universally applied as a neural-specific object.
 
-Canon 24의 현재 결론은 formation의 **조건부 정의는 닫혔지만**, 이를 보편적으로 적용할 neural-specific
-대상은 `NO_ADMISSIBLE_TARGET`이라는 것이다.
+## 9. Progress #0–#8 — Losing and Recovering the Motivation
 
-## 9. Progress #0–#8 — Motivation을 잃고 다시 찾은 과정
+The early PROGRESS record is not a chronology of successes alone. It retains both drift away from the North Star and the
+corrections that followed.
 
-초기 Progress는 성공만의 연표가 아니다. 북극성에서 멀어진 표류와 그 수정까지 연구 내용으로 남긴다.
-
-| Progress | 실제 전개 | Motivation에 남긴 교훈 |
+| Progress | What happened | Lesson retained for Motivation |
 |---:|---|---|
-| #0 | 창립문과 연구 골격을 세움 | ULR은 결론이 아니라 질문으로 시작 |
-| #1 | Q01 relational meaning 정식화, 첫 이론 승격과 다중 적대검증 | 단일 latent 값에는 relation content가 없을 수 있으나 이것만으로 ULR은 증명되지 않음 |
-| #2 | objective-content layer와 gauge hinge를 조건부 정식화 | 내용 주장은 먼저 어떤 변환을 동일성으로 몫낼지 선언해야 함 |
-| #3 | Q03–Q10.9에서 relation·formation·action·gauge를 한 구조로 통합하려 함 | 수학 일부는 맞아도 포장이 과대했고, 중심 존재가설은 여전히 conjecture였음 |
-| #4 | Q11–Q14와 Phase T가 carrier·cohesion 언어로 표류, 7월 16일 재정립 | 창립 Motivation과의 연결이 끊기면 도구가 연구대상을 대신함; ULR과 SCC를 다시 분리 |
-| #5 | Phase 0 타입체계와 SCC spine을 연결 | 형식층 성취와 neural empirical certification은 다른 증거층 |
-| #6 | 하나의 null을 구조·인과·지속 축으로 분해 | null 선택이 이론 내용을 결정하므로 양성마다 무엇을 배제했는지 따로 써야 함 |
-| #7 | VQ와 coarse-graining 결정시험 | 여러 메커니즘 해석이 통제 실험에서 연속 반증됐고, resolution optimum은 가설로만 보존 |
-| #8 | 2026-07-24 ULR-only로 재중심화, SCC는 역사층으로 이동 | intervention은 선택적 검증도구이며 ULR 존재의 필수 정의가 아님 |
+| #0 | Established the founding text and research scaffold | ULR began as a question, not a conclusion |
+| #1 | Formalised Q01 relational meaning, with the first theory promotion and multiple adversarial reviews | A single latent value may have no relational content, but this alone does not prove ULR |
+| #2 | Conditionally formalised the objective-content layer and gauge hinge | A content claim must first state which transformations are quotiented as identity |
+| #3 | Tried to unify relation, formation, action, and gauge in one structure across Q03–Q10.9 | Some mathematics was sound, but its packaging was overstated and the central existence hypothesis remained conjectural |
+| #4 | Drifted into carrier and cohesion language through Q11–Q14 and Phase T, then refounded the programme on July 16 | When the connection to the founding Motivation breaks, the tool replaces the research object; ULR and SCC had to be separated again |
+| #5 | Connected the Phase 0 type system to the SCC spine | Achievement in the formal layer and neural empirical certification belong to different evidence layers |
+| #6 | Split one null into structural, causal, and persistence axes | Null selection determines theoretical content, so every positive must state separately what it excluded |
+| #7 | Ran the decisive VQ and coarse-graining tests | Multiple mechanistic interpretations were successively refuted in controlled experiments; the resolution optimum remained only a hypothesis |
+| #8 | Re-centred the programme on ULR alone on 2026-07-24, moving SCC to the historical layer | Intervention is an optional validation tool, not a necessary definition of ULR existence |
 
-#0–#6은 SCC 중심 시대의 역사적 기록이고, #7부터 ULR 독립 프로그램의 직접 전개다. #8의 전환은 과거
-수학을 삭제한 사건이 아니라 **현재 질문과 판정 권한을 ULR로 되돌린 governance 사건**이다.
+#0–#6 are historical records from the SCC-centred period, while the independent ULR programme begins with #7. The
+#8 transition did not delete earlier mathematics. It was a **governance event that returned ownership of the current
+question and verdict to ULR**.
 
-## 10. 전수 번역 감사가 한 일
+## 10. What the Complete Translation Audit Accomplished
 
-Canon 24가 봉인된 뒤 작성된 Motivation 번역 묶음 121–130은 창립문을 행별·문장별로 다시 감사했다.
-이 작업은 원문을 수정하거나 Canon을 올린 것이 아니다. 각 원자 문장을 다음 7필드로 분해했다.
+The Motivation-translation documents 121–130, written after Canon 24 was sealed, audited the founding text again line by
+line and sentence by sentence. They neither amended the source text nor advanced the Canon. Each semantic atom was
+decomposed into the following seven fields.
 
 $$
 \mathfrak T(c)
@@ -348,49 +359,51 @@ $$
 (\tau_c,\Sigma_c,\varphi_c,A_c,W_c,O_c,V_c).
 $$
 
-| 필드 | 묻는 것 |
+| Field | Question |
 |---|---|
-| $\tau$ | 정의, 기술, 가설, 질문, 연구명령, 은유, 교정, 비판 중 무엇인가 |
-| $\Sigma$ | 대상과 사상의 type은 무엇인가 |
-| $\varphi$ | 과장하지 않은 정확한 명제 또는 질문은 무엇인가 |
-| $A$ | well-definedness와 참에 필요한 가정은 무엇인가 |
-| $W$ | 증명, 반례 또는 양성 witness는 무엇인가 |
-| $O$ | 어떤 관측과 protocol로 판정하는가 |
-| $V$ | proved, conditional, empirical, open, false-universal, ill-typed, metaphor-only 중 무엇인가 |
+| $\tau$ | Is this a definition, description, hypothesis, question, research directive, metaphor, correction, or critique? |
+| $\Sigma$ | What are the types of the objects and maps? |
+| $\varphi$ | What is the precise, non-overstated proposition or question? |
+| $A$ | Which assumptions are required for well-definedness and truth? |
+| $W$ | What would constitute a proof, counterexample, or positive witness? |
+| $O$ | Which observations and protocols determine its status? |
+| $V$ | Is it proved, conditional, empirical, open, false-universal, ill-typed, or metaphor-only? |
 
-감사 영수증의 핵심 수는 다음과 같다.
+The audit receipt contains the following key counts.
 
-| 감사 단위 | 수 | 정확한 뜻 |
+| Audit unit | Count | Exact meaning |
 |---|---:|---|
-| 창립문 실질 문단행 | 19 | Motivation의 본문 범위 |
-| 종결부호 source unit | 118 | 마침표 112 + 물음표 6 |
-| 원문 semantic atom | 112 | 인접 병렬문장 세 묶음을 component별로 보존 |
-| 원문 atom fields | 784 | $112\times7$ |
-| metadiscourse record H40·H42 | 2 | semantic 7-tuple 밖에 별도 보존하며 field counter에서 제외 |
-| 후기 자기교정 atom | 54 | 사용자 직접발화, 반론, 공동 종합, 후속 정리를 출처별 분리 |
-| 후기 atom fields | 378 | $54\times7$ |
-| 전체 감사 fields | 1,162 | source orphan과 atom orphan 0 |
+| Substantive, line-numbered paragraphs in the founding text | 19 | Scope of the Motivation body |
+| Punctuation-delimited source units | 118 | 112 periods + 6 question marks |
+| Semantic atoms in the source | 112 | Three multi-unit semantic groups are represented once while retaining every source component |
+| Source atom fields | 784 | $112\times7$ |
+| Metadiscourse records H40 and H42 | 2 | Preserved separately outside the semantic seven-tuples and excluded from the field count |
+| Later self-correction atoms | 54 | Direct user statements, objections, joint syntheses, and later theorems separated by source |
+| Later atom fields | 378 | $54\times7$ |
+| Total audited fields | 1,162 | Zero source or atom orphans |
 
-정확한 crosswalk는 **118 source units → 112 semantic 7-tuples + 2 metadiscourse records**다. 두
-metadiscourse record는 1,162 fields에 포함되지 않는다. “완전 번역”은 118개 source unit이 모두 참인
-정리라는 뜻이 아니다. 어떤 문장은 조건부 정리로 닫혔고, 어떤
-문장은 경험가설로 남았으며, 보편형이 거짓인 문장은 반례로 닫혔다. iceberg와 local cross-section은
-필요한 사상이 없는 동안 metaphor로 남겼다. 이 구분 자체가 감사의 성과다.
+The crosswalk is total but not one-to-one. M29 groups three source units into one semantic atom, while M62 and M95
+each group two units into one. These groupings reduce the count by $2+1+1=4$. Thus $118-4=114$: 112 semantic
+seven-tuples plus the two singleton metadiscourse records H40 and H42. Those metadiscourse records are not included
+in the 1,162 fields. “Complete translation” does not mean that all 118 source units are true theorems. Some sentences
+became conditional theorems, some remained empirical hypotheses, and universal claims that proved false were closed
+by counterexample. The iceberg and local-cross-section images remain metaphors until the required maps are supplied.
+That distinction is itself an outcome of the audit.
 
-### 무엇이 증명됐고 무엇이 남았는가
+### What Was Proved and What Remains
 
-| 지위 | 내용 |
+| Status | Content |
 |---|---|
-| exact | doctrine-relative response quotient, shift action, quotient 보편성, 미관측 반응 factorization 조건, bare universal proper-selector no-go |
-| 정의에 의해 구성 | role-free process signature, organization category 후보, global scope, candidate formation predicate |
-| 조건부 | latent sufficiency·projection·section, role descent, organization naturality, embodied grounding |
-| 경험 문제 | neural nontriviality, held-out 이득, causal mediation, 실제 formation |
-| 보편형 철회 | inference에는 formation이 없음, 미래예측 부재, final-weight-only observability, 무조건적 학습·추론 본질 이분법 |
-| 열림 | neural-specific extraction, finite/noisy identifiability, predictive state 뒤 residual, multimodal embodied common realization |
+| exact | doctrine-relative response quotient, shift action, quotient universality, factorisation condition for unobserved responses, and the bare universal proper-selector no-go |
+| constructed by definition | role-free process signature, candidate organisation category, global scope, and candidate formation predicate |
+| conditional | latent sufficiency, projection, section, role descent, organisation naturality, and embodied grounding |
+| empirical question | neural nontriviality, held-out gain, causal mediation, and actual formation |
+| universal claim withdrawn | the claim that inference involves no formation, the denial of future prediction, final-weight-only observability, and an unconditional essential learning–inference dichotomy |
+| open | neural-specific extraction, finite or noisy identifiability, residual beyond predictive state, and a multimodal embodied common realisation |
 
-## 11. Canon 24의 `NO`는 Motivation의 실패가 아니다
+## 11. Canon 24's `NO` Is Not a Failure of Motivation
 
-현재 정본은 다음을 채택한다.
+The current Canon adopts
 
 $$
 \boxed{
@@ -398,33 +411,34 @@ $$
 }
 $$
 
-현재 일곱 carrier 후보 중 neural-specific survivor는 0이다. 제한된 relation alignment, gauge와
-function-fiber 수학, physical response separation, external-relation cross-fit은 실제 결과로 남는다.
-그러나 strongest typed baseline을 적용하면 별도의 ULR object가 추가로 필요하지 않았다. 따라서 현재
-설명은 Sharing, Identity, Role, Formation을 각각 기존의 typed theory로 다루는 Z0
-pluralism/deflation이다.
+There are zero neural-specific survivors among the seven current carrier candidates. Restricted relation alignment, gauge
+and function-fibre mathematics, physical response separation, and external-relation cross-fit remain genuine results.
+After the strongest typed baselines were applied, however, no additional ULR object was required. The current
+explanation is therefore Z0 pluralism/deflation, which treats Sharing, Identity, Role, and Formation through their
+respective existing typed theories.
 
-이 `NO`는 세 가지를 뜻하지 않는다.
+This `NO` does not mean any of the following.
 
-1. 신경망에 구조나 조직이 없다는 말이 아니다.
-2. 미래의 모든 ULR 후보가 불가능하다는 형이상학적 no-go가 아니다.
-3. Motivation이 쓸모없었다는 말이 아니다.
+1. Neural networks have no structure or organisation.
+2. Every future ULR candidate is ruled out by a metaphysical no-go theorem.
+3. The Motivation was useless.
 
-오히려 Motivation이 “무엇이 관측돼야 ULR이라고 부를 수 있는가”로 정밀해졌기 때문에 `NO`를 말할 수
-있었다. 약한 behavioral organization은 exact하게 구성되지만 ordinary predictive/testing theory일 수
-있다. ULR은 그 baseline을 이름만 바꾼 것이어서는 안 된다.
+On the contrary, `NO` became possible because the Motivation was sharpened into the question “what would have to be
+observed before we call something a ULR?” A weak behavioural organisation can be constructed exactly while remaining
+ordinary predictive or testing theory. ULR cannot merely rename that baseline.
 
-따라서 현재 Motivation의 생명력은 positive ontology가 아니라 다음 연구 태도에 있다.
+The present vitality of the Motivation therefore lies not in positive ontology, but in the following research discipline.
 
-- local measurement와 whole organization을 구분한다.
-- similarity, identity, causality, role, formation을 자동 연결하지 않는다.
-- 숨어 있을 법한 object보다 가능한 반례와 reduction을 먼저 등록한다.
-- 음성 결과도 candidate class와 scope를 닫는 이론적 결과로 보존한다.
-- 새 후보가 나와도 최강 baseline 뒤의 residual이 없으면 ULR로 승격하지 않는다.
+- Distinguish a local measurement from whole organisation.
+- Do not connect similarity, identity, causality, role, and formation automatically.
+- Register possible counterexamples and reductions before positing a plausible hidden object.
+- Preserve negative results as theoretical results that close a candidate class within a declared scope.
+- Do not promote a new candidate to ULR unless a residual remains beyond the strongest baseline.
 
-## 12. Post-Canon 최소효과 gate
+## 12. The Post-Canon Minimum-Effect Gate
 
-비정본 후속 정밀화 131은 초기 직관에 최소 과학적 효력을 부여했다. 가능한 response profile의 class를
+Noncanonical follow-up document 131 sharpened the early intuition by specifying a minimum criterion for scientific
+efficacy. Let the class of possible response profiles be
 
 $$
 \mathcal B
@@ -432,8 +446,8 @@ $$
 \prod_{q\in Q}Y_q
 $$
 
-라 하자. organization이 있다는 가장 약한 operational 의미는 가능한 반응 조합이 무제약 product보다
-엄격히 작다는 것이다.
+The weakest operational meaning of organisation is that the possible response combinations form a strict subset of the
+unconstrained product.
 
 $$
 \boxed{
@@ -443,15 +457,15 @@ $$
 }
 $$
 
-관측 query $T$와 완전히 미관측인 target $U$를 나누면, 관측 반응과 target 반응의 결합이
-$\mathcal B_T\times\mathcal B_U$보다 작은가를 묻는다. 단순히 결과를 모두 본 뒤 실제 table 하나를
-$\mathcal B$라고 다시 쓰는 것은 예측이 아니다. candidate class, hyperparameter, dimension, stopping rule은
-target을 열기 전에 고정해야 한다.
+Splitting the observed queries $T$ from the wholly unobserved target $U$, we ask whether the joint possibilities for the
+observed and target responses form a strict subset of $\mathcal B_T\times\mathcal B_U$. It is not predictive to inspect
+every outcome and then redefine $\mathcal B$ after the fact to fit the observed response profile. The candidate class,
+hyperparameters, dimension, and stopping rule must be fixed before the target is opened.
 
-### Gate C — constraint efficacy
+### Gate C — Constraint Efficacy
 
-discovery data만으로 만든 후보 organization이 sealed target에서 independent/product null보다 사전등록한
-최소효과 이상 좋아야 한다.
+A candidate organisation built from discovery data alone must outperform the independent or product null by at least a
+preregistered minimum effect on the sealed target.
 
 $$
 \operatorname{Risk}(\widehat{\mathcal O};U)
@@ -459,14 +473,18 @@ $$
 \operatorname{Risk}(\text{product null};U).
 $$
 
-이는 “관측하지 않은 반응을 실제로 제한했다”는 최소 증거다. 하지만 PSR, low-rank model, smoothness
-prior도 이 gate를 통과할 수 있다.
+The displayed inequality records the required direction only; Gate C separately requires the improvement to meet the
+preregistered magnitude threshold.
 
-### Gate R — irreducible residuality
+This is the minimum evidence that the organisation “genuinely constrained an unobserved response.” But a PSR, low-rank
+model, or smoothness prior may also pass this gate.
 
-최강 결합 baseline을 $B^*$, ULR 후보 요약을 $U$, construction에 사용하지 않은 target을 $V$라 하자.
-$B^*$와 $B^*\oplus U$에는 **동일한 information·search·complexity budget**을 적용해야 한다. 그렇지 않으면
-차이는 ULR residual이 아니라 추가 정보, 탐색 또는 용량 효과일 수 있다. 이 조건 아래 현실적인 최소 판정은
+### Gate R — Irreducible Residuality
+
+Let $B^*$ be the strongest combined baseline, $S$ the candidate ULR summary, and $V$ a target not used in construction.
+The **same information access, search budget, and complexity budget** must apply to $B^*$ and $B^*\oplus S$. Otherwise the
+difference may be an effect of extra information, search, or capacity rather than a ULR residual. Under this condition, a
+practical minimum criterion is
 
 $$
 \boxed{
@@ -474,72 +492,74 @@ $$
 =
 \mathcal R(B^*;V)
 -
-\mathcal R(B^*\oplus U;V)
+\mathcal R(B^*\oplus S;V)
 >
 \delta
 }
 $$
 
-다. 독립 test unit에 대한 신뢰구간 하한도 0보다 커야 한다. $B^*$에는 local latent와 full state,
-controlled PSR·causal state·minimal realization, raw typed port response, task/world·routing oracle,
-capacity-matched sequence model, causal abstraction과 intervention model이 함께 경쟁해야 한다.
+The lower confidence bound over independent test units must also exceed the preregistered $\delta$; exceeding zero alone
+would establish direction, not the declared minimum effect. Under matched information access and budgets,
+the $B^*$ comparison must include the local latent and full state; controlled PSRs; causal states; minimal realisations; raw
+typed-port responses; task, world, and routing oracles; capacity-matched sequence models; and causal-abstraction and
+intervention models.
 
-Gate C 없이 Gate R은 없다. target을 본 뒤 $U:=V$로 두면 어떤 separation도 사후 제조할 수 있기 때문이다.
-후보 구성의 독립성, complexity 제한, sealed evaluation이 먼저다.
+There is no Gate R without Gate C. If one sets $S:=V$ after inspecting the target, any separation can be manufactured
+post hoc. Independence of candidate construction, complexity limits, and sealed evaluation must come first.
 
-### 성공 사다리
+### The Success Ladder
 
-| 단계 | 얻은 것 | 허용되는 판정 |
+| Level | What has been obtained | Permitted verdict |
 |---|---|---|
-| L0 | 지정 local latent의 불충분성 | Motivation 양성, ULR 증거 아님 |
-| L1 | sealed target의 non-product constraint | cross-condition predictive organization |
-| L2 | 작은 generator law가 unseen composition을 예측 | compact compositional realization |
-| L3 | typed intervention과 quotient가 가환하고 patch 결과를 예측 | interventional causal organization |
-| L4 | $B^*$ 뒤 residual, gauge descent, 외부 경계 transfer | neural-specific ULR candidate; 아직 ontology `YES` 아님 |
+| L0 | Insufficiency of the specified local latent | Support for the motivating insufficiency claim; not ULR evidence |
+| L1 | Non-product constraint on a sealed target | Cross-condition predictive organisation |
+| L2 | A small generator law predicts unseen compositions | Compact compositional realisation |
+| L3 | Typed interventions commute with the quotient and predict patch outcomes | Interventional causal organisation |
+| L4 | Residual beyond $B^*$, gauge descent, and transfer across an external boundary | Neural-specific ULR candidate; still not an ontology `YES` |
 
-L4 뒤에도 독립 재현, scope 감사, producer evidence와 claim 승격이 별도로 필요하다. random response-cell
-split이나 같은 task의 interpolation만으로는 부족하다. 긴 composition, order reversal, reset·clone 순서,
-sealed seed, architecture 또는 task boundary 전체를 숨긴 시험이 필요하다.
+Even after L4, independent replication, a scope audit, producer evidence, and claim promotion remain separate
+requirements. A random response-cell split or interpolation within the same task is insufficient. Tests must hide complete
+long-horizon compositions, order reversals, reset or clone orderings, sealed seeds, architectures, or task boundaries.
 
-## 13. 정본과 비정본의 경계
+## 13. The Boundary Between Canonical and Noncanonical Work
 
-이 페이지는 현재 정본 상태와 Motivation의 역사·비정본 해석을 함께 읽기 위한 공개 synthesis다. 권위와
-성숙도를 섞지 않는다.
+This page is a public synthesis for reading the current canonical state alongside the historical and noncanonical
+interpretation of its Motivation. It does not mix authority with maturity.
 
-| 층 | 지위 | 이 페이지에서의 사용법 |
+| Layer | Status | Use on this page |
 |---|---|---|
-| 2026-07-06 창립 Motivation | 변경하지 않는 North Star, 현재 fact source는 아님 | 최초 직관과 질문의 출처 |
-| Progress #0–#8 | append-only 역사·자기감사 | 초기 성취, 표류, 재중심화의 provenance |
-| Canon 24 · LEDGER 105 · PROGRESS #31 | **현재 정본** | ontology `NO`, Z0, active claim과 현재 scope의 권위 |
-| 번역·감사 121–130 | Git 추적 비정본 연구층 | 원문의 typed translation과 self-correction; Canon 승격 아님 |
-| 최소효과 131 | Git 추적 비정본 동기 정밀화 | Gate C·R과 L0–L4 제안; 새 neural evidence 아님 |
+| Founding Motivation, 2026-07-06 | Unchanged North Star, not a current fact source | Source of the initial intuition and questions |
+| Progress #0–#8 | Append-only history and self-audit | Provenance of early achievements, drift, and re-centring |
+| Canon 24 · LEDGER 105 · PROGRESS #31 | **Current Canon** | Authority for ontology `NO`, Z0, active claims, and current scope |
+| Translation and audit 121–130 | Git-tracked noncanonical research layer | Typed translation and self-correction of the source; not a Canon promotion |
+| Minimum-effect refinement 131 | Git-tracked noncanonical refinement of Motivation | Proposal of Gates C and R and L0–L4; not new neural evidence |
 
-따라서 121–131의 `PASS`, “완전 번역”, “봉인”은 각 문서 내부의 형식·coverage 감사를 뜻한다. Canon
-25, 새 active claim, ontology 승격을 뜻하지 않는다. M8 `NO`는 그대로다.
+Accordingly, `PASS`, “complete translation,” and “sealed” in documents 121–131 refer to their internal formal and coverage
+audits. They do not mean Canon 25, a new active claim, or an ontology promotion. The M8 `NO` remains unchanged.
 
-## 14. 지금 다시 쓰는 북극성
+## 14. Rewriting the North Star Today
 
-창립문의 가장 깊은 직관은 “숨은 물질”보다 **한 순간과 많은 가능성 사이의 관계를 연구하자**는 데
-있었다. 현재는 그 직관을 다음처럼 다시 쓸 수 있다.
+The deepest intuition of the founding text was less about “hidden substance” than about **studying the relation between one
+moment and many possibilities**. It can now be restated as follows.
 
 $$
 \boxed{
 \begin{aligned}
-&\text{한 latent 값은 선언한 조건에서 얻은 local readout이다.}\\
-&\text{먼저 그 값이 관심 response family의 충분통계인지 반증한다.}\\
-&\text{불충분하다면 관측된 조건에서 식별된 organization이}\\
-&\text{미관측 반응과 새로운 합성을 실제로 제한하는지 시험한다.}\\
-&\text{그 제한이 predictive, dynamical, causal, task baseline 뒤에도 남을 때만}\\
-&\text{ULR-specific 후보를 연다.}
+&\text{One latent value is a local readout obtained under declared conditions.}\\
+&\text{First, try to falsify its sufficiency for the response family of interest.}\\
+&\text{If it is insufficient, test whether organisation identified from observed conditions}\\
+&\text{genuinely constrains unobserved responses and novel compositions.}\\
+&\text{Open a ULR-specific candidate only if that constraint survives}\\
+&\text{predictive, dynamical, causal, and task baselines.}
 \end{aligned}
 }
 $$
 
-이 Motivation은 `YES`를 예정하지 않는다. `NO`도 정직하게 산출할 수 있어야 한다. ULR이 현재 Main
-연구인 이유는 하나의 답을 지키기 위해서가 아니라, Sharing·Identity·Role·Formation 사이에 정말 새로운
-접합 법칙이 있는지 끝까지 분해하고 검증하기 위해서다.
+This Motivation does not presuppose `YES`; it must be capable of producing an honest `NO`. ULR remains the current Main
+research programme not to defend a preferred answer, but to determine—through systematic decomposition and testing—whether
+a genuinely new junction law connects Sharing, Identity, Role, and Formation.
 
-현재 판정과 숫자는 [현재 연구 상태](/ulr/current-status/), 정본 수학 사슬은
-[전체 수학적 흐름](/ulr/mathematical-flow/), Canon 이후 실험실 기록은
-[Post-Canon frontier](/ulr/post-canon-frontier/), 재개 조건은
-[열린 문제](/ulr/open-problems/)에서 이어진다.
+The current verdict and counts appear in [Current Research Status](/ulr/current-status/), the canonical mathematical chain
+in [Complete Mathematical Flow](/ulr/mathematical-flow/), the post-Canon laboratory record in
+[Post-Canon Frontier](/ulr/post-canon-frontier/), and the conditions for reopening in
+[Open Problems](/ulr/open-problems/).

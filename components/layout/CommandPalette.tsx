@@ -428,7 +428,6 @@ function ItemRow({
     <Command.Item
       value={item.id}
       onSelect={onSelect}
-      lang={item.kind === "ulr" ? "ko" : undefined}
       data-track={item.kind === "ulr" ? "ulr" : undefined}
       className={cn(
         "group flex cursor-pointer flex-col gap-0.5 rounded-[2px] px-3 py-2.5",

@@ -1,7 +1,7 @@
 ---
-title: "ULR 경험 프로그램 — 관측에서 M1–M8까지"
+title: "The ULR Empirical Programme — From Observation to M1–M8"
 slug: empirical-program
-description: "공유 정렬의 초기 관측, gauge-typed 재현, zero-assumption 재감사, neural matched pair와 M1–M8의 최종 실험 판정을 정리한다."
+description: "The initial observation of shared alignment, gauge-typed replication, zero-assumption reaudit, neural matched pairs, and the final experimental verdicts of M1–M8."
 date: "2026-08-09"
 updated: "2026-08-09"
 order: 7
@@ -10,13 +10,13 @@ status: canonical
 canon: "24"
 tags: [ulr, experiments, m1-m8, baselines, reproducibility]
 related: [claim-ledger, mathematical-flow, post-canon-frontier]
-summary: "ULR 경험 프로그램은 양성 alignment를 존재론으로 바로 승격하지 않고 gauge, null, untrained model, behavior bridge와 B0–B4/B*에 대조했다. M1–M8의 끝에서 carrier survivor는 0/7이고 ontology verdict는 NO다."
+summary: "The ULR empirical programme did not promote positive alignment directly into an ontology. It tested the phenomenon against gauges, nulls, untrained models, behavioural bridges, and B0–B4/B*. At the end of M1–M8, the carrier-survivor count is 0/7 and the ontology verdict is NO."
 ---
 
-## 실험 프로그램의 질문
+## The question posed by the empirical programme
 
-관측된 latent alignment가 있다는 사실과 별도의 ULR object가 필요하다는 주장은 다르다. 경험 프로그램은
-다음 사슬을 닫도록 설계됐다.
+The observation of latent alignment and the need for a distinct ULR object are different claims. The empirical
+programme was designed to close the following chain:
 
 $$
 \text{phenomenon}
@@ -27,239 +27,259 @@ $$
 \to
 \text{strong baseline comparison}
 \to
-\text{held-out behavior}
+\text{held-out behaviour}
 \to
 \text{nonreduction verdict}.
 $$
 
-## 1. 최초 경험 원자 6건
+## 1. The first six empirical atoms
 
-| ID | 현재 관측 | 허용되는 해석 | 금지되는 해석 |
+| ID | Current observation | Permitted interpretation | Prohibited interpretation |
 |---|---|---|---|
-| `ULR-CONV-EXIST` | 제한된 concept/model pair의 relation geometry가 shuffled null 초과 | 해당 pair에 shared alignment 있음 | observer-independent common space |
-| `ULR-CONV-INDEP` | independent vision-only × language-only pair도 chance 초과 | 공동 CLIP 학습만의 산물은 아님 | 모든 modality의 공통 ULR |
-| `ULR-CONV-DIM` | held-out null 초과가 CIFAR 20/25, Caltech 24/25 축에서 관측 | 단일 축만의 현상은 아님 | exact intrinsic dimension 17·20·24 |
-| `ULR-CONV-SEM` | alignment가 semantic/language proxy와 graded association | 선택 proxy와 연관 | 의미와 동일 |
-| `ULR-CONV-ORIGIN` | initialization near-chance에서 학습 중 typed trend $\rho=0.881$ | statistic이 학습 중 강화 | exact formation onset |
-| `ULR-EMP-GAUGE-ROBUST` | T1/T2 exact, T3 trend가 지정 permutation × positive-diagonal typing에서 보존 | raw-coordinate artifact만은 아님 | 일반 GL·nonlinear·full-model gauge robustness |
+| `ULR-CONV-EXIST` | Relational geometry exceeds a shuffled null for a limited set of concept/model pairs | Shared alignment exists for those pairs | Observer-independent common space |
+| `ULR-CONV-INDEP` | Independent vision-only × language-only pairs also exceed chance | The phenomenon is not solely a product of joint CLIP training | A common ULR for every modality |
+| `ULR-CONV-DIM` | Axes exceeding the held-out null appear in 20/25 CIFAR dimensions and 24/25 Caltech dimensions | The phenomenon is not confined to one axis | Exact intrinsic dimension 17, 20, or 24 |
+| `ULR-CONV-SEM` | Alignment has a graded association with semantic/language proxies | Association with the selected proxies | Identity with meaning |
+| `ULR-CONV-ORIGIN` | A typed trend of $\rho=0.881$ develops during training from a near-chance initialisation | The statistic strengthens during learning | An exact onset of formation |
+| `ULR-EMP-GAUGE-ROBUST` | The T1/T2 exact results and T3 trend are preserved under the specified permutation × positive-diagonal typing | The phenomenon is not merely a raw-coordinate artefact | Robustness under general GL, nonlinear, or full-model gauges |
 
-이 여섯 행은 **ULR object 발견 6건**이 아니다. 현상과 artifact boundary를 기록한 active claim이다.
+These six rows are not **six discoveries of ULR objects**. They are active claims recording phenomena and
+artefact boundaries.
 
-## 2. Zero-assumption 재개방에서 확인한 수치
+## 2. Quantities confirmed by the zero-assumption reopening
 
-재개방 감사는 이전의 headline을 그대로 재사용하지 않고 source, null, model family를 다시 분리했다.
+The reopening audit did not simply reuse earlier headlines. It separated sources, nulls, and model families
+again.
 
-| 검사 | 결과 | 정본 해석 |
+| Test | Result | Canonical interpretation |
 |---|---:|---|
-| raw cross-modal CKA | 0.769 | 지정 model pair의 relation statistic |
-| shuffled baseline | 0.583 | 같은 protocol의 null |
-| standardized gap | $z=35.9$ | 이 pair에서 chance 초과 |
-| supervised × supervised, 14-model atlas | 0.803 | objective family 안의 높은 정렬 |
-| self-supervised × self-supervised | 0.468 | 보편 수렴과 불일치 |
-| untrained × untrained | 0.571 | architecture·data prior가 무시할 수 없는 baseline |
-| graded animacy proxy 설명분 | 약 25% | 선택한 proxy family의 설명력 |
-| 미설명분 | 약 75% | 18개 proxy가 설명하지 못한 잔차, ULR 크기 아님 |
+| Raw cross-modal CKA | 0.769 | Relational statistic for the specified model pair |
+| Shuffled baseline | 0.583 | Null under the same protocol |
+| Standardised gap | $z=35.9$ | Above chance for this pair |
+| Supervised × supervised, 14-model atlas | 0.803 | High alignment within an objective family |
+| Self-supervised × self-supervised | 0.468 | Inconsistent with universal convergence |
+| Untrained × untrained | 0.571 | Architecture and data priors form a non-negligible baseline |
+| Variance explained by graded animacy proxies | Approximately 25% | Explanatory power of the selected proxy family |
+| Unexplained variance | Approximately 75% | Residual unexplained by 18 proxies, not the size of ULR |
 
-과거 `≥17`, shared/private `52%`, PC 제거 뒤 `48%`, exact formation onset 같은 provenance 미충족 숫자는
-현재 정본의 존재 하중에 쓰지 않는다.
+Earlier numbers lacking sufficient provenance—including `≥17`, shared/private `52%`, `48%` after
+principal-component removal, and an exact formation onset—carry no ontological weight in the current canon.
 
-## 3. Gauge-typed replication이 바꾼 결론
+## 3. How gauge-typed replication changed the conclusion
 
-raw representation metric은 function-preserving coordinate change에도 움직일 수 있다. T1–T3 replication은
-원 좌표의 현상과 typed quotient를 함께 비교했다.
+A raw representational metric can change under a function-preserving coordinate transformation. The T1–T3
+replications compared raw-coordinate measurements with their quotient-normalised, gauge-typed counterparts.
 
-- T1에서 raw effective dimension은 20에서 16으로 변했지만 typed 값은 bit-identical하게 보존됐다.
-- T2에서 raw modality-specific score는 0.251에서 0.119로 줄었지만 typed score 0.237은 보존됐다.
-- T3는 처음 재현 실패 후 extraction protocol 차이를 추적해 last-token·final-layer·고정 prompt 조건에서
-  CKA correlation 0.997, retrieval Pearson 0.986으로 원 추세를 복원했다.
+- In T1, raw effective dimension changed from 20 to 16, while the typed value remained bit-identical.
+- In T2, the raw modality-specific score fell from 0.251 to 0.119, while the typed score remained 0.237.
+- T3 initially failed to replicate. After the discrepancy was traced to the extraction protocol, the original
+  trend was recovered under the last-token, final-layer, fixed-prompt condition, with CKA correlation 0.997 and
+  retrieval Pearson correlation 0.986.
 
-결론은 다음 한 문장으로 동결됐다.
+The conclusion was frozen in one sentence:
 
-> 현상은 gauge artifact가 아니었지만, raw 측정값은 gauge artifact에 노출되어 있었다.
+> The phenomenon was not a gauge artefact, but the raw measurement was exposed to gauge artefacts.
 
-이는 full-model gauge orbit 전체를 시험했다는 뜻이 아니다. 지정한 permutation과 positive-diagonal
-typing의 범위다.
+This does not mean that the entire full-model gauge orbit was tested. The result is limited to the specified
+permutation and positive-diagonal typing.
 
-## 4. B0–B4와 combined B*
+## 4. B0–B4 and combined B*
 
-새 quantity $Q$의 가치는 약한 baseline 하나가 아니라 같은 information·port contract에서 가능한 가장
-강한 설명과 비교한다.
+The value of a new quantity $Q$ is not tested against one weak baseline, but against the strongest available
+explanation under the same information and port contract.
 
-| Baseline | 관측 범위 | 제거하려는 오독 |
+| Baseline | Observation scope | Misreading it is designed to remove |
 |---|---|---|
-| B0 output | passive output만 | 출력 차이를 새 internal object로 부르는 것 |
-| B1 geometry | passive representation geometry | 관계 metric의 중복 정보 |
-| B2 predictive | passive future prediction | ordinary predictive state의 흡수 |
-| B3 causal testing | raw controlled port response | response quotient의 표준 testing 흡수 |
-| B4 routing | architecture가 선언한 state·write routing | 설계 label을 emergent organization으로 오인 |
-| B* | B0–B4 결합 | 여러 약한 null을 따로 이긴 결과의 공허한 승격 |
+| B0 output | Passive output only | Calling an output difference a new internal object |
+| B1 geometry | Passive representational geometry | Redundant information in a relational metric |
+| B2 predictive | Passive future prediction | Absorption into ordinary predictive state |
+| B3 causal testing | Raw controlled port response | Absorption of the response quotient into standard testing |
+| B4 routing | Architecture-declared state and write routing | Mistaking a design label for emergent organisation |
+| B* | B0–B4 combined | Vacuous promotion after separately beating several weak nulls |
 
-M8을 열려면 $Q$가 B* 이후에도 held-out behavior 또는 transfer에 점증적 가치를 줘야 한다.
+To open M8, $Q$ had to add incremental value for held-out behaviour or transfer after B*.
 
-## 5. U0-v1 — exact toy를 small neural system으로 옮기기
+## 5. U0-v1 — Moving the exact toy into a small neural system
 
-이 실험은 동일하게 학습된 core를 두 persistence mechanism에 연결했다.
+This experiment connected the same trained core to two different persistence mechanisms.
 
-- A: write activation을 recurrent hidden에 보존.
-- B: one-item attention cache에 보존하고 query 때 activation을 재구성.
-- 32 seed, meta-train 24 / meta-test 8.
-- passive write·tick·read에서 activation과 probability가 pairwise exact.
-- hidden/cache reset, clone, overwrite가 실제 state container에 작용.
+- A: preserve the write activation in recurrent hidden state.
+- B: preserve it in a one-item attention cache and reconstruct the activation at query time.
+- 32 seeds, with 24 for meta-training and 8 for meta-testing.
+- Pairwise-exact activations and probabilities during passive write, tick, and read operations.
+- Hidden/cache reset, clone, and overwrite operations act on the actual state container.
 
-passive probability와 activation 최대차는 0, CKA는 1이었다. reset·clone 방향은 32/32 seed에서
-일치했다. signed-permutation co-transform 아래 passive output과 physical response도 수치 오차 범위에서
-보존됐다.
+The maximum difference in passive probabilities and activations was 0, and CKA was 1. In 32/32 seeds,
+the recurrent-hidden-minus-attention-cache response contrast was negative under reset and positive under clone.
+Under signed-permutation co-transformation, passive output and physical response were also preserved to numerical
+precision.
 
 ### Held-out prediction
 
-| Predictor | test MSE | test $R^2$ |
+| Predictor | Test MSE | Test $R^2$ |
 |---|---:|---:|
 | B0 output | 0.9652701411 | 0.0 |
 | B1 passive geometry | 0.9652701411 | 0.0 |
-| B2 passive predictive | 0.9652701411 | 약 0 |
+| B2 passive predictive | 0.9652701411 | Approximately 0 |
 | B3 raw port response | 0.0000105580 | 0.999989 |
 | B4 declared routing | 0.0000014978 | 0.999998 |
 | Q typed response | 0.0000007289 | 0.999999 |
 
-$Q$는 B2보다 크게 나았지만, B3·B4 대비 우위는 사전등록한 0.01 nonabsorption threshold에 미달했다.
-따라서 operational bridge는 양성이지만 ontology 판정은 `Z1_WEAKENED`다.
+$Q$ substantially outperformed B2, but its advantage over B3 and B4 fell below the preregistered 0.01
+nonabsorption threshold. The operational bridge is therefore positive, while the ontology verdict is
+`Z1_WEAKENED`.
 
-## 6. M1 — Z1 physical response의 emergent version
+## 6. M1 — An emergent version of the Z1 physical response
 
-U0-v1이 engineered routing을 사용했으므로 M1은 homogeneous tanh RNN의 seed-only training에서 stable
-response class가 자연히 갈리는지 검사했다.
+Because U0-v1 used engineered routing, M1 tested whether stable response classes would emerge naturally from
+seed-only training of a homogeneous tanh RNN.
 
-- 64 seed 모두 passive eligibility를 통과.
-- stable class는 train 47:1, test 16:0으로 형성되지 않음.
-- raw response도 ordinary dynamics baseline을 개선하지 못함.
-- local verdict: `COLLAPSED@tanh-delay-v2`.
+- All 64 seeds passed passive eligibility.
+- Stable classes failed to form: the majority-to-outlier cluster counts were 47:1 for meta-train and 16:0
+  for meta-test.
+- The raw response also failed to improve on an ordinary-dynamics baseline.
+- Local verdict: `COLLAPSED@tanh-delay-v2`.
 
-이 결과는 모든 physical-response 가설을 반증하지 않는다. current implementation의 emergent v2를 닫고
-Z1 전체를 weakened application program으로 남긴다.
+This result does not refute every physical-response hypothesis. It closes the current implementation of emergent
+v2 while leaving Z1 as a weakened application programme.
 
-## 7. M2 — Z5 external relation cross-fit
+## 7. M2 — Z5 external-relation cross-fit
 
-외부 semantic relation을 고정하고 한 dataset에서 맞춘 relation law가 다른 dataset과 model family로
-transport되는지 검사했다.
+M2 fixed an external semantic relation and tested whether a relation law fitted on one dataset transported to
+another dataset and model family.
 
-- 고정한 WordNet 3.1 relation이 Caltech와 CIFAR의 held-out relation을 예측.
-- architecture·objective holdout을 통과.
-- geometry relation gate는 양성.
-- retrieval behavior bridge는 악화되어 음성.
+- The fixed WordNet 3.1 relation predicted held-out Caltech and CIFAR relations.
+- The result held across architecture and objective holdouts.
+- The geometry-relation gate was positive.
+- The retrieval-behaviour bridge deteriorated and was negative.
 
-따라서 Z5는 **weakened external baseline**이다. 외부 taxonomy가 representation geometry를 일부
-예측한다는 결과는 남지만, internal carrier나 behavior mechanism으로 승격되지 않는다.
+Z5 is therefore a **weakened external baseline**. The finding that an external taxonomy predicts some
+representational geometry survives, but it is not promoted to an internal carrier or behavioural mechanism.
 
-## 8. M3 — 일곱 carrier의 동일 reduction audit
+## 8. M3 — A uniform reduction audit of seven carriers
 
-| 후보 | 환원 대상 | Neural-specific survivor |
+| Candidate | Reduction target | Neural-specific survivor |
 |---|---|---:|
-| parameter quotient | symmetry/invariant quotient | 0 |
-| activation ensemble | empirical law/kernel/moment | 0 |
-| relation transform | RSA/CKA/external relation | 0 |
-| predictive state | PSR/minimal realization | 0 |
-| physical response | causal testing | 0 |
-| dynamical carrier | ordinary state-space/RDS | 0 |
-| external relation | internal object가 아님 | 0 |
+| Parameter quotient | Symmetry/invariant quotient | 0 |
+| Activation ensemble | Empirical law/kernel/moment | 0 |
+| Relation transform | RSA/CKA/external relation | 0 |
+| Predictive state | PSR/minimal realisation | 0 |
+| Physical response | Causal testing | 0 |
+| Dynamical carrier | Ordinary state-space/RDS | 0 |
+| External relation | Not an internal object | 0 |
 
-최종 합계는 **0/7**이다. 이 판정은 현재 registry를 닫지만 미래의 모든 carrier 후보를 금지하지 않는다.
+The final count is **0/7**. This verdict closes the current registry; it does not prohibit every possible future
+carrier candidate.
 
-## 9. M4 — Formation의 조건부 정의
+## 9. M4 — A conditional definition of formation
 
-formation은 metric curve의 onset이 아니라 identity와 transport 아래 object 또는 family의 structural
-type이 바뀌는 사건으로 정의했다.
+Formation was defined not as the onset of a metric curve, but as an event in which the structural type of an
+object or family changes under identity and transport.
 
-필수 항목은 다음과 같다.
+The required elements are:
 
-1. formation 이전과 이후의 object identity;
+1. object identity before and after formation;
 2. cross-time transport;
-3. quotient 안의 단순 이동과 structural stratum change의 구분;
-4. behavior를 정의에 넣지 않은 별도 bridge;
-5. deformation과 boundary crossing의 구분.
+3. a distinction between motion within a quotient and change of structural stratum;
+4. a separate behavioural bridge, not built into the definition;
+5. a distinction between deformation and boundary crossing.
 
-M3 survivor가 0이므로 모든 neural model에 적용할 current target은 `NO_ADMISSIBLE_TARGET`이다. 정의는
-완료됐지만 universal instance는 없다.
+Because M3 has zero survivors, the current target across neural models is `NO_ADMISSIBLE_TARGET`. The definition
+is complete, but no universal instance has been established.
 
-## 10. M5 — UAR composite 철회
+## 10. M5 — Retraction of the UAR composite
 
-M5는 이전 UAR-I 완성 인상을 재검사했다. 결과적으로 full channel incidence의 injectivity와 joint
-assembly quotient의 unramifiedness가 서로 다른 source와 map에 대한 명제임을 확인했다.
+M5 re-examined the earlier impression that UAR-I had been completed. It found that injectivity of the full-channel
+incidence map and unramifiedness of the joint assembly map
+$a_{\mathrm{asm}}\colon \Theta^{\mathrm{adm}}/G_\Sigma\to\mathcal J$ are propositions about different sources
+and maps.
 
-따라서 `ULR-ASSEMBLY-UAR-MONO`를 `RETRACTED-MALFORMED-COMPOSITE`로 내렸다. 보존한 것은 다음 두
-하위 결과다.
+Accordingly, `ULR-ASSEMBLY-UAR-MONO` was downgraded to `RETRACTED-MALFORMED-COMPOSITE`. Two subordinate
+results were preserved:
 
 - `ULR-UAR-CH-TYPED-EXCLUSION`;
 - `ULR-UAR-ASM-UNRAMIFIED`.
 
-localization identity와 CERT-B/C는 M8을 막지 않는 optional strengthening으로 이동했다.
+The localisation identity and CERT-B/C were moved to an optional strengthening layer that does not block M8.
 
-## 11. M6 — Baseline contract 종료
+## 11. M6 — Closing the baseline contract
 
-M6은 모든 후속 candidate가 같은 기준에서 평가되도록 B0–B4와 B*를 고정했다. candidate와 baseline은
-같은 split, information access, intervention vocabulary, precision, resource ledger를 공유해야 한다.
-baseline이 candidate wrapper를 실행할 수 있는데 그것을 금지하려면 provenance-blind한 별도 doctrine이
-필요하다.
+M6 fixed B0–B4 and B* so that every subsequent candidate would be judged by the same standard. Candidate and
+baseline must share the same split, information access, intervention vocabulary, precision, and resource ledger.
+If a baseline can execute the candidate wrapper, excluding that execution requires a separate provenance-blind
+doctrine.
 
-## 12. M7 — Hypothesis와 governance 종료
+## 12. M7 — Closing the hypotheses and governance
 
-Z0–Z7 각각에 다음을 사전등록하는 계약을 완성했다.
+A contract was completed that preregisters the following for each of Z0–Z7:
 
-- object와 identity;
+- object and identity;
 - strongest rival;
 - rival-specific falsifier;
 - independent prediction;
-- data·split·hash·amendment rule;
+- data, split, hash, and amendment rule;
 - finite termination;
-- raw receipt와 validator;
-- author closure와 independent audit의 분리.
+- raw receipt and validator;
+- separation of author closure from independent audit.
 
-8개 가설의 14필드 schema는 형식 검사를 통과했다. 형식 통과는 truth나 novelty를 뜻하지 않는다.
+The 14-field schemas of all eight hypotheses passed format validation. Passing a format check does not establish
+truth or novelty.
 
-## 13. M8 — 최종 ontology 판정
+## 13. M8 — The final ontology verdict
 
-M8은 앞의 결과를 단순 투표하지 않고 **모든 typed baseline 이후 남은 residual**을 물었다.
+M8 did not take a simple vote over the preceding results. It asked whether any **residual remains after every
+typed baseline**.
 
-| 후보 근거 | 관측 결과 | M8 해석 |
+| Candidate basis | Observed result | M8 interpretation |
 |---|---|---|
-| physical response | passive quotient보다 richer | B3/B4 testing·routing이 흡수 |
-| emergent persistence | stable class 없음 | Z1 v2 collapsed |
-| external relation | geometry cross-fit 양성 | behavior 음성, internal carrier 아님 |
-| carrier registry | toolkit은 풍부 | survivor 0/7 |
-| formation | object-relative 정의 가능 | universal target 없음 |
-| UAR | 두 하위 결과 생존 | composite mono 철회 |
+| Physical response | Richer than the passive quotient | Absorbed by B3/B4 testing and routing |
+| Emergent persistence | No stable class | Z1 v2 collapsed |
+| External relation | Positive geometry cross-fit | Negative behaviour; not an internal carrier |
+| Carrier registry | Rich toolkit | Survivor count 0/7 |
+| Formation | Object-relative definition available | No universal target |
+| UAR | Two subordinate results survive | Composite monomorphism retracted |
 
-따라서
+Therefore,
 
 $$
 \boxed{\text{M8 verdict}=\textbf{NO}}
 $$
 
-를 채택했다. 이 `NO`는 유한 registry와 선언한 baseline 범위의 결론이다.
+was adopted. This `NO` is a conclusion within the finite registry and the declared baseline scope.
 
-## 14. Canon 24의 post-verdict theorem
+## 14. Canon 24's post-verdict theorem
 
-M8 뒤에도 observer-relative role 문제는 exact하게 닫을 수 있었다. role-conditioned transcript law
-$P_L,P_I$의 equal-prior Bayes risk는
+Even after M8, the observer-relative role problem could still be characterised exactly. For role-conditioned
+transcript laws $P_L,P_I$, the equal-prior Bayes risk is
 
 $$
 R^*=\frac{1-\lVert P_L-P_I\rVert_{\mathrm{TV}}}{2}
 $$
 
-이고 adaptive policy, garbling contraction, infinite path-law singularity까지 필요충분 경계가 정리됐다.
-이 결과는 새 ontology가 아니라 **limited observer의 identifiability theorem**이므로 M8을 재개하지 않았다.
+Adaptive distinguishability is the supremum of total variation over admissible policies. Separately, data
+processing contracts total variation when an internal transcript is a garbling of an external transcript. Under a
+fixed infinite policy, finite-prefix error tends to zero if and only if the full path laws are mutually singular.
+These distinct results did not reopen M8: they establish **limited-observer identifiability boundaries**, not a new
+ontology.
 
-## 15. 재현과 감사에서 배운 것
+## 15. Lessons from reproduction and audit
 
-- saved-output 계산은 현재 환경에서 13/13 stdout hash가 일치했다.
-- U0-v1 validator는 prereg, raw shape, split, gate, verdict와 deterministic replay를 12/12 통과했다.
-- observer theorem finite verifier는 분포 pair, garbling, adaptive policy를 포함한 8/8 검사를 통과했다.
-- 코드 재현은 input provenance와 external access contract 전체를 대신하지 않는다.
-- self-audit가 “결과 결함 아님”으로 판정한 자리를 independent audit가 conclusion-level defect로 뒤집었다.
+- Saved-output computations matched 13/13 stdout hashes in the current environment.
+- The U0-v1 validator passed 12/12 checks covering preregistration, raw shape, split, gate, verdict, and
+  deterministic replay.
+- The finite verifier for the observer theorem passed 8/8 checks, including distribution pairs, garbling, and
+  adaptive policies.
+- Code reproduction does not replace the full input-provenance and external-access contract.
+- Independent audit overturned an author-side self-audit finding of “not a result defect” and identified a
+  conclusion-level defect.
 
-따라서 현재 실험 규율은 author-side closure, independent audit, LEDGER promotion을 서로 다른 단계로 둔다.
+The current empirical discipline therefore treats author-side closure, independent audit, and LEDGER promotion
+as distinct stages.
 
-## 프로그램의 최종 경험 결론
+## Final empirical conclusion
 
-강한 alignment와 exact boundary theorem은 있다. 그러나 current data에서 neural-specific ULR object를
-추가했을 때 얻는 held-out explanatory value는 없다. 경험 프로그램이 실패한 것이 아니라, **선호한
-ontology보다 강한 null을 끝까지 유지해 `NO`를 판정할 수 있게 된 것**이 현재 결과다.
+Strong alignment phenomena and exact boundary theorems exist. Yet on the current data, the measured $Q$ gain over
+B3/B4 was nonzero but below the preregistered nonabsorption threshold; no neural-specific ULR candidate
+therefore retained preregistered meaningful incremental value beyond B*. The empirical programme did not fail: its
+present achievement is that it maintained null tests demanding enough to overturn its preferred ontology and reach
+a `NO` verdict.

@@ -78,7 +78,6 @@ export default function BookmarksPage() {
               </button>
               <div
                 className="flex-1"
-                lang={item.kind === "ulr" ? "ko" : undefined}
                 data-track={item.kind === "ulr" ? "ulr" : undefined}
               >
                 <Link

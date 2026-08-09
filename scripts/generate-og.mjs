@@ -38,15 +38,11 @@ const fontsDir = resolve(__dirname, "fonts");
 const interRegular = readFileSync(resolve(fontsDir, "Inter-Regular.ttf"));
 const interSemi = readFileSync(resolve(fontsDir, "Inter-SemiBold.ttf"));
 const frauncesBold = readFileSync(resolve(fontsDir, "Fraunces-Bold.ttf"));
-const notoSansKrRegular = readFileSync(resolve(fontsDir, "NotoSansKR-Regular.ttf"));
-const notoSansKrBold = readFileSync(resolve(fontsDir, "NotoSansKR-Bold.ttf"));
 
 const fonts = [
   { name: "Inter", data: interRegular, weight: 400, style: "normal" },
   { name: "Inter", data: interSemi, weight: 600, style: "normal" },
   { name: "Fraunces", data: frauncesBold, weight: 700, style: "normal" },
-  { name: "Noto Sans KR", data: notoSansKrRegular, weight: 400, style: "normal" },
-  { name: "Noto Sans KR", data: notoSansKrBold, weight: 700, style: "normal" },
 ];
 
 /* ── JSX-less element helper ────────────────────────────────── */
@@ -251,7 +247,7 @@ function titleSize(title) {
 const tplDefault = () =>
   card({
     eyebrow: "Research Blog",
-    title: "Unified Latent Representation and learned organization.",
+    title: "Unified Latent Representation and learned organisation.",
     subtitle:
       "Canon, mathematical flows, evidence ledgers, and a research journal by Jaehong Oh.",
     footer: "2026 · ULR main programme",
@@ -320,10 +316,10 @@ const tplOnn = (d) =>
   });
 
 const ulrStatusLabel = {
-  canonical: "정본",
-  current: "현재",
-  historical: "역사",
-  noncanonical: "비정본",
+  canonical: "Canonical",
+  current: "Current",
+  historical: "Historical",
+  noncanonical: "Non-canonical",
 };
 
 const tplUlr = (d) =>
@@ -331,9 +327,7 @@ const tplUlr = (d) =>
     eyebrow: "ULR · Main Research",
     title: d.title,
     subtitle: d.summary ?? d.description,
-    footer: `${ulrStatusLabel[d.status] ?? d.status ?? "현재"}${d.canon ? ` · Canon ${d.canon}` : ` · ${d.kind}`}`,
-    fontFamily: "Noto Sans KR",
-    titleFontFamily: "Noto Sans KR",
+    footer: `${ulrStatusLabel[d.status] ?? d.status ?? "Current"}${d.canon ? ` · Canon ${d.canon}` : ` · ${d.kind}`}`,
     accent: ULR_ACCENT,
     titleMaxSize: 56,
     subtitleFontSize: 22,
@@ -344,10 +338,8 @@ const tplUlrHub = () =>
     eyebrow: "ULR · Main Research",
     title: "Unified Latent Representation",
     subtitle:
-      "한 latent의 불충분성에서 출발한 Motivation, Canon 24의 음성 판정, 전체 수학과 다음 검증 관문.",
+      "From the inadequacy of a single latent through Canon 24's negative verdict and the complete mathematical flow to the next evidential gates.",
     footer: "Main programme · Canon 24 · Motivation → evidence",
-    fontFamily: "Noto Sans KR",
-    titleFontFamily: "Noto Sans KR",
     accent: ULR_ACCENT,
     titleMaxSize: 56,
     subtitleFontSize: 22,
@@ -392,8 +384,6 @@ const FONT_FINGERPRINT = createHash("sha256")
   .update(interRegular)
   .update(interSemi)
   .update(frauncesBold)
-  .update(notoSansKrRegular)
-  .update(notoSansKrBold)
   .digest("hex")
   .slice(0, 16);
 
@@ -489,12 +479,7 @@ async function main() {
     work.push({ ...job, hash, absOut });
   }
 
-  // Satori shares parsed font state across renders. Concurrent Korean/Latin
-  // jobs intermittently produced structurally incomplete cards (missing the
-  // absolute header or footer) even though every individual render succeeded.
-  // Serial rendering is slower but deterministic, which matters for deploy-time
-  // social images far more than shaving a minute from the build.
-  const concurrency = 1;
+  const concurrency = Math.max(1, Math.min(8, work.length));
   console.log(
     `[og] ${jobs.length} jobs · ${cached} cached · rendering ${work.length} (concurrency=${concurrency})`,
   );
