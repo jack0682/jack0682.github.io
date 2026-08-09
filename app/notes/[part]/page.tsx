@@ -207,7 +207,7 @@ export default async function PartIndexOrAlias({ params }: Props) {
             href="/scc/"
             className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
           >
-            SCC hub →
+            SCC archive →
           </Link>
         )}
       </div>

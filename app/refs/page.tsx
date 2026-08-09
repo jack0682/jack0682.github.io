@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/refs/" },
   title: "Reference",
   description:
-    "Cross-document indexes — every formal equation, theorem, open problem, glossary entry, and canonical version, extracted from the SCC and ONN notes and surfaced together.",
+    "Cross-document indexes — formal equations, theorems, claims, open problems, glossary entries, and canonical versions across ULR, SCC, ONN, papers, and notes.",
 };
 
 type Card = {
@@ -43,6 +43,14 @@ export default function RefsHubPage() {
       unit: "IDs",
     },
     {
+      href: "/refs/claims/",
+      label: "Claim ID index",
+      description:
+        "C-… and ULR-… identifiers extracted from the public corpus. The index preserves active, historical, and retracted IDs while linked ledgers retain status authority.",
+      count: idsByKind("claim").length,
+      unit: "claim IDs",
+    },
+    {
       href: "/refs/open-problems/",
       label: "Open problems",
       description:
@@ -60,17 +68,17 @@ export default function RefsHubPage() {
     },
     {
       href: "/scc/changelog/",
-      label: "Canonical changelog",
+      label: "SCC historical changelog",
       description:
-        "Every journal entry that named a canonical version, ordered newest first. Each row links to the originating weekly entry.",
+        "The frozen SCC canonical-version timeline, scoped to the historical perception track. ULR Canon 2–24 is documented separately in the ULR hub.",
       count: sccChangelog.length,
       unit: "versions",
     },
     {
       href: "/scc/dag/",
-      label: "Dependency DAG",
+      label: "SCC historical dependency DAG",
       description:
-        "Auto-laid-out directed graph of every theorem-kind note and the explicit `related` edges between them. Pan + pinch supported.",
+        "SCC-scoped proof map built from Part 0 and perception-track theorem notes. It does not mix in ULR or ONN claims.",
       count: 0,
       unit: "graph",
     },

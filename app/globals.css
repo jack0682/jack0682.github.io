@@ -76,6 +76,9 @@
 [data-track="perception"] {
   --color-accent: #8b2a1f;
 }
+[data-track="ulr"] {
+  --color-accent: #5a3f91;
+}
 [data-track="theory"] {
   --color-accent: #6f4a1c;
 }
@@ -87,6 +90,9 @@
 }
 :root.dark [data-track="perception"] {
   --color-accent: #e88a72;
+}
+:root.dark [data-track="ulr"] {
+  --color-accent: #b9a1f5;
 }
 :root.dark [data-track="theory"] {
   --color-accent: #d4ad6c;
@@ -145,6 +151,16 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-feature-settings: "onum", "ss01", "cv11", "liga";
+}
+
+/* ULR's public canon is written in Korean. Use an explicit Korean typeface
+   for both prose and display text instead of relying on platform fallback. */
+[lang="ko"] {
+  --font-display: var(--font-noto-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: var(--font-noto-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-family: var(--font-sans);
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* ── Utility classes for display typography ───────────────────── */

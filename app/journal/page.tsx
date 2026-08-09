@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/journal/" },
   title: "Journal",
   description:
-    "A dated journal of research in progress — conjectures, intermediate results, and the things that did not work.",
+    "Current research notes alongside clearly labeled, dated SCC and ONN historical archives.",
 };
 
 export default function JournalPage() {
@@ -27,7 +27,7 @@ export default function JournalPage() {
         mark="∂"
         eyebrow="Journal"
         title="Research in motion."
-        lead="A dated journal of work in progress — curated excerpts from the daily notebook, surfacing the open questions and intermediate results that shape the research."
+        lead="Current work and dated research notes, with SCC and ONN entries retained as explicitly labeled historical archives rather than presented as the active Main programme."
       />
 
       <JournalFilter entries={entries} />

@@ -7,6 +7,8 @@ import { DocMeta } from "@/components/layout/DocMeta";
 import { GiscusComments } from "@/components/layout/GiscusComments";
 import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
+import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
 import { allNotes, journalEntries, papers } from "@/lib/content";
 import { articleSchema, jsonLdScript } from "@/lib/seo";
 
@@ -23,13 +25,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const entry = journalEntries.find((e) => e.slug === slug);
   if (!entry) return {};
   const ogImage = `/og/journal/${entry.slug}.png`;
+  const archivePrefix = entry.track === "perception"
+    ? "Historical SCC archive — "
+    : entry.track === "onn"
+      ? "Historical ONN archive — "
+      : "";
+  const description = `${archivePrefix}${entry.summary}`;
   return {
     title: entry.title,
-    description: entry.summary,
+    description,
     alternates: { canonical: entry.permalink },
     openGraph: {
       title: entry.title,
-      description: entry.summary,
+      description,
+      url: entry.permalink,
       type: "article",
       publishedTime: entry.date,
       images: [{ url: ogImage, width: 1200, height: 630, alt: entry.title }],
@@ -42,6 +51,12 @@ export default async function JournalEntryPage({ params }: Props) {
   const { slug } = await params;
   const entry = journalEntries.find((e) => e.slug === slug);
   if (!entry) notFound();
+  const archivePrefix = entry.track === "perception"
+    ? "Historical SCC archive — "
+    : entry.track === "onn"
+      ? "Historical ONN archive — "
+      : "";
+  const description = `${archivePrefix}${entry.summary}`;
 
   const crumbs = [
     { href: "/journal/", label: "Journal" },
@@ -62,7 +77,7 @@ export default async function JournalEntryPage({ params }: Props) {
               type: "BlogPosting",
               title: entry.title,
               permalink: entry.permalink,
-              description: entry.summary,
+              description,
               ogImage: `/og/journal/${entry.slug}.png`,
               datePublished: entry.date,
               dateModified: entry.updated,
@@ -97,6 +112,13 @@ export default async function JournalEntryPage({ params }: Props) {
           className="mt-6"
         />
       </header>
+
+      {entry.track === "perception" && (
+        <ResearchStatusBanner status={SCC_STATUS} className="mb-10" />
+      )}
+      {entry.track === "onn" && (
+        <ResearchStatusBanner status={ONN_STATUS} className="mb-10" />
+      )}
 
       <Prose className="border-t border-[var(--color-rule)] pt-10">
         <MDXContent code={entry.body} />

@@ -231,7 +231,7 @@ export function MobileNav({ items }: { items: Item[] }) {
                 )}
               >
                 <Search size={16} strokeWidth={1.5} className="shrink-0" />
-                <span className="flex-1">Search notes, papers, journal…</span>
+                <span className="flex-1">Search research docs, notes, papers…</span>
                 <kbd className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
                   ⌘K
                 </kbd>

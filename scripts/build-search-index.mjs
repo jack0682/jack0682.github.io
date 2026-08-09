@@ -58,7 +58,7 @@ function parseFrontmatter(raw) {
 function stripBody(s) {
   return s
     .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`[^`\n]+`/g, " ")
+    .replace(/`([^`\n]+)`/g, "$1")
     .replace(/\$\$[\s\S]*?\$\$/g, " ")
     .replace(/\$[^$\n]+\$/g, " ")
     .replace(/<[^>]+>/g, " ")
@@ -70,7 +70,7 @@ function stripBody(s) {
 }
 
 /* ── ID extraction ────────────────────────────────────────────
-   Categorised regexes for the SCC/ONN formal-ID conventions.
+   Categorised regexes for the SCC/ONN/ULR formal-ID conventions.
    Anchored at word boundaries; allow a Unicode middle segment so
    hyphenated Greek-letter names like `T-σ-Lemma-2` are caught. */
 
@@ -102,6 +102,11 @@ const ID_PATTERNS = [
     kind: "claim",
     re: /\bC-\d{4}\b/g,
   },
+  {
+    kind: "claim",
+    // ULR-GAUGE-ARCH, ULR-OBSERVER-ROLE-DISCRIMINATION, etc.
+    re: /\bULR-[A-Z0-9]+(?:-[A-Z0-9]+)+\b/g,
+  },
 ];
 
 /** ±100-char window around the first occurrence in a body. */
@@ -115,13 +120,19 @@ function snippetAround(body, idx, idLen) {
   );
 }
 
-const collections = ["notes", "onn", "papers", "journal"];
+const collections = ["notes", "onn", "ulr", "papers", "journal"];
 const MAX_PER_DOC = 12000;
+// ULR is the current Main programme and its long-form Motivation, canon,
+// ledger, and mathematical-flow pages must remain fully searchable. The
+// body index is lazy-loaded only after ⌘K opens, so this larger cap does not
+// enter the root route bundle.
+const MAX_ULR_PER_DOC = 50000;
 
 /** Prefixes mirror the stable IDs in search-meta.json. */
 const SEARCH_KIND_BY_COLLECTION = {
   notes: "note",
   onn: "onn",
+  ulr: "ulr",
   papers: "paper",
   journal: "journal",
 };
@@ -151,11 +162,16 @@ for (const c of collections) {
 
     const stripped = stripBody(body);
     const searchKind = SEARCH_KIND_BY_COLLECTION[c];
-    bodyIndex[`${searchKind}:${data.slug}`] = stripped.slice(0, MAX_PER_DOC);
+    bodyIndex[`${searchKind}:${data.slug}`] = stripped.slice(
+      0,
+      c === "ulr" ? MAX_ULR_PER_DOC : MAX_PER_DOC,
+    );
 
     // Permalink reconstruction matches `computeFields` in velite.config.ts.
     const collectionKey = c === "onn" ? "onn" : c;
-    const permalink = `/${collectionKey}/${data.slug}/`;
+    const permalink = c === "notes"
+      ? `/notes/part-${data.part}/${data.slug}/`
+      : `/${collectionKey}/${data.slug}/`;
 
     // Track first occurrence per (kind, id) within this doc.
     for (const { kind, re } of ID_PATTERNS) {
@@ -250,7 +266,13 @@ function extractEquations() {
       const { data, body } = parseFrontmatter(raw);
       if (!data.slug) continue;
       if (data.draft === true || data.draft === "true") continue;
-      const permalink = `/${c}/${data.slug}/`;
+      // Keep equation source links on the same canonical routes used by
+      // Velite, search metadata, and the formal-ID index. Parted notes live
+      // under `/notes/part-N/`; the old `/notes/:slug/` shape is retained
+      // only as an inbound compatibility route.
+      const permalink = c === "notes"
+        ? `/notes/part-${data.part}/${data.slug}/`
+        : `/${c}/${data.slug}/`;
       const fromTitle = data.title ?? data.slug;
 
       // Track fenced-code regions once so each match check is O(1).
@@ -402,6 +424,9 @@ function buildSearchMeta() {
       (a, b) =>
         (a.chapter ?? 0) - (b.chapter ?? 0) || a.slug.localeCompare(b.slug),
     );
+  const ulrDocs = loadVeliteCollection("ulrDocs")
+    .filter(isPublished)
+    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.slug.localeCompare(b.slug));
   const papers = loadVeliteCollection("papers").filter(isPublished).sort(byDateDesc);
   const journal = loadVeliteCollection("journal").filter(isPublished).sort(byDateDesc);
   const research = loadVeliteCollection("research").sort(
@@ -415,8 +440,8 @@ function buildSearchMeta() {
       title: note.title,
       summary: note.summary,
       permalink: note.permalink,
-      group: `Part ${note.part}${note.section ? ` · ${note.section}` : ""}`,
-      keywords: compact([...(note.tags ?? []), note.kind, note.track]),
+      group: note.part === 0 ? "Part 0 · SCC archive" : `Part ${note.part}${note.section ? ` · ${note.section}` : ""}`,
+      keywords: compact([...(note.tags ?? []), note.kind, note.track, ...(note.part === 0 ? ["historical", "archive"] : [])]),
       slug: note.slug,
     })),
     ...onnDocs.map((doc) => ({
@@ -425,8 +450,18 @@ function buildSearchMeta() {
       title: doc.title,
       summary: doc.summary,
       permalink: doc.permalink,
-      group: `ONN${doc.section ? ` · ${doc.section}` : ""}`,
-      keywords: compact([...(doc.tags ?? []), doc.kind, "onn"]),
+      group: `ONN · archive${doc.section ? ` · ${doc.section}` : ""}`,
+      keywords: compact([...(doc.tags ?? []), doc.kind, "onn", "historical", "archive"]),
+      slug: doc.slug,
+    })),
+    ...ulrDocs.map((doc) => ({
+      id: `ulr:${doc.slug}`,
+      kind: "ulr",
+      title: doc.title,
+      summary: doc.summary ?? doc.description,
+      permalink: doc.permalink,
+      group: `ULR · ${doc.section ?? doc.kind}${doc.status === "noncanonical" ? " · noncanonical" : ""}`,
+      keywords: compact([...(doc.tags ?? []), doc.kind, doc.status, doc.canon, "ulr"]),
       slug: doc.slug,
     })),
     ...papers.map((paper) => ({
@@ -448,8 +483,8 @@ function buildSearchMeta() {
       title: entry.title,
       summary: entry.summary,
       permalink: entry.permalink,
-      group: `Journal · ${String(entry.date).slice(0, 7)}`,
-      keywords: compact([...(entry.tags ?? []), entry.track]),
+      group: `Journal · ${String(entry.date).slice(0, 7)}${entry.track === "perception" ? " · SCC archive" : entry.track === "onn" ? " · ONN archive" : ""}`,
+      keywords: compact([...(entry.tags ?? []), entry.track, ...(["perception", "onn"].includes(entry.track) ? ["historical", "archive"] : [])]),
       slug: entry.slug,
     })),
     ...research.map((track) => ({

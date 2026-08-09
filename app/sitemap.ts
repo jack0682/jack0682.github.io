@@ -9,6 +9,7 @@ import {
   journalEntries,
   researchTracks,
   onnAllDocs,
+  ulrAllDocs,
   equationsBySource,
 } from "@/lib/content";
 import { SITE_URL as BASE_URL } from "@/lib/site";
@@ -20,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
-    ...["/start/", "/about/", "/bio/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/scc/changelog/", "/onn/", "/refs/", "/refs/theorems/", "/refs/open-problems/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
+    ...["/start/", "/about/", "/bio/", "/notes/", "/papers/", "/journal/", "/research/", "/ulr/", "/scc/", "/scc/changelog/", "/onn/", "/refs/", "/refs/theorems/", "/refs/claims/", "/refs/open-problems/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
       (path) => ({
         url: `${BASE_URL}${path}`,
         changeFrequency: "monthly" as const,
@@ -77,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const ulrPages: MetadataRoute.Sitemap = ulrAllDocs.map((doc) => ({
+    url: `${BASE_URL}${doc.permalink}`,
+    lastModified: doc.updated ?? doc.date,
+    priority: doc.status === "canonical" ? 0.9 : 0.8,
+  }));
+
   const equationPages: MetadataRoute.Sitemap = equationsBySource().map((g) => ({
     url: `${BASE_URL}/refs/equations/${g.slug}/`,
     priority: 0.5,
@@ -91,6 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...journalPages,
     ...researchPages,
     ...onnPages,
+    ...ulrPages,
     ...equationPages,
   ];
 }

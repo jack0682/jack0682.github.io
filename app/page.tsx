@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { TeX } from "@/components/mdx/TeX";
@@ -7,7 +8,27 @@ import { LivingOntology } from "@/components/motion/LivingOntology";
 import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { toIsoDate } from "@/lib/format";
 import { paperStatusLabel } from "@/lib/publication-status";
-import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
+import { ONN_STATUS, SCC_STATUS, ULR_STATUS } from "@/lib/research-status";
+
+export const metadata: Metadata = {
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Jaehong Oh — Research",
+    description:
+      "Unified Latent Representation (ULR) research on learned organization, representation identity, observer-relative role, formation, and embodied systems.",
+    siteName: "Jaehong Oh — Research",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Jaehong Oh — Research",
+      },
+    ],
+  },
+};
 
 export default function Home() {
   const recent = recentWriting.slice(0, 4);
@@ -31,7 +52,10 @@ export default function Home() {
               className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--color-subtle)]"
             >
               <span className="h-px w-10 bg-[var(--color-accent)]" />
-              <TeX expr="\chi : \mathcal{R} \longrightarrow H^{\ast}(\mathcal{R};\mathbb{R})" />
+              <span className="hidden sm:inline-block">
+                <TeX expr="R^{\\ast}=\\frac{1-\\lVert P_L-P_I\\rVert_{\\mathrm{TV}}}{2}" />
+              </span>
+              <span className="sm:hidden">Observer risk · Canon 24</span>
             </div>,
             <h1
               key="h1"
@@ -51,19 +75,20 @@ export default function Home() {
             >
               Robotics engineer and AI researcher working at the intersection of{" "}
               <span className="text-[var(--color-ink)]">
-                topological reasoning
+                learned organization
               </span>
               ,{" "}
               <span className="text-[var(--color-ink)]">
-                cohomological structure
+                representation identity
               </span>
               , and{" "}
               <span className="text-[var(--color-ink)]">
                 delay-robust embodied control
               </span>
-              . Testing the commitments needed for a future unified
-              cognitive-reasoning architecture, with negative results and
-              boundary conditions published alongside what survives.
+              . The current ULR programme tests what models genuinely share,
+              what makes representations identical, and which organizational
+              claims survive typed baselines. Negative results and boundary
+              conditions are published alongside what survives.
             </p>,
             <div
               key="cta"
@@ -80,6 +105,12 @@ export default function Home() {
                 >
                   →
                 </span>
+              </Link>
+              <Link
+                href="/ulr/motivation/"
+                className="inline-flex min-h-11 items-center gap-2 text-[var(--color-muted)] transition hover:text-[var(--color-accent)]"
+              >
+                Why ULR? Motivation
               </Link>
               <Link
                 href="/about/"
@@ -127,20 +158,30 @@ export default function Home() {
         <p className="max-w-[48rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
           Current focus:{" "}
           <Link
-            href={SCC_STATUS.statusHref ?? "/scc/"}
+            href={ULR_STATUS.statusHref ?? "/ulr/"}
             className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            Soft Cognitive Cohesion
+            Unified Latent Representation
           </Link>{" "}
-          — <span className="text-[var(--color-ink)]">{SCC_STATUS.label}</span>.
-          The original{ " " }
+          — <span className="text-[var(--color-ink)]">{ULR_STATUS.label}</span>.
+          Canon 24 records an ontology verdict of <span className="text-[var(--color-ink)]">NO</span>:
+          no additional neural-specific ULR object is currently established.
+          Read the{" "}
+          <Link href="/ulr/motivation/" className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+            founding Motivation and its mathematical self-corrections
+          </Link>{" "}
+          to see why that negative verdict sharpens rather than ends the programme.
+          The{ " " }
+          <Link href="/scc/" className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+            SCC programme
+          </Link>{" "}is preserved as {SCC_STATUS.label.toLowerCase()}, and the original{ " " }
           <Link
             href="/onn/"
             className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             ONN + ORTSF programme
           </Link>
-          {" "}is now marked{ " " }
+          {" "}is marked{ " " }
           <span className="text-[var(--color-ink)]">{ONN_STATUS.label}</span> after
           its strong higher-order claim was narrowed to a scoped boundary.
           {onnPaper && (
@@ -165,10 +206,10 @@ export default function Home() {
             Recent writing
           </h2>
           <Link
-            href="/journal/"
+            href="/ulr/"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
           >
-            All entries →
+            ULR evidence map →
           </Link>
         </div>
         {recent.length === 0 ? (
@@ -179,6 +220,8 @@ export default function Home() {
               <li key={item.permalink}>
                 <Link
                   href={item.permalink}
+                  lang={item.kind === "ulr" ? "ko" : undefined}
+                  data-track={item.kind === "ulr" ? "ulr" : undefined}
                   className="group grid items-baseline gap-2 py-5 md:grid-cols-[6rem_1fr] md:gap-6 md:py-6"
                 >
                   <time
@@ -218,9 +261,9 @@ export default function Home() {
           </Link>
         </div>
         <p className="mb-10 max-w-[38rem] text-sm leading-relaxed text-[var(--color-muted)]">
-          An ongoing programme on the{" "}
-          <em className="text-[var(--color-ink)]">topology of perception</em>
-          {" — "}from cohomological field theory to embodied robotic control.
+          An ongoing programme on learned organization, representation identity,
+          observer-relative role, and embodied control — with canonical claims,
+          retractions, and open gates kept visibly separate.
         </p>
 
         {/* decorative formula row */}
@@ -229,11 +272,14 @@ export default function Home() {
           className="mb-10 select-none text-xs text-[var(--color-subtle)]"
         >
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <TeX expr="\int_{X} \omega \;=\; \langle [\omega], [X] \rangle" />
+            <TeX expr="(O,\\mathcal{G},N)" />
             <span className="opacity-60">·</span>
-            <TeX expr="H^{n}(X;\mathbb{R}) \;\cong\; \mathrm{Hom}(H_{n},\mathbb{R})" />
+            <span className="hidden sm:inline-block">
+              <TeX expr="\\mathrm{same\\ function}\\not\\Rightarrow\\mathrm{same\\ raw\\ geometry}" />
+            </span>
+            <span className="font-mono sm:hidden">gauge-aware identity</span>
             <span className="opacity-60">·</span>
-            <TeX expr="\kappa \cdot u_{t} \longrightarrow \Phi_{t}" />
+            <TeX expr="\\mathcal{B}\\subsetneq\\prod_{q\\in Q}Y_q" />
           </div>
           <div className="sci-axis-ticks mt-3 h-2 opacity-60" />
         </div>

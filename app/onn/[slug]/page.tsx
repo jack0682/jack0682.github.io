@@ -11,6 +11,8 @@ import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, journalEntries, onnAllDocs, papers, citedBy } from "@/lib/content";
 import { articleSchema, jsonLdScript } from "@/lib/seo";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
+import { ONN_STATUS } from "@/lib/research-status";
 
 export function generateStaticParams() {
   return onnAllDocs.map((d) => ({ slug: d.slug }));
@@ -25,13 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const doc = onnAllDocs.find((d) => d.slug === slug);
   if (!doc) return {};
   const ogImage = `/og/onn/${doc.slug}.png`;
+  const description = `Historical ONN archive — ${doc.summary ?? doc.title}`;
   return {
     title: doc.title,
-    description: doc.summary,
+    description,
     alternates: { canonical: doc.permalink },
     openGraph: {
       title: doc.title,
-      description: doc.summary,
+      description,
+      url: doc.permalink,
       images: [{ url: ogImage, width: 1200, height: 630, alt: doc.title }],
     },
     twitter: { card: "summary_large_image", images: [ogImage] },
@@ -42,9 +46,10 @@ export default async function OnnDocPage({ params }: Props) {
   const { slug } = await params;
   const doc = onnAllDocs.find((d) => d.slug === slug);
   if (!doc) notFound();
+  const description = `Historical ONN archive — ${doc.summary ?? doc.title}`;
 
   const crumbs = [
-    { href: "/onn/", label: "ONN · Hub" },
+    { href: "/onn/", label: "ONN · Archive" },
     { label: doc.section ?? doc.title },
   ];
 
@@ -83,7 +88,7 @@ export default async function OnnDocPage({ params }: Props) {
               articleSchema({
                 title: doc.title,
                 permalink: doc.permalink,
-                description: doc.summary,
+                description,
                 ogImage: `/og/onn/${doc.slug}.png`,
                 datePublished: doc.date,
                 dateModified: doc.updated,
@@ -122,6 +127,8 @@ export default async function OnnDocPage({ params }: Props) {
             tags={doc.tags}
           />
         </header>
+
+        <ResearchStatusBanner status={ONN_STATUS} className="mb-10" />
 
         <Prose essay className="border-t border-[var(--color-rule)] pt-10">
           <MDXContent code={doc.body} />

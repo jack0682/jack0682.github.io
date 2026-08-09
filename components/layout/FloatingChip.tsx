@@ -329,8 +329,19 @@ function deriveSection(
     );
     return {
       mark: "§",
-      label: "Part 0 · SCC",
+      label: "Part 0 · SCC archive",
       index: "/scc/",
+      siblings,
+    };
+  }
+
+  // ULR main research hub
+  if (pathname.startsWith("/ulr")) {
+    const siblings = items.filter((i) => i.permalink.startsWith("/ulr/"));
+    return {
+      mark: "Ω",
+      label: "ULR · Main",
+      index: "/ulr/",
       siblings,
     };
   }
@@ -340,7 +351,7 @@ function deriveSection(
     const siblings = items.filter((i) => i.permalink.startsWith("/onn/"));
     return {
       mark: "χ",
-      label: "ONN · Hub",
+      label: "ONN · Archive",
       index: "/onn/",
       siblings,
     };

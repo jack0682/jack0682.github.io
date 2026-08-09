@@ -3,6 +3,19 @@ import type { IdOccurrence } from "@/lib/content";
 
 type Item = { id: string; occurrences: IdOccurrence[] };
 
+function sourceScopeLabel(occurrence: IdOccurrence) {
+  if (occurrence.collection === "ulr") return "ULR";
+  if (occurrence.collection === "onn") return "ONN archive";
+  if (
+    occurrence.collection === "notes" &&
+    occurrence.permalink.startsWith("/notes/part-0/")
+  ) return "SCC archive";
+  if (occurrence.collection === "notes") return "Notes";
+  if (occurrence.collection === "journal") return "Journal";
+  if (occurrence.collection === "papers") return "Papers";
+  return occurrence.collection;
+}
+
 // First character of the ID after its prefix; digits collapse to "#".
 function groupKey(id: string, prefix: string): string {
   const rest = id.startsWith(prefix) ? id.slice(prefix.length) : id;
@@ -79,11 +92,10 @@ export function IdIndexList({
                         <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[var(--color-subtle)]">
                           {first.snippet}
                         </p>
-                        {occurrences.length > 1 && (
-                          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
-                            +{occurrences.length - 1} more
-                          </p>
-                        )}
+                        <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+                          {sourceScopeLabel(first)}
+                          {occurrences.length > 1 ? ` · +${occurrences.length - 1} more` : ""}
+                        </p>
                       </div>
                     </div>
                   </li>

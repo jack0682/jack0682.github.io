@@ -29,6 +29,8 @@ export function getResearchStatus(track: ResearchTrackKey) {
     statusHref: source.currentStatusHref,
     auditedAt: source.auditedAt,
     successorTitle: source.successorTitle,
+    successorHref: source.successorHref,
+    role: source.role,
     updated: source.updated,
   };
 }
@@ -37,3 +39,4 @@ export type ResearchStatus = ReturnType<typeof getResearchStatus>;
 
 export const SCC_STATUS = getResearchStatus("perception");
 export const ONN_STATUS = getResearchStatus("onn");
+export const ULR_STATUS = getResearchStatus("ulr");

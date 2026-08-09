@@ -27,13 +27,14 @@ type CitedByRef = {
   from: string;
   title: string;
   permalink: string;
-  collection: "notes" | "onn" | "papers" | "journal";
+  collection: "notes" | "onn" | "ulr" | "papers" | "journal";
   date?: string;
 };
 
 const collectionLabel: Record<CitedByRef["collection"], string> = {
   notes: "note",
   onn: "ONN",
+  ulr: "ULR",
   papers: "paper",
   journal: "journal",
 };

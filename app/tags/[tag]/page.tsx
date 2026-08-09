@@ -20,12 +20,19 @@ export const dynamicParams = false;
 
 type Props = { params: Promise<{ tag: string }> };
 
+function isArchivedProgrammeTag(tag: string) {
+  return tag === "scc" || tag === "onn";
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
   const category = TAG_CATEGORY_META[classifyTag(tag)];
+  const isArchive = isArchivedProgrammeTag(tag);
   return {
     title: `#${tag}`,
-    description: `${category.shortLabel} tag: all public content indexed under "${tag}".`,
+    description: isArchive
+      ? `Historical ${tag.toUpperCase()} archive: preserved public content indexed under "${tag}".`
+      : `${category.shortLabel} tag: all public content indexed under "${tag}".`,
     alternates: { canonical: `/tags/${tag}/` },
   };
 }
@@ -33,6 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const kindMeta = {
   note: { label: "Notes", mark: "ℓ" },
   onn: { label: "ONN documents", mark: "χ" },
+  ulr: { label: "ULR documents", mark: "Ω" },
   paper: { label: "Papers", mark: "¶" },
   journal: { label: "Journal", mark: "∂" },
 } as const;
@@ -44,6 +52,7 @@ export default async function TagPage({ params }: Props) {
 
   const category = classifyTag(tag);
   const categoryMeta = TAG_CATEGORY_META[category];
+  const isArchive = isArchivedProgrammeTag(tag);
   const relatedTags = tagIndex
     .filter(
       (entry) => entry.tag !== tag && classifyTag(entry.tag) === category,
@@ -76,9 +85,11 @@ export default async function TagPage({ params }: Props) {
       </div>
       <PageHeader
         mark={categoryMeta.mark}
-        eyebrow={`${categoryMeta.shortLabel} tag`}
+        eyebrow={isArchive ? "Historical archive tag" : `${categoryMeta.shortLabel} tag`}
         title={`#${tag}`}
-        lead={`${items.length} ${items.length === 1 ? "document" : "documents"} indexed here. ${categoryMeta.description}`}
+        lead={isArchive
+          ? `${items.length} ${items.length === 1 ? "document" : "documents"} preserved from the archived ${tag.toUpperCase()} programme. These records are not the current Main research.`
+          : `${items.length} ${items.length === 1 ? "document" : "documents"} indexed here. ${categoryMeta.description}`}
         className="pt-4 md:pt-6"
       />
 
@@ -90,7 +101,7 @@ export default async function TagPage({ params }: Props) {
           {categoryMeta.mark} Browse {categoryMeta.label.toLowerCase()}
         </Link>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-subtle)]">
-          {isCoreTag(tag) ? "core starting point" : categoryMeta.shortLabel}
+          {isArchive ? "historical archive" : isCoreTag(tag) ? "core starting point" : categoryMeta.shortLabel}
         </span>
       </div>
 
@@ -115,7 +126,11 @@ export default async function TagPage({ params }: Props) {
               </div>
               <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
                 {group.items.map((item) => (
-                  <li key={item.permalink}>
+                  <li
+                    key={item.permalink}
+                    lang={group.kind === "ulr" ? "ko" : undefined}
+                    data-track={group.kind === "ulr" ? "ulr" : undefined}
+                  >
                     <Link
                       href={item.permalink}
                       className="group grid gap-2 py-6 sm:grid-cols-[8rem_1fr] sm:gap-6"

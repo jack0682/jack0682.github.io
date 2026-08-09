@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: t.title,
       description: t.statusSummary ?? t.summary,
+      url: t.permalink,
       type: "website",
       images: [
         { url: `/og/research/${t.slug}.png`, width: 1200, height: 630, alt: t.title },

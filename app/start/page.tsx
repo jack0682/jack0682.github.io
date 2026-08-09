@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
+import { ONN_STATUS, SCC_STATUS, ULR_STATUS } from "@/lib/research-status";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/start/" },
   title: "Start here",
   description:
-    "A plain-language orientation to this site: who Jaehong Oh is, the three research threads (SCC, ONN/ORTSF, RelationWorld) in ordinary words, the one paper to read, and a key to the notation used throughout.",
+    "A plain-language orientation to ULR, the current main research programme, its SCC and ONN predecessors, supporting foundations, and evidence vocabulary.",
 };
 
 /** A quiet section wrapper matching the home page's hairline rhythm. */
@@ -49,75 +49,84 @@ export default function StartHerePage() {
           Perception Team at ROBOTIS; Mechanical Engineering undergraduate at
           Soongsil University, Seoul). This site tracks one long question:{" "}
           <em className="text-[var(--color-ink)]">
-            can perception, representation, and control be treated as one
-            continuous mathematical object?
+            what do learned systems actually share, and under which typed
+            observables, gauges, interventions, and observers does that claim survive?
           </em>{" "}
-          The work is split into three threads, and I write up not just what
+          ULR is the current main programme; SCC and ONN remain as audited
+          historical records, with mathematical and engineering tracks alongside it.
+          I write up not just what
           works but what <em>doesn&rsquo;t</em> — including results that turned
           out to be boundaries rather than breakthroughs.
         </p>
       </Section>
 
-      <Section eyebrow="The three threads, in ordinary words">
+      <Section eyebrow="The programme, in ordinary words">
         <div className="space-y-8">
           <div>
             <h3 className="font-display text-xl leading-snug text-[var(--color-ink)]">
-              1 · Soft Cognitive Cohesion (SCC)
+              1 · Unified Latent Representation (ULR) — current Main
             </h3>
             <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-              A mathematical theory of how a region becomes{" "}
-              <em className="text-[var(--color-ink)]">coherent</em>{" "}— how a
-              blob &ldquo;holds together&rdquo; as a thing — <em>before</em> we
-              split
-              a scene into separately-named objects. It is the most developed
-              thread (a growing body of proved theorems). Start at the{" "}
-              <Link href="/research/perception/" className={linkCls}>
-                perception thread
+              The active programme asks what structure models truly share,
+              when two representations count as identical, how an observer can
+              distinguish learning from inference, and when organization forms.
+              Canon 24 currently says <span className="text-[var(--color-ink)]">NO</span>
+              to an additional neural-specific ULR ontology; that negative result
+              is the boundary from which the next tests begin. Begin with the{" "}
+              <Link href="/ulr/motivation/" className={linkCls}>
+                founding Motivation and its self-corrections
+              </Link>
+              , then use the{" "}
+              <Link href="/ulr/" className={linkCls}>
+                ULR research hub
               </Link>{" "}
-              or the{" "}
-              <Link href="/notes/part-0/scc-research-overview/" className={linkCls}>
-                overview
+              and the{" "}
+              <Link href={ULR_STATUS.statusHref ?? "/ulr/current-status/"} className={linkCls}>
+                Canon 24 status
               </Link>
               .
             </p>
           </div>
           <div>
             <h3 className="font-display text-xl leading-snug text-[var(--color-ink)]">
-              2 · Ontology Neural Networks (ONN) &amp; ORTSF
+              2 · Soft Cognitive Cohesion (SCC) — historical archive
             </h3>
             <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-              An attempt to make the <em>topology</em> of a learned
-              representation do double duty as a control-theoretic object. The
-              honest outcome: the strong version of that idea was{" "}
-              <span className="text-[var(--color-ink)]">audited to a boundary</span>{" "}
-              (a scoped &ldquo;No-Go&rdquo; — higher-order structure adds no
-              information beyond pairwise). What survived is a modest positive
-              signal and a scoped scalar Schur-stability result;
-              coupled system-level certification remains open.
-              The framework paper is peer-reviewed and published; the story of
-              what held up is on the{" "}
-              <Link href="/onn/canonical-spec/" className={linkCls}>
+              SCC formalized pre-objective formation through a soft cohesion
+              field and accumulated a sealed 98-claim ledger through CV-1.17.
+              Its mathematics is preserved, but the programme is no longer Main
+              and unresolved integration claims were not carried forward as facts.
+              Read the{" "}
+              <Link href="/ulr/from-scc-to-ulr/" className={linkCls}>
+                SCC → ULR transition
+              </Link>
+              .
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl leading-snug text-[var(--color-ink)]">
+              3 · Ontology Neural Networks (ONN) &amp; ORTSF — historical archive
+            </h3>
+            <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
+              ONN tried to make learned topology a control-theoretic object.
+              Its strong higher-order thesis was audited to a scoped No-Go;
+              modest signals and a scalar stability result survive, while the
+              coupled certificate does not. Read the{" "}
+              <Link href={ONN_STATUS.statusHref ?? "/onn/"} className={linkCls}>
                 ONN canonical audit
-              </Link>
-              .
+              </Link>.
             </p>
           </div>
           <div>
             <h3 className="font-display text-xl leading-snug text-[var(--color-ink)]">
-              3 · RelationWorld (the math underneath)
+              4 · RelationWorld, control, and robotics — supporting tracks
             </h3>
             <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-              The mathematical substrate the other two stand on — discrete gauge
-              structure on finite graphs, building combinatorial analogues of
-              tools from geometry and physics. This is the{" "}
-              <Link href="/research/theory/" className={linkCls}>
-                mathematical-foundations
-              </Link>{" "}
-              track and the long{" "}
-              <Link href="/notes/" className={linkCls}>
-                Notes
-              </Link>{" "}
-              book.
+              Discrete gauge mathematics supplies formal tools; control and
+              robotics supply typed baselines, interventions, and physical test
+              instruments. Browse the <Link href="/research/theory/" className={linkCls}>foundations</Link>,{" "}
+              <Link href="/research/control/" className={linkCls}>control</Link>, and{" "}
+              <Link href="/research/robotics/" className={linkCls}>robotics</Link> tracks.
             </p>
           </div>
         </div>
@@ -125,21 +134,10 @@ export default function StartHerePage() {
 
       <Section eyebrow="If you only read one thing">
         <p className="max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
-          Read the peer-reviewed paper —{" "}
-          <Link href="/papers/onn-ortsf-2026/" className={linkCls}>
-            <em>Ontology Neural Network and ORTSF</em>
-          </Link>{" "}
-          (International Journal of Topology, MDPI, 2026) — then its{" "}
-          <Link
-            href={ONN_STATUS.statusHref ?? "/onn/"}
-            className={linkCls}
-          >
-            2026 audit note
-          </Link>
-          {", which"}
-          is the clearest example of how this site works: a published claim, put
-          under its own rigorous scrutiny, and reported honestly whichever way it
-          lands.
+          Read <Link href="/ulr/current-status/" className={linkCls}>ULR — Current Status</Link>,
+          then <Link href="/ulr/mathematical-flow/" className={linkCls}>the complete mathematical flow</Link>.
+          Together they separate established claims, negative results,
+          retractions, noncanonical work, and the exact gate for reopening the ontology question.
         </p>
       </Section>
 
@@ -167,12 +165,24 @@ export default function StartHerePage() {
         <dl className="max-w-[44rem] space-y-4">
           {[
             [
-              "CV-x.y",
-              `Canonical Version — the release number of the theory. Higher is newer; the current SCC canonical is ${SCC_STATUS.version ?? "listed in the status ledger"}.`,
+              "Canon 24",
+              `The current ULR canonical reconstruction, aligned with Ledger 105 and Progress #31. SCC's ${SCC_STATUS.version ?? "final release"} remains historical.`,
+            ],
+            [
+              "Ledger 105",
+              "The claim-level source of truth. Canon summarizes it but cannot silently promote, restore, or erase a claim.",
+            ],
+            [
+              "M1–M8 · NO",
+              "The completed ontology decision programme. NO means the current registry shows no incremental neural-specific ULR object beyond typed baselines; it is not a metaphysical impossibility claim.",
+            ],
+            [
+              "noncanonical",
+              "Post-Canon 24 working evidence. It may contain proved scoped mathematics or useful controls, but it has not been promoted to Canon 25.",
             ],
             [
               "Cat A / B / C",
-              "Proof-strength tiers. Cat A = fully proved; Cat B = proved under a stated structural condition; Cat C = strongly conditional. Retracted = withdrawn.",
+              "Historical SCC proof-strength tiers. Cat A = fully proved; Cat B = proved under a stated structural condition; Cat C = strongly conditional. Retracted = withdrawn.",
             ],
             [
               "OP-xxxx",
@@ -184,7 +194,7 @@ export default function StartHerePage() {
             ],
             [
               "sealed",
-              "A version that has been cross-checked for internal consistency and frozen as a reference point.",
+              "A version cross-checked and frozen within its named evidence layer. In post-canon working documents it does not imply Canon promotion, Git commitment, or public release.",
             ],
             [
               "No-Go",
@@ -210,7 +220,7 @@ export default function StartHerePage() {
         <ul className="grid gap-4 sm:grid-cols-2">
           {[
             ["/papers/", "Papers", "Peer-reviewed publications and preprints."],
-            ["/research/", "Research", "The map — five threads, one target."],
+            ["/research/", "Research", "The map — one Main, historical archives, and supporting tracks."],
             ["/notes/", "Notes", "The long mathematical book (dense)."],
             ["/about/", "About / CV", "Background, affiliations, and timeline."],
           ].map(([href, title, blurb]) => (

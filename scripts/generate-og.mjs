@@ -22,8 +22,9 @@ const HEIGHT = 630;
 const BG = "#faf8f5";
 const INK = "#1a1814";
 const MUTED = "#6b655c";
-const SUBTLE = "#a59f95";
+const SUBTLE = "#767068";
 const ACCENT = "#7a3b2e";
+const ULR_ACCENT = "#5a3f91";
 const RULE = "#e8e2d6";
 
 const SITE = "Jaehong Oh — Research";
@@ -37,11 +38,15 @@ const fontsDir = resolve(__dirname, "fonts");
 const interRegular = readFileSync(resolve(fontsDir, "Inter-Regular.ttf"));
 const interSemi = readFileSync(resolve(fontsDir, "Inter-SemiBold.ttf"));
 const frauncesBold = readFileSync(resolve(fontsDir, "Fraunces-Bold.ttf"));
+const notoSansKrRegular = readFileSync(resolve(fontsDir, "NotoSansKR-Regular.ttf"));
+const notoSansKrBold = readFileSync(resolve(fontsDir, "NotoSansKR-Bold.ttf"));
 
 const fonts = [
   { name: "Inter", data: interRegular, weight: 400, style: "normal" },
   { name: "Inter", data: interSemi, weight: 600, style: "normal" },
   { name: "Fraunces", data: frauncesBold, weight: 700, style: "normal" },
+  { name: "Noto Sans KR", data: notoSansKrRegular, weight: 400, style: "normal" },
+  { name: "Noto Sans KR", data: notoSansKrBold, weight: 700, style: "normal" },
 ];
 
 /* ── JSX-less element helper ────────────────────────────────── */
@@ -61,7 +66,17 @@ function h(type, props, ...children) {
 /* ── shared frame ───────────────────────────────────────────── */
 // Satori requires leaf flex containers to declare their axis, so each
 // helper passes display:flex where children stack or span.
-function card({ eyebrow, title, subtitle, footer }) {
+function card({
+  eyebrow,
+  title,
+  subtitle,
+  footer,
+  fontFamily = "Inter",
+  titleFontFamily = "Fraunces",
+  accent = ACCENT,
+  titleMaxSize = 80,
+  subtitleFontSize = 26,
+}) {
   return h(
     "div",
     {
@@ -72,8 +87,8 @@ function card({ eyebrow, title, subtitle, footer }) {
         flexDirection: "column",
         background: BG,
         color: INK,
-        padding: "72px 80px",
-        fontFamily: "Inter",
+        padding: 0,
+        fontFamily,
         position: "relative",
       },
     },
@@ -85,7 +100,7 @@ function card({ eyebrow, title, subtitle, footer }) {
         left: 0,
         right: 0,
         height: 6,
-        background: ACCENT,
+        background: accent,
       },
     }),
     // dot-grid decoration in the corner
@@ -107,13 +122,18 @@ function card({ eyebrow, title, subtitle, footer }) {
       {
         style: {
           display: "flex",
+          position: "absolute",
+          top: 72,
+          left: 80,
+          right: 80,
           justifyContent: "space-between",
           alignItems: "center",
           fontSize: 20,
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: ACCENT,
+          color: accent,
           fontWeight: 600,
+          flexShrink: 0,
         },
       },
       h(
@@ -123,7 +143,7 @@ function card({ eyebrow, title, subtitle, footer }) {
           style: {
             width: 14,
             height: 14,
-            background: ACCENT,
+            background: accent,
             display: "block",
           },
         }),
@@ -146,20 +166,26 @@ function card({ eyebrow, title, subtitle, footer }) {
       "div",
       {
         style: {
-          flex: 1,
           display: "flex",
+          position: "absolute",
+          top: 128,
+          right: 80,
+          bottom: 142,
+          left: 80,
           flexDirection: "column",
           justifyContent: "center",
           paddingRight: 60,
+          minHeight: 0,
+          overflow: "hidden",
         },
       },
       h(
         "h1",
         {
           style: {
-            fontFamily: "Fraunces",
+            fontFamily: titleFontFamily,
             fontWeight: 700,
-            fontSize: titleSize(title),
+            fontSize: Math.min(titleSize(title), titleMaxSize),
             lineHeight: 1.08,
             letterSpacing: "-0.015em",
             color: INK,
@@ -174,10 +200,10 @@ function card({ eyebrow, title, subtitle, footer }) {
             {
               style: {
                 marginTop: 28,
-                fontSize: 26,
+                fontSize: subtitleFontSize,
                 lineHeight: 1.45,
                 color: MUTED,
-                fontFamily: "Inter",
+                fontFamily,
                 fontWeight: 400,
                 display: "flex",
               },
@@ -192,14 +218,19 @@ function card({ eyebrow, title, subtitle, footer }) {
       {
         style: {
           display: "flex",
+          position: "absolute",
+          right: 80,
+          bottom: 72,
+          left: 80,
           justifyContent: "space-between",
           alignItems: "flex-end",
           borderTop: `1px solid ${RULE}`,
           paddingTop: 22,
           fontSize: 18,
           color: MUTED,
-          fontFamily: "Inter",
+          fontFamily,
           fontWeight: 400,
+          flexShrink: 0,
         },
       },
       h("span", {}, "jack0682.github.io"),
@@ -220,10 +251,10 @@ function titleSize(title) {
 const tplDefault = () =>
   card({
     eyebrow: "Research Blog",
-    title: "Ontology Neural Networks, perception, and embodied cognition.",
+    title: "Unified Latent Representation and learned organization.",
     subtitle:
-      "Papers, mathematical notes, and a research journal by Jaehong Oh.",
-    footer: "2026 · ONN programme",
+      "Canon, mathematical flows, evidence ledgers, and a research journal by Jaehong Oh.",
+    footer: "2026 · ULR main programme",
   });
 
 const tplPaper = (p) => {
@@ -259,32 +290,67 @@ const tplNote = (n) => {
       ? `Part ${n.part} · Chapter ${n.chapter}`
       : `Part ${n.part}`;
   return card({
-    eyebrow: "Note",
+    eyebrow: n.part === 0 ? "SCC · Historical Archive" : "Note",
     title: n.title,
     subtitle: n.summary,
-    footer: chapter,
+    footer: n.part === 0 ? `${chapter} · archived` : chapter,
   });
 };
 
 const tplJournal = (j) => {
   const dateStr = new Date(j.date).toISOString().slice(0, 10);
+  const archive = j.track === "perception" ? "SCC archive" : j.track === "onn" ? "ONN archive" : "";
   return card({
-    eyebrow: "Journal",
+    eyebrow: archive ? `${archive} · Journal` : "Journal",
     title: j.title,
     subtitle: j.summary,
-    footer: `${dateStr}${j.track ? ` · ${j.track}` : ""}`,
+    footer: `${dateStr}${archive ? ` · ${archive}` : j.track ? ` · ${j.track}` : ""}`,
   });
 };
 
 const tplOnn = (d) =>
   card({
-    eyebrow: "ONN",
+    eyebrow: "ONN · Historical Archive",
     title: d.title,
     subtitle: d.summary,
     footer:
       d.chapter !== undefined && d.chapter !== null
-        ? `Chapter ${d.chapter}${d.kind ? ` · ${d.kind}` : ""}`
-        : d.kind ?? "",
+        ? `Chapter ${d.chapter}${d.kind ? ` · ${d.kind}` : ""} · archived`
+        : `${d.kind ?? "Document"} · archived`,
+  });
+
+const ulrStatusLabel = {
+  canonical: "정본",
+  current: "현재",
+  historical: "역사",
+  noncanonical: "비정본",
+};
+
+const tplUlr = (d) =>
+  card({
+    eyebrow: "ULR · Main Research",
+    title: d.title,
+    subtitle: d.summary ?? d.description,
+    footer: `${ulrStatusLabel[d.status] ?? d.status ?? "현재"}${d.canon ? ` · Canon ${d.canon}` : ` · ${d.kind}`}`,
+    fontFamily: "Noto Sans KR",
+    titleFontFamily: "Noto Sans KR",
+    accent: ULR_ACCENT,
+    titleMaxSize: 56,
+    subtitleFontSize: 22,
+  });
+
+const tplUlrHub = () =>
+  card({
+    eyebrow: "ULR · Main Research",
+    title: "Unified Latent Representation",
+    subtitle:
+      "한 latent의 불충분성에서 출발한 Motivation, Canon 24의 음성 판정, 전체 수학과 다음 검증 관문.",
+    footer: "Main programme · Canon 24 · Motivation → evidence",
+    fontFamily: "Noto Sans KR",
+    titleFontFamily: "Noto Sans KR",
+    accent: ULR_ACCENT,
+    titleMaxSize: 56,
+    subtitleFontSize: 22,
   });
 
 const tplResearch = (r) =>
@@ -320,12 +386,14 @@ function loadJson(rel) {
    font + template version into a SHA-256 hash. If the cache says
    the destination PNG was last rendered from the same hash, skip.
    Cache file lives in .velite/ (already gitignored). */
-const CACHE_VERSION = "v1"; // bump to force a full re-render
+const CACHE_VERSION = "v4-compact-ulr"; // bump to force a full re-render
 const CACHE_PATH = resolve(root, ".velite/og-cache.json");
 const FONT_FINGERPRINT = createHash("sha256")
   .update(interRegular)
   .update(interSemi)
   .update(frauncesBold)
+  .update(notoSansKrRegular)
+  .update(notoSansKrBold)
   .digest("hex")
   .slice(0, 16);
 
@@ -373,10 +441,12 @@ async function main() {
   const notes = loadJson(".velite/notes.json").filter((n) => !n.draft);
   const journal = loadJson(".velite/journal.json").filter((j) => !j.draft);
   const onn = loadJson(".velite/onnDocs.json").filter((d) => !d.draft);
+  const ulr = loadJson(".velite/ulrDocs.json").filter((d) => !d.draft);
   const research = loadJson(".velite/research.json").filter((r) => !r.draft);
 
   const jobs = [
     { tree: tplDefault(), out: "public/og-default.png" },
+    { tree: tplUlrHub(), out: "public/og/ulr/index.png" },
     ...papers.map((p) => ({
       tree: tplPaper(p),
       out: `public/og/papers/${p.slug}.png`,
@@ -392,6 +462,10 @@ async function main() {
     ...onn.map((d) => ({
       tree: tplOnn(d),
       out: `public/og/onn/${d.slug}.png`,
+    })),
+    ...ulr.map((d) => ({
+      tree: tplUlr(d),
+      out: `public/og/ulr/${d.slug}.png`,
     })),
     ...research.map((r) => ({
       tree: tplResearch(r),
@@ -415,7 +489,12 @@ async function main() {
     work.push({ ...job, hash, absOut });
   }
 
-  const concurrency = Math.max(1, Math.min(8, work.length));
+  // Satori shares parsed font state across renders. Concurrent Korean/Latin
+  // jobs intermittently produced structurally incomplete cards (missing the
+  // absolute header or footer) even though every individual render succeeded.
+  // Serial rendering is slower but deterministic, which matters for deploy-time
+  // social images far more than shaving a minute from the build.
+  const concurrency = 1;
   console.log(
     `[og] ${jobs.length} jobs · ${cached} cached · rendering ${work.length} (concurrency=${concurrency})`,
   );

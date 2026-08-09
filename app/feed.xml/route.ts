@@ -27,6 +27,7 @@ interface FeedEntry {
   link: string;
   updated: string;
   summary: string;
+  lang?: string;
 }
 
 function buildAtomFeed(entries: FeedEntry[]): string {
@@ -35,7 +36,7 @@ function buildAtomFeed(entries: FeedEntry[]): string {
 
   const entryXml = entries
     .map(
-      (e) => `  <entry>
+      (e) => `  <entry${e.lang ? ` xml:lang="${esc(e.lang)}"` : ""}>
     <id>${esc(e.id)}</id>
     <title>${esc(e.title)}</title>
     <link href="${esc(e.link)}" rel="alternate" />
@@ -49,7 +50,7 @@ function buildAtomFeed(entries: FeedEntry[]): string {
   return `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jaehong Oh</title>
-  <subtitle>Research notes, papers, and journal entries</subtitle>
+  <subtitle>ULR research documents, papers, notes, and journal entries</subtitle>
   <link href="${BASE}/" rel="alternate" />
   <link href="${BASE}/feed.xml" rel="self" />
   <id>${BASE}/</id>
@@ -76,13 +77,19 @@ export function GET() {
       summary: paperPublicSummary(p).slice(0, 280),
     }));
 
-  // Recent writing (journal + posts)
+  // Recent writing (ULR programme docs + journal + posts)
   const writing: FeedEntry[] = recentWriting.map((w) => ({
     id: `${BASE}${w.permalink}`,
     title: w.title,
     link: `${BASE}${w.permalink}`,
     updated: toRFC3339(w.date),
-    summary: w.summary ?? "",
+    summary:
+      w.kind === "journal" && w.track === "perception"
+        ? `Historical SCC archive — ${w.summary ?? ""}`
+        : w.kind === "journal" && w.track === "onn"
+          ? `Historical ONN archive — ${w.summary ?? ""}`
+          : w.summary ?? "",
+    lang: w.kind === "ulr" ? "ko" : undefined,
   }));
 
   // Merge, sort by date descending, take the 20 most recent

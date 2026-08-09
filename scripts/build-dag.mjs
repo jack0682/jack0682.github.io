@@ -29,9 +29,9 @@ function loadJson(rel) {
 }
 
 const notes = loadJson(".velite/notes.json").filter((n) => !n.draft);
-const onnDocs = loadJson(".velite/onnDocs.json").filter((d) => !d.draft);
-
-const all = [...notes, ...onnDocs];
+const all = notes.filter(
+  (n) => n.part === 0 || n.track === "perception",
+);
 const theoremNodes = all.filter((n) => n.kind === "theorem");
 const theoremSet = new Set(theoremNodes.map((n) => n.slug));
 

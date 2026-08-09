@@ -11,16 +11,23 @@ import { SCC_STATUS } from "@/lib/research-status";
 
 const SCC_MARK = "§";
 const READING_ORDER = [
-  ["Current research status", "/notes/part-0/scc-status-2026-05/"],
+  ["SCC → ULR transition", "/ulr/from-scc-to-ulr/"],
+  ["Final sealed SCC status", "/notes/part-0/scc-status-2026-05/"],
   ["Canonical specification", "/notes/part-0/canonical-spec-scc/"],
-  ["Integrated architecture", "/notes/part-0/integrated-architecture/"],
   ["Theorem registry", "/notes/part-0/scc-theorem-registry/"],
 ] as const;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/scc/" },
-  title: "SCC · Hub",
+  title: "SCC · Historical Archive",
   description: SCC_STATUS.summary,
+  openGraph: {
+    title: "SCC · Historical Archive",
+    description: SCC_STATUS.summary,
+    url: "/scc/",
+    images: [{ url: "/og/research/perception.png", width: 1200, height: 630, alt: "SCC · Historical Archive" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og/research/perception.png"] },
 };
 
 /**
@@ -38,8 +45,8 @@ export default function SccHubPage() {
     <Container>
       <PageHeader
         mark={SCC_MARK}
-        eyebrow="SCC · Hub"
-        title="Soft Cognitive Cohesion."
+        eyebrow="SCC · Historical archive"
+        title="Soft Cognitive Cohesion — sealed."
         lead={SCC_STATUS.summary}
       />
 
@@ -101,8 +108,8 @@ export default function SccHubPage() {
 
       {/* ── Roadmap / status ─────────────────────────── */}
       <HubSection
-        label="Research roadmap & status"
-        description="Dated status reports — theorem ledger, implementation state, iteration history, and the open problems currently blocking consolidation."
+        label="Historical roadmap & final status"
+        description="Frozen status reports, theorem ledger, implementation history, and the open problems that remained when SCC left the active programme."
         aside={
           <Link
             href="/scc/changelog/"
@@ -113,7 +120,7 @@ export default function SccHubPage() {
         }
       >
         {roadmap.length === 0 ? (
-          <Placeholder text="No active status reports." />
+          <Placeholder text="No archived status reports." />
         ) : (
           roadmap.map((n) => (
             <DocCard
@@ -135,8 +142,8 @@ export default function SccHubPage() {
 
       {/* ── Overview / integration ───────────────────── */}
       <HubSection
-        label="Integration & north-star"
-        description="How SCC sits in the broader programme, including the audited status of the proposed coupling to Ontology Neural Networks."
+        label="Historical integration target"
+        description="The former SCC–ONN north-star, retained with explicit audit markings. It is not the current architecture or Main programme."
       >
         {overview.length === 0 ? (
           <Placeholder text="No overview documents yet." />
@@ -228,6 +235,12 @@ export default function SccHubPage() {
           className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
         >
           ← All notes
+        </Link>
+        <Link
+          href="/ulr/"
+          className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+        >
+          ULR main research →
         </Link>
         <Link
           href="/research/perception/"

@@ -112,6 +112,7 @@ export default function TagsPage() {
         <ul className="grid border-y border-[var(--color-rule)] sm:grid-cols-2 lg:grid-cols-4">
           {core.map((entry) => {
             const meta = TAG_CATEGORY_META[entry.category];
+            const isArchive = entry.tag === "scc" || entry.tag === "onn";
             return (
               <li
                 key={entry.tag}
@@ -126,7 +127,7 @@ export default function TagsPage() {
                       <span className="mr-1.5 text-[var(--color-accent)]">
                         {meta.mark}
                       </span>
-                      {meta.shortLabel}
+                      {isArchive ? "Historical archive" : meta.shortLabel}
                     </span>
                     <span className="tabular-nums">{entry.count}</span>
                   </span>

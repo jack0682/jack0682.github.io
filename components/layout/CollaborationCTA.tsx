@@ -7,7 +7,7 @@ type Variant = "panel" | "footer";
 const copy: Record<Context, { title: string; body: string }> = {
   research: {
     title: "A specific question is a good place to start.",
-    body: "If your work overlaps with mathematical perception, topology-aware learning, or delay-robust robotics, send a short note with the context, the concrete question, and any relevant link.",
+    body: "If your work overlaps with representation comparison, gauge-aware identity, predictive or causal state, observer-relative learning and inference, formation, or embodied testing, send a short note with the concrete question and relevant evidence.",
   },
   papers: {
     title: "Questions and careful reproductions are welcome.",

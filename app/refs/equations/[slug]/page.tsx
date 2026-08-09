@@ -10,9 +10,18 @@ import { equationsBySource } from "@/lib/content";
 const collectionLabel: Record<string, string> = {
   notes: "Notes",
   onn: "ONN",
+  ulr: "ULR",
   papers: "Papers",
   journal: "Journal",
 };
+
+function sourceLabel(group: { collection: string; permalink: string }) {
+  if (group.collection === "notes" && group.permalink.startsWith("/notes/part-0/")) {
+    return "SCC archive";
+  }
+  if (group.collection === "onn") return "ONN archive";
+  return collectionLabel[group.collection] ?? group.collection;
+}
 
 const allEquationGroups = equationsBySource();
 
@@ -53,7 +62,7 @@ export default async function EquationsDetailPage({ params }: Props) {
       </div>
       <PageHeader
         mark="∑"
-        eyebrow={collectionLabel[group.collection] ?? group.collection}
+        eyebrow={sourceLabel(group)}
         title={group.title}
         lead={`${group.items.length} ${group.items.length === 1 ? "equation" : "equations"} extracted from this document. Each equation pairs with the prose paragraph that immediately precedes it in the source — clicking the title above opens the full document.`}
         className="pt-0 md:pt-0"

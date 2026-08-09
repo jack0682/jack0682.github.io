@@ -52,16 +52,16 @@ export default function SccDagPage() {
       <div className="pt-10 md:pt-20">
         <Breadcrumb
           items={[
-            { href: "/scc/", label: "SCC · Hub" },
+            { href: "/scc/", label: "SCC · Archive" },
             { label: "Dependency graph" },
           ]}
         />
       </div>
       <PageHeader
         mark="DAG"
-        eyebrow="SCC"
-        title="Theorem dependency graph"
-        lead={`${dag.nodes.length} theorem-kind notes laid out by their explicit \`related\` edges (${dag.edges.length} arrows). Click any node to open the underlying note.`}
+        eyebrow="SCC · Historical archive"
+        title="Frozen theorem dependency graph"
+        lead={`${dag.nodes.length} SCC theorem notes laid out by their explicit \`related\` edges (${dag.edges.length} arrows). This graph is SCC-scoped and preserved as a historical proof map.`}
         className="pt-0 md:pt-0"
       />
 

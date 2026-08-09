@@ -80,7 +80,7 @@ const papers = defineCollection({
       tags: s.array(s.string()).default([]),
       /** Research-track association — used by SCC hub & track rails. */
       track: s
-        .enum(["onn", "perception", "theory", "control", "robotics"])
+        .enum(["ulr", "onn", "perception", "theory", "control", "robotics"])
         .optional(),
       /** Note/journal slugs this paper is tied to (cross-ref hints). */
       related: s.array(s.string()).default([]),
@@ -118,7 +118,7 @@ const journal = defineCollection({
       summary: s.string().max(320).optional(),
       tags: s.array(s.string()).default([]),
       track: s
-        .enum(["onn", "perception", "theory", "control", "robotics", "meta"])
+        .enum(["ulr", "onn", "perception", "theory", "control", "robotics", "meta"])
         .optional(),
       /**
        * Note/paper slugs referenced by the entry. Used by the
@@ -139,7 +139,7 @@ const research = defineCollection({
   pattern: "research/*.mdx",
   schema: s
     .object({
-      track: s.enum(["onn", "perception", "theory", "control", "robotics"]),
+      track: s.enum(["ulr", "onn", "perception", "theory", "control", "robotics"]),
       title: s.string().max(160),
       slug: s.slug("research"),
       summary: s.string().max(320),
@@ -159,6 +159,12 @@ const research = defineCollection({
       auditedAt: s.isodate().optional(),
       /** Named successor when an audited programme has moved on. */
       successorTitle: s.string().max(160).optional(),
+      /** Public route for the named successor. */
+      successorHref: s.string().optional(),
+      /** Portfolio role: exactly one track is designated main. */
+      role: s.enum(["main", "supporting", "archive"]).default("supporting"),
+      /** Main track that replaced this programme's portfolio priority. */
+      replacedAsPrimaryBy: s.string().max(80).optional(),
       date: s.isodate().optional(),
       updated: s.isodate().optional(),
       body: s.mdx(),
@@ -194,6 +200,48 @@ const onnDocs = defineCollection({
     .transform((data) => computeFields({ ...data, collection: "onn" })),
 });
 
+/* ── ulrDocs ─ current ULR programme, canon, evidence & history ── */
+const ulrDocs = defineCollection({
+  name: "UlrDoc",
+  pattern: "ulr/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(220),
+      slug: s.slug("ulr"),
+      description: s.string().max(420).optional(),
+      summary: s.string().max(420).optional(),
+      tags: s.array(s.string()).default([]),
+      kind: s.enum([
+        "status",
+        "motivation",
+        "migration",
+        "canonical",
+        "canon-history",
+        "mathematical-flow",
+        "experiment",
+        "result-ledger",
+        "frontier",
+        "open-problems",
+        "theorem",
+        "proof",
+        "essay",
+        "registry",
+      ]),
+      status: s.enum(["canonical", "current", "historical", "noncanonical"]).default("current"),
+      canon: s.string().max(60).optional(),
+      order: s.number().int().gte(0).default(99),
+      section: s.string().optional(),
+      date: s.isodate(),
+      updated: s.isodate().optional(),
+      related: s.array(s.string()).default([]),
+      draft: s.boolean().default(false),
+      body: s.mdx(),
+      toc: s.toc(),
+      metadata: s.metadata(),
+    })
+    .transform((data) => computeFields({ ...data, collection: "ulr" })),
+});
+
 /* ── notes ─ mathematical notes, organised into parts ─────── */
 const notes = defineCollection({
   name: "Note",
@@ -221,7 +269,7 @@ const notes = defineCollection({
        * related-docs rail of a research track page.
        */
       track: s
-        .enum(["onn", "perception", "theory", "control", "robotics"])
+        .enum(["ulr", "onn", "perception", "theory", "control", "robotics"])
         .optional(),
       date: s.isodate().optional(),
       updated: s.isodate().optional(),
@@ -232,7 +280,10 @@ const notes = defineCollection({
       toc: s.toc(),
       metadata: s.metadata(),
     })
-    .transform((data) => computeFields({ ...data, collection: "notes" })),
+    .transform((data) => ({
+      ...computeFields({ ...data, collection: "notes" }),
+      permalink: `/notes/part-${data.part}/${data.slug}/`,
+    })),
 });
 
 /* ── shared MDX plugin stack ──────────────────────────────── */
@@ -254,7 +305,7 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { posts, papers, journal, research, notes, onnDocs },
+  collections: { posts, papers, journal, research, notes, onnDocs, ulrDocs },
   mdx: {
     // remarkTermLinks runs after gfm/math so it sees the full mdast
     // (with code/inlineCode/math nodes already typed for skip).

@@ -42,14 +42,19 @@ export function ResearchStatusBanner({
               href={status.statusHref}
               className="text-[var(--color-ink)] underline decoration-[var(--color-accent)]/40 underline-offset-4 transition hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
             >
-              Read the current ledger →
+              {status.state === "archived" ? "Read the final archive ledger" : "Read the current ledger"} →
             </Link>
           )}
-          {status.successorTitle && (
-            <span className="text-[var(--color-subtle)]">
-              Successor: {status.successorTitle}
-            </span>
-          )}
+          {status.successorTitle && (status.successorHref ? (
+            <Link
+              href={status.successorHref}
+              className="text-[var(--color-ink)] underline decoration-[var(--color-accent)]/40 underline-offset-4 transition hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+            >
+              Successor: {status.successorTitle} →
+            </Link>
+          ) : (
+            <span className="text-[var(--color-subtle)]">Successor: {status.successorTitle}</span>
+          ))}
         </p>
       )}
     </aside>

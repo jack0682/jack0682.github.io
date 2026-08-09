@@ -11,16 +11,23 @@ import { ONN_STATUS } from "@/lib/research-status";
 
 const ONN_MARK = "χ";
 const READING_ORDER = [
-  ["Current audit & research status", "/onn/onn-research-status-2026/"],
+  ["ULR current Main research", "/ulr/"],
+  ["Final ONN audit & status", "/onn/onn-research-status-2026/"],
   ["Canonical audit boundary", "/onn/canonical-spec/"],
   ["Paper of record · original framing", "/papers/onn-ortsf-2026/"],
-  ["Integrated architecture", "/notes/part-0/integrated-architecture/"],
 ] as const;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/onn/" },
-  title: "ONN · Hub",
+  title: "ONN · Historical Archive",
   description: ONN_STATUS.summary,
+  openGraph: {
+    title: "ONN · Historical Archive",
+    description: ONN_STATUS.summary,
+    url: "/onn/",
+    images: [{ url: "/og/research/onn.png", width: 1200, height: 630, alt: "ONN · Historical Archive" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og/research/onn.png"] },
 };
 
 /**
@@ -48,8 +55,8 @@ export default function OnnHubPage() {
     <Container>
       <PageHeader
         mark={ONN_MARK}
-        eyebrow="ONN · Hub"
-        title="Ontology Neural Network."
+        eyebrow="ONN · Historical archive"
+        title="Ontology Neural Network — audited."
         lead={ONN_STATUS.summary}
       />
 
@@ -138,8 +145,8 @@ export default function OnnHubPage() {
       >
         {roadmap.length === 0 ? (
           <FuturePlaceholder
-            label="ONN — current research status"
-            note="A living document in the style of the SCC status note: theorem ledger, implementation state, open blockers."
+            label="ONN — final audited status"
+            note="The preserved final ledger and audit record: surviving scoped results, withdrawn claims, and the handoff to ULR."
           />
         ) : (
           roadmap.map((n) => (
@@ -243,6 +250,12 @@ export default function OnnHubPage() {
       {/* ── footer cross-links ────────────────────────────────── */}
       <div className="mt-20 flex flex-wrap gap-6 border-t border-[var(--color-rule)] pt-8 text-sm">
         <Link
+          href="/ulr/"
+          className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+        >
+          ULR main research →
+        </Link>
+        <Link
           href="/research/onn/"
           className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
         >
@@ -252,7 +265,7 @@ export default function OnnHubPage() {
           href="/scc/"
           className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
         >
-          SCC hub →
+          SCC archive →
         </Link>
         <Link
           href="/notes/part-0/integrated-architecture/"

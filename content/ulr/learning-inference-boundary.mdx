@@ -1,0 +1,229 @@
+---
+title: "학습–추론의 Observer-Relative 식별 경계"
+slug: learning-inference-boundary
+description: "학습과 추론을 내부 위치나 weight update로 정의하지 않고 measurability, total variation, adaptive policy, response quotient와 path-law singularity로 판정하는 Canon 24 정리다."
+date: "2026-08-09"
+updated: "2026-08-09"
+order: 9
+kind: theorem
+status: canonical
+canon: "24"
+tags: [ulr, learning, inference, observer, total-variation]
+related: [mathematical-flow, canonical-state, post-canon-frontier]
+summary: "제한된 observer가 선언된 학습·추론 role을 구분할 수 있는 정확한 조건은 role measurability와 response-law separation이다. 보편 판별기는 없지만 특정 observer contract의 가능·불가능은 완전히 특성화된다."
+---
+
+## 결론
+
+“모델 내부에서 학습과 추론을 구분할 수 있는가?”에 observer-independent한 단일 `YES`나 `NO`는 없다.
+정확한 답은 다음 필요충분조건이다.
+
+> 선언된 역할 변수가 observer의 정보 filtration에 measurable할 때, 그리고 그때만 observer는 현재
+> 역할을 정확히 구분할 수 있다.
+
+역할 $C\in\{L,I\}$가 유도하는 transcript law를 $P_L,P_I$라 하면 equal prior의 최적 오분류 확률은
+
+$$
+\boxed{
+R^*=\frac{1-\lVert P_L-P_I\rVert_{\mathrm{TV}}}{2}
+}
+$$
+
+다.
+
+## 1. Role과 observer를 먼저 선언한다
+
+학습과 추론은 확률공간의 원시기호가 아니다. system boundary가 어떤 사건을 $L$ 또는 $I$로 부를지 먼저
+선언해야 한다. role typing에는 다음이 들어갈 수 있다.
+
+$$
+(\text{information source},\ \text{write target},\ \text{persistence},
+\ \text{reset/clone response},\ \text{future causal role}).
+$$
+
+시간 $t$까지 observer가 사용할 수 있는 정보는 부분 $\sigma$-대수 $\mathcal F_t^O$로 둔다. activation,
+input, output, clock, observer memory, 허용 intervention의 결과가 이 filtration에 포함될 수 있다.
+
+위치가 핵심은 아니다.
+
+- 모델 안에 있어도 optimizer state나 reset response를 볼 수 없으면 제한된 observer다.
+- 모델 밖에 있어도 같은 latent stream만 받으면 같은 정보 filtration을 가질 수 있다.
+- raw hidden state를 봐도 role이 그 상태의 함수가 아니면 자동 복원되지 않는다.
+
+## 2. Theorem A — Measurability characterization
+
+확률공간 $(\Omega,\mathcal G,\mathbb P)$, 역할 $C$, observer 정보
+$\mathcal F\subseteq\mathcal G$에 대해 다음은 동치다.
+
+1. $C$를 거의 확실하게 맞히는 $\mathcal F$-measurable classifier가 존재한다.
+2. $C$가 $\mathcal F$-measurable하다.
+3. posterior $\eta=\mathbb P(C=L\mid\mathcal F)$가 거의 확실하게 0 또는 1이다.
+
+모든 classifier 중 최소 risk는
+
+$$
+R^*_{\mathcal F}
+=
+\mathbb E[\min\{\eta,1-\eta\}].
+$$
+
+더 큰 내부 network나 더 긴 계산은 이미 가진 $\sigma$-대수의 measurable function일 뿐이다. 입력 정보가
+role을 분리하지 못하면 계산량은 새 role information을 만들지 못한다.
+
+## 3. Theorem B — Fixed transcript의 exact risk
+
+고정한 observer contract와 horizon에서 transcript space를 $(\mathcal H,\mathscr H)$라 하자. 두 simple
+hypothesis law에 대한 optimal binary risk는 TV identity로 정확히 주어진다.
+
+$$
+R^*=\frac{1-\lVert P_L-P_I\rVert_{\mathrm{TV}}}{2},
+\qquad
+\lVert P_L-P_I\rVert_{\mathrm{TV}}
+=\sup_{A\in\mathscr H}|P_L(A)-P_I(A)|.
+$$
+
+따라서
+
+$$
+R^*=\frac12\iff P_L=P_I,
+\qquad
+R^*=0\iff P_L\perp P_I.
+$$
+
+서로 다른 평균이나 weight가 아니라 observer에게 실제로 도달한 **전체 transcript law**가 판정을
+소유한다.
+
+## 4. Theorem C — Adaptive experiment
+
+observer가 과거 transcript에 따라 action을 고르는 nonanticipating, role-blind policy
+$\pi\in\Pi_O$를 사용할 수 있다고 하자. horizon $T$의 separation coefficient를
+
+$$
+\Delta_T(O)
+=
+\sup_{\pi\in\Pi_O}
+\lVert P_{L,T}^{\pi}-P_{I,T}^{\pi}\rVert_{\mathrm{TV}}
+$$
+
+로 두면 policy와 classifier를 함께 최적화한 risk는
+
+$$
+R_T^*(O)=\frac{1-\Delta_T(O)}{2}
+$$
+
+다. chance 초과는 positive TV, finite-time zero error는 한 허용 policy에서의 singularity가 소유한다.
+$\Delta_T=1$이어도 supremum을 달성하는 policy가 없을 수 있으므로 단일 zero-error policy의 존재는 별도로
+확인한다.
+
+## 5. Theorem D — Response-fibre factorization
+
+hidden event 집합 $E$와 role map $\rho:E\to\{L,I\}$를 두자. 모든 허용 policy·horizon에서 같은 response
+profile을 내는 event를
+
+$$
+e\sim_O e'
+\iff
+P_{e,T}^{\pi}=P_{e',T}^{\pi}
+\quad\text{for all }(\pi,T)
+$$
+
+로 동일시한다. 모든 event에 맞는 universal observer classifier가 존재할 필요충분조건은 $\rho$가 이
+quotient를 통해 factorization되는 것이다.
+
+$$
+\rho=\bar\rho\circ q_O.
+$$
+
+같은 response fibre 안에서 $L$과 $I$가 충돌하면 observer의 계산으로는 해결할 수 없다. 반대로
+factorization은 in-principle profile 판정이며 하나의 유한 test가 자동 존재한다는 뜻은 아니다.
+
+## 6. Theorem E — Garbling contraction
+
+internal transcript가 external transcript의 Markov kernel $K$를 통한 garbling이면
+
+$$
+\lVert KP_L-KP_I\rVert_{\mathrm{TV}}
+\le
+\lVert P_L-P_I\rVert_{\mathrm{TV}}.
+$$
+
+따라서 weaker observer가 계산을 많이 한다고 잃어버린 provenance를 되살릴 수 없다. “inside가 언제나
+outside보다 더 많이 안다”거나 그 반대라는 공간적 주장은 성립하지 않는다. 정보 ordering은 declared
+channel이 소유한다.
+
+## 7. Theorem F — Infinite horizon
+
+한 fixed infinite policy의 finite-prefix law를 $P_{L,t},P_{I,t}$라 하면 prefix TV는 full path-law TV로
+수렴한다. finite-prefix optimal error가 0으로 갈 필요충분조건은 full path laws의 mutual singularity다.
+
+$$
+R_t^*\to0
+\iff
+P_L^{\infty}\perp P_I^{\infty}.
+$$
+
+이는 한 일관된 infinite policy에 대한 결과다. horizon마다 다른 oracle policy를 고르는 profile과
+혼동하지 않는다.
+
+## 8. Theorem G — Common quotient kernel
+
+두 process가 같은 observable quotient transition을 갖고 output kernel도 hidden fibre를 직접 읽지 않으면,
+hidden fibre update가 달라도 declared adaptive transcript에서 구분되지 않을 수 있다. 이 결과는 충분조건으로
+표기된다. output이 fibre를 직접 읽거나 policy가 role label을 미리 보면 가정이 깨진다.
+
+## 9. Reset-relative operational specialization
+
+event $e$ 직후의 probe law를 $P_e^\pi$, typed reset $r$ 뒤를 $P_{e,r}^\pi$, event가 없었던 기준을
+$P_{0,r}^\pi$라 두자.
+
+$$
+D_r(e)
+=
+\sup_{\pi\in\Pi_{\mathrm{probe}}}
+\lVert P_{e,r}^\pi-P_{0,r}^\pi\rVert_{\mathrm{TV}}.
+$$
+
+- $D_r(e)>0$이면 이 reset contract에 대한 **persistent adaptation**.
+- $D_r(e)=0$이지만 reset 전 response가 달라지면 **reset-local inference**.
+
+이를 learning-role과 inference-role의 한 operational definition으로 쓸 수 있다. reset이 바뀌면 role도
+바뀔 수 있으며 fast learning·continual adaptation 전체를 포괄하는 보편 정의는 아니다.
+
+## 10. Passive와 richer port의 strictness
+
+선형 toy에서 passive law가 같은 두 system도 `write; reset; read` policy에서 TV 1로 갈릴 수 있다. 하지만
+reset이라는 이름만 추가한다고 충분하지 않다. 서로 다른 persistence operator $R_1,R_2$가
+
+$$
+HR_1B=HR_2B
+$$
+
+를 만족하면 같은 partial response fibre에 남는다. richer port의 식별력도 interface-relative다.
+
+## 11. 증명·검산의 범위
+
+정본 감사가 확인한 범위는 다음과 같다.
+
+| 요구 | 결과 |
+|---|---|
+| 현재 정보의 zero-error 가능성 | A의 필요충분조건 |
+| fixed stochastic transcript의 optimal error | B의 exact TV identity |
+| adaptive input·intervention | C의 policy supremum |
+| 모든 event의 universal classifier | D의 quotient factorization |
+| inside/outside 정보손실 방향 | E의 garbling contraction |
+| 오래 관찰할 때 zero-risk | F의 path-law singularity |
+| hidden fibre 차이의 소거 | G의 명시적 충분조건 |
+
+유한 exact verifier는 225개 분포 pair, deterministic garbling 8종, stochastic kernel 27종, adaptive
+quotient policy 64개 등을 포함한 8/8 검사를 통과했다. 이 검산은 일반 measure-theoretic proof를
+대신하지 않고 sign·normalization·finite counterexample 구현을 감사한다.
+
+## 증명하지 않은 것
+
+- 학습과 추론의 observer-independent 존재론적 정의
+- 실제 Transformer의 observer filtration 식별
+- classifier의 finite-sample estimation rate
+- 이 theorem이 neural-specific ULR object라는 주장
+
+따라서 Canon 24의 증분은 ontology가 아니라 **declared role의 observer-relative identifiability를 완전히
+특성화한 경계**다.

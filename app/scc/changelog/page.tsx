@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/scc/changelog/" },
-  title: "SCC · Changelog",
+  title: "SCC · Historical Changelog",
   description:
     "Canonical version history for the Soft Cognitive Cohesion programme — every entry that bumps or patches the canonical specification, sourced from the journal.",
 };
@@ -22,7 +22,7 @@ const impactLabel: Record<NonNullable<typeof sccChangelog[number]["impact"]>, st
 
 export default function SccChangelogPage() {
   const crumbs = [
-    { href: "/scc/", label: "SCC · Hub" },
+    { href: "/scc/", label: "SCC · Archive" },
     { label: "Changelog" },
   ];
 
@@ -33,9 +33,9 @@ export default function SccChangelogPage() {
       </div>
       <PageHeader
         mark="§"
-        eyebrow="SCC"
-        title="Canonical changelog"
-        lead="Every journal entry that names a canonical version, ordered newest first. Each row links to the originating weekly entry where the bump or patch was authored."
+        eyebrow="SCC · Historical archive"
+        title="Frozen canonical changelog"
+        lead="The sealed SCC version history, ordered newest first. This timeline no longer represents the active Main programme; ULR has its own Canon 2–24 history."
         className="pt-0 md:pt-0"
       />
 

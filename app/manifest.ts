@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Jaehong Oh — Research",
     short_name: "Jaehong Oh",
     description:
-      "Research on Ontology Neural Networks, perception theory, and the mathematical foundations of embodied cognition.",
+      "Unified Latent Representation research on learned organization, representation identity, observer-relative role, and embodied systems.",
     start_url: "/",
     display: "standalone",
     background_color: "#faf8f5",

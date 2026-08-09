@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/refs/theorems/" },
   title: "Theorem index",
   description:
-    "Every theorem, lemma, proposition, and corollary ID extracted from the SCC and ONN notes — sorted alphabetically with the document each ID first appears in.",
+    "Every theorem, lemma, proposition, and corollary ID extracted across ULR, SCC, ONN, papers, and notes — sorted and linked to its sources.",
 };
 
 export default function TheoremIndexPage() {
@@ -29,9 +29,15 @@ export default function TheoremIndexPage() {
         mark="T"
         eyebrow="Index"
         title="Theorem index"
-        lead={`${items.length} unique theorem-class IDs (T-…) extracted from the SCC and ONN notes. Each row links to the first document that names the ID.`}
+        lead={`${items.length} unique theorem-class IDs (T-…) extracted across ULR, SCC, ONN, papers, and notes. Each row links to the first document that names the ID.`}
         className="pt-0 md:pt-0"
       />
+
+      <aside className="mb-10 border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-5 py-4 text-sm leading-relaxed text-[var(--color-muted)]">
+        This is a lexical occurrence index, not a status ledger. Appearance
+        here does not imply that a theorem is current, canonical, or in the
+        active ULR programme; follow the linked document&apos;s scope and archive label.
+      </aside>
 
       {items.length === 0 ? (
         <p className="text-[var(--color-muted)]">No IDs extracted yet.</p>

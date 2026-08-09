@@ -1,0 +1,189 @@
+---
+title: "SCC에서 ULR로 — Main 연구의 전환"
+slug: from-scc-to-ulr
+description: "Soft Cognitive Cohesion이 역사적 프로그램으로 이동하고 Unified Latent Representation이 Main 연구가 된 과정, 보존되는 수학과 끊어진 주장을 구분한다."
+date: "2026-08-09"
+updated: "2026-08-09"
+order: 4
+kind: migration
+status: canonical
+canon: "24"
+tags: [ulr, scc, migration, research-history]
+related: [motivation, current-status, canon-evolution, canonical-state]
+summary: "2026년 7월 24일 연구 중심은 SCC에서 ULR-only로 이동했다. SCC의 CV-1.17 결과와 감사 기록은 삭제하지 않고 역사층에 보존하되, 현재 존재 판정과 실행 우선순위는 ULR의 Sharing·Identity·Role·Formation 프로그램이 소유한다."
+---
+
+## 전환의 결론
+
+2026년 7월 24일 연구 프로그램은 **SCC 중심에서 ULR-only로 재중심화**되었다. 이 전환은 SCC 문서를
+지우거나 수학을 무효화한 사건이 아니다. SCC가 더 이상 현재 질문의 존재론과 우선순위를 소유하지 않으며,
+그 자리를 ULR의 네 문제—Sharing, Identity, Role, Formation—가 맡았다는 governance 전환이다.
+
+$$
+\text{SCC active programme}
+\xrightarrow[\text{2026-07-24}]{\text{re-center}}
+\text{SCC historical layer}+\text{ULR Main programme}
+$$
+
+## 전환 이전의 ULR 선행사
+
+ULR은 SCC를 내리는 날 갑자기 생긴 이름이 아니다. 2026년 7월 6일의 창립부터 7월 24일의 재중심화까지
+append-only Progress가 질문과 실패를 다음 순서로 남겼다.
+
+| Progress | 단계 | 공개적으로 보존할 의미 |
+|---:|---|---|
+| #0–#3 | 창립과 초기 Q01–Q10.9 | 서로 다른 latent가 무엇을 공유하는지, identity·role·formation을 어떻게 분리할지 문제 공간을 세움 |
+| #4 | Q11–Q14, Phase-T 표류와 7월 16일 재정립 | 용어를 늘리는 대신 판별 가능한 질문·반증조건·종료규칙으로 연구 계약을 다시 잠금 |
+| #5 | Phase 0와 SCC spine 결합 | SCC의 형성·개입 도구가 ULR 질문에 어디까지 쓰일 수 있는지 연결하되 동치로 두지 않음 |
+| #6 | null-model 축-스택 | 하나의 null을 구조·인과·지속 축으로 분해해 각 양성이 무엇을 배제하는지 명시 |
+| #7 | VQ·coarse-graining | alignment의 후보 mechanism을 결정시험에 올리고 보편 설명으로의 조기 승격을 보류 |
+| #8 | SCC `HISTORICAL`, ULR-only 전환 | 현재 존재 판정과 실행 우선순위를 ULR의 네 문제로 이전 |
+
+초기 Canon 1의 완전 snapshot은 보존돼 있지 않고 Canon 2가 기록한 delta로만 확인된다. 그러므로 공개
+변천사는 없는 세부를 복원하지 않고, 남아 있는 Progress·producer evidence·다음 Canon의 차이를 함께 읽는다.
+
+## SCC가 풀려 했던 문제
+
+SCC(Soft Cognitive Cohesion)는 이미 주어진 object 사이의 관계가 아니라, **무엇이 object가 될 만큼 먼저
+결속하는가**를 물었다. primitive는 relational support $X_t$ 위의 soft field였다.
+
+$$
+u_t:X_t\to[0,1].
+$$
+
+$u_t(x)$는 site $x$가 cohesive formation에 참여하는 정도다. canonical energy는 volume-constrained
+simplex $\Sigma_m$ 위의 네 항을 분리했다.
+
+$$
+E(u)=
+\lambda_{\mathrm{cl}}E_{\mathrm{cl}}(u)
++\lambda_{\mathrm{sep}}E_{\mathrm{sep}}(u)
++\lambda_{\mathrm{bd}}E_{\mathrm{bd}}(u)
++\lambda_{\mathrm{tr}}E_{\mathrm{tr}}(u).
+$$
+
+formation은 다음 diagnostic vector로 읽었다.
+
+$$
+\mathbf d=(\mathrm{Bind},\mathrm{Sep},\mathrm{Inside},\mathrm{Persist})\in[0,1]^4.
+$$
+
+이 프로그램은 existence, closure fixed point, phase transition, gradient flow, $\Gamma$-convergence,
+stochastic reflected SDE, Gibbs invariant measure, Poincaré·ergodicity, boundary precision, temporal identity,
+kernel composition을 단계적으로 다뤘다.
+
+## SCC 정본이 도달한 범위
+
+SCC는 **CV-1.17**에서 봉인되었다. 최종 ledger는 98개 formal claim을
+`68A/19B/6C/5R`로 분류했다. 이를 98개의 완전한 정리로 읽어서는 안 된다. Category A 68건은 full
+proof, B 19건은 structural parameter가 있는 결과, C 6건은 conditional, R 5건은 retracted다.
+
+주요 변천은 다음과 같다.
+
+1. **초기 formal core.** soft field, 네 항 에너지, existence, closure, phase transition, gradient flow,
+   $\Gamma$-convergence가 뼈대를 이뤘다.
+2. **thermodynamic/kinetic 분리.** 전역 thermodynamic 선택은 $K^*=1$로 정리되고 $K>1$은 kinetic
+   metastability로 이동했다. 이를 하나로 합치던 강한 `P-Unified-1`은 반증됐다.
+3. **W4.** 세 critical obstruction을 정리하고 pre-objective mechanism과 Goldstone-$\sigma$ 경계를
+   도입했다.
+4. **W5.** $\sigma$의 support, $K_{\mathrm{field}}$와 $K_{\mathrm{act}}$의 분리, 제한된
+   multi-formation bridge `T-L1-F`를 얻었다.
+5. **W6.** stereo locking, boundary Hausdorff precision, reflected SDE → Gibbs → Poincaré·ergodicity,
+   equilibrium·observer-conditioned K-selection, OMS-2.0을 닫았다.
+6. **W7.** temporal correspondence, 부분적인 H-MORSE 분해, kernel-composed consistency를 추가해
+   CV-1.17에 도달했다.
+7. **남은 미완.** active-era의 CV-1.18 목표, 동적 K-selection, 일부 temporal identity와 formation
+   일반화는 완료되지 않았다.
+
+이 결과들은 [SCC 역사 아카이브](/scc/)와 기존 theorem 문서에 기록된 scope 안에서 유지된다.
+
+## 왜 SCC가 Main에서 내려왔는가
+
+전환은 단일 정리의 실패 때문이 아니라 **질문의 층위가 달라졌기 때문**이다.
+
+### 1. SCC의 존재 판정이 ULR의 존재 판정을 대신할 수 없었다
+
+SCC의 cohesion, null model, intervention certification은 pre-objective formation을 위한 계약이었다.
+하지만 서로 다른 neural model의 latent가 무엇을 공유하는지, same function의 hidden state를 무엇으로
+동일시할지, 학습과 추론의 role을 어떻게 식별할지에는 별도의 observable·gauge·port typing이 필요했다.
+
+### 2. 강한 통합 사슬이 증명되지 않았다
+
+과거 north-star는
+
+$$
+\text{SCC}\to\text{RelationWorld}\to\text{ONN}\to\text{ORTSF}
+$$
+
+의 한 certificate를 기대했다. 그러나 SCC의 형성 결과가 ONN의 고차 의미와 ORTSF의 제어 안정성까지
+lossless하게 운반된다는 정리는 확립되지 않았다. ONN의 중심 고차 thesis는 이후 scoped No-Go boundary로
+좁아졌고, surviving control result도 ordinary model-level certificate였다.
+
+### 3. 개입은 유용하지만 존재 인증의 보편 필수조건이 아니었다
+
+ULR-only 헌장은 SCC에서 가져온 실험 규율을 보존하되, intervention과 causality를 ULR 존재·의미의 필수
+인증으로 두지 않는다. 기능적 role을 시험하는 선택 방법으로 사용한다.
+
+### 4. 관찰된 latent alignment에는 더 강한 null이 필요했다
+
+공유 relation geometry는 실제 관찰됐지만, data structure, objective, architecture, untrained baseline,
+metric, gauge를 분리하지 않으면 그것을 ULR object로 읽을 수 없다. ULR은 발견을 선언하는 대신 가장 강한
+typed baseline으로 후보를 먼저 제거하는 프로그램으로 바뀌었다.
+
+## SCC에서 보존한 것
+
+전환 뒤에도 다음은 연구 자산으로 남는다.
+
+- relata, relation, predicate를 구분하는 형식 규율
+- null family와 보존량을 결과 전에 명시하는 습관
+- similarity와 causality를 분리하는 원칙
+- held-out test, confound control, preregistration, independent audit
+- metric onset과 formation event를 구분해야 한다는 경고
+- SCC CV-1.17의 theorem·open-problem·retraction provenance
+
+반대로 SCC의 cohesion predicate, formation certification, causal unity, null stack이 ULR의 존재 판정을
+자동으로 결정한다는 권한은 종료됐다.
+
+## ULR이 새로 세운 문제 구조
+
+ULR은 한 개의 “latent substance”를 먼저 정의하지 않는다. 네 질문을 분리한 뒤 접합 잔여가 있는지
+검정한다.
+
+| SCC 중심 질문 | ULR에서의 재표현 |
+|---|---|
+| 무엇이 object로 결속하는가 | 선택한 identity·transport 아래 formation이 있는가 |
+| cohesion을 어떤 null로 인증하는가 | observable마다 $(O,\mathcal G,N)$을 어떻게 typing하는가 |
+| intervention이 unity를 보이는가 | 선언한 physical port가 passive quotient를 얼마나 refine하는가 |
+| 지속되는 formation이 같은가 | response quotient와 cross-time family identity가 무엇인가 |
+| 다수 formation을 어떻게 센가 | carrier와 structural type이 baseline에 환원되는가 |
+
+이 변화로 research object는 SCC의 soft field에서 **관측량·대칭·기능섬유·실험포트·시간운반의 typed
+관계**로 이동했다.
+
+## 전환 이후의 실제 판정 과정
+
+1. 제한된 cross-model·cross-modal alignment를 재현했다.
+2. observable별 gauge를 분리하고 raw-coordinate identity를 배제했다.
+3. function fiber, local-to-global lift, assembly와 quotient의 exact 경계를 구축했다.
+4. physical response와 observer-relative role을 정식화했다.
+5. 기존 이론을 가장 강하게 세운 Z0–Z7 registry를 만들었다.
+6. 일곱 carrier 후보를 동일 reduction gate로 검사해 0/7 survivor를 얻었다.
+7. engineered neural bridge와 external relation 실험을 B0–B4/B*와 대조했다.
+8. UAR의 서로 다른 두 사상을 합친 오류를 발견해 composite claim을 철회했다.
+9. M1–M8을 종료하고 ontology verdict `NO`를 채택했다.
+10. observer measurability·TV theorem을 추가하되 ontology를 다시 열지 않았다.
+
+이 과정의 판본별 변화는 [Canon 2–24 변천](/ulr/canon-evolution/), 논리 연결은
+[수학적 흐름](/ulr/mathematical-flow/)에 있다.
+
+## 역사 보존 규칙
+
+SCC 문서는 현재의 ULR 결론에 맞춰 몰래 재작성하지 않는다. 대신 다음처럼 읽는다.
+
+- SCC result는 당시 version과 category를 함께 인용한다.
+- retracted·conditional claim을 full theorem처럼 세지 않는다.
+- SCC의 미완 문제를 ULR이 해결했다고 소급 주장하지 않는다.
+- ULR의 `NO`를 SCC의 수학이 무효라는 뜻으로 읽지 않는다.
+- 과거 통합 architecture는 설계사로 보존하되 현재 certificate로 사용하지 않는다.
+
+따라서 “대체”는 삭제가 아니라 **Main 연구의 권한을 옮기고 증거층을 분리하는 것**이다.

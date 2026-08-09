@@ -13,6 +13,12 @@ type Entry = {
   track?: string;
 };
 
+function trackLabel(track: string) {
+  if (track === "perception") return "SCC archive";
+  if (track === "onn") return "ONN archive";
+  return track;
+}
+
 export function JournalFilter({ entries }: { entries: Entry[] }) {
   const tracks = Array.from(
     new Set(entries.map((e) => e.track).filter(Boolean)),
@@ -65,7 +71,7 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
                   : "text-[var(--color-subtle)] hover:text-[var(--color-ink)]"
               }`}
             >
-              {t}
+              {trackLabel(t)}
             </button>
           ))}
         </div>
@@ -108,7 +114,7 @@ export function JournalFilter({ entries }: { entries: Entry[] }) {
                           )}
                           {entry.track && (
                             <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-subtle)]">
-                              {entry.track}
+                              {trackLabel(entry.track)}
                             </p>
                           )}
                         </div>

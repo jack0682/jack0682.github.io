@@ -40,7 +40,7 @@ export function rootSchema() {
       name: PUBLISHER_NAME,
       url: SITE_URL,
       description:
-        "Research on Ontology Neural Networks, perception theory, and the mathematical foundations of embodied cognition.",
+        "Unified Latent Representation research on learned organization, representation identity, observer-relative role, formation, and embodied systems.",
       inLanguage: "en",
       author: { "@type": "Person", name: AUTHOR_NAME, url: SITE_URL },
     },
@@ -60,6 +60,7 @@ type ArticleProps = {
   dateModified?: string;
   wordCount?: number;
   keywords?: readonly string[];
+  inLanguage?: string;
   /** Override `@type` when the doc warrants `BlogPosting` etc. */
   type?: "Article" | "BlogPosting";
 };
@@ -74,6 +75,7 @@ export function articleSchema({
   dateModified,
   wordCount,
   keywords,
+  inLanguage = "en",
   type = "Article",
 }: ArticleProps) {
   const url = absoluteUrl(permalink);
@@ -90,7 +92,7 @@ export function articleSchema({
     ...(dateModified && { dateModified }),
     ...(wordCount && wordCount > 0 && { wordCount }),
     ...(keywords && keywords.length > 0 && { keywords: keywords.join(", ") }),
-    inLanguage: "en",
+    inLanguage,
     author: { "@type": "Person", name: AUTHOR_NAME, url: SITE_URL },
     publisher: {
       "@type": "Organization",

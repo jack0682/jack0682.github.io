@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "./Container";
 import { CollaborationCTA } from "./CollaborationCTA";
-import { papers, allNotes, journalEntries, onnAllDocs } from "@/lib/content";
+import { papers, allNotes, journalEntries, onnAllDocs, ulrAllDocs } from "@/lib/content";
 import { IDENTITY_LINKS } from "@/lib/identity";
 
 const cols = [
@@ -9,11 +9,12 @@ const cols = [
     heading: "Research",
     links: [
       { href: "/research/", label: "Programme overview" },
-      { href: "/scc/", label: "SCC programme" },
-      { href: "/onn/", label: "ONN programme" },
+      { href: "/ulr/", label: "ULR · Main research" },
       { href: "/research/theory/", label: "Mathematical theory" },
       { href: "/research/control/", label: "Delay-robust control" },
       { href: "/research/robotics/", label: "Robotics applications" },
+      { href: "/scc/", label: "SCC · Historical archive" },
+      { href: "/onn/", label: "ONN · Historical archive" },
     ],
   },
   {
@@ -45,7 +46,7 @@ export function Footer() {
   // Build-time counts so the footer reads as a living status line.
   const stats = [
     { label: "papers", n: papers.length },
-    { label: "notes", n: allNotes.length + onnAllDocs.length },
+    { label: "documents", n: allNotes.length + onnAllDocs.length + ulrAllDocs.length },
     { label: "journal", n: journalEntries.length },
   ];
 

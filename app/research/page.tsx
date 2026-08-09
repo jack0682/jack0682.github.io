@@ -4,13 +4,20 @@ import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CollaborationCTA } from "@/components/layout/CollaborationCTA";
 import { researchTracks } from "@/lib/content";
-import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
+import { ONN_STATUS, SCC_STATUS, ULR_STATUS } from "@/lib/research-status";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research/" },
   title: "Research",
   description:
-    "Research threads on Ontology Neural Networks, perception theory, mathematical foundations, delay-robust control, and robotics.",
+    "ULR is the current main research programme, alongside archived SCC and ONN records, mathematical foundations, control, and robotics.",
+  openGraph: {
+    title: "Research",
+    description: "ULR is the current main research programme, alongside archived SCC and ONN records, mathematical foundations, control, and robotics.",
+    url: "/research/",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh · Research" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og-default.png"] },
 };
 
 export default function ResearchPage() {
@@ -19,28 +26,28 @@ export default function ResearchPage() {
       <PageHeader
         mark="∮"
         eyebrow="Research"
-        title="Threads in progress."
-        lead="A small number of long-running research threads, each building on a shared foundation: that perception, representation, and control are best understood as one continuous mathematical object."
+        title="Programmes, evidence, and archives."
+        lead="A small number of long-running research threads, organized around typed questions of sharing, identity, observer-relative role, formation, and embodied testing — without assuming in advance that one universal object unifies them."
       />
 
       <Link
-        href="/notes/part-0/integrated-architecture/"
+        href="/ulr/current-status/"
         className="group -mt-2 mb-14 flex max-w-[44rem] items-start gap-4 border-l-2 border-[var(--color-accent)] py-3 pl-5 transition-colors hover:bg-[var(--color-surface)]/40"
       >
         <span className="mt-[3px] font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
           North star
         </span>
         <span className="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
-          The long-term target is a coherent architecture from perception to
-          control. Today SCC is{" "}
+          The current main programme is ULR, marked{" "}
           <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-            {SCC_STATUS.label.toLowerCase()}
+            {ULR_STATUS.label.toLowerCase()}
           </span>
-          , while the original ONN coupling is{" "}
+          . Its Canon 24 result is a disciplined negative ontology verdict,
+          while SCC is {SCC_STATUS.label.toLowerCase()} and ONN is{" "}
           <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
             {ONN_STATUS.label.toLowerCase()}
           </span>
-          . Read the integration plan with its audit markings →
+          . Read the canonical boundary, evidence hierarchy, and reopening gate →
         </span>
       </Link>
 

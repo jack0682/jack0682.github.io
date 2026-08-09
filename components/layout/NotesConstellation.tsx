@@ -47,7 +47,7 @@ const KIND_LABEL: Record<string, string> = {
 };
 
 const partTitles: Record<number, string> = {
-  0: "Part 0 · SCC",
+  0: "Part 0 · SCC archive",
   1: "Part I · Foundations",
   2: "Part II · Theorems",
   3: "Part III · Cohomology",

@@ -96,7 +96,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
 
   // Available kind filters, in a stable order.
   const kinds = useMemo(() => {
-    const order: SearchItem["kind"][] = ["note", "paper", "journal", "track"];
+    const order: SearchItem["kind"][] = ["ulr", "note", "paper", "journal", "track"];
     const present = new Set(items.map((i) => i.kind));
     return order.filter((k) => present.has(k));
   }, [items]);
@@ -110,7 +110,10 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
       bucket.push(it);
       map.set(it.group, bucket);
     }
-    return [...map.entries()].sort(([a], [b]) => a.localeCompare(b));
+    return [...map.entries()].sort(([groupA, entriesA], [groupB, entriesB]) => {
+      const rankDelta = browseGroupRank(groupA, entriesA) - browseGroupRank(groupB, entriesB);
+      return rankDelta || groupA.localeCompare(groupB);
+    });
   }, [items, kind]);
 
   // Ranked search view (non-empty query). MiniSearch returns best-first.
@@ -191,7 +194,7 @@ export function CommandPalette({ items }: { items: SearchItem[] }) {
                   autoFocus
                   value={query}
                   onValueChange={setQuery}
-                  placeholder="Search notes, papers, journal, body text…"
+                  placeholder="Search research docs, notes, papers, journal…"
                   className={cn(
                     "flex-1 bg-transparent text-base outline-none",
                     "placeholder:text-[var(--color-subtle)]",
@@ -332,6 +335,19 @@ type SearchRuntime = {
 
 type SearchStatus = "idle" | "loading" | "ready" | "error";
 
+const BROWSE_KIND_RANK: Record<SearchItem["kind"], number> = {
+  ulr: 0,
+  track: 1,
+  paper: 2,
+  journal: 3,
+  note: 4,
+};
+
+function browseGroupRank(group: string, entries: SearchItem[]) {
+  const base = Math.min(...entries.map((entry) => BROWSE_KIND_RANK[entry.kind]));
+  return /archive|historical/i.test(group) ? 100 + base : base;
+}
+
 let searchRuntimePromise: Promise<SearchRuntime> | null = null;
 
 /** Load and build the full-text runtime only after the first palette open.
@@ -412,6 +428,8 @@ function ItemRow({
     <Command.Item
       value={item.id}
       onSelect={onSelect}
+      lang={item.kind === "ulr" ? "ko" : undefined}
+      data-track={item.kind === "ulr" ? "ulr" : undefined}
       className={cn(
         "group flex cursor-pointer flex-col gap-0.5 rounded-[2px] px-3 py-2.5",
         "data-[selected=true]:bg-[var(--color-rule)]/50",
@@ -434,6 +452,7 @@ function ItemRow({
 }
 
 const KIND_TAB_LABEL: Record<SearchItem["kind"], string> = {
+  ulr: "ULR",
   note: "Notes",
   paper: "Papers",
   journal: "Journal",
@@ -441,7 +460,7 @@ const KIND_TAB_LABEL: Record<SearchItem["kind"], string> = {
 };
 
 function KindBadge({ kind }: { kind: SearchItem["kind"] }) {
-  const label = { note: "note", paper: "paper", journal: "journal", track: "track" }[kind];
+  const label = { ulr: "ULR", note: "note", paper: "paper", journal: "journal", track: "track" }[kind];
   return (
     <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--color-accent)]">
       {label}

@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: paper.title,
       description,
+      url: paper.permalink,
       type: "article",
       authors: paper.authors,
       images: [{ url: ogImage, width: 1200, height: 630, alt: paper.title }],

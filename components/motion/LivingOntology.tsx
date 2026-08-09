@@ -5,7 +5,7 @@
    kept in a ref (not state) so the animation loop doesn't recreate it. */
 
 /**
- * LivingOntology — a self-organising relation field.
+ * LivingOntology — a typed organization hypothesis field.
  *
  * A small ecosystem of nodes and edges. Forces keep it laid out;
  * a scheduler periodically spawns new nodes, binds them to the
@@ -645,7 +645,7 @@ export function LivingOntology({ className, seed = 7 }: Props) {
           className="block h-auto w-full select-none"
         >
           <title id="living-ontology-title">
-            Self-organising ontology graph, in evolution
+            Typed organization hypotheses forming, separating, and dissolving
           </title>
 
           {/* subtle dot-grid backdrop */}
@@ -721,7 +721,7 @@ export function LivingOntology({ className, seed = 7 }: Props) {
           <button
             type="button"
             onClick={() => setPaused((v) => !v)}
-            aria-label={paused ? "Resume ontology graph" : "Pause ontology graph"}
+            aria-label={paused ? "Resume organization graph" : "Pause organization graph"}
             className="liquid-glass absolute bottom-2 right-2 inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent)]"
           >
             {paused ? (
@@ -737,10 +737,10 @@ export function LivingOntology({ className, seed = 7 }: Props) {
       <figcaption className="mt-2 flex items-baseline justify-end gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-subtle)]">
         <span>fig. ·</span>
         <TeX
-          expr="\mathcal{R}"
+          expr="\\mathcal{B}\subsetneq\prod_q Y_q"
           className="[&_.katex]:text-[11px] [&_.katex]:text-[var(--color-accent)] [&_.katex]:opacity-80"
         />
-        <span>, in evolution</span>
+        <span>, hypotheses under test</span>
       </figcaption>
     </figure>
   );

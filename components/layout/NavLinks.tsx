@@ -35,6 +35,8 @@ function isSectionActive(href: (typeof NAV)[number]["href"], pathname: string) {
       return (
         pathname === "/research" ||
         pathname.startsWith("/research/") ||
+        pathname === "/ulr" ||
+        pathname.startsWith("/ulr/") ||
         pathname === "/scc" ||
         pathname.startsWith("/scc/") ||
         pathname === "/onn" ||

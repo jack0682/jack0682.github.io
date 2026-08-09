@@ -5,6 +5,7 @@ import {
   research as _research,
   notes as _notes,
   onnDocs as _onnDocs,
+  ulrDocs as _ulrDocs,
 } from "#content";
 import idIndexJson from "../.velite/id-index.json";
 import glossaryJson from "../.velite/glossary.json";
@@ -48,9 +49,20 @@ export const posts = published(_posts).sort((a, b) =>
   byDateDesc(a, b),
 );
 
+const researchRoleRank = (track: (typeof _research)[number]) =>
+  track.role === "main" ? 0 : track.status === "archived" ? 2 : 1;
+
 export const researchTracks = [..._research].sort(
-  (a, b) => a.ordinal - b.ordinal,
+  (a, b) => researchRoleRank(a) - researchRoleRank(b) || a.ordinal - b.ordinal,
 );
+
+const mainResearchTracks = researchTracks.filter((track) => track.role === "main");
+if (mainResearchTracks.length !== 1) {
+  throw new Error(
+    `[lib/content] Expected exactly one main research track, found ${mainResearchTracks.length}.`,
+  );
+}
+export const mainResearchTrack = mainResearchTracks[0];
 
 export const notesByPart = (() => {
   const map = new Map<number, typeof _notes>();
@@ -76,9 +88,9 @@ export type PartMeta = { title: string; short: string; lead: string };
  */
 export const PART_META: Record<number, PartMeta> = {
   0: {
-    title: "Part 0 · Soft Cognitive Cohesion",
-    short: "Part 0 · SCC",
-    lead: "The canonical specification, research status, integrated architecture, and foundational claims of the SCC programme.",
+    title: "Part 0 · Soft Cognitive Cohesion — Historical Archive",
+    short: "Part 0 · SCC archive",
+    lead: "The sealed canonical specification, final status, former integration target, and foundational claims of the historical SCC programme.",
   },
   1: {
     title: "Part I · Foundations of RelationWorld",
@@ -129,14 +141,26 @@ export const onnAllDocs = published(_onnDocs).sort(
     (a.chapter ?? 0) - (b.chapter ?? 0) || a.slug.localeCompare(b.slug),
 );
 
+export const ulrAllDocs = published(_ulrDocs).sort(
+  (a, b) => a.order - b.order || a.slug.localeCompare(b.slug),
+);
+
 /** Recent items across journal + posts for the homepage feed. */
 export const recentWriting = [
+  ...ulrAllDocs.map((d) => ({
+    kind: "ulr" as const,
+    title: d.title,
+    date: d.updated ?? d.date,
+    permalink: d.permalink,
+    summary: d.summary ?? d.description,
+  })),
   ...journalEntries.map((e) => ({
     kind: "journal" as const,
     title: e.title,
     date: e.date,
     permalink: e.permalink,
     summary: e.summary,
+    track: e.track,
   })),
   ...posts.map((p) => ({
     kind: "post" as const,
@@ -158,7 +182,7 @@ export type SearchItem = {
    *  the suffix after `:` to look up body text from its own bundled
    *  body-index.json. */
   id: string;
-  kind: "note" | "paper" | "journal" | "track";
+  kind: "ulr" | "note" | "paper" | "journal" | "track";
   title: string;
   summary?: string;
   permalink: string;
@@ -182,8 +206,8 @@ export const searchIndex: SearchItem[] = [
     title: n.title,
     summary: n.summary,
     permalink: n.permalink,
-    group: `Part ${n.part}${n.section ? ` · ${n.section}` : ""}`,
-    keywords: [...n.tags, n.kind ?? "", n.track ?? ""].filter(Boolean),
+    group: n.part === 0 ? "Part 0 · SCC archive" : `Part ${n.part}${n.section ? ` · ${n.section}` : ""}`,
+    keywords: [...n.tags, n.kind ?? "", n.track ?? "", ...(n.part === 0 ? ["historical", "archive"] : [])].filter(Boolean),
     slug: n.slug,
   })),
   ...onnAllDocs.map((d) => ({
@@ -192,8 +216,18 @@ export const searchIndex: SearchItem[] = [
     title: d.title,
     summary: d.summary,
     permalink: d.permalink,
-    group: `ONN${d.section ? ` · ${d.section}` : ""}`,
-    keywords: [...d.tags, d.kind ?? "", "onn"].filter(Boolean),
+    group: `ONN · archive${d.section ? ` · ${d.section}` : ""}`,
+    keywords: [...d.tags, d.kind ?? "", "onn", "historical", "archive"].filter(Boolean),
+    slug: d.slug,
+  })),
+  ...ulrAllDocs.map((d) => ({
+    id: `ulr:${d.slug}`,
+    kind: "ulr" as const,
+    title: d.title,
+    summary: d.summary ?? d.description,
+    permalink: d.permalink,
+    group: `ULR · ${d.section ?? d.kind}`,
+    keywords: [...d.tags, d.kind, d.status, d.canon ?? "", "ulr"].filter(Boolean),
     slug: d.slug,
   })),
   ...papers.map((p) => ({
@@ -212,8 +246,8 @@ export const searchIndex: SearchItem[] = [
     title: e.title,
     summary: e.summary,
     permalink: e.permalink,
-    group: `Journal · ${e.date.slice(0, 7)}`,
-    keywords: [...e.tags, e.track ?? ""].filter(Boolean),
+    group: `Journal · ${e.date.slice(0, 7)}${e.track === "perception" ? " · SCC archive" : e.track === "onn" ? " · ONN archive" : ""}`,
+    keywords: [...e.tags, e.track ?? "", ...(["perception", "onn"].includes(e.track ?? "") ? ["historical", "archive"] : [])].filter(Boolean),
     slug: e.slug,
   })),
   ...researchTracks.map((t) => ({
@@ -250,6 +284,7 @@ export const searchIndex: SearchItem[] = [
   };
   for (const n of allNotes) register("notes", n.slug);
   for (const d of onnAllDocs) register("onnDocs", d.slug);
+  for (const d of ulrAllDocs) register("ulrDocs", d.slug);
 }
 
 /** Notes belonging to a given part (already sorted). */
@@ -294,7 +329,7 @@ export type InboundEdge = {
   /** Source slug (the doc that names the target). */
   from: string;
   /** Source collection — drives the badge label in the rail. */
-  collection: "notes" | "onn" | "papers" | "journal";
+  collection: "notes" | "onn" | "ulr" | "papers" | "journal";
   /** Source title for display. */
   title: string;
   /** Source permalink. */
@@ -327,6 +362,16 @@ export const inboundIndex: Map<string, InboundEdge[]> = (() => {
         collection: "onn",
         title: d.title,
         permalink: d.permalink,
+      });
+  }
+  for (const d of ulrAllDocs) {
+    for (const t of d.related)
+      push(t, {
+        from: d.slug,
+        collection: "ulr",
+        title: d.title,
+        permalink: d.permalink,
+        date: d.date,
       });
   }
   for (const p of papers) {
@@ -414,7 +459,7 @@ export type ChangelogEntry = {
 };
 
 export const sccChangelog: ChangelogEntry[] = journalEntries
-  .filter((e) => Boolean(e.canonicalVersion))
+  .filter((e) => e.track === "perception" && Boolean(e.canonicalVersion))
   .map((e) => ({
     version: e.canonicalVersion!,
     impact: e.canonicalImpact,
@@ -450,7 +495,9 @@ export const sccHub = (() => {
     return bDate.localeCompare(aDate);
   });
   const overview = part0.filter((n) => n.kind === "overview");
-  const theorems = allNotes.filter((n) => n.kind === "theorem");
+  const theorems = allNotes.filter(
+    (n) => n.kind === "theorem" && (n.part === 0 || n.track === "perception"),
+  );
 
   const relatedPapers = papers.filter(
     (p) =>
@@ -502,13 +549,41 @@ export const onnHub = (() => {
 })();
 
 /* ──────────────────────────────────────────────────────────────
+   ULR hub — the current main programme, ordered as an evidence map.
+   Canonical and noncanonical layers remain visibly separate.
+   ────────────────────────────────────────────────────────────── */
+export const ulrHub = (() => {
+  const byKind = (kind: (typeof ulrAllDocs)[number]["kind"]) =>
+    ulrAllDocs.filter((doc) => doc.kind === kind);
+  return {
+    status: byKind("status"),
+    motivation: byKind("motivation"),
+    migration: byKind("migration"),
+    canonical: byKind("canonical"),
+    history: byKind("canon-history"),
+    mathematics: [
+      ...byKind("mathematical-flow"),
+      ...byKind("theorem"),
+      ...byKind("proof"),
+    ],
+    evidence: [
+      ...byKind("experiment"),
+      ...byKind("result-ledger"),
+      ...byKind("registry"),
+    ],
+    frontier: byKind("frontier"),
+    openProblems: byKind("open-problems"),
+  };
+})();
+
+/* ──────────────────────────────────────────────────────────────
    Tag index.
    Collects every tag used across notes, papers, journal, and ONN
    docs into a sorted array of { tag, count, items }.
    ────────────────────────────────────────────────────────────── */
 
 export type TaggedItem = {
-  kind: "note" | "paper" | "journal" | "onn";
+  kind: "note" | "paper" | "journal" | "onn" | "ulr";
   title: string;
   permalink: string;
   date?: string;
@@ -577,6 +652,9 @@ export const tagIndex = (() => {
   for (const d of onnAllDocs) {
     for (const t of publicTags(d.tags)) push(t, { kind: "onn", title: d.title, permalink: d.permalink, summary: d.summary });
   }
+  for (const d of ulrAllDocs) {
+    for (const t of publicTags(d.tags)) push(t, { kind: "ulr", title: d.title, permalink: d.permalink, date: d.updated ?? d.date, summary: d.summary ?? d.description });
+  }
 
   return [...map.entries()]
     .map(([tag, items]) => ({ tag, count: items.length, items }))
@@ -603,7 +681,7 @@ export type IdOccurrence = {
   slug: string;
   title: string;
   permalink: string;
-  collection: "notes" | "onn" | "papers" | "journal";
+  collection: "notes" | "onn" | "ulr" | "papers" | "journal";
   snippet: string;
 };
 
@@ -659,7 +737,7 @@ export type Equation = {
   /** Source doc permalink. */
   permalink: string;
   /** Source collection — drives grouping in the index page. */
-  collection: "notes" | "onn" | "papers" | "journal";
+  collection: "notes" | "onn" | "ulr" | "papers" | "journal";
 };
 
 export const equations = equationsJson as Equation[];

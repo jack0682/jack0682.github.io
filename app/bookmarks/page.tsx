@@ -13,6 +13,7 @@ const bookmarkIndex = (searchMetaJson as SearchItem[]).filter(
 );
 
 type Resolved = {
+  kind: SearchItem["kind"];
   slug: string;
   title: string;
   permalink: string;
@@ -23,7 +24,7 @@ type Resolved = {
 /**
  * Personal reading list. Lists every slug currently in the reader's
  * `bookmarks` localStorage entry, resolved against the live content
- * collections (notes / onn / papers). Hidden from anyone who hasn't
+ * collections (ULR research docs / notes / ONN / papers). Hidden from anyone who hasn't
  * bookmarked anything — first-time visitor sees an empty-state hint.
  */
 export default function BookmarksPage() {
@@ -33,7 +34,8 @@ export default function BookmarksPage() {
     .map((slug): Resolved | null => {
       const item = bookmarkIndex.find((candidate) => candidate.slug === slug);
       return item
-        ? {
+          ? {
+            kind: item.kind,
             slug,
             title: item.title,
             permalink: item.permalink,
@@ -53,14 +55,14 @@ export default function BookmarksPage() {
         mark="★"
         eyebrow="Bookmarks"
         title="Your reading list."
-        lead="Pages you've starred while reading. Stored locally in this browser only — no account, no sync. Click the bookmark icon on any note to add or remove."
+        lead="Pages you've starred while reading. Stored locally in this browser only — no account, no sync. Click the bookmark icon on any research document or note to add or remove."
         className="pt-0 md:pt-0"
       />
 
       {bookmarks.length === 0 ? (
         <p className="text-[var(--color-muted)]">
           No bookmarks yet. The bookmark toggle sits at the top-right corner
-          of every note.
+          of every research document and note.
         </p>
       ) : (
         <ul className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
@@ -74,7 +76,11 @@ export default function BookmarksPage() {
               >
                 remove
               </button>
-              <div className="flex-1">
+              <div
+                className="flex-1"
+                lang={item.kind === "ulr" ? "ko" : undefined}
+                data-track={item.kind === "ulr" ? "ulr" : undefined}
+              >
                 <Link
                   href={item.permalink}
                   className="block text-base leading-snug text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)] sm:text-lg"

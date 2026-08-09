@@ -12,6 +12,8 @@ import { Prose } from "@/components/mdx/Prose";
 import { MDXContent } from "@/components/mdx/MDXContent";
 import { allNotes, crossRefsFor, prevNextInPart } from "@/lib/content";
 import { RelatedDocs } from "@/components/layout/RelatedDocs";
+import { ResearchStatusBanner } from "@/components/research/ResearchStatusBanner";
+import { SCC_STATUS } from "@/lib/research-status";
 import { articleSchema, jsonLdScript } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -37,13 +39,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = allNotes.find((n) => n.part === partNum && n.slug === slug);
   if (!note) return {};
   const ogImage = `/og/notes/${note.slug}.png`;
+  const description = note.part === 0
+    ? `Historical SCC archive — ${note.summary ?? note.title}`
+    : note.summary;
   return {
     title: note.title,
-    description: note.summary,
+    description,
     alternates: { canonical: `/notes/part-${note.part}/${note.slug}/` },
     openGraph: {
       title: note.title,
-      description: note.summary,
+      description,
+      url: note.permalink,
       images: [{ url: ogImage, width: 1200, height: 630, alt: note.title }],
     },
     twitter: { card: "summary_large_image", images: [ogImage] },
@@ -58,10 +64,13 @@ export default async function NotePage({ params }: Props) {
   if (!note) notFound();
 
   const isSccPart0 = note.part === 0;
+  const description = isSccPart0
+    ? `Historical SCC archive — ${note.summary ?? note.title}`
+    : note.summary;
   const crumbs = [
     { href: "/notes/", label: "Notes" },
     isSccPart0
-      ? { href: "/scc/", label: `Part ${note.part} · SCC` }
+      ? { href: "/scc/", label: `Part ${note.part} · SCC archive` }
       : { href: `/notes/part-${note.part}/`, label: `Part ${note.part}` },
     { label: note.section ?? note.title },
   ];
@@ -86,7 +95,7 @@ export default async function NotePage({ params }: Props) {
               articleSchema({
                 title: note.title,
                 permalink: note.permalink,
-                description: note.summary,
+                description,
                 ogImage: `/og/notes/${note.slug}.png`,
                 datePublished: note.date,
                 dateModified: note.updated,
@@ -120,6 +129,10 @@ export default async function NotePage({ params }: Props) {
             tags={note.tags}
           />
         </header>
+
+        {isSccPart0 && (
+          <ResearchStatusBanner status={SCC_STATUS} className="mb-10" />
+        )}
 
         <Prose essay className="border-t border-[var(--color-rule)] pt-10">
           <MDXContent code={note.body} />

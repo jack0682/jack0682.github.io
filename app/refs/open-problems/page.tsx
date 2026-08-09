@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/refs/open-problems/" },
   title: "Open problems index",
   description:
-    "Every OP-XXXX open-problem ID extracted from the SCC and ONN notes — sorted, deduplicated, linked to the first document that registers the problem.",
+    "Every OP-XXXX open-problem ID extracted across ULR, SCC, ONN, papers, and notes — sorted, deduplicated, and linked to its sources.",
 };
 
 export default function OpenProblemsIndexPage() {
@@ -32,6 +32,12 @@ export default function OpenProblemsIndexPage() {
         lead={`${items.length} unique OP-XXXX IDs surfaced across the notes. Each row links to the document that registers or last discusses the problem.`}
         className="pt-0 md:pt-0"
       />
+
+      <aside className="mb-10 border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-5 py-4 text-sm leading-relaxed text-[var(--color-muted)]">
+        This index preserves historical as well as active problem IDs. An ID
+        appearing here does not mean the problem remains open in the current
+        Main programme; its linked source owns the latest scope and disposition.
+      </aside>
 
       {items.length === 0 ? (
         <p className="text-[var(--color-muted)]">No open problems registered.</p>

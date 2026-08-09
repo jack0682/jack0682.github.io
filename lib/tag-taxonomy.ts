@@ -33,7 +33,7 @@ export const TAG_CATEGORY_META: Record<TagCategory, TagCategoryMeta> = {
     shortLabel: "Programme",
     mark: "∮",
     description:
-      "The main research programmes and disciplinary fields that organise the work.",
+      "Current and historical research programmes, plus the disciplinary fields that organise the work.",
   },
   topic: {
     label: "Concepts & methods",
@@ -66,6 +66,7 @@ export const TAG_CATEGORY_META: Record<TagCategory, TagCategoryMeta> = {
 };
 
 const TRACK_TAGS = new Set([
+  "ulr",
   "scc",
   "onn",
   "ortsf",
@@ -142,6 +143,10 @@ const ARCHIVE_TAGS = new Set([
  * ranking of importance or a list of every active project.
  */
 export const CORE_TAGS = [
+  "ulr",
+  "representation",
+  "identifiability",
+  "observer-relative",
   "scc",
   "onn",
   "perception",

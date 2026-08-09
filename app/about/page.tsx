@@ -6,8 +6,8 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Logo } from "@/components/media/Logo";
 import { papers } from "@/lib/content";
 import { IDENTITY_LINKS, EMAIL } from "@/lib/identity";
-import { paperStatusLabel } from "@/lib/publication-status";
-import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
+import { paperClaimLabel, paperStatusLabel } from "@/lib/publication-status";
+import { ONN_STATUS, SCC_STATUS, ULR_STATUS } from "@/lib/research-status";
 
 /** Uniform render height for every affiliation logo. */
 const LOGO_H = 26;
@@ -17,6 +17,13 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "About Jaehong Oh — robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
+  openGraph: {
+    title: "About Jaehong Oh",
+    description: "About Jaehong Oh — robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
+    url: "/about/",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh · Research" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og-default.png"] },
 };
 
 function TimelineItem({
@@ -133,34 +140,35 @@ export default function AboutPage() {
           What I&apos;m working on
         </p>
         <p className="text-lg leading-relaxed text-[var(--color-ink)]/90">
-          The long-term question is whether perception, representation, and
-          control can share one coherent{" "}
+          The current main programme is{" "}
           <Link
-            href="/notes/part-0/integrated-architecture/"
+            href="/ulr/"
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
-            cognitive-reasoning architecture
+            Unified Latent Representation (ULR)
           </Link>{" "}
-          without hiding where a proposed coupling fails. Soft Cognitive
-          Cohesion is the current primary line —{" "}
+          : a test of what learned systems share, what makes a representation
+          identical, how learning differs from inference for an observer, and
+          when organization forms. Its current result is deliberately negative —{" "}
           <Link
-            href={SCC_STATUS.statusHref ?? "/scc/"}
+            href={ULR_STATUS.statusHref ?? "/ulr/"}
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
-            {SCC_STATUS.label}
+            {ULR_STATUS.version ?? ULR_STATUS.label}
           </Link>{" "}
-          — while the original ONN + ORTSF programme is now{" "}
+          records no additional neural-specific ontology in the present
+          registry. SCC is preserved as {SCC_STATUS.label.toLowerCase()}, while
+          the original ONN + ORTSF programme is{" "}
           <Link
             href={ONN_STATUS.statusHref ?? "/onn/"}
             className="text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-[3px] transition hover:decoration-[var(--color-accent)]"
           >
             {ONN_STATUS.label.toLowerCase()}
           </Link>
-          . Its strong higher-order thesis did not survive audit; the scoped
+          . ONN&apos;s strong higher-order thesis did not survive audit; the scoped
           boundary, modest surviving signal, and scoped scalar stability
           result remain public, while system-level certification is still
-          open. Active development has moved to{" "}
-          {ONN_STATUS.successorTitle ?? "a successor line"}.
+          open. These failures and surviving boundaries feed the ULR programme.
           {onnPaper && (
             <>
               {" "}The original framing remains the{" "}
@@ -265,6 +273,9 @@ export default function AboutPage() {
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-accent)]">
                 {onnPaper ? paperStatusLabel(onnPaper.status) : "Published"} ·{" "}
                 <em>Int. J. Topol.</em> · 2026
+                {onnPaper?.claimStatus && onnPaper.claimStatus !== "current"
+                  ? ` · ${paperClaimLabel(onnPaper.claimStatus)}`
+                  : ""}
               </p>
               <p className="mt-1.5 font-display text-lg leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
                 Ontology Neural Network and ORTSF: A Framework for

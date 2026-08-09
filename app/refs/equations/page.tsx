@@ -10,15 +10,24 @@ export const metadata: Metadata = {
   alternates: { canonical: "/refs/equations/" },
   title: "Equation index",
   description:
-    "Every formal equation across the SCC, ONN, and ONN papers — extracted from `<Equation>` JSX blocks and `$$ ... $$` display math, indexed by source document. Click a source to see all of its equations with surrounding prose.",
+    "Every formal equation across ULR, SCC, ONN, papers, and notes — extracted from formal display blocks and indexed by source document.",
 };
 
 const collectionLabel: Record<string, string> = {
   notes: "Notes",
   onn: "ONN",
+  ulr: "ULR",
   papers: "Papers",
   journal: "Journal",
 };
+
+function sourceLabel(group: { collection: string; permalink: string }) {
+  if (group.collection === "notes" && group.permalink.startsWith("/notes/part-0/")) {
+    return "SCC archive";
+  }
+  if (group.collection === "onn") return "ONN archive";
+  return collectionLabel[group.collection] ?? group.collection;
+}
 
 /**
  * Overview page — lists every source document that contains
@@ -67,7 +76,7 @@ export default function EquationsIndexPage() {
                       </span>{" "}
                       {group.items.length === 1 ? "equation" : "equations"}
                       <span className="ml-2 text-[var(--color-subtle)]">
-                        · {collectionLabel[group.collection] ?? group.collection}
+                        · {sourceLabel(group)}
                       </span>
                     </span>
                     <div className="flex-1 min-w-0">
