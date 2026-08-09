@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { paperClaimLabel, type ClaimStatus } from "@/lib/publication-status";
 
 type NoteRef = {
   slug: string;
@@ -14,6 +15,7 @@ type PaperRef = {
   permalink: string;
   year?: number;
   status?: string;
+  claimStatus?: ClaimStatus;
 };
 type JournalRef = {
   slug: string;
@@ -71,7 +73,15 @@ export function RelatedDocs({
             slug={p.slug}
             href={p.permalink}
             title={p.title}
-            meta={[p.status, p.year].filter(Boolean).join(" · ")}
+            meta={[
+              p.status,
+              p.year,
+              p.claimStatus && p.claimStatus !== "current"
+                ? paperClaimLabel(p.claimStatus)
+                : undefined,
+            ]
+              .filter(Boolean)
+              .join(" · ")}
           />
         ))}
       </Column>

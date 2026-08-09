@@ -56,6 +56,20 @@ const papers = defineCollection({
       status: s
         .enum(["published", "accepted", "submitted", "preprint", "in-progress"])
         .default("in-progress"),
+      /**
+       * Publication status and research-claim status are deliberately separate.
+       * A paper can remain the published paper of record while later audits
+       * partially supersede or withdraw some of its claims.
+       */
+      claimStatus: s
+        .enum(["current", "partially-superseded", "withdrawn", "historical"])
+        .default("current"),
+      /** Plain-language account of the latest audit outcome. */
+      auditSummary: s.string().max(800).optional(),
+      /** Date on which the claim-status decision was recorded. */
+      auditedAt: s.isodate().optional(),
+      /** Current audited status or canonical document. */
+      currentStatusHref: s.string().optional(),
       date: s.isodate(),
       updated: s.isodate().optional(),
       pdf: s.string().optional(),
@@ -133,6 +147,18 @@ const research = defineCollection({
       status: s
         .enum(["active", "paused", "archived"])
         .default("active"),
+      /** Concise public label shown consistently across hubs and cards. */
+      statusLabel: s.string().max(100).optional(),
+      /** Current, plain-language account of what is and is not established. */
+      statusSummary: s.string().max(640).optional(),
+      /** Canonical release identifier where the track uses versioning. */
+      currentVersion: s.string().max(40).optional(),
+      /** Authoritative public ledger for the current state. */
+      currentStatusHref: s.string().optional(),
+      /** Most recent formal audit date, when applicable. */
+      auditedAt: s.isodate().optional(),
+      /** Named successor when an audited programme has moved on. */
+      successorTitle: s.string().max(160).optional(),
       date: s.isodate().optional(),
       updated: s.isodate().optional(),
       body: s.mdx(),

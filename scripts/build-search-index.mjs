@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /**
- * Build two derived indexes from raw MDX content:
+ * Build derived indexes from raw MDX and Velite's generated metadata:
  *
- * 1. `.velite/body-index.json` — slug → stripped body text. Powers
+ * 1. `.velite/search-meta.json` — compact, body-free metadata used by
+ *    global navigation/search chrome without importing `#content`.
+ * 2. `.velite/body-index.json` — search item ID → stripped body text. Powers
  *    full-text search in the global ⌘K palette via MiniSearch.
- * 2. `.velite/id-index.json` — categorised list of formal IDs
+ * 3. `.velite/id-index.json` — categorised list of formal IDs
  *    (theorems, open problems, definitions, structures, axioms,
  *    claims) with the docs they appear in. Powers the
  *    `/index/theorems/` and `/index/open-problems/` jump-index pages.
@@ -116,7 +118,15 @@ function snippetAround(body, idx, idLen) {
 const collections = ["notes", "onn", "papers", "journal"];
 const MAX_PER_DOC = 12000;
 
-/** body-index.json: slug → stripped body */
+/** Prefixes mirror the stable IDs in search-meta.json. */
+const SEARCH_KIND_BY_COLLECTION = {
+  notes: "note",
+  onn: "onn",
+  papers: "paper",
+  journal: "journal",
+};
+
+/** body-index.json: search item ID → stripped body */
 const bodyIndex = {};
 /** id-index.json: kind → id → [{ slug, permalink, snippet }] */
 const idIndex = Object.fromEntries(ID_PATTERNS.map((p) => [p.kind, {}]));
@@ -140,7 +150,8 @@ for (const c of collections) {
     }
 
     const stripped = stripBody(body);
-    bodyIndex[data.slug] = stripped.slice(0, MAX_PER_DOC);
+    const searchKind = SEARCH_KIND_BY_COLLECTION[c];
+    bodyIndex[`${searchKind}:${data.slug}`] = stripped.slice(0, MAX_PER_DOC);
 
     // Permalink reconstruction matches `computeFields` in velite.config.ts.
     const collectionKey = c === "onn" ? "onn" : c;
@@ -367,11 +378,104 @@ function extractGlossary() {
 const glossary = extractGlossary();
 const equations = extractEquations();
 
+/* ── compact search metadata ──────────────────────────────────
+   Read Velite's generated collections only at build time, then project
+   them down to the small fields required by CommandPalette/FloatingChip.
+   Importing this standalone JSON from app/layout.tsx avoids pulling the
+   multi-megabyte compiled MDX collections into the root client graph. */
+
+function loadVeliteCollection(name) {
+  const file = resolve(root, `.velite/${name}.json`);
+  return JSON.parse(readFileSync(file, "utf8"));
+}
+
+const isPublished = (item) => !item.draft;
+const byDateDesc = (a, b) =>
+  Date.parse(b.date) - Date.parse(a.date) || String(b.date).localeCompare(String(a.date));
+const compact = (values) => values.filter(Boolean);
+
+function buildSearchMeta() {
+  const notes = loadVeliteCollection("notes").filter(isPublished);
+  const onnDocs = loadVeliteCollection("onnDocs")
+    .filter(isPublished)
+    .sort(
+      (a, b) =>
+        (a.chapter ?? 0) - (b.chapter ?? 0) || a.slug.localeCompare(b.slug),
+    );
+  const papers = loadVeliteCollection("papers").filter(isPublished).sort(byDateDesc);
+  const journal = loadVeliteCollection("journal").filter(isPublished).sort(byDateDesc);
+  const research = loadVeliteCollection("research").sort(
+    (a, b) => a.ordinal - b.ordinal,
+  );
+
+  return [
+    ...notes.map((note) => ({
+      id: `note:${note.slug}`,
+      kind: "note",
+      title: note.title,
+      summary: note.summary,
+      permalink: note.permalink,
+      group: `Part ${note.part}${note.section ? ` · ${note.section}` : ""}`,
+      keywords: compact([...(note.tags ?? []), note.kind, note.track]),
+      slug: note.slug,
+    })),
+    ...onnDocs.map((doc) => ({
+      id: `onn:${doc.slug}`,
+      kind: "note",
+      title: doc.title,
+      summary: doc.summary,
+      permalink: doc.permalink,
+      group: `ONN${doc.section ? ` · ${doc.section}` : ""}`,
+      keywords: compact([...(doc.tags ?? []), doc.kind, "onn"]),
+      slug: doc.slug,
+    })),
+    ...papers.map((paper) => ({
+      id: `paper:${paper.slug}`,
+      kind: "paper",
+      title: paper.title,
+      summary:
+        paper.claimStatus && paper.claimStatus !== "current"
+          ? (paper.auditSummary ?? paper.abstract)
+          : paper.abstract.slice(0, 160),
+      permalink: paper.permalink,
+      group: `Papers · ${paper.status}`,
+      keywords: compact([...(paper.tags ?? []), paper.track, paper.venue]),
+      slug: paper.slug,
+    })),
+    ...journal.map((entry) => ({
+      id: `journal:${entry.slug}`,
+      kind: "journal",
+      title: entry.title,
+      summary: entry.summary,
+      permalink: entry.permalink,
+      group: `Journal · ${String(entry.date).slice(0, 7)}`,
+      keywords: compact([...(entry.tags ?? []), entry.track]),
+      slug: entry.slug,
+    })),
+    ...research.map((track) => ({
+      id: `track:${track.slug}`,
+      kind: "track",
+      title: track.title,
+      summary: track.statusSummary ?? track.summary,
+      permalink: track.permalink,
+      group: track.statusLabel
+        ? `Research tracks · ${track.statusLabel}`
+        : "Research tracks",
+      keywords: [track.track],
+      slug: "",
+    })),
+  ];
+}
+
+const searchMeta = buildSearchMeta();
+
+const searchMetaOut = resolve(root, ".velite/search-meta.json");
 const bodyOut = resolve(root, ".velite/body-index.json");
 const idOut = resolve(root, ".velite/id-index.json");
 const glossaryOut = resolve(root, ".velite/glossary.json");
 const equationsOut = resolve(root, ".velite/equations.json");
 mkdirSync(dirname(bodyOut), { recursive: true });
+writeFileSync(searchMetaOut, JSON.stringify(searchMeta));
 writeFileSync(bodyOut, JSON.stringify(bodyIndex));
 writeFileSync(idOut, JSON.stringify(idIndex));
 writeFileSync(glossaryOut, JSON.stringify(glossary));
@@ -383,7 +487,9 @@ const idCounts = Object.entries(idIndex)
 console.log(
   `[search-index] indexed ${kept} docs · skipped ${skipped} · ${
     Object.values(bodyIndex).reduce((s, v) => s + v.length, 0)
-  } chars · ids: ${idCounts} (${totalIds} occurrences) · glossary: ${
+  } body chars · search metadata: ${searchMeta.length} entries / ${
+    Buffer.byteLength(JSON.stringify(searchMeta))
+  } bytes · ids: ${idCounts} (${totalIds} occurrences) · glossary: ${
     Object.keys(glossary).length
   } entries · equations: ${equations.length}`,
 );

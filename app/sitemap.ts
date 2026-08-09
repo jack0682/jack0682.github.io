@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1.0,
     },
-    ...["/about/", "/bio/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/scc/changelog/", "/onn/", "/refs/", "/refs/theorems/", "/refs/open-problems/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
+    ...["/start/", "/about/", "/bio/", "/notes/", "/papers/", "/journal/", "/research/", "/scc/", "/scc/changelog/", "/onn/", "/refs/", "/refs/theorems/", "/refs/open-problems/", "/refs/equations/", "/scc/dag/", "/bookmarks/"].map(
       (path) => ({
         url: `${BASE_URL}${path}`,
         changeFrequency: "monthly" as const,

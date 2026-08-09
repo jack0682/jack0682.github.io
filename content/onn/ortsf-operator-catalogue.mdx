@@ -3,7 +3,7 @@ title: "ORTSF Operator Catalogue"
 slug: ortsf-operator-catalogue
 kind: catalogue
 tags: [onn, ortsf, operators, delay-robust, control]
-summary: "The ORTSF (Ontological Real-Time Semantic Fabric) operators that turn an ONN reasoning trace into delay-robust control, with the honest, verified certificate: a proved delay margin and a sufficient small-gain condition. Standard control, no cohomological bounds."
+summary: "A historical ORTSF operator catalogue corrected to the current scope: a guarded model-level phase-margin path and a single-mode additive scalar condition. Coupled multimode and deployed-system stability remain open."
 updated: "2026-07-10"
 draft: true
 ---
@@ -15,11 +15,10 @@ published paper's **Ontological Real-Time Semantic Fabric**.*
 
 ## What ORTSF is
 
-**ORTSF** turns the ONN's typed reasoning trace into delay-robust control
-commands. Its verified content is a **standard control certificate** — a delay
-margin plus a small-gain condition — *not* a cohomological one. The stability
-is driven by the plant pole $p = \lambda_2 + \mu$, and is deliberately **not**
-coupled to the graph spectrum $\lambda_2$ or to any cohomology class.
+**ORTSF** was designed to turn an ONN reasoning trace into delay-aware control
+commands. The current source supports two narrower, model-specific artifacts:
+a phase-margin gate in a guarded pipeline and a single-mode additive scalar
+condition. Neither is a cohomological or deployed-system certificate.
 
 ## Operator family
 
@@ -31,9 +30,10 @@ coupled to the graph spectrum $\lambda_2$ or to any cohomology class.
 | **Guarded pipeline** | `GuardedORTSFPipeline` | Computes the delay margin from the plant spectrum and admits commands only while $\text{delay} < \Delta t_{\max}$; else falls back to a zero-velocity command. |
 | **Drift guard** | KL-divergence monitor (A3$'$) | Detects regime shifts that would invalidate the stationarity assumption. |
 
-## The verified certificate
+## The scoped control results
 
-**Delay margin (proved, enforced):**
+**Model-level phase-margin gate:** for the constructed linear plant and the
+integrating-controller model $C(s)=K/s$,
 
 $$
 \Delta t_{\max} = \frac{\varphi_{\mathrm{PM}}}{\omega_c}, \qquad
@@ -41,15 +41,22 @@ $$
 \quad p = \lambda_2 + \mu.
 $$
 
-**Small-gain (sufficient, conservative, delay-independent):** if
-$\rho_{\mathrm{ONN}}\cdot\gamma_{\mathrm{ortsf}} < 1$, the loop is stable for
-arbitrary delay. Full statement and scope on the
-[delay-margin certificate page](/onn/theorem-delay-robust-bound/).
+This threshold is implemented and tested in `GuardedORTSFPipeline`, which is not
+the default deployed control path.
+
+**Single-mode additive recurrence:** for
+$e_{t+1}=\rho e_t-K_c e_{t-d}$, the sufficient condition
+$\rho+|K_c|<1$ gives Schur stability for every integer delay $d\geq1$. It does
+not cover coupled modes, and $K_c$ is not mapped to the shipped multi-joint PD
+controller. Full statement and scope are on the
+[delay analysis page](/onn/theorem-delay-robust-bound/).
 
 ## Honest scope
 
-- **Systems completion, not novelty** — delay-robust control is standard; this
-  is a linearized-plant margin plus a conservative small-gain envelope.
+- **Systems completion, not novelty** — both are standard control arguments for
+  their stated models, not a general nonlinear closed-loop theorem.
+- **No coupled multimode or deployed-system certificate.** The actuation-operator
+  bound, physical gain mapping, and deployed-path validation remain open.
 - **No cohomological stability bounds.** The claim that cohomological invariants
   double as Lyapunov certificates is [withdrawn](/onn/theorem-cohomological-stability/).
 - **No `τ_max = 177 μs`, no `99.75%`.** These are not in the source and are removed.
@@ -58,6 +65,6 @@ arbitrary delay. Full statement and scope on the
 
 ## Open directions
 
-Global (non-conditional) stability; tightening the nonlinear small-gain
-`[GAP-NL]` (currently only sufficient); transfer of the margin to
-transformer-backbone variants.
+The coupled multimode bound through the actuation operator, mapping the abstract
+$K_c$ to the physical PD/interpolation law, and validating the guarded path in
+deployment.

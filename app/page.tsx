@@ -6,11 +6,13 @@ import { HeroChi } from "@/components/motion/HeroChi";
 import { LivingOntology } from "@/components/motion/LivingOntology";
 import { recentWriting, researchTracks, papers } from "@/lib/content";
 import { toIsoDate } from "@/lib/format";
+import { paperStatusLabel } from "@/lib/publication-status";
+import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
 
 export default function Home() {
   const recent = recentWriting.slice(0, 4);
-  const tracks = researchTracks.slice(0, 3);
-  const latestAccepted = papers.find((p) => p.status === "published" || p.status === "accepted");
+  const tracks = researchTracks.filter((track) => track.status === "active").slice(0, 3);
+  const onnPaper = papers.find((paper) => paper.slug === "onn-ortsf-2026");
 
   return (
     <Container width="wide">
@@ -59,8 +61,9 @@ export default function Home() {
               <span className="text-[var(--color-ink)]">
                 delay-robust embodied control
               </span>
-              . Building toward a unified cognitive-reasoning architecture for
-              autonomous systems.
+              . Testing the commitments needed for a future unified
+              cognitive-reasoning architecture, with negative results and
+              boundary conditions published alongside what survives.
             </p>,
             <div
               key="cta"
@@ -121,42 +124,37 @@ export default function Home() {
         <h2 className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Highlights
         </h2>
-        <p className="max-w-[44rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+        <p className="max-w-[48rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
           Current focus:{" "}
           <Link
-            href="/scc/"
+            href={SCC_STATUS.statusHref ?? "/scc/"}
             className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             Soft Cognitive Cohesion
           </Link>{" "}
-          — <span className="sci-data text-[var(--color-ink)]">68</span>{" "}
-          Category A theorems (98 total claims) and a canonical specification
-          at CV-1.17. The companion
-          architecture,{" "}
+          — <span className="text-[var(--color-ink)]">{SCC_STATUS.label}</span>.
+          The original{ " " }
           <Link
             href="/onn/"
             className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            Ontology Neural Networks
+            ONN + ORTSF programme
           </Link>
-          , was formalised in{" "}
-          {latestAccepted ? (
+          {" "}is now marked{ " " }
+          <span className="text-[var(--color-ink)]">{ONN_STATUS.label}</span> after
+          its strong higher-order claim was narrowed to a scoped boundary.
+          {onnPaper && (
+            <>
+              {" "}Its original framing remains available as the{ " " }
             <Link
-              href={latestAccepted.permalink}
+              href={onnPaper.permalink}
               className="border-b border-[var(--color-accent)]/40 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
             >
-              the {latestAccepted.year} paper
+                {paperStatusLabel(onnPaper.status).toLowerCase()} {onnPaper.year} paper
             </Link>
-          ) : (
-            <span className="text-[var(--color-ink)]">the 2026 paper</span>
-          )}
-          {latestAccepted?.venue && (
-            <>
-              , accepted at <em>{latestAccepted.venue}</em>
             </>
           )}
-          . Both threads converge on a single cognitive-reasoning architecture
-          for autonomous systems.
+          .
         </p>
       </section>
 
@@ -248,7 +246,7 @@ export default function Home() {
                 className="group block border-t border-[var(--color-rule)] pt-6"
               >
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-accent)]">
-                  {track.track}
+                  {track.statusLabel ?? track.status}
                 </p>
                 <h3 className="font-display mt-3 text-xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
                   {track.title}

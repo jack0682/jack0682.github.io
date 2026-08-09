@@ -234,7 +234,15 @@ const tplPaper = (p) => {
     preprint: "Preprint",
     "in-progress": "In progress",
   };
+  const claimMap = {
+    "partially-superseded": "Partially superseded",
+    withdrawn: "Claims withdrawn",
+    historical: "Historical record",
+  };
+  const claim = claimMap[p.claimStatus];
   const meta = `${statusMap[p.status] ?? "Paper"} · ${p.year}${
+    claim ? ` · ${claim}` : ""
+  }${
     p.venue ? ` · ${p.venue}` : ""
   }`;
   return card({
@@ -283,8 +291,8 @@ const tplResearch = (r) =>
   card({
     eyebrow: "Research",
     title: r.title,
-    subtitle: r.summary,
-    footer: r.track ? `Track · ${r.track}` : "Research programme",
+    subtitle: r.statusSummary ?? r.summary,
+    footer: r.statusLabel ?? (r.track ? `Track · ${r.track}` : "Research programme"),
   });
 
 /* ── render pipeline ────────────────────────────────────────── */

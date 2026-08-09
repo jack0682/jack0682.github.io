@@ -3,9 +3,8 @@ title: "ONN Research Status — 2026"
 slug: onn-research-status-2026
 kind: roadmap
 tags: [onn, status, roadmap]
-summary: "Current, audited status of the ONN / ORTSF programme: the central higher-order question resolved to a scoped No-Go boundary, one modest positive survived, ORTSF reduced to a standard control certificate, and the programme moved to ULR."
+summary: "Current, audited status of the ONN / ORTSF programme: the central higher-order question resolved to a scoped No-Go boundary, one modest positive survived, control results were narrowed to model-level certificates, and the programme moved to ULR."
 updated: "2026-07-10"
-draft: true
 ---
 
 *Rewritten 2026-07-10 against the authoritative record in `onn_ws/ONN`. An
@@ -36,10 +35,13 @@ framework. `onn_ws/ONN` is now archived; live work continues under **ULR**.
 2. **A modest, non-higher-order positive.** The *direction* of the measured
    curvature field carries signal beyond magnitude (E1b Q-weak $= +0.115/+0.120$
    AUROC, pass-fraction $1.0$; selection-corrected single-arm $\approx +0.08$–$0.10$).
-3. **An ORTSF control certificate (standard, scoped).** A proved and
-   runtime-enforced delay margin $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$
-   plus a sufficient small-gain ($\rho + K_c < 1$) delay-independent certificate.
-   "Systems completion, not novelty." See
+3. **ORTSF control results (standard, narrowly scoped).** For a constructed
+   linear plant with integrating-controller model, a phase-margin gate
+   $\Delta t_{\max} = \varphi_{\mathrm{PM}}/\omega_c$ is implemented and tested
+   in a guarded pipeline. Separately, the scalar single-mode recurrence
+   $e_{t+1}=\rho e_t-K_c e_{t-d}$ is stable for every integer delay when
+   $\rho+|K_c|<1$. Neither result establishes coupled multimode or deployed PD
+   controller stability; those mappings remain open. See
    [the certificate page](/onn/theorem-delay-robust-bound/).
 4. **Methodology finding.** A learner is neither necessary nor sufficient to judge
    an information / reconstructibility claim — decide analytically (false positive
@@ -52,7 +54,7 @@ framework. `onn_ws/ONN` is now archived; live work continues under **ULR**.
 - **"Topology preservation" as stated** (Betti preserved, a "CSR $\to 1.0$"
   metric): the real result is conditional *harmonic-subspace* preservation only
   (hard anchor); the soft-anchor version is refuted for $\dim H > 0$. See the
-  [audit](/onn/theorem-topology-preservation/).
+  [canonical audit](/onn/canonical-spec/#4-what-did-not-survive-audit).
 - A **cohomological Lyapunov certificate**: no such object exists. See the
   [audit](/onn/theorem-cohomological-stability/).
 - The **original paper's 7–8 grand theorems**: 0 of 8 survive as written.

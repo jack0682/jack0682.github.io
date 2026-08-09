@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { CollaborationCTA } from "@/components/layout/CollaborationCTA";
 import { researchTracks } from "@/lib/content";
+import { ONN_STATUS, SCC_STATUS } from "@/lib/research-status";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research/" },
@@ -29,11 +31,16 @@ export default function ResearchPage() {
           North star
         </span>
         <span className="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
-          All five threads below serve one ultimate target: a single{" "}
+          The long-term target is a coherent architecture from perception to
+          control. Today SCC is{" "}
           <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
-            cognitive-reasoning architecture unifying SCC and ONN
+            {SCC_STATUS.label.toLowerCase()}
           </span>
-          . Read the integration plan →
+          , while the original ONN coupling is{" "}
+          <span className="text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">
+            {ONN_STATUS.label.toLowerCase()}
+          </span>
+          . Read the integration plan with its audit markings →
         </span>
       </Link>
 
@@ -49,11 +56,16 @@ export default function ResearchPage() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="flex-1 min-w-0">
+                  {track.statusLabel ? (
+                    <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-accent)]">
+                      {track.statusLabel}
+                    </p>
+                  ) : null}
                   <h2 className="font-display text-2xl leading-tight tracking-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-3xl">
                     {track.title}
                   </h2>
                   <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)] sm:mt-3 sm:text-base">
-                    {track.summary}
+                    {track.statusSummary ?? track.summary}
                   </p>
                 </div>
                 <span
@@ -67,6 +79,8 @@ export default function ResearchPage() {
           </li>
         ))}
       </ul>
+
+      <CollaborationCTA context="research" />
     </Container>
   );
 }

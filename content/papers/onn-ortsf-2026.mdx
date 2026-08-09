@@ -6,7 +6,11 @@ venue: "International Journal of Topology (MDPI), 3(2), 9"
 year: 2026
 status: published
 date: 2026-05-12
-updated: 2026-05-12
+updated: 2026-07-10
+claimStatus: partially-superseded
+auditedAt: 2026-07-10
+auditSummary: "Paper of record for the original ONN + ORTSF framing. A later audit found that the higher-order/cohomological thesis adds no information beyond pairwise data under the stated observation contract. The implemented control result was narrowed to a single-mode additive scalar contraction condition (ρ + |K_c| < 1); coupled multimode and system-level certification remain open."
+currentStatusHref: "/onn/onn-research-status-2026/"
 pdf: "/papers/onn-ortsf-2026.pdf"
 doi: "https://doi.org/10.3390/ijt3020009"
 abstract: "The advancement of autonomous robotic systems has led to significant capabilities in perception, localization, mapping, and control, yet a critical challenge remains in representing and preserving relational semantics, contextual reasoning, and cognitive transparency essential for collaboration in dynamic, human-centric environments. This paper introduces a unified architecture comprising the Ontology Neural Network (ONN) and the Ontological Real-Time Semantic Fabric (ORTSF) to address this challenge. The ONN formalizes relational semantic reasoning as a dynamic topological process by embedding Forman–Ricci curvature, persistent homology, and semantic tensor structures within a unified loss formulation, aiming to maintain relational integrity as scenes evolve. Building upon ONN, the ORTSF transforms reasoning traces into actionable control commands while compensating for system delays through predictive operators designed to preserve phase margins. Theoretical analysis and extensive simulations demonstrate that ORTSF maintains designed phase margins, offering advantages over classical delay compensation methods. Empirical studies indicate the framework's effectiveness in unifying semantic cognition and robust control, providing a mathematically principled solution for cognitive robotics."
@@ -32,9 +36,10 @@ bibtex: |
 > ORTSF framing. Its central higher-order thesis was subsequently **audited to a
 > scoped No-Go / identifiability boundary** — measured higher-order /
 > cohomological structure adds no information beyond pairwise — and the strong
-> control claims reduce to a **standard delay-margin certificate** (the
-> microsecond bounds and cohomological-Lyapunov language are not regenerable
-> from the research code). See the current
+> control claims reduce to a **single-mode additive scalar contraction result**
+> ($\rho+|K_c|<1$). Coupled multimode and system-level certification remain open;
+> the microsecond bounds and cohomological-Lyapunov language are not regenerable
+> from the research code. See the current
 > [ONN status](/onn/onn-research-status-2026/) and
 > [canonical spec](/onn/canonical-spec/). The publication facts below are
 > unchanged.
@@ -56,10 +61,11 @@ representation space is itself a control-theoretic object** — that
 delay-robustness could be stated in terms of cohomological invariants of the
 learned ontology, with the **ORTSF** operators exploiting that structure.
 *Subsequent audit did not sustain this in its strong form* (see the update
-above): the delay margin is a standard plant-pole phase-margin result,
-decoupled from the ontology's cohomology.
+above): the implemented result is only the single-mode additive scalar condition
+$\rho+|K_c|<1$. It is decoupled from the ontology's cohomology and does not
+establish coupled multimode or system-level stability.
 
-## Contributions
+## Contributions as originally presented
 
 - **ONN architecture.** A neural model whose latent state inherits the
   type structure of a target ontology rather than being a flat vector.

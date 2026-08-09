@@ -566,20 +566,32 @@ export function LivingOntology({ className, seed = 7 }: Props) {
   const [, setTick] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mql.matches);
-    const onChange = () => setReducedMotion(mql.matches);
-    mql.addEventListener("change", onChange);
-    return () => mql.removeEventListener("change", onChange);
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const syncPreferences = () => {
+      setReducedMotion(motionQuery.matches);
+      setIsDesktop(desktopQuery.matches);
+    };
+    syncPreferences();
+    motionQuery.addEventListener("change", syncPreferences);
+    desktopQuery.addEventListener("change", syncPreferences);
+    return () => {
+      motionQuery.removeEventListener("change", syncPreferences);
+      desktopQuery.removeEventListener("change", syncPreferences);
+    };
   }, []);
 
   // initialise sim + loop
   useEffect(() => {
-    if (!mounted) return;
+    // The home page keeps this component under a CSS `hidden lg:block`
+    // wrapper. Match that breakpoint in JavaScript so mobile never creates
+    // the simulation or starts an invisible requestAnimationFrame loop.
+    if (!mounted || !isDesktop) return;
     if (!simRef.current) simRef.current = createSim(seed);
 
     const sim = simRef.current;
@@ -595,12 +607,18 @@ export function LivingOntology({ className, seed = 7 }: Props) {
       return;
     }
 
+    // A paused graph is genuinely idle rather than re-rendering every frame.
+    if (paused) {
+      lastFrameRef.current = 0;
+      return;
+    }
+
     const loop = (now: number) => {
       const prev = lastFrameRef.current || now;
       const dt = now - prev;
       lastFrameRef.current = now;
       const vis = document.visibilityState !== "hidden";
-      if (!paused && vis) {
+      if (vis) {
         step(sim, dt);
       }
       setTick((n) => (n + 1) % 1_000_000);
@@ -608,12 +626,12 @@ export function LivingOntology({ className, seed = 7 }: Props) {
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     };
-  }, [mounted, reducedMotion, paused, seed]);
+  }, [isDesktop, mounted, reducedMotion, paused, seed]);
 
-  if (!mounted) return null;
+  if (!mounted || !isDesktop) return null;
   const sim = simRef.current;
   if (!sim) return null;
 

@@ -9,6 +9,7 @@ import {
 import idIndexJson from "../.velite/id-index.json";
 import glossaryJson from "../.velite/glossary.json";
 import equationsJson from "../.velite/equations.json";
+import { paperPublicSummary } from "@/lib/publication-status";
 
 /* Body texts are intentionally NOT imported here.
    They are loaded directly by `components/layout/CommandPalette.tsx`
@@ -199,9 +200,9 @@ export const searchIndex: SearchItem[] = [
     id: `paper:${p.slug}`,
     kind: "paper" as const,
     title: p.title,
-    summary: p.abstract.slice(0, 160),
+    summary: paperPublicSummary(p).slice(0, 160),
     permalink: p.permalink,
-    group: `Papers · ${p.status}`,
+    group: `Papers · ${p.status}${p.claimStatus !== "current" ? ` · ${p.claimStatus}` : ""}`,
     keywords: [...p.tags, p.track ?? "", p.venue ?? ""].filter(Boolean),
     slug: p.slug,
   })),
@@ -219,9 +220,9 @@ export const searchIndex: SearchItem[] = [
     id: `track:${t.slug}`,
     kind: "track" as const,
     title: t.title,
-    summary: t.summary,
+    summary: t.statusSummary ?? t.summary,
     permalink: t.permalink,
-    group: "Research tracks",
+    group: `Research · ${t.statusLabel ?? t.status}`,
     keywords: [t.track],
     slug: "",
   })),
@@ -568,7 +569,7 @@ export const tagIndex = (() => {
     for (const t of publicTags(n.tags)) push(t, { kind: "note", title: n.title, permalink: n.permalink, summary: n.summary });
   }
   for (const p of papers) {
-    for (const t of publicTags(p.tags)) push(t, { kind: "paper", title: p.title, permalink: p.permalink, date: p.date, summary: p.abstract.slice(0, 160) });
+    for (const t of publicTags(p.tags)) push(t, { kind: "paper", title: p.title, permalink: p.permalink, date: p.date, summary: paperPublicSummary(p).slice(0, 160) });
   }
   for (const j of journalEntries) {
     for (const t of publicTags(j.tags)) push(t, { kind: "journal", title: j.title, permalink: j.permalink, date: j.date, summary: j.summary });

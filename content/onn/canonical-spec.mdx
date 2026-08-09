@@ -1,9 +1,9 @@
 ---
-title: "ONN Canonical Specification"
+title: "ONN Canonical Audit & Status"
 slug: canonical-spec
 kind: canonical
 tags: [onn, canonical, specification, ortsf]
-summary: "What the Ontology Neural Network programme set out to build, and what its own rigorous audit established: an identifiability boundary (the higher-order structure adds no information beyond pairwise), a modest surviving positive, and a standard delay-margin control certificate. The programme has since moved to ULR."
+summary: "What the Ontology Neural Network programme set out to build, and what its own rigorous audit established: an identifiability boundary, a modest surviving positive, and narrowly scoped model-level control results. The programme has since moved to ULR."
 updated: "2026-07-10"
 ---
 
@@ -66,14 +66,14 @@ sheaf networks broadly.
   at matched capacity (E1b: Q-weak $= +0.115 / +0.120$ AUROC across two noise
   levels, pass-fraction $1.0$, CI excludes 0; the selection-corrected single-arm
   effect is $\approx +0.08\text{–}0.10$).
-- **A standard, honestly-scoped ORTSF control certificate.** A proved and
-  runtime-enforced delay margin $\Delta t_{\max} = \varphi_{\mathrm{PM}} / \omega_c$
-  (with $\varphi_{\mathrm{PM}} = \pi/2 - \arctan(\omega_c / p)$ for the dominant
-  plant pole $p = \lambda_2 + \mu$), plus a **sufficient, conservative** nonlinear
-  small-gain certificate ($\rho_{\mathrm{ONN}} \cdot \gamma_{\mathrm{ortsf}} < 1$
-  $\Rightarrow$ stable for arbitrary delay). This is *systems completion, not
-  novelty* — delay-robust control is standard — and the margin is deliberately
-  **not** coupled to the graph spectrum $\lambda_2$ (see §4).
+- **Narrowly scoped ORTSF control results.** For a constructed linear plant and
+  integrating-controller model, a phase-margin gate
+  $\Delta t_{\max}=\varphi_{\mathrm{PM}}/\omega_c$ is implemented and tested in
+  a guarded pipeline. Separately, the additive single-mode recurrence
+  $e_{t+1}=\rho e_t-K_c e_{t-d}$ has the sufficient delay-independent condition
+  $\rho+|K_c|<1$. The latter does **not** cover coupled modes or map $K_c$ to the
+  deployed multi-joint PD controller. These are standard model-level systems
+  results, not a cohomological or end-to-end stability theorem.
 - **A methodology finding.** A learner is neither necessary nor sufficient to
   judge an information / reconstructibility claim (false positive $E_{w_2}$, false
   negative $P_{\mathrm{coker}}$) — decide such claims analytically.
@@ -87,10 +87,10 @@ sheaf networks broadly.
   preservation, and only conditionally (a **hard** H-aligned anchor); the
   soft-anchor version is **refuted** for $\dim H > 0$, and the Harmonic No-Go
   shows that subspace is *specified by the anchor, not learned from data*.
-- **A "cohomological Lyapunov certificate."** No such object exists; the stability
-  that holds is the control-theoretic delay margin above, driven by the plant
-  pole, not by cohomology. The old curvature $\leftrightarrow$ persistent-homology
-  bound "is proved by no theorem."
+- **A "cohomological Lyapunov certificate."** No such object exists; the narrower
+  model-level control results above follow from ordinary control arguments, not
+  cohomology, and do not establish deployed-system stability. The old curvature
+  $\leftrightarrow$ persistent-homology bound "is proved by no theorem."
 - **The original published paper's 7–8 grand theorems** were audited and
   **0 of 8 survive as written** (T2 only down-scoped; T4's delay small-gain is
   physics-wrong and was replaced). The $\lambda_2$-coupling, PROBEFLOOR and
@@ -107,8 +107,10 @@ regenerable from the code and are likewise dropped.
 
 ## 6. Where this sits now
 
-ONN implements **Layer 3** of the [integrated architecture](/notes/part-0/integrated-architecture/),
-with ORTSF at the control layer. The programme's live continuation is **ULR**
+ONN was designed as the proposed **Layer 3** of the
+[integrated architecture](/notes/part-0/integrated-architecture/), with ORTSF
+at the control layer; that cross-layer coupling is not established. The
+programme's live continuation is **ULR**
 (Unified Latent Representation). The [published ONN + ORTSF paper](/papers/onn-ortsf-2026/)
 remains the paper of record for the *original* framing; this page reflects the
 current, audited state.

@@ -1,4 +1,5 @@
 import { recentWriting, papers } from "@/lib/content";
+import { paperPublicSummary } from "@/lib/publication-status";
 import { SITE_URL as BASE } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -72,7 +73,7 @@ export function GET() {
       title: p.title,
       link: `${BASE}${p.permalink}`,
       updated: toRFC3339(p.date),
-      summary: p.abstract.slice(0, 280),
+      summary: paperPublicSummary(p).slice(0, 280),
     }));
 
   // Recent writing (journal + posts)
