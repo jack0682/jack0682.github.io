@@ -23,11 +23,12 @@ export function personSchema() {
     email: `mailto:${EMAIL}`,
     sameAs: IDENTITY_LINKS.filter((l) => l.external).map((l) => l.href),
     affiliation: [
-      { "@type": "Organization", name: "ROBOTIS — Perception Team" },
-      { "@type": "Organization", name: "Soongsil University" },
+      { "@type": "Organization", name: "ROBOTIS AI CO., LTD." },
     ],
-    jobTitle:
-      "Robotics engineer · AI researcher · Mechanical Engineering undergraduate",
+    alumniOf: [
+      { "@type": "CollegeOrUniversity", name: "Soongsil University" },
+    ],
+    jobTitle: "Product Owner, RX · Robotics engineer · AI researcher",
   };
 }
 

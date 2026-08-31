@@ -45,9 +45,9 @@ export default function StartHerePage() {
       <Section eyebrow="The one-minute version">
         <p className="max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
           I&rsquo;m <span className="text-[var(--color-ink)]">Jaehong Oh</span> —
-          a robotics engineer and AI researcher (Research Intern on the
-          Perception Team at ROBOTIS; Mechanical Engineering undergraduate at
-          Soongsil University, Seoul). This site tracks one long question:{" "}
+          a robotics engineer and AI researcher (Product Owner for RX at
+          ROBOTIS AI; B.S. in Mechanical Engineering, Soongsil University,
+          Seoul). This site tracks one long question:{" "}
           <em className="text-[var(--color-ink)]">
             what do learned systems actually share, and under which typed
             observables, gauges, interventions, and observers does that claim survive?

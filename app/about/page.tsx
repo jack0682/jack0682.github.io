@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about/" },
   title: "About",
   description:
-    "About Jaehong Oh — robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
+    "About Jaehong Oh — Product Owner for RX at ROBOTIS AI, robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
   openGraph: {
     title: "About Jaehong Oh",
-    description: "About Jaehong Oh — robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
+    description: "About Jaehong Oh — Product Owner for RX at ROBOTIS AI, robotics engineer and AI researcher working across mathematical perception, audited representation models, and embodied control.",
     url: "/about/",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh · Research" }],
   },
@@ -63,7 +63,7 @@ export default function AboutPage() {
         mark="α"
         eyebrow="About"
         title="Jaehong Oh."
-        lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently a Research Intern on the Perception Team at ROBOTIS, and a Mechanical Engineering undergraduate at Soongsil University, Seoul."
+        lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently Product Owner for RX at ROBOTIS AI — an industrial machine-tending automation platform — and a B.S. in Mechanical Engineering from Soongsil University, Seoul."
       />
 
       {/* ── affiliations strip ────────────────────────────── */}
@@ -191,33 +191,42 @@ export default function AboutPage() {
         </p>
         <div className="grid grid-cols-1 items-baseline gap-x-6 gap-y-1 md:grid-cols-[8rem_1fr] md:gap-y-2">
           <time className="font-mono text-xs text-[var(--color-subtle)]">
-            2019 – present
+            2019 – 2026
           </time>
           <div>
             <h3 className="font-display text-xl text-[var(--color-ink)]">
               Soongsil University · Seoul
             </h3>
             <p className="mt-1 text-sm text-[var(--color-muted)]">
-              B.S. in Mechanical Engineering — focus on Robotics, AI/ML,
-              and Control Systems. Active member of the Fluid Mechanics
-              Laboratory and the Intelligent Robotics Laboratory.
+              B.S. in Mechanical Engineering, conferred 2026 — focus on
+              Robotics, AI/ML, and Control Systems. Member of the Fluid
+              Mechanics Laboratory and the Intelligent Robotics Laboratory.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── research experience ───────────────────────────── */}
+      {/* ── experience ────────────────────────────────────── */}
       <section className="mt-16 border-t border-[var(--color-rule)] pt-10">
         <p className="mb-8 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-          Research experience
+          Experience
         </p>
         <ol className="relative ml-3 space-y-10 border-l border-[var(--color-rule)] pl-8">
           <TimelineItem
             when="2026 – present"
+            heading="Product Owner, RX · ROBOTIS AI"
+          >
+            Full-time. Owns the RX programme end to end — an industrial
+            machine-tending automation platform — from problem definition
+            and scope through architecture decisions, delivery, and the
+            criteria a release has to meet before it ships.
+          </TimelineItem>
+          <TimelineItem
+            when="2026"
             heading="Research Intern · ROBOTIS (Perception Team)"
           >
-            End-to-end autonomous-driving research. Developing and
-            evaluating perception pipelines for autonomous navigation
+            End-to-end autonomous-driving research. Developed and
+            evaluated perception pipelines for autonomous navigation
             systems.
           </TimelineItem>
           <TimelineItem
