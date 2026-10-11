@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 };
 
 const READING_ORDER = [
+  ["October 2026 — learned structure and identifiability", "/journal/2026-10-11-learned-structure/"],
   ["Why ULR — Motivation", "/ulr/motivation/"],
   ["Current canonical verdict and evidential boundary", "/ulr/current-status/"],
   ["Canonical state — Canon 24", "/ulr/canonical-state/"],

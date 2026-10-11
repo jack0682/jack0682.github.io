@@ -1,0 +1,51 @@
+---
+title: "RobotTransformation v0.1.0: a simulation source preview"
+slug: 2026-10-08-robottransformation-preview
+date: 2026-10-08
+updated: 2026-10-11
+summary: "A personal project for authoring and inspecting heterogeneous robot workflows. The October 8 source preview covers a simulation workflow; post-release verification failures remain unresolved and physical deployment is unqualified."
+tags: [robotics, robottransformation, simulation, engineering]
+track: robotics
+draft: false
+---
+
+## What the project is for
+
+[RobotTransformation](https://github.com/jack0682/RobotTransformation) explores
+a common way to describe tasks, authority, results, and recovery across robots,
+equipment, and services. The practical aim is to reduce the work a system
+integrator spends authoring workflows, diagnosing failures, recovering from
+uncertain outcomes, and handing a system over.
+
+This is a **personal project, separate from employer work**. Its public
+development home brings together the earlier RX Platform and RX Solutions
+sources while preserving their histories.
+
+## What the preview covers
+
+The [v0.1.0 release](https://github.com/jack0682/RobotTransformation/releases/tag/v0.1.0),
+published on October 8, records a simulation workflow for configuring a
+material alignment/regrasp task, saving and reopening its configuration,
+executing that version, and inspecting its result on the action graph.
+
+The workflow distinguishes completion, confirmed failure, an unknown outcome
+with retained resource custody, and reconciliation after a lost start response.
+These distinctions matter because losing a response is not evidence that the
+underlying work never happened.
+
+## Verification status as of October 11
+
+The release notes record **post-publication verification failures** following
+earlier passing promotion checks. Guarded-shutdown confirmation and
+lost-start-response effect evidence remain under investigation. The original
+changed-material failure also remains part of the unresolved record.
+
+This is a source preview, **not an installable product or qualification for
+physical operation**. A release tag, a passing simulation, and a physical
+completion or safety claim are different kinds of evidence.
+
+Follow the [release record](https://github.com/jack0682/RobotTransformation/releases/tag/v0.1.0)
+and investigations [#10](https://github.com/jack0682/RobotTransformation/issues/10),
+[#11](https://github.com/jack0682/RobotTransformation/issues/11), and
+[#43](https://github.com/jack0682/RobotTransformation/issues/43) for the exact
+scope and unresolved results. See also the [robotics track](/research/robotics/).

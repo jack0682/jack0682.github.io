@@ -41,7 +41,7 @@ export function rootSchema() {
       name: PUBLISHER_NAME,
       url: SITE_URL,
       description:
-        "Unified Latent Representation research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
+        "Robotics engineering and independent research on learned structure, identifiability, relevance, and robot workflows by Jaehong Oh, RX Product Owner at ROBOTIS AI.",
       inLanguage: "en",
       author: { "@type": "Person", name: AUTHOR_NAME, url: SITE_URL },
     },

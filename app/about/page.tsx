@@ -63,7 +63,7 @@ export default function AboutPage() {
         mark="α"
         eyebrow="About"
         title="Jaehong Oh."
-        lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently Product Owner for RX at ROBOTIS AI — an industrial machine-tending automation platform — and a B.S. in Mechanical Engineering from Soongsil University, Seoul."
+        lead="Robotics engineer and AI researcher working at the boundary between the mathematics of perception and the engineering of embodied systems. Currently Product Owner for RX at ROBOTIS AI — an industrial machine-tending automation platform — with a B.S. in Mechanical Engineering from Soongsil University, completed in August 2026."
       />
 
       {/* ── affiliations strip ────────────────────────────── */}
@@ -182,6 +182,16 @@ export default function AboutPage() {
             </>
           )}
         </p>
+        <p className="mt-5 text-base leading-relaxed text-[var(--color-muted)]">
+          As of October 2026, my working research separates what training forms,
+          how that structure constrains responses, and what observations can
+          identify. A parallel conceptual inquiry asks how relevance and
+          evaluation arise. Read the{" "}
+          <Link href="/journal/2026-10-11-learned-structure/" className="text-[var(--color-accent)] underline underline-offset-4">learned-structure update</Link>
+          {" "}and{" "}
+          <Link href="/journal/2026-10-10-situation-understanding/" className="text-[var(--color-accent)] underline underline-offset-4">situation-understanding note</Link>.
+          These are open research directions, not a change to the canonical verdict.
+        </p>
       </section>
 
       {/* ── education ─────────────────────────────────────── */}
@@ -198,7 +208,7 @@ export default function AboutPage() {
               Soongsil University · Seoul
             </h3>
             <p className="mt-1 text-sm text-[var(--color-muted)]">
-              B.S. in Mechanical Engineering, conferred 2026 — focus on
+              B.S. in Mechanical Engineering, completed August 2026 — focus on
               Robotics, AI/ML, and Control Systems. Member of the Fluid
               Mechanics Laboratory and the Intelligent Robotics Laboratory.
             </p>
@@ -327,9 +337,31 @@ export default function AboutPage() {
       {/* ── other projects ────────────────────────────────── */}
       <section className="mt-16 border-t border-[var(--color-rule)] pt-10">
         <p className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
-          Other selected projects
+          Selected engineering projects
         </p>
         <ul className="space-y-7">
+          <li>
+            <h3 className="font-display text-lg text-[var(--color-ink)]">
+              <Link href="/journal/2026-10-08-robottransformation-preview/" className="hover:text-[var(--color-accent)]">RobotTransformation · October 2026</Link>
+            </h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">
+              Personal project, separate from employer work. A simulation source
+              preview for configuring and inspecting robot workflows, with
+              explicit handling of unknown outcomes and recovery. Post-release
+              verification failures remain unresolved; physical deployment and
+              an installable product are not yet qualified.
+            </p>
+          </li>
+          <li>
+            <h3 className="font-display text-lg text-[var(--color-ink)]">
+              <a href="https://github.com/ROBOTIS-move/antbot/pull/1" className="hover:text-[var(--color-accent)]">AntBot navigation · merged April 2026</a>
+            </h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">
+              Open-source contribution separating real-robot and simulation
+              launch paths, normalizing LiDAR scans, updating Nav2 configuration,
+              and documenting operation. PR #1 merged on April 13, 2026.
+            </p>
+          </li>
           <li>
             <p className="font-display text-lg text-[var(--color-ink)]">
               Industrial Safety Monitoring System{" "}
@@ -367,11 +399,10 @@ export default function AboutPage() {
               </span>
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">
-              The hardware companion to the published Soma-cube paper —
-              Legal-Action Masking (4,536 → 2,484 actions, 26 %
-              efficiency), ZYZ singularity avoidance (54 % → 96.1 %
-              success), 91 % sim-to-real transfer via Unity domain
-              randomisation.
+              Joint research on legal-action masked DQN and regrasp constraints
+              on a Doosan M0609. First-author preprint with Seungjun Jung and
+              Sawoong Kim, published on arXiv in August 2025; experimental
+              results do not establish general production qualification.
             </p>
           </li>
         </ul>

@@ -1,76 +1,68 @@
 ---
 track: robotics
-title: "Robotics applications"
+title: "Robotics and engineering"
 slug: robotics
-ordinal: 5
+ordinal: 2
 status: active
-statusLabel: "Active · experimental programme"
-statusSummary: "Hardware and simulation work remain active as test instruments for perception, planning, and control claims."
-updated: 2026-04-16
-summary: "Physical systems as test instruments for specific theoretical claims. The cognitive-robotics stack — SEGO architecture, semantic scene graphs, explainable control, and production-grade assembly on a Doosan M0609 — where the rest of the programme meets hardware."
+statusLabel: "Active · simulation preview and open-source work"
+statusSummary: "RobotTransformation is a personal simulation source preview with unresolved verification failures. AntBot navigation is a merged open-source contribution; earlier assembly and cognitive-robotics studies remain linked with their evidence."
+updated: 2026-10-11
+summary: "Robot workflow authoring and recovery, ROS 2 navigation, and constrained assembly. Public work spans a simulation source preview, a merged AntBot contribution, and research preprints."
 ---
 
-Where the theory meets physical systems. The experiments, the
-instrumentation, and the engineering that turn the rest of the
-programme into something that moves in the world.
+## RobotTransformation — personal simulation source preview
 
-Robotics platforms here are treated as **test instruments** for
-specific theoretical claims, not as ends in themselves. A claim about
-delay-robust control is only as good as its behaviour on actual
-hardware; a claim about semantic mapping is only as good as the
-quality of the scene graphs it produces under realistic frame rates;
-a claim about reinforcement-learned assembly is only as good as the
-sim-to-real gap closes.
+The engineering question is practical: how can one system integrator author,
+diagnose, recover, and hand over workflows spanning different robots and
+pieces of equipment?
 
-## Three integrated pieces
+[RobotTransformation](https://github.com/jack0682/RobotTransformation) is a
+personal project, separate from employer work, exploring common task,
+authority, state, result, and recovery contracts. Development has moved here
+from [RX Platform](https://github.com/jack0682/rx-platform) and
+[RX Solutions](https://github.com/jack0682/rx-solutions); their source histories
+remain available.
 
-### 1. Semantic-level perception — SEGO
+The [October 8 v0.1.0 source preview](https://github.com/jack0682/RobotTransformation/releases/tag/v0.1.0)
+covers configuring, saving, reopening, running, and inspecting a material
+alignment/regrasp workflow in simulation. Post-publication verification
+failures remain unresolved. It is not yet qualified for physical deployment
+or available as an installable product.
 
-**SEGO** (Semantic Graph Ontology mapper) unifies geometric SLAM,
-deep-learning object detection, and ontology-driven reasoning into a
-single pipeline that produces *cognitive scene graphs* consistent with
-both geometry and domain knowledge. On the TUM RGB-D dataset the
-SRQI (Semantic Recognition Quality Index) improves from 0.662 at
-10 FPS to 0.703 at 30 FPS, then plateaus — aligning with the known
-limit of human perceptual integration.
+Read the [preview and verification update](/journal/2026-10-08-robottransformation-preview/).
 
-See [*Cognitive Synergy Architecture: SEGO*](/papers/cognitive-synergy-sego/).
+## AntBot navigation — merged open-source contribution
 
-### 2. The five-pillar review
+[AntBot PR #1](https://github.com/ROBOTIS-move/antbot/pull/1), merged on April 13,
+2026, separates real-robot and simulation launch paths, normalizes LiDAR scans
+for the real platform, updates Nav2 controller and costmap configuration, and
+adds operating documentation. The contribution makes different sensing and
+controller assumptions explicit in the two environments.
 
-A survey of the architectural pieces needed for cognitive collaborative
-robots: semantic-level perception, cognitive action planning,
-explainable learning and control, safety-aware motion design, and
-multimodal human-intention recognition. The review proposes a unified
-Cognitive Synergy Architecture as the integration layer.
+## Constrained assembly — Soma Cube
 
-See [*Towards Cognitive Collaborative Robots*](/papers/cognitive-collaborative-robots/).
+The [Soma Cube preprint](/papers/soma-cube-assembly-dqn/) studies legal-action
+masked DQN and robot regrasp constraints on a Doosan M0609. Jaehong Oh,
+Seungjun Jung, and Sawoong Kim are the coauthors; I am the first author of the
+August 2025 preprint.
 
-### 3. Production-grade assembly — Soma cube on a Doosan M0609
+See the [project repository](https://github.com/jack0682/Somacube_RL_project)
+and [arXiv record](https://arxiv.org/abs/2508.21272) for the reported methods
+and results. These experimental results are not a general production or
+functional-safety qualification.
 
-The most hands-on piece in the collection. A 6-DOF collaborative
-robot learns to assemble the seven distinct Soma-cube pieces into a
-$3 \times 3 \times 3$ cube using legal-action masked DQN with safe
-ZYZ regrasp. Key numbers:
+## Cognitive-robotics research archive
 
-- **Action space** 4,536 → 2,484 feasible actions (26% reduction).
-- **Motion success rate** 54 % → 96 % after adding the ZYZ regrasp.
-- **Sim-to-real** 75 % assembly success with ±1.8 mm positioning.
-- **Whisper-based Korean-language HRI** at 94 % recognition accuracy.
-
-See [*Learning to Assemble the Soma Cube*](/papers/soma-cube-assembly-dqn/).
-
-## Papers on this track
-
-- [Cognitive Synergy Architecture: SEGO for Human-Centric Collaborative Robots](/papers/cognitive-synergy-sego/)
-- [Towards Cognitive Collaborative Robots](/papers/cognitive-collaborative-robots/)
-- [Learning to Assemble the Soma Cube with Legal-Action Masked DQN and Safe ZYZ Regrasp on a Doosan M0609](/papers/soma-cube-assembly-dqn/)
+- [Cognitive Synergy Architecture: SEGO](/papers/cognitive-synergy-sego/) —
+  a preprint on semantic scene graphs and cognitive robotics.
+- [Towards Cognitive Collaborative Robots](/papers/cognitive-collaborative-robots/) —
+  a review preprint on perception, planning, explainable control, motion,
+  and human intention.
 
 ## Related
 
-- [Ontology Neural Networks archive](/research/onn/) — the historical
-  representational layer these systems were intended to consume.
-- [Unified Latent Representation](/research/ulr/) — the active source of
-  typed representation, intervention, and physical-port tests.
-- [Delay-robust control](/research/control/) — the stability
-  guarantees that close the loop around the robot.
+- [Unified Latent Representation](/research/ulr/) — representation,
+  intervention, and evidence questions.
+- [Delay-robust control](/research/control/) — the scoped scalar result and
+  its system-level limits.
+- [About and experience](/about/) — professional work and selected projects.

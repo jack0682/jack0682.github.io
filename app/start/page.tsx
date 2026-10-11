@@ -47,7 +47,7 @@ export default function StartHerePage() {
           I&rsquo;m <span className="text-[var(--color-ink)]">Jaehong Oh</span> —
           a robotics engineer and AI researcher (Product Owner for RX at
           ROBOTIS AI; B.S. in Mechanical Engineering, Soongsil University,
-          Seoul). This site tracks one long question:{" "}
+          completed August 2026). This site tracks one long question:{" "}
           <em className="text-[var(--color-ink)]">
             what do learned systems actually share, and under which typed
             observables, gauges, interventions, and observers does that claim survive?
@@ -57,6 +57,19 @@ export default function StartHerePage() {
           I write up not just what
           works but what <em>doesn&rsquo;t</em> — including results that turned
           out to be boundaries rather than breakthroughs.
+        </p>
+      </Section>
+
+      <Section eyebrow="Current work · October 2026">
+        <p className="max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+          The newest notes ask what{" "}
+          <Link href="/journal/2026-10-11-learned-structure/" className={linkCls}>learning forms and observations can identify</Link>,
+          and how{" "}
+          <Link href="/journal/2026-10-10-situation-understanding/" className={linkCls}>relevance becomes evaluation</Link>.
+          Engineering work includes a personal{" "}
+          <Link href="/journal/2026-10-08-robottransformation-preview/" className={linkCls}>RobotTransformation simulation source preview</Link>
+          {" "}with unresolved verification failures, and a{" "}
+          <a href="https://github.com/ROBOTIS-move/antbot/pull/1" className={linkCls}>merged AntBot navigation contribution</a>.
         </p>
       </Section>
 

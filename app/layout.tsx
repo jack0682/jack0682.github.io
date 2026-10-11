@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     template: "%s · Jaehong Oh",
   },
   description:
-    "Unified Latent Representation (ULR) research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
+    "Robotics engineering and independent research on learned structure, identifiability, relevance, and robot workflows by Jaehong Oh, RX Product Owner at ROBOTIS AI.",
   authors: [{ name: "Jaehong Oh" }],
   openGraph: {
     type: "website",

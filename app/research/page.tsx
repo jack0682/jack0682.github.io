@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/research/" },
   title: "Research",
   description:
-    "ULR is the current main research programme, alongside archived SCC and ONN records, mathematical foundations, control, and robotics.",
+    "Current work on learned structure, identifiability, relevance, and robot workflow engineering, with ULR canonical evidence and historical SCC and ONN records.",
   openGraph: {
     title: "Research",
-    description: "ULR is the current main research programme, alongside archived SCC and ONN records, mathematical foundations, control, and robotics.",
+    description: "Current work on learned structure, identifiability, relevance, and robot workflow engineering, with ULR canonical evidence and historical SCC and ONN records.",
     url: "/research/",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Jaehong Oh · Research" }],
   },
@@ -27,7 +27,7 @@ export default function ResearchPage() {
         mark="∮"
         eyebrow="Research"
         title="Programmes, evidence, and archives."
-        lead="A small number of long-running research threads, organized around typed questions of sharing, identity, observer-relative role, formation, and embodied testing — without assuming in advance that one universal object unifies them."
+        lead="Current work connects learned structure, mathematical identifiability, situation understanding, and robot workflow engineering. Canonical results, working questions, source previews, and historical records retain their separate evidence."
       />
 
       <Link

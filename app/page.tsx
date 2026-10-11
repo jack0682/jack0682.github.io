@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Jaehong Oh — Research",
     description:
-      "Unified Latent Representation (ULR) research on learned organisation, representation identity, observer-relative role, formation, and embodied systems.",
+      "Robotics engineering and independent research on learned structure, identifiability, relevance, and robot workflows by Jaehong Oh, RX Product Owner at ROBOTIS AI.",
     siteName: "Jaehong Oh — Research",
     locale: "en_GB",
     images: [
@@ -53,7 +53,7 @@ export default function Home() {
             >
               <span className="h-px w-10 bg-[var(--color-accent)]" />
               <span className="hidden sm:inline-block">
-                <TeX expr="R^{\\ast}=\\frac{1-\\lVert P_L-P_I\\rVert_{\\mathrm{TV}}}{2}" />
+                <TeX expr={String.raw`R^{\ast}=\frac{1-\lVert P_L-P_I\rVert_{\mathrm{TV}}}{2}`} />
               </span>
               <span className="sm:hidden">Observer risk · Canon 24</span>
             </div>,
@@ -73,22 +73,12 @@ export default function Home() {
               key="body"
               className="mt-6 max-w-[38rem] text-base leading-relaxed text-[var(--color-muted)] sm:mt-8 sm:text-lg"
             >
-              Robotics engineer and AI researcher working at the intersection of{" "}
-              <span className="text-[var(--color-ink)]">
-                learned organisation
-              </span>
-              ,{" "}
-              <span className="text-[var(--color-ink)]">
-                representation identity
-              </span>
-              , and{" "}
-              <span className="text-[var(--color-ink)]">
-                delay-robust embodied control
-              </span>
-              . The current ULR programme tests what models genuinely share,
-              what makes representations identical, and which organisational
-              claims survive typed baselines. Negative results and boundary
-              conditions are published alongside what survives.
+              Robotics engineer, RX Product Owner at ROBOTIS AI, and independent
+              researcher. I build robot workflows and study what learning forms,
+              how that structure constrains responses, and what observations can
+              identify. Current work connects learned structure, mathematical
+              identifiability, and the origins of relevance and evaluation.
+              Research results and their limits are recorded together.
             </p>,
             <div
               key="cta"
@@ -152,6 +142,18 @@ export default function Home() {
         <h2 className="mb-6 text-xs uppercase tracking-[0.22em] text-[var(--color-subtle)]">
           Highlights
         </h2>
+        <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-subtle)]">
+          Updated <time dateTime="2026-10-11">11 October 2026</time>
+        </p>
+        <p className="mb-6 max-w-[48rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+          New research notes on{" "}
+          <Link href="/journal/2026-10-11-learned-structure/" className="text-[var(--color-accent)] underline underline-offset-4">learned structure and identifiability</Link>
+          {" "}and{" "}
+          <Link href="/journal/2026-10-10-situation-understanding/" className="text-[var(--color-accent)] underline underline-offset-4">situation understanding and relevance</Link>.
+          {" "}The personal{" "}
+          <Link href="/journal/2026-10-08-robottransformation-preview/" className="text-[var(--color-accent)] underline underline-offset-4">RobotTransformation v0.1.0 simulation preview</Link>
+          {" "}is public, with unresolved verification failures and no physical-deployment qualification.
+        </p>
         <p className="max-w-[48rem] text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
           Current focus:{" "}
           <Link
@@ -203,10 +205,10 @@ export default function Home() {
             Recent writing
           </h2>
           <Link
-            href="/ulr/"
+            href="/journal/"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)]"
           >
-            ULR evidence map →
+            Research and engineering journal →
           </Link>
         </div>
         {recent.length === 0 ? (
@@ -257,8 +259,8 @@ export default function Home() {
           </Link>
         </div>
         <p className="mb-10 max-w-[38rem] text-sm leading-relaxed text-[var(--color-muted)]">
-          An ongoing programme on learned organisation, representation identity,
-          observer-relative role, and embodied control — with canonical claims,
+          Current work on learned structure, mathematical identifiability,
+          relevance, and robot workflow engineering — with canonical claims,
           retractions, and open gates kept visibly separate.
         </p>
 
@@ -268,14 +270,14 @@ export default function Home() {
           className="mb-10 select-none text-xs text-[var(--color-subtle)]"
         >
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <TeX expr="(O,\\mathcal{G},N)" />
+            <TeX expr={String.raw`(O,\mathcal{G},N)`} />
             <span className="opacity-60">·</span>
             <span className="hidden sm:inline-block">
-              <TeX expr="\\mathrm{same\\ function}\\not\\Rightarrow\\mathrm{same\\ raw\\ geometry}" />
+              <TeX expr={String.raw`\mathrm{same\ function}\not\Rightarrow\mathrm{same\ raw\ geometry}`} />
             </span>
             <span className="font-mono sm:hidden">gauge-aware identity</span>
             <span className="opacity-60">·</span>
-            <TeX expr="\\mathcal{B}\\subsetneq\\prod_{q\\in Q}Y_q" />
+            <TeX expr={String.raw`\mathcal{B}\subsetneq\prod_{q\in Q}Y_q`} />
           </div>
           <div className="sci-axis-ticks mt-3 h-2 opacity-60" />
         </div>
